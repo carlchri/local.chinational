@@ -1,0 +1,12 @@
+<sly data-sly-use.tiles="org.chi.aem.common.components.model.FullBleedTiles"></sly>
+<div class="visual-box padding-x">
+    <div class="row">
+        <div class="full-bleed">
+            <sly data-sly-repeat="${tiles.tilesList}">
+                <div class="${item}" data-sly-resource="${item @ resourceType='chinational/components/content/bleedTile'}">
+                </div>
+            </sly>
+        </div>
+    </div>
+</div>
+i
