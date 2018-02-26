@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Info Band Settings"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+        margin="{Boolean}false">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                        maximized="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <infoBandMainTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Main Settings Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <greybgRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if Grey Background is required"
+                                                        name="./greybgRequired"
+                                                        text="Select if Grey Background is Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <headingNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if heading is not required."
+                                                        name="./headingNotRequired"
+                                                        text="Select if Heading is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <linkButtonNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if link button is not required."
+                                                        name="./linkButtonNotRequired"
+                                                        text="Select if Link Button is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <buttonRowNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if Row of Buttons is not required."
+                                                        name="./buttonRowNotRequired"
+                                                        text="Select if row of Buttons is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <noOfButtons
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                        defaultValue="1"
+                                                        fieldDescription="Select How many buttons required"
+                                                        fieldLabel="No. of Buttons Required"
+                                                        max="{Long}10"
+                                                        min="{Long}1"
+                                                        name="./noOfButtons"
+                                                        required="{Boolean}true"
+                                                        step="{Long}1"
+                                                        text="No. of Buttons Required"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </infoBandMainTab>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

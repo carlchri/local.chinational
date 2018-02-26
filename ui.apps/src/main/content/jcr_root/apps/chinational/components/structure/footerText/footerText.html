@@ -1,0 +1,18 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<!--/* Placeholder for content */-->
+<div data-sly-test="${currentStyle.footerHeading}">${currentStyle.footerHeading}</div>
+<div class="col-md-7">
+<span class="copyrght-txt" data-sly-test="${currentStyle.footerText}">${currentStyle.footerText}></span>
+<span class="separator pstn-reltv">|</span>
+<span>All rights reserved</span>
+<span class="separator pstn-reltv">|</span>
+<span>Terms and Conditions</span>
+<span class="separator pstn-reltv">|</span>
+<span>Privacy Policy</span>
+</div>
+<div class="col-md-5 visit-txt">
+Visit Catholic Health Initiatives national website »
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>

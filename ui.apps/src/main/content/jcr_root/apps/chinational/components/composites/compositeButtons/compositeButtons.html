@@ -1,0 +1,38 @@
+<sly data-sly-use.compositeButtons="org.chi.aem.common.components.model.CompositeButtons" />
+
+<div class="section">
+		<div class="container">
+			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
+				<div class="col-sm-6">
+					<sly data-sly-test="${!properties.headingNotRequired}"
+                         data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
+                    </sly>
+				</div>
+				<div class="col-sm-6 right-small-txt">
+                	<div class="inblock show-on-desktop">
+                           <div data-sly-test="${!properties.linkNotRequired}"
+                                 data-sly-resource="${'link' @ resourceType='chinational/components/content/link'}">
+                            </div>
+                    </div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="buttons-outer" data-sly-list.eachButton="${compositeButtons.buttonList}">
+                    	<div class="link-wrapper"
+							 data-sly-resource="${ @path=eachbutton, resourceType='chinational/components/content/button'}"></div>
+                    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 txt-right">
+					<div class="show-on-mobile">
+                        <sly data-sly-test="${!properties.linkNotRequired}"
+                             data-sly-resource="${'link' @ resourceType='chinational/components/content/link'}">
+                        </sly>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>

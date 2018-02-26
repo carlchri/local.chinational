@@ -1,0 +1,51 @@
+ <sly data-sly-use.newsList="${'org.chi.aem.common.components.model.DynamicTileNewsList'}"
+      data-sly-use.template="chinational/components/commons/templates.html" />
+
+<div class="blogs section" data-sly-test="${properties.parentPage}">
+  	<div class="container">
+		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+			<span class="sub-heading">
+	        	${properties.contentTilesHeading || 'Featured Articles'}
+ 			</span>
+		</div>
+        <div class="row">
+
+			<sly data-sly-list.featuredNews="${newsList.featuredNews}">
+	           	<div class="blog-item col-sm-6 col-md-3">
+                    <div class="full-image blog-image" data-sly-test="${featuredNews.properties.imageSrc}">
+                    	<img src="${featuredNews.properties.imageSrc @ context='unsafe'}" 
+                             alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+                    </div>
+                    
+                    <div class="blog-content pstn-reltv">
+                        <span class="blog-title dblock txt-green">${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}</span>
+                        <span class="blog-date txt-green"
+                              data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=featuredNews.properties.publishDate, dateFormat='MMM dd, YYYY'}">
+                                 ${formatter.formattedDate}
+                        </span>
+                        <p>${featuredNews.properties.excerpt}</p>
+                        <a class="bold-link" href="${featuredNews.path @ extension='html'}" target="${properties.targetBlank ?'_blank':'_self'}">
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+        	</sly>
+
+			<div class="other-news col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}">
+                <h3>${properties.linkHeading || 'Other News'}</h3>
+                <sly data-sly-list.item="${newsList.listNews}">
+                    <div class="bullet-text">
+                        <a href="${item.path @ extension='html' || '#'}">
+                            ${item.properties.newsHeading || item.pageTitle || item.title || item.name}
+                        </a>
+                        <i class="arrow-right"></i>
+                    </div>
+                </sly>
+            </div>
+
+		</div>
+
+    </div>
+ </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!newsList.featuredNews}"></sly>

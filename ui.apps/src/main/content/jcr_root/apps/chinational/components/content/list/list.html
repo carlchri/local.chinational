@@ -1,0 +1,11 @@
+<sly data-sly-use.listCollection="org.chi.aem.common.components.model.ListCollection"/>
+
+<h3 data-sly-test="${properties.linkHeading}">${properties.linkHeading}</h3>
+<sly data-sly-list="${listCollection.links}">
+	<div class="bullet-text">
+		<a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+			${item.linkText || 'List Component'}
+		</a>
+		<i class="arrow-right"></i>
+    </div>
+</sly>

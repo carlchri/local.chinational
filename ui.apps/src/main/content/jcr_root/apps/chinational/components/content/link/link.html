@@ -1,0 +1,10 @@
+<sly data-sly-use.link="org.chi.aem.common.components.model.Link"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+<a class="arrow-link-txt" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}"
+    data-sly-test.linkText="${properties.linkText}">
+   ${linkText}
+   <i class="arrow-right"></i>
+</a>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!linkText}"></sly>

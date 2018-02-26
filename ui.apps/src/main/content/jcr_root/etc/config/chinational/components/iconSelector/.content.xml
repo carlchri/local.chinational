@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <iconNotRequired
+        jcr:primaryType="nt:unstructured"
+        selected="{Boolean}true"
+        text="Icon Not Required"
+        value="iconNotRequired"/>
+    <location
+        jcr:primaryType="nt:unstructured"
+        text="Location"
+        value="icon-map-guide"/>
+    <call
+        jcr:primaryType="nt:unstructured"
+        text="Call"
+        value="icon-map-guide"/>
+</jcr:root>

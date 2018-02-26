@@ -1,0 +1,28 @@
+.memorial {
+	padding-right: 4%
+}
+
+.memorial p {
+	margin-bottom: 50px;
+}
+
+@media(max-width:991px) {
+	.icon-buttons {
+		padding-top: 30px;
+		max-width: 420px;
+	}
+	.memorial p {
+		margin-bottom: 35px;
+	}
+}
+
+@media(max-width:767px) {
+	.icon-buttons {
+		width: 100%;
+	}
+	.memorial {
+		padding-right:0;
+		padding-bottom:40px;
+	}
+
+}

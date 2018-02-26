@@ -1,0 +1,62 @@
+.quote-image img {
+  width:100%;
+}
+.quote-outer {
+  background-color:#f8f7f7;
+  padding:50px 60px;
+  margin:40px 0 50px 0;
+  overflow: hidden;
+}
+.quote-inner {
+  position:relative;
+  margin:0 50px;
+}
+.quote-title {
+  font-size:36px;
+  color:#0097a9;
+  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style:italic;
+  line-height: normal;
+}
+.content-wrapper {
+  position:relative;
+}
+.quote-description {
+  font-size:16px;
+  color:#0097a9;
+  margin:0;
+}
+.quote-caption {
+  font-size: 14px;
+  color: #53565a;
+  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style:italic;
+  padding:30px 0;
+  display:block;
+}
+.speech-mark-left, .speech-mark-right {
+  font-size: 48px;
+  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style:italic;
+  color: #0097a9;
+  line-height:18px;
+  position:absolute;
+}
+.speech-mark-left {
+  top:18px;
+  left:-30px;
+}
+.speech-mark-right {
+  bottom:-16px;
+  right:-30px;
+}
+
+@media (max-width:767px) {
+  .quote-outer {
+    padding:30px 20px 50px 20px;
+    margin: 40px 0 20px 0;
+  }
+  .quote-inner {
+    margin: 0 30px;
+  }
+}

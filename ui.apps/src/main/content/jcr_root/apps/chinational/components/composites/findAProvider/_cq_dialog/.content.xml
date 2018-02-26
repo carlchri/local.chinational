@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Find A Provider Settings"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+        margin="{Boolean}false">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                        maximized="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <fapMainTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Main Settings Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <imageNotRequired
+                                                        granite:class="cq-dialog-checkbox-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if image is not required."
+                                                        name="./imageNotRequired"
+                                                        text="Select if image is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-checkbox-showhide-target=".checkbox-option-imageOnLeft-showhide-target"/>
+                                                    </imageNotRequired>
+                                                    <imageOnLeftSide
+                                                        granite:class="checkbox-option-imageOnLeft-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if image should be on left side of the row."
+                                                        name="./imageOnLeftSide"
+                                                        text="Select if image is left aligned"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Heading text for the component"
+                                                        fieldLabel="Heading"
+                                                        name="./heading"/>
+                                                    <subheading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                        fieldDescription="Sub Heading for the component, displays below heading"
+                                                        fieldLabel="Sub Heading"
+                                                        name="./subheading"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </fapMainTab>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

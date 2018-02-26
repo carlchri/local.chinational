@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <basic jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <onofftime
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:hideResource="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </basic>
+                    <advanced
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="{Boolean}true"/>
+                    <socialmedia
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="{Boolean}true"/>
+                    <cloudservices
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="{Boolean}true"/>
+                    <personalization
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="{Boolean}true"/>
+                    <permissions
+                        jcr:primaryType="nt:unstructured"
+                        sling:hideResource="{Boolean}true"/>
+                    <chinational
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CHI Page Properties"
+                        sling:orderBefore="advanced"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                    <items jcr:primaryType="nt:unstructured">
+                        <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <herocomponent
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./displayHero"
+                                        renderReadOnly="{Boolean}true"
+                                        text="Display Human Network Band?"
+                                        value="true">
+                                    <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="displayHero"/>
+                                </herocomponent>
+                                <breadcrumb
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./displayBreadcrumb"
+                                        renderReadOnly="{Boolean}true"
+                                        text="Display Bread Crumb?"
+                                        value="true">
+                                    <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="displayBreadcrumb"/>
+                                </breadcrumb>
+                                <subnavigation
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./displaySubnav"
+                                        renderReadOnly="{Boolean}true"
+                                        text="Display Sub Nagivation?"
+                                        value="true">
+                                    <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="displaySubnav"/>
+                                </subnavigation>
+                                <rightrail
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./displayRightRail"
+                                        renderReadOnly="{Boolean}true"
+                                        text="Display Right Rail?"
+                                        value="true">
+                                    <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="displayRightRail"/>
+                                </rightrail>
+                                <hidePageTitle
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./hidePageTitle"
+                                        renderReadOnly="{Boolean}true"
+                                        text="Hide Page Title?"
+                                        value="true">
+                                    <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="hidePageTitle"/>
+                                </hidePageTitle>
+                            </items>
+                        </column>
+                    </items>
+                </chinational>
+                    <chimetadata
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="CHI Page Meta Data"
+                            sling:orderBefore="advanced"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ogtitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Title Meta Data for Social Media (if left blank, it will use page title)"
+                                            fieldLabel="OG/Twitter Title"
+                                            name="./ogtitle"/>
+                                    <ogdesc
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldDescription="Description Meta Data for Social Media (if left blank, it will use page description)"
+                                            fieldLabel="OG/Twitter Description"
+                                            name="./ogdesc"/>
+                                    <ogurl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="URL for Social Media (if left blank, it will use page URL)"
+                                            fieldLabel="OG/Twitter URL"
+                                            name="./ogurl"/>
+                                    <ogimage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Image for this page on social media (if left blank, it will use page URL). &#xa;For External Links, use format http(s)://www.example.com "
+                                            fieldLabel="OG/Twitter Image"
+                                            name="./ogimage"
+                                            rootPath="/content"/>
+                                </items>
+                            </column>
+                        </items>
+                    </chimetadata>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

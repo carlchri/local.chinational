@@ -1,0 +1,144 @@
+.buttons-outer {
+	display: flex;
+	justify-content: stretch;
+	margin-top: 12px;
+}
+.buttons-outer > div {
+	height:110px;
+	text-transform:uppercase;
+	font-size:15px;
+	justify-content:center;
+	display:flex;
+	transition: all 0.2s ease-in-out;
+	letter-spacing: 1.7px;
+	flex:1;
+	align-items:center;
+	margin-bottom:15px;
+}
+.flexible-button {
+	padding:12px 15px;
+	margin: 0 3px 0 3px;
+	color:#fff;
+	background-color:#426da9;
+	height:100%;
+	width:100%;
+	min-height:60px;
+	display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.flexible-button a {
+	color:#fff;
+}
+
+.flexible-button a {
+	align-items: center;
+	font-weight: bold;
+	display:flex;
+	text-align: center;
+}
+.flexible-button:hover, .flexible-button:focus {
+	background-color:#0097a9;
+	color: #fff;
+}
+.flexible-buttona:hover, .flexible-button a:focus {
+	color: #fff;
+}
+.content-left .buttons-outer {
+	flex-flow:wrap;
+	display:block;
+}
+.content-left .buttons-outer > div {
+	height:inherit;
+}
+.content-left .buttons-outer .flexible-button {
+	justify-content:left;
+	flex-flow:wrap;
+}
+.content-left .buttons-outer .flexible-button a {
+	text-align:left;
+
+}
+.icon-map-guide,
+.icon-call,
+.icon-locations,
+.icon-download,
+.icon-request {
+	width: 26px;
+	height: 37px;
+	margin:0 20px 0 5px;
+	vertical-align: middle;
+}
+.icon-map-guide {
+	background-position:-259px -226px;
+}
+.icon-call {
+	background-position:-191px -226px;
+}
+.icon-locations {
+	background-position:-542px -414px;
+}
+.icon-download {
+	background-position:-42px -716px;
+}
+.icon-request {
+	background-position:-115px -224px;
+}
+.section-header {
+	padding-bottom: 15px;
+}
+
+.right-small-txt {
+	top: 10px;
+	text-align: right;
+}
+
+.right-small-txt span {
+	padding-right: 2px;
+}
+
+@media(max-width:991px) {
+	.buttons-outer {
+		flex-flow: row wrap;
+		height:auto;
+		justify-content: space-between;
+	}
+	.buttons-outer > div{
+		flex:0 0 32%;
+	}
+	.right-small-txt {
+		padding-right:30px;
+	}
+	.content-left .buttons-outer > div {
+		min-height: inherit;
+    height: inherit;
+		flex:1;
+	}
+	.content-left  .flexible-button {
+		min-height:inherit;
+	}
+}
+
+@media(max-width:767px) {
+	.buttons-outer {
+		flex-flow:column;
+	}
+	.buttons-outer > div {
+		min-height: inherit;
+    height: inherit;
+		flex:1;
+	}
+	.flexible-button {
+		min-height:inherit;
+	}
+	.col-md-12.txt-right .show-on-mobile{
+		padding-right:15px;
+	}
+	.flexible-box-wrapper .small-header {
+		margin-bottom: 0;
+	}
+	.right-small-txt {
+		top: 0;
+		text-align: left;
+	}
+}

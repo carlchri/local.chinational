@@ -1,0 +1,17 @@
+<sly data-sly-use.breadcrumb="com.adobe.cq.wcm.core.components.models.Breadcrumb"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+    <div class="col-sm-12"
+         data-sly-test="${breadcrumb.items.size > 0}">
+        <ul data-sly-list.navItem="${breadcrumb.items}">
+            <li data-sly-test="${!navItemList.last}">
+                <a href="${navItem.URL}" class="arrow-link-txt">
+                    ${navItem.title}
+                        <i class="arrow-right" ></i>
+                </a>
+            </li>
+
+        </ul>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=breadcrumb.items.size == 0}"></sly>

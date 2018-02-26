@@ -1,0 +1,66 @@
+
+
+.cmp-text ul{
+    padding: 10px 0 0 40px; 
+}
+
+.cmp-text  ul li {
+    
+    position: relative;
+    list-style: none;
+    font-size: 22px;
+    font-size: 16px;   
+    padding-bottom: 3px;
+}
+
+ .cmp-text ul li::before {
+  
+  color: #00b0b9;  
+  /* color of bullet or square */
+   content: "\25CB"; 
+   /*  content: "\2686";*/
+  /* Unicode of character to precede the list item */
+  font-size: 1em; 
+  /* em or %*/ 
+  padding-right: 1.1225em; 
+  /* use em*/
+  position: relative;
+  top: 0em; 
+  /* use em or % */
+
+}
+
+
+
+.cmp-text ol{
+    padding: 10px 0 0 40px; 
+    list-style: none;
+    counter-reset: li;
+    font-size: 22px;
+    font-size: 16px;   
+    padding-bottom: 3px;
+}
+
+
+
+.cmp-text ol li::before {
+    
+   content: counter(li); 
+    color: #00b0b9; 
+   /*  content: "\2686";*/
+  /* Unicode of character to precede the list item */
+  font-size: 1em; 
+  /* em or %*/ 
+  padding-right: 1.1225em; 
+  /* use em*/
+  position: relative;
+  top: 0em; 
+    
+  /* use em or % */
+
+}
+
+.cmp-text ol li {counter-increment: li}
+
+
+

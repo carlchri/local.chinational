@@ -1,0 +1,16 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<div class="gutter-sides">
+    <label class="button-label" data-sly-test="${properties.sectionHeading}">
+        ${properties.sectionHeading}
+    </label>
+    <hr class="dashed-border">
+    <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
+    </div>
+
+    <div data-sly-test="${!properties.linkNotRequired}"
+         data-sly-resource="${'link' @ resourceType='chinational/components/content/link'}">
+    </div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.sectionHeading}"></sly>

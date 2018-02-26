@@ -1,0 +1,26 @@
+.visual-box h2 {
+  color:#fff;
+}
+.visual-box a {
+  margin-top:10px;
+}
+.visual-box .row {
+  margin:0;
+}
+.image-row {
+  height:180px;
+}
+.image-row img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.content-col {
+  padding:15px 80px 35px 35px;
+}
+
+@media (max-width:992px) {
+  .content-col {
+    padding:15px 40px 35px 40px;
+  }
+}

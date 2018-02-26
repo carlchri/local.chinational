@@ -1,0 +1,25 @@
+<div class="row">
+
+<div class="carousel">
+<div class="carousel-item item">
+	<hr>
+	<div class="flex-box">
+        <div class="carousel-image-single" data-sly-test="${!pageProperties.physicianImageNotReqd}">
+        	<img src="${pageProperties.imageSrc @ context='unsafe'}" alt="Physician Image">
+		</div>
+        <div class="carousel-description-single">
+            <span class="small-heading">${pageProperties.physicianName}</span>
+            <p>${pageProperties.physicianExpertise}</p>
+            <div class="req-app link-wrapper" data-sly-test="${!pageProperties.apointmentButtonNotReqd}"
+        		 data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+            </div>
+        </div>
+	</div>
+	<hr>
+</div>
+</div>
+
+</div>
+
+
+<div data-sly-resource="${ @path='main-respgrid', resourceType='chinational/components/foundation/responsivegrid'}"></div>

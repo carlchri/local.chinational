@@ -1,0 +1,20 @@
+<sly data-sly-use.link="org.chi.aem.common.components.model.Link" />    
+
+<div class="full-image blog-image" data-sly-test="${!properties.imageNotRequired}" 
+	 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+</div>
+
+<div class="blog-content pstn-reltv">
+	<span class="blog-title dblock txt-green">${properties.headingText}</span>
+    <sly data-sly-test="${properties.enterDate}">
+		<span class="blog-date txt-green" data-sly-test="${!properties.dateNotRequired}"
+			  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=properties.enterDate, dateFormat='MMM dd, YYYY'}">
+	          ${formatter.formattedDate}
+		</sly>
+    </span>
+    <p>${properties.contentDetail}</p>
+    <a class="bold-link" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+		${link.linkText || 'Link Text'}
+    </a>
+</div>
+

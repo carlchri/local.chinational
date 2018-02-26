@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Featured Article &amp; Callout Settings"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+        margin="{Boolean}false">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                        maximized="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <mainTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Featured Article Settings Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <featuredArticleTitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        emptyText="Enter Featured Article Title here"
+                                                        fieldDescription="This text will be used as heading for callout tiles"
+                                                        fieldLabel="Enter featured Article Title here:"
+                                                        name="./featuredArticleTitle"/>
+                                                    <featuredArticleDetail
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                        fieldDescription="Enter featured Article details here"
+                                                        fieldLabel="Enter featured Article details here:"
+                                                        name="./featuredArticleDetail"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </mainTab>
+                            <toggleOptions
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Toggle On/Off Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <greybgRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if Grey Background is required"
+                                                        name="./greybgRequired"
+                                                        text="Select if Grey Background is Required [By Default, White]"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <headingNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if Featured Article heading is not required."
+                                                        name="./headingNotRequired"
+                                                        text="Select if Featured Article Heading is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <videoRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if Grey Background is required"
+                                                        name="./videoRequired"
+                                                        text="Select if Video is Required [By Default, Image]"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <linkButtonNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox if link button is not required."
+                                                        name="./linkButtonNotRequired"
+                                                        text="Select if Link Button is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <calloutNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this callout band is not required."
+                                                        name="./calloutNotRequired"
+                                                        text="Select if Callout Band is Not Required"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </toggleOptions>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

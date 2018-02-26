@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Human Network Photo Band"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+        margin="{Boolean}false">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                        maximized="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <hnpbMainTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Basic"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <heroStyle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="orderBy"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select a Style for this component"
+                                                        fieldLabel="Photo Band Style"
+                                                        name="./heroStyle">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <imagetext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Image and Text"
+                                                                value="imagetext"/>
+                                                            <video
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Video and Text"
+                                                                value="video"/>
+                                                            <imageonly
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Full width Image"
+                                                                value="imageonly"/>
+                                                            <smallimagetext
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Page Title Band"
+                                                                value="smallimagetext"/>
+                                                        </items>
+                                                    </heroStyle>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Heading text for the component"
+                                                        fieldLabel="Heading"
+                                                        name="./heading"/>
+                                                    <subheading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Sub Heading for the component, displays below heading"
+                                                        fieldLabel="Sub Heading"
+                                                        name="./subheading"/>
+                                                    <label
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="This Text appears on the Button "
+                                                        fieldLabel="Button Label"
+                                                        name="./label"/>
+                                                    <linkTo
+                                                        granite:class="list-option-modal-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
+                                                        fieldLabel="Link to"
+                                                        name="./linkTo"
+                                                        rootPath="/content"/>
+                                                    <target
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Selecting this checkbox will open link in new window."
+                                                        name="./targetBlank"
+                                                        text="Select to Open Link in New Window"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </hnpbMainTab>
+                            <options
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Options"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <videoUrl
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldDescription="Video URL"
+                                                            fieldLabel="Video URL"
+                                                            name="./videoUrl"
+                                                            rootPath="/content"/>
+                                                    <backgroundColor
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                        colorsPath="/etc/config/chinational/components/colorpicker/herobackgroundcolorpicker"
+                                                        fieldDescription="Click on the color box to choose a different color for the photo band background"
+                                                        fieldLabel="Background Color"
+                                                        freestylePalette="{Boolean}true"
+                                                        name="./backgroundColor"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </options>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

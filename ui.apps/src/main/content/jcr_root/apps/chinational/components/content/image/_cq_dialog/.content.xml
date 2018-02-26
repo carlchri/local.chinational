@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Image Settings"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+        margin="{Boolean}false">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <tabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                        maximized="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <imageMainTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Image Main Tab&#xa;"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <imgWebSrc
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Image Src for the web"
+                                                        fieldLabel="Desktop Image Src"
+                                                        name="./fileReference"
+                                                        required="{Boolean}true"
+                                                        rootPath="/content/dam"/>
+                                                    <selectImgRenditions
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="orderBy"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select image options for Tablet and Mobile. If choosing autofill, "
+                                                        fieldLabel="Image Options for Tablet and Mobile:"
+                                                        name="./selectImageRendition">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <autoFill
+                                                                jcr:primaryType="nt:unstructured"
+                                                                selected="{Boolean}true"
+                                                                text="Autofill - Use desktop image renditions for Tablet and Mobile"
+                                                                value="autoFill"/>
+                                                            <chooseSeperate
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Choose seperate image for Tablet or Mobile or Both"
+                                                                value="chooseSeperate"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".list-option-src-showhide-target"/>
+                                                    </selectImgRenditions>
+                                                    <tabletHeading
+                                                        granite:class="hide list-option-src-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}3"
+                                                        text="Enter Src for Tablet Image:">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="chooseSeperate"/>
+                                                    </tabletHeading>
+                                                    <imgTabSrc
+                                                        granite:class="hide list-option-src-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Choose Image Src for the Tablet. Leave blank, if want to use desktop image rendition."
+                                                        name="./imgTabSrc"
+                                                        rootPath="/content/dam">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="chooseSeperate"/>
+                                                    </imgTabSrc>
+                                                    <mobileHeading
+                                                        granite:class="hide list-option-src-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}3"
+                                                        text="Enter Src for Mobile Image:">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="chooseSeperate"/>
+                                                    </mobileHeading>
+                                                    <imgMobSrc
+                                                        granite:class="hide list-option-src-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Choose Image Src for the Mobile. Leave blank, if want to use desktop image rendition."
+                                                        name="./imgMobSrc"
+                                                        rootPath="/content/dam">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="chooseSeperate"/>
+                                                    </imgMobSrc>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </imageMainTab>
+                            <imageOptionsTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Image Options"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                        fieldDescription="Provide a textual alternative of the content and function of the image."
+                                                        fieldLabel="Alternative Text"
+                                                        name="./alt"/>
+                                                    <linkURL
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                        fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
+                                                        fieldLabel="Link URL"
+                                                        name="./linkURL"
+                                                        rootPath="/content"/>
+                                                    <target
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Selecting this checkbox will open link in new window."
+                                                        name="./targetBlank"
+                                                        text="Select to Open Link in New Window"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </imageOptionsTab>
+                        </items>
+                    </tabs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

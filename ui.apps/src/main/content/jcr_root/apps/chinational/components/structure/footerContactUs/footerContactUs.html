@@ -1,0 +1,38 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<!--/* Placeholder for content */-->
+  <form class="row">
+    <div class="col-sm-6 col-md-9">
+      <div class="input-box">
+        <input type="text" placeholder="Enter email to receive our newsletter"/>
+      </div>
+    </div>
+    <div class="col-sm-2 col-md-3">
+      <button type="button" class="btn btn-primary">SUBMIT</button>
+    </div>
+  </form>
+  <div class="row contact-info">
+    <div class="col-sm-8">
+      <span class="list-header">Contact CHI Memorial</span>
+      <p>
+        <span class="dblock">Call 123-4567-000 or</span>
+        <span>Request an appointment</span>&nbsp;
+        <i class="arrow-right"></i>
+      </p>
+      <div class="newsltter-social">
+        <a href="https://www.facebook.com/CatholicHealthInitiativesPeople" class="sprite icon-fb small-icons"></a>
+        <a href="##" class="sprite icon-instagram small-icons"></a>
+        <a href="https://twitter.com/chi_updates" class="sprite icon-twitter small-icons"></a>
+        <a href="https://www.linkedin.com/company/catholic-health-initiatives" class="sprite icon-linkedin small-icons"></a>
+        <a href="https://www.youtube.com/user/WatchCHI" class="sprite icon-youtube small-icons"></a>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="link-wrapper"><a href="##" class="txt-bold">About us</a></div>
+      <div class="link-wrapper"><a href="##" class="txt-bold">News &amp; Stories</a></div>
+      <div class="link-wrapper"><a href="##" class="txt-bold">Giving</a></div>
+      <div class="link-wrapper"><a href="##" class="txt-bold">Volunteering</a></div>
+    </div>
+  </div>
+  
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>

@@ -1,0 +1,31 @@
+/*contact-us form styles*/
+.text-area textarea{
+	border: none;
+    background: #ddf4f8;
+	resize: none;
+	outline:none;
+	height: 100px;
+}
+.contact-label{
+	font-size: 16px;
+    color: #0097A9;
+    margin: 8px 0px 10px 0px;
+}
+.contact-query{
+	font-size: 22px;
+    margin-top: 5px;
+    color: #3794a5;
+}
+.c-send-btn{
+margin-top:20px;
+}
+.ch-text{
+	font-size:15px;
+}
+.c-send-btn button{
+	width:100px;
+}
+.f-italic{
+	font-style: italic;
+}
+/*contact-us form styles*/
