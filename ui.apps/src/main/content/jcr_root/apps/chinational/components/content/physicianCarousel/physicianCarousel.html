@@ -1,4 +1,5 @@
-<sly data-sly-use.listCollection="org.chi.aem.common.components.model.CarouselCollection"/>
+<sly data-sly-use.listCollection="org.chi.aem.common.components.model.CarouselCollection"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
 
 <div class="carousel">
 	<div class="container">
@@ -38,11 +39,15 @@
                 </div>
               </div>
 
-              <div class="link-wrapper" data-sly-test="${!properties.buttonNotRequired}"
-                   data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-              </div>
+			  <sly data-sly-test="${listCollection.links}">	
+                  <div class="link-wrapper" data-sly-test="${!properties.buttonNotRequired}"
+                       data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+                  </div>
+              </sly>
 
             </div>
 		</div>
 	</div>
 </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!listCollection.links}"></sly>

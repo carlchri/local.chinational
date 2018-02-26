@@ -84,7 +84,7 @@
                                                     <videoRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if Grey Background is required"
+                                                        fieldDescription="Select this checkbox if Video is required, instead of Image."
                                                         name="./videoRequired"
                                                         text="Select if Video is Required [By Default, Image]"
                                                         uncheckedValue="false"
