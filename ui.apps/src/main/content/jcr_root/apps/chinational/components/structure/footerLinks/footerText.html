@@ -1,0 +1,17 @@
+<sly data-sly-use.linkCollection="org.chi.aem.common.components.model.FooterLinkCollection"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<div class="col-md-7" data-sly-list="${linkCollection.items}">
+        <span class="${itemList.first?'copyrght-txt':''}">
+            <a href="${item.linkUrl}" target="${item.targetBlank==true ?'_blank':'_self'}"
+               data-sly-test="${item.linkUrl}">
+                ${item.linkText}
+            </a>
+        </span>
+    <span class="separator pstn-reltv" data-sly-list="${!itemList.last}">|</span>
+</div>
+<div class="col-md-5 visit-txt">
+Visit Catholic Health Initiatives national website »
+</div>
+
+<sly data-sly-call="${template.placeholder @isEmpty=linkCollection.items.size == 0}"></sly>
