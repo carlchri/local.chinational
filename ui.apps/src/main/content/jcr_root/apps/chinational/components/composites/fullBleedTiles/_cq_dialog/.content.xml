@@ -13,45 +13,30 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <tabs
+                    <column
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/tabs"
-                            maximized="{Boolean}false">
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <mainTab
+                            <well
                                     jcr:primaryType="nt:unstructured"
-                                    jcr:title="Main Settings Tab"
-                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                    margin="{Boolean}true">
+                                    sling:resourceType="granite/ui/components/coral/foundation/well">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <column
+                                    <noOfTiles
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <well
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <noOfTiles
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                            defaultValue="1"
-                                                            fieldDescription="Select How many Tiles are required"
-                                                            fieldLabel="No. of Tiles Required"
-                                                            max="{Long}2"
-                                                            min="{Long}1"
-                                                            name="./noOfBleedTiles"
-                                                            required="{Boolean}true"
-                                                            step="{Long}1"
-                                                            text="No. of Tiles Required"/>
-                                                </items>
-                                            </well>
-                                        </items>
-                                    </column>
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                            defaultValue="1"
+                                            fieldDescription="Select How many Tiles are required"
+                                            fieldLabel="No. of Tiles Required"
+                                            max="{Long}2"
+                                            min="{Long}1"
+                                            name="./noOfBleedTiles"
+                                            required="{Boolean}true"
+                                            step="{Long}1"
+                                            text="No. of Tiles Required"/>
                                 </items>
-                            </mainTab>
+                            </well>
                         </items>
-                    </tabs>
+                    </column>
                 </items>
             </column>
         </items>
