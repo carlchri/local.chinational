@@ -28,7 +28,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Enter heading for the links"
                                         fieldDescription="This text will be used as heading for all links"
-                                        fieldLabel="Heading"
+                                        fieldLabel="Heading (Optional - Not needed for all footer links)"
                                         name="./linkHeading"/>
                                     <linkCollection
                                         jcr:primaryType="nt:unstructured"
