@@ -5,6 +5,7 @@
 package org.chi.aem.common.components.model;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
@@ -20,20 +21,17 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class GlobalLink {
  
 	    public static final Logger LOGGER = LoggerFactory.getLogger(GlobalLink.class);
 
-	@ScriptVariable
-	private ValueMap currentStyle;
+		@ScriptVariable
+		private ValueMap currentStyle;
 
 	    public static final String PROP_LINK_TEXT = "linkText";
 	    public static final String PROP_LINK_URL = "linkUrl";
 	    public static final String TARGET_BLANK = "targetBlank";
-
-		@Inject
-		private ResourceResolver resourceResolver;
 
 		private boolean targetBlank;
 		private String linkTo;
@@ -44,6 +42,7 @@ public class GlobalLink {
 			targetBlank = currentStyle.get(TARGET_BLANK , false);
 			linkTo = currentStyle.get(PROP_LINK_URL, "#");
 			label = currentStyle.get(PROP_LINK_TEXT , "Default");
+			LOGGER.info("GlobalLink label:" + label);
 			if (StringUtils.isNotEmpty(linkTo) && !"#".equals(linkTo)) {
 				linkTo = LinkUtils.externalize(linkTo);
 			}
