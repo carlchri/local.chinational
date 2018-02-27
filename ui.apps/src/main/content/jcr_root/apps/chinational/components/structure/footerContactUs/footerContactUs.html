@@ -4,19 +4,19 @@
   <form class="row">
     <div class="col-sm-6 col-md-9">
       <div class="input-box">
-        <input type="text" placeholder="Enter email to receive our newsletter"/>
+        <input type="text" placeholder="${currentStyle.nlPlaceholderText}"/>
       </div>
     </div>
     <div class="col-sm-2 col-md-3">
-      <button type="button" class="btn btn-primary">SUBMIT</button>
+      <button type="button" class="btn btn-primary">${currentStyle.nlButtonText}</button>
     </div>
   </form>
   <div class="row contact-info">
     <div class="col-sm-8">
-      <span class="list-header">Contact CHI Memorial</span>
+      <span class="list-header">${currentStyle.heading}</span>
       <p>
-        <span class="dblock">Call 123-4567-000 or</span>
-        <span>Request an appointment</span>&nbsp;
+        <span class="dblock" innerHTML="${currentStyle.subheading}"></span>
+        <span><a href="#">${currentStyle.label}</a></span>&nbsp;
         <i class="arrow-right"></i>
       </p>
       <div class="newsltter-social">
@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class="col-sm-4"
-         data-sly-resource="${'footerText' @ resourceType='chinational/components/structure/footerLinks', selectors='footerLinksContactUs'}">
+         data-sly-resource="${'footerCULinks' @ resourceType='chinational/components/structure/footerLinks', selectors='footerLinksContactUs'}">
     </div>
   </div>
   
-<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!currentStyle.heading}"></sly>
