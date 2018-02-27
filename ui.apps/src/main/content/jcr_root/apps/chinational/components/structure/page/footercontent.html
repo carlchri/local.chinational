@@ -1,24 +1,24 @@
 <div class="footer">
     <div class="newsletter-wrapper pstn-reltv">
-        <div class="newsletter pstn-abslt">
-            <sly data-sly-resource="${'footerContactUs' @ resourceType='chinational/components/structure/footerContactUs'}"/>
+        <div class="newsletter pstn-abslt"
+             data-sly-resource="${'footerContactUs' @ resourceType='chinational/components/structure/footerContactUs'}">
         </div>
     </div>
     <div class="container footer-links">
         <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <sly data-sly-resource="${'footerLinks1' @ resourceType='chinational/components/structure/footerLinks'}"/>
+            <div class="col-sm-6 col-md-3"
+                 data-sly-resource="${'footerLinks1' @ resourceType='chinational/components/structure/footerLinks'}">
             </div>
-            <div class="col-sm-6 col-md-3">
-                <sly data-sly-resource="${'footerLinks2' @ resourceType='chinational/components/structure/footerLinks'}"/>
+            <div class="col-sm-6 col-md-3"
+                 data-sly-resource="${'footerLinks2' @ resourceType='chinational/components/structure/footerLinks'}">
             </div>
         </div>
     </div>
 </div>
 <div class="copyright bgnd-light-gray">
     <div class="container">
-        <div class="row">
-            <sly data-sly-resource="${'chinational/components/structure/footerText' @ selectors='footerText'}"/>
+        <div class="row"
+             data-sly-resource="${'footerText' @ resourceType='chinational/components/structure/footerLinks', selectors='footerText'}">
         </div>
     </div>
 </div>

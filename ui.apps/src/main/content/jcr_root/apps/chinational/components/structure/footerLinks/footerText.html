@@ -3,15 +3,17 @@
 
 <div class="col-md-7" data-sly-list="${linkCollection.items}">
         <span class="${itemList.first?'copyrght-txt':''}">
-            <a href="${item.linkUrl}" target="${item.targetBlank==true ?'_blank':'_self'}"
-               data-sly-test="${item.linkUrl}">
+            <a href="${item.linkUrl}"
+               target="${item.targetBlank==true ?'_blank':'_self'}"
+               data-sly-test="${item.linkUrl != '#'}">
                 ${item.linkText}
             </a>
+            <sly data-sly-test="${item.linkUrl == '#'}">${item.linkText}</sly>
         </span>
-    <span class="separator pstn-reltv" data-sly-list="${!itemList.last}">|</span>
+    <span class="separator pstn-reltv" data-sly-test="${!itemList.last}">|</span>
 </div>
-<div class="col-md-5 visit-txt">
-Visit Catholic Health Initiatives national website »
+<div class="col-md-5 visit-txt"
+     data-sly-resource="${'footerTextGlobal' @ resourceType='chinational/components/content/globalLink'}">
 </div>
 
 <sly data-sly-call="${template.placeholder @isEmpty=linkCollection.items.size == 0}"></sly>
