@@ -31,7 +31,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="Heading text for the component"
-                                                    fieldLabel="Heading"
+                                                    fieldLabel="Contact CHI Heading"
                                                     name="./heading"
                                                     required="{Boolean}true"/>
                                             <subheading
