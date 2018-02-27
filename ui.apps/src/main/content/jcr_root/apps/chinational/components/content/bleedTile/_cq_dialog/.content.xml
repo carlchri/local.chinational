@@ -40,7 +40,31 @@
                                                             fieldLabel="Background Color"
                                                             freestylePalette="{Boolean}true"
                                                             name="./backgroundColor"/>
+                                                    <imageSelection
+                                                            granite:class="cq-dialog-dropdown-showhide"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:orderBefore="orderBy"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldDescription="Select Yes, if Image is required. Otherwise, select No."
+                                                            fieldLabel="Image Options"
+                                                            name="./selectImage">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <imageNotRequired
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    selected="{Boolean}true"
+                                                                    text="No, Image is Not Required"
+                                                                    value="imageNotRequired"/>
+                                                            <imageRequired
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Yes, Image is Required"
+                                                                    value="imageRequired"/>
+                                                        </items>
+                                                        <granite:data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cq-dialog-dropdown-showhide-target=".list-option-image-showhide-target"/>
+                                                    </imageSelection>
                                                     <imagePosition
+                                                            granite:class="list-option-image-showhide-target"
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                             fieldDescription="Choose Image Position"
@@ -61,6 +85,9 @@
                                                                     text="Right"
                                                                     value="right"/>
                                                         </items>
+                                                        <granite:data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                showhidetargetvalue="imageRequired"/>
                                                     </imagePosition>
                                                     <headingText
                                                         jcr:primaryType="nt:unstructured"
@@ -76,14 +103,6 @@
                                                         fieldDescription="Enter the detailed text here"
                                                         fieldLabel="Enter content details here"
                                                         name="./contentDetail"/>
-                                                    <imageNotRequired
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if image is not required"
-                                                        name="./imageNotRequired"
-                                                        text="Select if Image is Not Required"
-                                                        uncheckedValue="false"
-                                                        value="true"/>
                                                 </items>
                                             </well>
                                         </items>

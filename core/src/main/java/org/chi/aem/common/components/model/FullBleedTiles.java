@@ -9,42 +9,38 @@ import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FullBleedTiles extends WCMUsePojo {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(FullBleedTiles.class);
-
-    public static final String NO_OF_TILES = "noOfBleedTiles";
-
+    private static final String NO_OF_TILES = "noOfBleedTiles";
+    private static final String BLEED_BOX = "bleed-box";
+    private static final String TOP = "top";
     private Map<String, String> tileMap;
     private int noOfTiles;
-    private int cssClassNo;
-    private String cssClass;
-    private boolean isLastCss = false;
-    private String lastCssClass = "";
 
     @Override
     public void activate() throws Exception {
     	noOfTiles = Integer.parseInt(getProperties().get(NO_OF_TILES, "1"));
-        tileMap = new HashMap<String, String>();
+        tileMap = new LinkedHashMap<String, String>();
         Resource currentResource = getResource();
         Resource tileResource = null;
         for (int i = 1; i <= noOfTiles; i++) {
-            tileResource = currentResource.getChild("bleed-box" + i);
-            tileMap.put("bleed-box" + i,getBackGroundColor(tileResource));
+            tileResource = currentResource.getChild(BLEED_BOX + i);
+            tileMap.put(getClass(tileResource, BLEED_BOX + i),getBackGroundColor(tileResource));
 	  	}
-        cssClassNo = 12/noOfTiles;
-        cssClass = "col-sm-" + (cssClassNo * 2) + " " + "col-md-" + cssClassNo;
-        if (12 % noOfTiles !=0){
-        	isLastCss = true;
-        	lastCssClass = "col-sm-" + ((cssClassNo + 12 % noOfTiles) * 2) + " " + "col-md-" + (cssClassNo + 12 % noOfTiles);
-        }
     }
 
+    private String getClass(Resource tileResource, String firstClass) {
+        if(tileResource != null) {
+            if(!tileResource.getValueMap().get("imagePosition", TOP).equalsIgnoreCase(TOP)) {
+                return firstClass + " flex-box";
+            }
+        }
+        return firstClass;
+    }
     private String getBackGroundColor(Resource tileResource) {
         if(tileResource != null) {
             return tileResource.getValueMap().get("backgroundColor", null);
@@ -56,18 +52,4 @@ public class FullBleedTiles extends WCMUsePojo {
  	      //LOGGER.info("getTilesList Called :" + tilesList);
     	  return tileMap;
     }
-    
-    public String getCssClass() {
-	  // LOGGER.info("getCssClass :" + cssClass);
-  	  return cssClass;
-  }
-
-    public boolean getIsLastCss() {
-  	  return isLastCss;
-  }
-
-    public String getLastCssClass() {
-	  // LOGGER.info("lastCssClass :" + lastCssClass);
-  	  return lastCssClass;
-  }
  }
