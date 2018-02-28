@@ -2,10 +2,9 @@
 
 <sly data-sly-use.linkCollection="org.chi.aem.common.components.model.FooterLinkCollection"/>
 
-<span class="list-header" data-sly-test="${currentStyle.linkHeading}">${currentStyle.linkHeading}</span>
 <sly data-sly-list="${linkCollection.items}">
 	<div class="link-wrapper">
-		<a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+		<a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}" class="txt-bold">
 			${item.linkText}
 		</a>
     </div>
