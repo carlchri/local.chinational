@@ -2,7 +2,8 @@
     <div class="row">
         <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
             <h2 class="news-large-header">${pageProperties.newsHeading}</h2>
-            <h3 data-sly-test="${pageProperties.newsSubHeading}">${pageProperties.newsSubHeading}</h3>
+            <h3 class="news-sub-header"
+                data-sly-test="${pageProperties.newsSubHeading}">${pageProperties.newsSubHeading}</h3>
             <p class="news-date"
                data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=pageProperties.publishDate, dateFormat='MM/dd/YY'}">
                 ${formatter.formattedDate}
