@@ -13,9 +13,16 @@
 .intro {
 	overflow:hidden;
 	display:flex;
+	max-height:400px;
 }
 .intro-full {
-  
+	height:400px;
+	width:100%;
+}
+.intro-full img {
+	width:100%;
+	height:100%;
+	object-fit:cover;
 }
 .intro .learn-more-btn {
 	display:inline-block;
@@ -48,6 +55,9 @@
 }
 
 @media (max-width:767px) {
+	.intro-full {
+		height:231px;
+	}
 		.narrow-intro .title-inner {
 			width:100%;
 		}
