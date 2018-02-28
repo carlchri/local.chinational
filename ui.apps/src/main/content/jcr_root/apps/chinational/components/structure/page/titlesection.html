@@ -15,7 +15,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <div class="container" data-sly-test="${!properties.hidePageTitle}">
     <div class="row">
-        <div class="col-md-12">
+        <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
             <h1 class="large-blue-txt">${currentPage.pageTitle || currentPage.title}</h1>
         </div>
     </div>
