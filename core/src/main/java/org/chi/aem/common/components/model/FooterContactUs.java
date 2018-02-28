@@ -28,7 +28,7 @@ import java.util.List;
  * 
  */
 
-@Model(adaptables = SlingHttpServletRequest.class)
+//@Model(adaptables = SlingHttpServletRequest.class)
 public class FooterContactUs extends WCMUsePojo {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(FooterContactUs.class);
@@ -61,10 +61,11 @@ public class FooterContactUs extends WCMUsePojo {
 
 
 	private void initApptAttributes() {
+        LOGGER.info("FooterContactUs initApptAttributes called");
 		targetBlank = getCurrentStyle().get(APPT_TARGET_TO , false);
-		linkUrl = getCurrentStyle().get(APPT_LABEL, "#");
+		linkUrl = getCurrentStyle().get(APPT_LINK, "#");
 		apptText = getCurrentStyle().get(APPT_LABEL , "Default");
-		LOGGER.debug("FooterContactUs label:" + apptText);
+		LOGGER.info("FooterContactUs label:" + apptText);
 		if (StringUtils.isNotEmpty(linkUrl) && !"#".equals(linkUrl)) {
 			linkUrl = LinkUtils.externalize(linkUrl);
 		}
@@ -72,27 +73,31 @@ public class FooterContactUs extends WCMUsePojo {
 
 	@Override
 	public void activate() throws Exception {
-		LOGGER.debug("activate called");
+		LOGGER.info("FooterContactUs activate called");
 		String resourcePath = getCurrentStyle().getPath();
-		LOGGER.debug("***resourcePath=" + resourcePath);
+		LOGGER.info ("FooterContactUs resourcePath=" + resourcePath);
 		Resource res = getResourceResolver().getResource(resourcePath);
-		LOGGER.debug("***resource=" + res);
+		LOGGER.info("FooterContactUs resource=" + res);
 		if (res != null && res.hasChildren()) {
-			populateModel(icons, res.getChild(ICONS));
+            LOGGER.info("FooterContactUs resource has children");
+			populateModel(res.getChild(ICONS));
 		}
 		initApptAttributes();
 	}
 
-	private List<Icon> populateModel(List<Icon> list, Resource resource) {
+	private void populateModel(Resource resource) {
+        LOGGER.info("FooterContactUs populateModel called");
 		if (resource != null) {
 			Iterator<Resource> linkResources = resource.listChildren();
 			while (linkResources.hasNext()) {
+                LOGGER.info("FooterContactUs found icons");
 				Icon link = linkResources.next().adaptTo(Icon.class);
-				if (link != null)
-					list.add(link);
+				if (link != null) {
+                    LOGGER.info("FooterContactUs populateModel add icon: " + link.getIconType());
+                    icons.add(link);
+                }
 			}
 		}
-		return list;
 	}
 
 }

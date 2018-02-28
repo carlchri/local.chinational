@@ -13,7 +13,7 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <hnpbMainTab
+                    <footerCUMainTab
                             jcr:primaryType="nt:unstructured"
                             jcr:title="Basic"
                             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
@@ -85,8 +85,8 @@
                                 </items>
                             </column>
                         </items>
-                    </hnpbMainTab>
-                    <Tab
+                    </footerCUMainTab>
+                    <footerIconTab
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Social Icon Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
@@ -159,7 +159,7 @@
                                 </items>
                             </column>
                         </items>
-                    </Tab>
+                    </footerIconTab>
                 </items>
             </tabs>
         </items>
