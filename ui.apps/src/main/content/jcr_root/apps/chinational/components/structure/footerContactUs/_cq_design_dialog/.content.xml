@@ -61,6 +61,27 @@
                                                     text="Select to Open Link in New Window"
                                                     uncheckedValue="false"
                                                     value="true"/>
+
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </footerCUMainTab>
+                    <footerCUNewsTab
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="News Settings"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
                                             <nlButtonText
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -85,7 +106,7 @@
                                 </items>
                             </column>
                         </items>
-                    </footerCUMainTab>
+                    </footerCUNewsTab>
                     <footerIconTab
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Social Icon Settings"
