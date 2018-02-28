@@ -20,6 +20,9 @@
 .gutter2 {
 	padding:0 0 0 50px;
 }
+.component {
+	clear:both;
+}
 .component-gutter {
 	margin-top:55px;
 }
@@ -117,6 +120,10 @@ hr {
 }
 .bleed-box1, .bleed-box2 {
 	color:#fff;
+	display:flex;
+}
+.bleed-box1 > div, .bleed-box2 > div {
+	flex:1;
 }
 .bleed-box1 {
 	background-color:#24509a;
@@ -406,6 +413,12 @@ hr {
 	color: #24509a;
   font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
   margin: 25px 0 0 0;
+}
+.news-sub-header {
+	font-size: 20px;
+	color: #426DA9;
+  font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+  padding-top: 20px;
 }
 .news-date {
 	font-size:24px;
