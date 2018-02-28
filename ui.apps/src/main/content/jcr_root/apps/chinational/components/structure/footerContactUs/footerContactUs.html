@@ -1,4 +1,5 @@
-<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <!--/* Placeholder for content */-->
   <form class="row">
@@ -16,20 +17,23 @@
       <span class="list-header">${currentStyle.heading}</span>
       <p>
         <span class="dblock" innerHTML="${currentStyle.subheading}"></span>
-        <span><a href="#">${currentStyle.label}</a></span>&nbsp;
+        <span>
+          <a href="${contactUs.linkUrl}"
+             target="${contactUs.targetBlank==true ?'_blank':'_self'}">
+            ${contactUs.apptText}
+          </a>
+         </span>&nbsp;
         <i class="arrow-right"></i>
       </p>
-      <div class="newsltter-social">
-        <a href="https://www.facebook.com/CatholicHealthInitiativesPeople" class="sprite icon-fb small-icons"></a>
-        <a href="##" class="sprite icon-instagram small-icons"></a>
-        <a href="https://twitter.com/chi_updates" class="sprite icon-twitter small-icons"></a>
-        <a href="https://www.linkedin.com/company/catholic-health-initiatives" class="sprite icon-linkedin small-icons"></a>
-        <a href="https://www.youtube.com/user/WatchCHI" class="sprite icon-youtube small-icons"></a>
+      <div class="newsltter-social" data-sly-list="${contactUs.icons}">
+        <a href="${item.linkUrl}" class="sprite ${item.iconType} small-icons"
+           target="${item.targetBlank==true ?'_blank':'_self'}">
+        </a>
       </div>
     </div>
     <div class="col-sm-4"
          data-sly-resource="${'footerCULinks' @ resourceType='chinational/components/structure/footerLinks', selectors='footerLinksContactUs'}">
     </div>
   </div>
-  
+
 <sly data-sly-call="${template.placeholder @ isEmpty=!currentStyle.heading}"></sly>
