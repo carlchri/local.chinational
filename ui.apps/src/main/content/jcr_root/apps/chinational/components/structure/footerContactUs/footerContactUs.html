@@ -1,5 +1,7 @@
-<sly data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"
+<sly
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<sly data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"/>
 
   <form class="row">
     <div class="col-sm-6 col-md-9">
@@ -15,7 +17,7 @@
     <div class="col-sm-8">
       <span class="list-header">${currentStyle.heading}</span>
       <p>
-        <span class="dblock" innerHTML="${currentStyle.subheading}"></span>
+        <span class="dblock">${currentStyle.subheading}</span>
         <span>
           <a href="${contactUs.linkUrl}"
              target="${contactUs.targetBlank==true ?'_blank':'_self'}">
