@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
                     <div class="memorial">
-                        <div data-sly-test="${!properties.headingNotRequired}"
-                             data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
-                        </div>
+                        <h3 data-sly-test="${!properties.headingNotRequired}">
+                            ${properties.heading}
+                        </h3>
 
                         <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
                         </div>
