@@ -744,23 +744,25 @@ body {
   height: 10px;
 }
 .border-orange {
+	
+	color:#e1523d;
+	background-color: #fff;
+}
+.border-orange:hover, .border-orange:focus, .border-orange:active {
 	border-color: #e1523d;
 	background-color: #e1523d;
 	color: #fff;
 }
-.border-orange:hover, .border-orange:focus, .border-orange:active {
-	color:#e1523d;
-	background-color: #fff;
-}
-.white-border:hover {
-	border-color: #fff;
-	color: #fff;
-	background:none
-}
-.white-border {
+.white-border:hover, .white-border:focus {
+	
 	background-color: #fff;
 	color: #53565a;
 	border-color: #fff;
+}
+.white-border {
+	border-color: #fff;
+	color: #fff;
+	background:none;
 }
 
 .section {
@@ -1091,6 +1093,6 @@ nav {
 	}
 	.custome-dd-outer {
 		width:345px;
-		padding-left:15px;
+	
 	}
 }
