@@ -24,3 +24,9 @@
     padding:15px 40px 35px 40px;
   }
 }
+
+@media (max-width:992px) {
+  .content-col {
+    padding:15px 30px 35px 30px;
+  }
+}

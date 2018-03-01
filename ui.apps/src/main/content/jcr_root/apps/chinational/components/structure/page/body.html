@@ -18,20 +18,17 @@
 <div class="body-content">
     <sly data-sly-include="topsection.html"></sly>
     <sly data-sly-include="titlesection.html"></sly>
-    <sly data-sly-test="${!properties.displayRightRail}" data-sly-include="content.html"></sly>
-    <sly data-sly-test="${properties.displayRightRail}">
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <sly data-sly-include="content.html"></sly>
-                    </div>
-                    <div class="col-md-4">
-                        <sly data-sly-include="rightrail.html"></sly>
-                    </div>
+    <div class="component">
+        <div class="container">
+            <div class="row">
+                <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
+                    <sly data-sly-include="content.html"></sly>
+                </div>
+                <div class="col-md-4" data-sly-test="${properties.displayRightRail}">
+                    <sly data-sly-include="rightrail.html"></sly>
                 </div>
             </div>
         </div>
-    </sly>
+    </div>
     <sly data-sly-include="footercontent.html"></sly>
 </div>
