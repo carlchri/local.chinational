@@ -53,9 +53,9 @@
                                                 <expand
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="Selecting this checkbox will expand"
+                                                    fieldDescription="Selecting this checkbox will expand the current tab automatically"
                                                     name="./expand"
-                                                    text="Select to Expand"
+                                                    text="Select to Expand automatically when page loads"
                                                     uncheckedValue="false"
                                                     value="true"/>
                                             </items>
