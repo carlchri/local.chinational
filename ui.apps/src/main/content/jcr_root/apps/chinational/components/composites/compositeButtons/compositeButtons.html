@@ -4,9 +4,9 @@
 		<div class="section">
 			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
 				<div class="col-sm-6">
-					<sly data-sly-test="${!properties.headingNotRequired}"
-                         data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
-                    </sly>
+					<h3 data-sly-test="${!properties.headingNotRequired}">
+						${properties.heading}
+                    </h3>
 				</div>
 				<div class="col-sm-6 right-small-txt">
                 	<div class="inblock show-on-desktop">
