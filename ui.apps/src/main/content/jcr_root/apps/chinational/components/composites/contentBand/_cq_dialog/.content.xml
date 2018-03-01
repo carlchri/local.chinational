@@ -38,11 +38,7 @@
                                                         emptyText="Enter Content Band Heading"
                                                         fieldDescription="This text will be used as heading for content band."
                                                         fieldLabel="Content Band Heading:"
-                                                        name="./contentBandHeading">
-                                                        <granite:data
-                                                            jcr:primaryType="nt:unstructured"
-                                                            showhidetargetvalue="headingRequired"/>
-                                                    </contentBandHeading>
+                                                        name="./contentBandHeading"/>
                                                     <textImgSelection
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
