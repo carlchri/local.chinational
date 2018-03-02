@@ -23,6 +23,7 @@ css/forms.css
 css/foundation.css
 css/intro.css
 css/media-kit.css
+css/media-center.css
 css/modal.css
 css/owl.carousel.css
 css/owl.theme.default.css
