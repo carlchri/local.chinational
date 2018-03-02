@@ -39,10 +39,13 @@ public class FooterLinkCollection extends WCMUsePojo {
 		LOGGER.info("activate called");
 
 		String resourcePath = getCurrentStyle().getPath();
+		LOGGER.info("***resourcePath=" + resourcePath);
 		Resource res = getResourceResolver().getResource(resourcePath);
 		LOGGER.info("***resource=" + res);
 
-		populateModel(items, res.getChild(ITEMS));
+		if (res != null && res.hasChildren()) {
+			populateModel(items, res.getChild(ITEMS));
+		}
 	}
 
 	private List<Link> populateModel(List<Link> list, Resource resource) {

@@ -1,17 +1,17 @@
  <sly data-sly-use.newsList="${'org.chi.aem.common.components.model.DynamicTileNewsList'}"
       data-sly-use.template="chinational/components/commons/templates.html" />
 
-<div class="blogs section" data-sly-test="${properties.parentPage}">
-  	<div class="container">
+<div class="component" data-sly-test="${properties.parentPage}">
+  	<div class="row section">
 		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Featured Articles'}
  			</span>
 		</div>
-        <div class="row">
+        <div class="flex">
 
 			<sly data-sly-list.featuredNews="${newsList.featuredNews}">
-	           	<div class="blog-item col-sm-6 col-md-3">
+	           	<div class="blog-item ${featuredNewsList.first?'col-md-4':'col-sm-6 col-md-4'}">
                     <div class="full-image blog-image" data-sly-test="${featuredNews.properties.imageSrc}">
                     	<img src="${featuredNews.properties.imageSrc @ context='unsafe'}" 
                              alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />

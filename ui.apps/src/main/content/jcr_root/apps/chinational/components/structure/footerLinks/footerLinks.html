@@ -11,4 +11,4 @@
     </div>
 </sly>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=linkCollection.items.size == 0}"></sly>

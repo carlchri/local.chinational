@@ -1,0 +1,43 @@
+<sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
+<div data-sly-test="${properties.imagePosition == 'top'}">
+	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="image-row"
+		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+	</div>
+	<div class="content-col">
+		<h2>${properties.headingText}</h2>
+		<p>${properties.contentDetail}</p>
+		<div class="link-wrapper">
+			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+			  <span>${link.linkText || 'Link Text'}</span>
+			</a>
+		</div>
+	</div>
+</div>
+<div data-sly-test="${properties.imagePosition == 'left'}">
+	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="full-image flex1"
+		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+	</div>
+	<div class="content-col2 flex1">
+		<h2>${properties.headingText}</h2>
+		<p>${properties.contentDetail}</p>
+		<div class="link-wrapper">
+			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+				<span>${link.linkText || 'Link Text'}</span>
+			</a>
+		</div>
+	</div>
+</div>
+<div data-sly-test="${properties.imagePosition == 'right'}">
+	<div class="content-col2 flex1">
+		<h2>${properties.headingText}</h2>
+		<p>${properties.contentDetail}</p>
+		<div class="link-wrapper">
+			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+				<span>${link.linkText || 'Link Text'}</span>
+			</a>
+		</div>
+	</div>
+	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="full-image flex1"
+		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+	</div>
+</div>

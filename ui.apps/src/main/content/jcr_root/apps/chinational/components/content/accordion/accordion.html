@@ -15,7 +15,7 @@
 								<div class="clearfix"></div>
 							</div>
 						</div>
-						<div id="collapse${listCollection.hash}${itemList.count}" class="collapse ${item.expand ? 'show' : ''}"
+						<div id="collapse${listCollection.hash}${itemList.count}" class="collapse ${item.expand ? 'in' : ''}"
 							 aria-labelledby="heading${listCollection.hash}${itemList.count}" data-parent="#accordion">
 							<div class="card-body" data-sly-resource="${'accordion-{0}' @ format=itemList.count, resourceType='chinational/components/foundation/responsivegrid'}"></div>
 						</div>

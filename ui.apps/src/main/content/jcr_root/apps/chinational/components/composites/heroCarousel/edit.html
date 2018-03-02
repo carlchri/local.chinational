@@ -1,0 +1,8 @@
+<sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"></sly>
+<div>
+    <sly data-sly-list.item="${heroCollection.items}">
+        <h2>${item.name}</h2>
+        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}">
+        </div>
+    </sly>
+</div>

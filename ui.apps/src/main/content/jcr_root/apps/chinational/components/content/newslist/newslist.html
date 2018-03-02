@@ -3,7 +3,7 @@
 
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 
-<ul data-sly-list.featuredNews="${newsList.featuredNews}">
+<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
     <li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
 </ul>
 <hr>
@@ -39,7 +39,7 @@
 </form>
 <hr>
 
-<ul class="filtered_list" data-sly-list.item="${newsList.listNews}"
+<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
     data-sly-use.itemTemplate="item.html">
     <li data-sly-call="${itemTemplate.item @ list = newsList, item = item}" style="display:none;"></li>
