@@ -1,28 +1,26 @@
 <sly data-sly-use.buttonsInRow="org.chi.aem.common.components.model.CompositeButtons" />
 
 <div class="${properties.greybgRequired ?'light-gray':''}">
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
-                    <div class="memorial">
-                        <div data-sly-test="${!properties.headingNotRequired}"
-                             data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
-                        </div>
+    <div class="component">
+        <div class="row section">
+            <div class="col-sm-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
+                <div class="memorial">
+                    <h3 data-sly-test="${!properties.headingNotRequired}">
+                        ${properties.heading}
+                    </h3>
 
-                        <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
-                        </div>
-    
-                        <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
-                             data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-                        </div>
+                    <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
+                    </div>
+
+                    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
+                         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
                     </div>
                 </div>
-                <div class="icon-buttons col-sm-8 col-md-4" data-sly-test="${!properties.buttonRowNotRequired}">
-                    <sly data-sly-list.eachButton="${buttonsInRow.buttonList}">
-                        <div class="link-wrapper" data-sly-resource="${eachButton @ resourceType='chinational/components/content/button'}">
-                        </div>
-                    </sly>
+            </div>
+            <div class="col-sm-8 col-md-4 content-left" data-sly-test="${!properties.buttonRowNotRequired}">
+                <div class="buttons-outer" data-sly-list.eachButton="${buttonsInRow.buttonList}">
+                    <div class="link-wrapper" data-sly-resource="${eachButton @ resourceType='chinational/components/content/button'}">
+                    </div>
                 </div>
             </div>
         </div>
