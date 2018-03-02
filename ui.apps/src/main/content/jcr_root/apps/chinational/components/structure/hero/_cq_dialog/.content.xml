@@ -74,7 +74,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="This Text appears on the Button "
-                                                        fieldLabel="Button Label"
+                                                        fieldLabel="Button Label (requires Link To)"
                                                         name="./label"/>
                                                     <linkTo
                                                         granite:class="list-option-modal-showhide-target"
