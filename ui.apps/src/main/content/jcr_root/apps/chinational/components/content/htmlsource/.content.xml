@@ -4,4 +4,4 @@
     jcr:description="Use the text as HTML source"
     jcr:primaryType="cq:Component"
     jcr:title="HTML Source"
-    componentGroup="CHI General"/>
+    componentGroup=".fixed-chi"/>
