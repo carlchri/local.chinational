@@ -21,9 +21,13 @@ css/flex-buttons.css
 css/footer-hero.css
 css/forms.css
 css/foundation.css
+css/herocomponencarousel.css
+css/inspiremedia.css
 css/intro.css
 css/media-kit.css
+css/media-center.css
 css/modal.css
+css/other-components.css
 css/owl.carousel.css
 css/owl.theme.default.css
 css/page-title-brand.css
