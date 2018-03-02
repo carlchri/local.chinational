@@ -1,0 +1,17 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<div class="memorial" data-sly-test.text="${properties.jobTitle}">
+
+	<h3>${properties.jobTitle}</h3>
+	<span class="small-text">${properties.jobCity} - ${properties.placeOfWork}</span>
+
+    <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
+    </div>
+
+    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
+         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+    </div>
+
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>

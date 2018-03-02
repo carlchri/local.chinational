@@ -1,0 +1,36 @@
+<sly data-sly-use.tiles="org.chi.aem.common.components.model.JobCarousel"></sly>
+
+<div class="carousel">
+	<div class="container">
+		<div class="row">
+          <div class="col-sm-12">
+
+            <div class="margin-bottom-25">
+
+              <div class="padding-20">
+				<h2 data-sly-test="${properties.selectHeading == 'headingRequired'}">
+					${properties.carouselHeading || 'Hot Jobs'}
+				</h2>
+
+                <div class="owl-carousel owl-theme">
+
+					<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
+                      <div class="carousel-item item">
+                          <hr>
+                          <div class="flex-box">
+			   	        	<div data-sly-resource="${eachTile @ resourceType='chinational/components/content/jobTile'}"></div>
+                         </div>
+                         <hr>
+                      </div>
+					</sly>
+
+                 </div>
+
+                </div>
+              </div>
+
+            </div>
+		</div>
+	</div>
+</div>
+
