@@ -23,7 +23,7 @@ public class TilesAndNewsList extends WCMUsePojo {
     @Override
     public void activate() throws Exception {
         contentTilesList = new ArrayList<String>();
-        // if no tiles present, authros would configure it
+        // if no tiles present, authors would configure it
         for (int i = 1; i <= Integer.parseInt(getProperties().get(NO_OF_CONTENT_TILES, "0")); i++) {
 	  	   contentTilesList.add("Tile" + "-" + i);
 	  	}
