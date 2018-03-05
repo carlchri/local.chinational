@@ -24,6 +24,8 @@
 .quote-description {
   font-size:16px;
   color:#0097a9;
+  font-style:italic;
+  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
   margin:0;
 }
 .quote-caption {
@@ -44,7 +46,7 @@
 }
 .speech-mark-left {
   top:18px;
-  left:-30px;
+  left:-40px;
 }
 .speech-mark-right {
   bottom:-16px;
