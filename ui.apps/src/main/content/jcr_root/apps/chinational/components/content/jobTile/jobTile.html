@@ -3,13 +3,15 @@
 <div class="memorial" data-sly-test.text="${properties.jobTitle}">
 
 	<h3>${properties.jobTitle}</h3>
-	<span class="small-text">${properties.jobCity} - ${properties.placeOfWork}</span>
+	<span class="small-text">${properties.jobCity} 
+    	<sly data-sly-test="${properties.placeOfWork}"> - </sly>
+        ${properties.placeOfWork}
+    </span>
 
     <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
     </div>
 
-    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
-         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+    <div class="link-wrapper" data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
     </div>
 
 </div>

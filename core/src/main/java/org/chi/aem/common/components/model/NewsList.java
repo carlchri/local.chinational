@@ -122,7 +122,7 @@ public class NewsList implements ComponentExporter {
     	}else{
     		newsFilter = "";
     	}
-        // LOGGER.info("newsFilter" + newsFilter);
+        LOGGER.info("newsFilter" + newsFilter);
     	
     	allNews = new ArrayList<>();
     	listNews = new ArrayList<>();
@@ -228,13 +228,16 @@ public class NewsList implements ComponentExporter {
         }
 
         if(list == listNews && listTags.contains(newsFilter)){
-        	LOGGER.info("inside Query - newsFilter" + newsFilter);
+        	map.put("tagsearch.property", "jcr:content/cq:tags");
+        	map.put("tagsearch", newsFilter);
+/*        	LOGGER.info("inside Query - newsFilter" + newsFilter);
         	for(String tagID : listTagsID){
         		if(tagID.contains(newsFilter)){
                 	map.put("tagid.property", "jcr:content/cq:tags");
            			map.put("tagid.1_value", tagID);
         		}
         	}
+*/
         }
 
         PredicateGroup group = PredicateGroup.create(map);
@@ -295,8 +298,11 @@ public class NewsList implements ComponentExporter {
              // LOGGER.info("tags: " + tags);
              if(tags.length !=0){
             	 for(Tag tag : tags){
-            		String tagName = tag.getName();
-            		// LOGGER.info("tagName: " + tag.getTagID());
+            		String tagName = tag.getTitle();
+            		// LOGGER.info("tagName: " + tag.getName());
+            		// LOGGER.info("tagID: " + tag.getTagID());
+            		// LOGGER.info("tagNamespace: " + tag.getNamespace());
+            		// LOGGER.info("tagTitle: " + tag.getTitle());
 	         		if(listTags.isEmpty()){
 	            		listTags.add(tagName);
 	        		} else if (!listTags.contains(tagName)){
