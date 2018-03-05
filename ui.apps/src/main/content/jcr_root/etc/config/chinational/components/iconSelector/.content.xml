@@ -6,12 +6,16 @@
         selected="{Boolean}true"
         text="Icon Not Required"
         value="iconNotRequired"/>
-    <location
+    <mapGuide
         jcr:primaryType="nt:unstructured"
-        text="Location"
+        text="Map Guide"
         value="icon-map-guide"/>
     <call
         jcr:primaryType="nt:unstructured"
         text="Call"
-        value="icon-map-guide"/>
+        value="icon-call"/>
+    <location
+        jcr:primaryType="nt:unstructured"
+        text="Location"
+        value="icon-locations"/>
 </jcr:root>
