@@ -57,16 +57,16 @@
                                     <profileNameDegree
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        emptyText="Enter Profile name and degree [if Applicable]"
-                                        fieldDescription="Enter Profile name and degree [if Applicable]"
-                                        fieldLabel="Profile name and degree [if Applicable]"
+                                        emptyText="Enter Profile Name [and degree if Applicable]"
+                                        fieldDescription="Enter Profile Name [ and degree if Applicable]"
+                                        fieldLabel="Profile Name/ Degree:"
                                         name="./physicianName"
                                         required="{Boolean}true"/>
                                     <bodyText
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                         emptyText="Max 350 characters allowed."
-                                        fieldDescription="Enter the expertise areas of Physician or designation or any other relevant information. Max 350 characters allowed."
+                                        fieldDescription="Enter the expertise areas of Profile or designation or any other relevant information. Max 350 characters allowed."
                                         fieldLabel="Body Text"
                                         maxlength="{Long}350"
                                         name="./physicianExpertise"
@@ -99,7 +99,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Enter Text to be displayed on the Button"
                                         fieldDescription="Enter Text to be displayed on the Button"
-                                        fieldLabel="Enter Button Text"
+                                        fieldLabel="Button Text"
                                         name="./buttonText"/>
                                 </items>
                             </column>
