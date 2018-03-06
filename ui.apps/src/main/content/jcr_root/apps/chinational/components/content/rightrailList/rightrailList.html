@@ -1,7 +1,7 @@
 <sly data-sly-use.listCollection="org.chi.aem.common.components.model.ListCollection"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
-<div class="gutter-sides">
+
 	<label class="button-label" data-sly-test="${properties.linkHeading}">${properties.linkHeading}</label>
     <hr class="dashed-border">
 	<div class="related-links">
@@ -12,6 +12,6 @@
                 </a>
         </sly>
     </div>
-</div>
+
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.linkHeading}"></sly>

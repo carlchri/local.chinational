@@ -3,7 +3,7 @@
     cq:isContainer="true"
     jcr:description="Include components in a responsive grid."
     jcr:primaryType="cq:Component"
-    jcr:title="Layout Container"
+    jcr:title="Right Rail Layout Container"
     sling:resourceSuperType="wcm/foundation/components/responsivegrid"
     allowedChildren="[*]"
     componentGroup=".fixed-chi"/>
