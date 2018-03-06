@@ -2,14 +2,19 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="search-result">
-        <ul>
-            <sly data-sly-list="${searchResult.results}">
+    <ul>
+        <sly data-sly-list="${searchResult.results}">
             <li>
                 <a class="bold-link" href="${item.path}">
                     ${item.title || item.path}
                 </a>
             </li>
-            </sly>
-        </ul>
+        </sly>
+    </ul>
+
+    <div class="pagination" data-sly-list="${searchResult.pages}">
+        <a href="${currentPage.path}.html?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
+    </div>
 </div>
+
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.searchRoot}"></sly>

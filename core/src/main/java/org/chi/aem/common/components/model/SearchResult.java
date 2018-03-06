@@ -9,13 +9,10 @@ import com.day.cq.search.result.Hit;
 import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-import com.day.cq.wcm.api.policies.ContentPolicy;
-import com.day.cq.wcm.api.policies.ContentPolicyManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.api.wrappers.ValueMapDecorator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.jcr.RepositoryException;
@@ -24,14 +21,12 @@ import java.util.*;
 
 public class SearchResult extends WCMUsePojo {
 
-    protected static final String DEFAULT_SELECTOR = "chisearchresults";
     protected static final String PARAM_FULLTEXT = "fulltext";
     protected static final String SEARCH_RESULT_NODE_NAME = "searchResult";
-    private static final String PARAM_RESULTS_OFFSET = "resultsOffset";
+    private static final String PARAM_PAGE = "page";
     private static final String PREDICATE_FULLTEXT = "fulltext";
     private static final String PREDICATE_TYPE = "type";
     private static final String PREDICATE_PATH = "path";
-    private static final String NN_STRUCTURE = "structure";
     private static final String PN_RESULTS_SIZE = "resultsSize";
     private static final String PN_RESULTS_OFFSET = "resultOffset";
     private static final String PN_SEARCH_ROOT = "searchRoot";
@@ -44,13 +39,16 @@ public class SearchResult extends WCMUsePojo {
     private String DEFAULT_SEARCH_ROOT = "/content/chinational";
 
     public List<PageListItem> results;
+    public List<String> pages;
     public int resultsOffset;
     public int totalNumberPages;
+    public String fulltext;
 
     @Override
-    public void activate() throws Exception {
+    public void activate(){
         Page currentPage = getCurrentPage();
         SlingHttpServletRequest request = getRequest();
+        pages = new ArrayList<String> ();
         results = getSearchResults(request, currentPage);
     }
 
@@ -61,15 +59,19 @@ public class SearchResult extends WCMUsePojo {
         String searchRoot = DEFAULT_SEARCH_ROOT;
         List<PageListItem> results = new ArrayList<>();
 
-            ValueMap valueMap = getProperties();
+        ValueMap valueMap = getProperties();
 
-            searchTermMinimumLength = valueMap.get(PN_SEARCH_TERM_MINIMUM_LENGTH, DEFAULT_SEARCH_TERM_MINIM_LENGTH);
-            resultsSize = valueMap.get(PN_RESULTS_SIZE, DEFAULT_RESULT_SIZE);
-            resultsOffset = valueMap.get(PN_RESULTS_OFFSET, DEFAULT_RESULT_OFFSET);
-            searchRoot = valueMap.get(PN_SEARCH_ROOT, DEFAULT_SEARCH_ROOT);
+        searchTermMinimumLength = valueMap.get(PN_SEARCH_TERM_MINIMUM_LENGTH, DEFAULT_SEARCH_TERM_MINIM_LENGTH);
+        resultsSize = valueMap.get(PN_RESULTS_SIZE, DEFAULT_RESULT_SIZE);
+        searchRoot = valueMap.get(PN_SEARCH_ROOT, DEFAULT_SEARCH_ROOT);
 
+        String pageString = request.getParameter(PARAM_PAGE);
+        if(pageString != null && !pageString.equalsIgnoreCase("1")) {
+            int page = Integer.parseInt(pageString);
+            resultsOffset = (page - 1) * resultsSize;
+        }
 
-        String fulltext = request.getParameter(PARAM_FULLTEXT);
+        fulltext = request.getParameter(PARAM_FULLTEXT);
         if (fulltext == null || fulltext.length() < searchTermMinimumLength) {
             return results;
         }
@@ -89,7 +91,17 @@ public class SearchResult extends WCMUsePojo {
                 query.setHitsPerPage(resultsSize);
             }
 
+            if (resultsOffset != 0) {
+                query.setStart(resultsOffset);
+            }
+
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
+
+            totalNumberPages = ((int) searchResult.getTotalMatches())/resultsSize + ((int) searchResult.getTotalMatches()) % resultsSize;
+
+            for(int i = 1; i < totalNumberPages; i++) {
+                pages.add(Integer.toString(i));
+            }
 
             List<Hit> hits = searchResult.getHits();
             if (hits != null) {
@@ -136,5 +148,13 @@ public class SearchResult extends WCMUsePojo {
 
     public int getTotalNumberPages() {
         return totalNumberPages;
+    }
+
+    public List<String> getPages() {
+        return pages;
+    }
+
+    public String getFulltext() {
+        return fulltext;
     }
 }
