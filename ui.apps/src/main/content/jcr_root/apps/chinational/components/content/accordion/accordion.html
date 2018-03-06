@@ -1,28 +1,27 @@
 <sly data-sly-use.listCollection="org.chi.aem.common.components.model.AccordionCollection"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
-	<div class="accordion-wrapper">
-		<div class="col-sm-12">
-			<div id="accordion">
-				<h3 data-sly-test="${listCollection.accordionHeading}">${listCollection.accordionHeading}</h3>
-				<sly data-sly-list="${listCollection.accordions}">
-					<div class="card">
-						<div class="card-header" id="heading${listCollection.hash}${itemList.count}">
-							<div data-toggle="collapse" data-target="#collapse${listCollection.hash}${itemList.count}" aria-expanded="false"
-								 aria-controls="collapse${listCollection.hash}${itemList.count}" class="${item.expand ? '' : 'collapsed'}">
-								<h4 class="accordion-header">${item.accordionTitle}</h4>
-								<i class="accordion-arrow arrow-down"></i>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<div id="collapse${listCollection.hash}${itemList.count}" class="collapse ${item.expand ? 'show' : ''}"
-							 aria-labelledby="heading${listCollection.hash}${itemList.count}" data-parent="#accordion">
-							<div class="card-body" data-sly-resource="${'accordion-{0}' @ format=itemList.count, resourceType='chinational/components/foundation/responsivegrid'}"></div>
-						</div>
+<sly data-sly-test.author="${wcmmode.edit || wcmmode.design}"></sly>
+
+	<div id="accordion">
+		<h3 data-sly-test="${listCollection.accordionHeading}">${listCollection.accordionHeading}</h3>
+		<sly data-sly-list="${listCollection.accordions}">
+			<div class="card">
+				<div class="card-header" id="heading${listCollection.hash}${itemList.count}">
+					<div data-toggle="collapse" data-target="#collapse${listCollection.hash}${itemList.count}" aria-expanded="false"
+						 aria-controls="collapse${listCollection.hash}${itemList.count}" class="${author || item.expand ? '' : 'collapsed'}">
+						<h4 class="accordion-header">${item.accordionTitle}</h4>
+						<i class="accordion-arrow arrow-down"></i>
+						<div class="clearfix"></div>
 					</div>
-				</sly>
+				</div>
+				<div id="collapse${listCollection.hash}${itemList.count}" class="collapse ${author || item.expand ? 'show' : ''}"
+					 aria-labelledby="heading${listCollection.hash}${itemList.count}" data-parent="#accordion">
+					<div class="card-body" data-sly-resource="${'accordion-{0}' @ format=itemList.count, resourceType='chinational/components/foundation/responsivegrid'}"></div>
+				</div>
 			</div>
-		</div>
+		</sly>
 	</div>
+
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!listCollection.accordionHeading}"></sly>
