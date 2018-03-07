@@ -1,4 +1,18 @@
-<sly data-sly-use.template="chinational/components/commons/templates.html"/>
-<sly data-sly-test.author="${wcmmode.edit || wcmmode.design}" data-sly-include="edit.html"/>
-<sly data-sly-test="${!author}" data-sly-include="preview.html"/>
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.videoUrl}"></sly>
+<div class="gutter-bottom" data-sly-test="${properties.sectionHeading}">
+    <label class="button-label" >
+        ${properties.sectionHeading}
+    </label>
+</div>
+
+<div class="video">
+    <sly data-sly-resource="${'videoimage' @ resourceType='chinational/components/content/image'}"></sly>
+    <div class="link-wrapper">
+        <a class="video-button" id="video" video-url="${properties.videoUrl}">
+            <i class="icon-play"></i>
+        </a>
+    </div>
+</div>
+
+<div class="padding-5" data-sly-test="${properties.videoText}">
+    <p class="light-txt">${properties.videoText}</p>
+</div>

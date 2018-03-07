@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###############################################################################
+css/base.css
 css/blogs.css
 css/contactus.css
 css/content-buttons.css
@@ -24,6 +25,7 @@ css/foundation.css
 css/herocomponencarousel.css
 css/inspiremedia.css
 css/intro.css
+css/Jobcarousel.css
 css/media-kit.css
 css/media-center.css
 css/modal.css

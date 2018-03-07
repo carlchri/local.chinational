@@ -107,8 +107,8 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        	news_filter = request.getParameter("search_news_year");
 	        }
         }
-        LOGGER.info("newsFilter" + news_filter);
-        LOGGER.info("search_news_year : " + request.getParameter("search_news_year"));
+        // LOGGER.info("newsFilter" + news_filter);
+        // LOGGER.info("search_news_year : " + request.getParameter("search_news_year"));
         String contextPath = request.getContextPath();                       
         // forward to
         String forwardTo = request.getParameter("media_page_path");
@@ -123,7 +123,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
                 response.getWriter().write("Resource Not Found:" + forwardTo);
             }
         }
-        LOGGER.info("forwardTo : " + forwardTo.toString());
+        // LOGGER.info("forwardTo : " + forwardTo.toString());
         request.setAttribute("news_filter", news_filter);
         request.getRequestDispatcher(forwardTo).forward(request, response);
         
@@ -163,17 +163,4 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         // https://docs.adobe.com/docs/en/aem/6-3/develop/ref/javadoc/constant-values.html
     }
 
-    private String convertToString(Document xml)
-       {
-       try {
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-         StreamResult result = new StreamResult(new StringWriter());
-         DOMSource source = new DOMSource(xml);
-         transformer.transform(source, result);
-         return result.getWriter().toString();
-       } catch(Exception ex) {
-                 ex.printStackTrace();
-       }
-         return null;
-       } 
 }

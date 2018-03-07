@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
+            <h2 class="news-large-header">${pageProperties.blogHeading}</h2>
+            <h3 class="news-sub-header"
+                data-sly-test="${pageProperties.blogSubHeading}">${pageProperties.blogSubHeading}</h3>
+            <span class="news-date"
+               data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=pageProperties.publishDate, dateFormat='MM/dd/YY'}">
+                ${formatter.formattedDate}
+            </span>
+            <span class="blog-date txt-blue" style="padding-left:20px;" data-sly-test=${pageProperties.cq:tags}
+            	  data-sly-use.tags="${'org.chi.aem.common.components.model.TagsTitle'}">
+                   ${tags.tagsDesc}
+            </span> 
+
+        </div>
+    </div>
+</div>

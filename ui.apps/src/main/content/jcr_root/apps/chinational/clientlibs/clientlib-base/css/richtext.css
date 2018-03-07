@@ -2,6 +2,7 @@
 
 .cmp-text ul{
     padding: 10px 0 0 40px; 
+    
 }
 
 .cmp-text  ul li {
@@ -11,6 +12,9 @@
     font-size: 22px;
     font-size: 16px;   
     padding-bottom: 3px;
+    display: flex;
+    
+    
 }
 
  .cmp-text ul li::before {
@@ -39,12 +43,13 @@
     font-size: 22px;
     font-size: 16px;   
     padding-bottom: 3px;
+    
 }
 
 
 
 .cmp-text ol li::before {
-    
+   
    content: counter(li); 
     color: #00b0b9; 
    /*  content: "\2686";*/
@@ -60,7 +65,7 @@
 
 }
 
-.cmp-text ol li {counter-increment: li}
+.cmp-text ol li {counter-increment: li; display: flex;}
 
 
 

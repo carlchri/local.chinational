@@ -1,0 +1,13 @@
+
+.link-wrapper-margin{
+
+margin-top:30px;
+}
+
+ul{
+    padding-left:18px;
+}
+@media (max-width: 992px){
+.carousel-image {
+    padding-left: 60px;
+}}
