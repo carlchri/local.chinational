@@ -63,7 +63,7 @@
                                         emptyText="Enter Blog Heading"
                                         fieldDescription="Enter Heading for the Blog"
                                         fieldLabel="Blog Heading"
-                                        name="./blogHeading"
+                                        name="./newsHeading"
                                         renderReadOnly="{Boolean}true"
                                         required="{Boolean}true"/>
                                     <blogSubHeading
@@ -72,7 +72,7 @@
                                         emptyText="Enter Blog Sub-Heading"
                                         fieldDescription="Enter Blog Sub-Heading (optional)"
                                         fieldLabel="Blog Sub-Heading"
-                                        name="./blogSubHeading"
+                                        name="./newsSubHeading"
                                         renderReadOnly="{Boolean}true"/>
                                     <publishDate
                                         jcr:primaryType="nt:unstructured"
@@ -92,11 +92,11 @@
                                         maxlength="{Long}350"
                                         name="./excerpt"
                                         required="{Boolean}true"/>
-                                    <isFeaturedBlog
+                                    <isFeaturedArticle
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         fieldDescription="Selecting this checkbox will display this as a featured blog"
-                                        name="./isFeaturedBlog"
+                                        name="./isFeaturedArticle"
                                         text="Select to display as featured blog"
                                         uncheckedValue="false"
                                         value="true"/>

@@ -45,7 +45,7 @@ import com.day.cq.wcm.api.designer.Style;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class Image implements ComponentExporter {
 
-   public static final String RESOURCE_TYPE = "chinational/components/content/image2";
+   public static final String RESOURCE_TYPE = "chinational/components/content/image";
    private static final String DEFAULT_EXTENSION = "jpeg";
 
    private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
