@@ -26,4 +26,8 @@
         <exclude pattern="/etc/config/chinational(/.*)?"/>
         <include pattern="/etc/config/chinational/components(/.*)?"/>
     </filter>
+    <filter root="/etc/designs/chicommon">
+        <exclude pattern="/etc/designs/chicommon(/.*)?"/>
+        <include pattern="/etc/designs/chicommon/images(/.*)?"/>
+    </filter>
 </workspaceFilter>
