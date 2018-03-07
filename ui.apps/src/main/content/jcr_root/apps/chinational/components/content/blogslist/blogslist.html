@@ -1,0 +1,51 @@
+<sly data-sly-use.blogsList="org.chi.aem.common.components.model.BlogsList"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+<sly data-sly-use.featuredTemplate="featured.html"></sly>
+
+<ul class="mc_list" data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+    <li data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></li>
+</ul>
+<hr>
+
+<form id="filter_blogs_form" action="/bin/services/blogsList">
+   <fieldset> 
+
+    <div class="row">
+          <div class="col-sm-12">
+            <select name="search_blogs_list" id="search_blogs_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+               	<option value="">Choose Filter Option</option>
+                <option value="Sort By Most Recent" selected="${blogsList.blogsFilter == 'Sort By Most Recent' ? 'true' : '' @ context='attribute'}">Sort By Most Recent</option>
+                <option value="By Year" selected="${blogsList.isFilterYear ? 'true' : '' @ context='attribute'}">By Year</option>
+                <sly data-sly-list.listTag="${blogsList.listTags}">
+                	<option value="${listTag}" selected="${blogsList.blogsFilter == listTag ? 'true' : '' @ context='attribute'}">${listTag}</option>
+                </sly>
+			</select>
+        </div>
+   </div>
+
+   <br/>
+       <div class="row" id="select_blogs_by_year" style="display:${blogsList.isFilterYear ? 'block' : 'none' @ context='styleToken'};">
+          <div class="col-sm-12">
+			<select class="" name="search_blogs_year" id="search_blogs_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+            	<option value="">Choose Year</option>
+                <sly data-sly-list.listYear="${blogsList.listYears}">
+                	<option value="${listYear}" selected="${blogsList.blogsFilter == listYear ? 'true' : '' @ context='attribute'}">${listYear}</option>
+                </sly>
+			</select>
+        </div>
+   </div>
+   <input type="hidden" name="media_page_path" id="media_page_path" value="${currentPage.path || '/content' }">
+   </fieldset>
+</form>
+<hr>
+
+<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-use.itemTemplate="item.html">
+    <li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}" style="display:none;"></li>
+</ul>
+
+<a class="learn-more-btn border-orange filtered_blogs_list_show_more">SEE MORE</a>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!blogsList.featuredBlogs}"></sly>
