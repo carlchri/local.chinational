@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.jcr.Session;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 
 import org.apache.felix.scr.annotations.Reference;
@@ -22,6 +23,7 @@ import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
@@ -44,7 +46,8 @@ import com.day.cq.wcm.api.designer.Style;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class DynamicTileNewsList implements ComponentExporter {
 
-    protected static final String RESOURCE_TYPE = "chinational/components/content/tilesNewsListDynamic";
+    protected static final String RESOURCE_TYPE = "chinational/components/composites/dynamicTilesNewsList";
+
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DynamicTileNewsList.class);
     /**
@@ -70,6 +73,11 @@ public class DynamicTileNewsList implements ComponentExporter {
 
     @SlingObject
     private Resource resource;
+    
+	@Inject // injected as parameter 
+	@Optional
+	@Default(values="news")
+	private String articleType; 
 
     @Self
     private SlingHttpServletRequest request;
@@ -92,6 +100,7 @@ public class DynamicTileNewsList implements ComponentExporter {
     
     @PostConstruct
     private void initModel() {
+    	// LOGGER.info("ArticleType: " + articleType);
     	allNews = new ArrayList<>();
     	listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -137,7 +146,11 @@ public class DynamicTileNewsList implements ComponentExporter {
         map.put("path", pageValue.toString());
         map.put("type", "cq:Page");
         map.put("property", "jcr:content/cq:template");
-        map.put("property.value", "/apps/chinational/templates/newsdetailspage");
+        if(articleType.equals("news")){
+        	map.put("property.value", "/apps/chinational/templates/newsdetailspage");
+        } else {
+        	map.put("property.value", "/apps/chinational/templates/blogsdetailspage");
+        }
         map.put("orderby", "@jcr:content/publishDate");
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
