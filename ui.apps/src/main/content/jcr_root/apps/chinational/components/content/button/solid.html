@@ -4,7 +4,7 @@
 	 data-sly-test="${properties.selectModal != 'modalRequired'}"
      style="background-color: ${buttonStyle=='solid' ? currentStyle.solidColor : '' @ context='styleToken'}; border-color: ${buttonStyle=='solid' ? currentStyle.solidColor : currentStyle.outlinedColor @ context='styleToken'}; color: ${buttonStyle=='solid' ? '' : currentStyle.outlinedColor @ context='styleToken'};">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}">
-            <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite-hp ${properties.buttonIcon}"></span>
+            <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite ${properties.buttonIcon}"></span>
 			<span>${properties.label || 'Button'}</span>
 	</a>
 </div>
@@ -15,7 +15,7 @@
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}"
 	   data-toggle="modal"
 	   data-target="${button.hashTarget}">
-		<span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite-hp ${properties.buttonIcon}"></span>
+		<span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite ${properties.buttonIcon}"></span>
 		<span>${properties.label || 'Button'}</span>
 	</a>
 </div>
