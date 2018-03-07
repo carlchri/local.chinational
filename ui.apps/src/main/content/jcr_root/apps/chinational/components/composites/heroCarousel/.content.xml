@@ -4,5 +4,4 @@
     jcr:description="Hero carousel component"
     jcr:primaryType="cq:Component"
     jcr:title="hero carousel"
-    allowedParents="[*/parsys]"
-    componentGroup="CHI General"/>
+    componentGroup=".fixed-chi"/>
