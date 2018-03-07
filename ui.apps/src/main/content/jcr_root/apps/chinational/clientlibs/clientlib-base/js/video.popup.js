@@ -123,5 +123,8 @@
 }(jQuery));
 
 $(function(){
-		$("#video").videoPopup();
+		// $("#video").videoPopup();
+        $(".video_popup").videoPopup();
 });
+
+
