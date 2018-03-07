@@ -24,7 +24,7 @@ public class AccordionCollection {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AccordionCollection.class);
 	public static final String PROP_HEADING = "accordionHeading";
-
+	private String additionalHashString ="";
 	@Inject
 	@Named(PROP_HEADING)
 	@Optional
@@ -40,9 +40,11 @@ public class AccordionCollection {
 		accordions = new ArrayList<Accordion>();
 		if (accordionResource != null) {
 			populateModel(accordions, accordionResource);
+			additionalHashString = accordionResource.getPath();
 		} else {
-
-			accordions.add(new Accordion());
+			Accordion accordion = new Accordion();
+			accordions.add(accordion);
+			additionalHashString = accordion.getUniqueId();
 		}
 
 		LOGGER.info("accordions:" + accordions.toString());
@@ -50,9 +52,9 @@ public class AccordionCollection {
 
 	public int getHash() {
 		if (accordionHeading != null) {
-			return accordionHeading.hashCode();
+			return (additionalHashString + accordionHeading).hashCode();
 		}
-		return (int)Math.round(Math.random());
+		return (additionalHashString + PROP_HEADING).hashCode();
 	}
 
 	public String getAccordionHeading() {
@@ -75,5 +77,4 @@ public class AccordionCollection {
 
 		return list;
 	}
-
 }
