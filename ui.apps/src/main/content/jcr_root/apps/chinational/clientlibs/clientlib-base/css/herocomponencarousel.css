@@ -5,6 +5,8 @@
   width:100%;
   max-height: 340px !important;
 }
+
+
 @media only screen and (min-width : 992px) {
 	.title-inner {
 		width:90%;
@@ -26,7 +28,17 @@
   .intro-full {
 		height:231px;
 	}
-  
+  .intro-title, .intro-short-title {
+    height: 360px !important;
+	}
+	
+	.intro-img img{
+		height:100% !important;
+	}
+	.intro-title .learn-more-btn, .intro-short-title .learn-more-btn {
+    margin-top: 17px;
+}
+
 }
 @media (max-width:767px) {
   .carousel-inner{
@@ -42,18 +54,29 @@
 	 .intro-img, .intro-title, .title-inner {
 		 width:100%;
 		 float:none;
+		
 	 }
+	 
 	 .intro {
 		 display:block;
      max-height:inherit;
 	 }
 	 .intro-img {
-		 height:155px;
+		 height:200px;
 	 }
 	 .intro-title {
 		 padding:30px;
+		
 	 }
-	.intro-title .learn-more-btn {
-		margin: 30px 0 10px 0;
+	 .intro-title, .intro-short-title {
+    height:444px !important;
 	}
+	
+	 .intro-title .learn-more-btn, .intro-short-title .learn-more-btn {
+    margin-top: 17px;
+}
+.intro-caption-white{
+	font-size: 23px !important;
+	margin-top: -114px;
+}
 }

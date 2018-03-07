@@ -6,10 +6,10 @@
 	-moz-box-sizing: border-box;
 }
 .sprite {
-	background:url('images/sprite-v1.png') no-repeat;
+	background:url('../images/sprite-v1.png') no-repeat;
 }
 .sprite-v2 {
-	background:url('images/sprite-v2.png') no-repeat;
+	background:url('../images/sprite-v2.png') no-repeat;
 }
 .padding-x {
 		padding:30px 0;
@@ -561,6 +561,9 @@ p {
 	line-height: 20px;
 	margin:15px 0;
 }
+p:first-child {
+	margin: 0 0 15px 0;
+}
 
 .pstn-abslt {
 	position: absolute;
@@ -855,6 +858,10 @@ nav {
 
 .bgnd-light-sky {
 	background-color: #e1e6ee;
+}
+
+img {
+	margin: 0 0 15px 0;
 }
 
 .full-image img {
