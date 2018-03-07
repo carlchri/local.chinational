@@ -1,21 +1,22 @@
-<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.video="org.chi.aem.common.components.model.Video"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
-<div class="gutter-bottom" data-sly-test="${properties.sectionHeading}">
+<div class="gutter-bottom" data-sly-test="${video.sectionHeading}">
     <label class="button-label" >
-        ${properties.sectionHeading}
+        ${video.sectionHeading}
     </label>
 </div>
 
-<div class="video" data-sly-test="${properties.videoUrl}">
-    <sly data-sly-resource="${'videoimage' @ resourceType='chinational/components/content/image'}"></sly>
+<div class="video" data-sly-test="${video.videoUrl}">
+    <img src="${video.imageUrl}" >
     <div class="link-wrapper">
-        <a class="video-button" id="video" video-url="${properties.videoUrl}">
+        <a class="video-button" id="video" video-url="${video.videoUrl}">
             <i class="icon-play"></i>
         </a>
     </div>
 </div>
 
-<div class="padding-5" data-sly-test="${properties.videoText}">
-    <p class="light-txt">${properties.videoText}</p>
+<div class="padding-5" data-sly-test="${video.videoText}">
+    <p class="light-txt">${video.videoText}</p>
 </div>
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.videoUrl}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
