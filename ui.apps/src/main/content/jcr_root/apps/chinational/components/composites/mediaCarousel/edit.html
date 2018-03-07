@@ -1,0 +1,10 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
+<div>
+    <sly data-sly-list.item="${mediaCollection.items}">
+        <h2>${item.name}</h2>
+        <div data-sly-test="${item.type == 'video'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/video'}"/>
+        <div data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/audio'}"/>
+    </sly>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.name}"></sly>
