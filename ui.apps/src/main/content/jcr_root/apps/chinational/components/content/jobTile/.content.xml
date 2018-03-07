@@ -4,4 +4,4 @@
     jcr:description="Job Tile Component - used as part of Job Carousel Component"
     jcr:primaryType="cq:Component"
     jcr:title="Job Tile"
-    componentGroup="CHI General"/>
+    componentGroup=".fixed-chi"/>
