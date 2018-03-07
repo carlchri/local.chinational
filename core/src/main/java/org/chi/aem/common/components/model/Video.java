@@ -28,6 +28,7 @@ public class Video {
 	public static final String PROP_SECTION_HEADING = "sectionHeading";
 	public static final String PROP_VIDEO_URL = "videoUrl";
 	public static final String PROP_VIDEO_TEXT = "videoText";
+	public static final String PROP_VIDEO_ON_RIGHT_RAIL = "rightRail";
 	private static final String IMAGE_URL_PREFIX = "https://img.youtube.com/vi/";
 	private static final String IMAGE_URL_SUFFIX = "/maxresdefault.jpg";
 	private static final String REGEX_PATTERN = "\\/([^\\/]+)\\/?$";
@@ -39,6 +40,11 @@ public class Video {
 	@Named(PROP_SECTION_HEADING)
 	@Optional
 	private String sectionHeading;
+
+	@Inject
+	@Named(PROP_VIDEO_ON_RIGHT_RAIL)
+	@Optional
+	private boolean rightRail;
 
 	@Inject
 	@Named(PROP_VIDEO_URL)
@@ -81,5 +87,9 @@ public class Video {
 
 	public String getImageUrl() {
 		return imageUrl;
+	}
+
+	public boolean isRightRail() {
+		return rightRail;
 	}
 }
