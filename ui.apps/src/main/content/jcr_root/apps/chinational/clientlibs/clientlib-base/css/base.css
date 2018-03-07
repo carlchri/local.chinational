@@ -5,12 +5,6 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-.sprite {
-	background:url('../images/sprite-v1.png') no-repeat;
-}
-.sprite-v2 {
-	background:url('../images/sprite-v2.png') no-repeat;
-}
 .padding-x {
 		padding:30px 0;
 }
