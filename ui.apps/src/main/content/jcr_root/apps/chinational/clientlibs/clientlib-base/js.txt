@@ -15,6 +15,7 @@
 ###############################################################################
 js/app.js
 js/newslist.js
+js/blogslist.js
 js/physiciantiles.js
 js/owl.carousel.js
 js/video.popup.js

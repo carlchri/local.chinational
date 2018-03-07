@@ -1,0 +1,12 @@
+<template data-sly-template.item="${@ list, item}">
+    <article>
+        <a href="${item.path @ extension='html'}">
+            <h3><span class="txt-green">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span></h3>
+        </a>
+        <span class="txt-green" 
+              data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
+                 ${formatter.formattedDate}
+        </span>
+        <p data-sly-test="${item.properties.excerpt}">${item.properties.excerpt}</p>
+    </article>
+</template>    
