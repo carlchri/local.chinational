@@ -13,10 +13,10 @@
 
                 <sly data-sly-list.item="${heroCollection.items}">
                     <div data-sly-test = "${itemList.first}" class="item active">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
+                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero', selectors='herocarousel'}" data-sly-unwrap/>
                     </div>
                     <div data-sly-test = "${itemList.first}" class="item">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
+                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero', selectors='herocarousel'}" data-sly-unwrap/>
                     </div>
                 </sly>
             </div>
