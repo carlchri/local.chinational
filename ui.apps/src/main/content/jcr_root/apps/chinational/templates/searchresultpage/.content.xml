@@ -11,5 +11,9 @@
         displayBreadcrumb="true"
         displayHero="false"
         displayRightRail="false"
-        displaySubnav="false"/>
+        displaySubnav="false">
+        <searchResult
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="chinational/components/structure/searchResult"/>
+    </jcr:content>
 </jcr:root>
