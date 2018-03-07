@@ -9,10 +9,15 @@
   overflow: hidden;
 }
 .event-content {
-  margin:0 140px 0 60px;
+  margin:0 140px 0 0;
 }
 .more-events a {
   margin-left:84px;
+}
+@media (min-width:768px) {
+  .event-image {
+    margin: 0 60px 0 0;
+  }
 }
 @media (max-width:1200px) {
   .upcoming-events .flex {

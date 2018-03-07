@@ -6,4 +6,4 @@
     jcr:title="Layout Container"
     sling:resourceSuperType="wcm/foundation/components/responsivegrid"
     allowedChildren="[*]"
-    componentGroup="CHI General"/>
+    componentGroup=".fixed-chi"/>

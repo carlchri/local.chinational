@@ -39,6 +39,14 @@
                                                         fieldDescription="This text will be used as heading for the videosection"
                                                         fieldLabel="Section Heading:"
                                                         name="./sectionHeading"/>
+                                                    <rightRail
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this checkbox if video is on right rail."
+                                                            name="./rightRail"
+                                                            text="Select if Video is on right rail"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
                                                     <videoUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
