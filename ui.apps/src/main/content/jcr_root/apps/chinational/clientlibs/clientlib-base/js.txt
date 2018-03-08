@@ -20,5 +20,6 @@ js/physiciantiles.js
 js/owl.carousel.js
 js/video.popup.js
 js/popper.js
+js/footerContactUs.js
 
 
