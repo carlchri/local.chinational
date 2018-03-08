@@ -82,7 +82,7 @@
                                                         defaultValue="1"
                                                         fieldDescription="Select How many buttons reqd"
                                                         fieldLabel="No. of Buttons Required"
-                                                        max="{Long}10"
+                                                        max="{Long}6"
                                                         min="{Long}1"
                                                         name="./noOfButtons"
                                                         required="{Boolean}true"
