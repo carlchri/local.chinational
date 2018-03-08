@@ -13,4 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###############################################################################
+css/owl.carousel.css
+css/owl.theme.default.css
 css/bootstrap.css
