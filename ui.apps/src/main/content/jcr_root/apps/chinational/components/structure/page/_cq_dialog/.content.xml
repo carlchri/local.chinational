@@ -47,7 +47,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         name="./displayHero"
                                         renderReadOnly="{Boolean}true"
-                                        text="Display Human Network Band or Caroousel?"
+                                        text="Display Human Network Band or Carousel?"
                                         value="true">
                                     <granite:data
                                             jcr:primaryType="nt:unstructured"

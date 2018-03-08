@@ -1,12 +1,18 @@
 package org.chi.aem.common.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class LinkUtils {
 
-
+    public static final Logger LOGGER = LoggerFactory.getLogger(LinkUtils.class);
     private static final String HTML = ".html";
+    private static final String IMAGE_URL_PREFIX = "https://img.youtube.com/vi/";
+    private static final String IMAGE_URL_SUFFIX = "/maxresdefault.jpg";
+    private static final String REGEX_PATTERN = "\\/([^\\/]+)\\/?$";
 
     /**
      * 'Externalize' AEM paths by appending ".html" to them.  This allows a link
@@ -32,6 +38,20 @@ public final class LinkUtils {
 
     public static boolean isLocalPath(String path) {
         return path != null && path.startsWith("/") && !path.startsWith("//");
+    }
+
+    public static String getYouTubeVideoThumbnail(String videoUrl) {
+        String imageUrl = null;
+        if (videoUrl != null) {
+            Pattern pattern = Pattern.compile(REGEX_PATTERN);
+            Matcher matcher = pattern.matcher(videoUrl);
+            if (matcher.find()) {
+                imageUrl = IMAGE_URL_PREFIX + matcher.group(1) + IMAGE_URL_SUFFIX;
+            } else {
+                LOGGER.error("No match found for image in videoURL: " + videoUrl);
+            }
+        }
+        return imageUrl;
     }
 
     private static String addMissingProtocol(String url) {
