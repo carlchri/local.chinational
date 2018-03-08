@@ -14,11 +14,8 @@
             <div class="carousel-inner">
 
                 <sly data-sly-list.item="${heroCollection.items}">
-                    <div data-sly-test = "${itemList.first}" class="item active">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero', selectors='herocarousel'}" data-sly-unwrap/>
-                    </div>
-                    <div data-sly-test = "${itemList.first}" class="item">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero', selectors='herocarousel'}" data-sly-unwrap/>
+                    <div class="item ${itemList.first?'active':''}">
+                        <sly data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero', selectors='herocarousel'}"/>
                     </div>
                 </sly>
             </div>
