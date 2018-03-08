@@ -41,8 +41,8 @@
                                         jcr:primaryType="nt:unstructured"
                                         disabled="false"/>
                                     <hidePageTitle
-                                            jcr:primaryType="nt:unstructured"
-                                            disabled="true"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        disabled="true"/>
                                 </items>
                             </column>
                         </items>
@@ -67,17 +67,17 @@
                                         renderReadOnly="{Boolean}true"
                                         required="{Boolean}true"/>
                                     <newsSubHeading
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            emptyText="Enter Press Release Sub-Heading"
-                                            fieldDescription="Enter Press Release Sub-Heading (optional)"
-                                            fieldLabel="Press Release Sub-Heading"
-                                            name="./newsSubHeading"
-                                            renderReadOnly="{Boolean}true"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Enter Press Release Sub-Heading"
+                                        fieldDescription="Enter Press Release Sub-Heading (optional)"
+                                        fieldLabel="Press Release Sub-Heading"
+                                        name="./newsSubHeading"
+                                        renderReadOnly="{Boolean}true"/>
                                     <newsDate
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                                        emptyText="Date Format: 1/18/18"
+                                        emptyText="Date Format: YYYY-MM-DD"
                                         fieldDescription="Enter news date."
                                         fieldLabel="Publish Date"
                                         name="./publishDate"
@@ -108,21 +108,21 @@
                                         name="./imageSrc"
                                         rootPath="/content/dam"/>
                                     <imageCaption
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            emptyText="Caption below Image"
-                                            fieldDescription="Caption below the image (optional)"
-                                            fieldLabel="Image Caption"
-                                            name="./imageCaption"
-                                            renderReadOnly="{Boolean}true"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Caption below Image"
+                                        fieldDescription="Caption below the image (optional)"
+                                        fieldLabel="Image Caption"
+                                        name="./imageCaption"
+                                        renderReadOnly="{Boolean}true"/>
                                     <displayQuoteComponent
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                            fieldDescription="Selecting this checkbox will include Quote component in the page"
-                                            name="./displayQuoteComponent"
-                                            text="Select to display Quote Component config"
-                                            uncheckedValue="false"
-                                            value="true"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Selecting this checkbox will include Quote component in the page"
+                                        name="./displayQuoteComponent"
+                                        text="Select to display Quote Component config"
+                                        uncheckedValue="false"
+                                        value="true"/>
                                 </items>
                             </column>
                         </items>
