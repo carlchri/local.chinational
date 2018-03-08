@@ -8,6 +8,7 @@ import org.apache.sling.api.resource.ValueMap;
 
 public class HeroCollection extends WCMUsePojo {
 	private List<CarouselItem> items;
+	private String singleItemName;
 
 	@Override
 	public void activate() throws Exception {
@@ -33,5 +34,17 @@ public class HeroCollection extends WCMUsePojo {
 
 	public List<CarouselItem> getItems(){
 			return items;
+	}
+
+	public boolean getIsSingleItem(){
+		if(items.size() == 1) {
+			singleItemName = items.get(0).getName();
+			return true;
+		}
+		return false;
+	}
+
+	public String getSingleItemName() {
+		return singleItemName;
 	}
 }
