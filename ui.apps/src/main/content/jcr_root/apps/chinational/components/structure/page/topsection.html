@@ -13,10 +13,12 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<div class="component" data-sly-test="${properties.displayHero == 'displayHero'}"
+<sly data-sly-test="${properties.displayHero}">
+<div class="component" data-sly-test="${properties.heroConfig == 'hero'}"
      data-sly-resource="${'tophero' @ resourceType='chinational/components/structure/hero'}"></div>
-<div class="component" data-sly-test="${properties.displayHero == 'displayCarousel'}"
-     data-sly-resource="${'tophero' @ resourceType='chinational/components/composites/heroCarousel'}"></div>
+<div class="component" data-sly-test="${properties.heroConfig == 'carousel'}"
+     data-sly-resource="${'topheroCarousel' @ resourceType='chinational/components/composites/heroCarousel'}"></div>
+</sly>
 <div class="component" data-sly-test="${properties.displayBreadcrumb}">
     <div class="container">
         <div class="row section-breadcrumb"

@@ -1,4 +1,6 @@
-<sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"></sly>
+<sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
 <div class="intro herointro">
     <div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -32,3 +34,4 @@
         </div>
     </div>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!heroCollection.items}"></sly>
