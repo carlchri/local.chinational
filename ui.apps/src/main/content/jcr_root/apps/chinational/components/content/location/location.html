@@ -1,29 +1,33 @@
 <sly data-sly-use.locationCollection="org.chi.aem.common.components.model.LocationCollection"></sly>
 <sly data-sly-use.coordinates="org.chi.aem.common.components.model.LocationCoordinate"></sly>
 
-<div class="location cmponent">
-<div class="row section">
+<div class="location card-body">
+<div class="row">
 	<div class="col-md-5">
-		<sly data-sly-list="${locationCollection.locationDetails}">            
-            <sly data-sly-test.link="${item.linkUrl != '#'}">
-            	<p class="item.iconClass">
-                	<span>
-                        <a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
-                            ${item.locationText}
-                        </a>
-                    </span>
-                </p>
-            </sly>
-            <sly data-sly-test="${!link}">
-            	<p class="item.iconClass">${item.locationText}</p>
-            </sly>
-        </sly>
-        <div class="link-wrapper" 
-    	     data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-        </div>
+		<div class="txt-address">
+			<div class="icons-set">
+				<sly data-sly-list="${locationCollection.locationDetails}">
+                    <sly data-sly-test.link="${item.linkUrl != '#'}">
+                        <div class="small-wrapper ${item.iconClass}">
+                            <a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+	                            ${item.locationText}
+                            </a>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${!link}">
+                         <div class="small-wrapper">
+                         	<span class="small-txt ${item.iconClass}">${item.locationText}</span>
+                         </div>
+                    </sly>
+                </sly>
+			</div>
+            <div class="link-wrapper" 
+    	         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+	        </div>
+		</div>
 	</div>
 	<div class="col-md-7">
-		<div id="map">Put map here!!!</div>
+		<div id="map">Put map here</div>
 	</div>
 </div>
 </div>
