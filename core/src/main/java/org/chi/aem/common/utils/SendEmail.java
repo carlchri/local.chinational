@@ -4,15 +4,17 @@ import com.adobe.cq.address.api.AddressException;
 import com.day.cq.commons.mail.MailTemplate;
 import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
+/*
 import org.apache.commons.lang.text.StrLookup;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.HtmlEmail;
+import javax.mail.internet.InternetAddress;
+*/
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.jcr.Session;
-import javax.mail.internet.InternetAddress;
 import java.util.*;
 
 public class SendEmail {
@@ -27,7 +29,7 @@ public class SendEmail {
     private static String INVALID_EMAIL_ADDRESS = "Invalid Email Address.";
 
     public String sendMail(ResourceResolver resolver, MessageGatewayService messageGatewayService, String recipientEmail){
-
+/*
         try{
             if(recipientEmail.isEmpty()) {
                 return INVALID_EMAIL_ADDRESS;
@@ -58,7 +60,7 @@ public class SendEmail {
             log.error("Error sending email to " + recipientEmail, e);
             return FAILURE_MESSAGE;
         }
-
+*/
         return SUCCESS_MESSAGE;
     }
 
