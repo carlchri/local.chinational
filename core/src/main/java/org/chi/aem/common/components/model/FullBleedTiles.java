@@ -29,10 +29,10 @@ public class FullBleedTiles extends WCMUsePojo {
         Resource tileResource = null;
         for (int i = 1; i <= noOfTiles; i++) {
             tileResource = currentResource.getChild(BLEED_BOX + i);
-            tileMap.put(getClass(tileResource, BLEED_BOX + i),getBackGroundColor(tileResource));
+            tileMap.put(BLEED_BOX + i,getBackGroundColor(tileResource));
 	  	}
     }
-
+/*
     private String getClass(Resource tileResource, String firstClass) {
         if(tileResource != null) {
             if(!tileResource.getValueMap().get("imagePosition", TOP).equalsIgnoreCase(TOP)) {
@@ -41,6 +41,7 @@ public class FullBleedTiles extends WCMUsePojo {
         }
         return firstClass;
     }
+    */
     private String getBackGroundColor(Resource tileResource) {
         if(tileResource != null) {
             return tileResource.getValueMap().get("backgroundColor", null);
