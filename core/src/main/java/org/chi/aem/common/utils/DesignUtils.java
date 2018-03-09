@@ -16,25 +16,32 @@ public final class DesignUtils {
     public static final Logger LOGGER = LoggerFactory.getLogger(DesignUtils.class);
     private static final String BASEPAGE_PATH = "basepage/";
 
-    public static String getComponentName(Object stylePath) {
-        if (stylePath != null && stylePath instanceof  String) {
-            return LinkUtils.getLastPartOfURLOrPath(stylePath.toString());
+
+
+    public static ValueMap getDesignMap(ResourceResolver resourceResolver,
+                                          Page currentPage, String componentName) {
+        if (componentName != null) {
+            Designer designer = resourceResolver.adaptTo(Designer.class);
+            LOGGER.debug("designer: " + designer);
+            Design currentDesign = designer.getDesign(currentPage);
+            LOGGER.debug("currentDesign: " + currentDesign);
+            LOGGER.debug("currentDesign.getContentResource(): " + currentDesign.getContentResource());
+            Resource compRes = currentDesign.getContentResource().getChild(BASEPAGE_PATH + componentName);
+            LOGGER.debug("compRes: " + compRes);
+            if (compRes != null) {
+                return compRes.getValueMap();
+            }
         }
         return null;
     }
 
-    public static ValueMap getDesignMap(ResourceResolver resourceResolver,
-                                 Page currentPage, String componentName) {
+    public static ValueMap getDesignMap(Design currentDesign, String componentName) {
         if (componentName != null) {
-            Designer designer = resourceResolver.adaptTo(Designer.class);
-            LOGGER.info("designer: " + designer);
-            Design currentDesign = designer.getDesign(currentPage);
-            LOGGER.info("currentDesign: " + currentDesign);
-            LOGGER.info("currentDesign.getContentResource(): " + currentDesign.getContentResource());
-            Resource logoRes = currentDesign.getContentResource().getChild(BASEPAGE_PATH + componentName);
-            LOGGER.info("logoRes: " + logoRes);
-            if (logoRes != null) {
-                return logoRes.getValueMap();
+            LOGGER.debug("currentDesign: " + currentDesign);
+            LOGGER.debug("currentDesign.getContentResource(): " + currentDesign.getContentResource());
+            Resource compRes = currentDesign.getContentResource().getChild(BASEPAGE_PATH + componentName);
+            if (compRes != null) {
+                return compRes.getValueMap();
             }
         }
         return null;
