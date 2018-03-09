@@ -28,6 +28,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
@@ -60,20 +61,15 @@ public class LocationCoordinate {
             String json = "";
 
             try {           
-                HttpClient client = new DefaultHttpClient();  
-                LOGGER.info("After client" + address + client);
+                // HttpClient client = new DefaultHttpClient();  
+                HttpClient client = HttpClientBuilder.create().build();
                 // HttpPost post = new HttpPost("https://maps.googleapis.com/maps/api/geocode/json?address=10115,germany");
-                HttpPost post = new HttpPost("https://maps.googleapis.com/maps/api/geocode/json?address="+URLEncoder.encode(address, "UTF-8") + "&sensor=false");
-                LOGGER.info("After post");
+                HttpPost post = new HttpPost("https://maps.googleapis.com/maps/api/geocode/json?address="+URLEncoder.encode(address, "UTF-8") + "&key=AIzaSyDZub6OMs7Qcg_lzqxXgL3nvobpcFK69q8");
                 HttpResponse response = client.execute(post);
-                LOGGER.info("After response");
                 HttpEntity entity = response.getEntity();
-                LOGGER.info("After entity");
                 inputStream = entity.getContent();
-                LOGGER.info("After inputStream");
             } catch(Exception e) {
-            	
-            	LOGGER.info("Inside Exception :" + inputStream);
+            	LOGGER.info("Inside Exception :");
 
             }
 
@@ -81,13 +77,12 @@ public class LocationCoordinate {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"),8);
                 StringBuilder sbuild = new StringBuilder();
                 String line = null;
-                LOGGER.info("After line");
                 while ((line = reader.readLine()) != null) {
                     sbuild.append(line);
                 }
                 inputStream.close();
                 json = sbuild.toString();      
-                LOGGER.info("json:" + json);
+                // LOGGER.info("json:" + json);
 
             //now parse
             // JSONParser parser = new JSONParser();
@@ -101,12 +96,11 @@ public class LocationCoordinate {
             JSONObject location = (JSONObject) jsonObject3.get("location");
 
             latCord = location.get("lat").toString();
-            LOGGER.info("latCord:" + latCord);
+            // LOGGER.info("latCord:" + latCord);
             lngCord = location.get("lng").toString();
-            LOGGER.info("lngCord:" + lngCord);
+            // LOGGER.info("lngCord:" + lngCord);
             } catch(Exception e) {
-            	LOGGER.info("Inside Exception latCord:" + latCord);
-            	LOGGER.info("Inside Exception  lngCord:" + lngCord);
+            	LOGGER.info("Inside Exception");
             }
 		}
 	
