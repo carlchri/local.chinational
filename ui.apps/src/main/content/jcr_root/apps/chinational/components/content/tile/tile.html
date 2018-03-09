@@ -12,7 +12,7 @@
 	          ${formatter.formattedDate}
 		</sly>
     </span>
-    <p>${properties.contentDetail}</p>
+    <p data-sly-test="${properties.contentDetail}">${properties.contentDetail}</p>
     <a class="bold-link" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 		${link.linkText || 'Link Text'}
     </a>
