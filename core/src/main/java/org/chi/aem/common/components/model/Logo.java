@@ -4,11 +4,18 @@
 
 package org.chi.aem.common.components.model;
 
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.designer.Design;
+import com.day.cq.wcm.api.designer.Designer;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.chi.aem.common.utils.DesignUtils;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +35,14 @@ public class Logo {
 		@ScriptVariable
 		private ValueMap currentStyle;
 
-		private String imagePath;
+		@ScriptVariable
+		private Page currentPage;
+
+		@SlingObject
+		private ResourceResolver resourceResolver;
+
+
+	private String imagePath;
 
 		private String imageAltText;
 	
@@ -38,10 +52,31 @@ public class Logo {
 	
 		@PostConstruct
 		protected void init() {
-			imagePath = currentStyle.get(PROP_IMAGE_PATH, "");
-			imageAltText = currentStyle.get(PROP_IMAGE_ALT_TEXT, "");
-			linkUrl = currentStyle.get(PROP_LINK_URL, "#");
-			targetBlank = currentStyle.get(TARGET_BLANK, false);
+			/*Designer designer = resourceResolver.adaptTo(Designer.class);
+			LOGGER.info("designer: " + designer);
+			Design currentDesign = designer.getDesign(currentPage);
+			LOGGER.info("currentDesign: " + currentDesign);
+			LOGGER.info("currentDesign.getContentResource(): " + currentDesign.getContentResource());
+			Resource logoRes = currentDesign.getContentResource().getChild("basepage/logo");
+			LOGGER.info("logoRes: " + logoRes);
+			if (logoRes != null) {
+				ValueMap currDesign = logoRes.getValueMap();
+				LOGGER.info("currDesign: " + currDesign);
+				imagePath = currDesign.get(PROP_IMAGE_PATH, "");
+				LOGGER.info("imagepath from currDesign: " + imagePath);
+			}*/
+
+			String compName = DesignUtils.getComponentName(currentStyle.get("path"));
+			ValueMap designMap = DesignUtils.getDesignMap(resourceResolver, currentPage, compName);
+			if (designMap == null) {
+				designMap = currentStyle;
+			}
+
+			imagePath = designMap.get(PROP_IMAGE_PATH, "");
+			LOGGER.info("imagepath from designMap: " + imagePath);
+			imageAltText = designMap.get(PROP_IMAGE_ALT_TEXT, "");
+			linkUrl = designMap.get(PROP_LINK_URL, "#");
+			targetBlank = designMap.get(TARGET_BLANK, false);
 	       	if (StringUtils.isNotEmpty(linkUrl) && !"#".equals(linkUrl)) {
 	            linkUrl = LinkUtils.externalize(linkUrl);
 			}
