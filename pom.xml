@@ -472,6 +472,11 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+			    <groupId>org.apache.httpcomponents</groupId>
+			    <artifactId>httpclient</artifactId>
+			    <version>4.3.6</version>
+			</dependency>
+            <dependency>
                 <groupId>biz.aQute</groupId>
                 <artifactId>bndlib</artifactId>
                 <version>1.50.0</version>

@@ -25,6 +25,7 @@ css/foundation.css
 css/herocomponencarousel.css
 css/inspiremedia1.css
 css/intro.css
+css/location.css
 css/Jobcarousel.css
 css/media-kit.css
 css/media-center.css
