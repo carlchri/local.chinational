@@ -4,3 +4,47 @@
 .content {
   padding:15px 0;
 }
+
+.hours-icon:before {
+  background: url(../images/sprite-v1.png) no-repeat -41px -277px;
+  width: 28px;
+  height: 28px;
+  content: " ";
+  position: absolute;
+  margin: -6px 0 0 -40px;
+}
+.address-icon:before {
+  background: url(../images/sprite-v1.png) no-repeat -260px -276px;
+  width: 22px;
+  height: 30px;
+  content: " ";
+  position: absolute;
+  margin: 1px 0 0 -40px;
+}
+.phone-icon:before {
+  background: url(../images/sprite-v1.png) no-repeat -191px -272px;
+  width: 18px;
+  height: 34px;
+  content: " ";
+  position: absolute;
+  margin: -6px 0 0 -40px;
+}
+.guide-icon:before {
+  background: url(../images/sprite-v1.png) no-repeat -42px -568px;
+  width: 25px;
+  height: 28px;
+  content: " ";
+  position: absolute;
+  margin: -6px 0 0 -40px;
+}
+
+.facebook-icon:before {
+	background: url('imgs/sprite-v1.png') no-repeat -45px -42px;
+	width: 13px;
+	height: 24px;
+	content: " ";
+    position: absolute;
+    margin: -6px 0 0 -40px;
+}
+
+
