@@ -1,7 +1,5 @@
 <sly data-sly-use.locationCollection="org.chi.aem.common.components.model.LocationCollection"></sly>
 <sly data-sly-use.coordinates="org.chi.aem.common.components.model.LocationCoordinate"></sly>
-<h4> Latitude: ${coordinates.latCord}</h4>
-<h4>Longitude: ${coordinates.lngCord}</h4>
 
 <div class="location card-body">
 <div class="row">
@@ -28,14 +26,14 @@
 		</div>
 	</div>
 	<div class="col-md-7">
-		<div id="map">Put map here!!!</div>
+		<div id="map" style="position:relative; overflow: hidden; height:400px;">Put map here!!!</div>
 	</div>
 </div>
 </div>
 
         <script>
             function initMap() {
-              var uluru = {lat: -25.363, lng: 131.044};
+              var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
               var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: uluru
