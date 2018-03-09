@@ -185,6 +185,17 @@
             <artifactId>uber-jar</artifactId>
             <classifier>apis</classifier>
         </dependency>
-
+        <dependency>
+            <groupId>com.day.commons.osgi.wrapper</groupId>
+            <artifactId>com.day.commons.osgi.wrapper.commons-lang2</artifactId>
+            <version>2.5-0001</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
