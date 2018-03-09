@@ -1,52 +1,48 @@
 <sly data-sly-use.locationCollection="org.chi.aem.common.components.model.LocationCollection"></sly>
 <sly data-sly-use.coordinates="org.chi.aem.common.components.model.LocationCoordinate"></sly>
 
-<div class="location card-body">
-<div class="row">
+<div class="location cmponent">
+<div class="row section">
 	<div class="col-md-5">
-		<div class="txt-address">
-			<div class="icons-set">
-				<sly data-sly-list="${locationCollection.locationDetails}">            
-                    <div class="small-wrapper">
-                        <span class="sprite ${item.iconClass}"></span>
-                        <sly data-sly-test.link="${item.linkUrl != '#'}">
-                            <a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
-                                <span class="small-txt">${item.locationText}</span>
-                            </a>
-                        </sly>
-                        <sly data-sly-test="${!link}">
-                        	<span class="small-txt">${item.locationText}</span>
-                        </sly>
-                    </div>
-                </sly>
-			</div>
-            <div class="link-wrapper" 
-    	         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-	        </div>
-		</div>
+		<sly data-sly-list="${locationCollection.locationDetails}">            
+            <sly data-sly-test.link="${item.linkUrl != '#'}">
+            	<p class="item.iconClass">
+                	<span>
+                        <a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+                            ${item.locationText}
+                        </a>
+                    </span>
+                </p>
+            </sly>
+            <sly data-sly-test="${!link}">
+            	<p class="item.iconClass">${item.locationText}</p>
+            </sly>
+        </sly>
+        <div class="link-wrapper" 
+    	     data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+        </div>
 	</div>
 	<div class="col-md-7">
-		<div id="map" style="position:relative; overflow: hidden; height:400px;">Put map here!!!</div>
+		<div id="map">Put map here!!!</div>
 	</div>
 </div>
 </div>
 
-        <script>
-            function initMap() {
-              var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
-              var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: uluru
-              });
-              var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-              });
-            }
-        </script>
-        <script
-            async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
-            // AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0
-        </script>
+<script>
+    function initMap() {
+        var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
+    	// AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0
+</script>
 
