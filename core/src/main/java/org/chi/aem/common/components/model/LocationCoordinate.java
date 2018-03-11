@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLEncoder;
+import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -54,7 +55,6 @@ public class LocationCoordinate {
 		private String latCord;
 		private String lngCord;
 	
-	
 		@PostConstruct
 		protected void init() {
             InputStream inputStream = null;
@@ -70,7 +70,6 @@ public class LocationCoordinate {
                 inputStream = entity.getContent();
             } catch(Exception e) {
             	LOGGER.info("Inside Exception :");
-
             }
 
             try {           
@@ -84,21 +83,21 @@ public class LocationCoordinate {
                 json = sbuild.toString();      
                 // LOGGER.info("json:" + json);
 
-            //now parse
-            // JSONParser parser = new JSONParser();
-            // Object obj = parser.parse(json);
-            JSONObject jb = new JSONObject(json);
-
-            //now read
-            JSONArray jsonObject1 = (JSONArray) jb.get("results");
-            JSONObject jsonObject2 = (JSONObject)jsonObject1.get(0);
-            JSONObject jsonObject3 = (JSONObject)jsonObject2.get("geometry");
-            JSONObject location = (JSONObject) jsonObject3.get("location");
-
-            latCord = location.get("lat").toString();
-            // LOGGER.info("latCord:" + latCord);
-            lngCord = location.get("lng").toString();
-            // LOGGER.info("lngCord:" + lngCord);
+	            //now parse
+	            // JSONParser parser = new JSONParser();
+	            // Object obj = parser.parse(json);
+	            JSONObject jb = new JSONObject(json);
+	
+	            //now read
+	            JSONArray jsonObject1 = (JSONArray) jb.get("results");
+	            JSONObject jsonObject2 = (JSONObject)jsonObject1.get(0);
+	            JSONObject jsonObject3 = (JSONObject)jsonObject2.get("geometry");
+	            JSONObject location = (JSONObject) jsonObject3.get("location");
+	
+	            latCord = location.get("lat").toString();
+	            // LOGGER.info("latCord:" + latCord);
+	            lngCord = location.get("lng").toString();
+	            // LOGGER.info("lngCord:" + lngCord);
             } catch(Exception e) {
             	LOGGER.info("Inside Exception");
             }

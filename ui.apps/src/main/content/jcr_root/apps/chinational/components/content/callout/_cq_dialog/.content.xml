@@ -47,20 +47,20 @@
                                                         fieldLabel="Enter content details here"
                                                         name="./contentDetail"/>
                                                     <linkUrl
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                            fieldLabel="Link URL"
-                                                            name="./linkUrl"
-                                                            rootPath="/content"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
+                                                        fieldLabel="Link URL"
+                                                        name="./linkUrl"
+                                                        rootPath="/content"/>
                                                     <target
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldDescription="Selecting this checkbox will open link in new window."
-                                                            name="./targetBlank"
-                                                            text="Select to Open Link in New Window"
-                                                            uncheckedValue="false"
-                                                            value="true"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Selecting this checkbox will open link in new window."
+                                                        name="./targetBlank"
+                                                        text="Select to Open Link in New Window"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
                                                 </items>
                                             </well>
                                         </items>
@@ -82,38 +82,38 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/well">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <iconSelector
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:orderBefore="orderBy"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                            fieldDescription="Choose an icon to display in the Callout"
-                                                            fieldLabel="Select Icon"
-                                                            name="./calloutIcon">
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="orderBy"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Choose an icon to display in the Callout"
+                                                        fieldLabel="Select Icon"
+                                                        name="./calloutIcon">
                                                         <datasource
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="/apps/chinational/components/datasource"
-                                                                path="/etc/config/chinational/components/iconSelector"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="/apps/chinational/components/datasource"
+                                                            path="/etc/config/chinational/components/iconSelector"/>
                                                     </iconSelector>
                                                     <iconOrientation
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:orderBefore="orderBy"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                            fieldDescription="Select an orientation for the Icon and Title"
-                                                            fieldLabel="Icon and Title Orientation"
-                                                            name="./iconOrientation">
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="orderBy"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldDescription="Select an orientation for the Icon and Title"
+                                                        fieldLabel="Icon and Title Orientation"
+                                                        name="./iconOrientation">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <iconLeftAligned
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    selected="true"
-                                                                    text="Icon and Title left aligned"
-                                                                    value="iconLeftAligned"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                selected="true"
+                                                                text="Icon and Title left aligned"
+                                                                value="iconLeftAligned"/>
                                                             <iconCenterAligned
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Icon and Title centrally aligned"
-                                                                    value="iconCenterAlign"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Icon and Title centrally aligned"
+                                                                value="iconCenterAlign"/>
                                                             <iconDisplayedLeft
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    text="Icon displaying on left and Title left aligned"
-                                                                    value="iconDisplayedLeft"/>
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Icon displaying on left and Title left aligned"
+                                                                value="iconDisplayedLeft"/>
                                                         </items>
                                                     </iconOrientation>
                                                 </items>

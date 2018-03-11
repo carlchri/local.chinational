@@ -17,5 +17,13 @@
     <location
         jcr:primaryType="nt:unstructured"
         text="Location"
-        value="icon-locations"/>
+        value="icon-location"/>
+    <hours
+        jcr:primaryType="nt:unstructured"
+        text="Hours"
+        value="icon-hours"/>
+    <download
+        jcr:primaryType="nt:unstructured"
+        text="Download"
+        value="icon-download"/>
 </jcr:root>
