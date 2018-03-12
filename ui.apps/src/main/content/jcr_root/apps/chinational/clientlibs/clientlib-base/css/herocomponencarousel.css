@@ -29,7 +29,7 @@
 		height:231px;
 	}
   .intro-title, .intro-short-title {
-    height: 360px !important;
+    /*height: 360px !important;*/
 	}
 	
 	.intro-img img{
