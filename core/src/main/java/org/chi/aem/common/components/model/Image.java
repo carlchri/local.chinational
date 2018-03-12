@@ -69,8 +69,6 @@ public class Image implements ComponentExporter {
    @ScriptVariable
    private PageManager pageManager;
 
-   @ScriptVariable
-   private Style currentStyle;
 
    @ScriptVariable
    private ValueMap properties;
