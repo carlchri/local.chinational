@@ -50,7 +50,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                        fieldLabel="Link URL"
+                                                        fieldLabel="Link URL (for the callout title)"
                                                         name="./linkUrl"
                                                         rootPath="/content"/>
                                                     <target
