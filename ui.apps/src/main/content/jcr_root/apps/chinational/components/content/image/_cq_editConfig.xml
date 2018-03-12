@@ -70,7 +70,7 @@
         </config>
     </cq:inplaceEditing>
     <cq:listeners
-            jcr:primaryType="cq:EditListenersConfig"
-            afteredit="REFRESH_PAGE"
-            afterinsert="REFRESH_PARENT"/>
+        jcr:primaryType="cq:EditListenersConfig"
+        afteredit="REFRESH_PAGE"
+        afterinsert="REFRESH_PARENT"/>
 </jcr:root>
