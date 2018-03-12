@@ -35,6 +35,9 @@
 	width:50%;
 	position:relative;
 }
+.intro-img img, .intro-short-img img {
+	margin: 0;
+}
 .title-inner {
 	position:relative;
 	z-index:4;
