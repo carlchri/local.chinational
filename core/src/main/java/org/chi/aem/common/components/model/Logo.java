@@ -33,12 +33,9 @@ public class Logo extends WCMUsePojo {
 	public void activate() throws Exception {
 		LOGGER.debug("currentStyle getPath:" + getCurrentStyle().getPath());
 		LOGGER.debug("currentDesign getPath:" + getCurrentDesign().getPath());
-		LOGGER.debug("getComponent().getCellName() values:" + getComponent().getCellName());
 
-		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getComponent().getCellName());
-		if (designMap == null) {
-			designMap = getCurrentStyle();
-		}
+		// gets map from basepage, if available
+		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
 
 		imagePath = designMap.get(PROP_IMAGE_PATH, "");
 		LOGGER.debug("imagepath from designMap currDesign: " + imagePath);

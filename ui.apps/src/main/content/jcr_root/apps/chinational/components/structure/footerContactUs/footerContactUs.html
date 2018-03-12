@@ -5,18 +5,18 @@
   <form class="row">
     <div class="col-sm-6 col-md-9">
       <div class="input-box">
-        <input type="email" id="senderEmailAddress" name="senderEmailAddress" placeholder="${currentStyle.nlPlaceholderText}">
+        <input type="email" id="senderEmailAddress" name="senderEmailAddress" placeholder="${contactUs.nlPlaceholderText}">
       </div>
     </div>
     <div class="col-sm-2 col-md-3">
-      <button type="button" id="contact-us-submit" class="btn btn-primary">${currentStyle.nlButtonText}</button>
+      <button type="button" id="contact-us-submit" class="btn btn-primary">${contactUs.nlButtonText}</button>
     </div>
   </form>
   <div class="row contact-info">
     <div class="col-sm-8">
-      <span class="list-header">${currentStyle.heading}</span>
+      <span class="list-header">${contactUs.heading}</span>
       <p>
-        <span class="dblock">${currentStyle.subheading}</span>
+        <span class="dblock">${contactUs.subheading}</span>
         <span>
           <a href="${contactUs.linkUrl}"
              target="${contactUs.targetBlank==true ?'_blank':'_self'}">

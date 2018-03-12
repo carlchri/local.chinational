@@ -4,6 +4,7 @@
 
 package org.chi.aem.common.components.model;
 
+import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -13,6 +14,7 @@ import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.chi.aem.common.utils.DesignUtils;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +23,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Model(adaptables = SlingHttpServletRequest.class)
-public class GlobalLink {
+public class GlobalLink extends WCMUsePojo {
  
 	    public static final Logger LOGGER = LoggerFactory.getLogger(GlobalLink.class);
 
@@ -36,12 +37,13 @@ public class GlobalLink {
 		private boolean targetBlank;
 		private String linkTo;
 		private String label;
-	
-		@PostConstruct
-		protected void init() {
-			targetBlank = currentStyle.get(TARGET_BLANK , false);
-			linkTo = currentStyle.get(PROP_LINK_URL, "#");
-			label = currentStyle.get(PROP_LINK_TEXT , "Default");
+
+		@Override
+		public void activate() throws Exception {
+			ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
+			targetBlank = designMap.get(TARGET_BLANK , false);
+			linkTo = designMap.get(PROP_LINK_URL, "#");
+			label = designMap.get(PROP_LINK_TEXT , "Default");
 			LOGGER.info("GlobalLink label:" + label);
 			if (StringUtils.isNotEmpty(linkTo) && !"#".equals(linkTo)) {
 				linkTo = LinkUtils.externalize(linkTo);
