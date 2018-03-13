@@ -1,0 +1,10 @@
+<sly data-sly-use.video="org.chi.aem.common.components.model.Video"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
+    <div class="sub-Thumbs mr-10">
+        <div class="video-container">
+            <img src="${video.imageUrl}">
+        </div>
+        <span class="thumb-titles">${video.sectionHeading}</span>
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
+
