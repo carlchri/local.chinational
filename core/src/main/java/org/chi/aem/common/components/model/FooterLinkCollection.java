@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.sling.api.resource.Resource;
+import org.chi.aem.common.utils.DesignUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,11 +18,10 @@ import com.adobe.cq.sightly.WCMUsePojo;
 /**
  * Defines the {@code FooterLinkCollection} Sling Model used for the
  * {@code /apps/chinational/foundation/structure/footLinks} component. This
- * component gets list of footer links.
+ * component gets list of links for top Nav and footer links
  * 
  */
 
-// Model(adaptables = SlingHttpServletRequest.class)
 public class FooterLinkCollection extends WCMUsePojo {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(FooterLinkCollection.class);
@@ -36,14 +36,17 @@ public class FooterLinkCollection extends WCMUsePojo {
 
 	@Override
 	public void activate() throws Exception {
-		LOGGER.info("activate called");
+		LOGGER.debug("activate called");
 
 		String resourcePath = getCurrentStyle().getPath();
-		LOGGER.info("***resourcePath=" + resourcePath);
-		Resource res = getResourceResolver().getResource(resourcePath);
-		LOGGER.info("***resource=" + res);
+		LOGGER.info("getCurrentStyle().getPath()=" + resourcePath);
+		LOGGER.info("getCurrentDesign().getPath - " + getCurrentDesign().getPath());
+		// get resource from basepage, else return the one at style
+		Resource res = DesignUtils.getDesignResource(getResourceResolver(), getCurrentDesign(), getCurrentStyle());
 
 		if (res != null && res.hasChildren()) {
+			LOGGER.info("***resource=" + res.getName());
+			LOGGER.info("***resource path=" + res.getPath());
 			populateModel(items, res.getChild(ITEMS));
 		}
 	}
@@ -57,7 +60,6 @@ public class FooterLinkCollection extends WCMUsePojo {
 					list.add(link);
 			}
 		}
-
 		return list;
 	}
 

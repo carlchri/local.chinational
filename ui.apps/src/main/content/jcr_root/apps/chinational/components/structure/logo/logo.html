@@ -13,6 +13,15 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-use.siteColors="org.chi.aem.common.components.model.SiteColorsCollection">
+<style>
+	<sly data-sly-list.colorsIterator="${siteColors.colorsMap}">
+            .${siteColors.colorsMap[colorsIterator]["colorClass"] @ context="styleToken"} {
+                ${siteColors.colorsMap[colorsIterator]["colorStyle"] @ context="styleToken"}: ${siteColors.colorsMap[colorsIterator]["colorValue"] @ context="styleToken"};
+            }
+    </sly>
+</style>
+
 <sly data-sly-use.logo="org.chi.aem.common.components.model.Logo"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 

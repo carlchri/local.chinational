@@ -92,7 +92,6 @@
                                                         text="Select to Open Link in New Window"
                                                         uncheckedValue="false"
                                                         value="true"/>
-
                                                 </items>
                                             </well>
                                         </items>
@@ -114,12 +113,12 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/well">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <videoUrl
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            fieldDescription="Video YouTube URL e.g. https://www.youtube.com/embed/yt-ID-here"
-                                                            fieldLabel="Video URL (you tube only)"
-                                                            name="./videoUrl"
-                                                            rootPath="/content"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Video YouTube URL e.g. https://www.youtube.com/embed/yt-ID-here"
+                                                        fieldLabel="Video URL (you tube only)"
+                                                        name="./videoUrl"
+                                                        rootPath="/content"/>
                                                     <backgroundColor
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="/apps/chinational/granite/widgets/colorpicker"

@@ -1,0 +1,216 @@
+  
+  .video-container {
+    overflow: hidden;
+    width: 180px;
+}
+.thumb-titles{
+    margin: 10px 0px 0px 0px;
+    color: #426da9;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: inline-block;
+}
+.opa-hide{
+        opacity: 0.2;
+    }
+
+.main-play-title{
+    display: inline-block;
+    font-size: 20px;
+    color:#426da9;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin-bottom: -5px;
+}
+.media-fifty{
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+.cs-player{
+    width: 34%;
+    float: left;
+}
+.main-player{
+    width: 100%;
+    min-height: 304px;
+    background-color: #e7e7e7;
+    border: 15px solid #e7e7e7;
+    overflow: hidden;
+  }
+  .sub-Thumbs{
+    height: 147px;
+    width: 206px;
+    background-color: #e7e7e7;
+    display: inline-block;
+    border: 10px solid #e7e7e7;
+  }
+  .video-container img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.inactive-Thumbs{
+    min-height: 170px;
+    opacity: 0.3;
+    background-color: #e7e7e7;
+    border: 10px solid #e7e7e7;
+    margin-top: 1px;
+}
+.cur-next, .cur-prev{
+    width: 40px;
+    height: 40px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #0097a9;
+    display: inline-block;
+    position: absolute;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    font-size: 0px;
+    cursor: pointer;
+}
+.cur-next{
+    right: 80px;
+}
+.cur-prev{
+    left: 0;
+}
+.cur-next:after, .cur-prev:after{
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    content: '';
+    border-top: solid #fff 3px;
+    border-right: solid #fff 3px;
+    top: 13px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    left: 12px;
+}
+.cur-prev:after{
+    transform: rotate(-140deg);
+    -webkit-transform: rotate(-140deg);
+    -moz-transform: rotate(-140deg);
+}
+.away{
+    display: none;
+}
+.active{
+  /*  margin-left: 50px; */
+}
+
+@media (max-width:767px) {
+
+    .active {
+        margin-left: 0px;
+    }
+    .main-player{
+        border: 60px solid #e7e7e7;
+        border-top: 30px solid #e7e7e7;
+    }
+    .cur-prev {
+        margin-left: 10px;
+    }
+    .cur-next {
+        margin-right: -5px;
+        right: 0px;
+    }    
+}
+.mt-10{
+    margin-top: 10px;
+}
+.ml-10{
+    margin-left: 10px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+.pr-0{
+    padding-right: 0px;
+}
+.pl-0{
+    padding-left: 0px;
+}
+.v-container{
+    height: 218px;
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.v-container img{
+    max-width: 100%;
+}
+.no-video{
+
+}
+/*Popup Styles*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 5px 8px 15px 10px;
+    border: 1px solid #888;
+    width: 500px;
+}
+.modal-content .close{
+    margin-top:22px;
+}
+/* End Of Popup Styles*/
+.carousel-item{
+    padding-left:5px;
+}
+.flex-box{
+   /* padding-left: 2px*/
+}
+
+.owl-item{
+    margin-right:5px;
+}
+@media (max-width:767px) {
+   
+    .carousel-item {
+        padding-left: 0px; 
+    }
+    .flex-box {
+         padding-left: 0px; 
+    }
+    .carousel-image {
+         padding-left: 0px; 
+    }
+    .main-player{
+         border: 10px solid #e7e7e7; 
+        border-top: 30px solid #e7e7e7;
+    }
+}
+@media ( max-width:992px) {
+    
+  .owl-item{
+      width:200px;
+  }
+ }
+ 
