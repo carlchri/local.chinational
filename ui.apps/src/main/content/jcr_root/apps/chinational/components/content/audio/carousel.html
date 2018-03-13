@@ -1,0 +1,10 @@
+<sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
+    <div class="sub-Thumbs mr-10">
+        <div class="video-container">
+            <img src="">
+        </div>
+        <span class="thumb-titles">${audio.sectionHeading}</span>
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!audio.videoUrl}"></sly>
+
