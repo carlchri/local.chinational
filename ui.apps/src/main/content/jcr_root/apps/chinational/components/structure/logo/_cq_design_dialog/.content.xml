@@ -28,11 +28,10 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/well">
                                         <items jcr:primaryType="nt:unstructured">
                                             <tileHeading
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
-                                                    level="{Long}3"
-                                                    text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored">
-                                            </tileHeading>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}3"
+                                                text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored"/>
                                             <imagepath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -136,24 +135,6 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                                 name="./outlinedColorStyle"
                                                 value="color"/>
-                                            <heroBackgroundColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/herobackgroundcolorpicker"
-                                                fieldDescription="Click on the color box to choose a different color for the photo band background"
-                                                fieldLabel="Background Color"
-                                                freestylePalette="{Boolean}true"
-                                                name="./heroBackgroundColor"/>
-                                            <heroBackgroundColorClass
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./heroBackgroundColorClass"
-                                                value="hero_background_color"/>
-                                            <heroBackgroundColorStyle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./heroBackgroundColorStyle"
-                                                value="background-color"/>
                                         </items>
                                     </well>
                                 </items>

@@ -28,9 +28,6 @@ public class SiteColorsCollection extends WCMUsePojo {
 	public static final String PROP_HEADING_COLOR = "headingTextColor";
 	public static final String PROP_HEADING_COLOR_CLASS = "headingColorClass";
 	public static final String PROP_HEADING_COLOR_STYLE = "headingColorStyle";
-	public static final String PROP_HERO_BACKGROUND_COLOR = "heroBackgroundColor";
-	public static final String PROP_HERO_BACKGROUND_COLOR_CLASS = "heroBackgroundColorClass";
-	public static final String PROP_HERO_BACKGROUND_COLOR_STYLE = "heroBackgroundColorStyle";
 
     Map<String, Object> colorsMap = new HashMap<String, Object>();
 
@@ -45,21 +42,7 @@ public class SiteColorsCollection extends WCMUsePojo {
         colorsMap.put("solidButton", createColorsMap(designMap, PROP_SOLID_BUTTON_COLOR, PROP_SOLID_BUTTON_COLOR_CLASS, PROP_SOLID_BUTTON_COLOR_STYLE));
         colorsMap.put("outlinedButton", createColorsMap(designMap, PROP_OUTLINED_BUTTON_COLOR, PROP_OUTLINED_BUTTON_COLOR_CLASS, PROP_OUTLINED_BUTTON_COLOR_STYLE));
         colorsMap.put("heading", createColorsMap(designMap, PROP_HEADING_COLOR, PROP_HEADING_COLOR_CLASS, PROP_HEADING_COLOR_STYLE));
-        colorsMap.put("hero", createColorsMap(designMap, PROP_HERO_BACKGROUND_COLOR, PROP_HERO_BACKGROUND_COLOR_CLASS, PROP_HERO_BACKGROUND_COLOR_STYLE));
         
-/*      Map<String, String> solid_colors_map = new HashMap<String, String>();
-        solid_colors_map.put("colorValue", designMap.get(PROP_SOLID_BUTTON_COLOR, ""));
-        solid_colors_map.put("colorClass", designMap.get(PROP_SOLID_BUTTON_COLOR_CLASS, ""));
-        solid_colors_map.put("colorStyle", designMap.get(PROP_SOLID_BUTTON_COLOR_STYLE, ""));
-        colorsMap.put("solidButton", solid_colors_map);
-        
-        Map<String, String> outlined_colors_map = new HashMap<String, String>();
-        outlined_colors_map.put("colorValue", designMap.get(PROP_OUTLINED_BUTTON_COLOR, ""));
-        outlined_colors_map.put("colorClass", designMap.get(PROP_OUTLINED_BUTTON_COLOR_CLASS, ""));
-        outlined_colors_map.put("colorStyle", designMap.get(PROP_OUTLINED_BUTTON_COLOR_STYLE, ""));
-        colorsMap.put("outlinedButton", outlined_colors_map);
-*/
-		   
 	}
 
 	public Map<String, String> createColorsMap(ValueMap valueMap, String value, String className, String style) {
