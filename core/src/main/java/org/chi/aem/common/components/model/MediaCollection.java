@@ -9,18 +9,13 @@ import java.util.*;
 
 public class MediaCollection extends WCMUsePojo {
 	private List<CarouselItem> editViewItems;
-	private List<List<MediaItem>> previewItems;
-	private MediaItem firstItem;
-
-	static final String VIDEO = "video";
-	static final String AUDIO = "audio";
+	private List<List<CarouselItem>> previewItems;
+	private CarouselItem firstItem;
 	static final String MEDIA_COLLECTION = "mediaCollection";
-	static final String VIDEO_RESOURCE_TYPE = "chinational/components/content/video";
 
 	@Override
 	public void activate() throws Exception {
 		setEditViewItems();
-		setPreviewItems();
 	}
 
 	private String getGeneratedId() {
@@ -29,7 +24,10 @@ public class MediaCollection extends WCMUsePojo {
 	}
 
 	private void setEditViewItems() {
+		boolean isFirst = true;
 		editViewItems = new ArrayList<CarouselItem>();
+		previewItems = new ArrayList<List<CarouselItem>>();
+		List<CarouselItem> groupItems = new ArrayList<CarouselItem>();
 		Resource mediaCollectionR = getResource().getChild(MEDIA_COLLECTION);
 		CarouselItem item = null;
 		if(mediaCollectionR != null) {
@@ -39,48 +37,15 @@ public class MediaCollection extends WCMUsePojo {
 				if(properties.containsKey("name")) {
 					item = new CarouselItem(getGeneratedId(),properties.get("name", String.class), properties.get("mediaType", String.class));
 					editViewItems.add(item);
-				}
-			}
-		}
-	}
-
-	private void setPreviewItems() {
-		previewItems = new ArrayList<List<MediaItem>>();
-		List<MediaItem> groupItems = new ArrayList<MediaItem>();
-		Resource mediaCarouselR = getResource();
-		boolean isFirst = true;
-		int index = 0;
-		Video aVideo = null;
-		Audio aAudio = null;
-		if(mediaCarouselR != null) {
-			Iterable<Resource> medias = mediaCarouselR.getChildren();
-			for(Resource aMedia : medias) {
-				if(aMedia.getName().equalsIgnoreCase(MEDIA_COLLECTION)) {
-					continue;
-				}
-				if(aMedia.isResourceType(VIDEO_RESOURCE_TYPE)) {
-					aVideo = aMedia.adaptTo(Video.class);
 					if(isFirst) {
-						firstItem = new MediaItem(VIDEO, aVideo, null);
+						firstItem = item;
 						isFirst = false;
-					}else {
-						groupItems.add(new MediaItem(VIDEO, aVideo, null));
-						if(groupItems.size() == 2) {
-							previewItems.add(groupItems);
-							groupItems = new ArrayList<MediaItem>();
-						}
+						continue;
 					}
-				}else {
-					aAudio = aMedia.adaptTo(Audio.class);
-					if(isFirst) {
-						firstItem = new MediaItem(AUDIO, null, aAudio);
-						isFirst = false;
-					}else {
-						groupItems.add(new MediaItem(AUDIO, null, aAudio));
-						if(groupItems.size() == 2) {
-							previewItems.add(groupItems);
-							groupItems = new ArrayList<MediaItem>();
-						}
+					groupItems.add(item);
+					if(groupItems.size() == 2) {
+						previewItems.add(groupItems);
+						groupItems = new ArrayList<CarouselItem>();
 					}
 				}
 			}
@@ -90,7 +55,7 @@ public class MediaCollection extends WCMUsePojo {
 		}
 	}
 
-    public MediaItem getFirstItem() {
+    public CarouselItem getFirstItem() {
         return firstItem;
     }
 
@@ -98,7 +63,7 @@ public class MediaCollection extends WCMUsePojo {
 		return editViewItems;
 	}
 
-	public List<List<MediaItem>> getPreviewItems(){
+	public List<List<CarouselItem>> getPreviewItems(){
 		return previewItems;
 	}
 }

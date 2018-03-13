@@ -45,14 +45,10 @@ public class Audio {
 	@Optional
 	private String audioText;
 
-	private String imageUrl;
-
 	@PostConstruct
 	protected void init() {
 	   if (StringUtils.isNotEmpty(audioUrl) && !"#".equals(audioUrl)) {
 		   audioUrl = LinkUtils.externalize(audioUrl);
-		   // create image URL
-           imageUrl = LinkUtils.getYouTubeVideoThumbnail(audioUrl);
 		}
 	}
 
@@ -66,9 +62,5 @@ public class Audio {
 
 	public String getAudioText() {
 		return audioText;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
 	}
 }

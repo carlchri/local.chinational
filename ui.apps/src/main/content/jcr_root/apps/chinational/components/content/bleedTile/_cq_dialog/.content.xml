@@ -35,7 +35,7 @@
                                                     <backgroundColor
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                            colorsPath="/etc/config/chinational/components/colorpicker/herobackgroundcolorpicker"
+                                                            colorsPath="/etc/config/chinational/components/colorpicker/bleedtilebackgroundcolorpicker"
                                                             fieldDescription="Click on the color box to choose a different color for the photo band background"
                                                             fieldLabel="Background Color"
                                                             freestylePalette="{Boolean}true"
