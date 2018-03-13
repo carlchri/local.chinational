@@ -1,0 +1,27 @@
+<sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<div class="carousel-item item ">
+    <div class="row">
+
+    </div>
+    <div class="flex-box">
+        <div class="carousel-description carousel-image">
+            <div class="main-player">
+                <div class="v-container">
+                    <img src="">
+                    <div class="link-wrapper">
+                        <a class="video-button-small" id="audio" video-url="${audio.audioUrl}" style="cursor: pointer;">
+                            <i class="icon-play-small"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="gutter-top">
+                    <span class="main-play-title">${audio.sectionHeading}</span>
+                    <span class="caption">${audio.audioText}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
+

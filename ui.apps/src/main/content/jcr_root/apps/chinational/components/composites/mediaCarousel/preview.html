@@ -1,34 +1,27 @@
-<sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"></sly>
-<div class="intro herointro">
-    <div>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
+<div class="cus-curosal pstn-reltv">
+    <div class="cus-item active"></div>
 
-                <sly data-sly-list.item="${heroCollection.items}">
-                    <div data-sly-test = "${itemList.first}" class="item active">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
+    <div class="owl-carousel owl-theme">
+        <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.name @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
+        <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.name @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
+
+        <sly data-sly-list.groups="${mediaCollection.previewItems}">
+            <div class="carousel-item item" style="width:700px">
+                <div class="col-md-4">
+                    <div class="flex-box">
+                        <div class="carousel-description carousel-image">
+                            <sly data-sly-repeat="${groups}">
+                                <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
+                                <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
+                                <sly data-sly-test="${itemList.first}">
+                                    <br>
+                                </sly>
+                            </sly>
+                        </div>
                     </div>
-                    <div data-sly-test = "${itemList.first}" class="item">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
-                    </div>
-                </sly>
+                </div>
             </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        </sly>
     </div>
 </div>
