@@ -10,6 +10,9 @@
 .location div.small-wrapper {
   margin: 0 0 20px 0;
 }
+.location div.link-wrapper {
+  margin: 0 0 20px 0;
+}
 .location .row {
   margin-bottom: 0;
 }
@@ -18,27 +21,28 @@
   height: 400px;
   width: 100%;
 }
-.location .txt-address span,
-.location .txt-address a {
+.location .txt-address span {
   margin: 0 0 0 40px;
 }
-.location a.learn-more-btn {
-  margin: 0;
+.location a.learn-more-btn span,
+.location a.learn-more-btn a {
+  margin: 0 0 0 40px;
+  display: inline-block;
 }
-.location a.learn-more-btn span {
-  margin: 0 0 0 0;
-}
-.location .hours-icon:before {
+.location .icon-hours:before {
   margin: -2px 0 0 -40px;
 }
-.location .address-icon:before {
+.location .icon-location:before {
   margin: -2px 0 0 -40px;
 }
-.location .phone-icon:before {
+.location .icon-call:before {
   margin: -2px 0 0 -40px;
 }
-.location .guide-icon:before {
+.location .icon-download:before {
   margin: -2px 0 0 0px;
+}
+.location .icon-download a {
+  margin: 0 0 0 40px;
 }
 .in .location {
   display: none;

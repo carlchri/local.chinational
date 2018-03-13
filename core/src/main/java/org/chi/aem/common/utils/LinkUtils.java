@@ -40,15 +40,26 @@ public final class LinkUtils {
         return path != null && path.startsWith("/") && !path.startsWith("//");
     }
 
+    public static String getLastPartOfURLOrPath(String url) {
+        String lastPart = null;
+        if (url != null) {
+            Pattern pattern = Pattern.compile(REGEX_PATTERN);
+            Matcher matcher = pattern.matcher(url);
+            if (matcher.find()) {
+                lastPart = matcher.group(1);
+            }  else {
+                LOGGER.error("No match found for lastPart in url: " + url);
+            }
+        }
+        return lastPart;
+    }
+
     public static String getYouTubeVideoThumbnail(String videoUrl) {
         String imageUrl = null;
         if (videoUrl != null) {
-            Pattern pattern = Pattern.compile(REGEX_PATTERN);
-            Matcher matcher = pattern.matcher(videoUrl);
-            if (matcher.find()) {
-                imageUrl = IMAGE_URL_PREFIX + matcher.group(1) + IMAGE_URL_SUFFIX;
-            } else {
-                LOGGER.error("No match found for image in videoURL: " + videoUrl);
+            String lastPart = getLastPartOfURLOrPath(videoUrl);
+            if (lastPart != null) {
+                imageUrl = IMAGE_URL_PREFIX + lastPart + IMAGE_URL_SUFFIX;
             }
         }
         return imageUrl;
