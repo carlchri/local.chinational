@@ -1,34 +1,79 @@
-<sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"></sly>
-<div class="intro herointro">
-    <div>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
+<div class="owl-carousel owl-theme owl-loaded owl-drag">
 
-                <sly data-sly-list.item="${heroCollection.items}">
-                    <div data-sly-test = "${itemList.first}" class="item active">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
+    <div class="owl-stage-outer owl-height" style="height: 306px;">
+        <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0.25s; width: 1492px;">
+            <sly data-sly-test="${mediaCollection.firstItem}">
+                <p>this is first item</p>
+                <div class="owl-item active" style="width: 343px; margin-right: 30px;">
+                    <div class="carousel-item item ">
+                        <div class="row"></div>
+                        <div class="flex-box">
+                            <div class="carousel-description carousel-image">
+                                <div class="main-player">
+                                    <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}">
+                                        <div class="v-container">
+                                            <img src="${mediaCollection.firstItem.video.imageUrl}">
+                                            <div class="link-wrapper">
+                                                <a class="video-button-small" id="video" video-url="${mediaCollection.firstItem.video.videoUrl}" style="cursor: pointer;">
+                                                    <i class="icon-play-small"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="gutter-top">
+                                            <span class="main-play-title">${mediaCollection.firstItem.video.sectionHeading}</span>
+
+                                            <span class="caption">${mediaCollection.firstItem.video.videoText}</span>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}">
+                                        <p>TODO: audio markup here</p>
+                                    </sly>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div data-sly-test = "${itemList.first}" class="item">
-                        <div data-sly-resource="${item.name @ resourceType='chinational/components/structure/hero'}"/>
+                </div>
+            </sly>
+        <sly data-sly-list.groups="${mediaCollection.previewItems}">
+            <p>groups index: ${groupsList.index}</p>
+            <div class="owl-item active" style="width: 343px; margin-right: 30px;">
+                <div class="carousel-item item" style="width:700px">
+                    <div class="col-md-4">
+                        <div class="flex-box">
+                            <div data-sly-repeat="${groups}" class="carousel-description carousel-image">
+                                <p>items index: ${itemList.index}</p>
+                                <sly data-sly-test="${item.type == 'video'}">
+                                    <div class="sub-Thumbs mr-10">
+                                        <div class="video-container">
+                                            <img src="${item.video.imageUrl}">
+                                        </div>
+                                        <span class="thumb-titles">${item.video.sectionHeading}</span>
+                                    </div>
+                                </sly>
+                                <sly data-sly-test="${item.type == 'audio'}">
+                                    <div class="sub-Thumbs mr-10">
+                                        <div class="video-container">
+                                            <img src="${item.audio.imageUrl}">
+                                        </div>
+                                        <span class="thumb-titles">${item.audio.sectionHeading}</span>
+                                    </div>
+                                </sly>
+                                <sly data-sly-test="${itemList.first}">
+                                    <br>
+                                </sly>
+                            </div>
+                        </div>
                     </div>
-                </sly>
+                </div>
             </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        </sly>
         </div>
     </div>
+    <div class="owl-nav">
+        <div class="owl-prev disabled">prev</div>
+        <div class="owl-next">next</div>
+    </div>
+    <div class="owl-dots disabled"></div>
 </div>

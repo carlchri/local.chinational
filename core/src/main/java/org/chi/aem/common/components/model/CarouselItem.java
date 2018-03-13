@@ -9,6 +9,8 @@ public class CarouselItem {
     private String name;
     private String type;
 
+    public CarouselItem(){}
+
     public CarouselItem(String id, String name, String type) {
         this.id = id;
         this.type = type;
