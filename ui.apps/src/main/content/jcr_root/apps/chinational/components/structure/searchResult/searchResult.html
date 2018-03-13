@@ -5,7 +5,7 @@
     <ul>
         <sly data-sly-list="${searchResult.results}">
             <li>
-                <a class="bold-link" href="${item.path}">
+                <a class="bold-link" href="${item.path @ extension = 'html'}">
                     ${item.title || item.path}
                 </a>
             </li>
@@ -13,7 +13,7 @@
     </ul>
 
     <div class="pagination" data-sly-list="${searchResult.pages}">
-        <a href="${currentPage.path}.html?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
+        <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
     </div>
 </div>
 
