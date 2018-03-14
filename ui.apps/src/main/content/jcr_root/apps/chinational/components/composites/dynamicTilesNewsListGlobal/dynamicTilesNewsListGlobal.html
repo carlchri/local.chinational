@@ -17,8 +17,10 @@
                     </div>
                     
                     <div class="blog-content pstn-reltv">
-                        <span class="blog-title dblock txt-green">${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}</span>
-                        <span class="blog-date txt-green"
+                        <span class="blog-title dblock txt-green tiles_heading_site_color">
+                        	${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}
+                        </span>
+                        <span class="blog-date txt-green tiles_heading_site_color"
                               data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=featuredNews.properties.publishDate, dateFormat='MMM dd, YYYY'}">
                                  ${formatter.formattedDate}
                         </span>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <colors jcr:primaryType="nt:unstructured">
+        <orange
+            jcr:primaryType="nt:unstructured"
+            text="Orange"
+            value="#F2A900"/>
+        <darkPastelGreen
+            jcr:primaryType="nt:unstructured"
+            text="Dark Pastel Green"
+            value="#00B140"/>
+        <irisBlue
+            jcr:primaryType="nt:unstructured"
+            text="Iris Blue"
+            value="#00A9E0"/>
+    </colors>
+</jcr:root>

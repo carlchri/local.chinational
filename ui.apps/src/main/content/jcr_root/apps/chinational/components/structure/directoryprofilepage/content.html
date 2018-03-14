@@ -8,10 +8,10 @@
         	<img src="${pageProperties.imageSrc @ context='unsafe'}" alt="Physician Image">
 		</div>
         <div class="tile-desc">
-            <span class="small-heading">${pageProperties.physicianName}</span>
+            <span class="small-heading heading_site_color">${pageProperties.physicianName}</span>
             <p>${pageProperties.physicianExpertise}</p>
             <div class="req-app" data-sly-test="${!pageProperties.buttonNotReqd}">
-				<button type="button" class="btn btn-primary">${pageProperties.buttonText || 'REQUEST APPOINTMENT'}</button>            
+				<button type="button" class="btn btn-primary search_button_site_color">${pageProperties.buttonText || 'REQUEST APPOINTMENT'}</button>            
             </div>
         </div>
 	</div>
