@@ -27,11 +27,17 @@ public class FooterLinkCollection extends WCMUsePojo {
 			.getLogger(FooterLinkCollection.class);
 
 	private static final String ITEMS = "items";
+	private static final String PROP_LINK_HEADING = "linkHeading";
 
 	private List<Link> items = new ArrayList<Link>();
+	private String linkHeading;
 
 	public List<Link> getItems() {
 		return items;
+	}
+
+	public String getLinkHeading() {
+		return linkHeading;
 	}
 
 	@Override
@@ -43,11 +49,15 @@ public class FooterLinkCollection extends WCMUsePojo {
 		LOGGER.info("getCurrentDesign().getPath - " + getCurrentDesign().getPath());
 		// get resource from basepage, else return the one at style
 		Resource res = DesignUtils.getDesignResource(getResourceResolver(), getCurrentDesign(), getCurrentStyle());
-
-		if (res != null && res.hasChildren()) {
+		if (res != null ) {
 			LOGGER.info("***resource=" + res.getName());
 			LOGGER.info("***resource path=" + res.getPath());
-			populateModel(items, res.getChild(ITEMS));
+			if (res.getValueMap() != null) {
+				linkHeading = res.getValueMap().get(PROP_LINK_HEADING, "");
+			}
+			if (res.hasChildren()) {
+				populateModel(items, res.getChild(ITEMS));
+			}
 		}
 	}
 
