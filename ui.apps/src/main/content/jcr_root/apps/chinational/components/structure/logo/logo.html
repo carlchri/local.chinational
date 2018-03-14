@@ -16,7 +16,7 @@
 <sly data-sly-use.siteColors="org.chi.aem.common.components.model.SiteColorsCollection">
 <style>
 	<sly data-sly-list.colorsIterator="${siteColors.colorsMap}">
-            .${siteColors.colorsMap[colorsIterator]["colorClass"] @ context="styleToken"} {
+            .${siteColors.colorsMap[colorsIterator]["colorClass"] @ context="unsafe"} {
                 ${siteColors.colorsMap[colorsIterator]["colorStyle"] @ context="styleToken"}: ${siteColors.colorsMap[colorsIterator]["colorValue"] @ context="styleToken"};
             }
     </sly>

@@ -5,9 +5,9 @@
 </div>
 
 <div class="blog-content pstn-reltv">
-	<span class="blog-title dblock txt-green">${properties.headingText}</span>
+	<span class="blog-title dblock txt-green tiles_heading_site_color">${properties.headingText}</span>
     <sly data-sly-test="${properties.enterDate}">
-		<span class="blog-date txt-green" data-sly-test="${!properties.dateNotRequired}"
+		<span class="blog-date txt-green tiles_heading_site_color" data-sly-test="${!properties.dateNotRequired}"
 			  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=properties.enterDate, dateFormat='MMM dd, YYYY'}">
 	          ${formatter.formattedDate}
 		</sly>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <colors jcr:primaryType="nt:unstructured">
+        <mariner
+            jcr:primaryType="nt:unstructured"
+            text="Mariner"
+            value="#426DA9"/>
+        <bondiBlue
+            jcr:primaryType="nt:unstructured"
+            text="Bondi Blue"
+            value="#0097A9"/>
+        <freeSpeechAquamarine
+            jcr:primaryType="nt:unstructured"
+            text="Free Speech Aquamarine"
+            value="#009775"/>
+    </colors>
+</jcr:root>
