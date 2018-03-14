@@ -67,9 +67,9 @@
                             </column>
                         </items>
                     </logoSettings>
-                    <siteColorsTab
+                    <siteColorsTab1
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Site Colors Settings"
+                        jcr:title="Site Colors Tab1"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -81,24 +81,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/well">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <headingColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/headingcolorpicker"
-                                                fieldDescription="Click on the square box to choose a different color for the Heading Text"
-                                                fieldLabel="Heading Text Color"
-                                                freestylePalette="{Boolean}true"
-                                                name="./headingTextColor"/>
-                                            <headingColorClass
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./headingColorClass"
-                                                value="heading_site_color"/>
-                                            <headingColorStyle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./headingColorStyle"
-                                                value="color"/>
                                             <solidButtonColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
@@ -135,12 +117,270 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                                 name="./outlinedColorStyle"
                                                 value="color"/>
+                                            <searchButtonColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/searchbuttoncolorpicker"
+                                                fieldDescription="Click on the color box to choose a different color for the search button"
+                                                fieldLabel="Search Button Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./searchButtonColor"/>
+                                            <searchButtonColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./searchButtonColorClass"
+                                                value="search_button_site_color"/>
+                                            <searchButtonColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./searchButtonColorStyle"
+                                                value="background-color"/>
+                                            <videoPlayColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/videoplaycolorpicker"
+                                                fieldDescription="Click on the color box to choose a different color for the Videp Play Button"
+                                                fieldLabel="Video Play Button Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./videoPlayColor"/>
+                                            <videoPlayColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./videoPlayColorClass"
+                                                value="video-button"/>
+                                            <videoPlayColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./videoPlayColorStyle"
+                                                value="background-color"/>
+                                            <arrowCircleColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/arrowcirclecolorpicker"
+                                                fieldDescription="Click on the color box to choose a different color for the Carousel Arrow Circle"
+                                                fieldLabel="Carousel Arrow Circle Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./arrowCircleColor"/>
+                                            <arrowCircleColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./arrowCircleColorClass"
+                                                value="owl-theme .owl-nav [class*='owl-']"/>
+                                            <arrowCircleColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./arrowCircleColorStyle"
+                                                value="background-color"/>
                                         </items>
                                     </well>
                                 </items>
                             </column>
                         </items>
-                    </siteColorsTab>
+                    </siteColorsTab1>
+                    <siteColorsTab2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Site Colors Tab2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <headingColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/headingcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Heading Text"
+                                                fieldLabel="Heading Text Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./headingTextColor"/>
+                                            <headingColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./headingColorClass"
+                                                value="heading_site_color"/>
+                                            <headingColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./headingColorStyle"
+                                                value="color"/>
+                                            <tilesHeadingColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/tilesheadingcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Tiles Heading"
+                                                fieldLabel="Tiles Heading Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./tilesHeadingColor"/>
+                                            <tilesHeadingColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./tilesHeadingColorClass"
+                                                value="tiles_heading_site_color"/>
+                                            <tilesHeadingColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./tilesHeadingColorStyle"
+                                                value="color"/>
+                                            <accordionOpenHeadingColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/accordionopencolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Accordion Open Heading "
+                                                fieldLabel="Accordion Open Heading Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./accordionOpenHeadingColor"/>
+                                            <accordionOpenHeadingColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionOpenHeadingColorClass"
+                                                value="accordion-header"/>
+                                            <accordionOpenHeadingColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionOpenHeadingColorStyle"
+                                                value="color"/>
+                                            <accordionOpenArrowColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionOpenArrowColorClass"
+                                                value="accordion-arrow"/>
+                                            <accordionOpenArrowColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionOpenArrowColorStyle"
+                                                value="border-color"/>
+                                            <accordionCloseHeadingColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/accordionclosecolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Accordion Close Heading "
+                                                fieldLabel="Accordion Close Heading Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./accordionCloseHeadingColor"/>
+                                            <accordionCloseHeadingColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionCloseHeadingColorClass"
+                                                value="collapsed .accordion-header"/>
+                                            <accordionCloseHeadingColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionCloseHeadingColorStyle"
+                                                value="color"/>
+                                            <accordionCloseArrowColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionCloseArrowColorClass"
+                                                value="collapsed .accordion-arrow"/>
+                                            <accordionCloseArrowColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./accordionCloseArrowColorStyle"
+                                                value="border-color"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </siteColorsTab2>
+                    <siteColorsTab3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Site Colors Tab3"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <secNavbgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/secnavcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Secondary Navigation background."
+                                                fieldLabel="Secondary Navigation Background Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./secNavbgColor"/>
+                                            <secNavbgColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./secNavbgColorClass"
+                                                value="sec_nav_bg_site_color"/>
+                                            <secNavbgColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./secNavbgColorStyle"
+                                                value="background-color"/>
+                                            <quoteTextColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/quotetextcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Quote Text"
+                                                fieldLabel="Quote Text Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./quoteTextColor"/>
+                                            <quoteTextColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./quoteTextColorClass"
+                                                value="quote_text_site_color"/>
+                                            <quoteTextColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./quoteTextColorStyle"
+                                                value="color"/>
+                                            <linkTextColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/linktextcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Link Text"
+                                                fieldLabel="Link Text Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./linkTextColor"/>
+                                            <linkTextColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./linkTextColorClass"
+                                                value="small_text_link_site_color"/>
+                                            <linkTextColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./linkTextColorStyle"
+                                                value="color"/>
+                                            <seperatorColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/seperatorcolorpicker"
+                                                fieldDescription="Click on the square box to choose a different color for the Seperator"
+                                                fieldLabel="Seperator Color [Right Rail]"
+                                                freestylePalette="{Boolean}true"
+                                                name="./seperatorColor"/>
+                                            <seperatorColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./seperatorColorClass"
+                                                value="right-rail .red-border"/>
+                                            <seperatorColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./seperatorColorStyle"
+                                                value="border-color"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </siteColorsTab3>
                 </items>
             </tabs>
         </items>
