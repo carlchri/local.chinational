@@ -37,14 +37,16 @@ jQuery(document).ready(function(){
 	});
 	$('#myDropdown').on('show.bs.dropdown', function () {
   // do something…
-	})
+	});
 	var owl = $('.owl-carousel');
 	owl.owlCarousel({
-		margin: 30,
 		nav: true,
 		loop: false,
 		dots: false,
 		autoHeight:true,
+        loop: true,
+        autoWidth: true,
+        items: 5,
 		responsive: {
 			0: {
 				items: 1
@@ -56,7 +58,7 @@ jQuery(document).ready(function(){
 				items: 3
 			}
 		}
-	})
+	});
 	
 	/* Read more function */
 	$('.more').each(function() {

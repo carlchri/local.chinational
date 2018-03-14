@@ -9,6 +9,9 @@
 	height:100%;
 	margin: 0 0 15px 0;
 }
+.sub-Thumbs .video img {
+	margin: 0;
+}
 .gutter-top {
 	margin-top:10px;
 }
