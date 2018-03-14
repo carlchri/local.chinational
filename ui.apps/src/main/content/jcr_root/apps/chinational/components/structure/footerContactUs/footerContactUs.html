@@ -1,8 +1,9 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"
      data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"/>
 
-  <h4 id="message"></h4>
-  <form class="row">
+
+  <h4 id="message" data-sly-test="${contactUs.nlButtonText}"></h4>
+  <form class="row" data-sly-test="${contactUs.nlButtonText}">
     <div class="col-sm-6 col-md-9">
       <div class="input-box">
         <input type="email" id="senderEmailAddress" name="senderEmailAddress" placeholder="${contactUs.nlPlaceholderText}">
@@ -36,4 +37,4 @@
     </div>
   </div>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=!currentStyle.heading}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!contactUs.heading}"></sly>

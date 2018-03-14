@@ -36,7 +36,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Section Heading"
-                                                        fieldDescription="This text will be used as heading for the videosection"
+                                                        fieldDescription="This text will be used as heading for the video section"
                                                         fieldLabel="Section Heading:"
                                                         name="./sectionHeading"/>
                                                     <rightRail
@@ -59,7 +59,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                         emptyText=""
-                                                        fieldDescription="This text is shown below the video video"
+                                                        fieldDescription="This text is shown below the video"
                                                         fieldLabel="Video Text"
                                                         name="./videoText"
                                                         required="{Boolean}false"/>

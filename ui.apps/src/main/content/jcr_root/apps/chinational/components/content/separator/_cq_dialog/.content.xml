@@ -47,7 +47,7 @@
                                                                 value="darkgrey"/>
                                                             <red
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Red Separator"
+                                                                text="Right Rail Separator"
                                                                 value="red"/>
                                                         </items>
                                                     </separatorColor>
