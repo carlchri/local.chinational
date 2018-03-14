@@ -46,7 +46,7 @@ jQuery(document).ready(function(){
 		autoHeight:true,
         loop: true,
         autoWidth: true,
-        items: 5,
+        items: 5,	
 		responsive: {
 			0: {
 				items: 1
@@ -59,6 +59,27 @@ jQuery(document).ready(function(){
 			}
 		}
 	});
+
+	/* Audio Player */
+	$('#audio-modal').on('hidden.bs.modal', function() {
+    	console.log("Hello Simon");
+        var ply = document.getElementById('audio-player');
+
+        var oldSrc = ply.src; // just to remember the old source
+
+        ply.src = "";
+    });
+
+    $('.audio-player-button').click(function(){
+    	console.log('Audio Transfer');
+    	var audio_file = $(this).data('file');
+    	$('#audio-player').attr('src', audio_file);
+    	console.log("audio_file: "+audio_file);
+    });
+
+    $('#audio-modal').on('show.bs.modal', function() {
+        console.log("Hello Simon Modal Show");
+    });
 	
 	/* Read more function */
 	$('.more').each(function() {

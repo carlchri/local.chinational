@@ -3,6 +3,27 @@
   background: #f8f7f7;
   padding: 15px;
   z-index: 0;
+  /*.icon-hours {
+ 		&:before {
+ 			margin: -2px 0 0 -40px;
+	 	}
+	 }
+ 	.icon-location {
+ 		&:before {
+ 			margin: -2px 0 0 -40px;
+	 	}
+ 	}
+ 	.icon-call {
+ 		&:before {
+ 			margin: -2px 0 0 -40px;
+	 	}
+ 	}
+ 	.icon-download {
+ 		margin: 0 0 0 40px;
+ 		&:before {
+ 			margin: -2px 0 0 0px;
+	 	}
+ 	}*/
 }
 .location .in {
   display: none;
@@ -21,28 +42,19 @@
   height: 400px;
   width: 100%;
 }
-.location .txt-address span {
-  margin: 0 0 0 40px;
+.location .txt-address {
+  /*span {
+			margin: 0 0 0 40px; 		
+		}*/
 }
 .location a.learn-more-btn span,
 .location a.learn-more-btn a {
   margin: 0 0 0 40px;
   display: inline-block;
 }
-.location .icon-hours:before {
-  margin: -2px 0 0 -40px;
-}
-.location .icon-location:before {
-  margin: -2px 0 0 -40px;
-}
-.location .icon-call:before {
-  margin: -2px 0 0 -40px;
-}
-.location .icon-download:before {
-  margin: -2px 0 0 0px;
-}
-.location .icon-download a {
-  margin: 0 0 0 40px;
+.location .small-icons {
+  width: 31px;
+  height: 35px;
 }
 .in .location {
   display: none;

@@ -3,8 +3,9 @@
     /*width: 180px;*/
 }
 
-.thumb-titles {
-    margin: 10px 0px 0px 0px;
+.thumb-titles,
+.audio-thumb-titles {
+    margin: 6px 0px 0px 0px;
     color: #426da9;
     font-weight: 600;
     overflow: hidden;
@@ -12,6 +13,10 @@
     text-overflow: ellipsis;
     width: 100%;
     display: inline-block;
+}
+
+.audio-thumb-titles {
+    margin: 3px 0 0 0;
 }
 
 .opa-hide {
@@ -176,6 +181,7 @@
 .no-video {}
 
 
+
 /*Popup Styles*/
 
 .modal {
@@ -202,6 +208,7 @@
 }
 
 
+
 /* Modal Content */
 
 .modal-content {
@@ -215,6 +222,7 @@
 .modal-content .close {
     margin-top: 22px;
 }
+
 
 
 /* End Of Popup Styles*/
@@ -231,7 +239,14 @@
     margin-right: 5px;
 }
 
+.owl-height {
+    min-height: 305px;
+}
+
 @media (max-width:767px) {
+    .owl-height {
+        min-height: 150px;
+    }
     .carousel-item {
         padding-left: 0px;
     }
