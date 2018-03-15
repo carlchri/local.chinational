@@ -10,8 +10,11 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import com.day.cq.dam.api.Asset;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
@@ -20,31 +23,60 @@ import com.day.cq.wcm.api.PageManager;
 public class PageListItem {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PageListItem.class);
+    private static final String DC_TITLE = "dc:title";
+    private static final String DC_DESCRIPTION = "dc:description";
 
     protected SlingHttpServletRequest request;
     protected Page page;
+    protected Asset asset;
 
-    public PageListItem(@Nonnull SlingHttpServletRequest request, @Nonnull Page page) {
+    public PageListItem(@Nonnull SlingHttpServletRequest request, @Nonnull Resource resource) {
         this.request = request;
-        this.page = page;
+        Page page = getPage(resource);
+        if (page != null) {
+            this.page = page;
+        }else {
+            Asset asset = getAsset(resource);
+            this.asset = asset;
+        }
     }
 
     public String getTitle() {
-        String title = page.getNavigationTitle();
-        if (title == null) {
-            title = page.getPageTitle();
-        }
-        if (title == null) {
-            title = page.getTitle();
-        }
-        if (title == null) {
-            title = page.getName();
+        String title = "";
+        if(page != null) {
+            title = page.getNavigationTitle();
+            if (title == null) {
+                title = page.getPageTitle();
+            }
+            if (title == null) {
+                title = page.getTitle();
+            }
+            if (title == null) {
+                title = page.getName();
+            }
+        }else {
+            if(asset.getMetadataValue(DC_TITLE) != null) {
+                title = asset.getMetadataValue(DC_TITLE).toString();
+            }
         }
         return title;
     }
 
     public String getDescription() {
-        return page.getDescription();
+        String description = "";
+        if(page != null) {
+            String templateTitle = page.getTemplate().getTitle();
+            if (templateTitle.contains("Blogs Details Page") || templateTitle.contains("News Details Page")) {
+                description = page.getProperties().get("excerpt", "");
+            }else {
+                description = page.getDescription();
+            }
+        }else {
+            if(asset.getMetadataValue(DC_DESCRIPTION) != null) {
+                description = asset.getMetadataValue(DC_DESCRIPTION);
+            }
+        }
+        return description;
     }
 
     public Calendar getLastModified() {
@@ -52,7 +84,31 @@ public class PageListItem {
     }
 
     public String getPath() {
-        return page.getPath();
+        String path = "";
+        if(page != null) {
+            path = page.getPath() + ".html";
+        }else {
+            path = asset.getPath();
+        }
+        return path;
+    }
+
+    private Page getPage(Resource resource) {
+        if (resource != null) {
+            ResourceResolver resourceResolver = resource.getResourceResolver();
+            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+            if (pageManager != null) {
+                return pageManager.getContainingPage(resource);
+            }
+        }
+        return null;
+    }
+
+    private Asset getAsset(Resource resource) {
+        if (resource != null) {
+            return resource.adaptTo(Asset.class);
+        }
+        return null;
     }
 
     private Page getRedirectTarget(@Nonnull Page page) {
