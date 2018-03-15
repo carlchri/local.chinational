@@ -3,27 +3,6 @@
   background: #f8f7f7;
   padding: 15px;
   z-index: 0;
-  /*.icon-hours {
- 		&:before {
- 			margin: -2px 0 0 -40px;
-	 	}
-	 }
- 	.icon-location {
- 		&:before {
- 			margin: -2px 0 0 -40px;
-	 	}
- 	}
- 	.icon-call {
- 		&:before {
- 			margin: -2px 0 0 -40px;
-	 	}
- 	}
- 	.icon-download {
- 		margin: 0 0 0 40px;
- 		&:before {
- 			margin: -2px 0 0 0px;
-	 	}
- 	}*/
 }
 .location .in {
   display: none;
@@ -49,7 +28,7 @@
 }
 .location a.learn-more-btn span,
 .location a.learn-more-btn a {
-  margin: 0 0 0 40px;
+  /*margin: 0 0 0 40px;*/
   display: inline-block;
 }
 .location .small-icons {
