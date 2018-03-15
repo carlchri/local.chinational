@@ -585,7 +585,7 @@ h6 {
     margin-top: 5px;
 }
 
-.red-border {
+.right-rail .red-border {
     border-color: #e1523d;
 }
 
@@ -805,6 +805,19 @@ body {
     text-align: center;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.blue-solid {
+    background: #426da9;
+    color: #fff;
+    border-color: #426da9;
+}
+
+.blue-solid:hover, .blue-solid:active, .blue-solid:focus {
+    background-color: #0097a9;
+    color: #fff;
+    text-decoration: none;
+    border-color: #0097a9;
 }
 
 .margin-bottom-35 {
@@ -1086,6 +1099,10 @@ img {
     font-style: italic;
     font-size: 14px;
     padding: 8px 0 20px 0;
+}
+
+.calloutTiles .callOuts {
+    padding: 0 20px;
 }
 
 @media (max-width:1024px) {

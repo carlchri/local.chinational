@@ -8,11 +8,14 @@
   padding-bottom:35px;
   overflow: hidden;
 }
+.category-item .small-heading {
+  line-height: 1;
+}
 .event-content {
   margin:0 140px 0 0;
 }
 .more-events a {
-  margin-left:84px;
+  margin-left:105px;
 }
 @media (min-width:768px) {
   .event-image {
@@ -33,6 +36,13 @@
   .more-events {
     flex:1;
   }
+}
+.category_icon.iconNotRequired {
+  display: none;
+}
+
+.category_content .iconNotRequired {
+
 }
 @media (max-width:992px) {
 	.event-content {

@@ -18,6 +18,7 @@ js/newslist.js
 js/blogslist.js
 js/physiciantiles.js
 js/owl.carousel.js
+js/audio.popup.js
 js/video.popup.js
 js/popper.js
 js/footerContactUs.js
