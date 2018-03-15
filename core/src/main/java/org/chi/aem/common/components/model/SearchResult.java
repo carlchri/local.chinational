@@ -6,9 +6,7 @@ import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
-import com.day.cq.wcm.api.NameConstants;
 import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -22,27 +20,30 @@ import java.util.*;
 public class SearchResult extends WCMUsePojo {
 
     protected static final String PARAM_FULLTEXT = "fulltext";
-    protected static final String SEARCH_RESULT_NODE_NAME = "searchResult";
     private static final String PARAM_PAGE = "page";
     private static final String PREDICATE_FULLTEXT = "fulltext";
-    private static final String PREDICATE_TYPE = "type";
-    private static final String PREDICATE_PATH = "path";
     private static final String PN_RESULTS_SIZE = "resultsSize";
-    private static final String PN_RESULTS_OFFSET = "resultOffset";
-    private static final String PN_SEARCH_ROOT = "searchRoot";
     private static final String PN_SEARCH_TERM_MINIMUM_LENGTH = "searchTermMinimumLength";
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchResult.class);
 
-    private int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
-    private int DEFAULT_RESULT_SIZE = 10;
-    private int DEFAULT_RESULT_OFFSET = 0;
-    private String DEFAULT_SEARCH_ROOT = "/content/chinational";
+    private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
+    private static final int DEFAULT_RESULT_SIZE = 10;
+    private static final int DEFAULT_RESULT_OFFSET = 0;
+    private static final String DEFAULT_SEARCH_ROOT = "/content/chinational";
+    private static final String DEFAULT_RESULT_TYPE = "cq:Page";
+    private static final String FIRST_GROUP = "1_group.";
+    private static final String GROUP_PATH = "_group.path";
+    private static final String SECOND_GROUP = "2_group.";
+    private static final String GROUP_TYPE = "_group.type";
+    private static final String P_OR = "p.or";
 
     public List<PageListItem> results;
     public List<String> pages;
     public int resultsOffset;
     public int totalNumberPages;
     public String fulltext;
+    public List<String> searchRoots;
+    public List<String> resultTypes;
 
     @Override
     public void activate(){
@@ -56,14 +57,24 @@ public class SearchResult extends WCMUsePojo {
         int searchTermMinimumLength = DEFAULT_SEARCH_TERM_MINIM_LENGTH;
         int resultsSize = DEFAULT_RESULT_SIZE;
         int resultsOffset = DEFAULT_RESULT_OFFSET;
-        String searchRoot = DEFAULT_SEARCH_ROOT;
         List<PageListItem> results = new ArrayList<>();
 
         ValueMap valueMap = getProperties();
 
         searchTermMinimumLength = valueMap.get(PN_SEARCH_TERM_MINIMUM_LENGTH, DEFAULT_SEARCH_TERM_MINIM_LENGTH);
         resultsSize = valueMap.get(PN_RESULTS_SIZE, DEFAULT_RESULT_SIZE);
-        searchRoot = valueMap.get(PN_SEARCH_ROOT, DEFAULT_SEARCH_ROOT);
+
+        Resource resource = getResource();
+        if(resource.hasChildren()) {
+            Resource searchRootsR = resource.getChild("searchRoots");
+            if(searchRootsR != null) {
+                searchRoots = getMultiProperties(searchRootsR, "searchRoot", DEFAULT_SEARCH_ROOT);
+            }
+            Resource resultTypesR = resource.getChild("resultTypes");
+            if(resultTypesR != null) {
+                resultTypes = getMultiProperties(resultTypesR,  "resultType", DEFAULT_RESULT_TYPE);
+            }
+        }
 
         String pageString = request.getParameter(PARAM_PAGE);
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
@@ -77,9 +88,15 @@ public class SearchResult extends WCMUsePojo {
         }
 
         Map<String, String> predicatesMap = new HashMap<>();
+        for(int i = 1; i <= searchRoots.size(); i++) {
+            predicatesMap.put(FIRST_GROUP + i +  GROUP_PATH, searchRoots.get(i-1));
+        }
+        predicatesMap.put(FIRST_GROUP + P_OR, "true");
+        for(int i = 1; i <= resultTypes.size(); i++) {
+            predicatesMap.put(SECOND_GROUP + i +  GROUP_TYPE, resultTypes.get(i-1));
+        }
+        predicatesMap.put(SECOND_GROUP + P_OR, "true");
         predicatesMap.put(PREDICATE_FULLTEXT, fulltext);
-        predicatesMap.put(PREDICATE_PATH, searchRoot);
-        predicatesMap.put(PREDICATE_TYPE, NameConstants.NT_PAGE);
         PredicateGroup predicates = PredicateConverter.createPredicates(predicatesMap);
         ResourceResolver resourceResolver = request.getResource().getResourceResolver();
         Session session = resourceResolver.adaptTo(Session.class);
@@ -108,10 +125,7 @@ public class SearchResult extends WCMUsePojo {
                 for (Hit hit : hits) {
                     try {
                         Resource hitRes = hit.getResource();
-                        Page page = getPage(hitRes);
-                        if (page != null) {
-                            results.add(new PageListItem(request, page));
-                        }
+                        results.add(new PageListItem(request, hitRes));
                     } catch (RepositoryException e) {
                         LOGGER.error("Unable to retrieve search results for query.", e);
                     }
@@ -127,15 +141,20 @@ public class SearchResult extends WCMUsePojo {
         return results;
     }
 
-    private Page getPage(Resource resource) {
-        if (resource != null) {
-            ResourceResolver resourceResolver = resource.getResourceResolver();
-            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-            if (pageManager != null) {
-                return pageManager.getContainingPage(resource);
+    private List<String> getMultiProperties(Resource r, String propertyName, String defaultValue) {
+        ValueMap valueMap = null;
+        List<String> propertyValues = new ArrayList<String>();
+        if(r.hasChildren()) {
+            Iterable<Resource> itemRs = r.getChildren();
+            for(Resource item : itemRs) {
+                valueMap = item.getValueMap();
+                propertyValues.add(valueMap.get(propertyName, defaultValue));
             }
         }
-        return null;
+        if(propertyValues.isEmpty()) {
+            propertyValues.add(defaultValue);
+        }
+        return propertyValues;
     }
 
     public List<PageListItem> getResults() {
