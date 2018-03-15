@@ -12,15 +12,17 @@
                 <div class="icons-set">
                     <sly data-sly-list="${locationCollection.locationDetails}">
                         <sly data-sly-test.link="${item.linkUrl != '#'}">
-                            <div class="small-wrapper ${item.iconClass}">
+                            <div class="small-wrapper flex-box">
+                                <i class="sprite small-icons ${item.iconClass}"></i>
                                 <a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
                                     ${item.locationText}
                                 </a>
                             </div>
                         </sly>
                         <sly data-sly-test="${!link}">
-                             <div class="small-wrapper">
-                                <span class="small-txt ${item.iconClass}">${item.locationText}</span>
+                             <div class="small-wrapper flex-box">
+                                <i class="sprite small-icons ${item.iconClass}"></i>
+                                <span class="small-txt">${item.locationText}</span>
                              </div>
                         </sly>
                     </sly>
