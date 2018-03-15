@@ -5,8 +5,14 @@
     <ul>
         <sly data-sly-list="${searchResult.results}">
             <li>
-                <a class="bold-link" href="${item.path @ extension = 'html'}">
-                    ${item.title || item.path}
+                <h3>
+                    <a class="bold-link" href="${item.path}">
+                        ${item.title}
+                    </a>
+                </h3>
+                <p>${item.description}</p>
+                <a class="bold-link" href="${item.path}">
+                    ${item.path}
                 </a>
             </li>
         </sly>
