@@ -16,6 +16,7 @@ css/media-center.css
 css/modal.css
 css/other-components.css
 css/page-title-brand.css
+css/physician_tiles_list.css
 css/richtext.css
 css/quote.css
 css/special-content.css
