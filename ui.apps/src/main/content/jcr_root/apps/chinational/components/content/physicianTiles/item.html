@@ -7,7 +7,7 @@
                	<img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
             </div>
             <div class="tile-desc">
-                <a href="${item.path @ extension='html' || '#'}">
+                <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}">
 	                <span class="small-heading heading_site_color">${item.properties.physicianName}</span>
                 </a>
                 <p>${item.properties.physicianExpertise}</p>
