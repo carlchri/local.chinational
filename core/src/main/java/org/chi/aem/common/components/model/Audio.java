@@ -23,8 +23,9 @@ public class Audio {
 	public static final Logger LOGGER = LoggerFactory.getLogger(Audio.class);
 	    
 	public static final String PROP_SECTION_HEADING = "sectionHeading";
-	public static final String PROP_VIDEO_URL = "audioUrl";
-	public static final String PROP_VIDEO_TEXT = "audioText";
+	public static final String PROP_AUDIO_URL = "audioUrl";
+	public static final String PROP_AUDIO_IMAGE = "audioImage";
+	public static final String PROP_AUDIO_TEXT = "audioText";
 
 
 	@Inject
@@ -36,12 +37,17 @@ public class Audio {
 	private String sectionHeading;
 
 	@Inject
-	@Named(PROP_VIDEO_URL)
+	@Named(PROP_AUDIO_URL)
 	@Optional
 	private String audioUrl;
 
 	@Inject
-	@Named(PROP_VIDEO_TEXT)
+	@Named(PROP_AUDIO_IMAGE)
+	@Optional
+	private String audioImage;
+
+	@Inject
+	@Named(PROP_AUDIO_TEXT)
 	@Optional
 	private String audioText;
 
@@ -58,6 +64,10 @@ public class Audio {
 
 	public String getAudioUrl() {
 		return audioUrl;
+	}
+
+	public String getAudioImage() {
+		return audioImage;
 	}
 
 	public String getAudioText() {
