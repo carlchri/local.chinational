@@ -63,6 +63,77 @@
                                     </column>
                                 </items>
                             </physician_x0020_TilesSettings>
+                            <mainSettingsTab
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Carousel Settings Tab"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}false">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <headingSelection
+                                                            granite:class="cq-dialog-dropdown-showhide"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldDescription="Select Yes, if Carousel Heading is required."
+                                                            fieldLabel="Carousel Heading"
+                                                            name="./selectHeading">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <headingNotRequired
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    selected="{Boolean}true"
+                                                                    text="No, Carousel Heading Not Required."
+                                                                    value="headingNotRequired"/>
+                                                            <headingRequired
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Yes, Carousel Heading Required."
+                                                                    value="headingRequired"/>
+                                                        </items>
+                                                        <granite:data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cq-dialog-dropdown-showhide-target=".list-option-heading-showhide-target"/>
+                                                    </headingSelection>
+                                                    <carouselHeadingLabel
+                                                            granite:class="hide list-option-heading-showhide-target"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                            level="{Long}3"
+                                                            text="Enter Carousel Heading:">
+                                                        <granite:data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                showhidetargetvalue="headingRequired"/>
+                                                    </carouselHeadingLabel>
+                                                    <corouselHeading
+                                                            granite:class="list-option-heading-showhide-target"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            emptyText="Enter heading for the Carousel"
+                                                            fieldDescription="This text will be used as heading for Carousel"
+                                                            name="./carouselHeading">
+                                                        <granite:data
+                                                                jcr:primaryType="nt:unstructured"
+                                                                showhidetargetvalue="headingRequired"/>
+                                                    </corouselHeading>
+                                                    <buttonNotRequired
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this checkbox if Button at bottom is not required"
+                                                            name="./buttonNotRequired"
+                                                            text="Select if Button at bottom is Not Required"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </mainSettingsTab>
                         </items>
                     </tabs>
                 </items>
