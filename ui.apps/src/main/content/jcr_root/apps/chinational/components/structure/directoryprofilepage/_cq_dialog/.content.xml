@@ -86,6 +86,14 @@
                                         text="Select if Profile Image is not Required"
                                         uncheckedValue="false"
                                         value="true"/>
+                                    <linkToPageNotReqd
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Select this checkbox to disable the link to details page, when there is no details available for the profile on the bio page."
+                                        name="./linkToPageNotReqd"
+                                        text="Select if link to details page is not required"
+                                        uncheckedValue="false"
+                                        value="true"/>
                                     <buttonNotReqd
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
