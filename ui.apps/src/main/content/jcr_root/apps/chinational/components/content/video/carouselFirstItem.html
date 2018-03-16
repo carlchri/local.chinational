@@ -1,26 +1,51 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
-        data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<div class="carousel-item item ">
-    <div class="row"></div>
-    <div class="flex-box">
-        <div class="carousel-description carousel-image">
-            <div class="main-player">
-                <div class="v-container">
-                    <img src="${video.imageUrl}">
-                    <div class="link-wrapper">
-                        <a class="video-button-small" id="video" video-url="${video.videoUrl}" style="cursor: pointer;">
-                            <i class="icon-play-small"></i>
-                        </a>
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+    <div class="carousel-item item desktop" style="width: 452px">
+        <div class="flex-box">
+            <div class="carousel-description carousel-image">
+                <div class="main-player">
+                    <div class="v-container">
+                        <div class="video">
+                            <img src="${video.imageUrl}">
+                            <div class="link-wrapper">
+                                <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}" style="cursor: pointer;">
+                                    <i class="icon-play-small sprite"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="gutter-top">
-                    <span class="main-play-title">${video.sectionHeading}</span>
+                    <div class="gutter-top">
+                        <span class="main-play-title">${video.sectionHeading}</span>
 
-                    <span class="caption">${video.videoText}</span>
+                        <span class="caption">${video.videoText}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="carousel-item item tablet" style="width: 360px">
+        <!-- dis -->
+        <!-- <div class="carousel-item item " style="width: 360px"> -->
+        <div class="flex-box">
+            <div class="carousel-description carousel-image">
+                <div class="main-player">
+                    <div class="v-container">
+                        <div class="video">
+                            <img src="${video.imageUrl}">
+                            <div class="link-wrapper">
+                                <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
+                                    <i class="icon-play-small sprite"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gutter-top">
+                        <span class="main-play-title">${video.sectionHeading}</span>
+                        <span class="caption">${video.videoText}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
 
