@@ -1,8 +1,15 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
         data-sly-use.template="chinational/components/commons/templates.html"></sly>
-    <div class="sub-Thumbs mr-10">
+    <div class="sub-Thumbs">
         <div class="video-container">
-            <img src="${video.imageUrl}">
+            <div class="video">
+                <img src="${video.imageUrl}">
+                <div class="link-wrapper">
+                    <a class="video-button-small video_popup" id="video" video-url="https://www.youtube.com/embed/478x-4s5UF4">
+                        <i class="icon-play-small sprite"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <span class="thumb-titles">${video.sectionHeading}</span>
     </div>
