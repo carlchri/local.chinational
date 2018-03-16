@@ -1,0 +1,18 @@
+<sly data-sly-use.physicianTiles="org.chi.aem.common.components.model.PhysicianTiles"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+
+
+	<div class="tiles-wrapper">
+        <sly data-sly-list.item="${physicianTiles.listPhysicianTiles}"
+            data-sly-use.itemTemplate="item.html">
+            <sly data-sly-call="${itemTemplate.item @ list = physicianTiles, item = item, itemList = itemList}"></sly>
+        </sly>
+    </div>
+
+    <div class="row link-wrapper col-md-12" data-sly-test="${physicianTiles.listPhysicianTiles}">
+        <a class="learn-more-btn border-orange physician_list_show_more">LOAD MORE</a>
+    </div>
+
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!physicianTiles.listPhysicianTiles}"></sly>

@@ -1,0 +1,49 @@
+<sly data-sly-use.listCollection="org.chi.aem.common.components.model.PhysicianTiles"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+<div class="component">
+    <div class="row section">
+        <div class="col-sm-12">
+            <div class="margin-bottom-25">
+                <div class="padding-20">
+                    <h3 data-sly-test="${properties.selectHeading == 'headingRequired'}">
+                        ${properties.carouselHeading || 'National Leadership'}
+                    </h3>
+                    <div class="owl-carousel owl-theme" >
+                        <sly data-sly-list="${listCollection.listPhysicianTiles}">
+                            <div class="carousel-item item" >
+                                <hr>
+                                <div class="flex-box">
+                                    <div class="carousel-image" data-sly-test="${item.properties.imageSrc}">
+                                        <picture>
+                                            <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
+                                        </picture>
+                                    </div>
+                                    <div class="carousel-description">
+                                        <a href="${item.path @ extension='html' || '#'}" data-sly-test="${item.properties.physicianName}">
+                                    <span class="small-heading heading_site_color">
+                                        ${item.properties.physicianName}
+                                    </span>
+                                        </a>
+                                        <p data-sly-test="${item.properties.physicianExpertise}">${item.properties.physicianExpertise}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </sly>
+                    </div>
+
+                </div>
+            </div>
+
+            <sly data-sly-test="${listCollection.listPhysicianTiles}">
+                <div class="link-wrapper" data-sly-test="${!properties.buttonNotRequired}"
+                     data-sly-resource="${'buttonpc' @ resourceType='chinational/components/content/button'}">
+                </div>
+            </sly>
+
+        </div>
+    </div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!listCollection.listPhysicianTiles}"></sly>
