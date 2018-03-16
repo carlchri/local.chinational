@@ -1051,6 +1051,8 @@ nav {
 
 img {
     margin: 0 0 15px 0;
+    width: auto;
+    max-width: 100%;
 }
 
 .full-image img {

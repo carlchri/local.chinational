@@ -67,7 +67,7 @@
 }
 
 .show-mobile .sub-Thumbs {
-    height: 147px;
+    height: 260px;
     width: 100%;
     background-color: #e7e7e7;
     display: inline-block;
@@ -75,6 +75,7 @@
     border-width: 20px;
     border-style: solid;
     max-width: 480px;
+    text-align: center;
 }
 
 
