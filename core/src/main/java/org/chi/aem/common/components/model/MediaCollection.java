@@ -11,10 +11,14 @@ public class MediaCollection extends WCMUsePojo {
 	private List<CarouselItem> editViewItems;
 	private List<List<CarouselItem>> previewItems;
 	private CarouselItem firstItem;
+	private String sectionHeading;
 	static final String MEDIA_COLLECTION = "mediaCollection";
 
 	@Override
 	public void activate() throws Exception {
+		Resource mediaCarouselR = getResource();
+		ValueMap properties = ResourceUtil.getValueMap(mediaCarouselR);
+		sectionHeading = properties.get("sectionHeading", "");
 		setEditViewItems();
 	}
 
@@ -65,5 +69,9 @@ public class MediaCollection extends WCMUsePojo {
 
 	public List<List<CarouselItem>> getPreviewItems(){
 		return previewItems;
+	}
+
+	public String getSectionHeading() {
+		return sectionHeading;
 	}
 }

@@ -1,7 +1,7 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
 <div>
-<h3>Media Carousel Edit View</h3>
+<h3>${mediaCollection.sectionHeading || 'Media Carousel Edit View'}</h3>
 <div data-sly-list.item="${mediaCollection.editViewItems}">
     <h3>${item.name}</h3>
     <div data-sly-test="${item.type == 'video'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/video'}"></div>

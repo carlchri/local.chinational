@@ -21,6 +21,13 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/well">
                                 <items jcr:primaryType="nt:unstructured">
+                                    <sectionHeading
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="Enter Media Carousel Heading"
+                                            fieldDescription="This text will be used as heading for the media carousel"
+                                            fieldLabel="Media Carousel Heading:"
+                                            name="./sectionHeading"/>
                                     <multifieldcollection
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
