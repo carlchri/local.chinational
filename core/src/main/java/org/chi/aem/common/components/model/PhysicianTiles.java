@@ -39,6 +39,7 @@ public class PhysicianTiles implements ComponentExporter {
     protected static final String RESOURCE_TYPE = "chinational/components/content/physicianTiles";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PhysicianTiles.class);
+    private static final String PROP_PROFILE_STYLE_CAROUSEL = "carousel";
     /**
      * Name of the resource property storing the root page from which to build the list if the source of the list is <code>children</code>.
      *
@@ -47,9 +48,6 @@ public class PhysicianTiles implements ComponentExporter {
 
     @ScriptVariable
     private ValueMap properties;
-
-    @ScriptVariable
-    private Style currentStyle;
 
     @ScriptVariable
     private Page currentPage;
@@ -87,9 +85,18 @@ public class PhysicianTiles implements ComponentExporter {
 
     private void collectChildren(Page parent) {
        Iterator<Page> childIterator = parent.listChildren();
+       String profileStyle = properties.get("profileStyle", "");
        while (childIterator.hasNext()) {
            Page child = childIterator.next();
            if(child.getProperties().get("cq:template").equals("/apps/chinational/templates/directoryprofilepage")){
+               // as carousel, this can get be used on details page. On those details page
+               // we want to hide tile for current page
+                if (profileStyle != null
+                        && profileStyle.equals(PROP_PROFILE_STYLE_CAROUSEL)
+                        && currentPage.getPath().equals(child.getPath()) ) {
+                    LOGGER.debug("skip child page as it is same as currengt page: " + child.getPath());
+                    continue;
+                }
         	   listPhysicianTiles.add(child);
            }
            Iterator<Page> gChildIterator = child.listChildren();
