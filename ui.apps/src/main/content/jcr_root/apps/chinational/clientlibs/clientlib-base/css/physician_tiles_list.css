@@ -1,10 +1,10 @@
-.physician_tiles_list .tile-inner {
+.tiles-wrapper .tile-inner {
   padding: 0 15px;
 }
-.physician_tiles_list .tile-inner .tile-img {
+.tiles-wrapper .tile-inner .tile-img {
   min-height: 130px;
 }
-.physician_tiles_list .tile-inner .tile-img img {
+.tiles-wrapper .tile-inner .tile-img img {
   margin: 0;
   max-height: 130px;
 }

@@ -331,7 +331,7 @@
     .carousel-image {
         padding-left: 0px;
     }
-    .owl-carousel.hide-mobile.owl-loaded {
+    .carousel-item.hide-mobile {
         display: none !important;
     }
 }
@@ -382,7 +382,8 @@
 }
 
 @media (max-width: 481px) {
-    .owl-carousel.hide-mobile.owl-loaded {
+    /*.carousel-item.hide-mobile {
         display: none !important;
-    }
+    }*/
+    ÷
 }
