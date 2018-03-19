@@ -3,6 +3,6 @@
     cq:icon="multiple"
     jcr:description="Media carousel component"
     jcr:primaryType="cq:Component"
-    jcr:title="media carousel"
+    jcr:title="Media Carousel"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>

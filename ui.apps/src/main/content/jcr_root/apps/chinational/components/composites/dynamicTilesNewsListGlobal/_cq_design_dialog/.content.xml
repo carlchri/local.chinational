@@ -97,7 +97,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Choose page under which news details page are stored"
-                                                        fieldLabel="Parent page to generate Dynamic List:"
+                                                        fieldLabel="Parent page to generate Dynamic List of news/blogs (required):"
                                                         name="./parentPage"
                                                         required="{Boolean}true"
                                                         rootPath="/content"/>
@@ -106,14 +106,14 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox if list on right is not required.window."
                                                         name="./listOnRightNotRequired"
-                                                        text="Select if News List on right is Not Required"
+                                                        text="Select if News/blogs List on right is Not Required (optional)"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <listHeading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter heading for the list "
-                                                        fieldDescription="This text will be used as heading for all links"
+                                                        fieldDescription="This text will be used as heading for all links (optional)"
                                                         fieldLabel="List Heading"
                                                         name="./linkHeading"/>
                                                 </items>
