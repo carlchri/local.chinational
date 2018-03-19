@@ -1,4 +1,4 @@
-<sly data-sly-use.video="org.chi.aem.common.components.model.Video"
+<sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <audio controls autoplay id="player">
     <source src="${audio.audioUrl}" type="audio/mpeg">
@@ -13,4 +13,4 @@
     <a href="http://getfirefox.com" target="firefox">Firefox</a>, or clicking a link below
 </audio>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.name}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
