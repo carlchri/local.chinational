@@ -46,7 +46,7 @@
                                                             fieldLabel="Audio Image"
                                                             name="./audioImage"
                                                             required="{Boolean}true"
-                                                            rootPath="/content"/>
+                                                            rootPath="/content/dam"/>
                                                     <audioUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -54,7 +54,7 @@
                                                         fieldLabel="Audio URL"
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
-                                                        rootPath="/content"/>
+                                                        rootPath="/content/dam"/>
                                                     <audioText
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
