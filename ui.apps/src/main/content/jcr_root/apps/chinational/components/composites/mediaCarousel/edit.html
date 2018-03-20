@@ -4,8 +4,8 @@
     <h3>${mediaCollection.sectionHeading || 'Media Carousel Edit View'}</h3>
     <div data-sly-list.item="${mediaCollection.editViewItems}">
         <h3>${item.name}</h3>
-        <div data-sly-test="${item.type == 'video'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/video'}"></div>
-        <div data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.name @ resourceType='chinational/components/content/audio', selectors='carousel'}"></div>
+        <div data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video'}"></div>
+        <div data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></div>
     </div>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=mediaCollection.editViewItems.size == 0}"></sly>
