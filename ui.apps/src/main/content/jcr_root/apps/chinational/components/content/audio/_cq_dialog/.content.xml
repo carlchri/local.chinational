@@ -55,14 +55,6 @@
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
                                                         rootPath="/content"/>
-                                                    <audioText
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        emptyText=""
-                                                        fieldDescription="This text is shown below the audio"
-                                                        fieldLabel="Audio Text"
-                                                        name="./audioText"
-                                                        required="{Boolean}false"/>
                                                 </items>
                                             </well>
                                         </items>
