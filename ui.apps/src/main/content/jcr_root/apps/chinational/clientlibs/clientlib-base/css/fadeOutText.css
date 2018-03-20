@@ -1,0 +1,30 @@
+.sidebar-box {
+	max-height: 99px;  
+	overflow: hidden;
+}
+
+.sidebar-box .read-more {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding-top: 70px;
+	width: 100%;
+	height: 47px;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5),
+		#ffffff);		/* Taken from Blur Mask specifications */
+}
+
+.sidebar-box .button {
+	width: 163px;		
+	height: 38px;
+}
+
+.sidebar-box .fadeOutAdjustment {
+	margin-bottom: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .extraPadding-bottom {
+		margin-bottom: 120px;	
+	}
+}
