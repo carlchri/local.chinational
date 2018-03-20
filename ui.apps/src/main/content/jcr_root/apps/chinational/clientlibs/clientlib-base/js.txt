@@ -17,6 +17,7 @@ js/app.js
 js/newslist.js
 js/blogslist.js
 js/physiciantiles.js
+js/revealReadMoreText.js
 js/owl.carousel.js
 js/audio.popup.js
 js/video.popup.js

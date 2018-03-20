@@ -59,6 +59,15 @@
 	}
 }
 
+button {
+    border: none;
+    outline: 0;
+}
+
+.flex-box div {
+    align-items: end;
+}
+
 
 @media (max-width:767px) {
   .event-image img {
