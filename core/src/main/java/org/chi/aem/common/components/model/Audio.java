@@ -25,7 +25,6 @@ public class Audio {
 	public static final String PROP_SECTION_HEADING = "sectionHeading";
 	public static final String PROP_AUDIO_URL = "audioUrl";
 	public static final String PROP_AUDIO_IMAGE = "audioImage";
-	public static final String PROP_AUDIO_TEXT = "audioText";
 
 
 	@Inject
@@ -46,11 +45,6 @@ public class Audio {
 	@Optional
 	private String audioImage;
 
-	@Inject
-	@Named(PROP_AUDIO_TEXT)
-	@Optional
-	private String audioText;
-
 	@PostConstruct
 	protected void init() {
 	   if (StringUtils.isNotEmpty(audioUrl) && !"#".equals(audioUrl)) {
@@ -70,7 +64,4 @@ public class Audio {
 		return audioImage;
 	}
 
-	public String getAudioText() {
-		return audioText;
-	}
 }
