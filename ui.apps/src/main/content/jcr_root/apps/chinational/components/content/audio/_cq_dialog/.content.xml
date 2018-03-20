@@ -54,7 +54,7 @@
                                                         fieldLabel="Audio URL"
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
-                                                        rootPath="/content"/>
+                                                        rootPath="/content/dam"/>
                                                 </items>
                                             </well>
                                         </items>
