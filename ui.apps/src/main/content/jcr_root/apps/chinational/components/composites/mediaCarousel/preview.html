@@ -1,26 +1,50 @@
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
-<h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
-<div class="cus-curosal pstn-reltv">
-    <div class="cus-item active"></div>
+<sly data-sly-test="${mediaCollection}">
+    <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
+    <div class="cus-curosal pstn-reltv">
+        <div class="cus-item active"></div>
 
-    <div class="owl-carousel owl-theme">
-        <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
-        <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
+        <div class="owl-carousel owl-theme">
+            <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
+            <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
 
-        <sly data-sly-list.groups="${mediaCollection.previewItems}">
-            <div class="carousel-item item twoItemColumn mobile-carousel" style="width: 225px">
-                <div class="flex-box">
-                    <div class="carousel-description carousel-image">
-                        <sly data-sly-repeat="${groups}">
-                            <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
-                            <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
-                            <sly data-sly-test="${itemList.first}">
-                                <br>
+            <sly data-sly-list.groups="${mediaCollection.previewItems}">
+                <div class="carousel-item item twoItemColumn mobile-carousel" style="width: 225px">
+                    <div class="flex-box">
+                        <div class="carousel-description carousel-image">
+                            <sly data-sly-repeat="${groups}">
+                                <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
+                                <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
+                                <sly data-sly-test="${itemList.first}">
+                                    <br>
+                                </sly>
                             </sly>
-                        </sly>
+                        </div>
                     </div>
                 </div>
+            </sly>
+        </div>
+    </div>
+</sly>
+<!-- Audio Popup-->
+<div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-labelledby="audio-modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="audio-modalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </sly>
+            <div class="modal-body">
+                <audio id="audio-player" controls>
+                    <source src="audio/sound.ogg" type="audio/ogg">
+                    <source class="srcmp" src="audio/sound.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
