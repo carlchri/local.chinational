@@ -3,10 +3,10 @@
     <div class="sub-Thumbs">
         <button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
             <div class="audio-container">
-                <img src="${audio.audioImage}">
+                <img src="${audio.audioImage}"/>
             </div>
         </button>
-        <span class="audio-thumb-titles">${audio.sctionHeading}</span>
+        <span class="audio-thumb-titles">${audio.sectionHeading}</span>
         <!-- Modal -->
     </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
