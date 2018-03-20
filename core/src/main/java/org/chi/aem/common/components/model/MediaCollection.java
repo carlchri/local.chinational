@@ -5,6 +5,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
 
 public class MediaCollection extends WCMUsePojo {
@@ -22,9 +23,11 @@ public class MediaCollection extends WCMUsePojo {
 		setEditViewItems();
 	}
 
-	private String getGeneratedId() {
-		String uniqueId = UUID.randomUUID().toString();
-		return uniqueId;
+	public int getHash(String additionalHashString) {
+		if (sectionHeading != null) {
+			return (additionalHashString + sectionHeading).hashCode();
+		}
+		return (additionalHashString + MEDIA_COLLECTION).hashCode();
 	}
 
 	private void setEditViewItems() {
@@ -39,7 +42,7 @@ public class MediaCollection extends WCMUsePojo {
 			for(Resource aMedia : medias) {
 				ValueMap properties = ResourceUtil.getValueMap(aMedia);
 				if(properties.containsKey("name")) {
-					item = new CarouselItem(getGeneratedId(),properties.get("name", String.class), properties.get("mediaType", String.class));
+					item = new CarouselItem(getHash(aMedia.getPath()),properties.get("name", String.class), properties.get("mediaType", String.class));
 					editViewItems.add(item);
 					if(isFirst) {
 						firstItem = item;
