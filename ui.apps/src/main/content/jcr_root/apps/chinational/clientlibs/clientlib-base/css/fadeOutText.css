@@ -19,12 +19,16 @@
 	height: 38px;
 }
 
-.sidebar-box .fadeOutAdjustment {
+.fadeOutAdjustment {
 	margin-bottom: 30px;
 }
 
-@media screen and (max-width: 800px) {
-    .extraPadding-bottom {
-		margin-bottom: 120px;	
-	}
+.extraPadding-bottom {
+	margin-bottom: 40px;	
 }
+	
+#fadeOutText.bottom-buffer { 
+	margin-bottom:60px; 
+}
+
+
