@@ -47,20 +47,38 @@ jQuery(document).ready(function() {
         loop: true,
         autoWidth: true,
         stagePadding: 100,
-        responsiveClass: true,
+        // responsiveClass: true,
         responsive: {
             0: {
                 items: 1
             },
-            1024: {
-                items: 2
-            },
-            1200: {
+            786: {
                 items: 3
+            },
+            1024: {
+                items: 5
             }
         }
     });
+    // var cItems = [];
+    // var cItemIndex = []
+    // var noMobile = 0;
+    // var removeIndex = [];
 
+    // function mediaHubResponsive() {
+    //     console.log("Total Carousel Items: " + $('.carousel-item').length);
+    //     if ($(window).width() < 481) {
+    //         $('.owl-item .hide-mobile').remove(); //.parent().removeClass('owl-item').addClass('hide-mobile').remove();
+    //         $owl.trigger('refresh.owl.carousel');
+    //         console.log('removed '+ removeIndex );
+    //     }
+
+    // }
+
+    // mediaHubResponsive();
+    // $(window).on('resize', function() {
+    //     //  mediaHubResponsive();
+    // });
 
     // var active_owl = $('.owl-item.active:last');
     // var last_active = active_owl[active_owl.length - 1];
@@ -71,24 +89,24 @@ jQuery(document).ready(function() {
     // });
 
     /* Audio Player */
-    $('#audio-modal').on('hidden.bs.modal', function() {
-        console.log("Hello Simon");
-        var ply = document.getElementById('audio-player');
+    var audioFile;
+    var audioTitle;
+    var ply = document.getElementById('audio-player');
+    $('.audio-player-button').on('click',function() {
+        audioFile = $(this).data('file');
+        audioTitle = $(this).data('audio-title');
+    });
 
+    $('#audio-modal').on('hidden.bs.modal', function() {
+        // console.log("Hello Simon");
         var oldSrc = ply.src; // just to remember the old source
 
         ply.src = "";
     });
 
-    $('.audio-player-button').click(function() {
-        console.log('Audio Transfer');
-        var audio_file = $(this).data('file');
-        $('#audio-player').attr('src', audio_file);
-        console.log("audio_file: " + audio_file);
-    });
-
     $('#audio-modal').on('show.bs.modal', function() {
-        console.log("Hello Simon Modal Show");
+        ply.src = audioFile;
+        $('#audio-modal-Label').text(audioTitle);
     });
 
     /* Read more function */
