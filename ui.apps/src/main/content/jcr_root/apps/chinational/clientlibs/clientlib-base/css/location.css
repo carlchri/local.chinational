@@ -35,6 +35,7 @@
   width: 31px;
   height: 35px;
 }
-.in .location {
-  display: none;
-}
+
+/*.in .location {
+  display: none;		It was creating an issue with the accordion feature, removed by German
+} */
