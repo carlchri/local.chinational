@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Comparator;
 import javax.jcr.query.Query;
+import java.io.Serializable;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceMetadata;
@@ -51,9 +53,10 @@ public class SightlyDataSource extends WCMUsePojo {
                 // Get the label to display to the Author that represents this item
                 vm.put("text", item.getValueMap().get("text", "Missing title"));
                 vm.put("selected", item.getValueMap().get("selected", "false"));
-                // Some "magic". Create a list of "fake" resources and provide the populated ValueMap
+                // Create a list of "fake" resources and provide the populated ValueMap
                 fakeResourceList.add(new ValueMapResource(resolver, new ResourceMetadata(), "nt:unstructured", vm));
             }
+            fakeResourceList.sort(new DataSourceListSort());
             // Create a DataSource from the items
             DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
             // Set this DataSource to request
@@ -62,4 +65,16 @@ public class SightlyDataSource extends WCMUsePojo {
             // If no data for the datasource can be found, default to the EmptyDataSource set on the request above
         }
 	}
+    private static class DataSourceListSort implements Comparator<Resource>, Serializable {
+
+        private static final long serialVersionUID = 204096578105548876L;
+ 
+        @Override
+        public int compare(Resource item1, Resource item2) {
+            int i = 0;
+            i = item1.getValueMap().get("text", "Missing title").compareTo(item2.getValueMap().get("text", "Missing title"));
+            i = i * 1;
+            return i;
+        }
+    }
 }

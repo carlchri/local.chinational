@@ -3,7 +3,7 @@
 <div class="flexible-button"
 	 data-sly-test="${properties.selectModal != 'modalRequired'}">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}">
-            <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite ${properties.buttonIcon}"></span>
+            <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="${properties.buttonIcon}"></span>
 			<span>${properties.label || 'Button'}</span>
 	</a>
 </div>
@@ -13,7 +13,7 @@
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}"
 	   data-toggle="modal"
 	   data-target="${button.hashTarget}">
-		<span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite ${properties.buttonIcon}"></span>
+		<span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="${properties.buttonIcon}"></span>
 		<span>${properties.label || 'Button'}</span>
 	</a>
 </div>
