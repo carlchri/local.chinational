@@ -8,7 +8,7 @@
     <jcr:content
         jcr:primaryType="cq:PageContent"
         sling:resourceType="chinational/components/structure/blogscenterpage"
-        displayHero="false"
+        displayHero="true"
         displayRightRail="true"
         displaySubnav="false"/>
 </jcr:root>

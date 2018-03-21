@@ -11,14 +11,15 @@ $(".sidebar-box .button").click(function() {
   
   // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
   $ps.each(function() {
-    totalHeight += $(this).outerHeight();
+    totalHeight += $(this).outerHeight()+7;
   });
         
   $up
     .css({
       // Set height to prevent instant jumpdown when max height is removed
       "height": $up.height(),
-      "max-height": 9999
+      "max-height": 9999,
+      "margin-bottom" :-70
     })
     .animate({
       "height": totalHeight

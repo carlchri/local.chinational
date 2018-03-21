@@ -31,9 +31,6 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <herocomponent
-                                        jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
                                     <subnavigation
                                         jcr:primaryType="nt:unstructured"
                                         disabled="true"/>

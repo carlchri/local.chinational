@@ -1,18 +1,23 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.CalloutTiles"></sly>
 
-<div class="${properties.greybgRequired ?'light-gray':''}">
-<div class="more-events">
+<div class="component">
+	<div class="row bottom-buffer">
+		<div class="${properties.greybgRequired ?'light-gray':''}">
+			<div class="more-events">
 
-			<h3 class="pading-bottom-25" data-sly-test="${properties.selectHeading == 'headingRequired'}">
-	        	${properties.calloutTilesHeading || 'Callout Tiles Heading'}
-			</h3>
+						<h3 class="pading-bottom-25" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+							${properties.calloutTilesHeading || 'Callout Tiles Heading'}
+						</h3>
 
-		<sly data-sly-list.eachTile="${tiles.calloutTilesList}">
-			<div 
-				 data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
-	        </div>
-		</sly>
-</div>        
+					<sly data-sly-list.eachTile="${tiles.calloutTilesList}">
+						<div
+							 data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
+						</div>
+					</sly>
+			</div>
+		</div>
+	</div>
+	<hr class="bottom-buffer" data-sly-test="${properties.enableSeparator}"/>
+	<div class="bottom-buffer" data-sly-test="${!properties.enableSeparator}">&nbsp;</div>
 </div>
-
 
