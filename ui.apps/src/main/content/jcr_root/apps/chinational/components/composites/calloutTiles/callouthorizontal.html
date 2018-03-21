@@ -1,21 +1,25 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.CalloutTiles"></sly>
 
-<div class="${properties.greybgRequired ?'light-gray':''}">
-    <div class="padding-50">
-    	<div class="row">
-            <div class="col-md-12" data-sly-test="${properties.selectHeading == 'headingRequired'}">
-                <h3 class="pading-bottom-25">
-                    ${properties.calloutTilesHeading || 'Callout Tiles Heading'}
-                </h3>
-            </div>
-		</div>            
-        <div class="row">
-            <sly data-sly-list.eachTile="${tiles.calloutTilesList}">
-                <div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass}" 
-                     data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
+<div class="component">
+    <div class="row bottom-buffer ${properties.greybgRequired ?'light-gray':''}">
+        <div class="padding-50">
+            <div class="row">
+                <div class="col-md-12" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+                    <h3 class="pading-bottom-25">
+                        ${properties.calloutTilesHeading || 'Callout Tiles Heading'}
+                    </h3>
                 </div>
-            </sly>
+            </div>
+            <div class="row">
+                <sly data-sly-list.eachTile="${tiles.calloutTilesList}">
+                    <div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass}"
+                         data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
+                    </div>
+                </sly>
+            </div>
         </div>
     </div>
+    <div class="bottom-buffer ${properties.greybgRequired ?'light-gray':''}"
+         data-sly-test="${!properties.bottomOption || properties.bottomOption == 'default'}">&nbsp;</div>
+    <hr class="bottom-buffer-gray-line" data-sly-test="${properties.bottomOption == 'separator'}"/>
 </div>
-
