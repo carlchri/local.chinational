@@ -98,6 +98,12 @@
   width: 28px;
   height: 27px;
 }
+.video-container .sprite.icon-play-orange {
+  background-color: #fff;
+  /*position: absolute;
+            left: 20px;
+            top: 5*/
+}
 .sprite.icon-play-green {
   background-position: -383px -523px;
   width: 27px;
@@ -126,6 +132,11 @@
 }
 .sprite.icon-audio-light {
   background-position: -115px -624px;
+}
+.audio-container .sprite.icon-audio-light {
+  position: absolute;
+  top: 55px;
+  left: 88px;
 }
 .sprite.icon-print-light {
   background-position: -189px -621px;
@@ -260,6 +271,13 @@
 .icons-dark-background {
   background-color: #24509a;
   color: #fff;
+}
+.test-icons {
+  padding: 10px;
+}
+.test-icons .icon-section div {
+  display: inline-block;
+  margin: 0 30px 20px 0;
 }
 .test-icons span {
   margin: 0 0 20px 0;
