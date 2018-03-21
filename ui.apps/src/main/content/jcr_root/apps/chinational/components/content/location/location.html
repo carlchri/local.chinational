@@ -13,7 +13,7 @@
                     <sly data-sly-list="${locationCollection.locationDetails}">
                         <sly data-sly-test.link="${item.linkUrl != '#'}">
                             <div class="small-wrapper flex-box">
-                                <i class="sprite small-icons ${item.iconClass}"></i>
+                                <i class="${item.iconClass}"></i>
                                 <a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
                                     ${item.locationText}
                                 </a>
@@ -21,7 +21,7 @@
                         </sly>
                         <sly data-sly-test="${!link}">
                              <div class="small-wrapper flex-box">
-                                <i class="sprite small-icons ${item.iconClass}"></i>
+                                <i class="${item.iconClass}"></i>
                                 <span class="small-txt">${item.locationText}</span>
                              </div>
                         </sly>
