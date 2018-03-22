@@ -1,29 +1,23 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.JobCarousel"></sly>
-
-<div class="carousel">
-		<div class="row">
-          <div class="col-sm-12">
-
-            <div class="margin-bottom-25">
-              <div class="padding-20">
-				<h3 data-sly-test="${properties.selectHeading == 'headingRequired'}">
-					${properties.carouselHeading || 'Hot Jobs'}
-				</h3>
-
-                <div class="owl-carousel owl-theme">
-
-					<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
-		   	        	<div class="carousel-item item" 
-                        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/jobTile'}">
-                        </div>
-					</sly>
-
-                 </div>
-
-                </div>
-              </div>
-
-            </div>
+<div class="component">
+	<div class="row bottom-buffer">
+		<div class="carousel">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 data-sly-test="${properties.selectHeading == 'headingRequired'}">
+						${properties.carouselHeading || 'Hot Jobs'}
+					</h3>
+					<div class="owl-carousel owl-theme">
+						<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
+							<div class="carousel-item item" 
+								 data-sly-resource="${eachTile @ resourceType='chinational/components/content/jobTile'}">
+							</div>
+						</sly>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
 
