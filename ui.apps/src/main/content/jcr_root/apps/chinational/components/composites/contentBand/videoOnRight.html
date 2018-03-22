@@ -1,22 +1,16 @@
-  <div class="component">
-      <div class="row component-gutter">
-
-        <div class="col-md-6">
-          <h3 data-sly-test="${properties.contentBandHeading}">${properties.contentBandHeading}</h3>
-          <div class="image-wrape">
-            <img data-sly-test="${properties.imageInTextSelection == 'imageRequired'}" 
-            	 src="${properties.imageSrc @ context='unsafe'}" alt="${properties.contentBandHeading}" />
-            <div class="cmp-text" data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-            	<sly data-sly-test="${!properties.imageRequired}" 
-                	data-sly-resource="${'video' @ resourceType='chinational/components/content/video'}"></sly>
-                <div data-sly-test="${properties.imageRequired}" 
-                     data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
-        </div>
-
-      </div>
+<div class="col-md-6">
+  <h3 data-sly-test="${properties.contentBandHeading}">${properties.contentBandHeading}</h3>
+  <div class="image-wrape">
+    <img data-sly-test="${properties.imageInTextSelection == 'imageRequired'}" 
+    	 src="${properties.imageSrc @ context='unsafe'}" alt="${properties.contentBandHeading}" />
+    <div class="cmp-text" data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
+    </div>
   </div>
+</div>
+
+<div class="col-md-6">
+    	<sly data-sly-test="${!properties.imageRequired}" 
+        	data-sly-resource="${'video' @ resourceType='chinational/components/content/video'}"></sly>
+        <div data-sly-test="${properties.imageRequired}" 
+             data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
+</div>

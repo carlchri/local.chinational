@@ -2,6 +2,7 @@
 	 data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
 <div class="component">
+	<div class="row bottom-buffer">
 		<div class="section">
 			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
 				<div class="col-sm-6">
@@ -43,5 +44,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</div>
+	<sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
