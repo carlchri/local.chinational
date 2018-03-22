@@ -90,7 +90,7 @@
                                                     <listOnRightNotRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if list on right is not required.window."
+                                                        fieldDescription="Select this checkbox if list on right is not required."
                                                         name="./listOnRightNotRequired"
                                                         text="Select if List on right is Not Required"
                                                         uncheckedValue="false"
@@ -101,6 +101,10 @@
                                     </column>
                                 </items>
                             </mainTab>
+                            <greyBarTab
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
                         </items>
                     </tabs>
                 </items>

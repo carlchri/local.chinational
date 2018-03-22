@@ -2,15 +2,18 @@
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="component">
-  	<div class="row section">
+  	<div class="row bottom-buffer">
+
 	    <div data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
         	<h5>Tiles and News List Component ${wcmmode.edit ? ' [EDIT Mode]' : ''}</h5>
         </div>
-		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+
+		<div data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Content Tiles Heading'}
 			</span>
 		</div>
+
         <div class="flex">
 			<sly data-sly-list.eachTile="${tiles.contentTilesList}">
 	           	<div class="blog-item ${eachTileList.first?'col-md-4':'col-sm-6 col-md-4'}"
@@ -22,6 +25,9 @@
             </div>
 
 		</div>
+
+	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+		
     </div>
  </div>
 

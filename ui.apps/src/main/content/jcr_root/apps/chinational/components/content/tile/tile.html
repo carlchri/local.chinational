@@ -10,8 +10,8 @@
 		<span class="blog-date txt-green tiles_heading_site_color" data-sly-test="${!properties.dateNotRequired}"
 			  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=properties.enterDate, dateFormat='MMM dd, YYYY'}">
 	          ${formatter.formattedDate}
-		</sly>
-    </span>
+		</span>
+    </sly>
     <p data-sly-test="${properties.contentDetail}">${properties.contentDetail}</p>
     <a class="bold-link" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 		${link.linkText || 'Link Text'}
