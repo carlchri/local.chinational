@@ -1,29 +1,34 @@
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
 <sly data-sly-test="${mediaCollection}">
-    <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
-    <div class="cus-curosal pstn-reltv">
-        <div class="cus-item active"></div>
+    <div class="component">
+        <div class="row bottom-buffer">
+            <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
+            <div class="cus-curosal pstn-reltv">
+                <div class="cus-item active"></div>
 
-        <div class="owl-carousel owl-theme">
-            <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
-            <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
+                <div class="owl-carousel owl-theme">
+                    <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
+                    <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
 
-            <sly data-sly-list.groups="${mediaCollection.previewItems}">
-                <div class="carousel-item item twoItemColumn mobile-carousel" style="width: 225px">
-                    <div class="flex-box">
-                        <div class="carousel-description carousel-image">
-                            <sly data-sly-repeat="${groups}">
-                                <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
-                                <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
-                                <sly data-sly-test="${itemList.first}">
-                                    <br>
-                                </sly>
-                            </sly>
+                    <sly data-sly-list.groups="${mediaCollection.previewItems}">
+                        <div class="carousel-item item twoItemColumn mobile-carousel" style="width: 225px">
+                            <div class="flex-box">
+                                <div class="carousel-description carousel-image">
+                                    <sly data-sly-repeat="${groups}">
+                                        <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
+                                        <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
+                                        <sly data-sly-test="${itemList.first}">
+                                            <br>
+                                        </sly>
+                                    </sly>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </sly>
                 </div>
-            </sly>
+            </div>
         </div>
+        <sly data-sly-include="../../commons/bottomOption.html"></sly>
     </div>
 </sly>
 <!-- Audio Popup-->
