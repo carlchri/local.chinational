@@ -118,7 +118,11 @@
                             </column>
                         </items>
                     </carouselListTab>
-                </items>
+                            <greyBarTab
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
+fs                </items>
             </tabs>
         </items>
     </content>
