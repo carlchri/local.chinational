@@ -2,50 +2,55 @@
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
+<div class="component">
+	<div class="row bottom-buffer">
 
-<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
-    <li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
-</ul>
-<hr>
-
-<form id="filter_news_form" action="/bin/services/newsList">
-   <fieldset> 
-
-    <div class="row">
-          <div class="col-sm-12">
-            <select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-               	<option value="">Choose Filter Option</option>
-                <option value="Sort By Most Recent" selected="${newsList.newsFilter == 'Sort By Most Recent' ? 'true' : '' @ context='attribute'}">Sort By Most Recent</option>
-                <option value="By Year" selected="${newsList.isFilterYear ? 'true' : '' @ context='attribute'}">By Year</option>
-                <sly data-sly-list.listTag="${newsList.listTags}">
-                	<option value="${listTag}" selected="${newsList.newsFilter == listTag ? 'true' : '' @ context='attribute'}">${listTag}</option>
-                </sly>
-			</select>
-        </div>
-   </div>
-
-   <br/>
-       <div class="row" id="select_news_by_year" style="display:${newsList.isFilterYear ? 'block' : 'none' @ context='styleToken'};">
-          <div class="col-sm-12">
-			<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-            	<option value="">Choose Year</option>
-                <sly data-sly-list.listYear="${newsList.listYears}">
-                	<option value="${listYear}" selected="${newsList.newsFilter == listYear ? 'true' : '' @ context='attribute'}">${listYear}</option>
-                </sly>
-			</select>
-        </div>
-   </div>
-   <input type="hidden" name="media_page_path" id="media_page_path" value="${currentPage.path || '/content' }">
-   </fieldset>
-</form>
-<hr>
-
-<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
-    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-    data-sly-use.itemTemplate="item.html">
-    <li data-sly-call="${itemTemplate.item @ list = newsList, item = item}" style="display:none;"></li>
-</ul>
-
-<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+		<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
+		    <li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
+		</ul>
+		<hr>
+		
+		<form id="filter_news_form" action="/bin/services/newsList">
+		   <fieldset> 
+		
+		    <div class="row">
+		          <div class="col-sm-12">
+		            <select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+		               	<option value="">Choose Filter Option</option>
+		                <option value="Sort By Most Recent" selected="${newsList.newsFilter == 'Sort By Most Recent' ? 'true' : '' @ context='attribute'}">Sort By Most Recent</option>
+		                <option value="By Year" selected="${newsList.isFilterYear ? 'true' : '' @ context='attribute'}">By Year</option>
+		                <sly data-sly-list.listTag="${newsList.listTags}">
+		                	<option value="${listTag}" selected="${newsList.newsFilter == listTag ? 'true' : '' @ context='attribute'}">${listTag}</option>
+		                </sly>
+					</select>
+		        </div>
+		   </div>
+		
+		   <br/>
+		       <div class="row" id="select_news_by_year" style="display:${newsList.isFilterYear ? 'block' : 'none' @ context='styleToken'};">
+		          <div class="col-sm-12">
+					<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+		            	<option value="">Choose Year</option>
+		                <sly data-sly-list.listYear="${newsList.listYears}">
+		                	<option value="${listYear}" selected="${newsList.newsFilter == listYear ? 'true' : '' @ context='attribute'}">${listYear}</option>
+		                </sly>
+					</select>
+		        </div>
+		   </div>
+		   <input type="hidden" name="media_page_path" id="media_page_path" value="${currentPage.path || '/content' }">
+		   </fieldset>
+		</form>
+		<hr>
+		
+		<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
+		    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+		    data-sly-use.itemTemplate="item.html">
+		    <li data-sly-call="${itemTemplate.item @ list = newsList, item = item}" style="display:none;"></li>
+		</ul>
+		
+		<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!newsList.featuredNews}"></sly>
