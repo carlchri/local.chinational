@@ -1,13 +1,15 @@
- <sly data-sly-use.newsList="${'org.chi.aem.common.components.model.DynamicTileNewsList' @ articleType=properties.selectArticleType}"
+<sly data-sly-use.newsList="${'org.chi.aem.common.components.model.DynamicTileNewsList' @ articleType=properties.selectArticleType}"
       data-sly-use.template="chinational/components/commons/templates.html" />
 
 <div class="component" data-sly-test="${properties.parentPage}">
-  	<div class="row section">
-		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+  	<div class="row bottom-buffer">
+  	
+		<div data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Featured Articles'}
  			</span>
 		</div>
+		
         <div class="flex">
 			<sly data-sly-list.featuredNews="${newsList.featuredNews}">
 	           	<div class="blog-item ${featuredNewsList.first?'col-md-4':'col-sm-6 col-md-4'}">
@@ -43,9 +45,10 @@
                     </div>
                 </sly>
             </div>
-
 		</div>
-
+		
+	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+	    
     </div>
  </div>
 
