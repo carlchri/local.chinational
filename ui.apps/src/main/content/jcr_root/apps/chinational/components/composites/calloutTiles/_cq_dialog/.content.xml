@@ -152,7 +152,7 @@
                                                             <option3
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/foundation/form/radio"
-                                                                    text="No margin, no grey separator"
+                                                                    text="Minimum margin, no grey separator"
                                                                     value="nomargin"/>
                                                         </items>
                                                     </bottomOption>

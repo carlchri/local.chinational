@@ -12,8 +12,6 @@
 		</div>
 		<sly data-sly-test="${!properties.imageOnLeftSide}" data-sly-include="fapimage.html"></sly>
 	</div>
-	<div class="bottom-buffer ${properties.greybgRequired ?'light-gray':''}"
-		 data-sly-test="${!properties.bottomOption || properties.bottomOption == 'default'}">&nbsp;</div>
-	<hr class="bottom-buffer-gray-line" data-sly-test="${properties.bottomOption == 'separator'}"/>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.heading}"></sly>
