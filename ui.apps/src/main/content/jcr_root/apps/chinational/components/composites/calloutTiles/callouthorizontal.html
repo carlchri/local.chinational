@@ -19,7 +19,5 @@
             </div>
         </div>
     </div>
-    <div class="bottom-buffer ${properties.greybgRequired ?'light-gray':''}"
-         data-sly-test="${!properties.bottomOption || properties.bottomOption == 'default'}">&nbsp;</div>
-    <hr class="bottom-buffer-gray-line" data-sly-test="${properties.bottomOption == 'separator'}"/>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
