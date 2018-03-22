@@ -1,43 +1,40 @@
-<div class="${properties.greybgRequired ?'light-gray':''}">
-<div class="padding-x">
-<div class="row">
-<div class="flex-row">
-
-      <div class="upcoming-events-wrapper">
-
-			<div class="pading-bottom-25" data-sly-test="${!properties.headingNotRequired}"
-                 data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
-            </div>
-
-            <div class="upcoming-events">
-            <div class="flex">
-
-                <div class="event-image">
-                    <sly data-sly-test="${properties.videoRequired}" 
-                         data-sly-resource="${'video' @ resourceType='chinational/components/content/video'}"></sly>
-                    <sly data-sly-test="${!properties.videoRequired}" 
-                         data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></sly>
-                </div>
-                <div class="event-content">
-                    <span class="small-heading">${properties.featuredArticleTitle}</span>
-                    <p>${properties.featuredArticleDetail}</p>
-                    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
-                         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-                    </div>
-                </div>
-
-          </div>
-          </div>
-      </div>
-
-      <div data-sly-test="${!properties.calloutNotRequired}">
-         <sly data-sly-resource="${'calloutTiles' @ resourceType='chinational/components/composites/calloutTiles'}">
-         </sly>
-         <div class="more-events link-wrapper" data-sly-resource="${'button1' @ resourceType='chinational/components/content/button'}">
-         </div>
-      </div>
-
-</div>    
-</div>
-</div>
+<div class="component">
+	<div class="row bottom-buffer ${properties.greybgRequired ?'light-gray':''}">
+		<div class="flex-row">
+		
+		      <div class="upcoming-events-wrapper">
+		
+					<div class="pading-bottom-25" data-sly-test="${!properties.headingNotRequired}"
+		                 data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
+		            </div>
+		
+		            <div class="upcoming-events">
+			            <div class="flex">
+			                <div class="event-image">
+			                    <sly data-sly-test="${properties.videoRequired}" 
+			                         data-sly-resource="${'video' @ resourceType='chinational/components/content/video'}"></sly>
+			                    <sly data-sly-test="${!properties.videoRequired}" 
+			                         data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></sly>
+			                </div>
+			                <div class="event-content">
+			                    <span class="small-heading">${properties.featuredArticleTitle}</span>
+			                    <p>${properties.featuredArticleDetail}</p>
+			                    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
+			                         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+			                    </div>
+			                </div>
+			          </div>
+		          </div>
+		      </div>
+		
+		      <div data-sly-test="${!properties.calloutNotRequired}">
+		         <sly data-sly-resource="${'calloutTiles' @ resourceType='chinational/components/composites/calloutTiles'}">
+		         </sly>
+		         <div class="more-events link-wrapper" data-sly-resource="${'button1' @ resourceType='chinational/components/content/button'}">
+		         </div>
+		      </div>
+		
+		</div>    
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
