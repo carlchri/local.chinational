@@ -1,14 +1,20 @@
 <sly data-sly-use.image="org.chi.aem.common.components.model.Image" />
 
-<a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
-    <picture>
-      <source media="(min-width: 1024px)" srcset="${image.fileReference}" sizes="100vw" />
-      <source media="(min-width: 600px)" srcset="${image.imgTabSrc}" sizes="100vw" />
-      <source media="(min-width: 300px)" srcset="${image.imgMobSrc}" sizes="100vw" />
-      <img src="${image.imgMobSrc}" alt="${image.alt || 'Image Component'}"/>
-    </picture>
-</a>
-<div class="padding-5" data-sly-test="${properties.imageCaption}">
-    <p class="light-txt">${properties.imageCaption}</p>
+<div class="component">
+	<div class="row bottom-buffer">
+		<a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
+		    <picture>
+		      <source media="(min-width: 1024px)" srcset="${image.fileReference}" sizes="100vw" />
+		      <source media="(min-width: 600px)" srcset="${image.imgTabSrc}" sizes="100vw" />
+		      <source media="(min-width: 300px)" srcset="${image.imgMobSrc}" sizes="100vw" />
+		      <img src="${image.imgMobSrc}" alt="${image.alt || 'Image Component'}"/>
+		    </picture>
+		</a>
+		<div class="padding-5" data-sly-test="${properties.imageCaption}">
+		    <p class="light-txt">${properties.imageCaption}</p>
+		</div>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
+
 

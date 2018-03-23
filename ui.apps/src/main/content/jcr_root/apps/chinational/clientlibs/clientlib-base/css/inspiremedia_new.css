@@ -97,6 +97,11 @@
   position: relative;
   overflow: hidden;
 }
+
+.sub-Thumbs button {
+  background-color: #e7e7e7;
+}
+
 .media-text {
   position: absolute;
   bottom: 5px;
