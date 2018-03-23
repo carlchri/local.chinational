@@ -34,6 +34,11 @@
                                     sling:resourceType="granite/ui/components/foundation/form/radio"
                                     text="Minimum margin, no grey separator"
                                     value="minmargin"/>
+                                <option4
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/radio"
+                                        text="No margins (used when component is part of another component, e.g. RichText in Content Band)"
+                                        value="nomargin"/>
                             </items>
                         </bottomOption>
                     </items>

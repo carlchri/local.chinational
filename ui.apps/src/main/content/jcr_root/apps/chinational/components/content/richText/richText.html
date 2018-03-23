@@ -15,8 +15,8 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-test.author="${wcmmode.edit || wcmmode.design}"></sly>
 
-<div class="component">  <!-- COMPONENT STARTS HERE -->
-    <div id=" ${!author && properties.readMore?'fadeOutText':''}" class="row bottom-buffer">
+<div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
+    <div id=" ${!author && properties.readMore?'fadeOutText':''}" class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
         <div data-sly-use.textModel="com.adobe.cq.wcm.core.components.models.Text"
              data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
              data-sly-test.text="${textModel.text}"
