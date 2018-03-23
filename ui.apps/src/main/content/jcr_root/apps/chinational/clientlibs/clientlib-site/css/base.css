@@ -23,6 +23,11 @@
 	margin-right: calc(-8.7vw / 2);   /* Added by German */
 }
 
+.full-bleed-tiles {
+	margin-left: -4.633%;    /* Added by German for special-content.html */
+	margin-right: -4.633%;   /* Added by German for special-content.html */
+}
+
 .right-rail-container .width-for-gray-line {
 	margin-left: .1%;        /* Added by German for content-details_RR.html */
 	margin-right: .1%;       /* Added by German for content-details_RR.html */
