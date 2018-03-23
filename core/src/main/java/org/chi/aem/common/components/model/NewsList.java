@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +69,9 @@ public class NewsList implements ComponentExporter {
     String PN_PARENT_PAGE = "parentPage";
 
     private static final int FEATURED_LIMIT = 3;
+    private static final String PARAM_PAGE = "page"; // for Pagination
+    private static final int HITS_PER_PAGE = 10;
+    private static final int START_INDEX = 0;
 
     @ScriptVariable
     private ValueMap properties;
@@ -92,14 +96,13 @@ public class NewsList implements ComponentExporter {
     // storing list of all news articles sorted by publishDate
     private java.util.List<Page> allNews;
     
-    /* listNews - storing list of all news articles 
+    /* listNews - storing list of all news articles used on page
      * excluding featured article to be displayed at top of page
      * sorted by publish date
      */
     private java.util.List<Page> listNews;
     
-    /* featuredNews - storing list of all news articles 
-     * excluding featured article to be displayed at top of page
+     /* featuredNews - storing list of featured news articles [Max 3] 
      * sorted by publish date
      */
     private java.util.List<Page> featuredNews;
@@ -109,27 +112,43 @@ public class NewsList implements ComponentExporter {
     
     // storing list of all tags and tagID attached to news articles page template
     private java.util.List<String> listTags;
-    private java.util.List<String> listTagsID;
     
-    private String newsFilter;
+    private int start_index;
+    private int hits_per_page;
+    private int totalResults; // used for hide-show "LOAD MORE" button
+    private List<Integer> pages; //for pagination
+    private int totalNumberPages; // for pagination
+    private int activePage; // for pagination and for getting offset
 
     Map<String, Object> newsList = new HashMap<String, Object>();
 
     @PostConstruct
     private void initModel() {
-    	if(request.getAttribute("news_filter") != null){
-            newsFilter= (String) request.getAttribute("news_filter");    		
-    	}else{
-    		newsFilter = "";
-    	}
-        LOGGER.info("newsFilter" + newsFilter);
+        start_index = START_INDEX;
+        hits_per_page = HITS_PER_PAGE;
+        totalResults = 0;
+        totalNumberPages = 1;
+        activePage = 1;
+        
+        String[] selectors = request.getRequestPathInfo().getSelectors();
+        LOGGER.info("selectors length: " + selectors.length);
+        if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){
+        	activePage = Integer.parseInt(selectors[0]);	
+        }
+        LOGGER.info("active Page: " + activePage);
+        if(activePage != 1 && (activePage > 1)) {
+            start_index = ((activePage - 1) * hits_per_page);
+        } else {
+        	activePage = 1; //for Pagination active class when page load for the first time
+        }
     	
     	allNews = new ArrayList<>();
     	listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
-        listTagsID = new ArrayList<>();
+
+        pages = new ArrayList<Integer> ();
         
         pageManager = resourceResolver.adaptTo(PageManager.class);
         
@@ -139,28 +158,23 @@ public class NewsList implements ComponentExporter {
         featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
         setMaxfeaturedNews(); //limit featured articles to maximum 3.
         listNews = populateListItems(listNews); //filtered list of news based on year or Tag, sorted by Publish date
-        //  filtering featured articles from the list. This is the list used on media page.
-        // listNews = populateListNews(listNews, featuredNews);
-        listNews = populateFilteredList(featuredNews, listNews);
-
-        // setMaxItems();
-
-    }
-
-    public JSONObject getJsonNews() {
-        JSONObject jsonNews = null;
-        try {
-        	jsonNews = new JSONObject();
-        	jsonNews.put("allNews", new JSONArray(allNews));
-        	jsonNews.put("featuredNews", new JSONArray (featuredNews));
-        	jsonNews.put("listNews", new JSONArray(listNews));
-        	jsonNews.put("listYears", new JSONArray(listYears));
-        	jsonNews.put("listTags", new JSONArray(listTags));
-        } catch (Exception e) {
-            LOGGER.error("Could not create JSON", e);
+        
+		// For AJAX Call - to get Total Results initially for LOAD MORE
+        totalResults = allNews.size() - featuredNews.size();
+        LOGGER.info("totalResults using allNews : " + totalResults);
+        
+        // to get total no of pages and List of pages for data-sly-list for Pagination
+    	int total = (allNews.size() - featuredNews.size())/hits_per_page;
+    	if(((allNews.size() - featuredNews.size()) % hits_per_page) == 0){
+    		totalNumberPages = total;
+    	} else {
+    		totalNumberPages = total + 1;
+    	}
+        LOGGER.info("totalNumberPages: " + totalNumberPages);
+        for(int i = 1; i <= totalNumberPages; i++) {
+            pages.add(i);
         }
-        LOGGER.info("jsonNews :" + jsonNews.toString());
-        return jsonNews;
+
     }
 
     public Collection<Page> getAllNews() {
@@ -181,17 +195,6 @@ public class NewsList implements ComponentExporter {
         return listNews;
     }
 
-    public String getNewsFilter() {
-   		return newsFilter;
-    }
-    
-    public boolean getIsFilterYear(){
-    	if(listYears.contains(newsFilter)){
-    		return true;
-    	}
-    	return false;
-    }
-
     public Collection<String> getListYears() {
         return listYears;
     }
@@ -199,8 +202,51 @@ public class NewsList implements ComponentExporter {
     public Collection<String> getListTags() {
         return listTags;
     }
+    
+    public int getStartIndex() {
+   		return start_index;
+    }
+
+    public int getHitsPerPage() {
+   		return hits_per_page;
+    }
+
+    public int getTotalResults() {
+   		return totalResults;
+    }
+
+    public int getTotalPages() {
+   		return totalNumberPages;
+    }
+
+    public int getActivePage() {
+   		return activePage;
+    }
+
+    public int getPreviousPage() {
+    	if(activePage <= 1){
+    		return 1;
+    	} else if(activePage > totalNumberPages){
+    		return totalNumberPages;
+    	} else {
+    		return activePage - 1;	
+    	}
+    }
+
+    public int getNextPage() {
+    	if(activePage >= totalNumberPages){
+    		return totalNumberPages;
+    	}else{
+    		return activePage + 1;	
+    	}
+    }
+
+    public List<Integer> getPages() {
+        return pages;
+    }
 
     private java.util.List<Page> populateListItems(java.util.List<Page> list) {
+
         Map<String, String> map = new HashMap<String, String>();
 
         map.put("path", properties.get(PN_PARENT_PAGE, currentPage.getPath()));
@@ -210,49 +256,44 @@ public class NewsList implements ComponentExporter {
         map.put("orderby", "@jcr:content/publishDate");
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
-        // can be done in map or with Query methods
-        map.put("p.offset", "0"); // same as query.setStart(0) below
-        map.put("p.limit", "-1"); // same as query.setHitsPerPage(20) below
 
+        if(list == listNews){
+    	    map.put("p.offset", String.valueOf(start_index)); // same as query.setStart(0) below
+        	map.put("p.limit", String.valueOf(hits_per_page)); // same as query.setHitsPerPage(20) below
+        }else{
+    	    map.put("p.offset", String.valueOf(0)); // same as query.setStart(0) below
+        	map.put("p.limit", String.valueOf(-1)); // same as query.setHitsPerPage(20) below
+        }
+        
         if(list == featuredNews){
         	map.put("boolproperty", "jcr:content/isFeaturedArticle");
         	map.put("boolproperty.value", "true");
         }
-
-        if(list == listNews && listYears.contains(newsFilter)){
-        	map.put("daterange.property", "jcr:content/publishDate");
-   			map.put("daterange.lowerBound", newsFilter + "-01-01");
-   			map.put("daterange.lowerOperation", ">=");
-        	map.put("daterange.upperBound", newsFilter + "-12-31");
-        	map.put("daterange.upperOperation", "<=");
-        }
-
-        if(list == listNews && listTags.contains(newsFilter)){
-        	map.put("tagsearch.property", "jcr:content/cq:tags");
-        	map.put("tagsearch", newsFilter);
-/*        	LOGGER.info("inside Query - newsFilter" + newsFilter);
-        	for(String tagID : listTagsID){
-        		if(tagID.contains(newsFilter)){
-                	map.put("tagid.property", "jcr:content/cq:tags");
-           			map.put("tagid.1_value", tagID);
-        		}
+		
+		int i = 1;
+        if(list == listNews){
+        	for(Page item : featuredNews){
+        		LOGGER.info("item.path : " + item.getPath());
+            	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
-*/
         }
-
+		
+        // LOGGER.info("Map : " + map);
         PredicateGroup group = PredicateGroup.create(map);
+        // LOGGER.info("PredicateGroup : " + group);
         Session session = resourceResolver.adaptTo(Session.class);
+        // LOGGER.info("Session : " + session);
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
         Query query = builder.createQuery(group, session);
-
-        // query.setStart(0);   // already set in map above
-        // query.setHitsPerPage(-1); // already set in map above
-                   
-        SearchResult result = query.getResult();
-        // LOGGER.info("Result : " + result.toString());
+        // LOGGER.info("Query : " + query.toString());
+        // query.setStart(start_index);
+        // query.setHitsPerPage(hits_per_page);
         
         try {
-            list = collectSearchResults(result, list);
+            SearchResult result = query.getResult();
+            LOGGER.info("result.getTotalMatchefs() : " + list + " : " + result.getTotalMatches());
+
+            list = collectSearchResults(query.getResult(), list);
         } catch (RepositoryException e) {
             LOGGER.error("Unable to retrieve search results for query.", e);
         }
@@ -260,7 +301,8 @@ public class NewsList implements ComponentExporter {
     }
 
      private java.util.List<Page> collectSearchResults(SearchResult result, java.util.List<Page> list) throws RepositoryException {
-         for (Hit hit : result.getHits()) {
+
+    	 for (Hit hit : result.getHits()) {
              Page containingPage = pageManager.getContainingPage(hit.getResource());
              if (containingPage != null) {
             	 list.add(containingPage);
@@ -268,10 +310,10 @@ public class NewsList implements ComponentExporter {
          }
          
          // If no featured article present, add the latest article as featured article.
-         if(list == featuredNews && list.isEmpty() && allNews.size() > 0){
+         if(list == featuredNews && list.isEmpty()&& allNews.size() > 0){
         	 list.add(allNews.get(0));
          }
-
+ 	 
          return list;
      }
 
@@ -299,20 +341,11 @@ public class NewsList implements ComponentExporter {
              if(tags.length !=0){
             	 for(Tag tag : tags){
             		String tagName = tag.getTitle();
-            		// LOGGER.info("tagName: " + tag.getName());
-            		// LOGGER.info("tagID: " + tag.getTagID());
-            		// LOGGER.info("tagNamespace: " + tag.getNamespace());
             		// LOGGER.info("tagTitle: " + tag.getTitle());
 	         		if(listTags.isEmpty()){
 	            		listTags.add(tagName);
 	        		} else if (!listTags.contains(tagName)){
 	        			listTags.add(tagName);
-	        		}
-            		String tagID = tag.getTagID();
-	         		if(listTagsID.isEmpty()){
-	            		listTagsID.add(tagID);
-	        		} else if (!listTagsID.contains(tagID)){
-	        			listTagsID.add(tagID);
 	        		}
             	 }
              }
@@ -321,56 +354,6 @@ public class NewsList implements ComponentExporter {
     	 return listTags;
      }
      
-/* This method used with allNews as List1 and featuredNews as list2 and then to populate listNews[exclusing featuredNews].
-     private java.util.List<Page> populateListNews(java.util.List<Page> list1, java.util.List<Page> list2) {
-    	 boolean add = true;
-    	 for(Page item1 : list1) {
-    		 for(Page item2 : list2) {
-    			 if(item1 == item2){
-    				 add = false;
-    				 break;
-    			 } 
-    			 add = true;
-    		 }
-    		 if(add && !listNews.contains(item1)){
-    			 listNews.add(item1);
-    		 }
-    	 }	 
-         LOGGER.info("listNews : " + listNews);
-    	 return listNews;
-     }
-*/
-     private java.util.List<Page> populateFilteredList(java.util.List<Page> list1, java.util.List<Page> list2) {
-
-    	 for(Page item1 : list1) {
-    		 for(Page item2 : list2) {
-    			 if(item1 == item2){
-    				 listNews.remove(item1);
-    				 break;
-    			 } 
-    		 }
-    	 }	 
-    	 return listNews;
-     }
-
-/*   This method not in use. Created to restrict the maximum number of items in the News List
- *    
-     private void setMaxItems() {
-        if (maxItems != 0) {
-            java.util.List<Page> tmpListItems = new ArrayList<>();
-            for (Page item : allNews) {
-                if (tmpListItems.size() < maxItems) {
-                    tmpListItems.add(item);
-                } else {
-                    break;
-                }
-            }
-            allNews = tmpListItems;
-        }
-    }
-*    
-*/    
-
     private void setMaxfeaturedNews() {
     	java.util.List<Page> tmpListItems = new ArrayList<>();
         for (Page item : featuredNews) {
