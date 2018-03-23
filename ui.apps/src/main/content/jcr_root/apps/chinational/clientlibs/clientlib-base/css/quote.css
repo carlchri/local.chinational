@@ -3,8 +3,8 @@
 }
 .quote-outer {
   background-color:#f8f7f7;
-  padding:50px 60px;
-  margin:40px 0 70px 0;
+/*   padding:50px 60px;       Removed by German for content-details_RR.html */
+  margin:0 0 49px 0;    /* Modified by German for content-details_RR.html -> it was 40px 0 70px 0; */
   overflow: hidden;
 }
 .quote-inner {
