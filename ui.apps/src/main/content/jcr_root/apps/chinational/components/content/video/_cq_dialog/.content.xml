@@ -37,7 +37,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Section Heading"
                                                         fieldDescription="This text will be used as heading for the video section"
-                                                        fieldLabel="Section Heading:"
+                                                        fieldLabel="Video Heading:"
                                                         name="./sectionHeading"/>
                                                     <rightRail
                                                             jcr:primaryType="nt:unstructured"
