@@ -6,49 +6,69 @@
 	<div class="row bottom-buffer">
 
 		<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
-		    <li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
+			<li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
 		</ul>
 		<hr>
-		
-		<form id="filter_news_form" action="/bin/services/newsList">
-		   <fieldset> 
-		
-		    <div class="row">
-		          <div class="col-sm-12">
-		            <select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-		               	<option value="">Choose Filter Option</option>
-		                <option value="Sort By Most Recent" selected="${newsList.newsFilter == 'Sort By Most Recent' ? 'true' : '' @ context='attribute'}">Sort By Most Recent</option>
-		                <option value="By Year" selected="${newsList.isFilterYear ? 'true' : '' @ context='attribute'}">By Year</option>
-		                <sly data-sly-list.listTag="${newsList.listTags}">
-		                	<option value="${listTag}" selected="${newsList.newsFilter == listTag ? 'true' : '' @ context='attribute'}">${listTag}</option>
-		                </sly>
-					</select>
-		        </div>
-		   </div>
-		
-		   <br/>
-		       <div class="row" id="select_news_by_year" style="display:${newsList.isFilterYear ? 'block' : 'none' @ context='styleToken'};">
-		          <div class="col-sm-12">
-					<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-		            	<option value="">Choose Year</option>
-		                <sly data-sly-list.listYear="${newsList.listYears}">
-		                	<option value="${listYear}" selected="${newsList.newsFilter == listYear ? 'true' : '' @ context='attribute'}">${listYear}</option>
-		                </sly>
-					</select>
-		        </div>
-		   </div>
-		   <input type="hidden" name="media_page_path" id="media_page_path" value="${currentPage.path || '/content' }">
-		   </fieldset>
-		</form>
+
+		<div class="row">
+			  <div class="col-sm-12">
+				<select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+					<option value="">Choose Filter Option</option>
+					<option value="Sort By Most Recent" selected>Sort By Most Recent</option>
+					<option value="By Year">By Year</option>
+					<sly data-sly-list.listTag="${newsList.listTags}">
+						<option value="${listTag}">${listTag}</option>
+					</sly>
+				</select>
+			</div>
+		</div>
+
+		<br/>
+		<div class="row" id="select_news_by_year" style="display:none;">
+			<div class="col-sm-12">
+				<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+					<option value="Choose Year" selected>Choose Year</option>
+					<sly data-sly-list.listYear="${newsList.listYears}">
+						<option value="${listYear}">${listYear}</option>
+					</sly>
+				</select>
+			</div>
+		</div>
+		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || '/content' }">
+		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path || '/content' }">
+		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 		<hr>
-		
+
 		<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
-		    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-		    data-sly-use.itemTemplate="item.html">
-		    <li data-sly-call="${itemTemplate.item @ list = newsList, item = item}" style="display:none;"></li>
+			data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+			data-sly-use.itemTemplate="item.html">
+			<li data-sly-call="${itemTemplate.item @ list = newsList, item = item}"></li>
 		</ul>
-		
+
 		<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+
+		<noscript>
+			<ul class="pagination pagination-lg pager">
+				<sly data-sly-test.previousPage="${newsList.previousPage}"></sly>
+				<sly data-sly-test.nextPage="${newsList.nextPage}"></sly>
+				<sly data-sly-test.activePage="${newsList.activePage}"></sly>        
+				<sly data-sly-test.totalPages="${newsList.totalPages}"></sly>        
+
+				<li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
+					<a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
+						Previous
+					</a>
+				</li>
+				<sly data-sly-list="${newsList.pages}">
+					<li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
+						<a href="${currentPage.path}.${item}.html">${item}</a>
+					</li>
+				</sly>
+				<li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
+					<a href="${currentPage.path}.${nextPage}.html">Next</a>
+				</li>
+			</ul>
+		</noscript>
 	</div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
