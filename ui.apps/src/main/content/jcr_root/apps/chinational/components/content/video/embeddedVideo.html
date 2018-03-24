@@ -1,0 +1,21 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ This version has no margin, used when embedded in other components
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-use.video="org.chi.aem.common.components.model.Video"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<label class="button-label" data-sly-test="${video.sectionHeading}">
+    ${video.sectionHeading}
+</label>
+<hr class="dashed-border" data-sly-test="${video.rightRail}" />
+<div class="video" data-sly-test="${video.videoUrl}">
+    <img src="${video.imageUrl}" >
+    <div class="link-wrapper">
+        <a class="video-button video_popup" id="video" video-url="${video.videoUrl}">
+            <i class="icon-play sprite"></i>
+        </a>
+    </div>
+</div>
+<p class="light-txt" data-sly-test="${video.videoText}">${video.videoText}</p>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
