@@ -1,7 +1,7 @@
 <sly data-sly-use.image="org.chi.aem.common.components.model.Image" />
 
-<div class="component">
-	<div class="row bottom-buffer">
+<div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
+	<div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
 		<a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
 		    <picture>
 		      <source media="(min-width: 1024px)" srcset="${image.fileReference}" sizes="100vw" />
