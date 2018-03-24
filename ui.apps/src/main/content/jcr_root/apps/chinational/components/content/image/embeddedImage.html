@@ -1,7 +1,8 @@
 <!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ This version has no margin, used when embedded in other components
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<sly data-sly-use.image="org.chi.aem.common.components.model.Image" />
+<sly data-sly-use.image="org.chi.aem.common.components.model.Image"
+	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
 	<picture>
@@ -14,6 +15,4 @@
 <div class="padding-5" data-sly-test="${properties.imageCaption}">
 	<p class="light-txt">${properties.imageCaption}</p>
 </div>
-
-
-
+<sly data-sly-call="${template.placeholder @ isEmpty=!image.fileReference}"></sly>
