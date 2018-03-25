@@ -89,6 +89,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/include"
                                 path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
                     </items>
+                    </tabs>
                 </items>
             </column>
         </items>
