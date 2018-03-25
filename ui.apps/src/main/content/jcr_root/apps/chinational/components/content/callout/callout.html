@@ -1,9 +1,6 @@
 <div class="component">
     <div class="row bottom-buffer">
-        <sly data-sly-test="${properties.iconOrientation == 'iconLeftAligned'}" data-sly-include="iconleftalign.html"></sly>
-        <sly data-sly-test="${properties.iconOrientation == 'iconCenterAlign'}" data-sly-include="iconcenteralign.html"></sly>
-        <sly data-sly-test="${properties.iconOrientation == 'iconDisplayedLeft'}" data-sly-include="icondispleft.html"></sly>
-        <sly data-sly-test="${!properties.iconOrientation}">Callout Component</sly>
+        <sly data-sly-include="embeddedCallout.html"></sly>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
