@@ -12,9 +12,9 @@
 			            <div class="flex">
 			                <div class="event-image">
 			                    <sly data-sly-test="${properties.videoRequired}" 
-			                         data-sly-resource="${'video' @ resourceType='chinational/components/content/video'}"></sly>
+			                         data-sly-resource="${'video' @ resourceType='chinational/components/content/video', selectors='embeddedVideo'}"></sly>
 			                    <sly data-sly-test="${!properties.videoRequired}" 
-			                         data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></sly>
+			                         data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}"></sly>
 			                </div>
 			                <div class="event-content">
 			                    <span class="small-heading">${properties.featuredArticleTitle}</span>
