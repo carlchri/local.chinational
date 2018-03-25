@@ -37,7 +37,7 @@
                                 <option4
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/foundation/form/radio"
-                                        text="No margins (used when component is part of another component, e.g. RichText in Content Band)"
+                                        text="No margins"
                                         value="nomargin"/>
                             </items>
                         </bottomOption>
