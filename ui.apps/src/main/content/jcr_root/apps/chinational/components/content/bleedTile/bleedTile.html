@@ -14,7 +14,7 @@
 <sly data-sly-test="${properties.selectImage == 'imageRequired'}">
 	<div data-sly-test="${properties.imagePosition == 'top'}">
 		<div class="image-row"
-			 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image'}">
+			 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 		</div>
 		<div class="content-gutter">
 			<h2>${properties.headingText}</h2>
@@ -28,7 +28,7 @@
 	</div>
 	<div data-sly-test="${properties.imagePosition == 'left'}"
 		 class="full-image"
-		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image'}">
+		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
 	<div data-sly-test="${properties.imagePosition != 'top'}" class="content-gutter">
 		<h2>${properties.headingText}</h2>
@@ -41,7 +41,7 @@
 	</div>
 	<div data-sly-test="${properties.imagePosition == 'right'}"
 		 class="full-image"
-		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image'}">
+		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.headingText}"></sly>
