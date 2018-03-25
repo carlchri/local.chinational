@@ -1,7 +1,7 @@
 .buttons-outer {
 	display: flex;
 	justify-content: stretch;
-	margin:12px 0 30px 0;
+	margin:12px 0 0px 0;
 
 }
 .buttons-outer > div {
