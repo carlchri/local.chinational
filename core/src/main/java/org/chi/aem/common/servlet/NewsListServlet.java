@@ -65,7 +65,7 @@ import com.day.cq.wcm.api.PageManager;
 @Properties({ 
 		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
 			  @Property(name = "sling.servlet.selectors", value = "newsservlet"),
-			  @Property(name = "sling.servlet.extensions", value = "html"),
+			  @Property(name = "sling.servlet.extensions", value = "json"),
 			  @Property(name = "service.description", value = "for News List component"),
 			  @Property(name = "label", value = "News List") 
 		  })
@@ -91,7 +91,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     private static final int FEATURED_LIMIT = 3;
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_NEWS_FILTER = "Sort By Most Recent";
+    private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
     private static final String DEFAULT_MEDIA_PAGE_PATH = "/content";
     
     // storing list of all news articles sorted by publishDate
@@ -121,6 +121,8 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     
     // storing list of all tags and tagID attached to news articles page template
     private java.util.List<String> listTags;
+    // storing map of all tags name and title attached to news articles page template
+    private Map<String, String> tagsMap = new HashMap<String, String>();
 
     private int maxItems;
     private String newsFilter;
@@ -161,17 +163,14 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     		}
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
-        if(selectors.length >= 3){
+        if(selectors.length >= 2){
         	newsFilter = selectors[1];
-	        if(newsFilter.equals("By Year")){
-	        	newsFilter = selectors[2];
-	        }
         } else {
         	newsFilter = DEFAULT_NEWS_FILTER;
         }
         
-        if(selectors.length >= 4 && (selectors[3].matches("[0-9]+"))){
-        	start_index = Integer.parseInt(selectors[3]);	
+        if(selectors.length >= 3 && (selectors[2].matches("[0-9]+"))){
+        	start_index = Integer.parseInt(selectors[2]);	
         }
         
        	allNews = new ArrayList<>();
@@ -297,7 +296,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         }
 		
         if((list == listNews || list == allFilteredNews) && listYears.contains(newsFilter)){
-        	LOGGER.info("inside Query listYears- newsFilter" + newsFilter);
+        	LOGGER.info("inside Query listYears- newsFilter : " + newsFilter);
         	map.put("daterange.property", "jcr:content/publishDate");
    			map.put("daterange.lowerBound", newsFilter + "-01-01");
    			map.put("daterange.lowerOperation", ">=");
@@ -305,10 +304,12 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         	map.put("daterange.upperOperation", "<=");
         }
 
-        if((list == listNews || list == allFilteredNews) && listTags.contains(newsFilter)){
+        if((list == listNews || list == allFilteredNews) && tagsMap.containsKey(newsFilter)){
+        	String tagSearch = tagsMap.get(newsFilter);
         	map.put("tagsearch.property", "jcr:content/cq:tags");
-        	map.put("tagsearch", newsFilter);
-        	LOGGER.info("inside Query listTags - newsFilter" + newsFilter);
+        	map.put("tagsearch", tagSearch);
+        	LOGGER.info("inside Query listTags - newsFilter : " + newsFilter);
+        	LOGGER.info("inside Query listTags - tagSearch : " + tagSearch);
         }
 
         PredicateGroup group = PredicateGroup.create(map);
@@ -370,8 +371,10 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 
 	         		if(listTags.isEmpty()){
 	            		listTags.add(tagName);
+	                    tagsMap.put(tag.getName(),tagName);
 	        		} else if (!listTags.contains(tagName)){
 	        			listTags.add(tagName);
+	        			tagsMap.put(tag.getName(),tagName);
 	        		}
             	 }
              }

@@ -13,11 +13,11 @@
 		<div class="row">
 			  <div class="col-sm-12">
 				<select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-					<option value="">Choose Filter Option</option>
-					<option value="Sort By Most Recent" selected>Sort By Most Recent</option>
-					<option value="By Year">By Year</option>
-					<sly data-sly-list.listTag="${newsList.listTags}">
-						<option value="${listTag}">${listTag}</option>
+					<option value="ChooseFilterOption">Choose Filter Option</option>
+					<option value="SortByMostRecent" selected>Sort By Most Recent</option>
+					<option value="ByYear">By Year</option>
+					<sly data-sly-list.tagsList="${newsList.tagsMap}">
+						<option value="${tagsList}">${newsList.tagsMap[tagsList]}</option>
 					</sly>
 				</select>
 			</div>
@@ -27,7 +27,7 @@
 		<div class="row" id="select_news_by_year" style="display:none;">
 			<div class="col-sm-12">
 				<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-					<option value="Choose Year" selected>Choose Year</option>
+					<option value="ChooseYear" selected>Choose Year</option>
 					<sly data-sly-list.listYear="${newsList.listYears}">
 						<option value="${listYear}">${listYear}</option>
 					</sly>
