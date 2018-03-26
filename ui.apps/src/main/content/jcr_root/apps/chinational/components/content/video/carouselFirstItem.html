@@ -1,6 +1,6 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
-    <div class="carousel-item item hide-mobile desktop" style="width: 452px">
+    <div class="carousel-item item tablet desktop" style="width: 410px">
         <div class="flex-box">
             <div class="carousel-description carousel-image">
                 <div class="main-player">
@@ -9,7 +9,7 @@
                             <img src="${video.imageUrl}">
                             <div class="link-wrapper">
                                 <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}" style="cursor: pointer;">
-                                    <i class="icon-play-small sprite"></i>
+                                    <i class="icon-play-small"></i>
                                 </a>
                             </div>
                         </div>
@@ -17,30 +17,6 @@
                     <div class="gutter-top">
                         <span class="main-play-title">${video.sectionHeading}</span>
 
-                        <span class="caption">${video.videoText}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="carousel-item hide-mobile item tablet" style="width: 360px">
-        <!-- dis -->
-        <!-- <div class="carousel-item item " style="width: 360px"> -->
-        <div class="flex-box">
-            <div class="carousel-description carousel-image">
-                <div class="main-player">
-                    <div class="v-container">
-                        <div class="video">
-                            <img src="${video.imageUrl}">
-                            <div class="link-wrapper">
-                                <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
-                                    <i class="icon-play-small sprite"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gutter-top">
-                        <span class="main-play-title">${video.sectionHeading}</span>
                         <span class="caption">${video.videoText}</span>
                     </div>
                 </div>
