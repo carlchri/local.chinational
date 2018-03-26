@@ -1,0 +1,23 @@
+<sly data-sly-use.video="org.chi.aem.common.components.model.Video"></sly>
+<div class="carousel-item item" style="width: 100%">
+    <div class="flex-box">
+        <div class="carousel-description carousel-image">
+            <div class="sub-Thumbs">
+                <div class="video">
+                    <img src="${video.imageUrl}">
+                    <div class="link-wrapper">
+                        <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
+                            <i class="icon-play-small"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="media-text">
+                    <span class="thumb-titles">${video.sectionHeading}</span>
+                    <span class="thumb-descrsiption">${video.videoText}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
+
