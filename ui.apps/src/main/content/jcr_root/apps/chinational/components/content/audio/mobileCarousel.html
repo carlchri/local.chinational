@@ -1,24 +1,5 @@
 <sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
         data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<div class="carousel-item hide-mobile item desktop" style="width: 452px">
-    <div class="flex-box">
-        <div class="carousel-description carousel-image">
-            <div class="main-player">
-                <button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
-                    <div class="audio-container">
-                        <img src="${audio.audioImage}">
-                    </div>
-                </button>
-                <div class="gutter-top">
-                    <span class="main-play-title">${audio.sectionHeading}</span>
-
-                    <span class="caption">${audio.audioText}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="owl-carousel owl-theme show-mobile hide-desktop mobile-carousel">
     <div class="carousel-item item" style="width: 100%">
         <div class="flex-box">
             <div class="carousel-description carousel-image">
@@ -36,7 +17,4 @@
             </div>
         </div>
     </div>
-</div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
-
-
