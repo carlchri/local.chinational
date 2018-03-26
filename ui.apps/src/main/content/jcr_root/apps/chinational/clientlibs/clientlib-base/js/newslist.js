@@ -54,10 +54,6 @@ $(document).ready(function(){
 	}
 
     function newslistAjaxCall() {
-        //Get the user-defined values
-        // var search_news_list = $('#search_news_list').val() ; 
-        // var search_news_year = $('#search_news_year').val() ; 
-        // var media_page_path = $('#media_page_path').val() ; 
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
@@ -66,7 +62,6 @@ $(document).ready(function(){
         $.ajax({
             type: 'GET',    
             url: servletURL,
-            // data:'search_news_list='+ search_news_list+'&search_news_year='+ search_news_year+'&media_page_path='+ media_page_path+'&start_index='+ start_index,
             success: function(msg){
                 var json = jQuery.parseJSON(msg); 
                 total_results = json.total_results;            
