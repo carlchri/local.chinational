@@ -112,6 +112,9 @@ public class NewsList implements ComponentExporter {
     
     // storing list of all tags and tagID attached to news articles page template
     private java.util.List<String> listTags;
+    // storing map of all tags name and title attached to news articles page template
+    private Map<String, String> tagsMap = new HashMap<String, String>();
+
     
     private int start_index;
     private int hits_per_page;
@@ -119,8 +122,6 @@ public class NewsList implements ComponentExporter {
     private List<Integer> pages; //for pagination
     private int totalNumberPages; // for pagination
     private int activePage; // for pagination and for getting offset
-
-    Map<String, Object> newsList = new HashMap<String, Object>();
 
     @PostConstruct
     private void initModel() {
@@ -199,10 +200,14 @@ public class NewsList implements ComponentExporter {
         return listYears;
     }
 
+    public Map<String, String> getTagsMap() {
+        return tagsMap;
+    }
+    
     public Collection<String> getListTags() {
         return listTags;
     }
-    
+
     public int getStartIndex() {
    		return start_index;
     }
@@ -344,8 +349,10 @@ public class NewsList implements ComponentExporter {
             		// LOGGER.info("tagTitle: " + tag.getTitle());
 	         		if(listTags.isEmpty()){
 	            		listTags.add(tagName);
+	                    tagsMap.put(tag.getName(),tagName);
 	        		} else if (!listTags.contains(tagName)){
 	        			listTags.add(tagName);
+	        			tagsMap.put(tag.getName(),tagName);
 	        		}
             	 }
              }

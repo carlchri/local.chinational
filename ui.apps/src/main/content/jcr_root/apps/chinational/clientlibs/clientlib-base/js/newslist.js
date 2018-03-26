@@ -2,6 +2,7 @@
 $(document).ready(function(){
 
     var start_index = 0;
+    var news_filter = "SortByMostRecent";
     var NEWS_HITS_PER_PAGE = 10;
 
     var total_results = parseInt($('#total_results').val());
@@ -9,7 +10,7 @@ $(document).ready(function(){
 	newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
-      if (this.value == 'By Year')
+      if (this.value == 'ByYear')
       {
         $("#select_news_by_year").show();
 
@@ -18,21 +19,22 @@ $(document).ready(function(){
       {
         $("#select_news_by_year").hide();
         $("#select_news_by_year option:selected").removeAttr("selected");
-        $("#select_news_by_year option[value='Choose Year']").attr('selected', 'selected');  
+        $("#select_news_by_year option[value='ChooseYear']").attr('selected', 'selected');  
         start_index = 0;
 
         // to clear contents on the page  
         $('.filtered_list').html("");
-
+        news_filter = $('#search_news_list').val() ;
         newslistAjaxCall();
       }
     });
 
     $('#search_news_year').on('change', function() {
-          if (this.value != 'Choose Year')
+          if (this.value != 'ChooseYear')
           {
             start_index = 0;
             $('.filtered_list').html("");
+            news_filter = $('#search_news_year').val() ;            
             newslistAjaxCall();
           }
     });
@@ -53,12 +55,13 @@ $(document).ready(function(){
 
     function newslistAjaxCall() {
         //Get the user-defined values
-        var search_news_list = $('#search_news_list').val() ; 
-        var search_news_year = $('#search_news_year').val() ; 
-        var media_page_path = $('#media_page_path').val() ; 
+        // var search_news_list = $('#search_news_list').val() ; 
+        // var search_news_year = $('#search_news_year').val() ; 
+        // var media_page_path = $('#media_page_path').val() ; 
+        $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + search_news_list + '.' + search_news_year + '.' + start_index + '.html';
+   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.json';
 
         $.ajax({
             type: 'GET',    
