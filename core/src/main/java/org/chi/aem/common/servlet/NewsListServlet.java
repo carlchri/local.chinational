@@ -132,7 +132,6 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     private int increment_index;
     private int totalResults; // used for hide-show "LOAD MORE" button
              
-    // there is no need to use POST method. Parameters are available in GET method also by using getParameter("parametername") method
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
        
