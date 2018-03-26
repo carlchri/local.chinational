@@ -1,5 +1,6 @@
 <sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
         data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<div class="audio-container">
     <div class="sub-Thumbs">
         <button type="button" class="audio-player-button" data-audio-title="${audio.sectionHeading}" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
             <div class="audio-container">
@@ -7,7 +8,9 @@
                 <i class="sprite small-icons icon-audio-light"></i>
             </div>
         </button>
-        <span class="audio-thumb-titles">${audio.sectionHeading}</span>
-        <!-- Modal -->
     </div>
+    <div class="media-text">
+        <span class="thumb-titles">${audio.sectionHeading}</span>
+    </div>
+</div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
