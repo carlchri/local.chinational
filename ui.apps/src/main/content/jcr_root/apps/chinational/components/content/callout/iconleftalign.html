@@ -1,7 +1,7 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
 <div class="category-item">
-		<span class="solid-circle" style="margin:0;"></span>    
+		<span class="solid-circle" style="margin:0;" data-sly-test="${properties.calloutIcon != 'iconNotRequired'}"></span>
         <a href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
             <span class="small-heading padding-top-10 txt-left heading_site_color">
             	${properties.categoryTitleText || 'Callout Component'}
