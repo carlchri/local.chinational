@@ -284,6 +284,9 @@ hr {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     margin: -2px 0 5px -3px;
 }
+.large-blue-txt.page-title {
+    margin: 0 0 17px -3;
+}
 
 .section-breadcrumb ul li {
     float: left;
@@ -875,6 +878,10 @@ body {
 
 .bottom-gutter {
     padding-bottom: 20px;
+}
+
+.heading h1, .heading h2, .heading h3, .heading h4, .heading h5, .heading h6 {
+    margin: 0 0 8px 0;
 }
 
 .sub-heading {

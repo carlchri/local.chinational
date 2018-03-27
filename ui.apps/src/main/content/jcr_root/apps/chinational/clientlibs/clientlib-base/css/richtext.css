@@ -26,7 +26,7 @@
   /* Unicode of character to precede the list item */
   font-size: 1em; 
   /* em or %*/ 
-  padding-right: 1.1225em; 
+  padding-right: 0.58em; /* updated ny naresh as per defect */
   /* use em*/
   position: relative;
   top: 0em; 
@@ -56,7 +56,7 @@
   /* Unicode of character to precede the list item */
   font-size: 1em; 
   /* em or %*/ 
-  padding-right: 1.1225em; 
+  padding-right: 0.58em; /* updated ny naresh as per defect */
   /* use em*/
   position: relative;
   top: 0em; 
