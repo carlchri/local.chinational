@@ -7,7 +7,7 @@
 }
 
 .padding-x {
-    padding: 30px 0;
+/*     padding: 30px 0;    Removed by German for foundation.html */
 }
 
 .bottom-buffer {
@@ -521,20 +521,6 @@ hr {
     object-fit: cover;
 }
 
-.intro-caption-white,
-.intro-caption-black {
-    font-size: 48px;
-    font-style: italic;
-    line-height: 55px;
-    font-weight: lighter;
-    margin: 0;
-    color: #fff;
-}
-
-.intro-caption-black {
-    color: #000;
-}
-
 .news-large-header {
     font-size: 36px;
     color: #24509a;
@@ -547,8 +533,8 @@ hr {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     opacity: 0.7;
     font-style: italic;
-    margin-bottom: 48px;
-    color:  #97999B;
+    margin-bottom: 48px; /* updated by Naresh for fixing a defect */
+    color:  #97999B; /* added by Naresh for fixing a defect */
 }
 
 .news-sub-header {
@@ -875,7 +861,7 @@ body {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    padding: 0 15px;
+    /*     padding: 0 15px;   Removed by German for foundation.html  */
 }
 
 .padding-top-10 {
