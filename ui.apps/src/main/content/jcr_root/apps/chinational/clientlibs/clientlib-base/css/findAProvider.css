@@ -1,0 +1,21 @@
+.findAProvider button {
+  width: 50%;
+}
+@media (max-width: 480px) {
+  .findAProvider button {
+    width: 100%;
+  }
+}
+.findAProvider h3 {
+  padding: 0 0 15px 0;
+}
+.findAProvider p {
+  margin: 0;
+  padding: 0 0 30px 0;
+}
+@media (max-width: 480px) {
+  .findAProvider img {
+    margin-left: calc(-4.35vw);
+    margin-right: calc(-4.35vw);
+  }
+}
