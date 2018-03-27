@@ -6,5 +6,6 @@
 }
 .tiles-wrapper .tile-inner .tile-img img {
   margin: 0;
-  max-height: 130px;
+  max-height: 205px; /* Modified by Naresh, as per defect to have max height to 205 */
 }
+
