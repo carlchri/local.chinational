@@ -10,32 +10,42 @@
     padding: 30px 0;
 }
 
-.bottom-buffer {  
-	padding-bottom:30px;   /* Added by German for content-details_RR.html */
+.bottom-buffer {
+    padding-bottom: 30px;
+    /* Added by German for content-details_RR.html */
 }
 
-.bottom-buffer-gray-line { 
-	margin-bottom:30px;    /* Added by German for content-details_RR.html */
+.bottom-buffer-gray-line {
+    margin-bottom: 30px;
+    /* Added by German for content-details_RR.html */
 }
 
 .full-width-container .width-for-gray-line {
-	margin-left: calc(-8.7vw / 2);    /* Added by German */
-	margin-right: calc(-8.7vw / 2);   /* Added by German */
+    margin-left: calc(-8.7vw / 2);
+    /* Added by German */
+    margin-right: calc(-8.7vw / 2);
+    /* Added by German */
 }
 
 .full-bleed-tiles {
-	margin-left: -4.633%;    /* Added by German for special-content.html */
-	margin-right: -4.633%;   /* Added by German for special-content.html */
+    margin-left: -4.633%;
+    /* Added by German for special-content.html */
+    margin-right: -4.633%;
+    /* Added by German for special-content.html */
 }
 
 .right-rail-container .width-for-gray-line {
-	margin-left: .1%;        /* Added by German for content-details_RR.html */
-	margin-right: .1%;       /* Added by German for content-details_RR.html */
+    margin-left: .1%;
+    /* Added by German for content-details_RR.html */
+    margin-right: .1%;
+    /* Added by German for content-details_RR.html */
 }
 
 .gray-margin-top {
-	padding-top: 30px;       /* Added by German for content-details_RR.html */
-	background-color: #f8f7f7;   /* Not used in AEM, remove before Go Live */
+    padding-top: 30px;
+    /* Added by German for content-details_RR.html */
+    background-color: #f8f7f7;
+    /* Not used in AEM, remove before Go Live */
 }
 
 .more-content {
@@ -147,7 +157,8 @@ hr {
 
 .content-outer,
 .content-inner {
-    padding: 10px 0;    /* Modified by German for content-details_RR.html -> it was 30px 0; */
+    padding: 10px 0;
+    /* Modified by German for content-details_RR.html -> it was 30px 0; */
 }
 
 .bold-link {
@@ -247,7 +258,7 @@ hr {
     height: 45px;
     background-color: #8ac8bc;
     padding: 1px 0 0 14px;
-    margin: 10px 0 30px 0;
+    /*margin: 10px 0 30px 0;*/
     position: relative;
     width: 100%;
     text-align: left;
@@ -280,7 +291,7 @@ hr {
 }
 
 .section-breadcrumb {
-    padding: 0 0 27px 0;
+    padding: 0 0 28px 0;
 }
 
 .section-breadcrumb .arrow-link-txt {
@@ -603,9 +614,11 @@ h6 {
     margin-bottom: 10px;
 }
 
+
 /* right rail gutter side correction for seperator */
+
 .right-rail .separator.gutter-sides {
-	padding: 0;
+    padding: 0;
 }
 
 .right-rail-text p {
@@ -840,7 +853,9 @@ body {
     border-color: #426da9;
 }
 
-.blue-solid:hover, .blue-solid:active, .blue-solid:focus {
+.blue-solid:hover,
+.blue-solid:active,
+.blue-solid:focus {
     background-color: #0097a9;
     color: #fff;
     text-decoration: none;
@@ -878,7 +893,8 @@ body {
     font-size: 20px;
     color: #0097a9;
     display: block;
-    margin: 0 0 20px 0;  /* Modified by German for content-details_RR.html -> it was 60px 0 20px 0; */
+    margin: 0 0 20px 0;
+    /* Modified by German for content-details_RR.html -> it was 60px 0 20px 0; */
 }
 
 .video-button,
@@ -944,7 +960,7 @@ body {
 .blue-full:hover,
 .blue-full:focus,
 .blue-full:active {
-	border-color: #0097a9;
+    border-color: #0097a9;
     background-color: #0097a9;
     color: #fff;
 }
@@ -1127,7 +1143,7 @@ img {
     line-height: 20px;
     font-style: italic;
     font-size: 14px;
-/*     padding: 8px 0 20px 0;    Removed by German for content-details_RR.html */
+    /*     padding: 8px 0 20px 0;    Removed by German for content-details_RR.html */
 }
 
 .calloutTiles .callOuts {
@@ -1192,6 +1208,9 @@ img {
     .section {
         margin-bottom: 40px;
     }
+    .section-breadcrumb {
+        padding: 0 0 32px 0;
+    }
     .gutter2 {
         padding: 25px 0 0 0;
     }
@@ -1247,9 +1266,9 @@ img {
     .custome-dd-outer .dropdown-menu {
         width: 100%;
     }
-    .custome-dd-outer {
+    /*.custome-dd-outer {
         padding: 0 15px;
-    }
+    }*/
     .custome-dd i {
         display: none;
     }
@@ -1286,6 +1305,13 @@ img {
     h1 {
         font-size: 40px;
         line-height: 45px;
+    }
+
+}
+
+@media (max-width:480px) {
+    .section-breadcrumb {
+        padding: 0 0 33px 0;
     }
 }
 
