@@ -629,6 +629,7 @@ label {
     font-weight: bold;
     display: block;
     text-align: left;
+    text-transform: uppercase; /*Added by naresh to fix a bug */
 }
 
 .embeded-video .light-txt {
