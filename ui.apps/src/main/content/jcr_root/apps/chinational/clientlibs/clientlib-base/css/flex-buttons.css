@@ -1,7 +1,7 @@
 .buttons-outer {
 	display: flex;
 	justify-content: stretch;
-	margin:12px 0 0px 0;
+	margin:12px 0 0px 0; /* Updated by Naresh to remove bottom padding */
 
 }
 .buttons-outer > div {
@@ -22,7 +22,7 @@
 	color:#fff;
 	background-color:#426da9;
 	height:100%;
-	width:100%;
+	width:87%;
 	min-height:60px;
 	display:flex;
   align-items:center;
@@ -42,7 +42,7 @@
 	background-color:#0097a9;
 	color: #fff;
 }
-.flexible-buttona:hover, .flexible-button a:focus {
+.flexible-button a:hover, .flexible-button a:focus {
 	color: #fff;
 }
 .content-left .buttons-outer {
@@ -142,4 +142,11 @@
 		top: 0;
 		text-align: left;
 	}
+	.flexible-button {
+		width: 95%;
+	}
+}
+
+@media (max-width: 480px) {
+	
 }
