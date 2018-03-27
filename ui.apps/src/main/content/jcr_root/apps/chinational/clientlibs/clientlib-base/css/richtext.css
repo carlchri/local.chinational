@@ -19,7 +19,7 @@
 
  .cmp-text ul li::before {
   
-  color: #00b0b9;  
+  color: #00B0B9;  
   /* color of bullet or square */
    content: "\25CB"; 
    /*  content: "\2686";*/
@@ -51,7 +51,7 @@
 .cmp-text ol li::before {
    
    content: counter(li); 
-    color: #00b0b9; 
+    color: #00B0B9; 
    /*  content: "\2686";*/
   /* Unicode of character to precede the list item */
   font-size: 1em; 
