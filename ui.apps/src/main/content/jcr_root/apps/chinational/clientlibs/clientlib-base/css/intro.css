@@ -11,6 +11,37 @@
 .intro-title .learn-more-btn {
   margin-top: 40px;
 }
+.intro-title .intro-caption-white,
+.intro-title .intro-caption-black {
+  font-size: 48px;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ffffff;
+  font-style: italic;
+  line-height: 55px;
+  font-weight: lighter;
+  margin: 0 0 17px 0;
+  color: #fff;
+}
+@media (max-width: 767px) {
+  .intro-title .intro-caption-white,
+  .intro-title .intro-caption-black {
+    margin: 0 0 25px 0;
+  }
+}
+@media (max-width: 480px) {
+  .intro-title .intro-caption-white,
+  .intro-title .intro-caption-black {
+    margin: 0 0 13px 0;
+    line-height: normal;
+    font-size: 48px !important;
+  }
+}
+.intro-title .intro-caption-black {
+  color: #000;
+}
 .intro-short-title {
   background-color: #fdd757;
   width: 50%;
@@ -82,6 +113,7 @@
   letter-spacing: normal;
   text-align: right;
   color: #ffffff;
+  margin: 0 0 17px 0;
 }
 @media (max-width: 992px) {
   .title-inner {
