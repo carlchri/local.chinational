@@ -267,7 +267,7 @@
 		margin: 0;
 		letter-spacing: 1px;
 		float: none;
-		margin-bottom: 7px;
+		/*margin-bottom: 7px;*/
 	}
 	.logo-strip {
 		z-index: 3;
