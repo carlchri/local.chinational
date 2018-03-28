@@ -27,3 +27,4 @@ css/sub-nav.css
 css/video.css
 css/video.popup.css
 css/aem-override.css
+css/newsbloglist.css

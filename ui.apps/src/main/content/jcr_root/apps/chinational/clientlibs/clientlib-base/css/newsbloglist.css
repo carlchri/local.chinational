@@ -1,0 +1,18 @@
+.news_heading_hover:hover { 
+    filter: alpha(opacity=55);
+    opacity: .55;                
+}
+
+#search_news_list {
+	-webkit-appearance:menulist; 
+	background-color:#E6FFFF;
+}
+
+#search_news_year {
+	-webkit-appearance:menulist; 
+	background-color:#E6FFFF;
+}    
+
+ul.filtered_list {
+	padding-left:15px;
+}

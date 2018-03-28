@@ -70,7 +70,7 @@ $(document).ready(function(){
             			$("<article>").append(
 						$("<a href=" + item.newsURL + ".html>").append(
             				$("<h3>").append(
-            					$("<span class='txt-green'>").text(item.newsHeading)
+            					$("<span class='txt-green news_heading_hover'>").text(item.newsHeading)
             				)
             			),
                         $("<span class='txt-green'>").text(item.publishDate),

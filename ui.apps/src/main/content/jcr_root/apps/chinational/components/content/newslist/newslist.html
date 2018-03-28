@@ -5,13 +5,16 @@
 <div class="component">
 	<div class="row bottom-buffer">
 
-		<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
-			<li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
-		</ul>
+		<sly data-sly-list.featuredNews="${newsList.featuredNews}">
+			<div class="col-sm-12" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
+		</sly>
 
-		<div class="row">
-			  <div class="col-sm-12">
-				<select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+		<div class="col-sm-12">
+			<hr>
+		</div>
+
+		<div class="col-sm-12 pading-bottom-25">
+                  <select name="search_news_list" id="search_news_list" class="form-control">
 					<option value="ChooseFilterOption">Choose Filter Option</option>
 					<option value="SortByMostRecent" selected>Sort By Most Recent</option>
 					<option value="ByYear">By Year</option>
@@ -19,24 +22,20 @@
 						<option value="${tagsList}">${newsList.tagsMap[tagsList]}</option>
 					</sly>
 				</select>
-			</div>
 		</div>
 
 		<br/>
-		<div class="row" id="select_news_by_year" style="display:none;">
-			<div class="col-sm-12">
-				<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
+		<div class="col-sm-12 pading-bottom-25" id="select_news_by_year" style="display:none;">
+				<select class="form-control" name="search_news_year" id="search_news_year">
 					<option value="ChooseYear" selected>Choose Year</option>
 					<sly data-sly-list.listYear="${newsList.listYears}">
 						<option value="${listYear}">${listYear}</option>
 					</sly>
 				</select>
-			</div>
 		</div>
 		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || '/content' }">
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path || '/content' }">
 		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
-		<hr>
 
 		<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
 			data-sly-use.template="core/wcm/components/commons/v1/templates.html"
@@ -44,29 +43,33 @@
 			<li data-sly-call="${itemTemplate.item @ list = newsList, item = item}"></li>
 		</ul>
 
-		<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+		<div class="col-sm-12">
+			<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+		</div>
 
 		<noscript>
-			<ul class="pagination pagination-lg pager">
-				<sly data-sly-test.previousPage="${newsList.previousPage}"></sly>
-				<sly data-sly-test.nextPage="${newsList.nextPage}"></sly>
-				<sly data-sly-test.activePage="${newsList.activePage}"></sly>        
-				<sly data-sly-test.totalPages="${newsList.totalPages}"></sly>        
-
-				<li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
-					<a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
-						Previous
-					</a>
-				</li>
-				<sly data-sly-list="${newsList.pages}">
-					<li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
-						<a href="${currentPage.path}.${item}.html">${item}</a>
-					</li>
-				</sly>
-				<li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
-					<a href="${currentPage.path}.${nextPage}.html">Next</a>
-				</li>
-			</ul>
+            <div class="col-sm-12">
+                <ul class="pagination pagination-lg pager">
+                    <sly data-sly-test.previousPage="${newsList.previousPage}"></sly>
+                    <sly data-sly-test.nextPage="${newsList.nextPage}"></sly>
+                    <sly data-sly-test.activePage="${newsList.activePage}"></sly>        
+                    <sly data-sly-test.totalPages="${newsList.totalPages}"></sly>        
+    
+                    <li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
+                        <a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
+                            Previous
+                        </a>
+                    </li>
+                    <sly data-sly-list="${newsList.pages}">
+                        <li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
+                            <a href="${currentPage.path}.${item}.html">${item}</a>
+                        </li>
+                    </sly>
+                    <li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
+                        <a href="${currentPage.path}.${nextPage}.html">Next</a>
+                    </li>
+                </ul>
+            </div>
 		</noscript>
 	</div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
