@@ -6,6 +6,16 @@
     -moz-box-sizing: border-box;
 }
 
+.mc_list {
+	list-style: none;
+	/* Added by German for media-center.html */
+}
+
+.mc_list h3 {
+	padding-bottom: 0px;
+	/* Added by German for media-center.html */
+}
+
 .padding-x {
 /*     padding: 30px 0;    Removed by German for foundation.html */
 }
