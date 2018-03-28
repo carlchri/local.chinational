@@ -17,7 +17,9 @@
 
 <div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
     <div id=" ${!author && properties.readMore?'fadeOutText':''}" class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
-        <sly data-sly-include="embeddedRichText.html"></sly>
+		<div class="col-sm-12" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
+        	<sly data-sly-include="embeddedRichText.html"></sly>
+		</div>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
