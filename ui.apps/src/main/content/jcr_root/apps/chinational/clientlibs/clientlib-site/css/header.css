@@ -20,6 +20,10 @@
 	right: 0;
 }
 
+.main-nav ul {
+	padding-left: 0;
+}
+
 .header ul li {
 	float: left;
 	margin-right: 40px;

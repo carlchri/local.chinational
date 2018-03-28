@@ -1,7 +1,7 @@
 <sly data-sly-use.buttonsInRow="org.chi.aem.common.components.model.CompositeButtons" />
 
 <div class="component">
-    <div class="row bottom-buffer ${properties.greybgRequired ?'light-gray gray-margin-top':''}">
+    <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'} ${properties.greybgRequired ?'light-gray gray-margin-top':''}" >
         <div class="col-sm-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
             <div class="memorial">
                 <h3 data-sly-test="${!properties.headingNotRequired}">

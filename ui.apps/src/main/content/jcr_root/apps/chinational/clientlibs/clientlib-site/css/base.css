@@ -289,6 +289,10 @@ hr {
     margin: 0 0 17px 0;
 }
 
+.section-breadcrumb ul {
+    padding-left: 0;
+}
+
 .section-breadcrumb ul li {
     float: left;
     padding: 0;
