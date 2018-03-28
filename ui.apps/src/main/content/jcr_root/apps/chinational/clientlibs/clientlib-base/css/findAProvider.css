@@ -1,0 +1,49 @@
+.findAProvider button {
+  width: 50%;
+}
+@media (max-width: 480px) {
+  .findAProvider button {
+    width: 100%;
+    margin: 0 0 50px 0;
+  }
+}
+.findAProvider h3 {
+  padding: 0 0 15px 0;
+}
+.findAProvider p {
+  margin: 0;
+  padding: 0 0 30px 0;
+}
+@media (max-width: 480px) {
+  .findAProvider img {
+    padding: 0 0 0 0;
+    width: 110%;
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    max-width: none;
+  }
+}
+.findAProvider .fnd-image {
+  position: relative;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .findAProvider .fnd-image.left img {
+    padding: 0 0 34px 0;
+  }
+}
+@media (max-width: 480px) {
+  .findAProvider .fnd-image.right img {
+    padding: 0 0 0 0;
+  }
+}
+@media (max-width: 480px) {
+  .findAProvider .fnd-image {
+    /*width: 121%;
+                    margin-left: -11%;*/
+  }
+}
+.findAProvider .find-provider-form.left button {
+  margin: 0;
+}
