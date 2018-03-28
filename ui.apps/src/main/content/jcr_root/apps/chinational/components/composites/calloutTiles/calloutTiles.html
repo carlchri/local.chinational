@@ -1,4 +1,6 @@
-<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<sly data-sly-test="${properties.calloutOrientation == 'horizontalOrientation'}" data-sly-include="callouthorizontal.html"></sly>
-<sly data-sly-test="${properties.calloutOrientation == 'verticalOrientation'}" data-sly-include="calloutvertical.html"></sly>
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.calloutOrientation}"></sly>
+<div class="component">
+    <div class="row bottom-buffer">
+        <sly data-sly-include="embeddedCalloutTiles.html"></sly>
+    </div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
