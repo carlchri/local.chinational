@@ -167,6 +167,7 @@ hr {
     bottom: 0;
     left: 0;
     color: #0097a9;
+    text-transform: uppercase; /* Added by Naresh for bug fix */
 }
 
 .other-news {
@@ -1354,4 +1355,13 @@ img {
     .custome-dd-outer {
         width: 345px;
     }
+}
+
+/* Added by German to fix full bleed tile in Mobile for History-timeline.html */
+
+@media all and (max-width : 767px) {
+	.fixingTile {
+		flex-direction: column;
+		width: 100%;
+	}
 }
