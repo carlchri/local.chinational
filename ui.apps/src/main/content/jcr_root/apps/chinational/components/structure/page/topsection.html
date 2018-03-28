@@ -19,7 +19,7 @@
 <div class="" data-sly-test="${properties.heroConfig == 'carousel'}"
      data-sly-resource="${'topheroCarousel' @ resourceType='chinational/components/composites/heroCarousel'}"></div>
 </sly>
-<div class="section-breadcrumb" data-sly-test="${properties.displayBreadcrumb}">
+<div class="section-breadcrumb ${properties.displayHero?'':'padding-top-30'}" data-sly-test="${properties.displayBreadcrumb}">
     <div class="container">
         <div class="row"
              data-sly-resource="${'breadcrumb' @ resourceType='chinational/components/structure/breadcrumb'}">
