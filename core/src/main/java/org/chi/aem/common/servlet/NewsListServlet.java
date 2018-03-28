@@ -338,7 +338,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
          if(list == featuredNews && list.isEmpty()){
         	 list.add(allNews.get(0));
          }
-         LOGGER.info("listNews.size() after recursive : " + listNews.size()); 
+         LOGGER.info("listNews.size(): " + listNews.size()); 
 
          return list;
      }

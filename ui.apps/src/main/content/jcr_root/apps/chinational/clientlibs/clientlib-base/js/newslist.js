@@ -58,13 +58,14 @@ $(document).ready(function(){
 		var current_page_path = $('#current_page_path').val() ; 
 
    		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.json';
-
+		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    
             url: servletURL,
             success: function(msg){
                 var json = jQuery.parseJSON(msg); 
-                total_results = json.total_results;            
+                total_results = json.total_results;  
+                $('#loadingmessage').hide();
                 $.each(json.jsonNews, function(index, item) {
             		$("<li>").append(
             			$("<article>").append(
@@ -80,7 +81,7 @@ $(document).ready(function(){
 				newsLoadMoreShowHide();          
             },
 			error: function (err) {
-	           	alert(err);
+	           	alert("Error in Loading. Please Refresh the Page.");
             }                
         });
     }
