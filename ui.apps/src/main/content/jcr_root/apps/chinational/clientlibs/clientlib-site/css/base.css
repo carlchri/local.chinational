@@ -529,7 +529,12 @@ hr {
     font-size: 36px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-    margin: 25px 0 0 0;
+     /* added by Naresh to fix bug */
+    font-stretch: normal;
+    line-height: 1.1;
+    letter-spacing: normal;
+    text-align: left;
+    /*margin: 25px 0 0 0; Commended by Naresh to fix bug*/
 }
 
 .news-date {
@@ -568,6 +573,7 @@ h3 {
     font-size: 28px;
     color: #24509a;
     margin: 0;
+    padding-bottom: 15px; /* Added by Naresh, as all H3 should have 15 px below it, as per style guide */
 }
 
 h4 {
@@ -656,9 +662,10 @@ label {
     font-style: italic;
 }
 
+/* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
     padding-top: 20px;
-}
+}*/
 
 .image-wrape img {
     float: left;
