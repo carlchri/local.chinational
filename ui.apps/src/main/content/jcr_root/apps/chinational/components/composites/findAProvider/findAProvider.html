@@ -1,17 +1,19 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<div class="component">
-	<div class="row bottom-buffer">
-		<sly data-sly-test="${properties.imageOnLeftSide}" data-sly-include="fapimage.html"></sly>
-		<div class="${!properties.imageNotRequired?'col-12 col-sm-6 col-lg-6':''}">
-			<div class="find-provider-form">
-				<h3>${properties.heading}</h3>
-				<p class="description">${properties.subheading}</p>
-				<div class="form-content" data-sly-resource="${'fapsource' @ resourceType='chinational/components/content/htmlsource'}">
+<div class="findAProvider">
+	<div class="component">
+		<div class="row bottom-buffer">
+			<sly data-sly-test="${properties.imageOnLeftSide}" data-sly-include="fapimage.html"></sly>
+			<div class="${!properties.imageNotRequired?'col-12 col-sm-6 col-lg-6':''}">
+				<div class="find-provider-form">
+					<h3>${properties.heading}</h3>
+					<p class="description">${properties.subheading}</p>
+					<div class="form-content" data-sly-resource="${'fapsource' @ resourceType='chinational/components/content/htmlsource'}">
+					</div>
 				</div>
 			</div>
+			<sly data-sly-test="${!properties.imageOnLeftSide}" data-sly-include="fapimage.html"></sly>
 		</div>
-		<sly data-sly-test="${!properties.imageOnLeftSide}" data-sly-include="fapimage.html"></sly>
+		<sly data-sly-include="../../commons/bottomOption.html"></sly>
 	</div>
-    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.heading}"></sly>
