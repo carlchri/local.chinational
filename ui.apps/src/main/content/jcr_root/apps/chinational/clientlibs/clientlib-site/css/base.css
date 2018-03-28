@@ -148,6 +148,11 @@
     position: relative;
 }
 
+.padding-top-30 {
+    padding-top: 30px;
+    position: relative;
+}
+
 span {
     display: inline-block;
     vertical-align: baseline;
@@ -309,7 +314,7 @@ hr {
 }
 
 .section-breadcrumb {
-    padding: 0 0 28px 0;
+    padding-bottom: 28px;
 }
 
 .section-breadcrumb .arrow-link-txt {
