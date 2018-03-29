@@ -33,6 +33,10 @@
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path || '/content' }">
 		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 
+        <div class="col-sm-12 loading" style="display:none;">
+			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
+		</div>
+
 		<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
 			data-sly-use.template="core/wcm/components/commons/v1/templates.html"
 			data-sly-use.itemTemplate="item.html">
