@@ -11,6 +11,12 @@
 	overflow: hidden;
 	margin-left: -15px;
 }
+.category-item.center { // sbrown - added for callout icon center 
+	text-align: center;
+}	
+.category-item.center p {  // sbrown - added for callout icon center
+	text-align: left;
+}
 
 .category-item .small-heading {
 	line-height: 1;
