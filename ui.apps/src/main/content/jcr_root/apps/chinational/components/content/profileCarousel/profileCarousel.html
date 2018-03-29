@@ -7,35 +7,42 @@
             <h3 data-sly-test="${properties.selectHeading == 'headingRequired'}">
                 ${properties.carouselHeading || 'National Leadership'}
             </h3>
-            <div class="owl-carousel owl-theme" >
+            <div class="profileCarousel">
+            <div class="owl-carousel owl-theme profile-carousel" >
                 <sly data-sly-list="${listCollection.links}">
-                    <div class="carousel-item item" >
-                        <hr>
-                        <div class="flex-box">
-                            <div class="carousel-image" data-sly-test="${item.properties.imageSrc}">
-                                <picture>
-                                    <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
-                                </picture>
-                            </div>
-                            <div class="carousel-description">
-                                <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}" data-sly-test="${item.properties.physicianName}">
-                            	<span class="small-heading heading_site_color">
-                                ${item.properties.physicianName}
-                            </span>
-                                </a>
-                                <p data-sly-test="${item.properties.physicianExpertise}">${item.properties.physicianExpertise}</p>
-                            </div>
-                        </div>
-                        <hr>
+                    <div class="item" >
+	                    <div class="row">
+		                    <div class="tiles-wrapper col-xs-12">
+			                    <div class="tile">
+			                        <hr>
+			                        <div class="tile-inner row">
+			                            <div class="tile-img col-xs-5 col-md-4" data-sly-test="${item.properties.imageSrc}">
+			                                <picture>
+			                                    <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
+			                                </picture>
+			                            </div>
+			                            <div class="tile-desc col-xs-7 col-md-8">
+			                                <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}" data-sly-test="${item.properties.physicianName}">
+			                            	<span class="small-heading heading_site_color">
+			                                	${item.properties.physicianName}
+			                            	</span>
+			                                </a>
+			                                <p data-sly-test="${item.properties.physicianExpertise}">${item.properties.physicianExpertise}</p>
+			                            </div>
+			                        </div>
+			                        <hr>
+			                    </div>
+		                    </div>
+	                    </div>
                     </div>
                 </sly>
+            </div>
             </div>
             <sly data-sly-test="${listCollection.links}">
                 <div class="link-wrapper" data-sly-test="${!properties.buttonNotRequired}"
                      data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
                 </div>
             </sly>
-
         </div>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
