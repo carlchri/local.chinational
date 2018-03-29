@@ -3,15 +3,15 @@
     opacity: .55;                
 }
 
-#search_news_list {
+#search_news_list, #search_news_year {
 	-webkit-appearance:menulist; 
 	background-color:#E6FFFF;
+	width:60%;
 }
 
-#search_news_year {
-	-webkit-appearance:menulist; 
-	background-color:#E6FFFF;
-}    
+#search_news_list option, #search_news_year option {
+	background-color:#F2F2F2;
+	}
 
 ul.filtered_list {
 	padding-left:15px;
