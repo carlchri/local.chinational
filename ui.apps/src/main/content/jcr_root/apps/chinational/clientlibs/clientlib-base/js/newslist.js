@@ -34,7 +34,7 @@ $(document).ready(function(){
           {
             start_index = 0;
             $('.filtered_list').html("");
-            news_filter = $('#search_news_year').val() ;            
+            news_filter = $('#search_news_year').val() ;    
             newslistAjaxCall();
           }
     });
@@ -54,6 +54,7 @@ $(document).ready(function(){
 	}
 
     function newslistAjaxCall() {
+		$('.loading').show();
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
@@ -65,8 +66,8 @@ $(document).ready(function(){
             success: function(msg){
                 var json = jQuery.parseJSON(msg); 
                 total_results = json.total_results;  
-                $('#loadingmessage').hide();
-                $.each(json.jsonNews, function(index, item) {
+        		$('.loading').hide();    
+        		$.each(json.jsonNews, function(index, item) {
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.newsURL + ".html>").append(
