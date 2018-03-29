@@ -1,3 +1,43 @@
+/* Added by German for media-center_naresh.html */
+
+.stickToBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left:15px;
+}
+
+.stickToTop {
+  position: relative;
+  min-height: 160px;  
+  padding-bottom:10px;
+}
+
+.other-news-padding-top {
+	padding-top: 25px;
+}
+
+.divider-news {
+    border-left: solid 2px #e7e7e7;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.hideForDesktop {
+	visibility: hidden;
+	margin-top: -25px;
+}
+
+@media ( max-width :992px) {
+	.hideForDesktop {
+		visibility: visible;
+		margin-top: 0;
+	}
+}
+
+/*  End of additions by German */
+
+
 .blog-image {
 	height: 145px;
 }
