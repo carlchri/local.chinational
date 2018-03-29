@@ -254,7 +254,7 @@ public class NewsList implements ComponentExporter {
 
         Map<String, String> map = new HashMap<String, String>();
 
-        map.put("path", properties.get(PN_PARENT_PAGE, currentPage.getPath()));
+        map.put("path", properties.get(PN_PARENT_PAGE, "/content"));
         map.put("type", "cq:Page");
         map.put("property", "jcr:content/cq:template");
         map.put("property.value", "/apps/chinational/templates/newsdetailspage");
