@@ -16,10 +16,12 @@
 				                    <div class="tile">
 				                        <hr>
 				                        <div class="tile-inner row">
-				                            <div class="tile-img col-xs-5 col-md-4" data-sly-test="${item.properties.imageSrc}">
-				                                <picture>
-				                                    <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
-				                                </picture>
+				                            <div class="tile-img col-xs-5 col-md-4">
+				                            	<sly data-sly-test="${item.properties.imageSrc}">
+					                                <picture>
+					                                    <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
+					                                </picture>
+				                                </sly>
 				                            </div>
 				                            <div class="tile-desc col-xs-7 col-md-8">
 				                                <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}" data-sly-test="${item.properties.physicianName}">
