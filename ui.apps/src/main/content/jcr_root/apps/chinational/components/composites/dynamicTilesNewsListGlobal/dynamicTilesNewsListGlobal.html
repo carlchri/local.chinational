@@ -18,7 +18,7 @@
                              alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
                     </div>
                     
-                    <div class="blog-content pstn-reltv">
+                    <div class="blog-content pstn-reltv stickToTop">
                         <span class="blog-title dblock txt-green tiles_heading_site_color">
                         	${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}
                         </span>
@@ -27,14 +27,16 @@
                                  ${formatter.formattedDate}
                         </span>
                         <p>${featuredNews.properties.excerpt}</p>
-                        <a class="bold-link" href="${featuredNews.path @ extension='html'}" target="${currentStyle.targetBlank ?'_blank':'_self'}">
-                            READ MORE
-                        </a>
                     </div>
+                    <a class="bold-link" href="${featuredNews.path @ extension='html'}" target="${currentStyle.targetBlank ?'_blank':'_self'}">
+                        READ MORE
+                    </a>
                 </div>
         	</sly>
 
-			<div class="other-news col-sm-12 col-md-3" data-sly-test="${!currentStyle.listOnRightNotRequired}">
+        	<div class="divider-news" data-sly-test="${!properties.listOnRightNotRequired}"></div>
+			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!currentStyle.listOnRightNotRequired}">
+				<hr class="hideForDesktop" />
                 <h3>${currentStyle.linkHeading || 'Other News'}</h3>
                 <sly data-sly-list.item="${newsList.listNews}">
                     <div class="bullet-text">
@@ -45,7 +47,6 @@
                     </div>
                 </sly>
             </div>
-
 		</div>
 
 	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
