@@ -14,7 +14,6 @@
 # limitations under the License.
 ###############################################################################
 js/app.js
-js/loading.js
 js/newslist.js
 js/blogslist.js
 js/physiciantiles.js
