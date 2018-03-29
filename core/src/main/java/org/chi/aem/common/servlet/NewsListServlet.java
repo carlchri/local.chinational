@@ -160,49 +160,53 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     				    }
     			}
     		}
+    		
+    		if(media_page_path == null){
+    			media_page_path = DEFAULT_MEDIA_PAGE_PATH;
+    		}
 
-        String[] selectors = request.getRequestPathInfo().getSelectors();
-        if(selectors.length >= 2){
-        	newsFilter = selectors[1];
-        } else {
-        	newsFilter = DEFAULT_NEWS_FILTER;
-        }
-        
-        if(selectors.length >= 3 && (selectors[2].matches("[0-9]+"))){
-        	start_index = Integer.parseInt(selectors[2]);	
-        }
-        
-       	allNews = new ArrayList<>();
-    	listNews = new ArrayList<>();
-    	allFilteredNews = new ArrayList<>();
-        featuredNews = new ArrayList<>();
-        listYears = new ArrayList<>();
-        listTags = new ArrayList<>();
-        
-        pageManager = resolver.adaptTo(PageManager.class);
-        
-        allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
-        listYears = populateListYears(allNews); // extract years from list of all news
-        listTags = populateListTags(allNews);   // extract author defined tags from list of all news
-        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
-        setMaxfeaturedNews(); //limit featured articles to maximum 3.
-        allFilteredNews = populateListItems(allFilteredNews); //filtered list of news based on year or Tag, sorted by Publish date
-        listNews = populateListItems(listNews); //filtered list of news based on year or Tag, sorted by Publish date
-        
-        totalResults = allFilteredNews.size();
-        
-        JSONObject jsonResult = new JSONObject();
-        JSONArray jsonArray = getJsonNews();
-        jsonResult.put("jsonNews", jsonArray);
-        jsonResult.put("total_results", totalResults);
-        String jsonData = jsonResult.toString();
-        // LOGGER.info("jsonNews :" + jsonResult.toString());
-        
-        // response.setContentType("application/json");
-         
-       PrintWriter out = response.getWriter();
-       out.write(jsonData);
-       out.flush();
+	        String[] selectors = request.getRequestPathInfo().getSelectors();
+	        if(selectors.length >= 2){
+	        	newsFilter = selectors[1];
+	        } else {
+	        	newsFilter = DEFAULT_NEWS_FILTER;
+	        }
+	        
+	        if(selectors.length >= 3 && (selectors[2].matches("[0-9]+"))){
+	        	start_index = Integer.parseInt(selectors[2]);	
+	        }
+	        
+	       	allNews = new ArrayList<>();
+	    	listNews = new ArrayList<>();
+	    	allFilteredNews = new ArrayList<>();
+	        featuredNews = new ArrayList<>();
+	        listYears = new ArrayList<>();
+	        listTags = new ArrayList<>();
+	        
+	        pageManager = resolver.adaptTo(PageManager.class);
+	        
+	        allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
+	        listYears = populateListYears(allNews); // extract years from list of all news
+	        listTags = populateListTags(allNews);   // extract author defined tags from list of all news
+	        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
+	        setMaxfeaturedNews(); //limit featured articles to maximum 3.
+	        allFilteredNews = populateListItems(allFilteredNews); //filtered list of news based on year or Tag, sorted by Publish date
+	        listNews = populateListItems(listNews); //filtered list of news based on year or Tag, sorted by Publish date
+	        
+	        totalResults = allFilteredNews.size();
+	        
+	        JSONObject jsonResult = new JSONObject();
+	        JSONArray jsonArray = getJsonNews();
+	        jsonResult.put("jsonNews", jsonArray);
+	        jsonResult.put("total_results", totalResults);
+	        String jsonData = jsonResult.toString();
+	        // LOGGER.info("jsonNews :" + jsonResult.toString());
+	        
+	        // response.setContentType("application/json");
+	         
+	       PrintWriter out = response.getWriter();
+	       out.write(jsonData);
+	       out.flush();
 	    } catch (Exception e) {
 	        LOGGER.error("Exception in NewsListServlet",e);
 	        try {
