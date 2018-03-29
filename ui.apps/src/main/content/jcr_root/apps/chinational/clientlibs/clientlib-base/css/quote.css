@@ -4,8 +4,13 @@
 .quote-outer {
   background-color:#f8f7f7;
 /*   padding:50px 60px;       Removed by German for content-details_RR.html */
-  margin:0 0 49px 0;    /* Modified by German for content-details_RR.html -> it was 40px 0 70px 0; */
+/* Modified by German for content-details_RR.html -> it was 40px 0 70px 0; */
+  margin:0 0 49px 0;    
   overflow: hidden;
+}
+/* Naresh - no margin in case if rows of buttons are not configured*/
+.quote-outer-mo-margin {
+  margin:0 0 0 0;    
 }
 .quote-inner {
   position:relative;
