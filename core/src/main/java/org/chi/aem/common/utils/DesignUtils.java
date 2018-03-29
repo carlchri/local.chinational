@@ -62,7 +62,7 @@ public final class DesignUtils {
         return compRes;
 
     }
-    
+
 
     public static Resource getDesignResource(Design currentDesign, String componentName) {
         if (componentName != null) {
