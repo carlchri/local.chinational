@@ -32,6 +32,13 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/well">
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <featuredArticleHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        emptyText="Enter Featured Article Main Heading here"
+                                                        fieldDescription="This text will be used as main heading for Featured Articles"
+                                                        fieldLabel="Enter featured Article Main Heading here:"
+                                                        name="./featuredArticleHeading"/>
                                                     <featuredArticleTitle
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

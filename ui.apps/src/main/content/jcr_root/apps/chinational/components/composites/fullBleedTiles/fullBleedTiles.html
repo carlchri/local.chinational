@@ -1,4 +1,6 @@
-<sly data-sly-use.tiles="org.chi.aem.common.components.model.FullBleedTiles"></sly>
+<sly data-sly-use.tiles="org.chi.aem.common.components.model.FullBleedTiles"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
 <div class="component">
     <div class="row bottom-buffer">
         <div class="col-sm-12">
@@ -14,3 +16,5 @@
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=true}"></sly>
