@@ -38,21 +38,19 @@ jQuery(document).ready(function() {
     $('#myDropdown').on('show.bs.dropdown', function() {
         // do something…
     });
-    var $owl = $('.owl-carousel');
-    $owl.owlCarousel({
-        nav: true,
-        loop: false,
+    $('.media-carousel').owlCarousel({
+        nav: true,    
         dots: false,
         autoHeight: true,
-        loop: true,
+        // loop: true,
         autoWidth: true,
-        stagePadding: 100,
-        // responsiveClass: true,
+        // stagePadding: 100,
+        responsiveClass: true,
         responsive: {
             0: {
                 items: 1
             },
-            786: {
+            768: {
                 items: 3
             },
             1024: {
@@ -60,39 +58,34 @@ jQuery(document).ready(function() {
             }
         }
     });
-    // var cItems = [];
-    // var cItemIndex = []
-    // var noMobile = 0;
-    // var removeIndex = [];
 
-    // function mediaHubResponsive() {
-    //     console.log("Total Carousel Items: " + $('.carousel-item').length);
-    //     if ($(window).width() < 481) {
-    //         $('.owl-item .hide-mobile').remove(); //.parent().removeClass('owl-item').addClass('hide-mobile').remove();
-    //         $owl.trigger('refresh.owl.carousel');
-    //         console.log('removed '+ removeIndex );
-    //     }
-
-    // }
-
-    // mediaHubResponsive();
-    // $(window).on('resize', function() {
-    //     //  mediaHubResponsive();
-    // });
-
-    // var active_owl = $('.owl-item.active:last');
-    // var last_active = active_owl[active_owl.length - 1];
-    // last_active.addClass('opacity_low');
-    // owl.on('changed.owl.carousel', function(event) {
-    //    console.log('simon');
-    //    slopacity;
-    // });
+    $('.profile-carousel').owlCarousel({
+        nav: true,
+        // loop: false,
+        dots: false,
+        autoHeight: true,
+        // loop: true,
+        // autoWidth: true,
+        // stagePadding: 100,
+        // responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1024: {
+                items: 3
+            }
+        }
+    });
 
     /* Audio Player */
     var audioFile;
     var audioTitle;
     var ply = document.getElementById('audio-player');
-    $('.audio-player-button').on('click',function() {
+    $('.audio-player-button').on('click', function() {
         audioFile = $(this).data('file');
         audioTitle = $(this).data('audio-title');
     });
