@@ -631,20 +631,6 @@ h6 {
 }
 
 
-/* right rail gutter side correction for seperator */
-
-.right-rail .separator.gutter-sides {
-    padding: 0;
-}
-
-.right-rail-text p {
-    margin-top: 5px;
-}
-
-.right-rail .red-border {
-    border-color: #e1523d;
-}
-
 label {
     font-weight: normal;
 }
@@ -747,6 +733,24 @@ p {
 
 p:first-child {
     margin: 0 0 15px 0;
+}
+
+/* right rail gutter side correction for seperator 
+   Naresh - Adding after p:first-child, else that was taking priority
+   for right rail.
+*/
+
+.right-rail .separator.gutter-sides {
+    padding: 0;
+}
+
+.right-rail-text p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.right-rail .red-border {
+    border-color: #e1523d;
 }
 
 .pstn-abslt {
