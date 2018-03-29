@@ -627,7 +627,7 @@ h6 {
     border-top: none;
     border-bottom: dashed 1px #97999B;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Updated by Narehs to 15px for bug fix*/
 }
 
 
