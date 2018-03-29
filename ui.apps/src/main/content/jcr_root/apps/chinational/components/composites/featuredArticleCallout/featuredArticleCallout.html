@@ -2,13 +2,12 @@
 	<div class="row bottom-buffer ${properties.greybgRequired ?'light-gray gray-margin-top':''}">
 		<div class="col-sm-12">
 			<div class="flex-row">
-			
+
 			      <div class="upcoming-events-wrapper">
-			
-						<div class="pading-bottom-25" data-sly-test="${!properties.headingNotRequired}"
-			                 data-sly-resource="${'heading' @ resourceType='chinational/components/content/heading'}">
-			            </div>
-			
+                        <h3 class="pading-bottom-25" data-sly-test="${!properties.headingNotRequired}">
+                            ${properties.featuredArticleHeading || 'Upcoming Events'}
+                        </h3>
+
 			            <div class="upcoming-events">
 				            <div class="flex">
 				                <div class="event-image">

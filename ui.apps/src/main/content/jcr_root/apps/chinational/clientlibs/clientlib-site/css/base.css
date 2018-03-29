@@ -6,6 +6,16 @@
     -moz-box-sizing: border-box;
 }
 
+.mc_list {
+	list-style: none;
+	/* Added by German for media-center.html */
+}
+
+.mc_list h3 {
+	padding-bottom: 0px;
+	/* Added by German for media-center.html */
+}
+
 .padding-x {
 /*     padding: 30px 0;    Removed by German for foundation.html */
 }
@@ -135,6 +145,11 @@
 
 .padding-50 {
     padding: 50px 0;
+    position: relative;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
     position: relative;
 }
 
@@ -289,13 +304,17 @@ hr {
     margin: 0 0 17px 0;
 }
 
+.section-breadcrumb ul {
+    padding-left: 0;
+}
+
 .section-breadcrumb ul li {
     float: left;
     padding: 0;
 }
 
 .section-breadcrumb {
-    padding: 0 0 28px 0;
+    padding-bottom: 28px;
 }
 
 .section-breadcrumb .arrow-link-txt {
@@ -529,7 +548,12 @@ hr {
     font-size: 36px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-    margin: 25px 0 0 0;
+     /* added by Naresh to fix bug */
+    font-stretch: normal;
+    line-height: 1.1;
+    letter-spacing: normal;
+    text-align: left;
+    /*margin: 25px 0 0 0; Commended by Naresh to fix bug*/
 }
 
 .news-date {
@@ -568,6 +592,7 @@ h3 {
     font-size: 28px;
     color: #24509a;
     margin: 0;
+    padding-bottom: 15px; /* Added by Naresh, as all H3 should have 15 px below it, as per style guide */
 }
 
 h4 {
@@ -656,9 +681,10 @@ label {
     font-style: italic;
 }
 
+/* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
     padding-top: 20px;
-}
+}*/
 
 .image-wrape img {
     float: left;
