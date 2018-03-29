@@ -14,7 +14,7 @@
 					<div class="col-sm-12 flex">
 						<div class="quote-inner">
 							<div class="content-wrapper" data-sly-test="${quote.subHeading}">
-								<span class="${quote.heading?'speech-mark-left':'speech-mark-left-subheader-only'}">“</span>
+								<span class="speech-mark-left ${quote.heading?'':'speech-mark-left-subheader-only'}">“</span>
 								<span class="quote-title quote_text_site_color" data-sly-test="${quote.heading}">${quote.heading}</span>
 								<p class="quote-description ${quote.heading?'':'quote-subheader-size'} quote_text_site_color">${quote.subHeading}</p>
 								<span class="speech-mark-right">”</span>
