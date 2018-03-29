@@ -3,6 +3,9 @@
 }
 .tiles-wrapper .tile-inner .tile-img {
   /*min-height: 130px;*/
+  height: 200px;
+  width: 157px;
+  max-width: 100%;
 }
 .tiles-wrapper .tile-inner .tile-img img {
   max-height: 200px;
@@ -20,11 +23,15 @@
 }
 .profileCarousel .tiles-wrapper .tile-inner .tile-img {
   /*min-height: 130px;*/
+  height: 200px;
+  width: 157px;
+  max-width: 100%;
 }
 .profileCarousel .tiles-wrapper .tile-inner .tile-img img {
   max-height: 200px;
   width: 157px;
   max-width: 100%;
+  margin: 0;
 }
 .profileCarousel .owl-theme .owl-nav [class*="owl-"] {
   top: 60px;
@@ -38,8 +45,4 @@
   .profileCarousel .owl-theme .owl-nav [class*="owl-"] {
     top: 100px;
   }
-}
-/* Added ny Naresh to fix margin issue on profile page*/
-.tile-hr-no-top-margin { 
-  margin-top:0px;
 }
