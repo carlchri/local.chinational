@@ -11,7 +11,8 @@ public final class LinkUtils {
     public static final Logger LOGGER = LoggerFactory.getLogger(LinkUtils.class);
     private static final String HTML = ".html";
     private static final String IMAGE_URL_PREFIX = "https://img.youtube.com/vi/";
-    private static final String IMAGE_URL_SUFFIX = "/maxresdefault.jpg";
+    private static final String IMAGE_URL_SUFFIX = "/hqdefault.jpg";
+    //private static final String IMAGE_URL_SUFFIX = "/maxresdefault.jpg";
     private static final String REGEX_PATTERN = "\\/([^\\/]+)\\/?$";
 
     /**
