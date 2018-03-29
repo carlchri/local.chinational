@@ -30,16 +30,16 @@ public final class DesignUtils {
         ///etc/designs/chinational/jcr:content/mediacenterpage/footerContactUs/footerCULinks
         // would become - /etc/designs/chinational/jcr:content/basepage/footerContactUs/footerCULinks
         String stylePath = currentStyle.getPath();
-        LOGGER.info("stylePath: " + stylePath);
+        LOGGER.debug("stylePath: " + stylePath);
         String newStylePath = stylePath.replaceAll(PATTERN_STR,
                         JCR_PATH + SLASH_PATH + BASEPAGE_PATH);
-        LOGGER.info("newStylePath: " + newStylePath);
+        LOGGER.debug("newStylePath: " + newStylePath);
         String newDesignChildPath =  newStylePath.substring(newStylePath.indexOf(currentDesign.getPath()));
         Resource compRes = currentDesign.getContentResource().getChild(newDesignChildPath );
         if (compRes != null) {
             return compRes.getValueMap();
         }
-        LOGGER.info("Design resource not available, get value map from style path");
+        LOGGER.debug("Design resource not available, get value map from style path");
         return currentStyle;
 
     }
@@ -49,32 +49,20 @@ public final class DesignUtils {
         ///etc/designs/chinational/jcr:content/mediacenterpage/footerContactUs/footerCULinks
         // would become - /etc/designs/chinational/jcr:content/basepage/footerContactUs/footerCULinks
         String stylePath = currentStyle.getPath();
-        LOGGER.info("stylePath: " + stylePath);
+        LOGGER.debug("stylePath: " + stylePath);
         String newStylePath = stylePath.replaceAll(PATTERN_STR,
                 JCR_PATH + SLASH_PATH + BASEPAGE_PATH);
-        LOGGER.info("newStylePath: " + newStylePath);
+        LOGGER.debug("newStylePath: " + newStylePath);
         String newDesignChildPath =  newStylePath.substring(newStylePath.indexOf(currentDesign.getPath()));
         Resource compRes = currentDesign.getContentResource().getChild(newDesignChildPath );
         if (compRes == null) {
-            LOGGER.info("Design resource not available, get resource from style path");
+            LOGGER.debug("Design resource not available, get resource from style path");
             compRes = resourceResolver.getResource(stylePath);
         }
         return compRes;
 
     }
-
-    /*public static ValueMap getDesignMap(Design currentDesign, String componentName) {
-        if (componentName != null) {
-            LOGGER.debug("currentDesign: " + currentDesign);
-            LOGGER.debug("currentDesign.getContentResource(): " + currentDesign.getContentResource());
-            Resource compRes = currentDesign.getContentResource().getChild(BASEPAGE_PATH + SLASH_PATH + componentName);
-            if (compRes != null) {
-                return compRes.getValueMap();
-            }
-        }
-        return null;
-    }*/
-
+    
 
     public static Resource getDesignResource(Design currentDesign, String componentName) {
         if (componentName != null) {

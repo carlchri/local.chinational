@@ -80,7 +80,9 @@ public class QuoteAndImage {
     @PostConstruct
     protected void init() {
         try {
-            numberOfButtons = Integer.parseInt(noOfButtons);
+            if (noOfButtons != null) {
+                numberOfButtons = Integer.parseInt(noOfButtons);
+            }
         } catch (NumberFormatException nfe) {
             LOGGER.error("Error parsing number of buttons", nfe);
         }

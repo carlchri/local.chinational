@@ -99,10 +99,12 @@
   height: 27px;
 }
 .video-container .sprite.icon-play-orange {
-  background-color: #fff;
-  /*position: absolute;
-            left: 20px;
-            top: 5*/
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -28px 0 0 -28px;
 }
 .sprite.icon-play-green {
   background-position: -383px -523px;
@@ -113,6 +115,29 @@
   background-position: -383px -576px;
   width: 27px;
   height: 27px;
+}
+.sprite.icon-large-play-orange {
+  background-position: -635px -122px;
+  width: 90px;
+  height: 90px;
+}
+.video .sprite.icon-large-play-orange {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  left: 60%;
+  top: 70%;
+  margin: -90px 0 0 -90px;
+}
+.sprite.icon-large-play-green {
+  background-position: -757px -120px;
+  width: 90px;
+  height: 90px;
+}
+.sprite.icon-large-play-blue {
+  background-position: -757px -257px;
+  width: 90px;
+  height: 90px;
 }
 /*Dark sprites*/
 .sprite.icon-download-dark {
@@ -135,8 +160,11 @@
 }
 .audio-container .sprite.icon-audio-light {
   position: absolute;
-  top: 55px;
-  left: 88px;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 46%;
+  margin: -28px 0 0 -28px;
 }
 .sprite.icon-print-light {
   background-position: -189px -621px;
@@ -272,14 +300,14 @@
   background-color: #24509a;
   color: #fff;
 }
-.test-icons {
+.test-icons span {
+  margin: 0 0 20px 0;
+  display: block !important;
+}
+.test-icons .icon-section {
   padding: 10px;
 }
 .test-icons .icon-section div {
   display: inline-block;
   margin: 0 30px 20px 0;
-}
-.test-icons span {
-  margin: 0 0 20px 0;
-  display: block !important;
 }
