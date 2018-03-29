@@ -8,4 +8,7 @@
   margin: 0;
   max-height: 205px; /* Modified by Naresh, as per defect to have max height to 205 */
 }
-
+/* Added ny Naresh to fix margin issue on profile page*/
+.tile-hr-no-top-margin { 
+  margin-top:0px;
+}
