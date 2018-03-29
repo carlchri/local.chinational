@@ -20,8 +20,10 @@
     	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
                 </div>
         	</sly>
-			<div class="other-news col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}"
-        		 data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}">
+        	<div class="divider-news" data-sly-test="${!properties.listOnRightNotRequired}"></div>
+			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}">
+				<hr class="hideForDesktop" />
+        		<sly data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}"></sly>
             </div>
 
 		</div>
