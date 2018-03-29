@@ -4,7 +4,7 @@
 	 data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 </div>
 
-<div class="blog-content pstn-reltv">
+<div class="blog-content pstn-reltv stickToTop">
 	<span class="blog-title dblock txt-green tiles_heading_site_color">${properties.headingText}</span>
     <sly data-sly-test="${properties.enterDate}">
 		<span class="blog-date txt-green tiles_heading_site_color" data-sly-test="${!properties.dateNotRequired}"
@@ -13,8 +13,8 @@
 		</span>
     </sly>
     <p data-sly-test="${properties.contentDetail}">${properties.contentDetail}</p>
-    <a class="bold-link" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
-		${link.linkText || 'Link Text'}
-    </a>
-</div>
+</div>    
+<a class="bold-link stickToBottom" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+	${link.linkText || 'READ MORE'}
+</a>
 
