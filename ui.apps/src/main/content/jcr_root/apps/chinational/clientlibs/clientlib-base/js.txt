@@ -23,5 +23,6 @@ js/audio.popup.js
 js/video.popup.js
 js/popper.js
 js/footerContactUs.js
+js/loading.js
 
 
