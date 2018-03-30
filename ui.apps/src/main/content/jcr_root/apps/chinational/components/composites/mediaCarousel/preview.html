@@ -1,7 +1,7 @@
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
 <sly data-sly-test="${mediaCollection}">
     <div class="component">
-        <div class="row bottom-buffer">
+        <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
             <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
             <div class="cus-curosal pstn-reltv hide-mobile">
                 <div class="owl-carousel owl-theme">

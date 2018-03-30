@@ -2,7 +2,7 @@
       data-sly-use.template="chinational/components/commons/templates.html" />
 
 <div class="component" data-sly-test="${properties.parentPage}">
-  	<div class="row bottom-buffer">
+  	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
   	
 		<div data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">

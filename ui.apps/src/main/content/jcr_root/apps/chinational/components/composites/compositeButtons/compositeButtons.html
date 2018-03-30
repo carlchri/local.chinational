@@ -2,7 +2,7 @@
 	 data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
 <div class="component">
-	<div class="row bottom-buffer">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
 				<div class="col-sm-6">
 					<h3 data-sly-test="${!properties.headingNotRequired}">
