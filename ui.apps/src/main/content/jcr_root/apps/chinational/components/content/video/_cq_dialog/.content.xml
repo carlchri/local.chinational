@@ -69,6 +69,53 @@
                                     </column>
                                 </items>
                             </Tab>
+                            <thumbnailTab
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="ThumbNail/Icon Settings"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <smallPlayIcon
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this checkbox to use small play icon (default is large play icon)."
+                                                            name="./smallPlayIcon"
+                                                            text="Select if Video should use small play icon"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+                                                    <thumbnailOption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/radiogroup"
+                                                            name="./thumbnailOption">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <option1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                                    checked="{Boolean}true"
+                                                                    text="Default YouTube Thumbnail"
+                                                                    value="mqdefault"/>
+                                                            <option2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                                    text="High Resolution YouTube Thumbnail (if unavailable, users will see grey thumbnail)"
+                                                                    value="maxresdefault"/>
+                                                        </items>
+                                                    </thumbnailOption>
+
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </thumbnailTab>
                             <greyBarTab
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/include"

@@ -48,7 +48,7 @@ public class Hero {
 	   if (StringUtils.isNotEmpty(videoUrl) && !"#".equals(videoUrl)) {
 		   videoUrl = LinkUtils.externalize(videoUrl);
 		   // create image URL
-           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl);
+           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, null);
 		}
 		if (StringUtils.isNotEmpty(linkTo) && !"#".equals(linkTo)) {
 			linkTo = LinkUtils.externalize(linkTo);

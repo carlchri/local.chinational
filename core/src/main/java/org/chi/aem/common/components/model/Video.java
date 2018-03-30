@@ -29,6 +29,9 @@ public class Video {
 	public static final String PROP_VIDEO_URL = "videoUrl";
 	public static final String PROP_VIDEO_TEXT = "videoText";
 	public static final String PROP_VIDEO_ON_RIGHT_RAIL = "rightRail";
+	public static final String PROP_VIDEO_SMALL_PLAY_ICON = "smallPlayIcon";
+	public static final String PROP_VIDEO_THUMBNAIL_OPTION = "thumbnailOption";
+
 
 
 	@Inject
@@ -45,6 +48,11 @@ public class Video {
 	private boolean rightRail;
 
 	@Inject
+	@Named(PROP_VIDEO_SMALL_PLAY_ICON)
+	@Optional
+	private boolean smallPlayIcon;
+
+	@Inject
 	@Named(PROP_VIDEO_URL)
 	@Optional
 	private String videoUrl;
@@ -54,6 +62,11 @@ public class Video {
 	@Optional
 	private String videoText;
 
+	@Inject
+	@Named(PROP_VIDEO_THUMBNAIL_OPTION)
+	@Optional
+	private String thumbnailOption;
+
 	private String imageUrl;
 
 	@PostConstruct
@@ -61,7 +74,7 @@ public class Video {
 	   if (StringUtils.isNotEmpty(videoUrl) && !"#".equals(videoUrl)) {
 		   videoUrl = LinkUtils.externalize(videoUrl);
 		   // create image URL
-           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl);
+           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, thumbnailOption);
 		}
 	}
 
@@ -84,4 +97,9 @@ public class Video {
 	public boolean isRightRail() {
 		return rightRail;
 	}
+
+	public boolean isSmallPlayIcon() {
+		return smallPlayIcon;
+	}
+
 }
