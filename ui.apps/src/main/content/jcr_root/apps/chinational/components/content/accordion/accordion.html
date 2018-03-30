@@ -3,7 +3,7 @@
 
 <sly data-sly-test.author="${wcmmode.edit || wcmmode.design}"></sly>
 <div class="component">
-	<div class="row bottom-buffer">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 		<div class="col-sm-12">
 			<div class="container">
 				<div class="accordion-wrapper">

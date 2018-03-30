@@ -2,7 +2,7 @@
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="component">
-	<div class="row bottom-buffer">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 		<div class="no-padding">
 			<div class="quote-outer gray-margin-top ${quote.buttonNotRequired?'quote-outer-mo-margin':''}
 						${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons > 0 ? 'quote-outer-mo-margin' : ''}">
