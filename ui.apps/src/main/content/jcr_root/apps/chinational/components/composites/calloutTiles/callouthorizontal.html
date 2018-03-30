@@ -1,7 +1,7 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.CalloutTiles"></sly>
 
 <div class="col-sm-12 col-md-12 ${properties.greybgRequired ?'light-gray gray-margin-top':''}">
-    <div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+    <div class="row" data-sly-test="${properties.selectHeading == 'headingRequired' && properties.calloutTilesHeading}">
         <div class="col-md-12" >
             <h3 class="pading-bottom-25">
                 ${properties.calloutTilesHeading || 'Callout Tiles Heading'}
