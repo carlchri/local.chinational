@@ -166,6 +166,9 @@
   top: 46%;
   margin: -28px 0 0 -28px;
 }
+.media-carousel-mobile .audio-container .sprite.icon-audio-light {
+  top: 64%;
+}
 .sprite.icon-print-light {
   background-position: -189px -621px;
 }
