@@ -6,6 +6,10 @@
   width: 157px;
   max-width: 100%;
 }
+/* Added by Naresh to fix margin issue on profile page*/
+.tile-hr-no-top-margin {
+  margin-top:0px;
+}
 .profileCarousel .item {
   /*@media (max-width: 768px) {
             width: 80%;
