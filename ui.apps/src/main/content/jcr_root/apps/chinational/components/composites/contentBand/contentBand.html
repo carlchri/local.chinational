@@ -1,7 +1,7 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html" />
 
 <div class="component">
-	<div class="row bottom-buffer">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 		<sly data-sly-test="${properties.videoOrientation == 'rightOrientation'}" data-sly-include="videoOnRight.html"></sly>
 		<sly data-sly-test="${properties.videoOrientation == 'leftOrientation'}" data-sly-include="videoOnLeft.html"></sly>
 		<sly data-sly-test="${properties.videoOrientation == 'hideOrientation'}" data-sly-include="textonly.html"></sly>

@@ -1,5 +1,5 @@
 <div class="component">
-    <div class="row bottom-buffer">
+    <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
         <sly data-sly-include="embeddedCalloutTiles.html"></sly>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>

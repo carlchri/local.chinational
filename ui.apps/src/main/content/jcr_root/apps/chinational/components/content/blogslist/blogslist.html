@@ -3,7 +3,7 @@
 
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
-	<div class="row bottom-buffer">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
 		<ul class="mc_list" data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
 		    <li data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></li>
