@@ -19,7 +19,7 @@
     <sly data-sly-include="topsection.html"></sly>
     <sly data-sly-include="titlesection.html"></sly>
     <div class="section">
-        <div class="container ">
+        <div class="container " id="${!properties.displayRightRail?'full-width-container':'right-rail-container'}">
             <div class="row">
                 <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
                     <sly data-sly-include="content.html"></sly>
