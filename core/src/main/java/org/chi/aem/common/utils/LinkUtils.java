@@ -12,7 +12,8 @@ public final class LinkUtils {
     private static final String HTML = ".html";
     private static final String IMAGE_URL_PREFIX = "https://img.youtube.com/vi/";
     private static final String IMAGE_URL_SUFFIX = "/mqdefault.jpg";
-    //private static final String IMAGE_URL_SUFFIX = "/maxresdefault.jpg";
+    private static final String IMAGE_URL_SUFFIX_HI_RES = "/maxresdefault.jpg";
+    private static final String HI_RES_TN_OPTION = "maxresdefault";
     private static final String REGEX_PATTERN = "\\/([^\\/]+)\\/?$";
 
     /**
@@ -55,12 +56,13 @@ public final class LinkUtils {
         return lastPart;
     }
 
-    public static String getYouTubeVideoThumbnail(String videoUrl) {
+    public static String getYouTubeVideoThumbnail(String videoUrl, String thumbnailOption) {
         String imageUrl = null;
         if (videoUrl != null) {
             String lastPart = getLastPartOfURLOrPath(videoUrl);
             if (lastPart != null) {
-                imageUrl = IMAGE_URL_PREFIX + lastPart + IMAGE_URL_SUFFIX;
+                String suffix = (thumbnailOption != null && thumbnailOption.equals(HI_RES_TN_OPTION))?IMAGE_URL_SUFFIX_HI_RES:IMAGE_URL_SUFFIX;
+                imageUrl = IMAGE_URL_PREFIX + lastPart + suffix;
             }
         }
         return imageUrl;
