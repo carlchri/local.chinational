@@ -4,7 +4,7 @@
         <div class="row bottom-buffer">
             <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
             <div class="cus-curosal pstn-reltv hide-mobile">
-                <div class="owl-carousel owl-theme">
+                <div class="owl-carousel owl-theme media-carousel">
                     <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
                     <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
 
@@ -25,7 +25,7 @@
                     </sly>
                 </div>
             </div>
-            <div class="owl-carousel owl-theme show-mobile hide-desktop mobile-carousel">
+            <div class="owl-carousel owl-theme show-mobile hide-desktop media-carousel-mobile">
                 <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='mobileCarousel'}"></sly>
                 <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='mobileCarousel'}"></sly>
 
