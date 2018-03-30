@@ -72,7 +72,7 @@
   border: 15px solid #e7e7e7;
   overflow: hidden;
 }
-.mediaCarousel .sub-Thumbs {
+.mediaCarousel .media-carousel .sub-Thumbs   {
   height: 186px;
   width: 229px;
   background-color: #e7e7e7;
@@ -86,10 +86,21 @@
 .mediaCarousel .sub-Thumbs button {
   background-color: #e7e7e7;
 }
-.mediaCarousel .media-text {
+.mediaCarousel .media-carousel .media-text {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 5%;
+  left: 16px;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+.mediaCarousel .media-carousel-mobile .media-text {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 .mediaCarousel .show-mobile .sub-Thumbs {
   height: 260px;
@@ -97,9 +108,9 @@
   background-color: #e7e7e7;
   display: inline-block;
   border-color: #e7e7e7;
-  border-width: 20px 50px;
+  padding: 8% 15% 40%;
   border-style: solid;
-  max-width: 480px;
+  /*max-width: 480px;*/
   text-align: center;
 }
 .mediaCarousel .inactive-Thumbs {
@@ -108,6 +119,14 @@
   background-color: #e7e7e7;
   border: 10px solid #e7e7e7;
   margin-top: 1px;
+}
+.mediaCarousel .owl-theme .owl-nav .owl-prev {
+  left: -4%;
+  top: 43%
+}
+.mediaCarousel .owl-theme .owl-nav .owl-next {
+    right: -6%;
+    top: 43%;
 }
 .mediaCarousel .cur-next {
   width: 40px;
@@ -230,7 +249,7 @@
 .mediaCarousel .carousel-item {
   padding-left: 5px;
 }
-.mediaCarousel .owl-item {
+.mediaCarousel .media-carousel .owl-item {
   margin-right: 7.5px;
   margin-left: 7.5px;
   opacity: .3;
@@ -249,7 +268,7 @@
   opacity: 1;
 }
 .mediaCarousel .owl-item.active:last-child {
-  opacity: .3;
+  /*opacity: .3;*/
 }
 .mediaCarousel .opacity_low {
   opacity: .3;
@@ -270,9 +289,9 @@
   }
 }
 @media (max-width: 480px) {
-  .mediaCarousel .media-text {
+  /*.mediaCarousel .media-text {
     bottom: 0;
-  }
+  }*/
 }
 @media (max-width: 767px) {
   .mediaCarousel .active {
@@ -312,7 +331,7 @@
   }
 }
 @media (max-width: 481px) {
-  .mediaCarousel .sub-Thumbs {
+  /*.mediaCarousel .sub-Thumbs {
     width: 101%;
     height: auto;
     margin: 0 auto;
@@ -321,7 +340,7 @@
     border-color: #e7e7e7;
     border-width: 16px;
     border-style: solid;
-  }
+  }*/
   .mediaCarousel .owl-carousel {
     min-height: 150px;
   }
@@ -344,6 +363,15 @@
     display: none;
     visibility: hidden;
   }
+}
+@media (max-width: 1024) {
+  .mediaCarousel .owl-item.active {
+    opacity: 3;
+  }
+  .mediaCarousel .media-carousel .owl-item.active:first-child {
+    opacity: 1;
+  }
+
 }
 @media (max-width: 992px) {
   .mediaCarousel .owl-item {

@@ -38,6 +38,12 @@ jQuery(document).ready(function() {
     $('#myDropdown').on('show.bs.dropdown', function() {
         // do something…
     });
+
+    // check if container full width
+    if ( $('div.body-content').hasClass('right-rail-container') ) {
+        $('profile-carousel').addClass('profile-carousel-rr').removeClass('profile-carousel');
+    }
+
     $('.media-carousel').owlCarousel({
         nav: true,    
         dots: false,
@@ -59,7 +65,23 @@ jQuery(document).ready(function() {
         }
     });
 
-    $('.profile-carousel').owlCarousel({
+    $('.media-carousel-mobile').owlCarousel({
+        nav: true,
+        // loop: false,
+        dots: false,
+        autoHeight: true,
+        // loop: true,
+        // autoWidth: true,
+        // stagePadding: 100,
+        // responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            }
+        }
+    });
+
+    $('#full-width-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
         dots: false,
@@ -77,6 +99,26 @@ jQuery(document).ready(function() {
             }
         }
     });
+    $('#right-rail-container .profile-carousel').owlCarousel({
+        nav: true,
+        // loop: false,
+        dots: false,
+        autoHeight: true,
+        // loop: true,
+        // autoWidth: true,
+        // stagePadding: 100,
+        // responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            480: {
+                items: 2
+            }
+        }
+    });
+
+
 
     /* Audio Player */
     var audioFile;
