@@ -125,9 +125,20 @@
   position: absolute;
   width: 90px;
   height: 90px;
+  left: 55%;
+  top: 60%;
+  margin: -90px 0 0 -90px;
+}
+.mediaCarousel .sprite.icon-large-play-orange {
   left: 60%;
   top: 70%;
-  margin: -90px 0 0 -90px;
+}
+.right-rail .sprite.icon-large-play-orange {
+  background-position: -327px -524px;
+  width: 28px;
+  height: 27px;
+  left: 72%;
+  top: 85%;
 }
 .sprite.icon-large-play-green {
   background-position: -757px -120px;
@@ -165,6 +176,9 @@
   left: 57%;
   top: 46%;
   margin: -28px 0 0 -28px;
+}
+.media-carousel-mobile .audio-container .sprite.icon-audio-light {
+  top: 64%;
 }
 .sprite.icon-print-light {
   background-position: -189px -621px;

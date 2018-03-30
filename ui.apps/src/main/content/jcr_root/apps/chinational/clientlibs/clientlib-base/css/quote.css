@@ -28,6 +28,7 @@
 }
 .quote-description {
   font-size:16px;
+  line-height: 24px; /* Added ny Naresh to fix defect*/
   color:#0097a9;
   font-style:italic;
   font-family: myriad-pro, 'MyriadPro-It', sans-serif;
