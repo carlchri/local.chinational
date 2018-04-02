@@ -41,6 +41,8 @@ public class SearchResult extends WCMUsePojo {
     public List<String> pages;
     public int resultsOffset;
     public int totalNumberPages;
+    public int currentPageNumber = 1;
+    public int totalNumberOfResult;
     public String fulltext;
     public List<String> searchRoots;
     public List<String> resultTypes;
@@ -78,8 +80,8 @@ public class SearchResult extends WCMUsePojo {
 
         String pageString = request.getParameter(PARAM_PAGE);
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
-            int page = Integer.parseInt(pageString);
-            resultsOffset = (page - 1) * resultsSize;
+            currentPageNumber = Integer.parseInt(pageString);
+            resultsOffset = (currentPageNumber - 1) * resultsSize;
         }
 
         fulltext = request.getParameter(PARAM_FULLTEXT);
@@ -114,7 +116,8 @@ public class SearchResult extends WCMUsePojo {
 
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
-            totalNumberPages = ((int) searchResult.getTotalMatches())/resultsSize + ((int) searchResult.getTotalMatches()) % resultsSize;
+            totalNumberOfResult = (int) searchResult.getTotalMatches();
+            totalNumberPages = totalNumberOfResult/resultsSize + 2;
 
             for(int i = 1; i < totalNumberPages; i++) {
                 pages.add(Integer.toString(i));
@@ -168,6 +171,10 @@ public class SearchResult extends WCMUsePojo {
     public int getTotalNumberPages() {
         return totalNumberPages;
     }
+
+    public int getTotalNumberOfResults() { return totalNumberOfResult; }
+
+    public int getCurrentPageNumber() { return currentPageNumber; }
 
     public List<String> getPages() {
         return pages;

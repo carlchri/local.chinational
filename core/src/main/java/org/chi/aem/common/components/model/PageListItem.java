@@ -57,6 +57,8 @@ public class PageListItem {
         }else {
             if(asset.getMetadataValue(DC_TITLE) != null) {
                 title = asset.getMetadataValue(DC_TITLE).toString();
+            }else {
+                title = asset.getName();
             }
         }
         return title;
