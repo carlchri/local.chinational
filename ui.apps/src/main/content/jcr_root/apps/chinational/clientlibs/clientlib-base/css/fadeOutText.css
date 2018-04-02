@@ -28,37 +28,3 @@
 }
 
 
-/* The following section is just for off-line purposes, 
-not intended to be added as is to AEM because 
-AEM has already its own classes for this items */
-
-.cmp-text ul {
-	padding: 10px 0 0 40px;
-}
-
-.cmp-text ul li {
-	position: relative;
-	list-style: none;
-	font-size: 22px;
-	font-size: 16px;
-	padding-bottom: 3px;
-	display: flex;
-}
-
-.cmp-text ul li::before {
-	color: #00B0B9;
-	/* color of bullet or square */
-	content: "\25CB";
-	/*  content: "\2686";*/
-	/* Unicode of character to precede the list item */
-	font-size: 1em;
-	/* em or %*/
-	padding-right: 0.58em;
-	/* updated ny naresh as per defect */
-	/* use em*/
-	position: relative;
-	top: 0em;
-	/* use em or % */
-}
-
-/*   End of section  */
