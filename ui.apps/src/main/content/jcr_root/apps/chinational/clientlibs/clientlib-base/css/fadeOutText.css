@@ -1,5 +1,5 @@
 .sidebar-box {
-	max-height: 99px;  
+	max-height: 99px;
 	overflow: hidden;
 }
 
@@ -11,20 +11,20 @@
 	width: 100%;
 	height: 47px;
 	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5),
-		#ffffff);		/* Taken from Blur Mask specifications */
+		#ffffff); /* Taken from Blur Mask specifications */
 }
 
 .sidebar-box .button {
-	width: 163px;		
+	width: 163px;
 	height: 38px;
 }
 
 .fadeOutAdjustment {
 	margin-bottom: 30px;
 }
-	
-#fadeOutText.bottom-buffer { 
-	margin-bottom:30px; 
+
+#fadeOutText.bottom-buffer {
+	margin-bottom: 30px;
 }
 
 

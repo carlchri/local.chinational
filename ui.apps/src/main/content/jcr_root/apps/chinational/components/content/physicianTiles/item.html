@@ -1,20 +1,19 @@
 <template data-sly-template.item="${@ list, item, itemList}">
 
-    <div class="tile physician_tiles_list" style="display:none;">
-        <hr data-sly-test="${itemList.first || itemList.count == 2}" />
-        <div class="tile-inner">
-            <div class="tile-img" data-sly-test="${!item.properties.physicianImageNotReqd}">
-               	<img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
+<div class="tiles-wrapper col-xs-12 col-md-6  physician_tiles_list" style="display:none;">
+    <div class="tile">
+        <hr>
+        <div class="row tile-inner">
+            <div class="tile-img col-xs-5 col-md-4">
+               	<img  data-sly-test="${!item.properties.physicianImageNotReqd}" src="${item.properties.imageSrc @ context='unsafe'}" alt="Profile Image" />
             </div>
-            <div class="tile-desc">
+            <div class="tile-desc  col-xs-7 col-md-8">
                 <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}">
 	                <span class="small-heading heading_site_color">${item.properties.physicianName}</span>
                 </a>
                 <p>${item.properties.physicianExpertise}</p>
             </div>
         </div>
-        <hr />
-
     </div>
-
+</div>
 </template>    

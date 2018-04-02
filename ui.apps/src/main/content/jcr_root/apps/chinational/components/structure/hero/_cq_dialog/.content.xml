@@ -119,6 +119,24 @@
                                                         fieldLabel="Video URL (you tube only)"
                                                         name="./videoUrl"
                                                         rootPath="/content"/>
+                                                    <thumbnailOption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/radiogroup"
+                                                            name="./thumbnailOption">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <option1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                                    checked="{Boolean}true"
+                                                                    text="Default YouTube Thumbnail"
+                                                                    value="mqdefault"/>
+                                                            <option2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                                    text="High Resolution YouTube Thumbnail (if unavailable, users will see grey thumbnail)"
+                                                                    value="maxresdefault"/>
+                                                        </items>
+                                                    </thumbnailOption>
                                                     <backgroundColor
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
