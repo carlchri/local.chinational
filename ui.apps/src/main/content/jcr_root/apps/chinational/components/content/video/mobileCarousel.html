@@ -1,15 +1,17 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<div class="carousel-item item" style="width: 100%">
+<div class="carousel-item item">
     <div class="flex-box">
         <div class="carousel-description carousel-image">
-            <div class="sub-Thumbs">
-                <div class="video">
-                    <img src="${video.imageUrl}">
-                    <div class="link-wrapper">
-                        <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
-                            <i class="sprite small icons icon-play-orange"></i>
-                        </a>
+            <div class="video-container">
+                <div class="sub-Thumbs">
+                    <div class="video">
+                        <img src="${video.imageUrl}">
+                        <div class="link-wrapper">
+                            <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
+                                <i class="icon-play-small"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="media-text">
