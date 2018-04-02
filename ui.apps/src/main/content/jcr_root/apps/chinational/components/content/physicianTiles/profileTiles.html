@@ -8,16 +8,36 @@
 	            data-sly-use.itemTemplate="item.html">
 	            <sly data-sly-call="${itemTemplate.item @ list = physicianTiles, item = item, itemList = itemList}"></sly>
 	        </sly>
-		
-            <div class="tiles-wrapper col-xs-12">
-                <div class="tile">
-                    <div class="tile-inner row">
-					    <div class="row link-wrapper col-md-12" data-sly-test="${physicianTiles.listPhysicianTiles}">
-					        <a class="learn-more-btn border-orange physician_list_show_more">LOAD MORE</a>
+
+            <div class="tiles-wrapper filler col-xs-12 col-md-6">
+                 <div class="tile">
+                     <hr>
+                     <div class="tile-inner row">
+                         <div class="tile-img col-xs-5 col-md-4">
+                         </div>
+                         <div class="tile-desc col-xs-7 col-md-8">
+                             <span class="small-heading heading_site_color"></span>
+                             <p>
+                             </p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="tiles-wrapper col-xs-12 col-md-6">
+                 <div class="tile">
+                     <hr>
+                 </div>
+             </div>
+             <div class="tiles-wrapper col-xs-12">
+                 <div class="tile">
+                     <div class="tile-inner row">
+					    <div class="link-wrapper" data-sly-test="${physicianTiles.listPhysicianTiles}">
+					        <a class="learn-more-btn border-orange physician_list_show_more"><span>LOAD MORE</span></a>
 					    </div>
-				    </div>
-			    </div>
-		    </div>
+                     </div>
+                 </div>
+             </div>
+		
 		</div>
 	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 	</div>
