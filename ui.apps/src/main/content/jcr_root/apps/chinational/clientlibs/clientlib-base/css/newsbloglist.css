@@ -7,7 +7,7 @@
 #search_news_list, 
 #search_news_year, 
 #search_blogs_list, 
-#select_blogs_by_year {
+#search_blogs_year {
 	-webkit-appearance:menulist; 
 	background-color:#E6FFFF;
 	width:60%;
@@ -16,9 +16,9 @@
 #search_news_list option, 
 #search_news_year option, 
 #search_blogs_list option, 
-#select_blogs_by_year option {
+#search_blogs_year option {
 	background-color:#F2F2F2;
-	}
+}
 
 ul.filtered_list, 
 ul.filtered_blogs_list {
