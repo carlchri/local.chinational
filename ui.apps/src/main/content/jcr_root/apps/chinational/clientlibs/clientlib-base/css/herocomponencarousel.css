@@ -80,7 +80,7 @@
 	}
 	
 	.intro-title, .intro-short-title {
-		height: 341px;
+		min-height: 341px;
 		/* Modified by German for Hero Component in media-center_naresh.html, it was before -> height:444px !important; */
 	}
 	

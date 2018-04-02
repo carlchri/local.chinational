@@ -17,12 +17,12 @@ $(".sidebar-box .button").click(function() {
   $up
     .css({
       // Set height to prevent instant jumpdown when max height is removed
-      "height": $up.height(),
+      "min-height": $up.height(),
       "max-height": 9999,
-      "margin-bottom" :-70
+      "margin-bottom" :-50
     })
     .animate({
-      "height": totalHeight
+      "min-height": totalHeight
     });
   
   // fade out read-more
