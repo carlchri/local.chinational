@@ -991,17 +991,22 @@ body {
     color: #fff;
 }
 
-.border-orange {
+a.border-orange {
     color: #e1523d;
     background-color: #fff;
 }
 
-.border-orange:hover,
-.border-orange:focus,
-.border-orange:active {
+a.border-orange:hover {
     border-color: #e1523d;
     background-color: #e1523d;
     color: #fff;
+}
+
+a.border-orange::link,          
+a.border-orange:visited,
+a.border-orange:active {
+    color: #e1523d;
+    background-color: #fff;
 }
 
 .white-border:hover,

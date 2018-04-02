@@ -107,15 +107,18 @@
 }
 .physicianTiles .tiles-wrapper .tile-inner {
   padding: 0 15px;
+  /* @media (max-width: 1023px) {
+                padding: 0 60px;
+            }*/
 }
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .physicianTiles .tiles-wrapper .tile-inner {
-    padding: 0 60px;
+    padding: 0 40px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 1023px) {
   .physicianTiles .tiles-wrapper .tile-inner {
-    /*padding: 0 20px;*/
+    padding: 0 30px;
   }
 }
 .physicianTiles .tiles-wrapper .tile-inner .tile-img {
@@ -154,6 +157,19 @@
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc p {
   margin: 0;
   line-height: 1.25;
+}
+.physicianTiles .tiles-wrapper .tile-inner .col-xs-4 {
+  padding-left: 0;
+  /*padding-right: 0;*/
+}
+.physicianTiles .tiles-wrapper .hrSpacer hr {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+@media (max-width: 1023px) {
+  .physicianTiles .filler {
+    display: none;
+  }
 }
 /*.physician_tiles_list:extend(.profileCarousel) {}*/
 /* Added by Naresh to fix margin issue on profile page*/

@@ -1,76 +1,118 @@
 .quote-image img {
-  width:100%;
+	width: 100%;
 }
+
 .quote-outer {
-  background-color:#f8f7f7;
-/*   padding:50px 60px;       Removed by German for content-details_RR.html */
-/* Modified by German for content-details_RR.html -> it was 40px 0 70px 0; */
-  margin:0 0 49px 0;    
-  overflow: hidden;
+	background-color: #f8f7f7;
+	/*   padding:50px 60px;       Removed by German for content-details_RR.html */
+	/* Modified by German for content-details_RR.html -> it was 40px 0 70px 0; */
+	margin: 0 0 49px 0;
+	overflow: hidden;
 }
 /* Naresh - no margin in case if rows of buttons are not configured*/
 .quote-outer-mo-margin {
-  margin:0 0 0 0;    
-}
-.quote-inner {
-  position:relative;
-  margin:0 50px;
-}
-.quote-title {
-  font-size:36px;
-  color:#0097a9;
-  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-	font-style:italic;
-  line-height: normal;
-}
-.content-wrapper {
-  position:relative;
-}
-.quote-description {
-  font-size:16px;
-  line-height: 24px; /* Added ny Naresh to fix defect*/
-  color:#0097a9;
-  font-style:italic;
-  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-  margin:0;
-}
-.quote-subheader-size {
-  font-size:20px;
-}
-.quote-caption {
-  font-size: 14px;
-  color: #53565a;
-  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-	font-style:italic;
-  padding:10px 0; /* Naresh - changing it to 10 px as per defect*/
-  display:block;
-}
-.speech-mark-left, .speech-mark-right {
-  font-size: 48px;
-  font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-	font-style:italic;
-  color: #0097a9;
-  line-height:18px;
-  position:absolute;
-}
-.speech-mark-left {
-  top:18px;
-  left:-40px;
-}
-.speech-mark-left-subheader-only {
-  top:8px;
-}
-.speech-mark-right {
-  bottom:-16px;
-  right:-30px;
+	margin: 0 0 0 0;
 }
 
-@media (max-width:767px) {
-  .quote-outer {
-    padding:30px 20px 50px 20px;
-    margin: 40px 0 20px 0;
-  }
-  .quote-inner {
-    margin: 0 30px;
-  }
+.quote-inner {
+	position: relative;
+	margin: 0 50px;
 }
+
+.quote-title {
+	font-size: 36px;
+	color: #0097a9;
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style: italic;
+	line-height: normal;
+}
+
+.content-wrapper {
+	position: relative;
+}
+
+.quote-description {
+	font-size: 16px;
+	line-height: 24px; /* Added by Naresh to fix defect*/
+	color: #0097a9;
+	font-style: italic;
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	margin: 0;
+}
+
+.quote-subheader-size {
+	font-size: 20px;
+}
+
+.quote-caption {
+	font-size: 14px;
+	color: #53565a;
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style: italic;
+	padding: 10px 0; /* Naresh - changing it to 10 px as per defect*/
+	display: block;
+}
+
+.speech-mark-left, .speech-mark-right {
+	font-size: 48px;
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+	font-style: italic;
+	color: #0097a9;
+	line-height: 18px;
+	position: absolute;
+}
+
+.speech-mark-left {
+	top: 18px;
+	left: -40px;
+}
+
+.speech-mark-left-subheader-only {
+	top: 8px;
+}
+
+.speech-mark-right {
+	bottom: -16px;
+	right: -30px;
+}
+
+@media ( max-width :767px) {
+	.quote-outer {
+		padding: 30px 20px 30px 20px;
+		/* Modified by German for quote fix in media-center_naresh.html, it was padding: 30px 20px 50px 20px; */
+		margin: 40px 0 20px 0;
+	}
+	.quote-inner {
+		margin: 0 20px;
+	}
+
+	/* Added by German to fix quotes' margins */
+	
+	.quote-margin-fix {
+		padding-left: 0px !important;
+		margin-top: -10px;
+	}
+	.quote-margin-fix-no-image {
+		padding-right: 20px !important;
+		margin-top: 0px !important;
+		padding-bottom: 0px !important;
+	}
+
+	/* End of additions by German to fix quotes' margins */
+}
+
+/* Added by German to fix quotes' margins */
+
+.quote-margin-fix {
+	padding-bottom: 5px;
+	padding-left: 20px;
+	margin-top: -10px;
+}
+
+.quote-margin-fix-no-image {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	margin-top: -15px;
+}
+
+/* End of additions by German to fix quotes' margins */
