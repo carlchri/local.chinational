@@ -2,18 +2,15 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="search-result">
+    <h4>Search Keyword: ${searchResult.fulltext}</h4>
+    <h4>Page ${searchResult.currentPageNumber} of ${searchResult.totalNumberOfResult} results</h4>
     <ul>
         <sly data-sly-list="${searchResult.results}">
             <li>
-                <h3>
-                    <a class="bold-link" href="${item.path}">
-                        ${item.title}
-                    </a>
-                </h3>
-                <p>${item.description}</p>
-                <a class="bold-link" href="${item.path}">
-                    ${item.path}
+                <a href="${item.path}">
+                    ${item.title}
                 </a>
+                <p>${item.description}</p>
             </li>
         </sly>
     </ul>
