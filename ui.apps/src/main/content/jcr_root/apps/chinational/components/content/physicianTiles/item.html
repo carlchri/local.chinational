@@ -2,8 +2,8 @@
 
 <div class="tiles-wrapper col-xs-12 col-md-6  physician_tiles_list" style="display:none;">
     <div class="tile">
-        <hr data-sly-test="${itemList.first || itemList.count == 2}" />
-        <div class="tile-inner row">
+        <hr>
+        <div class="row tile-inner">
             <div class="tile-img col-xs-5 col-md-4" data-sly-test="${!item.properties.physicianImageNotReqd}">
                	<img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
             </div>
@@ -14,7 +14,6 @@
                 <p>${item.properties.physicianExpertise}</p>
             </div>
         </div>
-        <hr />
     </div>
 </div>
 </template>    
