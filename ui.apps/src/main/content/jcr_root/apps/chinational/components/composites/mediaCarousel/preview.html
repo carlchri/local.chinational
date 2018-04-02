@@ -2,7 +2,9 @@
 <sly data-sly-test="${mediaCollection}">
     <div class="component">
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+            <div class="col-sm-12 col-md-12">
             <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
+            </div>
             <div class="cus-curosal pstn-reltv hide-mobile">
                 <div class="owl-carousel owl-theme media-carousel">
                     <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
