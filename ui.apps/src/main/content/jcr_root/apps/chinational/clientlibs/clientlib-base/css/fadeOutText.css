@@ -1,5 +1,5 @@
 .sidebar-box {
-	max-height: 99px;  
+	max-height: 99px;
 	overflow: hidden;
 }
 
@@ -11,20 +11,54 @@
 	width: 100%;
 	height: 47px;
 	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5),
-		#ffffff);		/* Taken from Blur Mask specifications */
+		#ffffff); /* Taken from Blur Mask specifications */
 }
 
 .sidebar-box .button {
-	width: 163px;		
+	width: 163px;
 	height: 38px;
 }
 
 .fadeOutAdjustment {
 	margin-bottom: 30px;
 }
-	
-#fadeOutText.bottom-buffer { 
-	margin-bottom:30px; 
+
+#fadeOutText.bottom-buffer {
+	margin-bottom: 30px;
 }
 
 
+/* The following section is just for off-line purposes, 
+not intended to be added as is to AEM because 
+AEM has already its own classes for this items */
+
+.cmp-text ul {
+	padding: 10px 0 0 40px;
+}
+
+.cmp-text ul li {
+	position: relative;
+	list-style: none;
+	font-size: 22px;
+	font-size: 16px;
+	padding-bottom: 3px;
+	display: flex;
+}
+
+.cmp-text ul li::before {
+	color: #00B0B9;
+	/* color of bullet or square */
+	content: "\25CB";
+	/*  content: "\2686";*/
+	/* Unicode of character to precede the list item */
+	font-size: 1em;
+	/* em or %*/
+	padding-right: 0.58em;
+	/* updated ny naresh as per defect */
+	/* use em*/
+	position: relative;
+	top: 0em;
+	/* use em or % */
+}
+
+/*   End of section  */
