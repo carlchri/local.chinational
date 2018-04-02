@@ -4,8 +4,8 @@
     <div class="tile">
         <hr>
         <div class="row tile-inner">
-            <div class="tile-img col-xs-5 col-md-4" data-sly-test="${!item.properties.physicianImageNotReqd}">
-               	<img src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
+            <div class="tile-img col-xs-5 col-md-4">
+               	<img  data-sly-test="${!item.properties.physicianImageNotReqd}" src="${item.properties.imageSrc @ context='unsafe'}" alt="Physician Image" />
             </div>
             <div class="tile-desc  col-xs-7 col-md-8">
                 <a data-sly-unwrap = "${item.properties.linkToPageNotReqd}" href="${item.path @ extension='html' || '#'}">
