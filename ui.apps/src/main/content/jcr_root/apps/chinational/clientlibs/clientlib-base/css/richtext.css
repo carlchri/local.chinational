@@ -1,7 +1,7 @@
 
 
 .cmp-text ul{
-    padding: 10px 0 0 40px; 
+    padding: 7px 0 0 40px; /* Naresh - changed top padding to 7px, for spec to get 22 px between p tag and ul */
     
 }
 
@@ -34,7 +34,7 @@
 
 
 .cmp-text ol{
-    padding: 10px 0 0 40px; 
+    padding: 7px 0 0 40px; /* Naresh - changed top padding to 7px, for spec to get 22 px between p tag and ol */
     list-style: none;
     counter-reset: li;
     font-size: 22px;

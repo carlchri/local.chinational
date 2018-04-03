@@ -677,9 +677,12 @@ label {
     padding: 0 30px 30px 0;
 }
 
+/*
 .image-wrape p {
     margin: 0 0 30px 0;
 }
+Commented by Naresh - we don't need extra spacing by other elements
+*/
 
 .small-header {
     font-size: 28px;
