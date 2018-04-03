@@ -3,7 +3,7 @@
 
 <div class="component">
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
-			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
+			<div data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
 				<div class="col-sm-6">
 					<h3 data-sly-test="${!properties.headingNotRequired}">
 						${properties.heading}
@@ -22,16 +22,15 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="buttons-outer" data-sly-list.eachButton="${compositeButtons.buttonList}">
-                    	<div class="link-wrapper"
-							 data-sly-resource="${ @path=eachbutton, resourceType='chinational/components/content/button'}"></div>
-                    </div>
-				</div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="buttons-outer" data-sly-list.eachButton="${compositeButtons.buttonList}">
+                        <div class="link-wrapper"
+                             data-sly-resource="${ @path=eachbutton, resourceType='chinational/components/content/button'}"></div>
+                        </div>
+                </div>
 			</div>
 
-			<div class="row">
 				<div class="col-md-12 txt-right">
 					<div class="show-on-mobile">
                         <sly data-sly-test="${!properties.linkNotRequired}">
@@ -42,7 +41,6 @@
                         </sly>    
 					</div>
 				</div>
-			</div>
 
 	</div>
 	<sly data-sly-include="../../commons/bottomOption.html"></sly>
