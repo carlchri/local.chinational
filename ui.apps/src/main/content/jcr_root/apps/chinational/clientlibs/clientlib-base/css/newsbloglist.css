@@ -24,3 +24,9 @@ ul.filtered_list,
 ul.filtered_blogs_list {
 	padding-left:15px;
 }
+
+@media (max-width: 480px) {
+  .blog-news-padding-top {
+    padding-top: 10px;
+  }
+}
