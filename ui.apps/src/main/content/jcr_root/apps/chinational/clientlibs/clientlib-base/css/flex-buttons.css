@@ -107,8 +107,10 @@
 	.buttons-outer > div{
 		flex:0 0 32%;
 	}
+
+	// changed to 15px from 30px by Davinder
 	.right-small-txt {
-		padding-right:30px;
+		padding-right:15px;
 	}
 	.content-left .buttons-outer > div {
 		min-height: inherit;
@@ -132,9 +134,12 @@
 	.flexible-button {
 		min-height:inherit;
 	}
+/*
 	.col-md-12.txt-right .show-on-mobile{
 		padding-right:15px;
 	}
+commented by Davinder */
+
 	.flexible-box-wrapper .small-header {
 		margin-bottom: 0;
 	}
