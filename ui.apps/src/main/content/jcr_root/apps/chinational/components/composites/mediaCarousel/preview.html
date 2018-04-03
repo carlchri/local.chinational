@@ -1,5 +1,5 @@
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
-<div class="mediaCarousel" data-sly-test="${mediaCollection}">
+<sly data-sly-test="${mediaCollection}">
     <div class="component">
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
             <div class="col-sm-12 col-md-12" data-sly-test="${mediaCollection.sectionHeading}">
@@ -41,7 +41,7 @@
         </div>
         <sly data-sly-include="../../commons/bottomOption.html"></sly>
     </div>
-</div>
+</sly>
 <!-- Audio Popup-->
 <div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-labelledby="audio-modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
