@@ -2,7 +2,7 @@
 <sly data-sly-test="${mediaCollection}">
     <div class="component">
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
-            <div class="col-sm-12 col-md-12" data-sly-test="${mediaCollection.sectionHeading}">
+            <div class="col-sm-12" data-sly-test="${mediaCollection.sectionHeading}">
             <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
             </div>
             <div class="cus-curosal pstn-reltv hide-mobile">
@@ -11,7 +11,7 @@
                     <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}" data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
 
                     <sly data-sly-list.groups="${mediaCollection.previewItems}">
-                        <div class="carousel-item item twoItemColumn" style="width: 225px">
+                        <div class="carousel-item item twoItemColumn" style="width: 229px">
                             <div class="flex-box">
                                 <div class="carousel-description carousel-image">
                                     <sly data-sly-repeat="${groups}">
