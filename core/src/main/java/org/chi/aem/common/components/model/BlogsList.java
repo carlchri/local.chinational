@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +69,9 @@ public class BlogsList implements ComponentExporter {
     String PN_PARENT_PAGE = "parentPage";
 
     private static final int FEATURED_LIMIT = 3;
+    private static final String PARAM_PAGE = "page"; // for Pagination
+    private static final int HITS_PER_PAGE = 10;
+    private static final int START_INDEX = 0;
 
     @ScriptVariable
     private ValueMap properties;
@@ -92,14 +96,13 @@ public class BlogsList implements ComponentExporter {
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
     
-    /* listBlogs - storing list of all blogs articles 
+    /* listBlogs - storing list of all blogs articles used on page
      * excluding featured article to be displayed at top of page
      * sorted by publish date
      */
     private java.util.List<Page> listBlogs;
     
-    /* featuredBlogs - storing list of all Blogs articles 
-     * excluding featured article to be displayed at top of page
+     /* featuredBlogs - storing list of featured blogs articles [Max 3] 
      * sorted by publish date
      */
     private java.util.List<Page> featuredBlogs;
@@ -107,60 +110,71 @@ public class BlogsList implements ComponentExporter {
     // storing list of years of published articles
     private java.util.List<String> listYears;
     
-    // storing list of all tags and tagID attached to Blogs articles page template
+    // storing list of all tags and tagID attached to blogs articles page template
     private java.util.List<String> listTags;
-    private java.util.List<String> listTagsID;
+    // storing map of all tags name and title attached to blogs articles page template
+    private Map<String, String> tagsMap = new HashMap<String, String>();
     
-    private String blogsFilter;
-
-    Map<String, Object> blogsList = new HashMap<String, Object>();
+    private int start_index;
+    private int hits_per_page;
+    private int totalResults; // used for hide-show "LOAD MORE" button
+    private List<Integer> pages; //for pagination
+    private int totalNumberPages; // for pagination
+    private int activePage; // for pagination and for getting offset
 
     @PostConstruct
     private void initModel() {
-    	if(request.getAttribute("blogs_filter") != null){
-            blogsFilter= (String) request.getAttribute("blogs_filter");    		
-    	}else{
-    		blogsFilter = "";
-    	}
-        LOGGER.info("blogsFilter" + blogsFilter);
+        start_index = START_INDEX;
+        hits_per_page = HITS_PER_PAGE;
+        totalResults = 0;
+        totalNumberPages = 1;
+        activePage = 1;
+        
+        String[] selectors = request.getRequestPathInfo().getSelectors();
+        LOGGER.info("selectors length: " + selectors.length);
+        if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){
+        	activePage = Integer.parseInt(selectors[0]);	
+        }
+        LOGGER.info("active Page: " + activePage);
+        if(activePage != 1 && (activePage > 1)) {
+            start_index = ((activePage - 1) * hits_per_page);
+        } else {
+        	activePage = 1; //for Pagination active class when page load for the first time
+        }
     	
     	allBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
-        listTagsID = new ArrayList<>();
+
+        pages = new ArrayList<Integer> ();
         
         pageManager = resourceResolver.adaptTo(PageManager.class);
         
-        allBlogs = populateListItems(allBlogs); //to get all the Blogs using defined template, sorted by Publish date
-        listYears = populateListYears(allBlogs); // extract years from list of all Blogs
-        listTags = populateListTags(allBlogs);   // extract author defined tags from list of all Blogs
+        allBlogs = populateListItems(allBlogs); //to get all the blogs using defined template, sorted by Publish date
+        listYears = populateListYears(allBlogs); // extract years from list of all blogs
+        listTags = populateListTags(allBlogs);   // extract author defined tags from list of all blogs
         featuredBlogs = populateListItems(featuredBlogs);  // extract featured articles, sorted by Publish date
         setMaxfeaturedBlogs(); //limit featured articles to maximum 3.
-        listBlogs = populateListItems(listBlogs); //filtered list of Blogs based on year or Tag, sorted by Publish date
-        //  filtering featured articles from the list. This is the list used on media page.
-        // listBlogs = populateListBlogs(listBlogs, featuredBlogs);
-        listBlogs = populateFilteredList(featuredBlogs, listBlogs);
-
-        // setMaxItems();
-
-    }
-
-    public JSONObject getJsonBlogs() {
-        JSONObject jsonBlogs = null;
-        try {
-        	jsonBlogs = new JSONObject();
-        	jsonBlogs.put("allBlogs", new JSONArray(allBlogs));
-        	jsonBlogs.put("featuredBlogs", new JSONArray (featuredBlogs));
-        	jsonBlogs.put("listBlogs", new JSONArray(listBlogs));
-        	jsonBlogs.put("listYears", new JSONArray(listYears));
-        	jsonBlogs.put("listTags", new JSONArray(listTags));
-        } catch (Exception e) {
-            LOGGER.error("Could not create JSON", e);
+        listBlogs = populateListItems(listBlogs); //filtered list of blogs based on year or Tag, sorted by Publish date
+        
+		// For AJAX Call - to get Total Results initially for LOAD MORE
+        totalResults = allBlogs.size() - featuredBlogs.size();
+        LOGGER.info("totalResults using allBlogs : " + totalResults);
+        
+        // to get total no of pages and List of pages for data-sly-list for Pagination
+    	int total = (allBlogs.size() - featuredBlogs.size())/hits_per_page;
+    	if(((allBlogs.size() - featuredBlogs.size()) % hits_per_page) == 0){
+    		totalNumberPages = total;
+    	} else {
+    		totalNumberPages = total + 1;
+    	}
+        LOGGER.info("totalNumberPages: " + totalNumberPages);
+        for(int i = 1; i <= totalNumberPages; i++) {
+            pages.add(i);
         }
-        LOGGER.info("jsonBlogs :" + jsonBlogs.toString());
-        return jsonBlogs;
+
     }
 
     public Collection<Page> getAllBlogs() {
@@ -181,78 +195,106 @@ public class BlogsList implements ComponentExporter {
         return listBlogs;
     }
 
-    public String getBlogsFilter() {
-   		return blogsFilter;
-    }
-    
-    public boolean getIsFilterYear(){
-    	if(listYears.contains(blogsFilter)){
-    		return true;
-    	}
-    	return false;
-    }
-
     public Collection<String> getListYears() {
         return listYears;
     }
 
+    public Map<String, String> getTagsMap() {
+        return tagsMap;
+    }
+    
     public Collection<String> getListTags() {
         return listTags;
     }
+    
+    public int getStartIndex() {
+   		return start_index;
+    }
+
+    public int getHitsPerPage() {
+   		return hits_per_page;
+    }
+
+    public int getTotalResults() {
+   		return totalResults;
+    }
+
+    public int getTotalPages() {
+   		return totalNumberPages;
+    }
+
+    public int getActivePage() {
+   		return activePage;
+    }
+
+    public int getPreviousPage() {
+    	if(activePage <= 1){
+    		return 1;
+    	} else if(activePage > totalNumberPages){
+    		return totalNumberPages;
+    	} else {
+    		return activePage - 1;	
+    	}
+    }
+
+    public int getNextPage() {
+    	if(activePage >= totalNumberPages){
+    		return totalNumberPages;
+    	}else{
+    		return activePage + 1;	
+    	}
+    }
+
+    public List<Integer> getPages() {
+        return pages;
+    }
 
     private java.util.List<Page> populateListItems(java.util.List<Page> list) {
+
         Map<String, String> map = new HashMap<String, String>();
 
-        map.put("path", properties.get(PN_PARENT_PAGE, currentPage.getPath()));
+        map.put("path", properties.get(PN_PARENT_PAGE, "/content"));
         map.put("type", "cq:Page");
         map.put("property", "jcr:content/cq:template");
         map.put("property.value", "/apps/chinational/templates/blogsdetailspage");
         map.put("orderby", "@jcr:content/publishDate");
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
-        // can be done in map or with Query methods
-        map.put("p.offset", "0"); // same as query.setStart(0) below
-        map.put("p.limit", "-1"); // same as query.setHitsPerPage(20) below
 
+        if(list == listBlogs){
+    	    map.put("p.offset", String.valueOf(start_index)); // same as query.setStart(0) below
+        	map.put("p.limit", String.valueOf(hits_per_page)); // same as query.setHitsPerPage(20) below
+        }else{
+    	    map.put("p.offset", String.valueOf(0)); // same as query.setStart(0) below
+        	map.put("p.limit", String.valueOf(-1)); // same as query.setHitsPerPage(20) below
+        }
+        
         if(list == featuredBlogs){
         	map.put("boolproperty", "jcr:content/isFeaturedArticle");
         	map.put("boolproperty.value", "true");
         }
-
-        if(list == listBlogs && listYears.contains(blogsFilter)){
-        	map.put("daterange.property", "jcr:content/publishDate");
-   			map.put("daterange.lowerBound", blogsFilter + "-01-01");
-   			map.put("daterange.lowerOperation", ">=");
-        	map.put("daterange.upperBound", blogsFilter + "-12-31");
-        	map.put("daterange.upperOperation", "<=");
-        }
-
-        if(list == listBlogs && listTags.contains(blogsFilter)){
-        	map.put("tagsearch.property", "jcr:content/cq:tags");
-        	map.put("tagsearch", blogsFilter);
-/*        	LOGGER.info("inside Query - blogsFilter" + blogsFilter);
-        	for(String tagID : listTagsID){
-        		if(tagID.contains(blogsFilter)){
-                	map.put("tagid.property", "jcr:content/cq:tags");
-           			map.put("tagid.1_value", tagID);
-        		}
+		
+		int i = 1;
+        if(list == listBlogs){
+        	for(Page item : featuredBlogs){
+        		LOGGER.info("item.path : " + item.getPath());
+            	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
-*/
         }
-
+		
         PredicateGroup group = PredicateGroup.create(map);
         Session session = resourceResolver.adaptTo(Session.class);
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
         Query query = builder.createQuery(group, session);
-
-        // query.setStart(0);   // already set in map above
-        // query.setHitsPerPage(-1); // already set in map above
-                   
-        SearchResult result = query.getResult();
-        // LOGGER.info("Result : " + result.toString());
+        // LOGGER.info("Query : " + query.toString());
+        // query.setStart(start_index);
+        // query.setHitsPerPage(hits_per_page);
         
         try {
-            list = collectSearchResults(result, list);
+            SearchResult result = query.getResult();
+            LOGGER.info("result.getTotalMatchefs() : " + list + " : " + result.getTotalMatches());
+
+            list = collectSearchResults(query.getResult(), list);
         } catch (RepositoryException e) {
             LOGGER.error("Unable to retrieve search results for query.", e);
         }
@@ -260,7 +302,8 @@ public class BlogsList implements ComponentExporter {
     }
 
      private java.util.List<Page> collectSearchResults(SearchResult result, java.util.List<Page> list) throws RepositoryException {
-         for (Hit hit : result.getHits()) {
+
+    	 for (Hit hit : result.getHits()) {
              Page containingPage = pageManager.getContainingPage(hit.getResource());
              if (containingPage != null) {
             	 list.add(containingPage);
@@ -268,10 +311,10 @@ public class BlogsList implements ComponentExporter {
          }
          
          // If no featured article present, add the latest article as featured article.
-         if(list == featuredBlogs && list.isEmpty() && allBlogs.size() > 0){
+         if(list == featuredBlogs && list.isEmpty()&& allBlogs.size() > 0){
         	 list.add(allBlogs.get(0));
          }
-
+ 	 
          return list;
      }
 
@@ -299,20 +342,13 @@ public class BlogsList implements ComponentExporter {
              if(tags.length !=0){
             	 for(Tag tag : tags){
             		String tagName = tag.getTitle();
-            		// LOGGER.info("tagName: " + tag.getName());
-            		// LOGGER.info("tagID: " + tag.getTagID());
-            		// LOGGER.info("tagNamespace: " + tag.getNamespace());
             		// LOGGER.info("tagTitle: " + tag.getTitle());
 	         		if(listTags.isEmpty()){
 	            		listTags.add(tagName);
+	                    tagsMap.put(tag.getName(),tagName);
 	        		} else if (!listTags.contains(tagName)){
 	        			listTags.add(tagName);
-	        		}
-            		String tagID = tag.getTagID();
-	         		if(listTagsID.isEmpty()){
-	            		listTagsID.add(tagID);
-	        		} else if (!listTagsID.contains(tagID)){
-	        			listTagsID.add(tagID);
+	        			tagsMap.put(tag.getName(),tagName);
 	        		}
             	 }
              }
@@ -321,56 +357,6 @@ public class BlogsList implements ComponentExporter {
     	 return listTags;
      }
      
-/* This method used with allBlogs as List1 and featuredBlogs as list2 and then to populate listBlogs[exclusing featuredBlogs].
-     private java.util.List<Page> populateListBlogs(java.util.List<Page> list1, java.util.List<Page> list2) {
-    	 boolean add = true;
-    	 for(Page item1 : list1) {
-    		 for(Page item2 : list2) {
-    			 if(item1 == item2){
-    				 add = false;
-    				 break;
-    			 } 
-    			 add = true;
-    		 }
-    		 if(add && !listBlogs.contains(item1)){
-    			 listBlogs.add(item1);
-    		 }
-    	 }	 
-         LOGGER.info("listBlogs : " + listBlogs);
-    	 return listBlogs;
-     }
-*/
-     private java.util.List<Page> populateFilteredList(java.util.List<Page> list1, java.util.List<Page> list2) {
-
-    	 for(Page item1 : list1) {
-    		 for(Page item2 : list2) {
-    			 if(item1 == item2){
-    				 listBlogs.remove(item1);
-    				 break;
-    			 } 
-    		 }
-    	 }	 
-    	 return listBlogs;
-     }
-
-/*   This method not in use. Created to restrict the maximum number of items in the Blogs List
- *    
-     private void setMaxItems() {
-        if (maxItems != 0) {
-            java.util.List<Page> tmpListItems = new ArrayList<>();
-            for (Page item : allBlogs) {
-                if (tmpListItems.size() < maxItems) {
-                    tmpListItems.add(item);
-                } else {
-                    break;
-                }
-            }
-            allBlogs = tmpListItems;
-        }
-    }
-*    
-*/    
-
     private void setMaxfeaturedBlogs() {
     	java.util.List<Page> tmpListItems = new ArrayList<>();
         for (Page item : featuredBlogs) {
