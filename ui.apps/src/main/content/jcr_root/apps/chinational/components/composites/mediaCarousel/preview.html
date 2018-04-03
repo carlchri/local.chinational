@@ -1,8 +1,8 @@
 <sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
-<sly data-sly-test="${mediaCollection}">
+<div class="mediaCarousel" data-sly-test="${mediaCollection}">
     <div class="component">
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
-            <div class="col-sm-12 col-md-12">
+            <div class="col-sm-12 col-md-12" data-sly-test="${mediaCollection.sectionHeading}">
             <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
             </div>
             <div class="cus-curosal pstn-reltv hide-mobile">
@@ -41,7 +41,7 @@
         </div>
         <sly data-sly-include="../../commons/bottomOption.html"></sly>
     </div>
-</sly>
+</div>
 <!-- Audio Popup-->
 <div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-labelledby="audio-modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
