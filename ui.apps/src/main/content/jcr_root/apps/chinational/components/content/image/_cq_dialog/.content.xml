@@ -41,13 +41,13 @@
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
                                                     <imageCaption
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                            emptyText=""
-                                                            fieldDescription="This text is shown below the image, if available"
-                                                            fieldLabel="Image Caption (optional)"
-                                                            name="./imageCaption"
-                                                            required="{Boolean}false"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                        emptyText=""
+                                                        fieldDescription="This text is shown below the image, if available"
+                                                        fieldLabel="Image Caption (optional)"
+                                                        name="./imageCaption"
+                                                        required="{Boolean}false"/>
                                                     <selectImgRenditions
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
