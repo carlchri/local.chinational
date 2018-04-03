@@ -5,7 +5,7 @@
 		        <div class="image-col col-md-5 col-sm-5" data-sly-test.noImagePresent="${item.properties.imageSrc}">
 		                  <img src="${item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
 		        </div>
-		        <div class="${noImagePresent ? 'col-md-7 col-sm-7' : 'col-md-12 col-sm-12'}">
+		        <div class="blog-news-padding-top ${noImagePresent ? 'col-md-7 col-sm-7' : 'col-md-12 col-sm-12'}">
 		          <a href="${item.path @ extension='html'}">
 		              <span class="small-heading news_heading_hover">${item.properties.newsHeading || item.pageTitle || item.title || item.name}</span>
 		          </a>
