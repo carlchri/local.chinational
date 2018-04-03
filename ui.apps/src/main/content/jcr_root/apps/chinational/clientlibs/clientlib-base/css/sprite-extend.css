@@ -132,12 +132,12 @@
 
 /* Naresh - To allow small icons on standalone video*/
 .video .sprite.icon-play-orange  {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    left: 57%;
-    top: 60%;
-    margin: -28px 0 0 -28px;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -28px 0 0 -28px;
 }
 
 .mediaCarousel .sprite.icon-large-play-orange {

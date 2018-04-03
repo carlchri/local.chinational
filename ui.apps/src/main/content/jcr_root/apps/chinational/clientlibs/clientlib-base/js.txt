@@ -23,7 +23,7 @@ js/audio.popup.js
 js/video.popup.js
 js/popper.js
 js/footerContactUs.js
-js/loading.js
 js/physician_tile.js
+js/highlight.js
 
 

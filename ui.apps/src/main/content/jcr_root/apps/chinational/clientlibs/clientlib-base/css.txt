@@ -1,4 +1,6 @@
+css/aem-override.css
 css/blogs.css
+css/calloutTiles.css
 css/contactus.css
 css/content-buttons.css
 css/content-details.css
@@ -17,6 +19,7 @@ css/Jobcarousel.css
 css/media-kit.css
 css/media-center.css
 css/modal.css
+css/newsbloglist.css
 css/other-components.css
 css/page-title-brand.css
 css/physician_tiles_list.css
@@ -27,5 +30,3 @@ css/sprite-extend.css
 css/sub-nav.css
 css/video.css
 css/video.popup.css
-css/aem-override.css
-css/newsbloglist.css

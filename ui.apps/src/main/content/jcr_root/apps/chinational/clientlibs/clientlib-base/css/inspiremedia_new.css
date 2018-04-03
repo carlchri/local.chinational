@@ -8,6 +8,7 @@
 }
 .mediaCarousel .video-container img {
   /*max-width: 166px;*/
+  max-width: 100%;
 }
 .mediaCarousel .audio-container {
   overflow: hidden;
@@ -15,6 +16,7 @@
 }
 .mediaCarousel .audio-container img {
   margin: 0;
+  max-width: 100%;
   /*max-width: 100%;*/
   /*max-width: 166px;*/
 }
