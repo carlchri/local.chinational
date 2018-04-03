@@ -7,17 +7,17 @@
 }
 
 .mc_list {
-	list-style: none;
-	/* Added by German for media-center.html */
+    list-style: none;
+    /* Added by German for media-center.html */
 }
 
 .mc_list h3 {
-	padding-bottom: 0px;
-	/* Added by German for media-center.html */
+    padding-bottom: 0px;
+    /* Added by German for media-center.html */
 }
 
 .padding-x {
-/*     padding: 30px 0;    Removed by German for foundation.html */
+    /*     padding: 30px 0;    Removed by German for foundation.html */
 }
 
 .bottom-buffer {
@@ -182,7 +182,12 @@ hr {
     bottom: 0;
     left: 0;
     color: #0097a9;
-    text-transform: uppercase; /* Added by Naresh for bug fix */
+    text-transform: uppercase;
+    /* Added by Naresh for bug fix */
+}
+
+.bold-link:hover {
+    color: #0097a9; /* Added by Simon for Hover fix */
 }
 
 .other-news {
@@ -300,6 +305,7 @@ hr {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     margin: -2px 0 5px -3px;
 }
+
 .large-blue-txt.page-title {
     margin: 0 0 17px 0;
 }
@@ -393,7 +399,7 @@ hr {
 }
 
 .btn-primary:hover {
-    background-color: #027886;
+    background-color: #0097a9;
     border-color: #027886;
 }
 
@@ -548,7 +554,7 @@ hr {
     font-size: 36px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-     /* added by Naresh to fix bug */
+    /* added by Naresh to fix bug */
     font-stretch: normal;
     line-height: 1.1;
     letter-spacing: normal;
@@ -561,8 +567,10 @@ hr {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     opacity: 0.7;
     font-style: italic;
-    margin-bottom: 48px; /* updated by Naresh for fixing a defect */
-    color:  #97999B; /* added by Naresh for fixing a defect */
+    margin-bottom: 48px;
+    /* updated by Naresh for fixing a defect */
+    color: #97999B;
+    /* added by Naresh for fixing a defect */
 }
 
 .news-sub-header {
@@ -592,7 +600,8 @@ h3 {
     font-size: 28px;
     color: #24509a;
     margin: 0;
-    padding-bottom: 15px; /* Added by Naresh, as all H3 should have 15 px below it, as per style guide */
+    padding-bottom: 15px;
+    /* Added by Naresh, as all H3 should have 15 px below it, as per style guide */
 }
 
 h4 {
@@ -616,6 +625,7 @@ h6 {
     font-weight: bold;
 }
 
+
 .thin-border {
     border-top: none;
     border-bottom: solid 1px #e1e6ee;
@@ -627,7 +637,8 @@ h6 {
     border-top: none;
     border-bottom: dashed 1px #97999B;
     margin-top: 15px;
-    margin-bottom: 15px; /* Updated by Narehs to 15px for bug fix*/
+    margin-bottom: 15px;
+    /* Updated by Narehs to 15px for bug fix*/
 }
 
 
@@ -644,7 +655,8 @@ label {
     font-weight: bold;
     display: block;
     text-align: left;
-    text-transform: uppercase; /*Added by naresh to fix a bug */
+    text-transform: uppercase;
+    /*Added by naresh to fix a bug */
 }
 
 .embeded-video .light-txt {
@@ -666,6 +678,7 @@ label {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     font-style: italic;
 }
+
 
 /* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
@@ -737,6 +750,7 @@ p {
 p:first-child {
     margin: 0 0 15px 0;
 }
+
 
 /* right rail gutter side correction for seperator 
    Naresh - Adding after p:first-child, else that was taking priority
@@ -823,14 +837,35 @@ a {
     font-weight: bold;
 }
 
-a:hover {
-    color: #53565a;
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover,
+a:hover,
+button:hover {
     text-decoration: none;
+    opacity: .55;
+}
+.infoband .buttons-outer a:hover, .compositeButtons .flex-buttons a:hover {
+    opacity: 1;
+}
+
+.other-news a:hover {
+    color: #426da9;
 }
 
 a:visited,
 a:focus {
     text-decoration: none;
+}
+.footer a {
+    color: #426da9;
+}
+
+.footer a:hover {
+    color: #426da9;
 }
 
 body {
@@ -914,7 +949,12 @@ body {
     padding-bottom: 20px;
 }
 
-.heading h1, .heading h2, .heading h3, .heading h4, .heading h5, .heading h6 {
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4,
+.heading h5,
+.heading h6 {
     margin: 0 0 8px 0;
 }
 
@@ -1001,11 +1041,11 @@ a.border-orange {
 
 a.border-orange:hover {
     border-color: #e1523d;
-    background-color: #e1523d;
-    color: #fff;
+    /*  background-color: #e1523d;*/
+    color: #e1523d  ;
 }
 
-a.border-orange::link,          
+a.border-orange::link,
 a.border-orange:visited,
 a.border-orange:active {
     color: #e1523d;
@@ -1015,9 +1055,9 @@ a.border-orange:active {
 .white-border:hover,
 .white-border:focus {
 
-    background-color: #fff;
-    color: #53565a;
-    border-color: #fff;
+    /*background-color: #fff;*/
+    color: #fff;
+    /*border-color: #fff;*/
 }
 
 .white-border {
@@ -1072,6 +1112,11 @@ nav {
 .container {
     padding-right: 60px;
     padding-left: 60px;
+}
+
+.container-full {
+    margin-right: -60px;
+    margin-left:  -60px;
 }
 
 .pstn-reltv {
@@ -1129,7 +1174,7 @@ nav {
 img {
     margin: 0 0 15px 0;
     width: auto;
-    max-width: 100%;
+    /*max-width: 100%;*/ /* removed by Simon */
 }
 
 .full-image img {
@@ -1340,7 +1385,6 @@ img {
         font-size: 40px;
         line-height: 45px;
     }
-
 }
 
 @media (max-width:480px) {
@@ -1395,11 +1439,12 @@ img {
     }
 }
 
+
 /* Added by German to fix full bleed tile in Mobile for History-timeline.html */
 
-@media all and (max-width : 767px) {
-	.fixingTile {
-		flex-direction: column;
-		width: 100%;
-	}
+@media all and (max-width: 767px) {
+    .fixingTile {
+        flex-direction: column;
+        width: 100%;
+    }
 }
