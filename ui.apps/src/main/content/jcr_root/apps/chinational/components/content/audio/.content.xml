@@ -3,4 +3,4 @@
     jcr:description="Audio component"
     jcr:primaryType="cq:Component"
     jcr:title="Audio"
-    componentGroup=".CHI General"/>
+    componentGroup="CHI General"/>

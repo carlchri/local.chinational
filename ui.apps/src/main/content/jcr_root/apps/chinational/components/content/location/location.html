@@ -7,7 +7,7 @@
 
     <div class="location card-body">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5" data-sly-test="${locationCollection.locationDetails.size > 0}">
             <div class="txt-address">
                 <div class="icons-set">
                     <sly data-sly-list="${locationCollection.locationDetails}">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="${locationCollection.locationDetails.size > 0?'col-md-7':'col-md-12'} ">
             <div id="map">Put map here</div>
         </div>
     </div>
@@ -53,7 +53,6 @@
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
-            // AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0
     </script>
 </sly>
 
