@@ -32,9 +32,14 @@
 	margin-top: 10px;
 }
 
+/* Added by German as per defect DE2558 by having 60px at top and bottom of header for accordions */
+
 .accordion-wrapper h3 {
 	padding-bottom: 60px;
+	padding-top: 30px;   /* bottom-buffer has already 30px, so we add only 30px more at the top for accordions */
 }
+
+/* End of additions for defect DE2558 */
 
 .accordion-wrapper {
 	/* padding-top: 20px;    Removed by German, padding top shouldn't be there anymore for components */
@@ -185,10 +190,14 @@
 	.accordion-header {
 		max-width: 160px;
 	}
-	.accordion-wrapper {
+	
+	/* Removed by German. If we manage to remove container class from accordions then we don't need below style */
+	
+	/* .accordion-wrapper {
 		margin-left: -15%;
 		margin-right: -15%
-	}
+	} */  
+	
 }
 
 /* End of additions by German */
