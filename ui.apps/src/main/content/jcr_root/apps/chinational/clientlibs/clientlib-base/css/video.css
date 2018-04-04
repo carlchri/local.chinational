@@ -32,8 +32,12 @@
 	margin-top: 10px;
 }
 
+.accordion-wrapper h3 {
+	padding-bottom: 60px;
+}
+
 .accordion-wrapper {
-	padding-top: 20px;
+	/* padding-top: 20px;    Removed by German, padding top shouldn't be there anymore for components */
 	overflow: hidden;
 }
 

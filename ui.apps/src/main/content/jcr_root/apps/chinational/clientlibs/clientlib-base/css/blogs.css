@@ -105,3 +105,17 @@
 		position: static;
 	}
 }
+
+/* Naresh - three options for images which should not be constrainted*/
+.auto-image {
+	width: auto;
+	height: auto;
+}
+
+.auto-image-width {
+	width: auto;
+}
+
+.auto-image-height {
+	height: auto;
+}
