@@ -45,7 +45,6 @@
                                                             fieldDescription="Audio Image"
                                                             fieldLabel="Audio Image"
                                                             name="./audioImage"
-                                                            required="{Boolean}true"
                                                             rootPath="/content/dam"/>
                                                     <audioUrl
                                                         jcr:primaryType="nt:unstructured"
