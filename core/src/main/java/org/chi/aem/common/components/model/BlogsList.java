@@ -253,7 +253,7 @@ public class BlogsList implements ComponentExporter {
 
         Map<String, String> map = new HashMap<String, String>();
 
-        map.put("path", properties.get(PN_PARENT_PAGE, "/content"));
+        map.put("path", properties.get(PN_PARENT_PAGE, currentPage.getPath()));
         map.put("type", "cq:Page");
         map.put("property", "jcr:content/cq:template");
         map.put("property.value", "/apps/chinational/templates/blogsdetailspage");
@@ -311,7 +311,7 @@ public class BlogsList implements ComponentExporter {
          }
          
          // If no featured article present, add the latest article as featured article.
-         if(list == featuredBlogs && list.isEmpty()&& allBlogs.size() > 0){
+         if(list == featuredBlogs && list.isEmpty() && allBlogs.size() > 0){
         	 list.add(allBlogs.get(0));
          }
  	 

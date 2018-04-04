@@ -92,7 +92,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
     private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
-    private static final String DEFAULT_MEDIA_PAGE_PATH = "/content";
     
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
@@ -134,7 +133,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
        
         blogsFilter = "";
-        media_page_path = DEFAULT_MEDIA_PAGE_PATH;
+        media_page_path = "";
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
         totalResults = 0;
@@ -158,8 +157,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     			}
     		}
 
-    		if(media_page_path == null){
-    			media_page_path = DEFAULT_MEDIA_PAGE_PATH;
+    		if(media_page_path == null || media_page_path.isEmpty()){
+    			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".blogsservlet"));
     		}
 
 	        String[] selectors = request.getRequestPathInfo().getSelectors();
@@ -336,7 +335,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
          }
          
          // If no featured article present, add the latest article as featured article.
-         if(list == featuredBlogs && list.isEmpty()){
+         if(list == featuredBlogs && list.isEmpty() && allBlogs.size() > 0){
         	 list.add(allBlogs.get(0));
          }
          LOGGER.info("listBlogs.size() after recursive : " + listBlogs.size()); 
