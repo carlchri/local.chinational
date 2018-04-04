@@ -106,23 +106,18 @@
 	}
 }
 
-/* Naresh - three options for images which should not be constrainted*/
-.auto-image img {
-	width: auto;
-	height: auto;
-}
-
-.auto-image-width img {
-	width: auto;
-}
-
-.auto-image-height img {
-	height: auto;
-}
-
-/* Naresh - ipad is not liking auto for images, hence use 100% here*/
-@media ( max-width :991px) {
+/* Naresh - three options for images which should not be constrainted in desktop*/
+@media ( min-device-width: 1200px) {
+	.auto-image img {
+		width: auto;
+		height: auto;
+	}
+	
 	.auto-image-width img {
-		width: 100%;
+		width: auto;
+	}
+	
+	.auto-image-height img {
+		height: auto;
 	}
 }
