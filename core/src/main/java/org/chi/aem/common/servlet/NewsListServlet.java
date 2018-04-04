@@ -25,6 +25,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.jcr.api.SlingRepository;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.felix.scr.annotations.Reference;
 import org.osgi.service.component.ComponentContext;
 import org.slf4j.Logger;
@@ -92,7 +93,6 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
     private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
-    private static final String DEFAULT_MEDIA_PAGE_PATH = "/content";
     
     // storing list of all news articles sorted by publishDate
     private java.util.List<Page> allNews;
@@ -134,9 +134,8 @@ public class NewsListServlet extends SlingAllMethodsServlet {
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
-       
         newsFilter = "";
-        media_page_path = DEFAULT_MEDIA_PAGE_PATH;
+        media_page_path = "";
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
         increment_index = 0;
@@ -145,7 +144,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         try {
         	resolver = request.getResourceResolver();
             session = resolver.adaptTo(Session.class);
-            
+
             Resource resource = request.getResource();
     		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
@@ -161,10 +160,10 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     			}
     		}
     		
-    		if(media_page_path == null){
-    			media_page_path = DEFAULT_MEDIA_PAGE_PATH;
+    		if(media_page_path == null || media_page_path.isEmpty()){
+    			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".newsservlet"));
     		}
-
+    		
 	        String[] selectors = request.getRequestPathInfo().getSelectors();
 	        if(selectors.length >= 2){
 	        	newsFilter = selectors[1];
@@ -339,7 +338,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
          }
          
          // If no featured article present, add the latest article as featured article.
-         if(list == featuredNews && list.isEmpty()){
+         if(list == featuredNews && list.isEmpty() && allNews.size() > 0){
         	 list.add(allNews.get(0));
          }
          LOGGER.info("listNews.size(): " + listNews.size()); 
