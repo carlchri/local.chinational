@@ -15,7 +15,7 @@
         </sly>
     </ul>
 
-    <div class="pagination" data-sly-list="${searchResult.pages}">
+    <div id="search-pagination" class="pagination" data-sly-list="${searchResult.pages}">
         <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
     </div>
 </div>
