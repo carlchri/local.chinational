@@ -25,6 +25,7 @@ css/page-title-brand.css
 css/physician_tiles_list.css
 css/richtext.css
 css/quote.css
+css/search.css
 css/special-content.css
 css/sprite-extend.css
 css/sub-nav.css
