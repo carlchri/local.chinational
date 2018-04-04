@@ -42,22 +42,23 @@ public class PageListItem {
     }
 
     public String getTitle() {
-        String title = "";
+        String title = null;
         if(page != null) {
             title = page.getNavigationTitle();
-            if (title == null) {
+            if (StringUtils.isEmpty( title )) {
                 title = page.getPageTitle();
             }
-            if (title == null) {
+            if (StringUtils.isEmpty( title )) {
                 title = page.getTitle();
             }
-            if (title == null) {
+            if (StringUtils.isEmpty( title )) {
                 title = page.getName();
             }
         }else {
             if(asset.getMetadataValue(DC_TITLE) != null) {
                 title = asset.getMetadataValue(DC_TITLE).toString();
-            }else {
+            }
+            if(StringUtils.isEmpty( title )) {
                 title = asset.getName();
             }
         }
