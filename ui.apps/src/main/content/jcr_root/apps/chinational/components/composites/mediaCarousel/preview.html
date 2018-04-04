@@ -18,9 +18,6 @@
                                         <sly data-sly-repeat="${groups}">
                                             <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
                                             <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
-                                            <sly data-sly-test="${itemList.first}">
-                                                <br>
-                                            </sly>
                                         </sly>
                                     </div>
                                 </div>
