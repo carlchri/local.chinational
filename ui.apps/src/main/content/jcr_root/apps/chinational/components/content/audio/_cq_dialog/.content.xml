@@ -61,6 +61,10 @@
                                     </column>
                                 </items>
                             </Tab>
+                            <greyBarTab
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                    path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
                         </items>
                     </tabs>
                 </items>
