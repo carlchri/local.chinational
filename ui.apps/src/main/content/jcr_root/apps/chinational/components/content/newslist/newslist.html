@@ -28,8 +28,8 @@
 					</sly>
 				</select>
 		</div>
-		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || '/content' }">
-		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path || '/content' }">
+		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
+		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
 		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 
         <div class="col-sm-12 loading" style="display:none;">

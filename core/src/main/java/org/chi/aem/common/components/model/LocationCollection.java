@@ -41,11 +41,13 @@ public class LocationCollection {
 		locationDetails = new ArrayList<LocationDetail>();
 		if (detailsResource != null) {
 			populateModel(locationDetails, detailsResource);
-		}else{
-			locationDetails.add(new LocationDetail());
 		}
+		//else{
+		//	locationDetails.add(new LocationDetail());
+		//}
         // LOGGER.info("locationDetails:" + locationDetails.toString());
 	}
+
 	public static java.util.List<LocationDetail> populateModel(
 			java.util.List<LocationDetail> array, Resource resource) {
 		if (resource != null) {
