@@ -1,7 +1,5 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
-<div class="category-item">
-    <div class="col-sm-12">
         <div class="category-item center">
             <span class="${properties.calloutIcon || 'solid-circle'}" data-sly-test="${properties.calloutIcon != 'iconNotRequired'}"></span>
             <a href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
@@ -11,6 +9,4 @@
             </a>
             <p>${properties.contentDetail}</p>
         </div>
-    </div>
-</div>
 
