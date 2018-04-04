@@ -47,3 +47,6 @@
 .findAProvider .find-provider-form.left button {
   margin: 0;
 }
+.findAProvider .find-provider-form .req-app {
+  position: relative;
+}

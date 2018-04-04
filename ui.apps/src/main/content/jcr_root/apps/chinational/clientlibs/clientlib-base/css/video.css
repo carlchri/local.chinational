@@ -36,7 +36,6 @@
 
 .accordion-wrapper h3 {
 	padding-bottom: 60px;
-	padding-top: 30px;   /* bottom-buffer has already 30px, so we add only 30px more at the top for accordions */
 }
 
 /* End of additions for defect DE2558 */
