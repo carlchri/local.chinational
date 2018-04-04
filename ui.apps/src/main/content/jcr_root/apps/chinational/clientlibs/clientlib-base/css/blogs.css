@@ -119,3 +119,10 @@
 .auto-image-height img {
 	height: auto;
 }
+
+/* Naresh - ipad is not liking auto for images, hence use 100% here*/
+@media ( max-width :991px) {
+	.auto-image-width img {
+		width: 100%;
+	}
+}
