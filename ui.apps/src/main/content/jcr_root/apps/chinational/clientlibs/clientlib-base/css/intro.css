@@ -52,7 +52,7 @@
 .intro-short-title .learn-more-btn {
   margin-top: 40px;
 }
-.banner-short-curvo {
+.banner-short-curvo { 
   background-color: #fdd757;
 }
 .intro-caption-black {
@@ -132,6 +132,10 @@
     float: none;
     height: 250px;
   }
+  .intro img {
+    max-width: none;
+    width: 100%;
+  }
   .intro-title {
     width: 100%;
     float: none;
@@ -156,11 +160,13 @@
   }
   .intro img {
     max-width: none;
+    width: 100%;
   }
 }
 @media (min-width: 768px) {
   .intro-img img {
     max-width: none;
+    width: 100%;
     height: auto !important;
     object-fit: cover;
   }
