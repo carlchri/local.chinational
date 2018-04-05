@@ -107,7 +107,8 @@ button {
 		margin: 0 0 20px 0;
 	}
 	.no-padding .quote-outer {
-		margin-top: -50px;
+		/* margin-top: -50px;                      Removed by German to fix Defect DE2601.
+		 If this affects something else please use another ticket to address individually */
 	}
 	.event-content a {
 		margin: 30px 0 40px 0;
