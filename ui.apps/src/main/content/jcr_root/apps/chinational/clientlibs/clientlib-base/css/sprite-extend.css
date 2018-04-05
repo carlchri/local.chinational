@@ -98,6 +98,14 @@
   width: 28px;
   height: 27px;
 }
+.right-rail .sprite.icon-play-orange {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -12% 0 0 -10%;
+}
 .video-container .sprite.icon-play-orange {
   position: absolute;
   width: 28px;
