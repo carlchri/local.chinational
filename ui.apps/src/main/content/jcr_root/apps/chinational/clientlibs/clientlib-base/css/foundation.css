@@ -9,7 +9,7 @@
 .category-item {
 	/*padding-bottom: 35px; Naresh - commented, fix bug to remove extra spacing */
 	overflow: hidden;
-	margin-left: -15px;
+	/* margin-left: -15px; Davinder - commented, fix bug to remove extra spacing */
 }
 .category-item.center { /*sbrown - added for callout icon center */
 	text-align: center;
@@ -28,7 +28,15 @@
 }
 
 .more-events a {
-	margin-left: 50px;
+	/* margin-left: 50px; Davinder - commented out to fix bug to remove extra spacing */
+}
+
+.featured-callout-view-events-button {
+	margin-left: 70px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
+}
+
+.callout-vertical {
+	margin:0 0 30px 0;
 }
 
 .more-events {
@@ -47,8 +55,6 @@
 	padding-left:15px;
 }
 
-
-
 @media ( max-width :992px) {
 	.event-content {
 		margin: -6px 0 0 15px;
@@ -62,6 +68,13 @@
 	}
 	.upcoming-events .flex {
 		display: flex;
+		padding-bottom:30px;
+	}
+	.callout-horizontal {
+		margin:0 0 30px 0;
+	}
+	.featured-callout-view-events-button {
+		margin-left: 105px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
 	}
 }
 
@@ -102,7 +115,9 @@ button {
 	.more-events a {
 		margin: 0 0 20px 0;
 	}
-	
+	.featured-callout-view-events-button {
+		margin-left: 0px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
+	}
 }
 
 @media all and (max-width : 992px) {
@@ -110,7 +125,7 @@ button {
 		max-width: 100%;
 	}
 	.more-events a {
-		margin-left: 110px;
+		/* margin-left: 110px; Davinder - commented out to fix bug to remove extra spacing */
 	}
 	.category_content {
 		padding-left:0px;
