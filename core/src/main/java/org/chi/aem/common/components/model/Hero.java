@@ -24,6 +24,7 @@ public class Hero {
 	    
 	public static final String PROP_LINK_TO = "linkTo";
 	public static final String PROP_VIDEO_URL = "videoUrl";
+	public static final String PROP_VIDEO_IMAGE = "videoImage";
 	public static final String PROP_VIDEO_TEXT = "videoText";
 	public static final String PROP_VIDEO_ON_RIGHT_RAIL = "rightRail";
 	public static final String PROP_VIDEO_THUMBNAIL_OPTION = "thumbnailOption";
@@ -43,6 +44,11 @@ public class Hero {
 	private String videoUrl;
 
 	@Inject
+	@Named(PROP_VIDEO_IMAGE)
+	@Optional
+	private String videoImage;
+
+	@Inject
 	@Named(PROP_VIDEO_THUMBNAIL_OPTION)
 	@Optional
 	private String thumbnailOption;
@@ -51,10 +57,13 @@ public class Hero {
 
 	@PostConstruct
 	protected void init() {
+		imageUrl = videoImage;
 	   if (StringUtils.isNotEmpty(videoUrl) && !"#".equals(videoUrl)) {
 		   videoUrl = LinkUtils.externalize(videoUrl);
-		   // create image URL
-           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, thumbnailOption);
+		   if(thumbnailOption == null || !thumbnailOption.equalsIgnoreCase("damThumbnail")) {
+			   // create image URL
+			   imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, thumbnailOption);
+		   }
 		}
 		if (StringUtils.isNotEmpty(linkTo) && !"#".equals(linkTo)) {
 			linkTo = LinkUtils.externalize(linkTo);
