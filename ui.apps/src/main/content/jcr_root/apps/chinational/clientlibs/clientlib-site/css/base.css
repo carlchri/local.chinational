@@ -20,6 +20,15 @@
     /*     padding: 30px 0;    Removed by German for foundation.html */
 }
 
+/* Added by German for foundation.html Defect DE2590 */
+.rowFix {
+	padding-left:15px;
+	padding-right:15px;
+}
+
+/* End of additions by German */
+
+
 .bottom-buffer {
     padding-bottom: 30px;
     /* Added by German for content-details_RR.html */
@@ -381,13 +390,25 @@ hr {
 }
 
 .icon-triangle {
-    right: 10px;
-    top: 7px;
-    font-size: 11px;
-    position: absolute;
-    background-position: -777px -49px;
-    width: 12px;
-    height: 7px;
+	/*
+	Removed by German and Replaced with below code to fix icon triangle display in drop down lists (DE2594)
+	
+    right: 10px; 
+    top: 7px; 
+    font-size: 11px; 
+    position: absolute; 
+    background-position: -777px -49px; 
+    width: 12px; 
+    height: 7px;   */
+ 
+	padding-right: 7px;
+	padding-left: 7px;
+	width: auto;
+	top: 0;
+	left: 0;
+	font-size: 11px;
+	position: relative;
+	background-position: -701px -47px;
 }
 
 .arrow-link-txt i {
@@ -966,7 +987,7 @@ body {
     /* Modified by German for content-details_RR.html -> it was 60px 0 20px 0; */
 }
 
-.video-button,
+/*.video-button,
 .video-button-small {
     width: 90px;
     height: 90px;
@@ -1000,9 +1021,9 @@ body {
     background-color: #fff;
     color: #f2a900;
     font-size: 28px;
-}
+}*/
 
-.icon-play,
+/*.icon-play,
 .icon-play-small {
     background: #fff;
     position: absolute;
@@ -1013,7 +1034,7 @@ body {
     right: 0;
     bottom: 0;
     margin: auto;
-}
+}*/
 
 .icon-play-small {
     width: 10px;
