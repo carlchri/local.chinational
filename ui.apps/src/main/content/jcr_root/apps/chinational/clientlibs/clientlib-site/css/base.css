@@ -390,13 +390,25 @@ hr {
 }
 
 .icon-triangle {
-    right: 10px;
-    top: 7px;
-    font-size: 11px;
-    position: absolute;
-    background-position: -777px -49px;
-    width: 12px;
-    height: 7px;
+	/*
+	Removed by German and Replaced with below code to fix icon triangle display in drop down lists (DE2594)
+	
+    right: 10px; 
+    top: 7px; 
+    font-size: 11px; 
+    position: absolute; 
+    background-position: -777px -49px; 
+    width: 12px; 
+    height: 7px;   */
+ 
+	padding-right: 7px;
+	padding-left: 7px;
+	width: auto;
+	top: 0;
+	left: 0;
+	font-size: 11px;
+	position: relative;
+	background-position: -701px -47px;
 }
 
 .arrow-link-txt i {
