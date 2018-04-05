@@ -27,6 +27,7 @@ public class Video {
 	    
 	public static final String PROP_SECTION_HEADING = "sectionHeading";
 	public static final String PROP_VIDEO_URL = "videoUrl";
+	public static final String PROP_VIDEO_IMAGE = "videoImage";
 	public static final String PROP_VIDEO_TEXT = "videoText";
 	public static final String PROP_VIDEO_ON_RIGHT_RAIL = "rightRail";
 	public static final String PROP_VIDEO_SMALL_PLAY_ICON = "smallPlayIcon";
@@ -53,6 +54,11 @@ public class Video {
 	private boolean smallPlayIcon;
 
 	@Inject
+	@Named(PROP_VIDEO_IMAGE)
+	@Optional
+	private String videoImage;
+
+	@Inject
 	@Named(PROP_VIDEO_URL)
 	@Optional
 	private String videoUrl;
@@ -71,10 +77,13 @@ public class Video {
 
 	@PostConstruct
 	protected void init() {
+		imageUrl = videoImage;
 	   if (StringUtils.isNotEmpty(videoUrl) && !"#".equals(videoUrl)) {
 		   videoUrl = LinkUtils.externalize(videoUrl);
-		   // create image URL
-           imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, thumbnailOption);
+		   if(thumbnailOption == null || !thumbnailOption.equalsIgnoreCase("damThumbnail")) {
+			   // create image URL
+			   imageUrl = LinkUtils.getYouTubeVideoThumbnail(videoUrl, thumbnailOption);
+		   }
 		}
 	}
 
