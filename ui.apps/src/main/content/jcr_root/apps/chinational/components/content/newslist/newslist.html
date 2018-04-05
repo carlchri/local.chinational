@@ -6,7 +6,7 @@
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
 		<sly data-sly-list.featuredNews="${newsList.featuredNews}">
-			<div class="col-sm-12" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
+			<div class="col-sm-12 ${featuredNewsList.last?'padding-bottom-60':'pading-bottom-25'}" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
 		</sly>
 
 		<div class="col-sm-12 pading-bottom-25">

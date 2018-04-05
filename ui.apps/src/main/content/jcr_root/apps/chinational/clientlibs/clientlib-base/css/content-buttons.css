@@ -2,6 +2,11 @@
 	padding-right: 4%
 }
 
+/* Naresh - adding option for this, used on news and blog list */
+.padding-bottom-60 {
+	padding-bottom: 60px;
+}
+
 /*
 .memorial p {
 	margin-bottom: 50px;
