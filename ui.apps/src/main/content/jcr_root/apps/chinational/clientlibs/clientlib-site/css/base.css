@@ -28,6 +28,15 @@
 
 /* End of additions by German */
 
+/* Below code has been added by German to fix icon triangle display in drop down lists (DE2594) */
+
+.pstn-reltv select {
+	width: 95% !important;
+	margin-right: -15px;
+}
+
+/* End of additions for Defect DE2594 */
+
 
 .bottom-buffer {
     padding-bottom: 30px;
