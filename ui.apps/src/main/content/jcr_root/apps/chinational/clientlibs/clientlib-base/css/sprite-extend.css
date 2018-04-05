@@ -339,13 +339,3 @@
   display: inline-block;
   margin: 0 30px 20px 0;
 }
-
-
-/* Below code has been added by German to fix icon triangle display in drop down lists (DE2594) */
-
-.pstn-reltv select {
-	width: 95% !important;
-	margin-right: -15px;
-}
-
-/* End of additions for Defect DE2594 */

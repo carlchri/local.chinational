@@ -9,15 +9,20 @@
 			<div class="col-sm-12" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
 		</sly>
 
-		<div class="col-sm-12 pading-bottom-25">
-			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
-				<option value="ChooseFilterOption">Choose Filter Option</option>
-				<option value="SortByMostRecent" selected>Sort By Most Recent</option>
-				<option value="ByYear">By Year</option>
-				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
-					<option value="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
-				</sly>
-			</select>
+		<div class="col-sm-12">
+			<div class="input-box">
+				<div class="pstn-reltv">
+					<select name="search_blogs_list" id="search_blogs_list">
+						<option value="ChooseFilterOption">Choose Filter Option</option>
+						<option value="SortByMostRecent" selected>Sort By Most Recent</option>
+						<option value="ByYear">By Year</option>
+						<sly data-sly-list.tagsList="${blogsList.tagsMap}">
+							<option value="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
+						</sly>
+					</select>
+					<i class="icon-triangle sprite-v2"></i>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-sm-12 pading-bottom-25" id="select_blogs_by_year" style="display:none;">
