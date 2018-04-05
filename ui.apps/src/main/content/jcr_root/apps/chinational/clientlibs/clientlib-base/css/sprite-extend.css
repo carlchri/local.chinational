@@ -98,6 +98,14 @@
   width: 28px;
   height: 27px;
 }
+.right-rail .sprite.icon-play-orange {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -12% 0 0 -10%;
+}
 .video-container .sprite.icon-play-orange {
   position: absolute;
   width: 28px;
@@ -129,17 +137,6 @@
   top: 60%;
   margin: -90px 0 0 -90px;
 }
-
-/* Naresh - To allow small icons on standalone video*/
-.video .sprite.icon-play-orange  {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  left: 57%;
-  top: 60%;
-  margin: -28px 0 0 -28px;
-}
-
 .mediaCarousel .sprite.icon-large-play-orange {
   left: 60%;
   top: 70%;
@@ -229,6 +226,12 @@
 .sprite-v2 {
   width: 75px;
   height: 75px;
+}
+.sprite-v2.icon-search {
+  background-position: -796px -47px;
+  width: 12px;
+  height: 12px;
+  margin: 10px 0 0 0;
 }
 .sprite-v2.icon-clinic {
   background-position: -52px -154px;
@@ -336,3 +339,13 @@
   display: inline-block;
   margin: 0 30px 20px 0;
 }
+
+
+/* Below code has been added by German to fix icon triangle display in drop down lists (DE2594) */
+
+.pstn-reltv select {
+	width: 95% !important;
+	margin-right: -15px;
+}
+
+/* End of additions for Defect DE2594 */
