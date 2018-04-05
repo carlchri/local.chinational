@@ -33,9 +33,14 @@ public class CalloutTiles extends WCMUsePojo {
 	  	   calloutTilesList.add("Tile" + "-" + i);
 	  	}
         cssClassNo = 12/noOfTiles;
-        cssClass = "col-sm-" + (cssClassNo * 2) + " " + "col-md-" + cssClassNo;
+        if(noOfTiles == 1){
+        	cssClass = "col-sm-" + (cssClassNo) + " " + "col-md-" + cssClassNo;
+        } else {
+        	cssClass = "col-sm-6" + " " + "col-md-" + cssClassNo;        	
+        }
         if (12 % noOfTiles !=0){
         	isLastCss = true;
+        	// lastCssClass = "col-sm-" + ((cssClassNo + 12 % noOfTiles) * 2) + " " + "col-md-" + (cssClassNo + 12 % noOfTiles);
         	lastCssClass = "col-sm-" + ((cssClassNo + 12 % noOfTiles) * 2) + " " + "col-md-" + (cssClassNo + 12 % noOfTiles);
         }
     }
