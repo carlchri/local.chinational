@@ -30,3 +30,9 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
 .upcoming-events img {
     margin-bottom: 0; /* Naresh - no need for extra spacing*/
 }
+
+.image-responsive {
+    width: 100%;
+    height: auto;
+}
+
