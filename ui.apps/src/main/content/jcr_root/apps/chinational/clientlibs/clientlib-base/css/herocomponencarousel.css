@@ -54,11 +54,13 @@
 	
 	/* Added by German to fix page title band specifications */
 	
-	.intro.page-title-band {
+	.intro .page-title-band {
 		max-height: 140px;
+		display: flex;
+		width: 100%;
 	}
 	
-	.intro.page-title-band h1 {
+	.intro .page-title-band h1 {
 		font-size: 30px;
 	}
 	
@@ -71,7 +73,7 @@
 @media only screen and (min-width : 768px) 
 and (max-width : 992px ){
 	
-	.intro.page-title-band h1 {
+	.intro .page-title-band h1 {
 		font-size: 26px;
 		padding-right: 33px;
 		padding-left: 33px;
@@ -106,15 +108,16 @@ and (max-width : 992px ){
 
 	/* Added by German to fix page title band specifications */
 	
-	.intro.page-title-band {
+	.intro .page-title-band {
 		margin: 0 auto 23px;
+		overflow: hidden;
 	}
 	
 	.page-title-band .intro-title, .intro-short-title {
 		min-height: 140px !important;   /* This is important because affects only page title brand pages */
 	}
 	
-	.intro.page-title-band h1 {
+	.intro .page-title-band h1 {
 		font-size: 36px;
 		padding-right: 33px;
 		padding-left: 33px;

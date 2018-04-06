@@ -35,6 +35,16 @@
     cursor: pointer;
 }
 
+.find-provider-form .flexible-button {
+    background-color: #0097a9;
+    text-align: left;
+    justify-content: left;
+    width: 50%;
+    min-height: auto;
+    height: auto;
+    padding: 10px;
+}
+
 .flexible-button a {
     color: #fff;
 }
@@ -65,6 +75,7 @@
 .compositeButtons .flexible-button a:hover {
     opacity: 1;
 }
+
 .content-left .buttons-outer {
     flex-flow: wrap;
     display: block;
@@ -105,6 +116,7 @@
 .icon-locations {
     background-position: -542px -414px;
 }
+
 
 
 /*.icon-download {
