@@ -130,7 +130,7 @@
   .intro-img {
     width: 100%;
     float: none;
-    height: 250px;
+    /*height: 250px;*/
   }
   .intro img {
     max-width: none;
