@@ -34,8 +34,8 @@
                 </div>
         	</sly>
 
-        	<div class="divider-news" data-sly-test="${!currentStyle.listOnRightNotRequired}"></div>
-			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!currentStyle.listOnRightNotRequired}">
+        	<div class="divider-news" data-sly-test="${!currentStyle.listOnRightNotRequired && newsList.listNews}"></div>
+			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!currentStyle.listOnRightNotRequired && newsList.listNews}">
 				<hr class="hideForDesktop" />
                 <h3>${currentStyle.linkHeading || 'Other News'}</h3>
                 <sly data-sly-list.item="${newsList.listNews}">
