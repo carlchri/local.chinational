@@ -55,7 +55,8 @@ public class Image implements ComponentExporter {
    private static final String DOT = ".";
  
    //TODO - need to change size of image for Tablet and Mobile based on workflow jpeg image rendition
-   private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/cq5dam.web.1280.1280.";
+   // private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/cq5dam.web.1280.1280.";
+   private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/original";
    private static final String RENDITION_SUFFIX = "/jcr:content/renditions/";
    private static final String TABLET_RENDITION_SIZE = "700.700";
    private static final String MOBILE_RENDITION_SIZE = "500.500";
@@ -164,8 +165,8 @@ public class Image implements ComponentExporter {
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
 		   for (Rendition rendition : renditions) {
-		       if (rendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-		    	   fileReference += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+		       if (rendition.getName().startsWith("original")) {
+		    	   fileReference += SUFFIX_DESKTOP_RENDITION;
 		       }
 		   }
 	   }
@@ -184,8 +185,8 @@ public class Image implements ComponentExporter {
 		   renditions = asset.getRenditions();
 		   if(!tabletSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
-			       if (trendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-			    	   imgTabSrc += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+			       if (trendition.getName().startsWith("original")) {
+			    	   imgTabSrc += SUFFIX_DESKTOP_RENDITION;
 			       }
 			   }
 		   } else {
@@ -214,8 +215,8 @@ public class Image implements ComponentExporter {
 		   renditions = asset.getRenditions();
 		   if(!mobileSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
-			       if (trendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-			    	   imgMobSrc += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+			       if (trendition.getName().startsWith("original")) {
+			    	   imgMobSrc += SUFFIX_DESKTOP_RENDITION;
 			       }
 			   }
 		   } else {
