@@ -46,7 +46,8 @@
     height: 131.3px;
   }
 }
-.profileCarousel .tiles-wrapper .tile-inner .tile-img img {
+.physicianTiles .tiles-wrapper .tile-inner .tile-img img,
+.physicianTile .tiles-wrapper .tile-inner .tile-img img {
   width: 157px;
   height: 205px;
   object-fit: cover;
@@ -128,7 +129,7 @@
     height: 131.3px;
   }
 }
-.physicianTiles .tiles-wrapper .tile-inner .tile-img img {
+.profileCarousel .tiles-wrapper .tile-inner .tile-img img {
   width: 157px;
   height: 205px;
   object-fit: cover;
