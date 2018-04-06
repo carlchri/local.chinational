@@ -40,12 +40,12 @@ jQuery(document).ready(function() {
     });
 
     // check if container full width
-    if ( $('div.body-content').hasClass('right-rail-container') ) {
+    if ($('div.body-content').hasClass('right-rail-container')) {
         $('profile-carousel').addClass('profile-carousel-rr').removeClass('profile-carousel');
     }
 
     $('.media-carousel').owlCarousel({
-        nav: true,    
+        nav: true,
         dots: false,
         autoHeight: true,
         // loop: true,
@@ -112,7 +112,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            480: {
+            1024: {
                 items: 2
             }
         }
@@ -176,6 +176,33 @@ jQuery(document).ready(function() {
     //     $(".show-mobile .sub-Thumbs .audio-container img").width(imageWidthInPix + "px"); //set the width of the image in pixels
     //     console.log(imageWidthInPix);
     // });
+
+    // search result menu scroll botton
+    // function checkOffset() {
+    //     if ($('#search-pagination').offset().top + $('#search-pagination').height() >=
+    //         $('#page-footer').offset().top - 10)
+    //         $('#search-pagination').css('position', 'absolute');
+    //     if ($(document).scrollTop() + window.innerHeight < $('#page-footer').offset().top)
+    //         $('#search-pagination').css('position', 'fixed'); // restore when you scroll up
+    //     // $('#search-pagination').text($(document).scrollTop() + window.innerHeight);
+    // }
+    // $(document).scroll(function() {
+    //     // checkOffset();
+    // });
+
+    // Flexbutton all button container click
+    $('.flexible-button').click(function() {
+        var wTarget = $(this).find("a").attr("target");
+        var wLoc = $(this).find("a").attr("href");
+        if (wTarget == "_blank" || wTarget == '_Blank') {
+            window.open(wLoc, '_blank');
+            //console.log('Target was Blank');
+        } else {
+            window.location = $(this).find("a").attr("href");
+            // console.log('Button Was Clicked');
+            return false;
+        }
+    });
 
 })
 if (jQuery(window).width() > 992) {

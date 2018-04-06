@@ -135,16 +135,14 @@
   height: 90px;
   left: 43%;
   top: 40%;
-  /*margin: -90px 0 0 -90px;*/
 }
 @media (max-width: 480px) {
   .video .sprite.icon-large-play-orange {
-    /*margin: -16% 0 0 -11%;*/
     background-position: -327px -524px;
     width: 28px;
     height: 27px;
-    left: 65%;
-    top: 70%;
+    left: 45%;
+    top: 35%;
   }
 }
 .intro .sprite.icon-large-play-orange {
@@ -154,7 +152,6 @@
 }
 @media (max-width: 992px) {
   .intro .sprite.icon-large-play-orange {
-    /*margin: -16% 0 0 -11%;*/
     background-position: -327px -524px;
     width: 28px;
     height: 27px;
@@ -164,7 +161,6 @@
 }
 @media (max-width: 767px) {
   .intro .sprite.icon-large-play-orange {
-    /*margin: -16% 0 0 -11%;*/
     background-position: -327px -524px;
     width: 28px;
     height: 27px;
