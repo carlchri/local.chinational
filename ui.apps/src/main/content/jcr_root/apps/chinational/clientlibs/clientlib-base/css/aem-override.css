@@ -18,3 +18,10 @@
   height: 100%;
 }
 
+.image-100p-width {
+    width: 100%;
+}
+
+.upcoming-events img {
+    margin-bottom: 0; /* Naresh - no need for extra spacing*/
+}
