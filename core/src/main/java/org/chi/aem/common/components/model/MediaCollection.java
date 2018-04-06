@@ -2,10 +2,14 @@ package org.chi.aem.common.components.model;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceUtil;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
+import javax.jcr.Node;
+import javax.jcr.Session;
 import java.util.*;
 
 public class MediaCollection extends WCMUsePojo {
@@ -37,12 +41,25 @@ public class MediaCollection extends WCMUsePojo {
 		List<CarouselItem> groupItems = new ArrayList<CarouselItem>();
 		Resource mediaCollectionR = getResource().getChild(MEDIA_COLLECTION);
 		CarouselItem item = null;
+		Session session = getResourceResolver().adaptTo(Session.class);
 		if(mediaCollectionR != null) {
 			Iterable<Resource> medias = mediaCollectionR.getChildren();
 			for(Resource aMedia : medias) {
 				ValueMap properties = ResourceUtil.getValueMap(aMedia);
+				int nodeName = getHash(aMedia.getPath());
 				if(properties.containsKey("name")) {
-					item = new CarouselItem(getHash(aMedia.getPath()),properties.get("name", String.class), properties.get("mediaType", String.class));
+					if(!properties.containsKey("nodeName")) {
+						try {
+							Node itemNode = aMedia.adaptTo(Node.class);
+							itemNode.setProperty("nodeName", nodeName);
+							session.save();
+						}catch (Exception e) {
+
+						}
+					}else {
+						nodeName = ((Long) properties.get("nodeName")).intValue();
+					}
+					item = new CarouselItem(nodeName,properties.get("name", String.class), properties.get("mediaType", String.class));
 					editViewItems.add(item);
 					if(isFirst) {
 						firstItem = item;
