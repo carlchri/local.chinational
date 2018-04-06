@@ -2,13 +2,29 @@
   ~ This version has no margin, used when embedded in other components
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-use.image="org.chi.aem.common.components.model.Image"
-	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
+	 data-sly-use.template="chinational/components/commons/templates.html"
+     data-sly-test.tabMob="${properties.imgTabSrc && properties.imgMobSrc}"></sly>
+
 <a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
-	<picture>
-    	<source media="(min-width: 1024px)" srcset="${image.fileReference}" sizes="100vw" />
-        <source media="(min-width: 600px)" srcset="${image.imgTabSrc}" sizes="100vw" />
-        <source media="(min-width: 300px)" srcset="${image.imgMobSrc}" sizes="100vw" />
-        <img src="${image.imgMobSrc}" alt="${image.alt || 'Image Component'}"/>
+	<picture data-sly-test="${!(properties.imgTabSrc || properties.imgMobSrc)}">
+    	<source srcset="${image.fileReference}" sizes="100vw" />
+        <img src="${image.fileReference}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${properties.imgTabSrc && !tabMob}">
+    	<source media="(min-width: 992px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 768px)" srcset="${image.imgTabSrc}" sizes="100vw" />
+        <img src="${image.fileReference}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${properties.imgMobSrc && !tabMob}">
+    	<source media="(min-width: 768px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${image.imgMobSrc}" sizes="100vw" />
+        <img src="${image.fileReference}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${tabMob}">
+    	<source media="(min-width: 992px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 768px)" srcset="${image.imgTabSrc}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${image.imgMobSrc}" sizes="100vw" />
+        <img src="${image.fileReference}" alt="${image.alt || 'Image Component'}"/>
 	</picture>
 </a>
 <div class="" data-sly-test="${properties.imageCaption}">
