@@ -51,6 +51,10 @@
 	opacity: 1;
 	background-color: #53565A;
 }
+.compositeButtons .flexible-button.purple-background {
+	opacity: 1;
+	background-color: #8246AF;
+}
 
 .compositeButtons .flexible-button.blue-hover:hover {
 	opacity: 1;
@@ -68,6 +72,11 @@
 	opacity: 1;
 	background-color: #53565A;
 }
+.compositeButtons .flexible-button.purple-hover:hover {
+	opacity: 1;
+	background-color: #8246AF;
+}
+
 
 .infoband .flexible-button.blue-background {
 	opacity: 1;
