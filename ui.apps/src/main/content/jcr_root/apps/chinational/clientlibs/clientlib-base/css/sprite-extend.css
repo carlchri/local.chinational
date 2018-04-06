@@ -205,6 +205,12 @@
 .findAProvider .sprite.icon-share-blue {
   right: 0%;
 }
+.sprite.icon-download-grey {
+  background-position: -42px -568px;
+}
+.find-provider-form .sprite.icon-download-grey {
+  right: 0%;
+}
 .sprite.icon-download-dark {
   background-position: -42px -666px;
 }
