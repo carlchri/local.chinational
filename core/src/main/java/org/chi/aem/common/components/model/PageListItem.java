@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
@@ -25,6 +26,7 @@ public class PageListItem {
     private static final Logger LOGGER = LoggerFactory.getLogger(PageListItem.class);
     private static final String DC_TITLE = "dc:title";
     private static final String DC_DESCRIPTION = "dc:description";
+    private static final String PRO_NOINDEX = "noindex";
 
     protected SlingHttpServletRequest request;
     protected Page page;
@@ -84,6 +86,16 @@ public class PageListItem {
 
     public Calendar getLastModified() {
         return page.getLastModified();
+    }
+
+    public boolean getIsNoIndex() {
+        if(page != null) {
+            ValueMap properties = page.getProperties();
+            if(properties.containsKey(PRO_NOINDEX) && properties.get(PRO_NOINDEX, Boolean.class).booleanValue() == true) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getPath() {
