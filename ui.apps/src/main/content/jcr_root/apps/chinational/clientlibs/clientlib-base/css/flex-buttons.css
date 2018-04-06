@@ -35,6 +35,13 @@
     cursor: pointer;
 }
 
+
+/*set for color picker option*/
+.flexible-button.button-hover:hover { 
+    opacity: 1;
+    background-color: #0097A9;
+}
+
 .find-provider-form .flexible-button {
     background-color: #0097a9;
     text-align: left;
@@ -116,6 +123,7 @@
 .icon-locations {
     background-position: -542px -414px;
 }
+
 
 
 
