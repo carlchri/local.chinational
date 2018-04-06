@@ -197,7 +197,11 @@ public class DynamicTileNewsList implements ComponentExporter {
         	 int pagesToAdd = 3 - list.size();
         	 for(int i = 0; i < pagesToAdd; i++){
         		 if(allNews.size() > i){
-        			 list.add(allNews.get(i));
+        			 if (featuredNews.contains(allNews.get(i))) {
+        				 i--;
+        			 } else {
+        				 list.add(allNews.get(i));
+        			 }
         		 }
         	 }
          }
