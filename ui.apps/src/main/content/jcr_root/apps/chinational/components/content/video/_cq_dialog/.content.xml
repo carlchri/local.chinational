@@ -104,7 +104,6 @@
                                                                 <option2
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/foundation/form/radio"
-                                                                    checked="{Boolean}true"
                                                                     text="Default YouTube Thumbnail"
                                                                     value="mqdefault"/>
                                                                 <option3
