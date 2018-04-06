@@ -35,6 +35,82 @@
     cursor: pointer;
 }
 
+.compositeButtons .flexible-button.blue-background {
+	opacity: 1;
+	background-color: #426DA9;
+}
+.compositeButtons .flexible-button.teal-background {
+	opacity: 1;
+	background-color: #0097A9;
+}
+.compositeButtons .flexible-button.green-background {
+	opacity: 1;
+	background-color: #009775;
+}
+.compositeButtons .flexible-button.grey-background {
+	opacity: 1;
+	background-color: #53565A;
+}
+
+.compositeButtons .flexible-button.blue-hover:hover {
+	opacity: 1;
+	background-color: #426DA9;
+}
+.compositeButtons .flexible-button.teal-hover:hover {
+	opacity: 1;
+	background-color: #0097A9;
+}
+.compositeButtons .flexible-button.green-hover:hover {
+	opacity: 1;
+	background-color: #009775;
+}
+.compositeButtons .flexible-button.grey-hover:hover {
+	opacity: 1;
+	background-color: #53565A;
+}
+
+.infoband .flexible-button.blue-background {
+	opacity: 1;
+	background-color: #426DA9;
+}
+.infoband .flexible-button.teal-background {
+	opacity: 1;
+	background-color: #0097A9;
+}
+.infoband .flexible-button.green-background {
+	opacity: 1;
+	background-color: #009775;
+}
+.infoband .flexible-button.grey-background {
+	opacity: 1;
+	background-color: #53565A;
+}
+.infoband .flexible-button.purple-background {
+	opacity: 1;
+	background-color: #8246AF;
+}
+
+.infoband .flexible-button.blue-hover:hover {
+	opacity: 1;
+	background-color: #426DA9;
+}
+.infoband .flexible-button.teal-hover:hover {
+	opacity: 1;
+	background-color: #0097A9;
+}
+.infoband .flexible-button.green-hover:hover {
+	opacity: 1;
+	background-color: #009775;
+}
+.infoband .flexible-button.grey-hover:hover {
+	opacity: 1;
+	background-color: #53565A;
+}
+.infoband .flexible-button.purple-hover:hover {
+	opacity: 1;
+	background-color: #8246AF;
+}
+
 .find-provider-form .flexible-button {
     background-color: #0097a9;
     text-align: left;
