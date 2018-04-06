@@ -18,6 +18,11 @@
   height: 100%;
 }
 
+_::-webkit-full-page-media, _:future, :root .contact-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
 .image-100p-width {
     width: 100%;
 }
