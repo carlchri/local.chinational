@@ -2,26 +2,22 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured">
     <colors jcr:primaryType="nt:unstructured">
-        <irisBlue
+        <bondiBlue
             jcr:primaryType="nt:unstructured"
-            text="Iris Blue"
-            value="#00B0B9"/>
-        <endeavour
+            text="Bondi Blue"
+            value="#0097A9"/>
+        <mariner
             jcr:primaryType="nt:unstructured"
-            text="Endeavour"
-            value="#24509A"/>
-        <darkPastelGreen
-            jcr:primaryType="nt:unstructured"
-            text="Dark Pastel Green"
-            value="#00B140"/>
-        <horizon
-            jcr:primaryType="nt:unstructured"
-            text="Horizon"
-            value="#5B7F95 "/>
+            text="Mariner"
+            value="#426DA9"/>
         <freeSpeechAquamarine
             jcr:primaryType="nt:unstructured"
             text="Free Speech Aquamarine"
             value="#009775"/>
+        <horizon
+            jcr:primaryType="nt:unstructured"
+            text="Horizon"
+            value="#5B7F95"/>
         <studio
             jcr:primaryType="nt:unstructured"
             text="Studio"
