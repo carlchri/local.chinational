@@ -99,6 +99,24 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                                 name="./solidColorStyle"
                                                 value="background-color"/>
+                                            <solidButtonHoverColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/solidbuttonhovercolorpicker"
+                                                fieldDescription="Click on the color box to choose a different hover color for the solid button"
+                                                fieldLabel="Solid Button Hover Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./solidHoverColor"/>
+                                            <solidButtonHoverColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./solidHoverColorClass"
+                                                value="flexible-button.button-hover:hover"/>
+                                            <solidButtonHoverColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./solidHoverColorStyle"
+                                                value="background-color"/>
                                             <outlinedButtonColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
@@ -134,24 +152,6 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                                 name="./searchButtonColorStyle"
-                                                value="background-color"/>
-                                            <videoPlayColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/videoplaycolorpicker"
-                                                fieldDescription="Click on the color box to choose a different color for the Videp Play Button"
-                                                fieldLabel="Video Play Button Color"
-                                                freestylePalette="{Boolean}true"
-                                                name="./videoPlayColor"/>
-                                            <videoPlayColorClass
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./videoPlayColorClass"
-                                                value="video-button"/>
-                                            <videoPlayColorStyle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
-                                                name="./videoPlayColorStyle"
                                                 value="background-color"/>
                                             <arrowCircleColor
                                                 jcr:primaryType="nt:unstructured"
@@ -375,6 +375,24 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
                                                 name="./seperatorColorStyle"
                                                 value="border-color"/>
+                                            <videoPlayColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/videoplaycolorpicker"
+                                                fieldDescription="Click on the color box to choose a different color for the Videp Play Button"
+                                                fieldLabel="Video Play Button Color"
+                                                freestylePalette="{Boolean}true"
+                                                name="./videoPlayColor"/>
+                                            <videoPlayColorClass
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./videoPlayColorClass"
+                                                value="video-button"/>
+                                            <videoPlayColorStyle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                name="./videoPlayColorStyle"
+                                                value="background-color"/>
                                         </items>
                                     </well>
                                 </items>

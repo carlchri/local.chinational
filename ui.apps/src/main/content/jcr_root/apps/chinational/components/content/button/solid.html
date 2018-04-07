@@ -1,6 +1,6 @@
 <sly data-sly-use.button="org.chi.aem.common.components.model.Button"/>
 
-<div class="flexible-button"
+<div class="flexible-button button-hover"
 	 data-sly-test="${properties.selectModal != 'modalRequired'}">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}">
             <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="${properties.buttonIcon}"></span>
@@ -8,7 +8,7 @@
 	</a>
 </div>
 
-<div class="flexible-button"
+<div class="flexible-button button-hover"
 	 data-sly-test="${properties.selectModal == 'modalRequired'}">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}"
 	   data-toggle="modal"

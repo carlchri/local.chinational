@@ -22,6 +22,10 @@ public class SiteColorsCollection extends WCMUsePojo {
 	public static final String PROP_SOLID_BUTTON_COLOR = "solidColor";
 	public static final String PROP_SOLID_BUTTON_COLOR_CLASS = "solidColorClass";
 	public static final String PROP_SOLID_BUTTON_COLOR_STYLE = "solidColorStyle";
+
+	public static final String PROP_SOLID_BUTTON_HOVER_COLOR = "solidHoverColor";
+	public static final String PROP_SOLID_BUTTON_HOVER_COLOR_CLASS = "solidHoverColorClass";
+	public static final String PROP_SOLID_BUTTON_HOVER_COLOR_STYLE = "solidHoverColorStyle";
 	
 	public static final String PROP_OUTLINED_BUTTON_COLOR = "outlinedColor";
 	public static final String PROP_OUTLINED_BUTTON_COLOR_CLASS = "outlinedColorClass";
@@ -86,6 +90,7 @@ public class SiteColorsCollection extends WCMUsePojo {
 		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
 
         colorsMap.put("solidButton", createColorsMap(designMap, PROP_SOLID_BUTTON_COLOR, PROP_SOLID_BUTTON_COLOR_CLASS, PROP_SOLID_BUTTON_COLOR_STYLE));
+        colorsMap.put("solidButtonHover", createColorsMap(designMap, PROP_SOLID_BUTTON_HOVER_COLOR, PROP_SOLID_BUTTON_HOVER_COLOR_CLASS, PROP_SOLID_BUTTON_HOVER_COLOR_STYLE));
         colorsMap.put("outlinedButton", createColorsMap(designMap, PROP_OUTLINED_BUTTON_COLOR, PROP_OUTLINED_BUTTON_COLOR_CLASS, PROP_OUTLINED_BUTTON_COLOR_STYLE));
         colorsMap.put("searchButton", createColorsMap(designMap, PROP_SEARCH_BUTTON_COLOR, PROP_SEARCH_BUTTON_COLOR_CLASS, PROP_SEARCH_BUTTON_COLOR_STYLE));
         colorsMap.put("videoPlayButton", createColorsMap(designMap, PROP_VIDEO_PLAY_BUTTON_COLOR, PROP_VIDEO_PLAY_BUTTON_COLOR_CLASS, PROP_VIDEO_PLAY_BUTTON_COLOR_STYLE));
