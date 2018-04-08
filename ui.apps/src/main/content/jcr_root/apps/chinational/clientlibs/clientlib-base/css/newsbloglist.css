@@ -22,7 +22,7 @@
 
 ul.filtered_list, 
 ul.filtered_blogs_list {
-	padding-left:15px;
+	padding-left:0px;
 }
 
 @media (max-width: 480px) {
