@@ -47,10 +47,12 @@
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
-		<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
-			data-sly-use.itemTemplate="item.html">
-			<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
-		</ul>
+        <div class="col-sm-12">
+			<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
+				data-sly-use.itemTemplate="item.html">
+				<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
+			</ul>
+		</div>
 
 		<div class="col-sm-12">
 			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">SEE MORE</a>
