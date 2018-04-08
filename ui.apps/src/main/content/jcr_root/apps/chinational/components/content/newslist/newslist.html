@@ -21,12 +21,12 @@
 		</div>
 
 		<div class="col-sm-12 pading-bottom-25" id="select_news_by_year" style="display:none;">
-				<select class="form-control" name="search_news_year" id="search_news_year">
-					<option value="ChooseYear" selected>Choose Year</option>
-					<sly data-sly-list.listYear="${newsList.listYears}">
-						<option value="${listYear}">${listYear}</option>
-					</sly>
-				</select>
+			<select class="form-control" name="search_news_year" id="search_news_year">
+				<option value="ChooseYear" selected>Choose Year</option>
+				<sly data-sly-list.listYear="${newsList.listYears}">
+					<option value="${listYear}">${listYear}</option>
+				</sly>
+			</select>
 		</div>
 		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
@@ -36,11 +36,13 @@
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
-		<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
-			data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-			data-sly-use.itemTemplate="item.html">
-			<li data-sly-call="${itemTemplate.item @ list = newsList, item = item}"></li>
-		</ul>
+        <div class="col-sm-12">
+			<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
+				data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+				data-sly-use.itemTemplate="item.html">
+				<li data-sly-call="${itemTemplate.item @ list = newsList, item = item}"></li>
+			</ul>
+		</div>
 
 		<div class="col-sm-12">
 			<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
