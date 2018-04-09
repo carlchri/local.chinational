@@ -132,12 +132,12 @@ public class DynamicTileNewsList implements ComponentExporter {
     private java.util.List<Page> populateListItems(java.util.List<Page> list) {
         Map<String, String> map = new HashMap<String, String>();
         Object pageValue = properties.get(PN_PARENT_PAGE);
-        LOGGER.info("populateListItems page property for parent page: " + pageValue);
+        // LOGGER.info("populateListItems page property for parent page: " + pageValue);
         if (pageValue == null) {
             // same class is used by global (design_dialog) and regular component
-            LOGGER.info("populateListItems page property for parent page is null, use style");
+            // LOGGER.info("populateListItems page property for parent page is null, use style");
             pageValue = currentStyle.get(PN_PARENT_PAGE);
-            LOGGER.info("populateListItems design dialog property for parent page: " + pageValue);
+            // LOGGER.info("populateListItems design dialog property for parent page: " + pageValue);
         }
         if (pageValue == null) {
             // no data
@@ -198,7 +198,7 @@ public class DynamicTileNewsList implements ComponentExporter {
         	 for(int i = 0; i < pagesToAdd; i++){
         		 if(allNews.size() > i){
         			 if (featuredNews.contains(allNews.get(i))) {
-        				 i--;
+        				 pagesToAdd++;;
         			 } else {
         				 list.add(allNews.get(i));
         			 }
