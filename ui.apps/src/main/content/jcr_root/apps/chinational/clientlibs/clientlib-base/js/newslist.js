@@ -85,7 +85,7 @@ $(document).ready(function(){
 				newsLoadMoreShowHide();          
             },
 			error: function (err) {
-	           	alert("Error in Loading. Please Refresh the Page.");
+				// console.log("Error in Loading.");
             }                
         });
     }

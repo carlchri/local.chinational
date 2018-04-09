@@ -85,7 +85,7 @@ $(document).ready(function(){
 				blogsLoadMoreShowHide();          
             },
 			error: function (err) {
-	           	alert("Error in Loading.");
+				// console.log("Error in Loading.");
             }                
         });
     }
