@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
         $('profile-carousel').addClass('profile-carousel-rr').removeClass('profile-carousel');
     }
 
-    $('.media-carousel').owlCarousel({
+    $('#full-width-container .media-carousel').owlCarousel({
         nav: true,
         dots: false,
         autoHeight: true,
@@ -61,6 +61,24 @@ jQuery(document).ready(function() {
             },
             1024: {
                 items: 5
+            }
+        }
+    });
+
+    $('#right-rail-container  .media-carousel').owlCarousel({
+        nav: true,
+        dots: false,
+        autoHeight: true,
+        // loop: true,
+        autoWidth: true,
+        // stagePadding: 100,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 3
             }
         }
     });
