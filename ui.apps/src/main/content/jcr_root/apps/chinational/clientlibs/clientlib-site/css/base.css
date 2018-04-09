@@ -1345,9 +1345,9 @@ img {
         margin-bottom: 40px;
     }
     .section-breadcrumb {
-        padding: 0 0 32px 0;
-    }
-    .gutter2 {
+		padding: 14px 0 32px 0;   /* Modified by German for Defect DE2611, it was before -> padding: 0 0 32px 0; */
+	}
+	.gutter2 {
         padding: 25px 0 0 0;
     }
     .flex-row,
