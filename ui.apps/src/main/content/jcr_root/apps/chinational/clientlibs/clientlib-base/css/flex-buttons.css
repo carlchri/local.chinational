@@ -37,7 +37,8 @@
 
 
 /*set for color picker option*/
-.flexible-button.button-hover:hover { 
+
+.flexible-button.button-hover:hover {
     opacity: 1;
     background-color: #0097A9;
 }
@@ -50,6 +51,15 @@
     min-height: auto;
     height: auto;
     padding: 10px;
+}
+
+.find-provider-form .flexible-button span.sprite {
+    margin-right: 2px;
+}
+
+.find-provider-form .flexible-button span {
+    font-weight: normal;
+    letter-spacing: 1px;
 }
 
 .flexible-button a {
@@ -125,8 +135,6 @@
 }
 
 
-
-
 /*.icon-download {
 	background-position:-42px -716px;
 }*/
@@ -194,6 +202,13 @@
     }
     .flexible-button {
         width: 95%;
+    }
+    .find-provider-form .flexible-button {
+        width: 100%;
+        margin: 0;
+    }
+    .find-provider-form.right .flexible-button {
+        margin: 0 0 15px 0;
     }
 }
 
