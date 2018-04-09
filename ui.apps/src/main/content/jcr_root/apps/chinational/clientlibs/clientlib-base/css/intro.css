@@ -82,11 +82,21 @@
   object-fit: cover;
 }
 .intro-img {
-  float: left;
-  width: 50%;
-  position: relative;
-  height: 100%;
+	float: left;
+	width: 50%;
+	position: relative;
+	
+	/*   height: 100%;  Removed by German for Defect DE2647 */
+	
+	/* Added by German to fix Defect DE2647 */
+	
+	max-width: 100%;
+	height: auto;
+	min-height: 400px;
+	
+	/* End of additions for Defect DE2647 */
 }
+
 .intro-img img {
   margin: 0;
 }
@@ -131,11 +141,13 @@
     width: 100%;
     float: none;
     /*height: 250px;*/
+    min-height: 0px;  /* Added by German to fix Defect DE2647 */
   }
   .intro img {
     max-width: none;
     width: 100%;
   }
+
   .intro-title {
     width: 100%;
     float: none;
