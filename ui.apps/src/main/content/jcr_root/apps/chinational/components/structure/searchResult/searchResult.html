@@ -6,17 +6,14 @@
     <h4>Page ${searchResult.currentPageNumber} of ${searchResult.totalNumberOfResult} results</h4>
     <ul>
         <sly data-sly-list="${searchResult.results}">
-            <sly data-sly-test="${!item.isNoIndex}">
-                <li>
-                    <a href="${item.path}">
-                        ${item.title}
-                    </a>
-                    <p>${item.description}</p>
-                </li>
-            </sly>
+            <li>
+                <a href="${item.path}">
+                    ${item.title}
+                </a>
+                <p>${item.description}</p>
+            </li>
         </sly>
     </ul>
-
     <div id="search-pagination" class="pagination" data-sly-list="${searchResult.pages}">
         <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
     </div>
