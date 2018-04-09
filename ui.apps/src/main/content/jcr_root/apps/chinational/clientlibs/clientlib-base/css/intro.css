@@ -179,7 +179,7 @@
   .intro-img img {
     max-width: none;
     width: 100%;
-    height: auto !important;
+    /* height: auto !important;   Removed by German to fix Defect DE2647 in Chrome */
     object-fit: cover;
   }
 }
