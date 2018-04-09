@@ -28,7 +28,15 @@
 <a class="logo dblock"
    href="${logo.linkUrl}"
    target="${logo.targetBlank ? '_blank' : '_self'}">
-    <img alt="${log.imageAltText}" src="${logo.imagePath}" />
+	<picture data-sly-test="${logo.imagePath == logo.imageMobilePath}">
+    	<source srcset="${logo.imagePath}" sizes="100vw" />
+        <img src="${logo.imagePath}" alt="${logo.imageAltText || 'Logo'}"/>
+	</picture>
+	<picture data-sly-test="${logo.imagePath != logo.imageMobilePath}">
+    	<source media="(min-width: 992px)" srcset="${logo.imagePath}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${logo.imageMobilePath}" sizes="100vw" />
+        <img src="${logo.imagePath}" alt="${logo.imageAltText || 'Logo'}"/>
+	</picture>
 </a>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!logo.imagePath}"></sly>

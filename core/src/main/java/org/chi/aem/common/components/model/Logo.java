@@ -17,11 +17,14 @@ public class Logo extends WCMUsePojo {
 	public static final Logger LOGGER = LoggerFactory.getLogger(Logo.class);
 
 	public static final String PROP_IMAGE_PATH = "imagepath";
+	public static final String PROP_IMAGE_MOBILE_PATH = "imageMobilePath";
 	public static final String PROP_IMAGE_ALT_TEXT = "altText";
 	public static final String PROP_LINK_URL = "link";
 	public static final String TARGET_BLANK = "target";
 
 	private String imagePath;
+
+	private String imageMobilePath;
 
 	private String imageAltText;
 
@@ -31,14 +34,18 @@ public class Logo extends WCMUsePojo {
 
 	@Override
 	public void activate() throws Exception {
-		LOGGER.debug("currentStyle getPath:" + getCurrentStyle().getPath());
-		LOGGER.debug("currentDesign getPath:" + getCurrentDesign().getPath());
+		// LOGGER.debug("currentStyle getPath:" + getCurrentStyle().getPath());
+		// LOGGER.debug("currentDesign getPath:" + getCurrentDesign().getPath());
 
 		// gets map from basepage, if available
 		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
 
 		imagePath = designMap.get(PROP_IMAGE_PATH, "");
-		LOGGER.debug("imagepath from designMap currDesign: " + imagePath);
+		// LOGGER.debug("imagepath from designMap currDesign: " + imagePath);
+		imageMobilePath = designMap.get(PROP_IMAGE_MOBILE_PATH, "");
+		if(imageMobilePath.isEmpty()){
+			imageMobilePath = imagePath;
+		}
 		imageAltText = designMap.get(PROP_IMAGE_ALT_TEXT, "");
 		linkUrl = designMap.get(PROP_LINK_URL, "#");
 		targetBlank = designMap.get(TARGET_BLANK, false);
@@ -49,6 +56,10 @@ public class Logo extends WCMUsePojo {
 
 	public String getImagePath() {
 		return imagePath;
+	}
+
+	public String getImageMobilePath() {
+		return imageMobilePath;
 	}
 
 	public String getImageAltText() {
