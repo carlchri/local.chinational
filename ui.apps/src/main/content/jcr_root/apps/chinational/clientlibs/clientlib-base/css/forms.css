@@ -110,6 +110,7 @@
 @media(max-width:1200px) {
 	.find-provider-form {
 		padding-right: 0;
+		padding-left: 0;
 	}
 }
 
