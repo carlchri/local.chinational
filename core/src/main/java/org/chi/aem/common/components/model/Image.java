@@ -119,6 +119,7 @@ public class Image implements ComponentExporter {
        String mimeType = MIME_TYPE_IMAGE_JPEG;
        Asset asset = null;
        if (src != null && !src.isEmpty()) {
+    	   src.replace("%20", " ");
            final Resource assetResource = request.getResourceResolver().getResource(src);
            if (assetResource != null) {
                asset = assetResource.adaptTo(Asset.class);
@@ -158,7 +159,7 @@ public class Image implements ComponentExporter {
 	   
 	   /**
 	    * Get Web Rendition [1280x1280] for the Desktop version of image.
-	    */
+	    
 	   if(request.getResourceResolver().getResource(desktopSrc) != null){
 		   asset = request.getResourceResolver().getResource(desktopSrc).adaptTo(Asset.class);
 	   }
@@ -170,6 +171,7 @@ public class Image implements ComponentExporter {
 		       }
 		   }
 	   }
+	   **/
 
 	   /**
 	    * Get Rendition for the Tablet version of image.
@@ -183,6 +185,17 @@ public class Image implements ComponentExporter {
 	   }
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
+		   if(tabletSrc.equals(desktopSrc)){
+			   for (Rendition drendition : renditions) {
+			       if (drendition.getName().startsWith(DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + TABLET_RENDITION_SIZE)) {
+			           imgTabSrc += RENDITION_SUFFIX + DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + TABLET_RENDITION_SIZE + DOT + mimeTypeService.getExtension(asset.getMimeType());
+			       }
+			   }
+			   if(!imgTabSrc.contains(DamConstants.PREFIX_ASSET_THUMBNAIL)){
+				   imgTabSrc = fileReference;
+			   }
+		   }
+/*		   
 		   if(!tabletSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
 			       if (trendition.getName().startsWith("original")) {
@@ -199,6 +212,7 @@ public class Image implements ComponentExporter {
 				   imgTabSrc = fileReference;
 			   }
 		   }
+*/		   
 	   }
 		   
 	   /**
@@ -213,6 +227,18 @@ public class Image implements ComponentExporter {
 	   }
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
+		   if(mobileSrc.equals(desktopSrc)){
+			   for (Rendition drendition : renditions) {
+			       if (drendition.getName().startsWith(DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + MOBILE_RENDITION_SIZE)) {
+			    	   imgMobSrc += RENDITION_SUFFIX + DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + MOBILE_RENDITION_SIZE + DOT + mimeTypeService.getExtension(asset.getMimeType());
+			       }
+			   }
+				   
+			   if(!imgMobSrc.contains(DamConstants.PREFIX_ASSET_THUMBNAIL)){
+				   imgMobSrc = fileReference;
+			   }
+		   }
+/*		   
 		   if(!mobileSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
 			       if (trendition.getName().startsWith("original")) {
@@ -230,7 +256,9 @@ public class Image implements ComponentExporter {
 				   imgMobSrc = fileReference;
 			   }
 		   }
+*/		   
 	   }
+	   
    }
 
    public String getFileReference() {
