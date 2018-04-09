@@ -35,10 +35,17 @@
                                             <imagepath
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="URL/Path to logo for this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                fieldLabel="Image Path/URL"
+                                                fieldDescription="URL/Path to Desktop logo for this site."
+                                                fieldLabel="Image Path/URL [Desktop]"
                                                 name="./imagepath"
                                                 required="{Boolean}true"
+                                                rootPath="/content/dam"/>
+                                            <imagemobilepath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="URL/Path to Mobile logo for this site."
+                                                fieldLabel="Image Path/URL [Tablet/Mobile]"
+                                                name="./imageMobilePath"
                                                 rootPath="/content/dam"/>
                                             <link
                                                 jcr:primaryType="nt:unstructured"
