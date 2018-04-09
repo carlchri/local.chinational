@@ -46,11 +46,12 @@ jQuery(document).ready(function() {
 
     $('#full-width-container .media-carousel').owlCarousel({
         nav: true,
-        dots: false,
+        // dots: false,
         autoHeight: true,
-        // loop: true,
+        margin: 15,
+        loop: true,
         autoWidth: true,
-        // stagePadding: 100,
+        // stagePadding: 10,
         responsiveClass: true,
         responsive: {
             0: {
@@ -65,11 +66,12 @@ jQuery(document).ready(function() {
         }
     });
 
-    $('#right-rail-container  .media-carousel').owlCarousel({
+    $('#right-rail-container .media-carousel').owlCarousel({
         nav: true,
-        dots: true,
+        // dots: true,
         autoHeight: true,
-        // loop: true,
+        margin: 15,
+        loop: true,
         autoWidth: true,
         // stagePadding: 100,
         responsiveClass: true,
@@ -79,22 +81,6 @@ jQuery(document).ready(function() {
             },
             768: {
                 items: 3
-            }
-        }
-    });
-
-    $('.media-carousel-mobile').owlCarousel({
-        nav: true,
-        // loop: false,
-        dots: false,
-        autoHeight: true,
-        // loop: true,
-        // autoWidth: true,
-        // stagePadding: 100,
-        // responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1
             }
         }
     });
@@ -135,6 +121,31 @@ jQuery(document).ready(function() {
             }
         }
     });
+    checkClasses();
+    $('.owl-carousel').on('translated.owl.carousel', function(event) {
+        checkClasses();
+    });
+
+    function checkClasses(){
+        var total = $('.media-carousel .owl-stage .owl-item.active').length;
+        
+        $('.media-carousel .owl-stage .owl-item').removeClass('firstActiveItem lastActiveItem');
+        
+        $('.media-carousel .owl-stage .owl-item.active').each(function(index){
+            if (index === 0) {
+                // this is the first one
+                $(this).addClass('firstActiveItem');
+            }
+            if (index === total - 1 && total>1) {
+                // this is the last one
+                $(this).addClass('lastActiveItem');
+            }
+        });
+    }
+
+    // $('.owl-carousel').on('changed.owl.carousel', function (e) {
+    //     console.log('Hello Change');
+    // });
 
 
 
