@@ -67,7 +67,7 @@ jQuery(document).ready(function() {
 
     $('#right-rail-container  .media-carousel').owlCarousel({
         nav: true,
-        dots: false,
+        dots: true,
         autoHeight: true,
         // loop: true,
         autoWidth: true,

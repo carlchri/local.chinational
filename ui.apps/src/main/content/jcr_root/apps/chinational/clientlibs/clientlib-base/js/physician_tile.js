@@ -3,7 +3,6 @@ $(document).ready(function() {
     $('.physicianTiles .row .tiles-wrapper').each(function(index) {
         if (addHrLength % 2 === 0) {
             $('.physicianTiles .tiles-wrapper.filler .tile-inner').hide();
-            console.log($('.physicianTiles .row .tiles-wrapper').length - 3);
         }
     });
     
@@ -13,7 +12,6 @@ $(document).ready(function() {
     $('.profileCarousel .row .tiles-wrapper').each(function(index) {
         if (addHrLength % 2 === 0) {
             $('profileCarousel .tiles-wrapper.filler .tile-inner').hide();
-            console.log($('.profileCarousel .row .tiles-wrapper').length - 3);
         }
     });
 
