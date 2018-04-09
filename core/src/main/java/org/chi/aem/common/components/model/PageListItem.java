@@ -26,8 +26,6 @@ public class PageListItem {
     private static final Logger LOGGER = LoggerFactory.getLogger(PageListItem.class);
     private static final String DC_TITLE = "dc:title";
     private static final String DC_DESCRIPTION = "dc:description";
-    private static final String PRO_NOINDEX = "noindex";
-
     protected SlingHttpServletRequest request;
     protected Page page;
     protected Asset asset;
@@ -86,16 +84,6 @@ public class PageListItem {
 
     public Calendar getLastModified() {
         return page.getLastModified();
-    }
-
-    public boolean getIsNoIndex() {
-        if(page != null) {
-            ValueMap properties = page.getProperties();
-            if(properties.containsKey(PRO_NOINDEX) && properties.get(PRO_NOINDEX, Boolean.class).booleanValue() == true) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public String getPath() {

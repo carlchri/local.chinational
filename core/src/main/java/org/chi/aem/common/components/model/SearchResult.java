@@ -7,6 +7,7 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -25,7 +26,6 @@ public class SearchResult extends WCMUsePojo {
     private static final String PN_RESULTS_SIZE = "resultsSize";
     private static final String PN_SEARCH_TERM_MINIMUM_LENGTH = "searchTermMinimumLength";
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchResult.class);
-
     private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
     private static final int DEFAULT_RESULT_SIZE = 10;
     private static final int DEFAULT_RESULT_OFFSET = 0;
@@ -36,9 +36,8 @@ public class SearchResult extends WCMUsePojo {
     private static final String SECOND_GROUP = "2_group.";
     private static final String GROUP_TYPE = "_group.type";
     private static final String P_OR = "p.or";
-
+    private static final String PRO_NOINDEX = "noindex";
     public List<PageListItem> results;
-    public List<String> pages;
     public int resultsOffset;
     public int totalNumberPages;
     public int currentPageNumber = 1;
@@ -51,7 +50,6 @@ public class SearchResult extends WCMUsePojo {
     public void activate(){
         Page currentPage = getCurrentPage();
         SlingHttpServletRequest request = getRequest();
-        pages = new ArrayList<String> ();
         results = getSearchResults(request, currentPage);
     }
 
@@ -117,23 +115,23 @@ public class SearchResult extends WCMUsePojo {
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
-            totalNumberPages = totalNumberOfResult/resultsSize + 2;
-
-            for(int i = 1; i < totalNumberPages; i++) {
-                pages.add(Integer.toString(i));
-            }
 
             List<Hit> hits = searchResult.getHits();
             if (hits != null) {
                 for (Hit hit : hits) {
                     try {
                         Resource hitRes = hit.getResource();
-                        results.add(new PageListItem(request, hitRes));
+                        if(isNoIndex(hitRes)) {
+                            totalNumberOfResult--;
+                        }else {
+                            results.add(new PageListItem(request, hitRes));
+                        }
                     } catch (RepositoryException e) {
                         LOGGER.error("Unable to retrieve search results for query.", e);
                     }
                 }
             }
+            totalNumberPages = totalNumberOfResult/resultsSize + 2;
             //convert the List into a Set
             Set<PageListItem> set = new HashSet<PageListItem>(results);
             //create a new List from the Set
@@ -142,6 +140,28 @@ public class SearchResult extends WCMUsePojo {
             LOGGER.error(e.getMessage());
         }
         return results;
+    }
+
+    private boolean isNoIndex(Resource resource) {
+        Page page = getPage(resource);
+        if(page != null) {
+            ValueMap properties = page.getProperties();
+            if(properties.containsKey(PRO_NOINDEX) && properties.get(PRO_NOINDEX, Boolean.class).booleanValue() == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Page getPage(Resource resource) {
+        if (resource != null) {
+            ResourceResolver resourceResolver = resource.getResourceResolver();
+            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+            if (pageManager != null) {
+                return pageManager.getContainingPage(resource);
+            }
+        }
+        return null;
     }
 
     private List<String> getMultiProperties(Resource r, String propertyName, String defaultValue) {
@@ -175,10 +195,6 @@ public class SearchResult extends WCMUsePojo {
     public int getTotalNumberOfResults() { return totalNumberOfResult; }
 
     public int getCurrentPageNumber() { return currentPageNumber; }
-
-    public List<String> getPages() {
-        return pages;
-    }
 
     public String getFulltext() {
         return fulltext;
