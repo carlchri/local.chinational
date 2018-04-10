@@ -2,10 +2,8 @@
 <sly data-sly-test="${mediaCollection}">
     <div class="component">
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
-            <div class="col-sm-12" data-sly-test="${mediaCollection.sectionHeading}">
-                <h4 class="media-fifty">${mediaCollection.sectionHeading}</h4>
-            </div>
             <div class="col-sm-12">
+                <h4 class="media-fifty" data-sly-test="${mediaCollection.sectionHeading}">${mediaCollection.sectionHeading}</h4>
                 <div class="cus-curosal pstn-reltv hide-mobile">
                     <div class="owl-carousel owl-theme media-carousel">
                         <div class="slide-container">
