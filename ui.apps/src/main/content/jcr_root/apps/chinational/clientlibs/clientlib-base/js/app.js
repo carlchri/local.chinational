@@ -44,6 +44,8 @@ jQuery(document).ready(function() {
         $('profile-carousel').addClass('profile-carousel-rr').removeClass('profile-carousel');
     }
 
+
+
     $('#full-width-container .media-carousel').owlCarousel({
         nav: true,
         // dots: false,
@@ -59,13 +61,14 @@ jQuery(document).ready(function() {
                 items: 1
             },
             768: {
-                items: 3
+                items: 2
             },
             1024: {
-                items: 5
+                items: 4
             }
         }
     });
+
     $('#right-rail-container .media-carousel').owlCarousel({
         nav: true,
         // dots: true,
@@ -164,12 +167,12 @@ jQuery(document).ready(function() {
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
         var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
         $('#right-rail-container .media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
-        console.log("Number of Items: " + rrOwlActive.length);
+        // console.log("Number of Items: " + rrOwlActive.length);
 
         if (rrOwlActive.first().width() > 300) {
             rrOwlActive.first().addClass('fullOpacity');
             rrOwlActive.first().next().removeClass('fullOpacity');
-        } else if (rrOwlActive.first().width() < 300 && rrOwlActive.first().next().width() < 300 ) {
+        } else if (rrOwlActive.first().width() < 300 && rrOwlActive.first().next().width() < 300) {
             rrOwlActive.first().addClass('fullOpacity');
             rrOwlActive.first().next().addClass('fullOpacity');
             // console.log("higer the :" + index + " : " + $(this).width());
@@ -180,15 +183,32 @@ jQuery(document).ready(function() {
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-            if (fOwlActive.length >= 3) {
-                if (index === 0 || index === 1 || index === 2) {
-                    $(this).addClass('fullOpacity');
+            if ($(window).width() > 1024) {
+                console.log("desktop");
+                if (fOwlActive.length >= 3) {
+                    if (index === 0 || index === 1 || index === 2) {
+                        $(this).addClass('fullOpacity');
+                    }
+                } else {
+                    if (index === 0 || index === 1 || index === 2 || index === 3) {
+                        $(this).addClass('fullOpacity');
+                    }
                 }
             } else {
-                if (index === 0 || index === 1 || index === 2 || index === 3) {
-                    $(this).addClass('fullOpacity');
+                console.log("tablet");
+                if (fOwlActive.first().width() > 300) {
+                    fOwlActive.first().addClass('fullOpacity');
+                    fOwlActive.first().next().removeClass('fullOpacity');
+                } else if (fOwlActive.first().width() < 300 && fOwlActive.first().next().width() < 300) {
+                    fOwlActive.first().addClass('fullOpacity');
+                    fOwlActive.first().next().addClass('fullOpacity');
+                    // console.log("higer the :" + index + " : " + $(this).width());
+                } else {
+                    fOwlActive.first().addClass('fullOpacity');
                 }
             }
+
+            // add class to 
             if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
             }
