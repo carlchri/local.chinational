@@ -176,6 +176,10 @@
     .content-left .flexible-button {
         min-height: inherit;
     }
+    /* Added by Naresh for faP button issue on tablet DE2585*/
+    .find-provider-form .flexible-button {
+        width: 87%;
+    }
 }
 
 @media(max-width:767px) {
