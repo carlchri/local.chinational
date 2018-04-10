@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 
+import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -91,6 +92,9 @@ public class NewsList implements ComponentExporter {
     @Self
     private SlingHttpServletRequest request;
 
+    @Reference    
+    ResourceResolverFactory resourceResolverFactory;
+
     private PageManager pageManager;
     
     // storing list of all news articles sorted by publishDate
@@ -131,12 +135,24 @@ public class NewsList implements ComponentExporter {
         totalNumberPages = 1;
         activePage = 1;
         
-        String[] selectors = request.getRequestPathInfo().getSelectors();
-        LOGGER.info("selectors length: " + selectors.length);
+        Map<String, Object> param = new HashMap<String, Object>();             
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
+        
+        try {
+        	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
+        }
+        catch(Exception e)
+        {
+         e.printStackTrace();
+        }
+
+
+		String[] selectors = request.getRequestPathInfo().getSelectors();
+        // LOGGER.info("selectors length: " + selectors.length);
         if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){
         	activePage = Integer.parseInt(selectors[0]);	
         }
-        LOGGER.info("active Page: " + activePage);
+        // LOGGER.info("active Page: " + activePage);
         if(activePage != 1 && (activePage > 1)) {
             start_index = ((activePage - 1) * hits_per_page);
         } else {
@@ -162,7 +178,7 @@ public class NewsList implements ComponentExporter {
         
 		// For AJAX Call - to get Total Results initially for LOAD MORE
         totalResults = allNews.size() - featuredNews.size();
-        LOGGER.info("totalResults using allNews : " + totalResults);
+        // LOGGER.info("totalResults using allNews : " + totalResults);
         
         // to get total no of pages and List of pages for data-sly-list for Pagination
     	int total = (allNews.size() - featuredNews.size())/hits_per_page;
@@ -171,7 +187,7 @@ public class NewsList implements ComponentExporter {
     	} else {
     		totalNumberPages = total + 1;
     	}
-        LOGGER.info("totalNumberPages: " + totalNumberPages);
+        // LOGGER.info("totalNumberPages: " + totalNumberPages);
         for(int i = 1; i <= totalNumberPages; i++) {
             pages.add(i);
         }
@@ -278,7 +294,7 @@ public class NewsList implements ComponentExporter {
 		int i = 1;
         if(list == listNews){
         	for(Page item : featuredNews){
-        		LOGGER.info("item.path : " + item.getPath());
+        		// LOGGER.info("item.path : " + item.getPath());
             	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
         }
@@ -296,13 +312,13 @@ public class NewsList implements ComponentExporter {
         
         try {
             SearchResult result = query.getResult();
-            LOGGER.info("result.getTotalMatchefs() : " + list + " : " + result.getTotalMatches());
+            // LOGGER.info("result.getTotalMatchefs() : " + list + " : " + result.getTotalMatches());
 
             list = collectSearchResults(query.getResult(), list);
         } catch (RepositoryException e) {
             LOGGER.error("Unable to retrieve search results for query.", e);
         }
-       return list;
+        return list;
     }
 
      private java.util.List<Page> collectSearchResults(SearchResult result, java.util.List<Page> list) throws RepositoryException {

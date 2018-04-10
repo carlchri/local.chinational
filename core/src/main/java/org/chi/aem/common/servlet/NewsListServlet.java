@@ -140,9 +140,13 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         hits_per_page = HITS_PER_PAGE;
         increment_index = 0;
         totalResults = 0;
+
+        Map<String, Object> param = new HashMap<String, Object>();             
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         
         try {
-        	resolver = request.getResourceResolver();
+        	// resolver = request.getResourceResolver();
+        	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
 
             Resource resource = request.getResource();
@@ -160,9 +164,11 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     			}
     		}
     		
+    		// LOGGER.info("media_page_path 1: " + media_page_path);
     		if(media_page_path == null || media_page_path.isEmpty()){
     			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".newsservlet"));
     		}
+    		// LOGGER.info("media_page_path 2: " + media_page_path);
     		
 	        String[] selectors = request.getRequestPathInfo().getSelectors();
 	        if(selectors.length >= 2){
@@ -170,10 +176,12 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        } else {
 	        	newsFilter = DEFAULT_NEWS_FILTER;
 	        }
+    		// LOGGER.info("newsFilter 1: " + newsFilter);
 	        
 	        if(selectors.length >= 3 && (selectors[2].matches("[0-9]+"))){
 	        	start_index = Integer.parseInt(selectors[2]);	
 	        }
+	        // LOGGER.info("start_index 1: " + start_index);
 	        
 	       	allNews = new ArrayList<>();
 	    	listNews = new ArrayList<>();
@@ -185,12 +193,17 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        pageManager = resolver.adaptTo(PageManager.class);
 	        
 	        allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
+	        // LOGGER.info("allNews :" + allNews.toString());
 	        listYears = populateListYears(allNews); // extract years from list of all news
+	        // LOGGER.info("listYears :" + listYears.toString());
 	        listTags = populateListTags(allNews);   // extract author defined tags from list of all news
+	        // LOGGER.info("listTags :" + listTags.toString());
 	        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
+	        // LOGGER.info("featuredNews :" + featuredNews.toString());
 	        setMaxfeaturedNews(); //limit featured articles to maximum 3.
 	        allFilteredNews = populateListItems(allFilteredNews); //filtered list of news based on year or Tag, sorted by Publish date
 	        listNews = populateListItems(listNews); //filtered list of news based on year or Tag, sorted by Publish date
+	        // LOGGER.info("listNews :" + listNews.toString());
 	        
 	        totalResults = allFilteredNews.size();
 	        
@@ -292,13 +305,13 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         int i = 1;
         if(list == listNews || list == allFilteredNews){
         	for(Page item : featuredNews){
-        		LOGGER.info("item.path : " + item.getPath());
+        		// LOGGER.info("item.path : " + item.getPath());
             	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
         }
 		
         if((list == listNews || list == allFilteredNews) && listYears.contains(newsFilter)){
-        	LOGGER.info("inside Query listYears- newsFilter : " + newsFilter);
+        	// LOGGER.info("inside Query listYears- newsFilter : " + newsFilter);
         	map.put("daterange.property", "jcr:content/publishDate");
    			map.put("daterange.lowerBound", newsFilter + "-01-01");
    			map.put("daterange.lowerOperation", ">=");
@@ -310,8 +323,8 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         	String tagSearch = tagsMap.get(newsFilter);
         	map.put("tagsearch.property", "jcr:content/cq:tags");
         	map.put("tagsearch", tagSearch);
-        	LOGGER.info("inside Query listTags - newsFilter : " + newsFilter);
-        	LOGGER.info("inside Query listTags - tagSearch : " + tagSearch);
+        	// LOGGER.info("inside Query listTags - newsFilter : " + newsFilter);
+        	// LOGGER.info("inside Query listTags - tagSearch : " + tagSearch);
         }
 
         PredicateGroup group = PredicateGroup.create(map);
@@ -341,7 +354,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
          if(list == featuredNews && list.isEmpty() && allNews.size() > 0){
         	 list.add(allNews.get(0));
          }
-         LOGGER.info("listNews.size(): " + listNews.size()); 
+         // LOGGER.info("listNews.size(): " + listNews.size()); 
 
          return list;
      }
@@ -358,7 +371,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     			listYears.add(year);
     		}
     	 }
-         LOGGER.info("listYears [inside populateListYears() method]: " + listYears);
+         // LOGGER.info("listYears [inside populateListYears() method]: " + listYears);
     	 return listYears;
      }
 
