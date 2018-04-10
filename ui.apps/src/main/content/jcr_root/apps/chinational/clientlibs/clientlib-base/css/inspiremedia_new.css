@@ -299,20 +299,45 @@
     margin-top: 22px;
 }
 
+.mediaCarousel .link-wrapper {
+    display: none;
+}
+
+.mediaCarousel .fullOpacity .link-wrapper {
+    display: inline-block;
+}
+
+.mediaCarousel .audio-player-button i {
+  display: none;
+}
+.mediaCarousel .fullOpacity .audio-player-button i {
+    display: inline-block;
+}
+
+
 
 /*.mediaCarousel .carousel-item {
   padding-left: 5px;
 }*/
 
+.mediaCarousel .media-carousel .owl-item {
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+    opacity: .3;
+}
+
+.mediaCarousel .owl-stage .owl-item.fullOpacity {
+    opacity: 1;
+}
+
 @media (max-width: 1024px) {
-    .mediaCarousel .media-carousel .owl-item {
-        /*margin-right: 7.5px;*/
-        /*margin-left: 7.5px;*/
-        opacity: .3;
+
+    /*.mediaCarousel .carousel-item {
+      margin-left: 40px;
     }
-    .mediaCarousel .owl-stage .owl-item.firstActiveItem {
-        opacity: 1;
-    }
+    .mediaCarousel .carousel-item:first-child {
+      margin-left: 40px;
+    }*/
 }
 
 .mediaCarousel .owl-theme .owl-dots {
