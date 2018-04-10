@@ -66,26 +66,6 @@ jQuery(document).ready(function() {
             }
         }
     });
-
-    // $('#right-rail-container .media-carousel').owlCarousel({
-    //     nav: true,
-    //     // dots: true,
-    //     autoHeight: true,
-    //     margin: 15,
-    //     loop: true,
-    //     autoWidth: true,
-    //     // stagePadding: 100,
-    //     responsiveClass: true,
-    //     nestedItemSelector: 'slide',
-    //     responsive: {
-    //         0: {
-    //             items: 1
-    //         },
-    //         768: {
-    //             items: 3
-    //         }
-    //     }
-    // });
     $('#right-rail-container .media-carousel').owlCarousel({
         nav: true,
         // dots: true,
@@ -95,6 +75,7 @@ jQuery(document).ready(function() {
         autoWidth: true,
         // stagePadding: 100,
         responsiveClass: true,
+        nestedItemSelector: 'slide',
         responsive: {
             0: {
                 items: 1

@@ -294,8 +294,6 @@ hr {
 }
 
 
-
-
 .custome-dd {
     height: 45px;
     background-color: #8ac8bc;
@@ -357,6 +355,15 @@ hr {
     width: 680px;   /* Modified by German for Defects DE2614 and DE2651, it was before -> width: 588px; */
     z-index: 4;
 }
+
+/* Added by German for Defects DE2614 and DE2651 */
+
+.custome-dd-outer ul li a {
+  color: #81868c; 
+}
+
+/* End of additions by German for Defects DE2614 and DE2651 */
+
 
 .custome-dd-outer ul li {
   margin-bottom: 15px; 
