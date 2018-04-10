@@ -83,8 +83,8 @@ public class SiteColorsCollection extends WCMUsePojo {
 
 	@Override
 	public void activate() throws Exception {
-		LOGGER.info("currentStyle getPath:" + getCurrentStyle().getPath());
-		LOGGER.info("currentDesign getPath:" + getCurrentDesign().getPath());
+		LOGGER.debug("currentStyle getPath:" + getCurrentStyle().getPath());
+		LOGGER.debug("currentDesign getPath:" + getCurrentDesign().getPath());
 
 		// gets map from basepage, if available
 		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
@@ -108,12 +108,17 @@ public class SiteColorsCollection extends WCMUsePojo {
 	}
 
 	public Map<String, String> createColorsMap(ValueMap valueMap, String value, String className, String style) {
-		Map<String, String> map = new HashMap<String, String>();
-        map.put("colorValue", valueMap.get(value, ""));
-        map.put("colorClass", valueMap.get(className, ""));
-        // LOGGER.info("colorClass" + valueMap.get(className, ""));
-        map.put("colorStyle", valueMap.get(style, ""));
-        return map;
+		String classNameVal = valueMap.get(className, "");
+		if (!LinkUtils.isNullOrBlank(classNameVal)) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("colorValue", valueMap.get(value, ""));
+			map.put("colorClass", classNameVal);
+			LOGGER.debug("colorClass" + valueMap.get(className, ""));
+			map.put("colorStyle", valueMap.get(style, ""));
+			return map;
+		}
+		// only return ,if there is value
+        return null;
 	}
 	
 	public Map<String, Object> getColorsMap() {

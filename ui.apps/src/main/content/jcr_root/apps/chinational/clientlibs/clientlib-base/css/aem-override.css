@@ -7,7 +7,7 @@
 
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
-  padding-bottom: 90%;
+  padding-bottom: 110%;
 }
 
 .contact-container iframe {
@@ -16,11 +16,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-_::-webkit-full-page-media, _:future, :root .contact-container {
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
 }
 
 .image-100p-width {

@@ -44,6 +44,8 @@ jQuery(document).ready(function() {
         $('profile-carousel').addClass('profile-carousel-rr').removeClass('profile-carousel');
     }
 
+
+
     $('#full-width-container .media-carousel').owlCarousel({
         nav: true,
         // dots: false,
@@ -52,16 +54,17 @@ jQuery(document).ready(function() {
         loop: true,
         autoWidth: true,
         // stagePadding: 10,
+        nestedItemSelector: 'slide',
         responsiveClass: true,
         responsive: {
             0: {
                 items: 1
             },
             768: {
-                items: 3
+                items: 2
             },
             1024: {
-                items: 5
+                items: 4
             }
         }
     });
@@ -75,15 +78,17 @@ jQuery(document).ready(function() {
         autoWidth: true,
         // stagePadding: 100,
         responsiveClass: true,
+        nestedItemSelector: 'slide',
         responsive: {
             0: {
                 items: 1
             },
             768: {
-                items: 3
+                items: 2
             }
         }
     });
+
     $('#full-width-container .media-carousel-mobile').owlCarousel({
         nav: true,
         // loop: false,
@@ -93,6 +98,7 @@ jQuery(document).ready(function() {
         // autoWidth: true,
         // stagePadding: 100,
         // responsiveClass: true,
+        nestedItemSelector: 'slide',
         responsive: {
             0: {
                 items: 1
@@ -108,13 +114,13 @@ jQuery(document).ready(function() {
         // autoWidth: true,
         // stagePadding: 100,
         // responsiveClass: true,
+        nestedItemSelector: 'slide',
         responsive: {
             0: {
                 items: 1
             }
         }
     });
-
     $('#full-width-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
@@ -156,26 +162,64 @@ jQuery(document).ready(function() {
         checkClasses();
     });
 
-    function checkClasses(){
+    function checkClasses() {
+
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        
-        $('.media-carousel .owl-stage .owl-item').removeClass('firstActiveItem lastActiveItem');
-        
-        $('.media-carousel .owl-stage .owl-item.active').each(function(index){
-            if (index === 0) {
-                // this is the first one
-                $(this).addClass('firstActiveItem');
+        var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
+        $('#right-rail-container .media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
+        // console.log("Number of Items: " + rrOwlActive.length);
+
+        if (rrOwlActive.first().width() > 300) {
+            rrOwlActive.first().addClass('fullOpacity');
+            rrOwlActive.first().next().removeClass('fullOpacity');
+        } else if (rrOwlActive.first().width() < 300 && rrOwlActive.first().next().width() < 300) {
+            rrOwlActive.first().addClass('fullOpacity');
+            rrOwlActive.first().next().addClass('fullOpacity');
+            // console.log("higer the :" + index + " : " + $(this).width());
+        } else {
+            rrOwlActive.first().addClass('fullOpacity');
+        }
+
+        var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
+        $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
+        $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
+            if ($(window).width() > 1024) {
+                console.log("desktop");
+                if (fOwlActive.length >= 3) {
+                    if (index === 0 || index === 1 || index === 2) {
+                        $(this).addClass('fullOpacity');
+                    }
+                } else {
+                    if (index === 0 || index === 1 || index === 2 || index === 3) {
+                        $(this).addClass('fullOpacity');
+                    }
+                }
+            } else {
+                console.log("tablet");
+                if (fOwlActive.first().width() > 300) {
+                    fOwlActive.first().addClass('fullOpacity');
+                    fOwlActive.first().next().removeClass('fullOpacity');
+                } else if (fOwlActive.first().width() < 300 && fOwlActive.first().next().width() < 300) {
+                    fOwlActive.first().addClass('fullOpacity');
+                    fOwlActive.first().next().addClass('fullOpacity');
+                    // console.log("higer the :" + index + " : " + $(this).width());
+                } else {
+                    fOwlActive.first().addClass('fullOpacity');
+                }
             }
-            if (index === total - 1 && total>1) {
-                // this is the last one
+
+            // add class to 
+            if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
             }
+            if ($(this).hasClass('lastActiveItem')) {
+                if ($(this).width() > 250) {
+                    $(this).removeClass('fullOpacity');
+                }
+            }
+
         });
     }
-
-    // $('.owl-carousel').on('changed.owl.carousel', function (e) {
-    //     console.log('Hello Change');
-    // });
 
 
 
