@@ -161,6 +161,9 @@ jQuery(document).ready(function() {
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
     });
+    $(window).resize(function(){
+        checkClasses();
+    });
 
     function checkClasses() {
 
@@ -215,6 +218,7 @@ jQuery(document).ready(function() {
             } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
                 console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
+                    console.log('First and second large')
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -224,6 +228,7 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 } else {
+                    console.log('All Small');
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -237,14 +242,14 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 }
-            } else if ($('window').width() <= 768) {
-                console.log('Small Tablet');
+            } else if ($('window').width() < 767 && $('window').width() >= 0) {
+                console.log('Small Tablets');
                 if (fOwlActive.first().width() > 300 ) {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
                     }
-                } else {
+                } else if (fOwlActive.first().next().width() > 300) {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -253,7 +258,31 @@ jQuery(document).ready(function() {
                         // this is the first one
                         $(this).addClass('fullOpacity');
                     }
+                } else if (fOwlActive.first().next().next().width() > 300) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }  else {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 2) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
                 }
+            } else {
+
             }
 
         });

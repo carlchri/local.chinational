@@ -312,7 +312,7 @@
     display: inline-block;
 }
 
-.mediaCarousel .active .link-wrapper {
+.mediaCarousel .fullOpacity .link-wrapper {
     display: inline-block;
 }
 
@@ -344,10 +344,6 @@
     opacity: .3;
 }
 
-.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
-    opacity: .3;
-}
-
 .mediaCarousel .owl-stage .owl-item.active {
     opacity: .3;
 }
@@ -363,6 +359,11 @@
 .lowOpacity {
   opacity: .3 !important;
 }
+
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
+    opacity: .3 !important;
+}
+
 
 @media (max-width: 1024px) {
 
