@@ -180,34 +180,65 @@ jQuery(document).ready(function() {
         //     rrOwlActive.first().addClass('fullOpacity');
         // }
 
-        // var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
+        var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-        //     if ($(window).width() > 1024) {
-        //         console.log("desktop");
-        //         if (fOwlActive.length >= 3) {
-        //             if (index === 0 || index === 1 || index === 2) {
-        //                 $(this).addClass('fullOpacity');
-        //             }
-        //         } else {
-        //             if (index === 0 || index === 1 || index === 2 || index === 3) {
-        //                 $(this).addClass('fullOpacity');
-        //             }
-        //         }
-        //     } else {
-        //         console.log("tablet");
-        //         if (fOwlActive.first().width() > 300) {
-        //             fOwlActive.first().addClass('fullOpacity');
-        //             fOwlActive.first().next().removeClass('fullOpacity');
-        //         } else if (fOwlActive.first().width() < 300 && fOwlActive.first().next().width() < 300) {
-        //             fOwlActive.first().addClass('fullOpacity');
-        //             fOwlActive.first().next().addClass('fullOpacity');
-        //             // console.log("higer the :" + index + " : " + $(this).width());
-        //         } else {
-        //             fOwlActive.first().addClass('fullOpacity');
-        //         }
-        //     }
-            // add class to firts item
+            if ($(window).width() > 1024) {
+                console.log("desktop");
+                if (index === 0) {
+                    // this is the first one
+                    $(this).addClass('fullOpacity');
+                }
+            } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
+                console.log("tablet");
+                if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                } else {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 2) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }
+            } else if ($('window').width() <= 768) {
+                console.log('Small Tablet');
+                if (fOwlActive.first().width() > 300 ) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                } else {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }
+            }
+
+
+
+
+
+
+            // add class to first item
             if (index === 0) {
                 // this is the first one
                 $(this).addClass('firstActiveItem');
