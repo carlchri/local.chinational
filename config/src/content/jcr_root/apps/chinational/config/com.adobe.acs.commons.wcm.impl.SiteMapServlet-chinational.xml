@@ -3,4 +3,5 @@
     jcr:primaryType="sling:OsgiConfig"
     externalizer.domain="publish"
     include.lastmod="{Boolean}true"
-    sling.servlet.resourceTypes="chinational/components/structure/page"/>
+    sling.servlet.resourceTypes="chinational/components/structure/page"
+    exclude.property="noindex"/>
