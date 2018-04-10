@@ -15,23 +15,13 @@
 }
 
  .cmp-text ul li::before {
-  
-  color: #00B0B9;  
-  /* color of bullet or square */
-   content: "\25CB"; 
-   /*  content: "\2686";*/
-  /* Unicode of character to precede the list item */
-  font-size: 1em; 
-  /* em or %*/ 
-  padding-right: 0.58em; /* updated ny naresh as per defect */
-  /* use em*/
-  position: relative;
-  top: 0em; 
-  /* use em or % */
-
+	color: #00B0B9;         /* 	color of bullet or square */
+	content: "\25E6";       /* 	Unicode of character to precede the list item. Modified by German to fix Defect DE2502, it was before -> content: "\25CB";  */
+	position: relative;
+ 	font-size: 195%;        /* 	Modified by German to fix Defect DE2502, it was before -> font-size: 1em; */
+	padding-right: 0.28em;  /* 	Modified by German to fix Defect DE2502, it was before -> padding-right: 0.58em; updated ny naresh as per defect */
+	top: .18em;             /* 	Modified by German to fix Defect DE2502, it was before ->  top: 0em; */
 }
-
-
 
 .cmp-text ol{
     padding: 7px 0 0 40px; /* Naresh - changed top padding to 7px, for spec to get 22 px between p tag and ol */
