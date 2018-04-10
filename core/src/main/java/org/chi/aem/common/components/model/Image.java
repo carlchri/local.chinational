@@ -119,7 +119,7 @@ public class Image implements ComponentExporter {
        String mimeType = MIME_TYPE_IMAGE_JPEG;
        Asset asset = null;
        if (src != null && !src.isEmpty()) {
-    	   src.replace("%20", " ");
+    	   //src.replace("%20", " ");
            final Resource assetResource = request.getResourceResolver().getResource(src);
            if (assetResource != null) {
                asset = assetResource.adaptTo(Asset.class);
@@ -137,21 +137,22 @@ public class Image implements ComponentExporter {
            // validate if correct mime type (i.e. rasterized image)
            if (!mimeType.startsWith(MIME_TYPE_IMAGE_PREFIX)) {
                LOGGER.error("Image at {} uses a binary with a non-image mime type ({})", resource.getPath(), mimeType);
-               return fileReference;
+               return LinkUtils.convertSpaces(fileReference);
            }
            if (NON_SUPPORTED_IMAGE_MIMETYPE.contains(mimeType)) {
                LOGGER.error("Image at {} uses binary with a non-supported image mime type ({})", resource.getPath(), mimeType);
-               return fileReference;
+               return LinkUtils.convertSpaces(fileReference);
            }
            String extension = mimeTypeService.getExtension(mimeType);
            if (extension.equalsIgnoreCase("tif") || extension.equalsIgnoreCase("tiff")) {
                src.replace(extension, DEFAULT_EXTENSION);
            }
        }else {
-    	   return fileReference;
+    	   return LinkUtils.convertSpaces(fileReference);
        }
-	   return src;
+	   return LinkUtils.convertSpaces(src);
    }
+
    
    public void getImageRenditions(String desktopSrc, String tabletSrc, String mobileSrc){
 	   List<Rendition> renditions;

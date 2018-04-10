@@ -3,6 +3,8 @@ package org.chi.aem.common.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,6 +86,13 @@ public final class LinkUtils {
     public static boolean isNullOrBlank(String s)
     {
         return (s==null || s.trim().equals(""));
+    }
+
+    public static String convertSpaces(String url){
+        if (isNullOrBlank (url)) {
+            return url;
+        }
+        return url.replaceAll(" ", "%20");
     }
 
 }
