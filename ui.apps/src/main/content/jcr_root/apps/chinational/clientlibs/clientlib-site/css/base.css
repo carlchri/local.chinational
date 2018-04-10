@@ -882,7 +882,8 @@ button:hover {
     text-decoration: none;
     opacity: .55;
 }
-.infoband .buttons-outer a:hover, .compositeButtons .flex-buttons a:hover {
+/* Naresh added opacity for link under logo*/
+.logo-strip a:hover, .infoband .buttons-outer a:hover, .compositeButtons .flex-buttons a:hover {
     opacity: 1;
 }
 

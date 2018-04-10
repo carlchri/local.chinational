@@ -12,6 +12,11 @@
     margin: 0;
 }
 
+.mediaCarousel .full-bleed-tiles {
+    margin-left: -2.133%;
+    margin-right: -9.633%;
+}
+
 .mediaCarousel .video-container img {
     /*max-width: 166px;*/
     max-width: 100%;
@@ -147,12 +152,12 @@
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-prev {
-    left: 0;
+    left: 1.5%;
     top: 43%;
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-next {
-    right: -1%;
+    right: 9.5%;
     top: 43%;
 }
 
@@ -306,42 +311,76 @@
 .mediaCarousel .media-carousel-mobile .link-wrapper {
     display: inline-block;
 }
+
 .mediaCarousel .fullOpacity .link-wrapper {
     display: inline-block;
 }
 
 .mediaCarousel .audio-player-button i {
-  display: none;
+    display: none;
 }
+
 .mediaCarousel .media-carousel-mobile .audio-player-button i {
-  display: inline-block;
-}
-.mediaCarousel .fullOpacity .audio-player-button i {
     display: inline-block;
 }
 
+.mediaCarousel .active .audio-player-button i {
+    display: inline-block;
+}
 
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .audio-player-button i {
+    display: none;
+}
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .link-wrapper {
+    display: none;
+}
 
 /*.mediaCarousel .carousel-item {
   padding-left: 5px;
 }*/
 
 .mediaCarousel .media-carousel .owl-item {
-    
+    transition: all 0.25s ease 0s;
     opacity: .3;
 }
 
-.mediaCarousel .owl-stage .owl-item.fullOpacity {
-    opacity: 1;
+.mediaCarousel .owl-stage .owl-item.active {
+    opacity: .3;
 }
+
+.mediaCarousel .owl-stage .owl-item.lastActiveItem {
+    opacity: .3;
+}
+
+.fullOpacity {
+  opacity: 1 !important;
+}
+
+.lowOpacity {
+  opacity: .3 !important;
+}
+
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
+    opacity: .3 !important;
+}
+
 
 @media (max-width: 1024px) {
 
-    /*.mediaCarousel .carousel-item {
-      margin-left: 40px;
+    /*.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
+        opacity: .3;
     }
-    .mediaCarousel .carousel-item:first-child {
-      margin-left: 40px;
+    .mediaCarousel .owl-stage .owl-item.active {
+        opacity: .3;
+    }
+    .mediaCarousel .owl-stage .owl-item.secondToLastActiveItem {
+        opacity: .3;
+    }
+    .mediaCarousel .owl-stage .owl-item.firstActiveItem {
+        opacity: 1;
+    }
+    .mediaCarousel .owl-stage .owl-item.secondActiveItem {
+        opacity: 1;
     }*/
 }
 
