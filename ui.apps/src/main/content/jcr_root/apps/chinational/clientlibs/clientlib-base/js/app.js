@@ -84,8 +84,22 @@ jQuery(document).ready(function() {
             }
         }
     });
-
-    $('.media-carousel-mobile').owlCarousel({
+    $('#full-width-container .media-carousel-mobile').owlCarousel({
+        nav: true,
+        // loop: false,
+        dots: false,
+        autoHeight: true,
+        // loop: true,
+        // autoWidth: true,
+        // stagePadding: 100,
+        // responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            }
+        }
+    });
+    $('#right-rail-container .media-carousel-mobile').owlCarousel({
         nav: true,
         // loop: false,
         dots: false,

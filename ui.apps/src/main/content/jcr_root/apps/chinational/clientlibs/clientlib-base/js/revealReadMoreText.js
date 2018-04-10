@@ -26,7 +26,7 @@ $(".sidebar-box .button").click(function() {
     });
   
   // fade out read-more
-  $p.fadeOut();
+  $p.fadeOut(10);
   
   // prevent jump-down
   return false;
