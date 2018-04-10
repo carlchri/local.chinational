@@ -1,193 +1,223 @@
 .banner-curvo {
-  background-color: #00b140;
+	background-color: #00b140;
 }
+
 .intro-title {
-  background-color: #00b140;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  position: relative;
+	background-color: #00b140;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	position: relative;
 }
+
 .intro-title .learn-more-btn {
-  margin-top: 40px;
+	margin-top: 40px;
 }
-.intro-title .intro-caption-white,
+
+.intro-title .intro-caption-white, .intro-title .intro-caption-black {
+	font-size: 48px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: right;
+	color: #ffffff;
+	font-style: italic;
+	line-height: 55px;
+	font-weight: lighter;
+	margin: 0 0 17px 0;
+	color: #fff;
+}
+
 .intro-title .intro-caption-black {
-  font-size: 48px;
-  font-weight: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: right;
-  color: #ffffff;
-  font-style: italic;
-  line-height: 55px;
-  font-weight: lighter;
-  margin: 0 0 17px 0;
-  color: #fff;
+	color: #000;
 }
-@media (max-width: 767px) {
-  .intro-title .intro-caption-white,
-  .intro-title .intro-caption-black {
-    margin: 0 0 25px 0;
-  }
-}
-@media (max-width: 480px) {
-  .intro-title .intro-caption-white,
-  .intro-title .intro-caption-black {
-    margin: 0 0 13px 0;
-    line-height: normal;
-    font-size: 48px !important;
-  }
-}
-.intro-title .intro-caption-black {
-  color: #000;
-}
+
 .intro-short-title {
-  background-color: #fdd757;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  position: relative;
+	background-color: #fdd757;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	position: relative;
 }
+
 .intro-short-title .learn-more-btn {
-  margin-top: 40px;
+	margin-top: 40px;
 }
-.banner-short-curvo { 
-  background-color: #fdd757;
+
+.banner-short-curvo {
+	background-color: #fdd757;
 }
+
 .intro-caption-black {
-  color: #000;
-  font-size: 36px;
-  text-align: left;
-  line-height: 32px;
+	color: #000;
+	font-size: 36px;
+	text-align: left;
+	line-height: 32px;
 }
+
 .intro {
-  overflow: hidden;
-  display: flex;
-  max-height: 400px;
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto 31px;
+	overflow: hidden;
+	display: flex;
+	max-height: 400px;
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto 31px;
 }
+
 .intro .learn-more-btn {
-  display: inline-block;
+	display: inline-block;
 }
+
 .intro-full {
-  height: 400px;
-  width: 100%;
+	height: 400px;
+	width: 100%;
 }
+
 .intro-full img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
+
 .intro-img {
 	float: left;
 	width: 50%;
 	position: relative;
-	
 	/*   height: 100%;  Removed by German for Defect DE2647 */
-	
 	/* Added by German to fix Defect DE2647 */
-	
 	max-width: 100%;
 	height: auto;
 	min-height: 400px;
-	
+
 	/* End of additions for Defect DE2647 */
 }
 
 .intro-img img {
-  margin: 0;
+	margin: 0;
 }
-.intro-short-img {
-  float: left;
-  width: 50%;
-  position: relative;
-}
-.intro-short-img img {
-  margin: 0;
-}
-.title-inner {
-  position: relative;
-  z-index: 4;
-  width: 75%;
-  text-align: right;
-}
-.intro-sub-header {
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: right;
-  color: #ffffff;
-  margin: 0 0 17px 0;
-}
-@media (max-width: 992px) {
-  .title-inner {
-    width: 90%;
-  }
-}
-@media (max-width: 767px) {
-  .intro-full {
-    height: 231px;
-  }
-  .narrow-intro .title-inner {
-    width: 100%;
-  }
-  .intro-img {
-    width: 100%;
-    float: none;
-    /*height: 250px;*/
-    min-height: 0px;  /* Added by German to fix Defect DE2647 */
-  }
-  .intro img {
-    max-width: none;
-    width: 100%;
-  }
 
-  .intro-title {
-    width: 100%;
-    float: none;
-    padding: 30px;
-  }
-  .intro-title .learn-more-btn {
-    margin: 30px 0 10px 0;
-  }
-  .title-inner {
-    width: 100%;
-    float: none;
-  }
-  .intro {
-    display: block;
-    max-height: inherit;
-    margin: 0 auto 23px;
-  }
+.intro-short-img {
+	float: left;
+	width: 50%;
+	position: relative;
 }
-@media (max-width: 480px) {
-  .intro {
-    margin: 0 auto 14px;
-  }
-  .intro img {
-    max-width: none;
-    width: 100%;
-  }
+
+.intro-short-img img {
+	margin: 0;
 }
-@media (min-width: 768px) {
-  .intro-img img {
-    max-width: none;
-    width: 100%;
-     /* height: auto !important;   Removed by German to fix Defect DE2647 in Chrome */
-    object-fit: cover;
-  }
+
+.title-inner {
+	position: relative;
+	z-index: 4;
+	width: 75%;
+	text-align: right;
+}
+
+.intro-sub-header {
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: right;
+	color: #ffffff;
+	margin: 0 0 17px 0;
 }
 
 /* Added by German to fix Defect DE2664 */
-
 .image-responsive {
 	max-width: 300px;
 }
 
 /* End of additions for Defect DE2664 */
+
+
+
+@media ( max-width : 480px) {
+	.intro-title .intro-caption-white, .intro-title .intro-caption-black {
+		margin: 0 0 13px 0;
+		line-height: normal;
+		font-size: 48px !important;
+	}
+	
+	.intro {
+		margin: 0 auto 14px;
+	}
+	
+	.intro img {
+		max-width: none;
+		width: 100%;
+	}
+	
+}
+
+@media ( max-width : 767px) {
+	
+	.intro-full {
+		height: 231px;
+	}
+	
+	.narrow-intro .title-inner {
+		width: 100%;
+	}
+	
+	.intro-img {
+		width: 100%;
+		float: none;
+		/*height: 250px;*/
+		min-height: 0px; /* Added by German to fix Defect DE2647 */
+		/*height: 200px;  Removed by German to fix Defect DE2647 */
+	}
+	
+	.intro img {
+		max-width: none;
+		width: 100%;
+	}
+	
+	.intro-title {
+		width: 100%;
+		float: none;
+		padding: 30px;
+	}
+	
+	.intro-title .learn-more-btn {
+		margin: 30px 0 10px 0;
+	}
+	
+	.intro-title .intro-caption-white, .intro-title .intro-caption-black {
+		margin: 0 0 25px 0;
+	}
+	
+	.title-inner {
+		width: 100%;
+		float: none;
+	}
+	
+	.intro {
+		display: block;
+		max-height: inherit;
+		margin: 0 auto 23px;
+	}
+}
+
+
+
+@media ( min-width : 768px) {
+	.intro-img img {
+		max-width: none;
+		width: 100%;
+		height: 100% !important;
+		/* Removed by German to fix Defect DE2647 in Chrome */
+		object-fit: cover;
+	
+		z-index: -1;   /* Added by German for hero component located in media-center_naresh.html */
+	}
+}
+
+@media ( max-width : 992px) {
+	.title-inner {
+		width: 90%;
+	}
+}
+

@@ -43,10 +43,7 @@
 		/*height: 360px !important;*/
 	}
 	
-	.intro-img img {
-		height: 100% !important;
-		z-index: -1;   /* Added by German for hero component located in media-center_naresh.html */
-	}
+	
 	
 	.intro-title .learn-more-btn, .intro-short-title .learn-more-btn {
 		margin-top: 17px;
@@ -96,11 +93,6 @@ and (max-width : 992px ){
 		width: 100%;
 	}
 	
-	.intro-img, .intro-title, .title-inner {
-		width: 100%;
-		float: none;
-	}
-	
 	.intro {
 		display: block;
 		max-height: inherit;
@@ -139,9 +131,6 @@ and (max-width : 992px ){
 
 	/* End of additions by German  */
 	
-	.intro-img {
-		height: 200px;
-	}
 	
 	.intro-title {
 		padding: 30px;

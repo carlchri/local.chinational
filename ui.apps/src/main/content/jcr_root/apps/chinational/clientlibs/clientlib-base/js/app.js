@@ -183,12 +183,35 @@ jQuery(document).ready(function() {
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
+            // add class to first item
+            if (index === 0) {
+                // this is the first one
+                $(this).addClass('firstActiveItem');
+            }
+            if (index === 1) {
+                // this is the first one
+                $(this).addClass('secondActiveItem');
+            }
+            if (index === 2) {
+                // this is the first one
+                $(this).addClass('thirdActiveItem');
+            }
+            // add class to last class
+            if (index === total - 1 && total > 1) {
+                $(this).addClass('lastActiveItem');
+            }
+            if (index === total - 2 && total > 1) {
+                $(this).addClass('secondToLastActiveItem');
+            }
+            // if ($(this).hasClass('lastActiveItem')) {
+            //     if ($(this).width() > 250) {
+            //         $(this).removeClass('fullOpacity');
+            //     }
+            // }
+
             if ($(window).width() > 1024) {
                 console.log("desktop");
-                if (index === 0) {
-                    // this is the first one
-                    $(this).addClass('fullOpacity');
-                }
+                $(this).not('.lastActiveItem').addClass('fullOpacity');
             } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
                 console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
@@ -230,37 +253,6 @@ jQuery(document).ready(function() {
                         // this is the first one
                         $(this).addClass('fullOpacity');
                     }
-                }
-            }
-
-
-
-
-
-
-            // add class to first item
-            if (index === 0) {
-                // this is the first one
-                $(this).addClass('firstActiveItem');
-            }
-            if (index === 1) {
-                // this is the first one
-                $(this).addClass('secondActiveItem');
-            }
-            if (index === 2) {
-                // this is the first one
-                $(this).addClass('thirdActiveItem');
-            }
-            // add class to last class
-            if (index === total - 1 && total > 1) {
-                $(this).addClass('lastActiveItem');
-            }
-            if (index === total - 2 && total > 1) {
-                $(this).addClass('secondToLastActiveItem');
-            }
-            if ($(this).hasClass('lastActiveItem')) {
-                if ($(this).width() > 250) {
-                    $(this).removeClass('fullOpacity');
                 }
             }
 
