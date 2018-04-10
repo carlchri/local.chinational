@@ -293,6 +293,25 @@ hr {
     -webkit-transition: all 0.3s ease-in-out;
 }
 
+
+/* Added by German for Defects DE2614 and DE2651 */
+
+.custome-dd-outer ul li, .custome-dd-outer li a {
+	white-space: normal;
+    float: left;
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+
+}
+
+.custome-dd-outer ul{
+	max-width:400px;
+}
+
+/* End of additions by German for Defects DE2614 and DE2651 */
+
+
 .custome-dd {
     height: 45px;
     background-color: #8ac8bc;
@@ -356,7 +375,7 @@ hr {
 }
 
 .custome-dd-outer ul li {
-    margin-bottom: 15px;
+/*     margin-bottom: 15px;  Removed by German for Defects DE2614 and DE2651  */
 }
 
 .margin-right-60 {
@@ -1336,7 +1355,7 @@ img {
         padding-left: 40px;
     }
     .custome-dd-outer .dropdown-menu {
-        width: 688px;
+        max-width: 688px;       /* Modified by German for Defects DE2614 and DE2651, it was before -> width: 688px; */
     }
 }
 
