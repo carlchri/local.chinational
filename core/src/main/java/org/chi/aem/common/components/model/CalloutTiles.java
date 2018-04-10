@@ -34,7 +34,7 @@ public class CalloutTiles extends WCMUsePojo {
 	  	}
         cssClassNo = 12/noOfTiles;
         if(noOfTiles == 1){
-        	cssClass = "col-sm-" + (cssClassNo) + " " + "col-md-" + cssClassNo;
+        	cssClass = "col-sm-12" + " " + "col-md-" + cssClassNo;
         } else {
         	cssClass = "col-sm-6" + " " + "col-md-" + cssClassNo;        	
         }
