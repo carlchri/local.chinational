@@ -146,7 +146,6 @@ public class NewsList implements ComponentExporter {
          e.printStackTrace();
         }
 
-
 		String[] selectors = request.getRequestPathInfo().getSelectors();
         // LOGGER.info("selectors length: " + selectors.length);
         if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){

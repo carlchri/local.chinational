@@ -138,8 +138,12 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
         hits_per_page = HITS_PER_PAGE;
         totalResults = 0;
         
+        Map<String, Object> param = new HashMap<String, Object>();             
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
+        
         try {
-        	resolver = request.getResourceResolver();
+        	// resolver = request.getResourceResolver();
+        	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
             
             Resource resource = request.getResource();
