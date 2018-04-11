@@ -169,7 +169,7 @@ jQuery(document).ready(function() {
 
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
         // var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
-        $('#right-rail-container .media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
+        // $('#right-rail-container .media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         // // console.log("Number of Items: " + rrOwlActive.length);
 
         // if (rrOwlActive.first().width() > 300) {
@@ -284,7 +284,110 @@ jQuery(document).ready(function() {
             } else {
 
             }
+        });
 
+        // Right rail 
+        var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
+        $('#right-rail-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
+        $('#right-rail-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
+            // add class to first item
+            if (index === 0) {
+                // this is the first one
+                $(this).addClass('firstActiveItem');
+            }
+            if (index === 1) {
+                // this is the first one
+                $(this).addClass('secondActiveItem');
+            }
+            if (index === 2) {
+                // this is the first one
+                $(this).addClass('thirdActiveItem');
+            }
+            // add class to last class
+            if (index === total - 1 && total > 1) {
+                $(this).addClass('lastActiveItem');
+            }
+            if (index === total - 2 && total > 1) {
+                $(this).addClass('secondToLastActiveItem');
+            }
+            // if ($(this).hasClass('lastActiveItem')) {
+            //     if ($(this).width() > 250) {
+            //         $(this).removeClass('fullOpacity');
+            //     }
+            // }
+
+            if ($(window).width() > 1024) {
+                console.log("desktop");
+                $(this).not('.lastActiveItem').addClass('fullOpacity');
+            } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
+                console.log("tablet");
+                if (rrOwlActive.first().width() > 300 || rrOwlActive.first().next().width() > 300) {
+                    console.log('First and second large')
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                } else {
+                    console.log('All Small');
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 2) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }
+            } else if ($('window').width() < 767 && $('window').width() >= 0) {
+                console.log('Small Tablets');
+                if (rrOwlActive.first().width() > 300 ) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                } else if (rrOwlActive.first().next().width() > 300) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                } else if (rrOwlActive.first().next().next().width() > 300) {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }  else {
+                    if (index === 0) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 1) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                    if (index === 2) {
+                        // this is the first one
+                        $(this).addClass('fullOpacity');
+                    }
+                }
+            } else {
+
+            }
         });
     }
 

@@ -126,9 +126,6 @@
 }
 
 /* Added by German to fix Defect DE2664 */
-.image-responsive {
-	max-width: 300px;
-}
 
 /* End of additions for Defect DE2664 */
 
