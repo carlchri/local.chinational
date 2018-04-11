@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
@@ -68,7 +69,7 @@ public class PageListItem {
         String description = "";
         if(page != null) {
             description = page.getProperties().get("excerpt", "");
-            if(StringUtils.isEmpty(description)) {
+            if(LinkUtils.isNullOrBlank(description)) {
                 description = page.getDescription();
             }
         }else {
