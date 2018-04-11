@@ -21,6 +21,7 @@
         <include pattern="/apps/chinational/components(/.*)?"/>
         <include pattern="/apps/chinational/templates(/.*)?"/>
         <include pattern="/apps/chinational/granite(/.*)?"/>
+        <include pattern="/apps/sling/servlet/errorhandler(/.*)?"/>
     </filter>
     <filter root="/etc/config/chinational">
         <exclude pattern="/etc/config/chinational(/.*)?"/>
