@@ -20,23 +20,27 @@
     /*     padding: 30px 0;    Removed by German for foundation.html */
 }
 
+
 /* Added by German for foundation.html Defect DE2590 */
+
 .rowFix {
-	padding-left:15px;
-	padding-right:15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
+
 /* End of additions by German */
+
 
 /* Below code has been added by German to fix icon triangle display in drop down lists (DE2594) */
 
 .pstn-reltv select {
-	width: 95% !important;
-	margin-right: -15px;
+    width: 95% !important;
+    margin-right: -15px;
 }
 
-/* End of additions for Defect DE2594 */
 
+/* End of additions for Defect DE2594 */
 
 .bottom-buffer {
     padding-bottom: 30px;
@@ -205,7 +209,8 @@ hr {
 }
 
 .bold-link:hover {
-    color: #0097a9; /* Added by Simon for Hover fix */
+    color: #0097a9;
+    /* Added by Simon for Hover fix */
 }
 
 .other-news {
@@ -352,21 +357,23 @@ hr {
 }
 
 .custome-dd-outer .dropdown-menu {
-    width: 680px;   /* Modified by German for Defects DE2614 and DE2651, it was before -> width: 588px; */
+    width: 680px;
+    /* Modified by German for Defects DE2614 and DE2651, it was before -> width: 588px; */
     z-index: 4;
 }
+
 
 /* Added by German for Defects DE2614 and DE2651 */
 
 .custome-dd-outer ul li a {
-  color: #81868c; 
+    color: #81868c;
 }
+
 
 /* End of additions by German for Defects DE2614 and DE2651 */
 
-
 .custome-dd-outer ul li {
-  margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 .margin-right-60 {
@@ -409,9 +416,9 @@ hr {
 }
 
 .icon-triangle {
-	/*
-	Removed by German and Replaced with below code to fix icon triangle display in drop down lists (DE2594)
-	
+    /*
+    Removed by German and Replaced with below code to fix icon triangle display in drop down lists (DE2594)
+    
     right: 10px; 
     top: 7px; 
     font-size: 11px; 
@@ -419,15 +426,14 @@ hr {
     background-position: -777px -49px; 
     width: 12px; 
     height: 7px;   */
- 
-	padding-right: 7px;
-	padding-left: 7px;
-	width: auto;
-	top: 0;
-	left: 0;
-	font-size: 11px;
-	position: relative;
-	background-position: -701px -47px;
+    padding-right: 7px;
+    padding-left: 7px;
+    width: auto;
+    top: 0;
+    left: 0;
+    font-size: 11px;
+    position: relative;
+    background-position: -701px -47px;
 }
 
 .arrow-link-txt i {
@@ -469,6 +475,12 @@ hr {
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     font-size: 0px;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: #0097a9;
+    color: #FFF;
+    text-decoration: none;
 }
 
 .owl-theme .owl-nav .owl-prev {
@@ -720,6 +732,7 @@ label {
 }
 
 
+
 /* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
     padding-top: 20px;
@@ -727,8 +740,10 @@ label {
 
 .image-wrape img {
     float: left;
-    padding: 0 30px 0 0; /* Naresh - no padding needed for bottom*/
+    padding: 0 30px 0 0;
+    /* Naresh - no padding needed for bottom*/
 }
+
 
 /*
 .image-wrape p {
@@ -788,8 +803,10 @@ p {
 }
 
 p:first-child {
-    margin: 0 0 24px 0;   /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; */
+    margin: 0 0 24px 0;
+    /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; */
 }
+
 
 
 /* right rail gutter side correction for seperator 
@@ -882,8 +899,13 @@ button:hover {
     text-decoration: none;
     opacity: .55;
 }
+
+
 /* Naresh added opacity for link under logo*/
-.logo-strip a:hover, .infoband .buttons-outer a:hover, .compositeButtons .flex-buttons a:hover {
+
+.logo-strip a:hover,
+.infoband .buttons-outer a:hover,
+.compositeButtons .flex-buttons a:hover {
     opacity: 1;
 }
 
@@ -895,6 +917,7 @@ a:visited,
 a:focus {
     text-decoration: none;
 }
+
 .footer a {
     color: #426da9;
 }
@@ -1001,6 +1024,7 @@ body {
     /* Modified by German for content-details_RR.html -> it was 60px 0 20px 0; */
 }
 
+
 /*.video-button,
 .video-button-small {
     width: 90px;
@@ -1036,6 +1060,7 @@ body {
     color: #f2a900;
     font-size: 28px;
 }*/
+
 
 /*.icon-play,
 .icon-play-small {
@@ -1076,7 +1101,7 @@ a.border-orange {
 
 a.border-orange:hover {
     border-color: #FF6A39;
-    color: #FF6A39  ;
+    color: #FF6A39;
 }
 
 a.border-orange-dark::link,
@@ -1093,7 +1118,7 @@ a.border-orange-dark {
 
 a.border-orange-dark:hover {
     border-color: #E1523D;
-    color: #E1523D  ;
+    color: #E1523D;
 }
 
 a.border-orange-dark::link,
@@ -1110,7 +1135,7 @@ a.border-red {
 
 a.border-red:hover {
     border-color: #C8102E;
-    color: #C8102E  ;
+    color: #C8102E;
 }
 
 a.border-red::link,
@@ -1184,7 +1209,7 @@ nav {
 
 .container-full {
     margin-right: -60px;
-    margin-left:  -60px;
+    margin-left: -60px;
 }
 
 .pstn-reltv {
@@ -1242,7 +1267,8 @@ nav {
 img {
     margin: 0 0 15px 0;
     width: auto;
-    /*max-width: 100%;*/ /* removed by Simon */
+    /*max-width: 100%;*/
+    /* removed by Simon */
 }
 
 .full-image img {
@@ -1356,9 +1382,10 @@ img {
         margin-bottom: 40px;
     }
     .section-breadcrumb {
-		padding: 14px 0 32px 0;   /* Modified by German for Defect DE2611, it was before -> padding: 0 0 32px 0; */
-	}
-	.gutter2 {
+        padding: 14px 0 32px 0;
+        /* Modified by German for Defect DE2611, it was before -> padding: 0 0 32px 0; */
+    }
+    .gutter2 {
         padding: 25px 0 0 0;
     }
     .flex-row,
@@ -1404,7 +1431,8 @@ img {
         height: 245px;
     }
     .image-wrape img {
-        padding: 0 0 0 0; /* Naresh - no extra padding needed from any image*/
+        padding: 0 0 0 0;
+        /* Naresh - no extra padding needed from any image*/
         float: none;
     }
     .learn-more-btn {
@@ -1457,7 +1485,8 @@ img {
 
 @media (max-width:480px) {
     .section-breadcrumb {
-        padding: 14px 0 32px 0;   /* Modified by German for Defect DE2611, it was before -> padding: 0 0 33px 0; */
+        padding: 14px 0 32px 0;
+        /* Modified by German for Defect DE2611, it was before -> padding: 0 0 33px 0; */
     }
 }
 
@@ -1513,6 +1542,7 @@ img {
         width: 345px;
     }
 }
+
 
 
 /* Added by German to fix full bleed tile in Mobile for History-timeline.html */
