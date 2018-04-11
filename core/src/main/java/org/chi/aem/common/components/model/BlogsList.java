@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 
+import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -91,6 +92,9 @@ public class BlogsList implements ComponentExporter {
     @Self
     private SlingHttpServletRequest request;
 
+    @Reference    
+    ResourceResolverFactory resourceResolverFactory;
+
     private PageManager pageManager;
     
     // storing list of all blogs articles sorted by publishDate
@@ -130,6 +134,17 @@ public class BlogsList implements ComponentExporter {
         totalNumberPages = 1;
         activePage = 1;
         
+        Map<String, Object> param = new HashMap<String, Object>();             
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
+        
+        try {
+        	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
+        }
+        catch(Exception e)
+        {
+         e.printStackTrace();
+        }
+
         String[] selectors = request.getRequestPathInfo().getSelectors();
         LOGGER.info("selectors length: " + selectors.length);
         if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){
