@@ -15,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
@@ -68,10 +67,8 @@ public class PageListItem {
     public String getDescription() {
         String description = "";
         if(page != null) {
-            String templateTitle = page.getTemplate().getTitle();
-            if (templateTitle.contains("Blogs Details Page") || templateTitle.contains("News Details Page")) {
-                description = page.getProperties().get("excerpt", "");
-            }else {
+            description = page.getProperties().get("excerpt", "");
+            if(StringUtils.isEmpty(description)) {
                 description = page.getDescription();
             }
         }else {
