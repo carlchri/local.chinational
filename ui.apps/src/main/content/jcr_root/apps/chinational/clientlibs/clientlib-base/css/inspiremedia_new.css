@@ -13,8 +13,8 @@
 }
 
 .mediaCarousel .full-bleed-tiles {
-    margin-left: -2.133%;
-    margin-right: -9.633%;
+    margin-left: 4.2%;
+    margin-right: -4%;
 }
 
 .mediaCarousel .video-container img {
@@ -152,12 +152,12 @@
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-prev {
-    left: 1.5%;
+    left: -60px;
     top: 43%;
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-next {
-    right: 0%;
+    right: 45px;
     top: 43%;
 }
 
@@ -411,6 +411,7 @@
 
 .mediaCarousel .owl-carousel {
     min-height: 305px;
+    padding: 0;
 }
 
 @media (max-width: 768px) {
