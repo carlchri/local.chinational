@@ -81,7 +81,7 @@
 	
 	.callout-horizontal {
 		margin:0 0 30px 30px;  /* Modified by German to fix Defect DE2590 (There should be a little padding on the left and it's not right now), it was before -> margin:0 0 30px 0; */
-		max-width: 45.5%;	   /* Added by German for Defect DE2590 */
+		/* max-width: 45.5%;	*/   /* Added by German for Defect DE2590 */
 	}
 	
 	/* Added by German to fix Defect DE2590 */
@@ -175,7 +175,7 @@ button {
 	
 	.callout-horizontal {
 		margin:0 0 30px 30px;  
-		max-width: 40%;	
+		/* max-width: 40%;	*/
 	}
 }
 
