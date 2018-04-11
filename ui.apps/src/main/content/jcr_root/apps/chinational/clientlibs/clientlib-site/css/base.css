@@ -1461,6 +1461,13 @@ img {
     }
 }
 
+/* Naresh - Fix logo margin for iphone 5*/
+@media (max-width:320px) {
+    .logo img {
+        margin-left: -20px;
+    }
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 1440px;

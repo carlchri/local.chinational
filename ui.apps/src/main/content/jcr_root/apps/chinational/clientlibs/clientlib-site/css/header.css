@@ -54,7 +54,7 @@
 }
 
 .logo {
-	padding-top: 30px;
+	padding-top: 20px; /* Naresh - changed padding for logo in header*/
 	display:block;
 }
 .add-nav {
@@ -315,9 +315,9 @@
 	.logo-strip {
 		min-height: 85px;
 	}
-	.logo-strip .logo {
+	/*.logo-strip .logo {
 		padding-top: 23px;
-	}
+	}*/ /* Naresh - removing padding for logo, will use 20 px for both desktop and mobile*/
 	.menu-icon {
 		top: 30px;
 		right: 5%;

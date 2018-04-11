@@ -125,7 +125,12 @@
 	margin: 0 0 17px 0;
 }
 
-/* Added by German to fix Defect DE2664 */
+/* Added by German to fix Defect DE2664.
+Naresh - changed back to icon responsive, as that works better for tile*/
+
+.icon-responsive {
+	max-width: 300px;
+}
 
 /* End of additions for Defect DE2664 */
 
