@@ -4,11 +4,17 @@
   overflow: hidden;
 }
 
+_::-webkit-full-page-media, _:future, :root .contact-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
 
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
-  padding-bottom: 110%;
+  padding-bottom: 130%;
 }
+
 
 .contact-container iframe {
   position: absolute;
@@ -29,5 +35,23 @@
 .image-responsive {
     width: 100%;
     height: auto;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .physicianTiles .tiles-wrapper .tile-inner .tile-desc{
+        padding-left:27px;
+    }
+
+    .physicianTile .tiles-wrapper .tile-inner .tile-desc{
+            padding-left:20px;
+        }
+
+    .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+      padding-left: 27px;
+    }
+
+    .mediaCarousel .main-player {
+        width: 452px;
+    }
 }
 
