@@ -66,7 +66,8 @@ $(document).ready(function(){
             type: 'GET',    
             url: servletURL,
             success: function(msg){
-                var json = jQuery.parseJSON(msg); 
+                // var json = jQuery.parseJSON(msg);
+            	var json = msg;
                 blogs_total_results = json.total_results;            
         		$('.loading_blogs').hide();    
         		$('.loading_blogs_next').hide();    
