@@ -74,27 +74,26 @@
                                         text="Select to display as featured blog"
                                         uncheckedValue="false"
                                         value="true"/>
-                                    <imageSrc
+                                    <headerImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Enter source for image to be displayed for featured blog and on the page"
-                                        fieldLabel="Enter Featured Blog Image Src"
+                                        fieldDescription="Enter source for image to be displayed at top of Blogs Details Pages"
+                                        fieldLabel="Enter Blogs Header Image Src [Optimal Image Size : 1325x400px]"
                                         name="./imageSrc"
                                         rootPath="/content/dam"/>
-                                    <hideImageOnPage
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will hide Featured article Image at the top of the page"
-                                        name="./hideImageOnPage"
-                                        text="Selecting this checkbox will hide featured article image on details page"
-                                        uncheckedValue="false"
-                                        value="true"/>
-                                    <imgDynamicTileSrc
+                                    <tileImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Enter source for image to be displayed for Dynamic Tiles"
-                                        fieldLabel="Enter Dynamic Tiles Image Src"
-                                        name="./imgDynamicTileSrc"
+                                        fieldLabel="Enter Blogs Dynamic Tiles Image Src [Optimal Image Size : 271x145px]"
+                                        name="./tileImageSrc"
+                                        rootPath="/content/dam"/>
+                                    <featuredImageSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Enter source for image to be displayed for Featured List"
+                                        fieldLabel="Enter Blogs Featured List Image Src  [Optimal Image Size : 325x265px]"
+                                        name="./featuredImageSrc"
                                         rootPath="/content/dam"/>
                                     <imageCaption
                                         jcr:primaryType="nt:unstructured"

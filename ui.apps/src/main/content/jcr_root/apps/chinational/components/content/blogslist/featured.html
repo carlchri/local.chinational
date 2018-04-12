@@ -2,8 +2,8 @@
 	<div class="pading-bottom-25">
 	    <div class="row">
           <div class="image-content flex">
-            <div class="image-col col-md-5 col-sm-5" data-sly-test.noImagePresent="${item.properties.imageSrc}">
-            	<img src="${item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
+            <div class="image-col col-md-5 col-sm-5" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
+            	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
             </div>
             <div class="blog-news-padding-top ${noImagePresent ? 'col-md-7 col-sm-7' : 'col-md-12 col-sm-12'}">
               <a href="${item.path @ extension='html'}">

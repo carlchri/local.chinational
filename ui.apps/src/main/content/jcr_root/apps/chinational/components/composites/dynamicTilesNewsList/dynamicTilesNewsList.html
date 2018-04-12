@@ -4,7 +4,7 @@
 <div class="component" data-sly-test="${properties.parentPage}">
   	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
   	
-		<div data-sly-test="${properties.selectHeading == 'headingRequired'}">
+		<div class="col-sm-12" data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Featured Articles'}
  			</span>
@@ -13,8 +13,8 @@
         <div class="flex">
 			<sly data-sly-list.featuredNews="${newsList.featuredNews}">
 	           	<div class="blog-item ${featuredNewsList.first?'col-md-4':'col-sm-6 col-md-4'}">
-                    <div class="full-image blog-image" data-sly-test="${featuredNews.properties.imgDynamicTileSrc}">
-                    	<img src="${featuredNews.properties.imgDynamicTileSrc @ context='unsafe'}" 
+                    <div class="full-image blog-image" data-sly-test="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc}">
+                    	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
                              alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
                     </div>
                     
