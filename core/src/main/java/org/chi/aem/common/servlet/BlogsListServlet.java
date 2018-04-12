@@ -202,7 +202,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        String jsonData = jsonResult.toString();
 	        // LOGGER.info("jsonBlogs :" + jsonResult.toString());
 	        
-	        // response.setContentType("application/json");
+	        response.setContentType("application/json");
 	         
 	       PrintWriter out = response.getWriter();
 	       out.write(jsonData);
