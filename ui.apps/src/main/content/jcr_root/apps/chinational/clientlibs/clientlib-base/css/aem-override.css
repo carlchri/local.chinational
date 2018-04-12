@@ -31,3 +31,10 @@
     height: auto;
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .physicianTiles .tiles-wrapper .tile-inner .tile-desc,
+    .physicianTile .tiles-wrapper .tile-inner .tile-desc{
+        padding-left:20px;
+    }
+}
+
