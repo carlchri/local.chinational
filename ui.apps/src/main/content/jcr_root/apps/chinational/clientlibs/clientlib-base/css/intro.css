@@ -14,6 +14,17 @@
 	margin-top: 40px;
 }
 
+/* Hack for Safari 6.1-10.0 in iPad2 Added by German to fix the button at the photo band component */
+
+@media screen and (min-color-index:0)
+	and(-webkit-min-device-pixel-ratio:0) {
+	@media {
+		.intro-title .learn-more-btn {
+			margin-top: 20px;
+		}
+	}
+}
+
 .intro-title .intro-caption-white, .intro-title .intro-caption-black {
 	font-size: 48px;
 	font-weight: normal;
@@ -84,10 +95,13 @@
 	width: 50%;
 	position: relative;
 	/*   height: 100%;  Removed by German for Defect DE2647 */
+	
 	/* Added by German to fix Defect DE2647 */
+	
 	max-width: 100%;
 	height: auto;
-	min-height: 400px;
+ 	min-height: 400px; 
+	height: 270px;      /* Keep this line here to fix the compatibility issue under iOS 10 (iPad2 device) */
 
 	/* End of additions for Defect DE2647 */
 }
