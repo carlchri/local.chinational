@@ -20,6 +20,7 @@
 .mediaCarousel .video-container img {
     /*max-width: 166px;*/
     max-width: 100%;
+    margin: 0 auto;
 }
 
 .mediaCarousel .audio-container {
@@ -28,7 +29,7 @@
 }
 
 .mediaCarousel .audio-container img {
-    margin: 0;
+    margin: 0 auto;
     max-width: 100%;
     /*max-width: 100%;*/
     /*max-width: 166px;*/
@@ -351,6 +352,10 @@
     opacity: 1;
 }
 .mediaCarousel .owl-stage .owl-item.lastActiveItem {
+    opacity: .3;
+}
+
+.mediaCarousel .owl-stage .owl-item.firstActiveItem:nth-child(2) {
     opacity: .3;
 }
 

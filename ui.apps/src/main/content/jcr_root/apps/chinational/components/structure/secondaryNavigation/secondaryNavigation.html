@@ -10,7 +10,7 @@
                         <i class="arrow-down"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dLabel">
-                        <div class="row" data-sly-list.subnav="${mainnav.childItems}">
+                        <div class="row submenu-fix" data-sly-list.subnav="${mainnav.childItems}">
                             <li class="${mainnav.childItems.size > 2?'col-md-4 col-sm-4':'col-md-6 col-sm-6'}">
                                 <a href="${subnav.url}">${subnav.title}</a>
                             </li>

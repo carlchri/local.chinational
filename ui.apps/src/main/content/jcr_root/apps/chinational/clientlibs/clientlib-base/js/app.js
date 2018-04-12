@@ -152,7 +152,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            1024: {
+            1300: {
                 items: 2
             }
         }
@@ -160,9 +160,11 @@ jQuery(document).ready(function() {
     checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
+        removedActiveItem();
     });
-    $(window).resize(function(){
+    $(window).resize(function() {
         checkClasses();
+        removedActiveItem();
     });
 
     function checkClasses() {
@@ -191,21 +193,21 @@ jQuery(document).ready(function() {
                 // this is the first one
                 $(this).addClass('firstActiveItem');
             }
-            if (index === 1) {
-                // this is the first one
-                $(this).addClass('secondActiveItem');
-            }
-            if (index === 2) {
-                // this is the first one
-                $(this).addClass('thirdActiveItem');
-            }
+            // if (index === 1) {
+            //     // this is the first one
+            //     $(this).addClass('secondActiveItem');
+            // }
+            // if (index === 2) {
+            //     // this is the first one
+            //     $(this).addClass('thirdActiveItem');
+            // }
             // add class to last class
             if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
             }
-            if (index === total - 2 && total > 1) {
-                $(this).addClass('secondToLastActiveItem');
-            }
+            // if (index === total - 2 && total > 1) {
+            //     $(this).addClass('secondToLastActiveItem');
+            // }
             // if ($(this).hasClass('lastActiveItem')) {
             //     if ($(this).width() > 250) {
             //         $(this).removeClass('fullOpacity');
@@ -213,12 +215,12 @@ jQuery(document).ready(function() {
             // }
 
             if ($(window).width() > 1024) {
-                console.log("desktop");
+                // console.log("desktop");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
-            } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
-                console.log("tablet");
+            } else if ($('window').width() <= 1024 && $('window').width() > 768) {
+                // console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
-                    console.log('First and second large')
+                    // console.log('First and second large')
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -228,7 +230,7 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 } else {
-                    console.log('All Small');
+                    // console.log('All Small');
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -243,8 +245,8 @@ jQuery(document).ready(function() {
                     }
                 }
             } else if ($('window').width() < 767 && $('window').width() >= 0) {
-                console.log('Small Tablets');
-                if (fOwlActive.first().width() > 300 ) {
+                // console.log('Small Tablets');
+                if (fOwlActive.first().width() > 300) {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -267,7 +269,7 @@ jQuery(document).ready(function() {
                         // this is the first one
                         $(this).addClass('fullOpacity');
                     }
-                }  else {
+                } else {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -295,21 +297,21 @@ jQuery(document).ready(function() {
                 // this is the first one
                 $(this).addClass('firstActiveItem');
             }
-            if (index === 1) {
-                // this is the first one
-                $(this).addClass('secondActiveItem');
-            }
-            if (index === 2) {
-                // this is the first one
-                $(this).addClass('thirdActiveItem');
-            }
+            // if (index === 1) {
+            //     // this is the first one
+            //     $(this).addClass('secondActiveItem');
+            // }
+            // if (index === 2) {
+            //     // this is the first one
+            //     $(this).addClass('thirdActiveItem');
+            // }
             // add class to last class
             if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
             }
-            if (index === total - 2 && total > 1) {
-                $(this).addClass('secondToLastActiveItem');
-            }
+            // if (index === total - 2 && total > 1) {
+            //     $(this).addClass('secondToLastActiveItem');
+            // }
             // if ($(this).hasClass('lastActiveItem')) {
             //     if ($(this).width() > 250) {
             //         $(this).removeClass('fullOpacity');
@@ -317,12 +319,12 @@ jQuery(document).ready(function() {
             // }
 
             if ($(window).width() > 1024) {
-                console.log("desktop");
+                // console.log("desktop");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
-            } else if ($('window').width() <= 1024 && $('window').width() > 768 ){
-                console.log("tablet");
+            } else if ($('window').width() <= 1024 && $('window').width() > 768) {
+                // console.log("tablet");
                 if (rrOwlActive.first().width() > 300 || rrOwlActive.first().next().width() > 300) {
-                    console.log('First and second large')
+                    // console.log('First and second large')
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -332,7 +334,7 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 } else {
-                    console.log('All Small');
+                    // console.log('All Small');
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -347,8 +349,8 @@ jQuery(document).ready(function() {
                     }
                 }
             } else if ($('window').width() < 767 && $('window').width() >= 0) {
-                console.log('Small Tablets');
-                if (rrOwlActive.first().width() > 300 ) {
+                // console.log('Small Tablets');
+                if (rrOwlActive.first().width() > 300) {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -371,7 +373,7 @@ jQuery(document).ready(function() {
                         // this is the first one
                         $(this).addClass('fullOpacity');
                     }
-                }  else {
+                } else {
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -387,6 +389,16 @@ jQuery(document).ready(function() {
                 }
             } else {
 
+            }
+        });
+    }
+
+    function removedActiveItem() {
+        $('.firstActiveItem').each(function(index) {
+            if (index === 1) {
+                // this is the first one
+                $(this).removeClass('fullOpacity');
+                console.log("removedClass");
             }
         });
     }

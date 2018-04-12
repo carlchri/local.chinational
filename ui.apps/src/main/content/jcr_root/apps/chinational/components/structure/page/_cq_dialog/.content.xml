@@ -123,6 +123,13 @@
                                             jcr:primaryType="nt:unstructured"
                                             cq-msm-lockable="hidePageTitle"/>
                                     </hidePageTitle>
+                                    <errorpages
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Error pages for this content tree"
+                                        fieldLabel="Error Pages"
+                                        name="./errorPages"
+                                        rootPath="/content"/>
                                 </items>
                             </column>
                         </items>

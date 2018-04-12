@@ -160,15 +160,21 @@
 	}
 	.video-inner {
 		height: 388px;
-	}
+	}	
 }
 
 @media ( max-width : 992px) {
 	.right-rail {
 		margin-top: 50px;
+		/* Naresh - add the -ve margin to make right rail go full bleed */
+		margin-left: -40px;
+    	margin-right: -40px;
 	}
 	.accordion-wrapper {
 		margin-bottom: 50px;
+	}
+	.gutter-sides {
+		padding: 0 40px; /* Naresh - changed padding for tablet to 40px to offset -ve margin for bleed */
 	}
 }
 
