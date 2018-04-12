@@ -32,9 +32,16 @@
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .physicianTiles .tiles-wrapper .tile-inner .tile-desc,
+    .physicianTiles .tiles-wrapper .tile-inner .tile-desc{
+        padding-left:27px;
+    }
+
     .physicianTile .tiles-wrapper .tile-inner .tile-desc{
-        padding-left:20px;
+            padding-left:20px;
+        }
+
+    .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+      padding-left: 27px;
     }
 }
 
