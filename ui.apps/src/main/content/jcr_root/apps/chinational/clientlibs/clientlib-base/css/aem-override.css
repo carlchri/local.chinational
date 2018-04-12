@@ -43,5 +43,9 @@
     .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
       padding-left: 27px;
     }
+
+    .mediaCarousel .main-player {
+        width: 452px;
+    }
 }
 
