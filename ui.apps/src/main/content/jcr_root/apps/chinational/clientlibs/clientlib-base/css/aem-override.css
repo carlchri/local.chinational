@@ -7,7 +7,7 @@
 
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
-  padding-bottom: 110%;
+  padding-bottom: 120%;
 }
 
 .contact-container iframe {
@@ -29,5 +29,23 @@
 .image-responsive {
     width: 100%;
     height: auto;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .physicianTiles .tiles-wrapper .tile-inner .tile-desc{
+        padding-left:27px;
+    }
+
+    .physicianTile .tiles-wrapper .tile-inner .tile-desc{
+            padding-left:20px;
+        }
+
+    .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+      padding-left: 27px;
+    }
+
+    .mediaCarousel .main-player {
+        width: 452px;
+    }
 }
 
