@@ -146,6 +146,7 @@ public class BlogsList implements ComponentExporter {
         
         try {
             resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
+            LOGGER.info("resolverFactory inside try: " + resourceResolverFactory);
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
         }
         catch(Exception e)
@@ -153,6 +154,8 @@ public class BlogsList implements ComponentExporter {
          LOGGER.info("Exception to get resource resolver.");
          e.printStackTrace();
         }
+
+        LOGGER.info("resourceResolver: " + resourceResolver);
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
         LOGGER.info("selectors length: " + selectors.length);

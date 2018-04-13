@@ -151,7 +151,7 @@ public class NewsList implements ComponentExporter {
         try {
         	// LOGGER.info("Indide try block");
             resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
-            // LOGGER.info("resolverFactory inside try: " + resourceResolverFactory);
+            LOGGER.info("resolverFactory inside try: " + resourceResolverFactory);
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
         	// LOGGER.info("resourceResolver inside try: " + resourceResolver);
         }
@@ -160,7 +160,7 @@ public class NewsList implements ComponentExporter {
          LOGGER.info("Exception to get resource resolver.");
          e.printStackTrace();
         }
-        // LOGGER.info("resourceResolver: " + resourceResolver);
+        LOGGER.info("resourceResolver: " + resourceResolver);
         // LOGGER.info("resolverFactory : " + resourceResolverFactory);
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
