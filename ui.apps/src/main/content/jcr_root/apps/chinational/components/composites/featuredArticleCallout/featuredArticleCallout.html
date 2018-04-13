@@ -1,7 +1,7 @@
-<div class="component">
+<div class="component ${properties.greybgRequired ?'full-bleed-container':''}">
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'} ${properties.greybgRequired ?'light-gray gray-margin-top':''}">
 		<div class="col-sm-12">
-			<div class="flex-row">
+			<div class="flex-row ${properties.greybgRequired ?'full-bleed-container-inner-content':''}">
 
 			      <div class="upcoming-events-wrapper">
                         <h3 class="pading-bottom-25" data-sly-test="${!properties.headingNotRequired}">
