@@ -4,6 +4,7 @@
 
 package org.chi.aem.common.components.model;
 
+import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.jcr.Session;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
+import javax.inject.Inject;
 
 import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.felix.scr.annotations.Reference;
@@ -83,8 +85,11 @@ public class BlogsList implements ComponentExporter {
     @ScriptVariable
     private Page currentPage;
 
-    @SlingObject
-    private ResourceResolver resourceResolver;
+    // @SlingObject
+    // private ResourceResolver resourceResolver;
+    
+    @Inject
+    ResourceResolverFactoryService resourceResolverFactoryService;
 
     @SlingObject
     private Resource resource;
@@ -92,8 +97,10 @@ public class BlogsList implements ComponentExporter {
     @Self
     private SlingHttpServletRequest request;
 
-    @Reference    
+    // @Reference    
     ResourceResolverFactory resourceResolverFactory;
+
+    ResourceResolver resourceResolver;
 
     private PageManager pageManager;
     
@@ -138,10 +145,12 @@ public class BlogsList implements ComponentExporter {
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         
         try {
+            resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
         }
         catch(Exception e)
         {
+         LOGGER.info("Exception to get resource resolver.");
          e.printStackTrace();
         }
 

@@ -102,7 +102,6 @@ public class NewsList implements ComponentExporter {
 
     ResourceResolver resourceResolver;
 
-
     private PageManager pageManager;
     
     // storing list of all news articles sorted by publishDate
@@ -148,7 +147,7 @@ public class NewsList implements ComponentExporter {
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         // LOGGER.info("param map : " + param.toString());
-        resourceResolver = null;
+        // resourceResolver = null;
         try {
         	// LOGGER.info("Indide try block");
             resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
