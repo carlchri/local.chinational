@@ -21,6 +21,7 @@
  	font-size: 195%;        /* 	Modified by German to fix Defect DE2502, it was before -> font-size: 1em; */
 	padding-right: 0.28em;  /* 	Modified by German to fix Defect DE2502, it was before -> padding-right: 0.58em; updated ny naresh as per defect */
 	top: .18em;             /* 	Modified by German to fix Defect DE2502, it was before ->  top: 0em; */
+	line-height: 70%;	    /*  Added by German to fix Defect DE2675 */
 }
 
 .cmp-text ol{
