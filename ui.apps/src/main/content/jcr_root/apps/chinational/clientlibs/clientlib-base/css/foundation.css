@@ -76,6 +76,22 @@ button {
 /*  End of additions by German for Defect DE2590 */
 
 
+/* Added by German to fix Defect DE2672  */
+	
+	.full-bleed-container {
+		margin-left: -40px;
+		margin-right: -40px;
+	}
+	
+	.full-bleed-container-inner-content {
+		margin-left: 40px;
+		margin-right: 40px;
+	}
+	
+/*  End of additions by German for Defect DE2672 */
+	
+	
+
 @media ( max-width :767px) {
 	.event-image img {
 		width: 100%;
