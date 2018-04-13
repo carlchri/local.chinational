@@ -140,7 +140,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
         hits_per_page = HITS_PER_PAGE;
         increment_index = 0;
         totalResults = 0;
-
+                
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         

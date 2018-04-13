@@ -4,6 +4,7 @@
 
 package org.chi.aem.common.components.model;
 
+import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.jcr.Session;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
+import javax.inject.Inject;
 
 import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.felix.scr.annotations.Reference;
@@ -84,16 +86,22 @@ public class NewsList implements ComponentExporter {
     private Page currentPage;
 
     @SlingObject
-    private ResourceResolver resourceResolver;
-
-    @SlingObject
     private Resource resource;
+
+    // @SlingObject
+    // private ResourceResolver resourceResolver;
+
+    @Inject
+    ResourceResolverFactoryService resourceResolverFactoryService;
 
     @Self
     private SlingHttpServletRequest request;
 
-    @Reference    
+    //@Reference    
     ResourceResolverFactory resourceResolverFactory;
+
+    ResourceResolver resourceResolver;
+
 
     private PageManager pageManager;
     
@@ -134,17 +142,27 @@ public class NewsList implements ComponentExporter {
         totalResults = 0;
         totalNumberPages = 1;
         activePage = 1;
+
+        // ResourceResolverFactoryService = getSlingScriptHelper().getService(ResourceResolverFactoryService.class);
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
-        
+        // LOGGER.info("param map : " + param.toString());
+        resourceResolver = null;
         try {
+        	// LOGGER.info("Indide try block");
+            resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
+            // LOGGER.info("resolverFactory inside try: " + resourceResolverFactory);
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
+        	// LOGGER.info("resourceResolver inside try: " + resourceResolver);
         }
         catch(Exception e)
         {
+         LOGGER.info("Exception to get resource resolver.");
          e.printStackTrace();
         }
+        // LOGGER.info("resourceResolver: " + resourceResolver);
+        // LOGGER.info("resolverFactory : " + resourceResolverFactory);
 
 		String[] selectors = request.getRequestPathInfo().getSelectors();
         // LOGGER.info("selectors length: " + selectors.length);
@@ -373,6 +391,7 @@ public class NewsList implements ComponentExporter {
              }
              
     	 }
+    	 LOGGER.info("tagsMap: " + tagsMap.toString());
     	 return listTags;
      }
      
