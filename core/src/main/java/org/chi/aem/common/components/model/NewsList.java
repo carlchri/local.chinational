@@ -186,14 +186,21 @@ public class NewsList implements ComponentExporter {
         pageManager = resourceResolver.adaptTo(PageManager.class);
 
         allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
-        listYears = populateListYears(allNews); // extract years from list of all news
-        listTags = populateListTags(allNews);   // extract author defined tags from list of all news
-        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
+        populateFeaturedYearsTags();
+        // listYears = populateListYears(allNews); // extract years from list of all news
+        // listTags = populateListTags(allNews);   // extract author defined tags from list of all news
+        // featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
         setMaxfeaturedNews(); //limit featured articles to maximum 3.
-        listNews = populateListItems(listNews); //filtered list of news based on year or Tag, sorted by Publish date
+	   	 for(Page item : featuredNews) {
+			 if(allNews.contains(item)){
+				 allNews.remove(item);
+			 } 
+		 }	 
+
+        populateListNews(); //filtered list of news based on year or Tag, sorted by Publish date
 
         // For AJAX Call - to get Total Results initially for LOAD MORE
-        totalResults = allNews.size() - featuredNews.size();
+        totalResults = allNews.size();
         // LOGGER.info("totalResults using allNews : " + totalResults);
 
         // to get total no of pages and List of pages for data-sly-list for Pagination
@@ -346,14 +353,59 @@ public class NewsList implements ComponentExporter {
              }
          }
          
-         // If no featured article present, add the latest article as featured article.
-         if(list == featuredNews && list.isEmpty() && allNews.size() > 0){
-        	 list.add(allNews.get(0));
-         }
- 	 
          return list;
      }
 
+     private void populateFeaturedYearsTags() {
+         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+    	 for(Page item : allNews) {
+    		// to get listYears 
+    		Calendar date = item.getProperties().get("publishDate", Calendar.class); 
+    		//int year = date.get(Calendar.YEAR);
+    		SimpleDateFormat formatter = new SimpleDateFormat("YYYY"); 
+    		String year = formatter.format(date.getTime()).toUpperCase(); 
+
+    		if(listYears.isEmpty()){
+        		listYears.add(year);
+    		} else if (!listYears.contains(year)){
+    			listYears.add(year);
+    		}
+    		
+    		// to get tags
+            Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
+            // LOGGER.info("tags: " + tags);
+            if(tags.length !=0){
+	           	 for(Tag tag : tags){
+	           		String tagName = tag.getTitle();
+	           		// LOGGER.info("tagTitle: " + tag.getTitle());
+		         		if(listTags.isEmpty()){
+		            		listTags.add(tagName);
+		                    tagsMap.put(tag.getName(),tagName);
+		        		} else if (!listTags.contains(tagName)){
+		        			listTags.add(tagName);
+		        			tagsMap.put(tag.getName(),tagName);
+		        		}
+	           	 }
+            }
+            
+            if(featuredNews.size() < 3){
+	            // to get featured articles
+	            boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
+	            LOGGER.info("isFeatured: " + isFeatured);
+	            if(isFeatured){
+	            	featuredNews.add(item);
+	                LOGGER.info("featuredNews: " + featuredNews);
+	            }
+            }
+    	 }
+         // If no featured article present, add the latest article as featured article.
+         if(featuredNews.isEmpty() && allNews.size() > 0){
+        	 featuredNews.add(allNews.get(0));
+         }
+   	 
+     }
+ 
+/*     
      private java.util.List<String> populateListYears(java.util.List<Page> list) {
     	 for(Page item : list) {
     		Calendar date = item.getProperties().get("publishDate", Calendar.class); 
@@ -393,8 +445,22 @@ public class NewsList implements ComponentExporter {
     	 LOGGER.info("tagsMap: " + tagsMap.toString());
     	 return listTags;
      }
-     
-    private void setMaxfeaturedNews() {
+*/     
+
+     private java.util.List<Page> populateListNews() {
+    	 int end_index = start_index + hits_per_page;
+    	 for(int i = start_index; i < end_index; i++){
+    		 if(allNews.size() > i){
+    			 listNews.add(allNews.get(i));
+    		 } else {
+                 break;
+             }
+    	 }
+    	 
+    	 return listNews;
+     }
+
+     private void setMaxfeaturedNews() {
         java.util.List<Page> tmpListItems = new ArrayList<>();
         for (Page item : featuredNews) {
             if (tmpListItems.size() < FEATURED_LIMIT) {
