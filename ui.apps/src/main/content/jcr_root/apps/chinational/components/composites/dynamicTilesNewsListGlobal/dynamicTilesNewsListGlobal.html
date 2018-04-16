@@ -19,9 +19,11 @@
                     </div>
                     
                     <div class="blog-content pstn-reltv stickToTop">
-                        <span class="blog-title dblock txt-green tiles_heading_site_color">
-                        	${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}
-                        </span>
+                    	<a class="bold-link stickToBottom" href="${featuredNews.path @ extension='html'}" target="${currentStyle.targetBlank ?'_blank':'_self'}">
+                        	<span class="blog-title dblock txt-green tiles_heading_site_color news_heading_hover">
+                        		${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}
+                        	</span>
+                        </a>
                         <span class="blog-date txt-green tiles_heading_site_color"
                               data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=featuredNews.properties.publishDate, dateFormat='MMM dd, YYYY'}">
                                  ${formatter.formattedDate}

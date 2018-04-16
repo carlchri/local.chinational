@@ -96,7 +96,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="This field is mandatory"
                                                         fieldDescription="This text is shown in link"
-                                                        fieldLabel="Link Text"
+                                                        fieldLabel="Link Text [Displayed at bottom of Tile]"
                                                         name="./linkText"
                                                         required="{Boolean}true"/>
                                                     <linkUrl
