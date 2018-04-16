@@ -18,11 +18,8 @@
                     </basic>
                     <advanced
                         jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
+                        sling:hideResource="{Boolean}false"/>
                     <socialmedia
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
-                    <personalization
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
                     <permissions
