@@ -110,7 +110,7 @@
 
 @media screen and (min-color-index:0)
 	and(-webkit-min-device-pixel-ratio:0) {
-	@media {
+	@media all and (min-width: 770px) and (max-width: 1360px){
 		.intro-img {
 			float: left;
 			width: 50%;
