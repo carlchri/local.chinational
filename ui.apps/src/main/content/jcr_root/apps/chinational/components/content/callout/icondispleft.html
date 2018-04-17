@@ -5,9 +5,12 @@
 		<span class="${properties.calloutIcon || 'solid-circle'}"></span>
     </div>
     <div class="category_content col-md-10 col-sm-10 col-xs-10">
-        <a href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+        <a data-sly-test="${link.linkUrl != '#'}" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
             <span class="small-heading heading_site_color">${properties.categoryTitleText || 'Callout Component'}</span>
         </a>
+        <span data-sly-test="${link.linkUrl == '#'}" class="small-heading heading_site_color">
+            	${properties.categoryTitleText || 'Callout Component'}
+        </span>
 		<p>${properties.contentDetail}</p>
     </div>
 </div>
