@@ -102,7 +102,7 @@
 		and(-webkit-min-device-pixel-ratio:0) {
 		@media {
 			.intro-img {
-				height: 300px;   /* Keep this line here to fix the compatibility issue under iOS 10 (iPad2 device) */
+				height: 400px;   /* Keep this line here to fix the compatibility issue under iOS 10 (iPad2 device) */
 			}
 		}
 	}
