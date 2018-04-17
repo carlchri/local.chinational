@@ -43,6 +43,14 @@
     background-color: #0097A9;
 }
 
+/* Added by German to fix Defect DE2604 */
+
+.flexible-button.button-hover:focus {
+    outline: none;
+}
+
+/* End of additions for DE2604 */
+
 .find-provider-form .flexible-button {
     background-color: #0097a9;
     text-align: left;
