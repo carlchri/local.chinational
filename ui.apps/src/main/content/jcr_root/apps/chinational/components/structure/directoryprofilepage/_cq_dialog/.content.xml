@@ -60,7 +60,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         fieldDescription="Select this checkbox if Profile Image is not required"
                                         name="./physicianImageNotReqd"
-                                        text="Select if Profile Image is not Required"
+                                        text="Don't Display Profile Image"
                                         uncheckedValue="false"
                                         value="true"/>
                                     <linkToPageNotReqd
@@ -68,7 +68,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         fieldDescription="Select this checkbox to disable the link to details page, when there is no details available for the profile on the bio page."
                                         name="./linkToPageNotReqd"
-                                        text="Select if link to details page is not required"
+                                        text="Hide profile detail page (hyperlink won’t appear on profile name)"
                                         uncheckedValue="false"
                                         value="true"/>
                                     <buttonNotReqd
@@ -76,7 +76,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         fieldDescription="Selecting this checkbox if Button is not required"
                                         name="./buttonNotReqd"
-                                        text="Select if Button is not required"
+                                        text="Don’t display button"
                                         uncheckedValue="false"
                                         value="true"/>
                                     <buttonText
