@@ -11,6 +11,10 @@
 	width:60%;
 }
 
+.dropdown_articles::-ms-expand {
+    display: none;
+}
+
 /*
 #search_news_list option, 
 #search_news_year option, 
