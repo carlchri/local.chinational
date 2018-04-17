@@ -135,8 +135,11 @@ jQuery(document).ready(function() {
                 items: 1
             },
             1024: {
+                items: 2
+            },
+            1300: {
                 items: 3
-            }
+            } 
         }
     });
     $('#right-rail-container .profile-carousel').owlCarousel({

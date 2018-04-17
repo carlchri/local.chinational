@@ -53,7 +53,15 @@
 
 }
 
-.cmp-text ol li {counter-increment: li; display: flex;}
+.cmp-text ol li {
+	counter-increment: li;
+	display: flex;
+}
 
+/* Added by German for Defect DE2691 */
 
+.right-rail-text img {
+	max-width: 100%;
+}
 
+/* End of additions by German for Defect DE2691 */

@@ -1463,9 +1463,9 @@ img {
     /*.custome-dd-outer {
         padding: 0 15px;
     }*/
-    .custome-dd i {
+    /*.custome-dd i {  // removed by simon brown for DE2776 
         display: none;
-    }
+    } */
     .content-outer {
         padding: 0;
     }
@@ -1566,7 +1566,7 @@ img {
     }
 }
 
-
+    
 /* Added by German to fix full bleed tile in Mobile for History-timeline.html */
 
 @media all and (max-width: 767px) {
