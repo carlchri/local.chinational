@@ -22,6 +22,7 @@ js/owl.carousel.js
 js/audio.popup.js
 js/video.popup.js
 js/popper.js
+js/image.js
 js/footerContactUs.js
 js/physician_tile.js
 js/highlight.js

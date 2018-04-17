@@ -21,6 +21,7 @@
 }
 
 
+
 /* Added by German for foundation.html Defect DE2590 */
 
 .rowFix {
@@ -29,9 +30,10 @@
 }
 
 .submenu-fix {
-	padding-left: 20px;
+    padding-left: 20px;
     padding-right: 20px;
 }
+
 
 /* End of additions by German */
 
@@ -42,6 +44,7 @@
     width: 95% !important;
     margin-right: -15px;
 }
+
 
 
 /* End of additions for Defect DE2594 */
@@ -367,11 +370,13 @@ hr {
 }
 
 
+
 /* Added by German for Defects DE2614 and DE2651 */
 
 .custome-dd-outer ul li a {
     color: #81868c;
 }
+
 
 
 /* End of additions by German for Defects DE2614 and DE2651 */
@@ -737,6 +742,7 @@ label {
 
 
 
+
 /* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
     padding-top: 20px;
@@ -747,6 +753,7 @@ label {
     padding: 0 30px 0 0;
     /* Naresh - no padding needed for bottom*/
 }
+
 
 
 /*
@@ -810,6 +817,7 @@ p:first-child {
     margin: 0 0 24px 0;
     /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; */
 }
+
 
 
 
@@ -905,6 +913,7 @@ button:hover {
 }
 
 
+
 /* Naresh added opacity for link under logo*/
 
 .logo-strip a:hover,
@@ -923,11 +932,11 @@ a:focus {
 }
 
 .footer a {
-    color: #426da9;
+    color: #53565a;
 }
 
 .footer a:hover {
-    color: #426da9;
+    color: #53565a;
 }
 
 body {
@@ -1027,6 +1036,7 @@ body {
     margin: 0 0 20px 0;
     /* Modified by German for content-details_RR.html -> it was 60px 0 20px 0; */
 }
+
 
 
 /*.video-button,
@@ -1379,6 +1389,7 @@ img {
     .custome-dd-outer .dropdown-menu {
         width: 688px;
     }
+    
 }
 
 @media (max-width:767px) {
@@ -1431,6 +1442,10 @@ img {
     .image-row {
         height: 108px;
     }
+    .ie-object-fit {
+        background-size: cover;
+        background-position: center center;
+    }
     .iframe {
         height: 245px;
     }
@@ -1448,9 +1463,9 @@ img {
     /*.custome-dd-outer {
         padding: 0 15px;
     }*/
-    .custome-dd i {
+    /*.custome-dd i {  // removed by simon brown for DE2776 
         display: none;
-    }
+    } */
     .content-outer {
         padding: 0;
     }
@@ -1494,7 +1509,9 @@ img {
     }
 }
 
+
 /* Naresh - Fix logo margin for iphone 5*/
+
 @media (max-width:320px) {
     .logo img {
         margin-left: -20px;
@@ -1507,6 +1524,7 @@ img {
         width: 100%;
     }
 }
+
 
 @media (min-width: 992px) {
     .flex,
@@ -1530,6 +1548,7 @@ img {
     .padding-left-25 {
         padding-left: 25px;
     }
+    
 }
 
 @media (min-width: 768px) {
@@ -1547,8 +1566,7 @@ img {
     }
 }
 
-
-
+    
 /* Added by German to fix full bleed tile in Mobile for History-timeline.html */
 
 @media all and (max-width: 767px) {
@@ -1557,3 +1575,37 @@ img {
         width: 100%;
     }
 }
+
+
+/* Added by German to adjust required min-height and min-width for images in full bleed components (Defect DE2684 ) */
+
+@media all and (min-width: 1361px) {
+	
+	.image-row.required-height-style-1 {
+		min-height: 283px;		/* For desktop according to Zeplin */
+	}
+	.full-image.required-width-style-1 {
+		min-width: 355px;		/* For desktop according to Zeplin */
+	}
+}
+
+@media all and (min-width: 770px) and (max-width: 1360px){
+	.image-row.required-height-style-1 {
+		min-height: 283px;		/* No variations here for tablet and desktop */
+	}
+	.full-image.required-width-style-1 {
+		min-width: 349px;		/* For tablet according to Zeplin */
+		min-height: 313px;		/* For tablet according to Zeplin */
+	}
+}
+
+@media all and (max-width: 769px) {
+	.image-row.required-height-style-1 {
+		min-height: 281px;		/* For mobile according to Zeplin */
+	}
+	.full-image.required-width-style-1 {
+		min-width: 300px;		/* For mobile according to Zeplin */
+	}
+}
+
+/* End of additions for defect DE2684 */

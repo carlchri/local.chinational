@@ -1,4 +1,9 @@
 .calloutTiles .component .component .row {
-	margin-left: 0;
-	margin-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.calloutTiles .component .row .row {
+    display: flex;
+    flex-wrap: wrap;
 }

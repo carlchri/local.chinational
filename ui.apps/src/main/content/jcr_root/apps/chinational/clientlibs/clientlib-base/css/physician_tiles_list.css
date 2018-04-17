@@ -70,6 +70,11 @@
   line-height: 1.2;
   font-size: 20px;
 }
+.physicianTiles .tiles-wrapper .tile-inner .tile-desc a,
+.physicianTile .tiles-wrapper .tile-inner .tile-desc a {
+  display: inline-block;
+  margin-bottom: 13px;
+}
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc p,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc p {
   margin: 0;

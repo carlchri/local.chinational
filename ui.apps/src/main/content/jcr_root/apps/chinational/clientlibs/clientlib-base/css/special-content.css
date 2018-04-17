@@ -20,6 +20,15 @@
     object-fit: cover;
 }
 
+.ie-object-fit {
+    background-size: cover;
+    background-position: center center;
+}
+
+.isIE .ie-object-fit.full-image img {
+  display: none;
+}
+
 .content-col {
     padding: 15px 80px 35px 35px;
 }
