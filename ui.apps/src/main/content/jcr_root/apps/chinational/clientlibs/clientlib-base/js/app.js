@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
         // dots: false,
         autoHeight: true,
         margin: 15,
-        loop: true,
+        loop: false,
         autoWidth: true,
         // stagePadding: 10,
         nestedItemSelector: 'slide',
@@ -74,7 +74,7 @@ jQuery(document).ready(function() {
         // dots: true,
         autoHeight: true,
         margin: 15,
-        loop: true,
+        loop: false,
         autoWidth: true,
         // stagePadding: 100,
         responsiveClass: true,
@@ -207,6 +207,7 @@ jQuery(document).ready(function() {
             // add class to last class
             if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
+                console.log("Last Item added");
             }
             // if (index === total - 2 && total > 1) {
             //     $(this).addClass('secondToLastActiveItem');
