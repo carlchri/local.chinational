@@ -55,18 +55,17 @@
     background-color: #0097a9;
     text-align: left;
     justify-content: left;
-    width: 50%;
     min-height: auto;
     height: auto;
     padding: 10px;
 }
 
-.find-provider-form .flexible-button span.sprite {
+/*.find-provider-form .flexible-button span.sprite {
     margin-right: 2px;
-}
+}*/  /* DE2674 - reomoved rule - replaced with new rull on findAProvider.css - sbrown */
 
 .find-provider-form .flexible-button span {
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 1px;
 }
 

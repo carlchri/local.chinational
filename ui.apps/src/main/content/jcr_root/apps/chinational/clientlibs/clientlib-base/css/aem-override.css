@@ -42,6 +42,11 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
     height: auto;
 }
 
+/* DE2584 - Tile alignment and all alignments in safari browsers - added by sbrown*/
+.row:before {
+    display: inline-block;
+}
+
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .physicianTiles .tiles-wrapper .tile-inner .tile-desc{
         padding-left:27px;
