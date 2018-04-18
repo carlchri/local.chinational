@@ -88,9 +88,9 @@
         }
 
         $(this).css('cursor', 'pointer');
-        $(this).on('click', function (event) {
+        $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
-            
+            console.log("Video was clicked");       
             var videoUrl = $(this).attr("video-url");
             var videoIframe = mountEmbedLink(videoUrl);
 
@@ -124,7 +124,7 @@
 
 $(function(){
 		// $("#video").videoPopup();
-        $(".video_popup").videoPopup();
+        $(".video").videoPopup();
 });
 
 

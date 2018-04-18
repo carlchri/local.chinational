@@ -1,7 +1,9 @@
 
 <div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
     <div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
-        <sly data-sly-include="embeddedVideo.html"></sly>
+        <div class="col-sm-12">
+            <sly data-sly-include="embeddedVideo.html"></sly>
+        </div>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>

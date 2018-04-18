@@ -16,6 +16,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <workspaceFilter version="1.0">
     <filter root="/apps/chinational/config"/>
+    <filter root="/apps/chinational/config/rewriter"/>
     <filter root="/apps/chinational/config.author"/>
     <filter root="/apps/chinational/config.publish"/>
 </workspaceFilter>

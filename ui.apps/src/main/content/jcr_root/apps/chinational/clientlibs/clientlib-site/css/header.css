@@ -103,7 +103,7 @@
 .search-box input {
 	width: 185px;
 	border: none;
-	padding: 2px 0 5px 9px;
+	padding: 5px 0 5px 9px;   /* Modified by German to fix Defect DE2689, it was -> padding: 2px 0 5px 9px;  */
 	height:100%;
 	font-size: 16px;
 	float: left;

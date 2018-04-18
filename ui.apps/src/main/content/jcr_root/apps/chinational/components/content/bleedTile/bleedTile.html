@@ -13,7 +13,7 @@
 
 <sly data-sly-test="${properties.selectImage == 'imageRequired'}">
 	<div data-sly-test="${properties.imagePosition == 'top'}">
-		<div class="image-row"
+		<div class="image-row required-height-style-1"
 			 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 		</div>
 		<div class="content-gutter">
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div data-sly-test="${properties.imagePosition == 'left'}"
-		 class="full-image"
+		 class="full-image required-width-style-1"
 		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
 	<div data-sly-test="${properties.imagePosition != 'top'}" class="content-gutter">
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 	<div data-sly-test="${properties.imagePosition == 'right'}"
-		 class="full-image"
+		 class="full-image required-width-style-1"
 		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
 </sly>

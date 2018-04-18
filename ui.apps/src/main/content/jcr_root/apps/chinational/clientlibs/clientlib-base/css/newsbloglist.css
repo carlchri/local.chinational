@@ -4,11 +4,17 @@
     opacity: .55;                
 }
 
+#search_blogs_list, 
+#search_blogs_year,
 #search_news_list, 
 #search_news_year {
 	-webkit-appearance:menulist; 
 	background-color:#E6FFFF;
 	width:60%;
+}
+
+.dropdown_articles::-ms-expand {
+    display: none;
 }
 
 /*
