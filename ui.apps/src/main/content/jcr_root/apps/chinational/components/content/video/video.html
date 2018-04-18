@@ -1,6 +1,6 @@
 
-<div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
-    <div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
+<div class="component">
+    <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
         <div class="col-sm-12">
             <sly data-sly-include="embeddedVideo.html"></sly>
         </div>

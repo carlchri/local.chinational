@@ -101,6 +101,14 @@
     opacity: 1;
 }
 
+/* Added by German to fix Defect DE2573 */
+
+.compositeButtons h3 {
+	padding-left: 1%;
+}
+
+/* End of additions for Defect DE2573 */
+
 .content-left .buttons-outer {
     flex-flow: wrap;
     display: block;
@@ -222,6 +230,13 @@
     .find-provider-form.right .flexible-button {
         margin: 0 0 15px 0;
     }
+    
+    /* Added by German to fix Defect DE2573 */
+    
+    .compositeButtons h3 {
+		padding-left: 0px;
+	}
+	
+	/* End of additions for Defect DE2573 */
+	
 }
-
-@media (max-width: 480px) {}

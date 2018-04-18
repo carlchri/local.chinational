@@ -12,8 +12,13 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
 
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
-  padding-bottom: 130%;
+  padding-bottom: 160%;
 }
+
+/* For Carrers page iFrame and other in future, different from contact us*/
+.iframe-container-4x3 {
+    padding-bottom: 100%;
+  }
 
 
 .contact-container iframe {
