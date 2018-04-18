@@ -30,7 +30,8 @@
 }
 
 .event-content {
-	margin: 0 140px 0 15px;
+	/* margin: 0 140px 0 15px; Davinder - commented out to fix spacing bug */
+	margin: 0 140px 0 30px; /* added by Davinder to increase padding-right from 15px to 30px */
 	max-width: 400px;
 }
 
@@ -137,7 +138,8 @@ button {
 
 @media ( max-width :992px) {
 	.event-content {
-		margin: -6px 0 0 15px;
+		/* margin: -6px 0 0 15px; Commented out by Davinder */
+		margin: -6px 0 0 30px; /* added by Davinder to increase padding-right from 15px to 30px */
 		max-width: 30pc;
 	}
 	
