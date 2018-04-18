@@ -93,6 +93,48 @@ button {
 	
 	
 
+@media ( max-width :992px) {
+	.event-content {
+		/* margin: -6px 0 0 15px; Commented out by Davinder */
+		margin: -6px 0 0 30px; /* added by Davinder to increase padding-right from 15px to 30px */
+		max-width: 30pc;
+	}
+	
+	.more-events {
+		flex: inherit;
+	}
+	
+	.flex-row {
+		flex-flow: wrap;
+	}
+	
+	.upcoming-events .flex {
+		display: flex;
+		padding-bottom:30px;
+	}
+	
+	/* Added by German to fix Defect DE2590 */
+	
+	.padding-fix {
+		padding-bottom: 0px;
+	}
+	
+	/*  End of additions by German for Defect DE2590 */
+	
+	.featured-callout-view-events-button {
+		margin-left: 105px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
+	}
+
+	.more-events {
+		max-width: 100%;
+	}
+	
+	.more-events a {
+		/* margin-left: 110px; Davinder - commented out to fix bug to remove extra spacing */
+	}
+	
+}
+
 @media ( max-width :767px) {
 	.event-image img {
 		width: 100%;
@@ -135,48 +177,6 @@ button {
 	}
 }
 
-
-@media ( max-width :992px) {
-	.event-content {
-		/* margin: -6px 0 0 15px; Commented out by Davinder */
-		margin: -6px 0 0 30px; /* added by Davinder to increase padding-right from 15px to 30px */
-		max-width: 30pc;
-	}
-	
-	.more-events {
-		flex: inherit;
-	}
-	
-	.flex-row {
-		flex-flow: wrap;
-	}
-	
-	.upcoming-events .flex {
-		display: flex;
-		padding-bottom:30px;
-	}
-	
-	/* Added by German to fix Defect DE2590 */
-	
-	.padding-fix {
-		padding-bottom: 0px;
-	}
-	
-	/*  End of additions by German for Defect DE2590 */
-	
-	.featured-callout-view-events-button {
-		margin-left: 105px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
-	}
-
-	.more-events {
-		max-width: 100%;
-	}
-	
-	.more-events a {
-		/* margin-left: 110px; Davinder - commented out to fix bug to remove extra spacing */
-	}
-	
-}
 
 /*  ONLY MOBILES */
 
