@@ -219,6 +219,10 @@ button {
 		margin-left: 0px;
 	}
 	
+	.calloutTiles .callout-horizontal {
+		margin:0 0 30px 5px;   /* Added by German to Fix Defect DE2589 */
+	}
+	
 	.infoband .memorial {
 		padding-bottom: 10px;
 	}
@@ -227,17 +231,22 @@ button {
 
 @media all and (min-width : 768px) and (max-width : 991px){
 	
-	.callout-horizontal {
-		margin:0 0 30px 15px;  
+	.calloutTiles .callout-horizontal {
+		margin:0 0 30px 26px;  
 		max-width: 46%;	
 	}
 }
 
 
 @media all and (min-width : 992px) {
-	.category_content {
-		padding-left:30px;  
+	.calloutTiles .callout-horizontal {
+		padding-left:0px;  
 	}
 }
+
+/* Rules taken from Zeplin following Foundation guidelines: */
+/* For Mobile, callout should have left padding 5px, */
+/* For Tablet, callout should have left padding 26px, */
+/* For Desktop, callout should have left padding 0px */
 
 /*  End of additions by German for Defect DE2590 */

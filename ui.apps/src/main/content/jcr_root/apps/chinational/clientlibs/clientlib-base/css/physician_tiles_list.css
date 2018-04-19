@@ -109,7 +109,7 @@
   }
 }
 .profileCarousel .tiles-wrapper .tile-inner {
-  padding: 0 15px;
+  padding: 0 70px;
 }
 @media (max-width: 1024px) {
   .profileCarousel .tiles-wrapper .tile-inner {

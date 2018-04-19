@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <sly data-sly-list.eachTile="${tiles.calloutTilesList}">
-            <div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass} callout-horizontal"
+            <div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass} col-xs-12 callout-horizontal"
                  data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout', selectors='embeddedCallout'}">
             </div>
         </sly>

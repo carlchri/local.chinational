@@ -1587,32 +1587,32 @@ img {
 /* Added by German to adjust required min-height and min-width for images in full bleed components (Defect DE2684 ) */
 
 @media all and (min-width: 1361px) {
-	
-	.image-row.required-height-style-1 {
-		min-height: 283px;		/* For desktop according to Zeplin */
-	}
-	.full-image.required-width-style-1 {
-		min-width: 355px;		/* For desktop according to Zeplin */
-	}
+    
+    .image-row.required-height-style-1 {
+        min-height: 283px;      /* For desktop according to Zeplin */
+    }
+    .full-image.required-width-style-1 {
+        min-width: 355px;       /* For desktop according to Zeplin */
+    }
 }
 
 @media all and (min-width: 770px) and (max-width: 1360px){
-	.image-row.required-height-style-1 {
-		min-height: 283px;		/* No variations here for tablet and desktop */
-	}
-	.full-image.required-width-style-1 {
-		min-width: 349px;		/* For tablet according to Zeplin */
-		min-height: 313px;		/* For tablet according to Zeplin */
-	}
+    .image-row.required-height-style-1 {
+        min-height: 283px;      /* No variations here for tablet and desktop */
+    }
+    .full-image.required-width-style-1 {
+        min-width: 349px;       /* For tablet according to Zeplin */
+        min-height: 313px;      /* For tablet according to Zeplin */
+    }
 }
 
 @media all and (max-width: 769px) {
-	.image-row.required-height-style-1 {
-		min-height: 281px;		/* For mobile according to Zeplin */
-	}
-	.full-image.required-width-style-1 {
-		min-width: 300px;		/* For mobile according to Zeplin */
-	}
+    .image-row.required-height-style-1 {
+        min-height: 281px;      /* For mobile according to Zeplin */
+    }
+    .full-image.required-width-style-1 {
+        min-width: 300px;       /* For mobile according to Zeplin */
+    }
 }
 
 /* End of additions for defect DE2684 */

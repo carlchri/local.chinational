@@ -154,9 +154,6 @@ jQuery(document).ready(function() {
         responsive: {
             0: {
                 items: 1
-            },
-            1300: {
-                items: 2
             }
         }
     });
