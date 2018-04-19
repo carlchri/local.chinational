@@ -403,9 +403,9 @@
     display: none;
 }
 
-.mediaCarousel .owl-carousel .owl-nav.disabled {
+/*.mediaCarousel .owl-carousel .owl-nav.disabled {
     display: inline-block !important;
-}
+}*/
 
 .mediaCarousel .owl-item .twoItemColumn .flex-box .carousel-description>div:first-child {
     margin-right: 10px;
