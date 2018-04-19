@@ -366,7 +366,7 @@ hr {
 .custome-dd-outer .dropdown-menu {
     width: 680px;
     /* Modified by German for Defects DE2614 and DE2651, it was before -> width: 588px; */
-    z-index: 4;
+/*     z-index: 4;  Removed by German to fix Defect DE2576 */
 }
 
 
@@ -912,6 +912,12 @@ button:hover {
     opacity: .55;
 }
 
+/* DE2507 - Set hover state to icons for IE - sbrown*/
+a i:hover,
+button i:hover {
+    opacity: .55;
+}
+/* EOF -  DE2507 - Set hover state to icons for IE -sbrown */
 
 
 /* Naresh added opacity for link under logo*/
