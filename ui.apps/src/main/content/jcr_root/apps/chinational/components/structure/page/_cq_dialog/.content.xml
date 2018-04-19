@@ -46,7 +46,7 @@
                         sling:hideResource="{Boolean}true"/>
                     <personalization
                             jcr:primaryType="nt:unstructured"
-                            sling:hideResource="{Boolean}true"/>
+                            sling:hideResource="{Boolean}false"/>
                     <chinational
                         jcr:primaryType="nt:unstructured"
                         jcr:title="CHI Page Properties"
