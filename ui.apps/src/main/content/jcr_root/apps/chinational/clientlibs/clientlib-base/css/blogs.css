@@ -106,6 +106,15 @@
 	}
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+	.first-tile-image-tablet .blog-image {
+		height: 230px; /* added by Davinder to set image height to 230px in Tablet */
+	}
+	.first-tile-image-tablet {
+		margin-bottom:30px; /* added by Davinder to add margin at bottom in Tablet */
+	}
+}
+
 /* Naresh - three options for images which should not be constrainted in desktop*/
 @media ( min-device-width: 1200px) {
 	.auto-image img {
