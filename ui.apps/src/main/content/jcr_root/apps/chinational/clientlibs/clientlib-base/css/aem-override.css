@@ -16,7 +16,7 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
 }
 
 /* More space for tablet*/
-@media ( max-width :991px) {
+@media ( max-width :992px) {
 .contact-container-4x3 {
   padding-bottom: 200%;
 }
@@ -28,6 +28,9 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
   padding-bottom: 350%;
 }
 }
+
+
+
 
 /* For Carrers page iFrame and other in future, different from contact us*/
 .iframe-container-4x3 {

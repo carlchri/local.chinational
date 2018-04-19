@@ -83,7 +83,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            768: {
+            992: {  /* DE2607 - sbrown - Set to have single slide at larger breakpoint - origninally set to 768 */
                 items: 2
             }
         }

@@ -601,7 +601,8 @@ hr {
 }
 
 .image-col {
-    width: 326px;
+    /* width: 326px; coomented by Davinder to fix bug */
+	width: 360px; /* Added by Davinder */
     height: 265px;
 }
 

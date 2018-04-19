@@ -219,6 +219,10 @@ button {
 		margin-left: 0px;
 	}
 	
+	.calloutTiles .callout-horizontal {
+		margin:0 0 30px 0;   /* Added by German to Fix Defect DE2589 */
+	}
+	
 	.infoband .memorial {
 		padding-bottom: 10px;
 	}

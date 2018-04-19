@@ -336,9 +336,13 @@
     display: none;
 }
 
-/*.mediaCarousel .carousel-item {
-  padding-left: 5px;
-}*/
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .link-wrapper {
+    display: inline-block; 
+} /* Set to show for 5th carousel item in desktop when there are only 5 or less slides */
+
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .audio-player-button i {
+    display: none;
+} /* Set to show for 5th carousel item in desktop when there are only 5 or less slides */
 
 .mediaCarousel .media-carousel .owl-item {
     transition: all 0.25s ease 0s;
