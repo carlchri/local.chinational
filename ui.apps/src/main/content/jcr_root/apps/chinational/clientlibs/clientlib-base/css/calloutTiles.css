@@ -27,7 +27,7 @@
 @media all and (min-width: 992px) {
 	
 	.calloutTiles .col-md-4.callout-horizontal {
-		width: 31%;  
+		width: 30%;  
 		margin:0 0 30px 15px; 
 	}
 }
