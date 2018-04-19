@@ -240,7 +240,7 @@ button {
 
 @media all and (min-width : 992px) {
 	.calloutTiles .callout-horizontal {
-		padding-left:0px;  
+		padding-left: 15px;  
 	}
 }
 

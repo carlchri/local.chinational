@@ -12,12 +12,9 @@
                     <socialmedia
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
-                    <cloudservices
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}false"/>
                     <personalization
                         jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
+                        sling:hideResource="{Boolean}false"/>
                     <permissions
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
