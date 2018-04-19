@@ -912,6 +912,12 @@ button:hover {
     opacity: .55;
 }
 
+/* DE2507 - Set hover state to icons for IE - sbrown*/
+a i:hover,
+button i:hover {
+    opacity: .55;
+}
+/* EOF -  DE2507 - Set hover state to icons for IE -sbrown */
 
 
 /* Naresh added opacity for link under logo*/
