@@ -16,7 +16,7 @@
 
         <div class="flex">
 			<sly data-sly-list.eachTile="${tiles.contentTilesList}">
-	           	<div class="blog-item ${eachTileList.first?'col-md-4':'col-sm-6 col-md-4'}"
+	           	<div class="blog-item ${eachTileList.first?'col-md-4 first-tile-image-tablet':'col-sm-6 col-md-4'}"
     	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
                 </div>
         	</sly>

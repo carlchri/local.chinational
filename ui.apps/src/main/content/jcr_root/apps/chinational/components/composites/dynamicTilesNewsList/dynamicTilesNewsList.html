@@ -12,7 +12,7 @@
 		
         <div class="flex">
 			<sly data-sly-list.featuredNews="${newsList.featuredNews}">
-	           	<div class="blog-item ${featuredNewsList.first?'col-md-4':'col-sm-6 col-md-4'}">
+	           	<div class="blog-item ${featuredNewsList.first?'col-md-4 first-tile-image-tablet':'col-sm-6 col-md-4'}">
                     <div class="full-image blog-image" data-sly-test="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc}">
                     	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
                              alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
