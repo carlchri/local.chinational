@@ -10,9 +10,13 @@
 
 /* Added by German to Fix Defect DE2589 */
 
-@media all and (min-width: 769px) {
+@media all and (min-width: 768px) {
 	.calloutTiles .col-md-6.callout-horizontal {
 		width: 49%;
+	}
+	
+	.calloutTiles .col-sm-6.callout-horizontal {
+		width: 46%;
 	}
 }
 
@@ -23,7 +27,8 @@
 @media all and (min-width: 992px) {
 	
 	.calloutTiles .col-md-4.callout-horizontal {
-		width: 33%;   
+		width: 31%;  
+		margin:0 0 30px 15px; 
 	}
 }
 

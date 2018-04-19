@@ -204,7 +204,10 @@ jQuery(document).ready(function() {
             // add class to last class
             if (index === total - 1 && total > 1) {
                 $(this).addClass('lastActiveItem');
-                console.log("Last Item added");
+            }
+            if (index === 3) {
+                // this is the first one
+                $(this).addClass('forthActiveItem');
             }
             // if (index === total - 2 && total > 1) {
             //     $(this).addClass('secondToLastActiveItem');
