@@ -15,9 +15,6 @@
                     <cloudservices
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}false"/>
-                    <personalization
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
                     <permissions
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
