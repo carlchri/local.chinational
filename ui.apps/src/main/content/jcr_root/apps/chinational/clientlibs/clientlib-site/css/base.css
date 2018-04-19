@@ -602,7 +602,7 @@ hr {
 
 .image-col {
     /* width: 326px; coomented by Davinder to fix bug */
-	width: 364px; /* Added by Davinder */
+	width: 360px; /* Added by Davinder */
     height: 265px;
 }
 
@@ -961,6 +961,14 @@ body {
 
 .pading-bottom-25 {
     padding-bottom: 25px;
+}
+
+.padding-bottom-30 {
+    padding-bottom: 30px;
+}
+
+.padding-bottom-15 {
+    padding-bottom: 15px;
 }
 
 .solid-circle {
