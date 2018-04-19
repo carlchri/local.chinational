@@ -1,11 +1,5 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
-
-<div
-        innerHTML="test this too">
-</div>
-
 ${properties.sourceText @ context = 'unsafe'}
-
 <sly data-sly-call="${template.placeholder @ isEmpty=!sourceText}"></sly>
 
 

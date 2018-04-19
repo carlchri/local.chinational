@@ -83,7 +83,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            992: {  /* DE2607 - sbrown - Set to have single slide at larger breakpoint - origninally set to 768 */
+            768: {
                 items: 2
             }
         }
@@ -154,9 +154,6 @@ jQuery(document).ready(function() {
         responsive: {
             0: {
                 items: 1
-            },
-            1300: {
-                items: 2
             }
         }
     });
