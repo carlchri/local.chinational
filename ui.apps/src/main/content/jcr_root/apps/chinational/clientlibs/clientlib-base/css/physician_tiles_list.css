@@ -96,6 +96,11 @@
     display: none;
   }
 }
+@media (min-width: 1025px) {
+  .profileCarousel .owl-carousel.profile-carousel {
+    padding: 0 45px;
+  }
+}
 .profileCarousel .item {
   /*@media (max-width: 768px) {
             width: 80%;
@@ -107,6 +112,9 @@
     /*width: 90%;
             margin-left: 5%;*/
   }
+}
+.profileCarousel .tiles-wrapper .tile:nth-child(odd) {
+  padding-right: 20px;
 }
 .profileCarousel .tiles-wrapper .tile-inner {
   padding: 0 30px;
