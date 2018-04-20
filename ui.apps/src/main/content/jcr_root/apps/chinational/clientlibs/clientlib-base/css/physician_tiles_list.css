@@ -98,7 +98,12 @@
 }
 @media (min-width: 1025px) {
   .profileCarousel .owl-carousel.profile-carousel {
-    padding: 0 45px;
+    padding: 0 25px;
+  }
+}
+@media (min-width: 1025px) {
+  .profileCarousel .owl-carousel .owl-stage {
+    margin-left: 20px;
   }
 }
 .profileCarousel .item {
@@ -114,7 +119,13 @@
   }
 }
 .profileCarousel .tiles-wrapper .tile:nth-child(odd) {
-  padding-right: 20px;
+  padding-right: 0;
+  margin-right: 30px;
+}
+@media (min-width: 1025px) {
+  .profileCarousel .tiles-wrapper .tile {
+    max-width: 390px;
+  }
 }
 .profileCarousel .tiles-wrapper .tile-inner {
   padding: 0 30px;
@@ -157,6 +168,11 @@
 .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
   padding-left: 0;
   padding-right: 0;
+}
+@media (min-width: 1025px) {
+  .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+    max-width: 188px;
+  }
 }
 .profileCarousel .tiles-wrapper .tile-inner .tile-desc .small-heading {
   line-height: 1.2;
