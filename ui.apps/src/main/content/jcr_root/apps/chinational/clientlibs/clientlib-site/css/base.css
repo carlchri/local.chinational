@@ -793,7 +793,7 @@ Commented by Naresh - we don't need extra spacing by other elements
 }
 
 .bullet-text-outer {
-    padding: 10px 0 0 40px;
+    padding: 7px 0 0 40px;   /* Modified by German to fix Defects DE2612 and DE2692, before was padding: 10px 0 0 40px; */
 }
 
 .bullet-text li {
@@ -814,12 +814,13 @@ p {
     margin: 15px 0;
 }
 
+/* Removed by German now, to fix Defects DE2612 and DE2692
+
 p:first-child {
-    margin: 0 0 24px 0;
-    /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; */
+     margin: 0 0 15px 0;  
+    /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; 
 }
-
-
+*/
 
 
 /* right rail gutter side correction for seperator 
