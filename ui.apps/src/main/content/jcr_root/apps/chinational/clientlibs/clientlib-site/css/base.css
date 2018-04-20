@@ -1572,6 +1572,11 @@ img {
     .tiles-wrapper {
         display: block;
     }
+
+    /* We need to make col-md-6 with 100%, else it still shows two columsn in landscpe*/
+    .physicianTiles .col-md-6 {
+        width: 100%;
+    }
 }
   
 
