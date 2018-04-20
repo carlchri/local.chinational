@@ -35,6 +35,15 @@
 	max-width: 400px;
 }
 
+/* Added by German to fix Defect DE2598 */
+
+.featuredArticleCallout .upcoming-events .event-content {
+	margin: 0 0 0 30px; 
+}
+
+/* End of additions by German to fix Defect DE2598 */
+
+
 .more-events a {
 	/* margin-left: 50px; Davinder - commented out to fix bug to remove extra spacing */
 }
@@ -146,6 +155,18 @@ button {
 		margin: 35px 0 0 0;
 		max-width: 40pc;
 	}
+	
+	/* Added by German to fix Defect DE2598 */
+	
+	.featuredArticleCallout .upcoming-events .event-image img {
+		padding-bottom:15px;
+	}
+	
+	.featuredArticleCallout .upcoming-events .event-content {
+		margin: 0;
+	}
+	
+	/* End of additions by German to fix Defect DE2598 */
 	
 	.upcoming-events .flex {
 		display: block;
