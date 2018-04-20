@@ -814,13 +814,10 @@ p {
     margin: 15px 0;
 }
 
-/* Removed by German now, to fix Defects DE2612 and DE2692
 
 p:first-child {
      margin: 0 0 15px 0;  
-    /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; 
 }
-*/
 
 
 /* right rail gutter side correction for seperator 
