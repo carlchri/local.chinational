@@ -741,9 +741,6 @@ label {
     font-style: italic;
 }
 
-
-
-
 /* Commented by Naresh, as we don't want padding on top, let H3 above it add the padding
 .image-wrape {
     padding-top: 20px;
@@ -754,8 +751,6 @@ label {
     padding: 0 30px 0 0;
     /* Naresh - no padding needed for bottom*/
 }
-
-
 
 /*
 .image-wrape p {
@@ -1573,6 +1568,15 @@ img {
     .full-bleed {
         display: block;
     }    
+    /* For tablet - portrait and landscape, we don't want flex for profile tile*/
+    .tiles-wrapper {
+        display: block;
+    }
+
+    /* We need to make col-md-6 with 100%, else it still shows two columsn in landscpe*/
+    .physicianTiles .col-md-6 {
+        width: 100%;
+    }
 }
   
 
@@ -1642,8 +1646,8 @@ img {
    with touch devices (tablet, mobile) add those classes here to leave them 
    out from been activated. they all have to start with 'html.can-touch' */
 
-html.can-touch .infoband .buttons-outer a:hover { 
-	background: none;   /* disable hover effect when input is touch */
+html.can-touch .infoband .buttons-outer .flexible-button { 
+	opacity: 1;   /* disable hover effect when input is touch */
 }
 	
 /* End additions by German to fix Defect DE2604 */	
