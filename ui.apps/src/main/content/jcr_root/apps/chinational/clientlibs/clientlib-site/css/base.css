@@ -814,13 +814,10 @@ p {
     margin: 15px 0;
 }
 
-/* Removed by German now, to fix Defects DE2612 and DE2692
 
 p:first-child {
      margin: 0 0 15px 0;  
-    /* Modified by German to fix Defect DE2568, before was margin: 0 0 15px 0; 
 }
-*/
 
 
 /* right rail gutter side correction for seperator 
@@ -928,8 +925,8 @@ button i:hover {
 .infoband .buttons-outer a:hover,
 .compositeButtons .flex-buttons a:hover {
     opacity: 1;
-}
-
+}	
+	
 .other-news a:hover {
     color: #426da9;
 }
@@ -1637,3 +1634,16 @@ img {
 }
 
 /* End of additions for defect DE2684 */
+
+
+/* Added by German to fix Defect DE2604 */
+
+/* If any other element has to be prevented from triggering its hover effect 
+   with touch devices (tablet, mobile) add those classes here to leave them 
+   out from been activated. they all have to start with 'html.can-touch' */
+
+html.can-touch .infoband .buttons-outer a:hover { 
+	background: none;   /* disable hover effect when input is touch */
+}
+	
+/* End additions by German to fix Defect DE2604 */	
