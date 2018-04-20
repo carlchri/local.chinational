@@ -86,7 +86,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Article Header Image Caption"
                                         fieldDescription="This caption appears beneath the photo on the blog details page (optional)"
-                                        fieldLabel="Image Caption"
+                                        fieldLabel="Article Header Image Caption"
                                         name="./imageCaption"
                                         renderReadOnly="{Boolean}true"/>
                                     <tileImageSrc
