@@ -64,7 +64,7 @@ jQuery(document).ready(function() {
                 items: 3
             },
             1024: {
-                items: 5
+                items: 4
             }
         }
     });
@@ -154,9 +154,6 @@ jQuery(document).ready(function() {
         responsive: {
             0: {
                 items: 1
-            },
-            1300: {
-                items: 2
             }
         }
     });
@@ -205,18 +202,20 @@ jQuery(document).ready(function() {
             //     $(this).addClass('thirdActiveItem');
             // }
             // add class to last class
-            if (index === total - 1 && total > 1) {
-                $(this).addClass('lastActiveItem');
-                console.log("Last Item added");
+            if (index === 3) {
+                // this is the forth item.
+                $(this).addClass('forthActiveItem');
+                // console.log("Page Load: " + pgLoad);
             }
-            // if (index === total - 2 && total > 1) {
-            //     $(this).addClass('secondToLastActiveItem');
-            // }
-            // if ($(this).hasClass('lastActiveItem')) {
-            //     if ($(this).width() > 250) {
-            //         $(this).removeClass('fullOpacity');
-            //     }
-            // }
+
+            if (total >= 5) {
+                // add class to last class
+                if (index === total - 1 && total > 1) {
+                    $(this).addClass('lastActiveItem');
+                    // console.log("Last Item added");
+                }
+
+            }
 
             if ($(window).width() > 1024) {
                 // console.log("desktop");
@@ -301,6 +300,7 @@ jQuery(document).ready(function() {
                 // this is the first one
                 $(this).addClass('firstActiveItem');
             }
+            console.log("total: " + total);
             // if (index === 1) {
             //     // this is the first one
             //     $(this).addClass('secondActiveItem');
@@ -310,8 +310,22 @@ jQuery(document).ready(function() {
             //     $(this).addClass('thirdActiveItem');
             // }
             // add class to last class
-            if (index === total - 1 && total > 1) {
-                $(this).addClass('lastActiveItem');
+            if (rrOwlActive.first().width() > 300) {
+                if (total >= 3) {
+                    // add class to last class
+                    if (index === total - 1 && total > 1) {
+                        $(this).addClass('lastActiveItem');
+                        console.log("Last Item added");
+                    }
+                }
+            } else {
+                if (total >= 4) {
+                    // add class to last class
+                    if (index === total - 1 && total > 1) {
+                        $(this).addClass('lastActiveItem');
+                        console.log("Last Item added");
+                    }
+                }
             }
             // if (index === total - 2 && total > 1) {
             //     $(this).addClass('secondToLastActiveItem');
@@ -325,6 +339,17 @@ jQuery(document).ready(function() {
             if ($(window).width() > 1024) {
                 // console.log("desktop");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
+                if (rrOwlActive.first().width() > 300) {
+                    if (total >= 3) {
+                        $(this).not('.lastActiveItem').addClass('fullOpacity');
+                        console.log("last item added in right rail");
+                    }
+                    
+                } else {
+                    if (total < 3) {
+                        $(this).addClass('fullOpacity');
+                    }
+                }
             } else if ($('window').width() <= 1024 && $('window').width() > 768) {
                 // console.log("tablet");
                 if (rrOwlActive.first().width() > 300 || rrOwlActive.first().next().width() > 300) {
