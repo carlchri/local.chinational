@@ -111,6 +111,14 @@
                                         text="Select to display Quote Component config"
                                         uncheckedValue="false"
                                         value="true"/>
+                                    <displayDynamicComponent
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Selecting this checkbox will remove Global Dynamic List component from the bottom of the page"
+                                        name="./hideDynamicComponent"
+                                        text="Select to hide Dynamic Global List Component"
+                                        uncheckedValue="false"
+                                        value="true"/>
                                 </items>
                             </column>
                         </items>
