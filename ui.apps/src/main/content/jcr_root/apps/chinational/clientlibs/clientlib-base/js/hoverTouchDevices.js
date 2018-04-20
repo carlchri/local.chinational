@@ -1,5 +1,4 @@
-<script>
- 
+
 ;(function(){
     var isTouch = false    //var to indicate current input type (is touch versus no touch) 
     var isTouchTimer 
@@ -27,4 +26,3 @@
     document.addEventListener('mouseover', removetouchclass, false) //this event gets called when input type is everything from touch to mouse/ trackpad
 })();
  
-</script>
