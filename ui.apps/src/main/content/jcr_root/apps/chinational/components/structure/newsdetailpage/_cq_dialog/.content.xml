@@ -81,6 +81,14 @@
                                         fieldLabel="Article Header Image  [3:1 ratio, minimum 1320 pixel width]"
                                         name="./imageSrc"
                                         rootPath="/content/dam"/>
+                                    <imageCaption
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Article Header Image Caption"
+                                        fieldDescription="This caption appears beneath the photo on the blog details page (optional)"
+                                        fieldLabel="Article Header Image Caption"
+                                        name="./imageCaption"
+                                        renderReadOnly="{Boolean}true"/>
                                     <tileImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -95,14 +103,6 @@
                                         fieldLabel="Featured Article Image [1.2:1 ratio, minimum 325 pixel width]"
                                         name="./featuredImageSrc"
                                         rootPath="/content/dam"/>
-                                    <imageCaption
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        emptyText="Caption below Image"
-                                        fieldDescription="Caption below the image (optional)"
-                                        fieldLabel="Image Caption"
-                                        name="./imageCaption"
-                                        renderReadOnly="{Boolean}true"/>
                                     <displayQuoteComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
