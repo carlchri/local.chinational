@@ -12,6 +12,10 @@
             margin-left: 5%;*/
   }
 }
+.physicianTiles .tiles-wrapper,
+.physicianTile .tiles-wrapper {
+  padding: 0;
+}
 .physicianTiles .tiles-wrapper .tile-inner,
 .physicianTile .tiles-wrapper .tile-inner {
   padding: 0 15px;
@@ -220,7 +224,6 @@
     right: -5%;
   }
 }
-/*.physician_tiles_list:extend(.profileCarousel) {}*/
 /* Added by Naresh to fix margin issue on profile page*/
 .tile-hr-no-top-margin {
   margin-top: 0px;

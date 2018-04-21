@@ -1644,10 +1644,17 @@ img {
 
 /* If any other element has to be prevented from triggering its hover effect 
    with touch devices (tablet, mobile) add those classes here to leave them 
-   out from been activated. they all have to start with 'html.can-touch' */
+   out from been activated by returning them to its original color. 
+   They all have to start with 'html.can-touch' */
+
 
 html.can-touch .infoband .buttons-outer .flexible-button { 
-	opacity: 1;   /* disable hover effect when input is touch */
+	background-color: #426da9;   /* Download button for Media Page */
 }
+
+html.can-touch .findAProvider .find-provider-form .flexible-button { 
+	background-color: #0097a9;   /* Download button for Home Page */
+}
+
 	
 /* End additions by German to fix Defect DE2604 */	
