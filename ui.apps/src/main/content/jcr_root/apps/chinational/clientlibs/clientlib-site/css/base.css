@@ -814,6 +814,14 @@ p:first-child {
      margin: 0 0 15px 0;  
 }
 
+/* Added by German to adjust paragraph structure in Defect DE2612 */
+
+p:last-child {
+     margin: 15px 0 0 0;  
+}
+
+/* End of additions to adjust paragraph structure in Defect DE2612 */
+
 
 /* right rail gutter side correction for seperator 
    Naresh - Adding after p:first-child, else that was taking priority

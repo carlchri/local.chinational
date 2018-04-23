@@ -100,6 +100,19 @@
     display: none;
   }
 }
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* We need to make hide filler in landscape mode, as we are displaying portrait mode*/
+  .physicianTiles .filler .tile {
+    display: none;
+  }
+}
+
 @media (min-width: 1025px) {
   .profileCarousel .owl-carousel.profile-carousel {
     padding: 0 25px;
