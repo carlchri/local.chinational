@@ -35,6 +35,15 @@
 	max-width: 400px;
 }
 
+/* Added by German to fix Defect DE2598 */
+
+.featuredArticleCallout .upcoming-events .event-content {
+	margin: 0 0 0 30px; 
+}
+
+/* End of additions by German to fix Defect DE2598 */
+
+
 .more-events a {
 	/* margin-left: 50px; Davinder - commented out to fix bug to remove extra spacing */
 }
@@ -147,6 +156,18 @@ button {
 		max-width: 40pc;
 	}
 	
+	/* Added by German to fix Defect DE2598 */
+	
+	.featuredArticleCallout .upcoming-events .event-image img {
+		padding-bottom:15px;
+	}
+	
+	.featuredArticleCallout .upcoming-events .event-content {
+		margin: 0;
+	}
+	
+	/* End of additions by German to fix Defect DE2598 */
+	
 	.upcoming-events .flex {
 		display: block;
 	}
@@ -182,7 +203,7 @@ button {
 
 @media all and (max-width : 414px) {
 	.category_content {
- 		padding-left:35px;   /* Modified by German to fix Defect DE3590  */
+ 		padding-left:10px;   /* Modified by German to fix Defect DE3590  */
 	}
 	
 	/* Added by German to fix Defect DE2590 (There should be a little padding on the left and it's not right now)  */

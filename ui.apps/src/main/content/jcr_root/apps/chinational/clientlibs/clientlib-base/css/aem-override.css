@@ -25,11 +25,29 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
 /* Even more space for phone*/
 @media ( max-width :767px) {
 .contact-container-4x3 {
-  padding-bottom: 350%;
+  padding-bottom: 380%;
 }
 }
 
+/* iPad landscape*/
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+  .contact-container-4x3 {
+    padding-bottom: 190%;
+  }
+}
 
+/* iPhone 5 portrait mode*/
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+ .contact-container-4x3 {
+   padding-bottom: 430%;
+ }
+}
 
 
 /* For Carrers page iFrame and other in future, different from contact us*/
