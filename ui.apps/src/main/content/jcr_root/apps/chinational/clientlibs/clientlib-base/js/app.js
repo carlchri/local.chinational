@@ -127,7 +127,7 @@ jQuery(document).ready(function() {
         dots: false,
         autoHeight: true,
         // loop: true,
-        // autoWidth: true,
+        autoWidth: true,
         // stagePadding: 100,
         // responsiveClass: true,
         responsive: {
@@ -154,8 +154,11 @@ jQuery(document).ready(function() {
         responsive: {
             0: {
                 items: 1
+            },
+            1220: {
+                items: 2
             }
-        }
+         }
     });
     checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
