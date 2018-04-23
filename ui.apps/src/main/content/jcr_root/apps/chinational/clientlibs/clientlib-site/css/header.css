@@ -41,7 +41,10 @@
 .header ul li a.dd-opened i {
 	transform: rotate(-45deg);
 	top:7px;
-	border-color:#426da9;
+	border-color:#F2A900;
+}
+.header .mobile-menu-li a.dd-opened {
+    background-color:#86C8BC;
 }
 .search-icon i {
 	width:20px;
