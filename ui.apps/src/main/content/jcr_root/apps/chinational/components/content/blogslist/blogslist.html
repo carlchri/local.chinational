@@ -6,10 +6,10 @@
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
 		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-			<div class="col-sm-12" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
+			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-30'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
 		</sly>
 
-		<div class="col-sm-12 pading-bottom-25">
+		<div class="col-xs-12 padding-bottom-30">
 			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
 				<option value="ChooseFilterOption">Choose Filter Option</option>
 				<option value="SortByMostRecent" selected>Sort By Most Recent</option>
@@ -20,7 +20,7 @@
 			</select>
 		</div>
 
-		<div class="col-sm-12 pading-bottom-25" id="select_blogs_by_year" style="display:none;">
+		<div class="col-xs-12 padding-bottom-30" id="select_blogs_by_year" style="display:none;">
 			<select class="form-control" name="search_blogs_year" id="search_blogs_year">
 				<option value="ChooseYear" selected>Choose Year</option>
 				<sly data-sly-list.listYear="${blogsList.listYears}">
@@ -33,22 +33,22 @@
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
 		<input type="hidden" name="total_results" id="total_results" value="${blogsList.totalResults}">   
 
-        <div class="col-sm-12 loading_blogs" style="display:none;">
+        <div class="col-xs-12 loading_blogs" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
-        <div class="col-sm-12">
+        <div class="col-xs-12">
 			<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
 				data-sly-use.itemTemplate="item.html">
 				<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
 			</ul>
 		</div>
 
-		<div class="col-sm-12">
+		<div class="col-xs-12">
 			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">SEE MORE</a>
 		</div>
 
-        <div class="col-sm-12 loading_blogs_next" style="display:none;">
+        <div class="col-xs-12 loading_blogs_next" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 

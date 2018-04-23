@@ -78,37 +78,45 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Enter source for image to be displayed at top of News Details Pages"
-                                        fieldLabel="Enter News Header Image Src [Optimal Image Size : 1325x400px]"
+                                        fieldLabel="Article Header Image  [3:1 ratio, minimum 1320 pixel width]"
                                         name="./imageSrc"
                                         rootPath="/content/dam"/>
+                                    <imageCaption
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Article Header Image Caption"
+                                        fieldDescription="This caption appears beneath the photo on the blog details page (optional)"
+                                        fieldLabel="Article Header Image Caption"
+                                        name="./imageCaption"
+                                        renderReadOnly="{Boolean}true"/>
                                     <tileImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Enter source for image to be displayed for Dynamic Tiles"
-                                        fieldLabel="Enter News Dynamic Tiles Image Src [Optimal Image Size : 271x145px]"
+                                        fieldLabel="Tile Image [3:1 ratio, minimum 690 pixel width]"
                                         name="./tileImageSrc"
                                         rootPath="/content/dam"/>
                                     <featuredImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Enter source for image to be displayed for Featured List"
-                                        fieldLabel="Enter News Featured List Image Src  [Optimal Image Size : 325x265px]"
+                                        fieldLabel="Featured Article Image [1.2:1 ratio, minimum 325 pixel width]"
                                         name="./featuredImageSrc"
                                         rootPath="/content/dam"/>
-                                    <imageCaption
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        emptyText="Caption below Image"
-                                        fieldDescription="Caption below the image (optional)"
-                                        fieldLabel="Image Caption"
-                                        name="./imageCaption"
-                                        renderReadOnly="{Boolean}true"/>
                                     <displayQuoteComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                         fieldDescription="Selecting this checkbox will include Quote component in the page"
                                         name="./displayQuoteComponent"
                                         text="Select to display Quote Component config"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <displayDynamicComponent
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Selecting this checkbox will remove Global Dynamic List component from the bottom of the page"
+                                        name="./hideDynamicComponent"
+                                        text="Select to hide Dynamic Global List Component"
                                         uncheckedValue="false"
                                         value="true"/>
                                 </items>

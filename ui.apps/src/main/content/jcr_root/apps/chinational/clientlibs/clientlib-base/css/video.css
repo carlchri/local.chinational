@@ -129,7 +129,8 @@
 .video-button:hover, .video-button-small:hover {
 	background-color: #fff;
 	color: #f2a900;
-	font-size: 28px;
+	opacity: .55;
+	filter: alpha(opacity=55);
 }
 
 /*.icon-play, .icon-play-small {

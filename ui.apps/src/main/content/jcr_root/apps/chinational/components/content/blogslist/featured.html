@@ -1,22 +1,18 @@
 <template data-sly-template.item="${@ list, item}">
-	<div class="pading-bottom-25">
-	    <div class="row">
-          <div class="image-content flex">
-            <div class="image-col col-md-5 col-sm-5" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
-            	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
-            </div>
-            <div class="blog-news-padding-top ${noImagePresent ? 'col-md-7 col-sm-7' : 'col-md-12 col-sm-12'}">
-              <a href="${item.path @ extension='html'}">
-                  <span class="small-heading blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span>
-              </a>
-              <span class="txt-green" 
-                    data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
-                       ${formatter.formattedDate}
-              </span>
-              <p data-sly-test="${item.properties.excerpt}">${item.properties.excerpt}</p>
-              <a href="${item.path @ extension='html'}" class="learn-more-btn border-orange">LEARN MORE</a>
-            </div>
-          </div>
-	    </div>
-	</div>          
+    <div class="row image-content flex">
+         <div class="image-col col-sm-5 col-xs-12" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
+         	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
+         </div>
+         <div class="blog-news-padding-top ${noImagePresent ? 'col-sm-7 col-xs-12' : 'col-xs-12'}">
+           <a href="${item.path @ extension='html'}">
+               <span class="small-heading blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span>
+           </a>
+           <span class="txt-green" 
+                 data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
+                    ${formatter.formattedDate}
+           </span>
+           <p data-sly-test="${item.properties.excerpt}">${item.properties.excerpt}</p>
+           <a href="${item.path @ extension='html'}" class="learn-more-btn border-orange">LEARN MORE</a>
+         </div>
+    </div>
 </template>    

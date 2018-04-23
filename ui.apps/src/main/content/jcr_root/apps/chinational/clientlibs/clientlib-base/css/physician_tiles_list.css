@@ -12,6 +12,10 @@
             margin-left: 5%;*/
   }
 }
+.physicianTiles .tiles-wrapper,
+.physicianTile .tiles-wrapper {
+  padding: 0;
+}
 .physicianTiles .tiles-wrapper .tile-inner,
 .physicianTile .tiles-wrapper .tile-inner {
   padding: 0 15px;
@@ -96,6 +100,29 @@
     display: none;
   }
 }
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* We need to make hide filler in landscape mode, as we are displaying portrait mode*/
+  .physicianTiles .filler .tile {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .profileCarousel .owl-carousel.profile-carousel {
+    padding: 0 25px;
+  }
+}
+@media (min-width: 1025px) {
+  .profileCarousel .owl-carousel .owl-stage {
+    margin-left: 20px;
+  }
+}
 .profileCarousel .item {
   /*@media (max-width: 768px) {
             width: 80%;
@@ -108,8 +135,17 @@
             margin-left: 5%;*/
   }
 }
+.profileCarousel .tiles-wrapper .tile:nth-child(odd) {
+  padding-right: 0;
+  margin-right: 30px;
+}
+@media (min-width: 1025px) {
+  .profileCarousel .tiles-wrapper .tile {
+    max-width: 390px;
+  }
+}
 .profileCarousel .tiles-wrapper .tile-inner {
-  padding: 0 15px;
+  padding: 0 30px;
 }
 @media (max-width: 1024px) {
   .profileCarousel .tiles-wrapper .tile-inner {
@@ -149,6 +185,11 @@
 .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
   padding-left: 0;
   padding-right: 0;
+}
+@media (min-width: 1025px) {
+  .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+    max-width: 188px;
+  }
 }
 .profileCarousel .tiles-wrapper .tile-inner .tile-desc .small-heading {
   line-height: 1.2;
@@ -196,7 +237,6 @@
     right: -5%;
   }
 }
-/*.physician_tiles_list:extend(.profileCarousel) {}*/
 /* Added by Naresh to fix margin issue on profile page*/
 .tile-hr-no-top-margin {
   margin-top: 0px;

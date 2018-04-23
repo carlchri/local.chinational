@@ -65,3 +65,11 @@
 }
 
 /* End of additions by German for Defect DE2691 */
+
+/* Added by German for Defects DE2692 and DE2612 */
+
+.infoband .link-wrapper {
+	padding-top: 24px;    /* To make the button after any paragraph to have a padding on top of 24px total */
+}
+
+/* End of additions by German for Defects DE2691 and DE2612 */

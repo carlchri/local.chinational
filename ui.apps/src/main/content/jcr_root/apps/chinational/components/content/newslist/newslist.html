@@ -6,10 +6,10 @@
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
 		<sly data-sly-list.featuredNews="${newsList.featuredNews}">
-			<div class="col-sm-12 ${featuredNewsList.last?'padding-bottom-60':'pading-bottom-25'}" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
+			<div class="col-xs-12 featured-news-blog ${featuredNewsList.last?'padding-bottom-60':'padding-bottom-30'}" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
 		</sly>
 
-		<div class="col-sm-12 pading-bottom-25">
+		<div class="col-xs-12 padding-bottom-30">
                   <select name="search_news_list" id="search_news_list" class="form-control">
 					<option value="ChooseFilterOption">Choose Filter Option</option>
 					<option value="SortByMostRecent" selected>Sort By Most Recent</option>
@@ -20,7 +20,7 @@
 				</select>
 		</div>
 
-		<div class="col-sm-12 pading-bottom-25" id="select_news_by_year" style="display:none;">
+		<div class="col-xs-12 padding-bottom-30" id="select_news_by_year" style="display:none;">
 			<select class="form-control" name="search_news_year" id="search_news_year">
 				<option value="ChooseYear" selected>Choose Year</option>
 				<sly data-sly-list.listYear="${newsList.listYears}">
@@ -32,11 +32,11 @@
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
 		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 
-        <div class="col-sm-12 loading" style="display:none;">
+        <div class="col-xs-12 loading" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
-        <div class="col-sm-12">
+        <div class="col-xs-12">
 			<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
 				data-sly-use.template="core/wcm/components/commons/v1/templates.html"
 				data-sly-use.itemTemplate="item.html">
@@ -44,16 +44,16 @@
 			</ul>
 		</div>
 
-		<div class="col-sm-12">
+		<div class="col-xs-12">
 			<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
 		</div>
 
-        <div class="col-sm-12 loading_next" style="display:none;">
+        <div class="col-xs-12 loading_next" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
 		<noscript>
-            <div class="col-sm-12">
+            <div class="col-xs-12">
                 <ul class="pagination pagination-lg pager">
                     <sly data-sly-test.previousPage="${newsList.previousPage}"></sly>
                     <sly data-sly-test.nextPage="${newsList.nextPage}"></sly>
