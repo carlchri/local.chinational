@@ -45,7 +45,7 @@ and (min-device-width : 320px)
 and (max-device-width : 568px)
 and (orientation : portrait) {
  .contact-container-4x3 {
-   padding-bottom: 400%;
+   padding-bottom: 430%;
  }
 }
 
