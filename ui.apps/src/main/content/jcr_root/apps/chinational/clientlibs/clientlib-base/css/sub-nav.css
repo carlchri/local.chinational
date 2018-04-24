@@ -16,3 +16,9 @@
 	margin:0 9px 0 2px;
 	top:-1px;
 }
+
+.custome-dd-outer .dropdown.open .custome-dd i {
+    transform: rotate(-45deg);
+    top:7px;
+    border-color:#F2A900;
+}

@@ -203,7 +203,7 @@ button {
 
 @media all and (max-width : 414px) {
 	.category_content {
- 		padding-left:35px;   /* Modified by German to fix Defect DE3590  */
+ 		padding-left:10px;   /* Modified by German to fix Defect DE3590  */
 	}
 	
 	/* Added by German to fix Defect DE2590 (There should be a little padding on the left and it's not right now)  */
