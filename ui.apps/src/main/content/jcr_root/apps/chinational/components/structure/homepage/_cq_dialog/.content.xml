@@ -63,6 +63,12 @@
                                             fieldDescription="Add analytic snippets here"
                                             fieldLabel="Analytic Snippets"
                                             name="./analyticsnippets"/>
+                                    <gsearchid
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Google Search Console to track how Google is indexing your website"
+                                            fieldLabel="Google Search Console ID"
+                                            name="./gsearchid"/>
                                 </items>
                             </column>
                         </items>
