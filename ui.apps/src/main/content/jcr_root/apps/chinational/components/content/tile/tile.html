@@ -21,7 +21,10 @@
     </sly>
     <p data-sly-test="${properties.contentDetail}">${properties.contentDetail}</p>
 </div>    
-<a class="bold-link stickToBottom" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+<a data-sly-test="${link.linkUrl != '#'}" class="bold-link stickToBottom" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 	${link.linkText || 'READ MORE'}
 </a>
+<span data-sly-test="${link.linkUrl == '#'}"  class="bold-link stickToBottom">
+            	${link.linkText || 'READ MORE'}
+</span>
 
