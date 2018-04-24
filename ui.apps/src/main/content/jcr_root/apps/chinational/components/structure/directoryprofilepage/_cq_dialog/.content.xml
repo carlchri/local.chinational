@@ -74,7 +74,7 @@
                                     <buttonNotReqd
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox if Button is not required"
+                                        fieldDescription="Select this checkbox if Button is not required"
                                         name="./buttonNotReqd"
                                         text="Don’t display button"
                                         uncheckedValue="false"

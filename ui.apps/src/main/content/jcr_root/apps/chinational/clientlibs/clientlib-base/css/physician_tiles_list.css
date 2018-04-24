@@ -16,6 +16,15 @@
 .physicianTile .tiles-wrapper {
   padding: 0;
 }
+.physicianTiles .tiles-wrapper .tile,
+.physicianTile .tiles-wrapper .tile {
+  max-width: 400px;
+}
+.physicianTiles .tiles-wrapper .tile:nth-child(odd),
+.physicianTile .tiles-wrapper .tile:nth-child(odd) {
+  padding-right: 0;
+  margin-right: 30px;
+}
 .physicianTiles .tiles-wrapper .tile-inner,
 .physicianTile .tiles-wrapper .tile-inner {
   padding: 0 15px;
@@ -100,19 +109,6 @@
     display: none;
   }
 }
-
-/* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) {
-  
-  /* We need to make hide filler in landscape mode, as we are displaying portrait mode*/
-  .physicianTiles .filler .tile {
-    display: none;
-  }
-}
-
 @media (min-width: 1025px) {
   .profileCarousel .owl-carousel.profile-carousel {
     padding: 0 25px;
@@ -140,8 +136,13 @@
   margin-right: 30px;
 }
 @media (min-width: 1025px) {
-  .profileCarousel .tiles-wrapper .tile {
+  #full-width-container .profileCarousel .tiles-wrapper .tile {
     max-width: 390px;
+  }
+}
+@media (min-width: 1300px) {
+  #right-rail-container .profileCarousel .tiles-wrapper .tile {
+    max-width: auto;
   }
 }
 .profileCarousel .tiles-wrapper .tile-inner {
@@ -187,7 +188,12 @@
   padding-right: 0;
 }
 @media (min-width: 1025px) {
-  .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+  #full-width-container .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+    max-width: 188px;
+  }
+}
+@media (min-width: 1300px) {
+  #right-rail-container .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
     max-width: 188px;
   }
 }
@@ -240,4 +246,14 @@
 /* Added by Naresh to fix margin issue on profile page*/
 .tile-hr-no-top-margin {
   margin-top: 0px;
+}
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* We need to make hide filler in landscape mode, as we are displaying portrait mode*/
+  .physicianTiles .filler .tile {
+    display: none;
+  }
 }

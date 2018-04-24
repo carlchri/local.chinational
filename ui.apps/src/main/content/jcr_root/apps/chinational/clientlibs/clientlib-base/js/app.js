@@ -127,7 +127,7 @@ jQuery(document).ready(function() {
         dots: false,
         autoHeight: true,
         // loop: true,
-        autoWidth: true,
+        // autoWidth: true,
         // stagePadding: 100,
         // responsiveClass: true,
         responsive: {
@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            1220: {
+            1300: {
                 items: 2
             }
          }
