@@ -127,7 +127,7 @@ jQuery(document).ready(function() {
         dots: false,
         autoHeight: true,
         // loop: true,
-        autoWidth: true,
+        // autoWidth: true,
         // stagePadding: 100,
         // responsiveClass: true,
         responsive: {
