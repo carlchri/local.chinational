@@ -5,11 +5,14 @@
 </div>
 
 <div class="blog-content pstn-reltv stickToTop">
-	<a href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+	<a data-sly-test="${link.linkUrl != '#'}" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 		<span class="blog-title dblock txt-green tiles_heading_site_color news_heading_hover">
-				${properties.headingText}
+				${properties.headingText || 'Tile Component'}
 		</span>
 	</a>
+	<span data-sly-test="${link.linkUrl == '#'}" class="blog-title dblock txt-green tiles_heading_site_color">
+            	${properties.headingText || 'Tile Component'}
+	</span>
     <sly data-sly-test="${properties.enterDate}">
 		<span class="blog-date txt-green tiles_heading_site_color" data-sly-test="${!properties.dateNotRequired}"
 			  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=properties.enterDate, dateFormat='MMM dd, YYYY'}">
