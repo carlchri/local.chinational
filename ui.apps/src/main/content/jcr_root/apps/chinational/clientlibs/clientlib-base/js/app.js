@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
             0: {
                 items: 1
             },
-            1220: {
+            1300: {
                 items: 2
             }
          }
