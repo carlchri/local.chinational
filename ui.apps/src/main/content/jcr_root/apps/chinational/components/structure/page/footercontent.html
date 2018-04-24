@@ -22,3 +22,9 @@
         </div>
     </div>
 </div>
+<sly data-sly-use.snippets="org.chi.aem.common.components.model.Analyticsnippets"></sly>
+<div data-sly-test="${snippets.analyticSnippets}">
+    <script type="text/javascript">
+       ${snippets.analyticSnippets @ context="scriptString"}
+    </script>
+</div>
