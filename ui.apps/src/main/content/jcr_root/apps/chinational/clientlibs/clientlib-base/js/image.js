@@ -13,7 +13,7 @@ $(document).ready(function() {
         return isIE11orLess;
     }
 
-    if (isIE()) {
+    /*if (isIE()) {
 
         $('.full-image').each(function() {
         	console.log("is not IE");
@@ -25,5 +25,5 @@ $(document).ready(function() {
                     .addClass('ie-object-fit');
             }
         });
-    }
+    }*/
 });
