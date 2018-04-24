@@ -22,3 +22,9 @@
      data-sly-call="${clientlib.js @ categories='chinational.dependencies'}"/>
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.js @ categories='chinational.base'}"/>
+<sly data-sly-use.snippets="org.chi.aem.common.components.model.Analyticsnippets"></sly>
+<div data-sly-test="${snippets.analyticSnippets}">
+    <script type="text/javascript">
+       ${snippets.analyticSnippets @ context='unsafe'}
+    </script>
+</div>
