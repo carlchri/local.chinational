@@ -25,7 +25,8 @@
 }
 
 .cmp-text ol{
-    padding: 7px 0 0 40px; /* Naresh - changed top padding to 7px, for spec to get 22 px between p tag and ol */
+    padding: 7px 0 0 20px; /* Naresh - changed top padding to 7px, for spec to get 22 px between p tag and ol */
+	/*     Changing value above for Defect DE2726. It was before padding: 7px 0 0 40px; */
     list-style: none;
     counter-reset: li;
     font-size: 22px;
