@@ -188,7 +188,12 @@
   padding-right: 0;
 }
 @media (min-width: 1025px) {
-  .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+  #full-width-container .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+    max-width: 188px;
+  }
+}
+@media (min-width: 1300px) {
+  #right-rail-container .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
     max-width: 188px;
   }
 }
