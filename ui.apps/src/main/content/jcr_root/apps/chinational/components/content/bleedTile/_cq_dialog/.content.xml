@@ -176,7 +176,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Selecting this checkbox will open link in new window."
                                                         name="./targetBlank"
-                                                        text="Select to Open Link in New Window"
+                                                        text="Select to open link in new window"
                                                         uncheckedValue="false"
                                                         value="true">
                                                         <granite:data

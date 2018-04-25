@@ -41,17 +41,17 @@
                                                     <headingNotRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if heading is not required."
+                                                        fieldDescription="Select this checkbox to disable heading"
                                                         name="./headingNotRequired"
-                                                        text="Select if Heading is Not Required"
+                                                        text="Select to disable heading"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <linkNotRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if link is not required.window."
+                                                        fieldDescription="Select this checkbox to disable link"
                                                         name="./linkNotRequired"
-                                                        text="Select if Link is Not Required"
+                                                        text="Select to disable link"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <linkText

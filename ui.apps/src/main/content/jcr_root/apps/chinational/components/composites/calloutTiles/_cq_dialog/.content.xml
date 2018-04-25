@@ -90,9 +90,9 @@
                                                     <greybgRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox if Grey Background is required"
+                                                        fieldDescription="Select this checkbox to enable grey background"
                                                         name="./greybgRequired"
-                                                        text="Select if Grey Background is Required"
+                                                        text="Select to enable grey background"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <calloutOrientation

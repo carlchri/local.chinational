@@ -86,9 +86,9 @@
                                                     <smallPlayIcon
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox to use small play icon (default is large play icon)."
+                                                        fieldDescription="Select this checkbox to enable small play icon (default is large play icon)."
                                                         name="./smallPlayIcon"
-                                                        text="Select if Video should use small play icon"
+                                                        text="Select to enable small play icon for the video"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <thumbnailOption

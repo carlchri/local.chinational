@@ -35,7 +35,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="Selecting this checkbox will shorten text and display read more button to expand the text to full size."
                                                 name="./readMore"
-                                                text="Display Read More Button"
+                                                text="Select to enable Read More Button"
                                                 uncheckedValue="false"
                                                 value="true"/>
                                         </items>

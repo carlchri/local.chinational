@@ -40,7 +40,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                 fieldDescription="Show navigation items that have been marked hidden via their page properties."
                                 name="./showHidden"
-                                text="Show hidden navigation items"
+                                text="Enable hidden navigation items"
                                 uncheckedValue="false"
                                 value="true"/>
                         </items>

@@ -106,17 +106,17 @@
                                     <displayQuoteComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will include Quote component in the page"
+                                        fieldDescription="Selecting this checkbox will enable Quote component in the page"
                                         name="./displayQuoteComponent"
-                                        text="Select to display Quote Component config"
+                                        text="Select to enable Quote Component"
                                         uncheckedValue="false"
                                         value="true"/>
                                     <displayDynamicComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will remove Global Dynamic List component from the bottom of the page"
+                                        fieldDescription="Selecting this checkbox will disable Global Dynamic List component from the bottom of the page"
                                         name="./hideDynamicComponent"
-                                        text="Select to hide Dynamic Global List Component"
+                                        text="Select to disable Dynamic Global List Component"
                                         uncheckedValue="false"
                                         value="true"/>
                                 </items>
