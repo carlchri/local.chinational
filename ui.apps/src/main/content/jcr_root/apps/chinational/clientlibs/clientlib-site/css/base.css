@@ -629,10 +629,11 @@ hr {
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     opacity: 0.7;
     font-style: italic;
-    margin-bottom: 48px;
+    /* margin-bottom: 48px;  Removed by German and adding instead padding-bottom property instead (below) */
     /* updated by Naresh for fixing a defect */
     color: #97999B;
     /* added by Naresh for fixing a defect */
+    padding-bottom: 43px;   /* Added by German to fix the date in news pages. It should be 43px according to Zeplin */
 }
 
 .news-sub-header {
@@ -1595,6 +1596,7 @@ img {
     .container {
         width: 100%;
     }
+    
     .medium-width {
         max-width: 1250px;
     }
