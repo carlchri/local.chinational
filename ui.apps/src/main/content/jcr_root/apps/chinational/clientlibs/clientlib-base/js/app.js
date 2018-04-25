@@ -172,21 +172,6 @@ jQuery(document).ready(function() {
 
     function checkClasses() {
 
-        var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        // var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
-        // $('#right-rail-container .media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
-        // // console.log("Number of Items: " + rrOwlActive.length);
-
-        // if (rrOwlActive.first().width() > 300) {
-        //     rrOwlActive.first().addClass('fullOpacity');
-        //     rrOwlActive.first().next().removeClass('fullOpacity');
-        // } else if (rrOwlActive.first().width() < 300 && rrOwlActive.first().next().width() < 300) {
-        //     rrOwlActive.first().addClass('fullOpacity');
-        //     rrOwlActive.first().next().addClass('fullOpacity');
-        //     // console.log("higer the :" + index + " : " + $(this).width());
-        // } else {
-        //     rrOwlActive.first().addClass('fullOpacity');
-        // }
 
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
@@ -208,14 +193,12 @@ jQuery(document).ready(function() {
             if (index === 3) {
                 // this is the forth item.
                 $(this).addClass('forthActiveItem');
-                // console.log("Page Load: " + pgLoad);
             }
 
             if (total >= 5) {
                 // add class to last class
                 if (index === total - 1 && total > 1) {
                     $(this).addClass('lastActiveItem');
-                    // console.log("Last Item added");
                 }
 
             }
@@ -303,7 +286,6 @@ jQuery(document).ready(function() {
                 // this is the first one
                 $(this).addClass('firstActiveItem');
             }
-            console.log("total: " + total);
             // if (index === 1) {
             //     // this is the first one
             //     $(this).addClass('secondActiveItem');
@@ -318,7 +300,6 @@ jQuery(document).ready(function() {
                     // add class to last class
                     if (index === total - 1 && total > 1) {
                         $(this).addClass('lastActiveItem');
-                        console.log("Last Item added");
                     }
                 }
             } else {
@@ -326,7 +307,6 @@ jQuery(document).ready(function() {
                     // add class to last class
                     if (index === total - 1 && total > 1) {
                         $(this).addClass('lastActiveItem');
-                        console.log("Last Item added");
                     }
                 }
             }
@@ -344,9 +324,7 @@ jQuery(document).ready(function() {
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
                 if (rrOwlActive.first().width() > 300) {
                     if (total >= 3) {
-                        $(this).not('.lastActiveItem').addClass('fullOpacity');
-                        console.log("last item added in right rail");
-                    }
+                        $(this).not('.lastActiveItem').addClass('fullOpacity');}
                     
                 } else {
                     if (total < 3) {
@@ -430,7 +408,6 @@ jQuery(document).ready(function() {
             if (index === 1) {
                 // this is the first one
                 $(this).removeClass('fullOpacity');
-                console.log("removedClass");
             }
         });
     }
@@ -447,7 +424,6 @@ jQuery(document).ready(function() {
     });
 
     $('#audio-modal').on('hidden.bs.modal', function() {
-        // console.log("Hello Simon");
         var oldSrc = ply.src; // just to remember the old source
 
         ply.src = "";
@@ -513,10 +489,8 @@ jQuery(document).ready(function() {
         var wLoc = $(this).find("a").attr("href");
         if (wTarget == "_blank" || wTarget == '_Blank') {
             window.open(wLoc, '_blank');
-            //console.log('Target was Blank');
         } else {
             window.location = $(this).find("a").attr("href");
-            // console.log('Button Was Clicked');
             return false;
         }
     });
