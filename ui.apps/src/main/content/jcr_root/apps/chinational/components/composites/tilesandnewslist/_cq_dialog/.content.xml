@@ -36,18 +36,18 @@
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Yes, if Content Tiles Heading is required."
+                                                        fieldDescription="From Dropdown, pick appropriate option to enable or disable Content Tiles Heading"
                                                         fieldLabel="Content Tiles Heading"
                                                         name="./selectHeading">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <headingNotRequired
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="No, Content Tiles Heading Not Required."
+                                                                text="Disable Content Tiles Heading"
                                                                 value="headingNotRequired"/>
                                                             <headingRequired
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Yes, Content Tiles Heading Required."
+                                                                text="Enable Content Tiles Heading"
                                                                 value="headingRequired"/>
                                                         </items>
                                                         <granite:data
