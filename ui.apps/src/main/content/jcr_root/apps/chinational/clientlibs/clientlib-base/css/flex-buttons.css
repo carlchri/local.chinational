@@ -239,3 +239,28 @@
 	/* End of additions for Defect DE2573 */
 	
 }
+
+
+
+/* Added by German to fix Defect DE2604 */
+
+/* If any other element has to be prevented from triggering its hover effect 
+   with touch devices (tablet, mobile) add those classes here to leave them 
+   out from been activated by returning them to its original color. 
+   They all have to start with 'html.can-touch' */
+
+
+html.can-touch .infoband .buttons-outer .flexible-button { 
+	background-color: #426da9;   /* Download button for Media Page */
+}
+
+html.can-touch .findAProvider .find-provider-form .flexible-button a:focus, a:visited, a:hover {
+    opacity: 1;			/* Download button for Home Page */
+}
+    
+html.can-touch .findAProvider .find-provider-form .flexible-button:focus, .flexible-button:hover {
+    opacity: 1;			/* Download button for Home Page */
+}
+
+	
+/* End additions by German to fix Defect DE2604 */	
