@@ -44,6 +44,7 @@
     padding: 0 30px;
   }
 }
+
 .physicianTiles .tiles-wrapper .tile-inner .tile-img,
 .physicianTile .tiles-wrapper .tile-inner .tile-img {
   padding-left: 0;
@@ -52,6 +53,7 @@
   width: 157px;
   height: 205px;
 }
+
 @media (max-width: 480px) {
   .physicianTiles .tiles-wrapper .tile-inner .tile-img,
   .physicianTile .tiles-wrapper .tile-inner .tile-img {
