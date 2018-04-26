@@ -16,7 +16,7 @@ $(document).ready(function() {
     if (isIE()) {
 
         $('.full-image').each(function() {
-        	// console.log("is not IE");
+        	// this is for tiles & news list component
             var $container = $(this),
             imgWithPicture = $container.find('picture');
             if (!imgWithPicture || imgWithPicture.length == 0) {
@@ -28,5 +28,16 @@ $(document).ready(function() {
                 }
             }
         });
-    }
+
+        $('.tile-img').each(function() {
+            // this is for profile images, which are under picture
+            var $container = $(this),
+            imgUrl = $container.find('img').attr('src');
+            if (imgUrl ) {
+                $container
+                    .css('backgroundImage', 'url(' + imgUrl + ')')
+                    .addClass('ie-object-fit');
+            }
+        });
+        }
 });
