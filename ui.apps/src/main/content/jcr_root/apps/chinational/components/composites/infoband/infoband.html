@@ -2,7 +2,7 @@
 
 <div class="component ${properties.greybgRequired ?'full-bleed-container':''}">
     <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'} ${properties.greybgRequired ?'light-gray gray-margin-top':''}" >
-        <div class="col-sm-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
+        <div class="col-xs-12 ${!properties.buttonRowNotRequired ? 'col-md-8' : 'col-md-12'}">
             <div class="memorial ${properties.greybgRequired ?'full-bleed-container-inner-content':''}">
                 <h3 data-sly-test="${!properties.headingNotRequired && properties.heading}">
                     ${properties.heading}
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 col-md-4 content-left" data-sly-test="${!properties.buttonRowNotRequired}">
+        <div class="col-xs-12 col-sm-8 col-md-4 content-left" data-sly-test="${!properties.buttonRowNotRequired}">
             <div class="buttons-outer" data-sly-list.eachButton="${buttonsInRow.buttonList}">
                 <div class="link-wrapper" data-sly-resource="${eachButton @ resourceType='chinational/components/content/button'}">
                 </div>

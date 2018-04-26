@@ -18,13 +18,13 @@
 <div class="body-content ${!properties.displayRightRail?'full-width-container':'right-rail-container'}">
     <sly data-sly-include="topsection.html"></sly>
     <sly data-sly-include="titlesection.html"></sly>
-    <div class="section">
-        <div class="container " id="${!properties.displayRightRail?'full-width-container':'right-rail-container'}">
+    <div class="section ${(properties.displayHero || properties.displayBreadcrumb || properties.displaySubnav || !properties.hidePageTitle) ?'':'padding-top-30'}">
+        <div class="container" id="${!properties.displayRightRail?'full-width-container':'right-rail-container'}">
             <div class="row">
-                <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
+                <div class="${!properties.displayRightRail?'col-xs-12 col-md-12':'col-xs-12 col-md-8'}">
                     <sly data-sly-include="content.html"></sly>
                 </div>
-                <div class="col-md-4" data-sly-test="${properties.displayRightRail}">
+                <div class="col-xs-12 col-md-4" data-sly-test="${properties.displayRightRail}">
                     <sly data-sly-include="rightrail.html"></sly>
                 </div>
             </div>
