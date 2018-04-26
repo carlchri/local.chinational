@@ -29,7 +29,7 @@ $(document).ready(function() {
             }
         });
 
-        $('.tile-img').each(function() {
+        /*$('.tile-img').each(function() {
             // this is for profile images, which are under picture
             var $container = $(this),
             imgUrl = $container.find('img').attr('src');
@@ -39,5 +39,5 @@ $(document).ready(function() {
                     .addClass('ie-object-fit');
             }
         });
-        }
+        }*/
 });
