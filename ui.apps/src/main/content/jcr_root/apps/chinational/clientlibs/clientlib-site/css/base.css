@@ -231,10 +231,14 @@ hr {
     display: flex;
 }
 
+/* Removed by German to fix issue with IE11 
+
 .bleed-box1>div,
 .bleed-box2>div {
     flex: 1;
 }
+
+*/
 
 .bleed-box1 {
     background-color: #24509a;
