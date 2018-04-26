@@ -13,17 +13,20 @@ $(document).ready(function() {
         return isIE11orLess;
     }
 
-    /*if (isIE()) {
+    if (isIE()) {
 
         $('.full-image').each(function() {
-        	console.log("is not IE");
+        	// console.log("is not IE");
             var $container = $(this),
+            imgWithPicture = $container.find('picture');
+            if (!imgWithPicture || imgWithPicture.length == 0) {
                 imgUrl = $container.find('img').attr('src');
-            if (imgUrl) {
-                $container
-                    .css('backgroundImage', 'url(' + imgUrl + ')')
-                    .addClass('ie-object-fit');
+                if (imgUrl ) {
+                    $container
+                        .css('backgroundImage', 'url(' + imgUrl + ')')
+                        .addClass('ie-object-fit');
+                }
             }
         });
-    }*/
+    }
 });
