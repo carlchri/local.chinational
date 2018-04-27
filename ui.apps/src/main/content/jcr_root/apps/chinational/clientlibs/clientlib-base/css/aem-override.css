@@ -83,28 +83,31 @@ and (orientation : portrait) {
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .physicianTiles .tiles-wrapper .tile-inner .tile-desc{
+    /*.physicianTiles .tiles-wrapper .tile-inner .tile-desc{
         padding-left:7px;
     }
-
-    /*.physicianTile .tiles-wrapper .tile-inner .tile-desc{
+    .physicianTile .tiles-wrapper .tile-inner .tile-desc{
             padding-left:60px;
         }*/
 
 
     .physicianTiles .tiles-wrapper .tile-inner .tile-img
         {
-            width: 200px;
+            min-width: 157px;
         }
 
      .physicianTile .tiles-wrapper .tile-inner .tile-img
         {
-        width: 200px;
+        min-width: 157px;
     }
 
-    .profileCarousel .tiles-wrapper .tile-inner .tile-desc {
+    .profileCarousel .tiles-wrapper .tile-inner .tile-img {
+          min-width: 157px;
+        }
+
+    /*.profileCarousel .tiles-wrapper .tile-inner .tile-desc {
       padding-left: 27px;
-    }
+    }*/
 
     .mediaCarousel .main-player {
         width: 452px;
