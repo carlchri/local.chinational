@@ -172,7 +172,7 @@ jQuery(document).ready(function() {
 
     function checkClasses() {
 
-
+        var total = $('.media-carousel .owl-stage .owl-item.active').length;
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {

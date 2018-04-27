@@ -137,7 +137,7 @@
   padding-right: 0;
   margin-right: 30px;
 }
-@media (min-width: 1025px) {
+@media (min-width: 1300px) {
   #full-width-container .profileCarousel .tiles-wrapper .tile {
     max-width: 390px;
   }

@@ -622,7 +622,7 @@ hr {
 
 .image-col {
     /* width: 326px; coomented by Davinder to fix bug */
-	width: 360px; /* Added by Davinder */
+    width: 360px; /* Added by Davinder */
     height: 265px;
 }
 
@@ -949,8 +949,8 @@ button i:hover {
 .infoband .buttons-outer a:hover,
 .compositeButtons .flex-buttons a:hover {
     opacity: 1;
-}	
-	
+}   
+    
 .other-news a:hover {
     color: #426da9;
 }
