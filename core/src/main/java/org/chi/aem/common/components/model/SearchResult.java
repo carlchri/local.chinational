@@ -29,7 +29,7 @@ public class SearchResult extends WCMUsePojo {
     private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
     private static final int DEFAULT_RESULT_SIZE = 10;
     private static final int DEFAULT_RESULT_OFFSET = 0;
-    private static final String DEFAULT_SEARCH_ROOT = "/content/chinational";
+    private static final String DEFAULT_SEARCH_ROOT = "/content/national";
     private static final String DEFAULT_RESULT_TYPE = "cq:Page";
     private static final String FIRST_GROUP = "1_group.";
     private static final String GROUP_PATH = "_group.path";
