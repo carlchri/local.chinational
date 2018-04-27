@@ -29,8 +29,8 @@ $(document).ready(function() {
             }
         });
 
-        /*$('.tile-img').each(function() {
-            // this is for profile images, which are under picture
+        $('.image-row').each(function() {
+            // this is for full bleed top images, which are under picture
             var $container = $(this),
             imgUrl = $container.find('img').attr('src');
             if (imgUrl ) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
                     .css('backgroundImage', 'url(' + imgUrl + ')')
                     .addClass('ie-object-fit');
             }
-        });*/
+        });
 
      }
 

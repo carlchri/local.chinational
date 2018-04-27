@@ -30,11 +30,11 @@
 }
 
 /* Narsh - fix for IR to handle object-fit: cover */
-/*
-.isIE .ie-object-fit.tile-img img {
+
+.isIE .ie-object-fit.image-row img {
   display: none;
 }
-*/
+
 
 .content-col {
     padding: 15px 80px 35px 35px;

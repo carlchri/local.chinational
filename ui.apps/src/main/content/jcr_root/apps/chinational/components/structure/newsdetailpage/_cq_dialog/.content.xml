@@ -62,7 +62,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                         emptyText="Max 350 characters allowed."
                                         fieldDescription="Enter the excerpt text here. Max 350 characters allowed."
-                                        fieldLabel="Excerpt"
+                                        fieldLabel="Excerpt (max 350 characters)"
                                         maxlength="{Long}350"
                                         name="./excerpt"
                                         required="{Boolean}true"/>
