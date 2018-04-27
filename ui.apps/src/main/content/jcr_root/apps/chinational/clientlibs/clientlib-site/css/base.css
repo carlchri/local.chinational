@@ -244,8 +244,24 @@ hr {
     background-color: #24509a;
 }
 
-.content-gutter {
-    padding: 35px 80px 35px 60px;
+/* As per zeplin, its 72 when bleed box with text only on right  and 30 when text only on left*/
+/* cotent gutter is used when there is top image or no image, and left is 59 px for 1st tile or 33 px for 2nd tile */
+.bleed-box1 .content-gutter {
+    padding: 35px 30px 35px 60px;
+}
+
+.bleed-box2 .content-gutter {
+    padding: 35px 60px 35px 30px;
+}
+
+/* content gutter is different with image on left or right*/
+/* padding order: top right bottom left*/
+.bleed-box1 .content-gutter-with-image {
+    padding: 35px 30px 35px 21px;
+}
+
+.bleed-box2 .content-gutter-with-image {
+    padding: 35px 60px 35px 21px;
 }
 
 .content-col2 {
@@ -1397,9 +1413,7 @@ img {
         height: 2px;
         background: #e7e7e7;
     }
-    .content-gutter {
-        padding: 35px 80px 35px 40px;
-    }
+    
     .show-on-portrait {
         display: inline-block;
     }
@@ -1428,7 +1442,11 @@ img {
     .flex-box {
         display: block;
     }
-    .content-gutter {
+    .bleed-box1 .content-gutter, .bleed-box2 .content-gutter {
+        padding: 35px 30px 35px 30px;
+    }
+    /* Added to create difference for desktop view, carry over for mobile*/
+    .bleed-box1 .content-gutter-with-image, .bleed-box2 .content-gutter-with-image {
         padding: 35px 30px 35px 30px;
     }
     .map {
@@ -1581,6 +1599,16 @@ img {
     .full-bleed {
         display: block;
     }    
+    /* Moving out of regular tablet media query, as this need to work as portrait in landscape */
+    /* right side should be 60, as this is full bleed, rather than 80*/
+    .bleed-box1 .content-gutter, .bleed-box2 .content-gutter {
+        padding: 35px 60px 35px 40px;
+    }
+    /* Added to create difference for desktop view, carry over for mobile*/
+    .bleed-box1 .content-gutter-with-image, .bleed-box2 .content-gutter-with-image {
+        padding: 35px 60px 35px 40px;
+    }
+
     /* For tablet - portrait and landscape, we don't want flex for profile tile*/
     .tiles-wrapper {
         display: block;
