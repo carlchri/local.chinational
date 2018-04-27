@@ -19,4 +19,5 @@
     <filter root="/apps/chinational/config/rewriter"/>
     <filter root="/apps/chinational/config.author"/>
     <filter root="/apps/chinational/config.publish"/>
+        <filter root="/apps/chinational/config.publish.prod"/>
 </workspaceFilter>
