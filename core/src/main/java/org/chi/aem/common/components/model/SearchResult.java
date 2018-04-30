@@ -38,6 +38,7 @@ public class SearchResult extends WCMUsePojo {
     private static final String P_OR = "p.or";
     private static final String PRO_NOINDEX = "noindex";
     public List<PageListItem> results;
+    public List<String> pages;
     public int resultsOffset;
     public int totalNumberPages;
     public int currentPageNumber = 1;
@@ -49,6 +50,7 @@ public class SearchResult extends WCMUsePojo {
     @Override
     public void activate(){
         Page currentPage = getCurrentPage();
+        pages = new ArrayList<String> ();
         SlingHttpServletRequest request = getRequest();
         results = getSearchResults(request, currentPage);
     }
@@ -115,7 +117,11 @@ public class SearchResult extends WCMUsePojo {
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
+            totalNumberPages = totalNumberOfResult/resultsSize + 2;
 
+            for(int i = 1; i < totalNumberPages; i++) {
+                pages.add(Integer.toString(i));
+            }
             List<Hit> hits = searchResult.getHits();
             if (hits != null) {
                 for (Hit hit : hits) {
