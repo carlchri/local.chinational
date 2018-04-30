@@ -484,9 +484,11 @@ jQuery(document).ready(function() {
     // });
 
     // Flexbutton all button container click
-    $('.flexible-button').click(function() {
-        var wTarget = $(this).find("a").attr("target");
-        var wLoc = $(this).find("a").attr("href");
+    $('.flexible-button').click(function(e) {
+        e.preventDefault();
+        var alink = $(this).find("a");
+        wTarget = alink.attr("target");
+        wLoc = alink.attr("href");
         if (wTarget == "_blank" || wTarget == '_Blank') {
             window.open(wLoc, '_blank');
         } else {
