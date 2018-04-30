@@ -67,6 +67,9 @@ public class SocialMediaHelper implements com.adobe.cq.wcm.core.components.model
     static final String OG_IMAGE_PROP = "ogimage";
     static final String OG_DESCRIPTION_PROP = "ogdesc";
 
+    // if description is empty, we can use excerpt field
+    static final String EXCERPT_DESC = "excerpt";
+
     @ScriptVariable
     private Page currentPage = null;
 
@@ -276,6 +279,10 @@ public class SocialMediaHelper implements com.adobe.cq.wcm.core.components.model
             String desc = getPageProperties(OG_DESCRIPTION_PROP);
             if (LinkUtils.isNullOrBlank(desc)) {
                 desc = currentPage.getDescription();
+                // if desc is empty, use excerpt, used on news and blog details
+                if (LinkUtils.isNullOrBlank(desc)) {
+                    desc = getPageProperties(EXCERPT_DESC);
+                }
             }
             return desc;
         }
