@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.chinational.aem</groupId>
         <artifactId>chi-national-mvp-market</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -35,7 +35,6 @@
 
     <name>CHI National MVP Market - Configurations</name>
 
-
     <build>
         <sourceDirectory>src/content/jcr_root</sourceDirectory>
         <resources>
@@ -45,13 +44,38 @@
                     we want to keep some of the META-INF files and not configure
                     everything in the plugin.
                 -->
+                <directory>${basedir}/src/content/META-INF/vault/definition</directory>
+                <targetPath>../vault-work/META-INF/vault/definition</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <showImportPackageReport>false</showImportPackageReport>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--build>
+        <sourceDirectory>src/content/jcr_root</sourceDirectory>
+        <resources>
+            <resource>
+
                 <directory>${basedir}/src/content/META-INF</directory>
                 <targetPath>../vault-work/META-INF</targetPath>
             </resource>
             <resource>
                 <directory>${project.build.sourceDirectory}</directory>
                 <excludes>
-                    <!-- exclude .vlt control files in the package -->
                     <exclude>**/.vlt</exclude>
                     <exclude>**/.vltignore</exclude>
                     <exclude>**/.gitignore</exclude>
@@ -107,7 +131,7 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build-->
 
     <!-- ====================================================================== -->
     <!-- P R O F I L E S                                                        -->

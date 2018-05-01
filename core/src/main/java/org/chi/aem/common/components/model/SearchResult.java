@@ -65,7 +65,7 @@ public class SearchResult extends WCMUsePojo {
 
         searchTermMinimumLength = valueMap.get(PN_SEARCH_TERM_MINIMUM_LENGTH, DEFAULT_SEARCH_TERM_MINIM_LENGTH);
         resultsSize = valueMap.get(PN_RESULTS_SIZE, DEFAULT_RESULT_SIZE);
-        LOGGER.info("getSearchResults resultsSize - " + resultsSize);
+        LOGGER.debug("getSearchResults resultsSize - " + resultsSize);
 
         Resource resource = getResource();
         if(resource.hasChildren()) {
@@ -128,7 +128,13 @@ public class SearchResult extends WCMUsePojo {
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
             LOGGER.info("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
-            totalNumberPages = totalNumberOfResult/resultsSize + 2;
+            int remainder = totalNumberOfResult % resultsSize;
+            if (remainder == 0) {
+                // if remainder is zero, we only need one extra page to from 1 to n, rather than 0 to n-1
+                totalNumberPages = totalNumberOfResult/resultsSize + 1;
+            } else {
+                totalNumberPages = totalNumberOfResult/resultsSize + 2;
+            }
             LOGGER.info("getSearchResults totalNumberPages - " + totalNumberPages);
 
             for(int i = 1; i < totalNumberPages; i++) {
@@ -139,19 +145,12 @@ public class SearchResult extends WCMUsePojo {
                 for (Hit hit : hits) {
                     try {
                         Resource hitRes = hit.getResource();
-                        //if(isNoIndex(hitRes)) {
-                        //    totalNumberOfResult--;
-                        //}else {
-                            results.add(new PageListItem(request, hitRes));
-                        //}
+                        results.add(new PageListItem(request, hitRes));
                     } catch (RepositoryException e) {
                         LOGGER.error("Unable to retrieve search results for query.", e);
                     }
                 }
             }
-            LOGGER.info("getSearchResults after noIndex filter totalNumberOfResult - " + totalNumberOfResult);
-            totalNumberPages = totalNumberOfResult/resultsSize + 2;
-            LOGGER.info("getSearchResults after noIndex filter totalNumberPages - " + totalNumberPages);
             //convert the List into a Set
             Set<PageListItem> set = new HashSet<PageListItem>(results);
             //create a new List from the Set
