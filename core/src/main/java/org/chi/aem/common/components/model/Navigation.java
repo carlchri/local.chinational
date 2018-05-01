@@ -56,7 +56,7 @@ public class  Navigation extends WCMUsePojo {
     public Map<String, List<MenuItem>> getItems() {
         LOGGER.trace("getItems called");
         if (mapItems == null) {
-            LOGGER.info("mapItems is null, populate the values");
+            LOGGER.debug("mapItems is null, populate the values");
             populateChildListItems();
         }
         return mapItems;
@@ -65,7 +65,7 @@ public class  Navigation extends WCMUsePojo {
     public List<MenuItem> getChildItems() {
         LOGGER.trace("getChildItems called");
         if (childItems == null) {
-            LOGGER.info("childItems is null, populate the values");
+            LOGGER.debug("childItems is null, populate the values");
             populateChildItems();
         }
         return childItems;

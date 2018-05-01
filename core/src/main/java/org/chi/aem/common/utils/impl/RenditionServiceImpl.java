@@ -48,7 +48,7 @@ public class RenditionServiceImpl implements RenditionsService {
     public Asset generateJpegRenditions(Resource resource, Integer width, Integer height) throws Exception {
         Asset asset = DamUtil.resolveToAsset(resource);
 
-        LOGGER.info("Generating JPEG renditions for asset - " + asset.getPath());
+        LOGGER.debug("Generating JPEG renditions for asset - " + asset.getPath());
 
         RenditionTemplate[] templates = createRenditionTemplates(asset, width, height);
 

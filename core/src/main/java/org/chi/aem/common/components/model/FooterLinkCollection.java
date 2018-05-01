@@ -45,13 +45,13 @@ public class FooterLinkCollection extends WCMUsePojo {
 		LOGGER.debug("activate called");
 
 		String resourcePath = getCurrentStyle().getPath();
-		LOGGER.info("getCurrentStyle().getPath()=" + resourcePath);
-		LOGGER.info("getCurrentDesign().getPath - " + getCurrentDesign().getPath());
+		LOGGER.debug("getCurrentStyle().getPath()=" + resourcePath);
+		LOGGER.debug("getCurrentDesign().getPath - " + getCurrentDesign().getPath());
 		// get resource from basepage, else return the one at style
 		Resource res = DesignUtils.getDesignResource(getResourceResolver(), getCurrentDesign(), getCurrentStyle());
 		if (res != null ) {
-			LOGGER.info("***resource=" + res.getName());
-			LOGGER.info("***resource path=" + res.getPath());
+			LOGGER.debug("***resource=" + res.getName());
+			LOGGER.debug("***resource path=" + res.getPath());
 			if (res.getValueMap() != null) {
 				linkHeading = res.getValueMap().get(PROP_LINK_HEADING, "");
 			}

@@ -44,7 +44,7 @@ public class GlobalLink extends WCMUsePojo {
 			targetBlank = designMap.get(TARGET_BLANK , false);
 			linkTo = designMap.get(PROP_LINK_URL, "#");
 			label = designMap.get(PROP_LINK_TEXT , "Default");
-			LOGGER.info("GlobalLink label:" + label);
+			LOGGER.debug("GlobalLink label:" + label);
 			if (StringUtils.isNotEmpty(linkTo) && !"#".equals(linkTo)) {
 				linkTo = LinkUtils.externalize(linkTo);
 			}
