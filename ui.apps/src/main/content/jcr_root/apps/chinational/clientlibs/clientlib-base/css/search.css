@@ -1,6 +1,9 @@
 .search-result {
   position: relative;
 }
+.search-result a {
+  font-size: 16px;
+}
 .search-result ul {
   list-style-type: none;
 }

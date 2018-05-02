@@ -19,7 +19,7 @@
     <groupId>com.chinational.aem</groupId>
     <artifactId>chi-national-mvp-market</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>CHI National MVP Market</name>
     <description>CHI National, MVP and Market assets</description>
@@ -50,6 +50,8 @@
 
 
     <build>
+        <!-- allows shorthand "mvn" to run a normal "mvn clean install" build -->
+        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <!-- Maven Release Plugin -->
             <plugin>
@@ -97,6 +99,31 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <failOnMissingEmbed>true</failOnMissingEmbed>
+                    <filterSource>${project.basedir}/src/content/META-INF/vault/filter.xml</filterSource>
+                    <!-- temporary, until https://issues.apache.org/jira/browse/JCRVLT-219 is fixed -->
+                    <failOnDependencyErrors>false</failOnDependencyErrors>
+                    <excludes>
+                        <!-- exclude .vlt control files in the package -->
+                        <exclude>**/.vlt</exclude>
+                        <exclude>**/.vltignore</exclude>
+                        <exclude>**/.gitignore</exclude>
+                        <exclude>**/*.iml</exclude>
+                        <exclude>**/.classpath</exclude>
+                        <exclude>**/.project</exclude>
+                        <exclude>**/.settings</exclude>
+                        <exclude>**/.DS_Store</exclude>
+                        <exclude>**/target/**</exclude>
+                        <exclude>**/pom.xml</exclude>
+                    </excludes>
+                    <group>chinational/aem6</group>
+                </configuration>
             </plugin>
             <!-- Maven Enforcer Plugin -->
             <plugin>
@@ -251,11 +278,13 @@
                 <plugin>
                     <groupId>com.day.jcr.vault</groupId>
                     <artifactId>content-package-maven-plugin</artifactId>
-                    <version>0.0.24</version>
+                    <version>1.0.2</version>
                     <configuration>
                         <targetURL>http://${aem.host}:${aem.port}${aem.contextPath}/crx/packmgr/service.jsp</targetURL>
                         <failOnError>true</failOnError>
-                        <failOnMissingEmbed>true</failOnMissingEmbed>
+                        <userId>${vault.user}</userId>
+                        <userId>${vault.password}</userId>
+                        <maxUploadAttemps>3</maxUploadAttemps>
                     </configuration>
                 </plugin>
                 <!-- Apache Felix Bundle Plugin -->

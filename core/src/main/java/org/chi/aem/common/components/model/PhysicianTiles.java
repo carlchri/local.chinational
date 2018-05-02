@@ -79,7 +79,7 @@ public class PhysicianTiles implements ComponentExporter {
     
     private Page getRootPage(String fieldName) {
         String parentPath = properties.get(fieldName, currentPage.getPath());
-        LOGGER.info("parentPath: " + parentPath);        
+        LOGGER.debug("parentPath: " + parentPath);
         return pageManager.getContainingPage(resourceResolver.getResource(parentPath));
     }
 
@@ -107,7 +107,7 @@ public class PhysicianTiles implements ComponentExporter {
    }
 
     public Collection<Page> getListPhysicianTiles() {
-        LOGGER.info("listPhysicianTiles: " + listPhysicianTiles);
+        LOGGER.debug("listPhysicianTiles: " + listPhysicianTiles);
         return listPhysicianTiles;
     }
 

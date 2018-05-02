@@ -47,7 +47,7 @@ public class AccordionCollection {
 			additionalHashString = accordion.getUniqueId();
 		}
 
-		LOGGER.info("accordions:" + accordions.toString());
+		LOGGER.debug("accordions:" + accordions.toString());
 	}
 
 	public int getHash() {
@@ -73,7 +73,7 @@ public class AccordionCollection {
 			}
 		}
 
-		LOGGER.info("accordions: size=" + list.size());
+		LOGGER.debug("accordions: size=" + list.size());
 
 		return list;
 	}

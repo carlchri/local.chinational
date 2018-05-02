@@ -65,6 +65,7 @@ public class SearchResult extends WCMUsePojo {
 
         searchTermMinimumLength = valueMap.get(PN_SEARCH_TERM_MINIMUM_LENGTH, DEFAULT_SEARCH_TERM_MINIM_LENGTH);
         resultsSize = valueMap.get(PN_RESULTS_SIZE, DEFAULT_RESULT_SIZE);
+        LOGGER.debug("getSearchResults resultsSize - " + resultsSize);
 
         Resource resource = getResource();
         if(resource.hasChildren()) {
@@ -82,6 +83,8 @@ public class SearchResult extends WCMUsePojo {
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
             currentPageNumber = Integer.parseInt(pageString);
             resultsOffset = (currentPageNumber - 1) * resultsSize;
+            LOGGER.info("getSearchResults currentPageNumber - " + currentPageNumber);
+            LOGGER.info("getSearchResults resultsOffset - " + resultsOffset);
         }
 
         fulltext = request.getParameter(PARAM_FULLTEXT);
@@ -99,6 +102,13 @@ public class SearchResult extends WCMUsePojo {
         }
         predicatesMap.put(SECOND_GROUP + P_OR, "true");
         predicatesMap.put(PREDICATE_FULLTEXT, fulltext);
+
+        // hide results based on a property
+        //map.put("boolproperty", "jcr:content/hideInNav");
+        //map.put("boolproperty.value", "false");
+        predicatesMap.put("boolproperty", "jcr:content/noindex");
+        predicatesMap.put("boolproperty.value", "false");
+
         PredicateGroup predicates = PredicateConverter.createPredicates(predicatesMap);
         ResourceResolver resourceResolver = request.getResource().getResourceResolver();
         Session session = resourceResolver.adaptTo(Session.class);
@@ -117,7 +127,15 @@ public class SearchResult extends WCMUsePojo {
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
-            totalNumberPages = totalNumberOfResult/resultsSize + 2;
+            LOGGER.info("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
+            int remainder = totalNumberOfResult % resultsSize;
+            if (remainder == 0) {
+                // if remainder is zero, we only need one extra page to from 1 to n, rather than 0 to n-1
+                totalNumberPages = totalNumberOfResult/resultsSize + 1;
+            } else {
+                totalNumberPages = totalNumberOfResult/resultsSize + 2;
+            }
+            LOGGER.info("getSearchResults totalNumberPages - " + totalNumberPages);
 
             for(int i = 1; i < totalNumberPages; i++) {
                 pages.add(Integer.toString(i));
@@ -127,17 +145,12 @@ public class SearchResult extends WCMUsePojo {
                 for (Hit hit : hits) {
                     try {
                         Resource hitRes = hit.getResource();
-                        if(isNoIndex(hitRes)) {
-                            totalNumberOfResult--;
-                        }else {
-                            results.add(new PageListItem(request, hitRes));
-                        }
+                        results.add(new PageListItem(request, hitRes));
                     } catch (RepositoryException e) {
                         LOGGER.error("Unable to retrieve search results for query.", e);
                     }
                 }
             }
-            totalNumberPages = totalNumberOfResult/resultsSize + 2;
             //convert the List into a Set
             Set<PageListItem> set = new HashSet<PageListItem>(results);
             //create a new List from the Set
@@ -148,6 +161,8 @@ public class SearchResult extends WCMUsePojo {
         return results;
     }
 
+    // No need for this code, as we are using this in query directly
+    /*
     private boolean isNoIndex(Resource resource) {
         Page page = getPage(resource);
         if(page != null) {
@@ -157,7 +172,7 @@ public class SearchResult extends WCMUsePojo {
             }
         }
         return false;
-    }
+    }*/
 
     private Page getPage(Resource resource) {
         if (resource != null) {

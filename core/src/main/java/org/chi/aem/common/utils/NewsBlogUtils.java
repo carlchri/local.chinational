@@ -118,7 +118,7 @@ public final class NewsBlogUtils {
 
 	         			// to get filtered articles list, if filter contains tag
 		         		if(tagsMap.containsKey(articleFilter) && articleFilter.equals(tag.getName())){
-		         			LOGGER.info("INSIDE TAG FILTER");
+		         			LOGGER.debug("INSIDE TAG FILTER");
 		                	filteredArticles.add(item);
 		                }
 		                

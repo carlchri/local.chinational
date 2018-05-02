@@ -46,7 +46,7 @@ public class Accordion {
 	private String uniqueId = UUID.randomUUID().toString();
 
 	public String getUniqueId() {
-		LOGGER.info("***uniqueId=" + uniqueId);
+		LOGGER.debug("***uniqueId=" + uniqueId);
 		
 		return uniqueId;
 	}
