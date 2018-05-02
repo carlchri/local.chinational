@@ -26,7 +26,7 @@ public class CompositeButtons extends WCMUsePojo {
     public void activate() throws Exception {
         buttonList = new ArrayList<String>();		
         width = 100/(Integer.parseInt(getProperties().get(NO_OF_BUTTONS, "1")));
-        LOGGER.info("getWidth Called :" + width);
+        LOGGER.debug("getWidth Called :" + width);
         for (int i = 1; i <= Integer.parseInt(getProperties().get(NO_OF_BUTTONS, "1")); i++) {
 	  	   buttonList.add("Button" + "-" + i);
 	  	}

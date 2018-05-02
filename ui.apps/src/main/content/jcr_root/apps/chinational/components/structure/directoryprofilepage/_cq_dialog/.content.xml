@@ -21,29 +21,6 @@
                     <permissions
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
-                    <chinational
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="CHI Page Properties"
-                        sling:orderBefore="advanced"
-                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
-                        <items jcr:primaryType="nt:unstructured">
-                            <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <herocomponent
-                                        jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
-                                    <subnavigation
-                                        jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
-                                    <rightrail
-                                        jcr:primaryType="nt:unstructured"
-                                        disabled="false"/>
-                                </items>
-                            </column>
-                        </items>
-                    </chinational>
                     <directoryprofile
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Directory Profile Properties"
@@ -54,46 +31,61 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <physicianNameAndDegree
+                                    <profileNameDegree
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        emptyText="Enter Physician name and degree"
-                                        fieldDescription="Enter Physician name and degree"
-                                        fieldLabel="Physician Name and Degree"
+                                        emptyText="Enter Profile Name [and degree if Applicable]"
+                                        fieldDescription="Enter Profile Name [ and degree if Applicable]"
+                                        fieldLabel="Profile Name/ Degree:"
                                         name="./physicianName"
                                         required="{Boolean}true"/>
-                                    <expertise
+                                    <bodyText
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                         emptyText="Max 350 characters allowed."
-                                        fieldDescription="Enter the expertise areas of Physician. Max 350 characters allowed."
-                                        fieldLabel="Physician Expertise"
+                                        fieldDescription="Enter the expertise areas of Profile or designation or any other relevant information. Max 350 characters allowed."
+                                        fieldLabel="Body Text"
                                         maxlength="{Long}350"
                                         name="./physicianExpertise"
                                         required="{Boolean}true"/>
-                                    <physicianImageSrc
+                                    <profileImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Enter source for Physician Image to be displayed on the Page."
-                                        fieldLabel="Enter Physician Image Src"
+                                        fieldDescription="Enter source for Profile Image to be displayed on the Page."
+                                        fieldLabel="Enter Profile Image Src"
                                         name="./imageSrc"
                                         rootPath="/content/dam"/>
-                                    <physicianImageNotReqd
+                                    <profileImageNotReqd
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Select this checkbox if Physician Image is not required"
+                                        fieldDescription="Select this checkbox to disable profile image"
                                         name="./physicianImageNotReqd"
-                                        text="Select if Physician Image is not Required"
+                                        text="Select to disable profile image"
                                         uncheckedValue="false"
                                         value="true"/>
-                                    <appointmentButtonNotReqd
+                                    <linkToPageNotReqd
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox if Request Appointment Button is not required"
-                                        name="./apointmentButtonNotReqd"
-                                        text="Select if Request Appointment Button is not required"
+                                        fieldDescription="Select this checkbox to disable the link to details page, when there is no details available for the profile on the bio page."
+                                        name="./linkToPageNotReqd"
+                                        text="Select to disable profile detail page (hyperlink won’t appear on profile name)"
                                         uncheckedValue="false"
                                         value="true"/>
+                                    <buttonNotReqd
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Select this checkbox to disable button"
+                                        name="./buttonNotReqd"
+                                        text="Select to disable button"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <buttonText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Enter Text to be displayed on the Button"
+                                        fieldDescription="Enter Text to be displayed on the Button"
+                                        fieldLabel="Button Text"
+                                        name="./buttonText"/>
                                 </items>
                             </column>
                         </items>

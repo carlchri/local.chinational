@@ -1,18 +1,10 @@
-<div class="gutter-bottom">
-   <label class="button-label" data-sly-test="${properties.sectionHeading}">
-       ${properties.sectionHeading}
-   </label>
-</div>
 
-<div class="video">
-    <sly data-sly-resource="${'videoimage' @ resourceType='chinational/components/content/image'}"></sly>
-    <div class="link-wrapper">
-        <a class="video-button" id="video" video-url="${properties.videoUrl}">
-            <i class="icon-play"></i>
-        </a>
+<div class="component">
+    <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+        <div class="col-sm-12">
+            <sly data-sly-include="embeddedVideo.html"></sly>
+        </div>
     </div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
 
-<div class="padding-5" data-sly-test="${properties.videoText}">
-    <p class="light-txt">${properties.videoText}</p>
-</div>

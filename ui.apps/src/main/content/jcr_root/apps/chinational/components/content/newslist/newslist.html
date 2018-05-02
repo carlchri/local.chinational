@@ -2,49 +2,81 @@
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
+<div class="component">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
-<ul class="mc_list" data-sly-list.featuredNews="${newsList.featuredNews}">
-    <li data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></li>
-</ul>
-<hr>
-<form id="filter_news_form" action="/bin/services/newsList">
-   <fieldset> 
+		<sly data-sly-list.featuredNews="${newsList.featuredNews}">
+			<div class="col-xs-12 featured-news-blog ${featuredNewsList.last?'padding-bottom-60':'padding-bottom-30'}" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
+		</sly>
 
-    <div class="row">
-          <div class="col-sm-12">
-            <select name="search_news_list" id="search_news_list" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-               	<option value="">Choose Filter Option</option>
-                <option value="Sort By Most Recent" selected="${newsList.newsFilter == 'Sort By Most Recent' ? 'true' : '' @ context='attribute'}">Sort By Most Recent</option>
-                <option value="By Year" selected="${newsList.isFilterYear ? 'true' : '' @ context='attribute'}">By Year</option>
-                <sly data-sly-list.listTag="${newsList.listTags}">
-                	<option value="${listTag}" selected="${newsList.newsFilter == listTag ? 'true' : '' @ context='attribute'}">${listTag}</option>
-                </sly>
+		<div class="col-xs-12 padding-bottom-30">
+                  <select name="search_news_list" id="search_news_list" class="form-control">
+					<option value="SortByMostRecent" selected>Sort By Most Recent</option>
+					<option value="ByYear">By Year</option>
+					<sly data-sly-list.tagsList="${newsList.tagsMap}">
+						<option value="${tagsList}">${newsList.tagsMap[tagsList]}</option>
+					</sly>
+				</select>
+		</div>
+
+		<div class="col-xs-12 padding-bottom-30" id="select_news_by_year" style="display:none;">
+			<select class="form-control" name="search_news_year" id="search_news_year">
+				<option value="ChooseYear" selected>Choose Year</option>
+				<sly data-sly-list.listYear="${newsList.listYears}">
+					<option value="${listYear}">${listYear}</option>
+				</sly>
 			</select>
-        </div>
-   </div>
+		</div>
+		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
+		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
+		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 
-   <br/>
-       <div class="row" id="select_news_by_year" style="display:${newsList.isFilterYear ? 'block' : 'none' @ context='styleToken'};">
-          <div class="col-sm-12">
-			<select class="" name="search_news_year" id="search_news_year" style="border:2px solid; -webkit-appearance:menulist; padding:8px 400px 8px 8px;">
-            	<option value="">Choose Year</option>
-                <sly data-sly-list.listYear="${newsList.listYears}">
-                	<option value="${listYear}" selected="${newsList.newsFilter == listYear ? 'true' : '' @ context='attribute'}">${listYear}</option>
-                </sly>
-			</select>
-        </div>
-   </div>
-   <input type="hidden" name="media_page_path" id="media_page_path" value="${currentPage.path || '/content' }">
-   </fieldset>
-</form>
-<hr>
+        <div class="col-xs-12 loading" style="display:none;">
+			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
+		</div>
 
-<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
-    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-    data-sly-use.itemTemplate="item.html">
-    <li data-sly-call="${itemTemplate.item @ list = newsList, item = item}" style="display:none;"></li>
-</ul>
+        <div class="col-xs-12">
+			<ul class="mc_list filtered_list" data-sly-list.item="${newsList.listNews}"
+				data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+				data-sly-use.itemTemplate="item.html">
+				<li data-sly-call="${itemTemplate.item @ list = newsList, item = item}"></li>
+			</ul>
+		</div>
 
-<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+		<div class="col-xs-12">
+			<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
+		</div>
+
+        <div class="col-xs-12 loading_next" style="display:none;">
+			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
+		</div>
+
+		<noscript>
+            <div class="col-xs-12">
+                <ul class="pagination pagination-lg pager">
+                    <sly data-sly-test.previousPage="${newsList.previousPage}"></sly>
+                    <sly data-sly-test.nextPage="${newsList.nextPage}"></sly>
+                    <sly data-sly-test.activePage="${newsList.activePage}"></sly>        
+                    <sly data-sly-test.totalPages="${newsList.totalPages}"></sly>        
+    
+                    <li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
+                        <a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
+                            Previous
+                        </a>
+                    </li>
+                    <sly data-sly-list="${newsList.pages}">
+                        <li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
+                            <a href="${currentPage.path}.${item}.html">${item}</a>
+                        </li>
+                    </sly>
+                    <li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
+                        <a href="${currentPage.path}.${nextPage}.html">Next</a>
+                    </li>
+                </ul>
+            </div>
+		</noscript>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!newsList.featuredNews}"></sly>

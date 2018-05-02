@@ -1,0 +1,26 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<hr>
+<div class="flex-box">
+
+    <div class="carousel-description carousel-image" data-sly-test.text="${properties.jobTitle}">
+    
+        <h3 class="small-heading">${properties.jobTitle}</h3>
+        <p>${properties.jobCity} 
+            <sly data-sly-test="${properties.placeOfWork}"> - </sly>
+            ${properties.placeOfWork}
+        </p>
+    
+        <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
+        </div>
+    
+        <div class="link-wrapper link-wrapper-margin" 
+             data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+        </div>
+    
+    </div>
+
+</div>
+<hr>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!text}"></sly>

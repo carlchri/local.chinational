@@ -12,12 +12,9 @@
                     <socialmedia
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
-                    <cloudservices
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
                     <personalization
                         jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
+                        sling:hideResource="{Boolean}false"/>
                     <permissions
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
@@ -50,6 +47,32 @@
                             </column>
                         </items>
                     </chinational>
+                    <chianalytics
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="CHI Analytics"
+                            sling:orderBefore="advanced"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <snippets
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldDescription="Add analytic snippets here"
+                                            fieldLabel="Analytic Snippets"
+                                            name="./analyticsnippets"/>
+                                    <gsearchid
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Google Search Console to track how Google is indexing your website"
+                                            fieldLabel="Google Search Console ID"
+                                            name="./gsearchid"/>
+                                </items>
+                            </column>
+                        </items>
+                    </chianalytics>
                 </items>
             </tabs>
         </items>

@@ -1,6 +1,7 @@
 .blog-item {
-  flex:1;
+    flex: 1;
 }
+
 .content {
-  padding:15px 0;
+    padding: 15px 0;
 }

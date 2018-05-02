@@ -1,32 +1,58 @@
 <sly data-sly-use.quote="org.chi.aem.common.components.model.QuoteAndImage"
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
-<div class="no-padding">
-	<div class="quote-outer">
-		<div class="row flex">
-			<div class="col-sm-3" data-sly-test="${!quote.imageNotRequired }">
-				<div class="quote-image"
-					 data-sly-resource="${'quoteImage' @ resourceType='chinational/components/content/image'}">
+<div class="component">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+    	<div class="col-sm-12">
+		<div class="no-padding">
+			<div class="quote-outer gray-margin-top ${quote.buttonNotRequired?'quote-outer-mo-margin':''}
+						${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons > 0 ? 'quote-outer-mo-margin' : ''}">
+				<div class="row flex">
+					<div class="col-sm-3" data-sly-test="${!quote.imageNotRequired }">
+						<div class="quote-image"
+							 data-sly-resource="${'quoteImage' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
+						</div>
+					</div>
+					<div class="col-sm-12 flex">
+						<div class="quote-inner">
+							<div class="content-wrapper" data-sly-test="${quote.subHeading}">
+								<span class="speech-mark-left ${quote.heading?'':'speech-mark-left-subheader-only'}">“</span>
+								<span class="quote-title quote_text_site_color" data-sly-test="${quote.heading}">${quote.heading}</span>
+								<p class="quote-description ${quote.heading?'':'quote-subheader-size'} quote_text_site_color">${quote.subHeading}</p>
+								<span class="speech-mark-right">”</span>
+							</div>
+							<span class="quote-caption"
+								  data-sly-test="${quote.caption}">- ${quote.caption}</span>
+							<div class="row for-buttons"
+								 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons > 0}">
+								<div class="col-md-4 link-wrapper"
+									 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons >=1}"
+									 data-sly-resource="${'qbutton1' @ resourceType='chinational/components/content/button'}">
+								</div>
+								<div class="col-md-4 link-wrapper"
+									 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons ==2}"
+									 data-sly-resource="${'qbutton2' @ resourceType='chinational/components/content/button'}">
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 flex">
-				<div class="quote-inner">
-					<div class="content-wrapper" data-sly-test="${quote.subHeading}">
-						<span class="speech-mark-left">“</span>
-						<span class="quote-title" data-sly-test="${quote.heading}">${quote.heading}</span>
-						<p class="quote-description">${quote.subHeading}</p>
-						<span class="speech-mark-right">”</span>
-					</div>
-					<span class="quote-caption"
-						  data-sly-test="${quote.caption}">- ${quote.caption}</span>
-					<div class="row for-buttons"
-						 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons > 0}">
-						<div class="col-md-4 link-wrapper"
-							 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons >=1}"
+		</div>
+		<div class="row"
+			 data-sly-test="${!quote.buttonNotRequired && quote.greyBgNotRequired && quote.numberOfButtons >0}"
+			 >
+			<div class="col-sm-12">
+				<div class="row for-buttons">
+					<div class="col-sm-4 col-md-5 col-lg-3"
+						 data-sly-test="${quote.numberOfButtons >=1}">
+						<div class="link-wrapper"
 							 data-sly-resource="${'qbutton1' @ resourceType='chinational/components/content/button'}">
 						</div>
-						<div class="col-md-4 link-wrapper"
-							 data-sly-test="${!quote.buttonNotRequired && !quote.greyBgNotRequired && quote.numberOfButtons ==2}"
+					</div>
+					<div class="col-sm-4 col-md-5 col-lg-3"
+						 data-sly-test="${quote.numberOfButtons ==2}">
+						<div class="link-wrapper"
 							 data-sly-resource="${'qbutton2' @ resourceType='chinational/components/content/button'}">
 						</div>
 					</div>
@@ -34,26 +60,8 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="row"
-	 data-sly-test="${!quote.buttonNotRequired && quote.greyBgNotRequired && quote.numberOfButtons >0}"
-	 >
-	<div class="col-sm-12">
-		<div class="row for-buttons">
-			<div class="col-sm-4 col-md-5 col-lg-3"
-				 data-sly-test="${quote.numberOfButtons >=1}">
-				<div class="link-wrapper"
-					 data-sly-resource="${'qbutton1' @ resourceType='chinational/components/content/button'}">
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-5 col-lg-3"
-				 data-sly-test="${quote.numberOfButtons ==2}">
-				<div class="link-wrapper"
-					 data-sly-resource="${'qbutton2' @ resourceType='chinational/components/content/button'}">
-				</div>
-			</div>
-		</div>
-	</div>
+	<sly data-sly-include="../../commons/bottomOption.html"></sly>
+    </div>
 </div>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!quote.heading}"></sly>

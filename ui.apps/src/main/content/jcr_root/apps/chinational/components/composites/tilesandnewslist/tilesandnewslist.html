@@ -2,23 +2,34 @@
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="component">
-  	<div class="row section">
-		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+  	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+
+	    <div data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
+        	<h5>Tiles and News List Component ${wcmmode.edit ? ' [EDIT Mode]' : ''}</h5>
+        </div>
+
+		<div class="rowFix" data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Content Tiles Heading'}
 			</span>
 		</div>
+
         <div class="flex">
 			<sly data-sly-list.eachTile="${tiles.contentTilesList}">
-	           	<div class="blog-item ${eachTileList.first?'col-md-4':'col-sm-6 col-md-4'}"
+	           	<div class="blog-item ${eachTileList.first?'col-md-4 first-tile-image-tablet':'col-sm-6 col-md-4'}"
     	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
                 </div>
         	</sly>
-			<div class="other-news col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}"
-        		 data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}">
+        	<div class="divider-news" data-sly-test="${!properties.listOnRightNotRequired}"></div>
+			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}">
+				<hr class="hideForDesktop" />
+        		<sly data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}"></sly>
             </div>
 
 		</div>
+
+	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+		
     </div>
  </div>
 

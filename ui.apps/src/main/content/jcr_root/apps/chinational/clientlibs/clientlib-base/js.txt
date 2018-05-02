@@ -15,9 +15,17 @@
 ###############################################################################
 js/app.js
 js/newslist.js
+js/blogslist.js
 js/physiciantiles.js
+js/revealReadMoreText.js
 js/owl.carousel.js
+js/audio.popup.js
 js/video.popup.js
 js/popper.js
+js/image.js
+js/footerContactUs.js
+js/physician_tile.js
+js/highlight.js
+js/hoverTouchDevices.js
 
 

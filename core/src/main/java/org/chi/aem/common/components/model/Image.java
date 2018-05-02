@@ -45,7 +45,7 @@ import com.day.cq.wcm.api.designer.Style;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class Image implements ComponentExporter {
 
-   public static final String RESOURCE_TYPE = "chinational/components/content/image2";
+   public static final String RESOURCE_TYPE = "chinational/components/content/image";
    private static final String DEFAULT_EXTENSION = "jpeg";
 
    private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
@@ -55,7 +55,8 @@ public class Image implements ComponentExporter {
    private static final String DOT = ".";
  
    //TODO - need to change size of image for Tablet and Mobile based on workflow jpeg image rendition
-   private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/cq5dam.web.1280.1280.";
+   // private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/cq5dam.web.1280.1280.";
+   private static final String SUFFIX_DESKTOP_RENDITION = "/jcr:content/renditions/original";
    private static final String RENDITION_SUFFIX = "/jcr:content/renditions/";
    private static final String TABLET_RENDITION_SIZE = "700.700";
    private static final String MOBILE_RENDITION_SIZE = "500.500";
@@ -69,8 +70,6 @@ public class Image implements ComponentExporter {
    @ScriptVariable
    private PageManager pageManager;
 
-   @ScriptVariable
-   private Style currentStyle;
 
    @ScriptVariable
    private ValueMap properties;
@@ -120,6 +119,7 @@ public class Image implements ComponentExporter {
        String mimeType = MIME_TYPE_IMAGE_JPEG;
        Asset asset = null;
        if (src != null && !src.isEmpty()) {
+    	   //src.replace("%20", " ");
            final Resource assetResource = request.getResourceResolver().getResource(src);
            if (assetResource != null) {
                asset = assetResource.adaptTo(Asset.class);
@@ -137,21 +137,22 @@ public class Image implements ComponentExporter {
            // validate if correct mime type (i.e. rasterized image)
            if (!mimeType.startsWith(MIME_TYPE_IMAGE_PREFIX)) {
                LOGGER.error("Image at {} uses a binary with a non-image mime type ({})", resource.getPath(), mimeType);
-               return fileReference;
+               return LinkUtils.convertSpaces(fileReference);
            }
            if (NON_SUPPORTED_IMAGE_MIMETYPE.contains(mimeType)) {
                LOGGER.error("Image at {} uses binary with a non-supported image mime type ({})", resource.getPath(), mimeType);
-               return fileReference;
+               return LinkUtils.convertSpaces(fileReference);
            }
            String extension = mimeTypeService.getExtension(mimeType);
            if (extension.equalsIgnoreCase("tif") || extension.equalsIgnoreCase("tiff")) {
                src.replace(extension, DEFAULT_EXTENSION);
            }
        }else {
-    	   return fileReference;
+    	   return LinkUtils.convertSpaces(fileReference);
        }
-	   return src;
+	   return LinkUtils.convertSpaces(src);
    }
+
    
    public void getImageRenditions(String desktopSrc, String tabletSrc, String mobileSrc){
 	   List<Rendition> renditions;
@@ -159,18 +160,19 @@ public class Image implements ComponentExporter {
 	   
 	   /**
 	    * Get Web Rendition [1280x1280] for the Desktop version of image.
-	    */
+	    
 	   if(request.getResourceResolver().getResource(desktopSrc) != null){
 		   asset = request.getResourceResolver().getResource(desktopSrc).adaptTo(Asset.class);
 	   }
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
 		   for (Rendition rendition : renditions) {
-		       if (rendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-		    	   fileReference += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+		       if (rendition.getName().startsWith("original")) {
+		    	   fileReference += SUFFIX_DESKTOP_RENDITION;
 		       }
 		   }
 	   }
+	   **/
 
 	   /**
 	    * Get Rendition for the Tablet version of image.
@@ -184,10 +186,21 @@ public class Image implements ComponentExporter {
 	   }
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
+		   if(tabletSrc.equals(desktopSrc)){
+			   for (Rendition drendition : renditions) {
+			       if (drendition.getName().startsWith(DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + TABLET_RENDITION_SIZE)) {
+			           imgTabSrc += RENDITION_SUFFIX + DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + TABLET_RENDITION_SIZE + DOT + mimeTypeService.getExtension(asset.getMimeType());
+			       }
+			   }
+			   if(!imgTabSrc.contains(DamConstants.PREFIX_ASSET_THUMBNAIL)){
+				   imgTabSrc = fileReference;
+			   }
+		   }
+/*		   
 		   if(!tabletSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
-			       if (trendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-			    	   imgTabSrc += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+			       if (trendition.getName().startsWith("original")) {
+			    	   imgTabSrc += SUFFIX_DESKTOP_RENDITION;
 			       }
 			   }
 		   } else {
@@ -200,6 +213,7 @@ public class Image implements ComponentExporter {
 				   imgTabSrc = fileReference;
 			   }
 		   }
+*/		   
 	   }
 		   
 	   /**
@@ -214,10 +228,22 @@ public class Image implements ComponentExporter {
 	   }
 	   if(asset !=null){
 		   renditions = asset.getRenditions();
+		   if(mobileSrc.equals(desktopSrc)){
+			   for (Rendition drendition : renditions) {
+			       if (drendition.getName().startsWith(DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + MOBILE_RENDITION_SIZE)) {
+			    	   imgMobSrc += RENDITION_SUFFIX + DamConstants.PREFIX_ASSET_THUMBNAIL + DOT + MOBILE_RENDITION_SIZE + DOT + mimeTypeService.getExtension(asset.getMimeType());
+			       }
+			   }
+				   
+			   if(!imgMobSrc.contains(DamConstants.PREFIX_ASSET_THUMBNAIL)){
+				   imgMobSrc = fileReference;
+			   }
+		   }
+/*		   
 		   if(!mobileSrc.equals(desktopSrc)){
 			   for (Rendition trendition : renditions) {
-			       if (trendition.getName().startsWith(DamConstants.PREFIX_ASSET_WEB)) {
-			    	   imgMobSrc += SUFFIX_DESKTOP_RENDITION + mimeTypeService.getExtension(asset.getMimeType());
+			       if (trendition.getName().startsWith("original")) {
+			    	   imgMobSrc += SUFFIX_DESKTOP_RENDITION;
 			       }
 			   }
 		   } else {
@@ -231,7 +257,9 @@ public class Image implements ComponentExporter {
 				   imgMobSrc = fileReference;
 			   }
 		   }
+*/		   
 	   }
+	   
    }
 
    public String getFileReference() {

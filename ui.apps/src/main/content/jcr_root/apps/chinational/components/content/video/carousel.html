@@ -1,0 +1,21 @@
+<sly data-sly-use.video="org.chi.aem.common.components.model.Video"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+    <div class="video-container">
+        <div class="sub-Thumbs">
+            <div class="video">
+                <img src="${video.imageUrl}">
+                <div class="link-wrapper">
+                    <a class="video-button-small video_popup" id="video" video-url="${video.videoUrl}">
+                        <i class="sprite small icons icon-play-orange"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Close the Video Contaifner -->
+        <div class="media-text">
+            <!-- Wrapped the titles and captions were applicable in video text wrapper / Not for large carousel item -->
+            <span class="thumb-titles">${video.sectionHeading}</span>
+        </div>
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
+

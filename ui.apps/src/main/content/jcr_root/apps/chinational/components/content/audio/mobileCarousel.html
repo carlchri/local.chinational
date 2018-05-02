@@ -1,0 +1,20 @@
+<sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
+        data-sly-use.template="chinational/components/commons/templates.html"></sly>
+    <div class="carousel-item slide item">
+        <div class="flex-box">
+            <div class="carousel-description carousel-image">
+                <div class="sub-Thumbs">
+                    <button type="button" class="audio-player-button" data-audio-title="${audio.sectionHeading}" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
+                        <div class="audio-container">
+                            <img class="img-responsives" src="${audio.audioImage}">
+                            <i class="sprite small-icons icon-audio-light"></i>
+                        </div>
+                    </button>
+                    <div class="media-text">
+                        <span class="thumb-titles">${audio.sectionHeading}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>

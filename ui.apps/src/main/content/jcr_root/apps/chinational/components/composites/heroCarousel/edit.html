@@ -1,3 +1,4 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <sly data-sly-use.heroCollection="org.chi.aem.common.components.model.HeroCollection"></sly>
 <div>
     <sly data-sly-list.item="${heroCollection.items}">
@@ -6,3 +7,4 @@
         </div>
     </sly>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!heroCollection.items}"></sly>

@@ -1,0 +1,45 @@
+.news_heading_hover:hover, 
+.blogs_heading_hover:hover { 
+    filter: alpha(opacity=55);
+    opacity: .55;                
+}
+
+#search_blogs_list, 
+#search_blogs_year,
+#search_news_list, 
+#search_news_year {
+	-webkit-appearance:menulist; 
+	background-color:#E6FFFF;
+	width:60%;
+}
+
+/* added to fix two arrow issue with dropdown in IE11 */
+.dropdown_articles::-ms-expand {
+    display: none;
+}
+
+/*
+#search_news_list option, 
+#search_news_year option, 
+#search_blogs_list option, 
+#search_blogs_year option {
+	background-color:#F2F2F2;
+}
+*/
+
+ul.filtered_list, 
+ul.filtered_blogs_list {
+	padding-left:0px;
+}
+
+@media (min-width: 768px) {
+    .featured-news-blog .flex {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+  .blog-news-padding-top {
+    padding-top: 10px;
+  }
+}

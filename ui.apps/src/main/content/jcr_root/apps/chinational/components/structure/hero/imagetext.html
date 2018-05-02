@@ -1,22 +1,8 @@
-<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ Copyright 2016 Adobe Systems Incorporated
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-use.hero="org.chi.aem.common.components.model.Hero"></sly>
 <div class="intro-img">
     <span class="banner-curvo"
           style="background-color: ${properties.backgroundColor @ context='styleToken'};"></span>
-    <sly data-sly-resource="${'heroimage' @ resourceType='chinational/components/content/image'}"></sly>
+    <sly data-sly-resource="${'heroimage' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}"></sly>
 </div>
 <div class="intro-title"
      style="background-color: ${properties.backgroundColor @ context='styleToken'};">
@@ -25,8 +11,8 @@
             ${properties.heading}
         </h1>
         <div class="intro-sub-header" data-sly-test="${properties.subheading}">${properties.subheading}</div>
-        <div class="link-wrapper" data-sly-test="${properties.linkTo}">
-        <a href="${properties.linkTo}"
+        <div class="link-wrapper" data-sly-test="${hero.linkTo}">
+        <a href="${hero.linkTo}" data-sly-test="${properties.label}"
            class="learn-more-btn white-border">${properties.label}</a>
         </div>
     </div>

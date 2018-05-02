@@ -1,0 +1,27 @@
+.search-result {
+  position: relative;
+}
+.search-result a {
+  font-size: 16px;
+}
+.search-result ul {
+  list-style-type: none;
+}
+.search-result ul li {
+  margin-bottom: 15px;
+}
+.search-result ul li p {
+  margin: 0;
+}
+.search-result .pagination {
+  text-align: center;
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+  height: 35px;
+}
+.search-result .pagination a {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}

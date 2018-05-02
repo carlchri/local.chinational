@@ -1,21 +1,19 @@
 <sly data-sly-use.button="org.chi.aem.common.components.model.Button"/>
 
-<div class="flexible-button"
-	 data-sly-test="${properties.selectModal != 'modalRequired'}"
-     style="background-color: ${buttonStyle=='solid' ? currentStyle.solidColor : '' @ context='styleToken'}; border-color: ${buttonStyle=='solid' ? currentStyle.solidColor : currentStyle.outlinedColor @ context='styleToken'}; color: ${buttonStyle=='solid' ? '' : currentStyle.outlinedColor @ context='styleToken'};">
+<div class="flexible-button button-hover"
+	 data-sly-test="${properties.selectModal != 'modalRequired'}">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}">
-            <span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite-hp ${properties.buttonIcon}"></span>
+            <span data-sly-test="${properties.buttonIcon && properties.buttonIcon != 'iconNotRequired'}" class="${properties.buttonIcon}"></span>
 			<span>${properties.label || 'Button'}</span>
 	</a>
 </div>
 
-<div class="flexible-button"
-	 data-sly-test="${properties.selectModal == 'modalRequired'}"
-	 style="background-color: ${buttonStyle=='solid' ? currentStyle.solidColor : '' @ context='styleToken'}; border-color: ${buttonStyle=='solid' ? currentStyle.solidColor : currentStyle.outlinedColor @ context='styleToken'}; color: ${buttonStyle=='solid' ? '' : currentStyle.outlinedColor @ context='styleToken'};">
+<div class="flexible-button button-hover"
+	 data-sly-test="${properties.selectModal == 'modalRequired'}">
 	<a href="${button.linkTo}" target="${button.targetBlank==true ?'_blank':'_self'}"
 	   data-toggle="modal"
 	   data-target="${button.hashTarget}">
-		<span data-sly-test="${properties.buttonIcon != 'iconNotRequired'}" class="sprite-hp ${properties.buttonIcon}"></span>
+		<span data-sly-test="${properties.buttonIcon && properties.buttonIcon != 'iconNotRequired'}" class="${properties.buttonIcon}"></span>
 		<span>${properties.label || 'Button'}</span>
 	</a>
 </div>

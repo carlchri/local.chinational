@@ -1,32 +1,59 @@
 .visual-box h2 {
-  color:#fff;
+    color: #fff;
 }
+
 .visual-box a {
-  margin-top:10px;
+    margin-top: 10px;
 }
+
 .visual-box .row {
-  margin:0;
+    margin: 0;
 }
+
 .image-row {
-  height:180px;
+    height: 180px;
 }
+
 .image-row img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+.ie-object-fit {
+    background-size: cover;
+    background-position: center center;
+}
+
+.isIE .ie-object-fit.full-image img {
+  display: none;
+}
+
+/* Narsh - fix for IR to handle object-fit: cover */
+
+.isIE .ie-object-fit.image-row img {
+  display: none;
+}
+
+
 .content-col {
-  padding:15px 80px 35px 35px;
+    padding: 15px 80px 35px 35px;
 }
 
 @media (max-width:992px) {
-  .content-col {
-    padding:15px 40px 35px 40px;
-  }
+    .content-col {
+        padding: 15px 40px 35px 40px;
+    }
 }
 
 @media (max-width:992px) {
-  .content-col {
-    padding:15px 30px 35px 30px;
-  }
+    .content-col {
+        padding: 15px 30px 35px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-row {
+        height: 110px;
+    }
 }

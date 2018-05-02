@@ -1,19 +1,17 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.CalloutTiles"></sly>
-
-<div class="${properties.greybgRequired ?'light-gray':''}">
-    <div class="container">
-		<div class="row" data-sly-test="${properties.selectHeading == 'headingRequired'}">
-			<h3 class="pading-bottom-25">
-	        	${properties.calloutTilesHeading || 'Callout Tiles Heading'}
-			</h3>
-		</div>
-        <div class="row">
-			<sly data-sly-list.eachTile="${tiles.calloutTilesList}">
-				<div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass}" 
-					 data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
-		        </div>
-			</sly>
-	    </div>
+<div class="${properties.greybgRequired ?'light-gray gray-margin-top':''} ${properties.greybgRequired ?'full-bleed-container-inner-content':''}">
+    <div class="row" data-sly-test="${properties.selectHeading == 'headingRequired' && properties.calloutTilesHeading}">
+        <div class="col-md-12" >
+            <h3 class="pading-bottom-25">
+                ${properties.calloutTilesHeading || 'Callout Tiles Heading'}
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <sly data-sly-list.eachTile="${tiles.calloutTilesList}">
+            <div class="${tiles.isLastCss && eachTileList.last ? tiles.lastCssClass : tiles.cssClass} col-xs-12 callout-horizontal"
+                 data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout', selectors='embeddedCallout'}">
+            </div>
+        </sly>
     </div>
 </div>
-

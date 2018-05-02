@@ -1,5 +1,5 @@
 .find-provider-form {
-	padding-right: 80px;
+	/*padding-right: 80px;*/
 }
 
 .find-provider-form .flex-box {
@@ -103,10 +103,14 @@
 .input-2 .input-box {
 	width: 35%;
 }
+.fnd-image img {
+	object-fit: none;
+}
 
 @media(max-width:1200px) {
 	.find-provider-form {
 		padding-right: 0;
+		padding-left: 0;
 	}
 }
 

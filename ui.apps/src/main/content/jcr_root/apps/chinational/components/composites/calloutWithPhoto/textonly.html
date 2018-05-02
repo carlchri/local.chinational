@@ -1,15 +1,6 @@
-<div class="content-row padding-x">
-	<div class="container">
-      <div class="row">
-
-		<div class="col-md-12 col-sm-12">
-			<div class="gutter2">
-	            <h3 data-sly-test="${properties.calloutHeading}">${properties.calloutHeading}</h3>
-            	<div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText'}">
-            </div>
-		</div>
-
-      </div>
-	</div>
+<div class="col-md-12 col-sm-12">
+	<h3 data-sly-test="${properties.calloutHeading}">${properties.calloutHeading}</h3>
+	<div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
 </div>
+
 

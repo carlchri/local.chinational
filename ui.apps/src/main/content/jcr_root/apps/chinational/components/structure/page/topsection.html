@@ -13,20 +13,19 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<div class="component" data-sly-test="${properties.displayHero}"
+<sly data-sly-test="${properties.displayHero}">
+<div class="intro" data-sly-test="${!properties.heroConfig || properties.heroConfig == 'hero'}"
      data-sly-resource="${'tophero' @ resourceType='chinational/components/structure/hero'}"></div>
-<div class="component" data-sly-test="${properties.displayBreadcrumb}">
+<div class="" data-sly-test="${properties.heroConfig == 'carousel'}"
+     data-sly-resource="${'topheroCarousel' @ resourceType='chinational/components/composites/heroCarousel'}"></div>
+</sly>
+<div class="section-breadcrumb ${properties.displayHero?'':'padding-top-30'}" data-sly-test="${properties.displayBreadcrumb}">
     <div class="container">
-        <div class="row section-breadcrumb"
+        <div class="row"
              data-sly-resource="${'breadcrumb' @ resourceType='chinational/components/structure/breadcrumb'}">
         </div>
     </div>
 </div>
-<div data-sly-test="${properties.displaySubnav}">
-    <div class="container">
-        <div class="row" >
-            <div class="custome-dd-outer"
-                 data-sly-resource="${'secNav' @ resourceType='chinational/components/structure/secondaryNavigation'}"></div>
-        </div>
-    </div>
+<div class="container ${(properties.displayHero || properties.displayBreadcrumb) ?'':'padding-top-30'}" data-sly-test="${properties.displaySubnav}"
+     data-sly-resource="${'secNav' @ resourceType='chinational/components/structure/secondaryNavigation'}">
 </div>

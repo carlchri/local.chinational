@@ -1,23 +1,23 @@
-<sly
-     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.template="chinational/components/commons/templates.html"
+     data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"/>
 
-<sly data-sly-use.contactUs="org.chi.aem.common.components.model.FooterContactUs"/>
 
-  <form class="row">
+  <h4 id="message" data-sly-test="${contactUs.nlButtonText}"></h4>
+  <form class="row" data-sly-test="${contactUs.nlButtonText}">
     <div class="col-sm-6 col-md-9">
       <div class="input-box">
-        <input type="text" placeholder="${currentStyle.nlPlaceholderText}"/>
+        <input type="email" id="senderEmailAddress" name="senderEmailAddress" placeholder="${contactUs.nlPlaceholderText}">
       </div>
     </div>
     <div class="col-sm-2 col-md-3">
-      <button type="button" class="btn btn-primary">${currentStyle.nlButtonText}</button>
+      <button type="button" id="contact-us-submit" class="btn btn-primary">${contactUs.nlButtonText}</button>
     </div>
   </form>
   <div class="row contact-info">
     <div class="col-sm-8">
-      <span class="list-header">${currentStyle.heading}</span>
+      <span class="list-header">${contactUs.heading}</span>
       <p>
-        <span class="dblock">${currentStyle.subheading}</span>
+        <span class="dblock">${contactUs.subheading}</span>
         <span>
           <a href="${contactUs.linkUrl}"
              target="${contactUs.targetBlank==true ?'_blank':'_self'}">
@@ -37,4 +37,4 @@
     </div>
   </div>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=!currentStyle.heading}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!contactUs.heading}"></sly>

@@ -1,38 +1,47 @@
-<sly data-sly-use.compositeButtons="org.chi.aem.common.components.model.CompositeButtons" />
+<sly data-sly-use.compositeButtons="org.chi.aem.common.components.model.CompositeButtons" 
+	 data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
 <div class="component">
-		<div class="section">
-			<div class="row" data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+			<div data-sly-test="${!(properties.headingNotRequired && properties.linkNotRequired)}">
 				<div class="col-sm-6">
 					<h3 data-sly-test="${!properties.headingNotRequired}">
 						${properties.heading}
                     </h3>
 				</div>
+
 				<div class="col-sm-6 right-small-txt">
                 	<div class="inblock show-on-desktop">
-                           <div data-sly-test="${!properties.linkNotRequired}"
-                                 data-sly-resource="${'link' @ resourceType='chinational/components/content/link'}">
-                            </div>
+                        <sly data-sly-test="${!properties.linkNotRequired}">
+                            <a class="arrow-link-txt small_text_link_site_color" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+                               ${link.linkText}
+                               <i class="arrow-right"></i>
+                            </a>
+                        </sly>    
                     </div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="buttons-outer" data-sly-list.eachButton="${compositeButtons.buttonList}">
-                    	<div class="link-wrapper"
-							 data-sly-resource="${ @path=eachbutton, resourceType='chinational/components/content/button'}"></div>
-                    </div>
-				</div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="buttons-outer" data-sly-list.eachButton="${compositeButtons.buttonList}">
+                        <div class="link-wrapper"
+                             data-sly-resource="${ @path=eachbutton, resourceType='chinational/components/content/button'}"></div>
+                        </div>
+                </div>
 			</div>
-			<div class="row">
+
 				<div class="col-md-12 txt-right">
 					<div class="show-on-mobile">
-                        <sly data-sly-test="${!properties.linkNotRequired}"
-                             data-sly-resource="${'link' @ resourceType='chinational/components/content/link'}">
-                        </sly>
+                        <sly data-sly-test="${!properties.linkNotRequired}">
+                            <a class="arrow-link-txt" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+                               ${link.linkText}
+                               <i class="arrow-right"></i>
+                            </a>
+                        </sly>    
 					</div>
 				</div>
-			</div>
+
 	</div>
+	<sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>

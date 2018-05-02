@@ -1,0 +1,36 @@
+.calloutTiles .component .component .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.calloutTiles .component .row .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Added by German to Fix Defect DE2589 */
+
+@media all and (min-width: 768px) {
+	.calloutTiles .col-md-6.callout-horizontal {
+		width: 49%;
+	}
+	
+	.calloutTiles .col-sm-6.callout-horizontal {
+		width: 46%;
+	}
+}
+
+/* End of additions by German to Fix Defect DE2589*/
+
+/* Added by German to Fix Defect DE2590 */
+
+@media all and (min-width: 992px) {
+	
+	.calloutTiles .col-md-4.callout-horizontal {
+		width: 30%;  
+		margin:0 0 30px 15px; 
+	}
+}
+
+/* End of additions by German to Fix Defect DE2590*/
+

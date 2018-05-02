@@ -6,6 +6,7 @@ package org.chi.aem.common.components.model;
 
 import java.util.*;
 
+import com.adobe.cq.sightly.WCMUsePojo;
 import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -16,6 +17,7 @@ import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import com.day.cq.wcm.api.Page;
+import org.chi.aem.common.utils.DesignUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +27,7 @@ import javax.annotation.PostConstruct;
  * Defines the {@code Navigation} Sling Model used for the {@code /apps/chinational/foundation/structure/navigation}
  * component. This component gets list of pages for navigation (two levels only).
  */
-@Model(adaptables = SlingHttpServletRequest.class)
-public class  Navigation {
+public class  Navigation extends WCMUsePojo {
 
     /**
      * Name of the resource property storing the root page from which to build the list
@@ -38,18 +39,6 @@ public class  Navigation {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Navigation.class);
 
-    @ScriptVariable
-    private ValueMap currentStyle;
-
-    @ScriptVariable
-    private Page currentPage;
-
-    @SlingObject
-    private Resource resource;
-
-    @SlingObject
-    private ResourceResolver resourceResolver;
-
     private PageManager pageManager;
     private java.util.SortedMap<String, List<MenuItem>> mapItems;
     private List<MenuItem> childItems;
@@ -58,16 +47,16 @@ public class  Navigation {
         LOGGER.debug("Call Constructor");
     }
 
-    @PostConstruct
-    private void initModel() {
-        pageManager = resourceResolver.adaptTo(PageManager.class);
+    @Override
+    public void activate() throws Exception {
+        pageManager = getResourceResolver().adaptTo(PageManager.class);
     }
 
 
     public Map<String, List<MenuItem>> getItems() {
         LOGGER.trace("getItems called");
         if (mapItems == null) {
-            LOGGER.info("mapItems is null, populate the values");
+            LOGGER.debug("mapItems is null, populate the values");
             populateChildListItems();
         }
         return mapItems;
@@ -76,16 +65,17 @@ public class  Navigation {
     public List<MenuItem> getChildItems() {
         LOGGER.trace("getChildItems called");
         if (childItems == null) {
-            LOGGER.info("childItems is null, populate the values");
+            LOGGER.debug("childItems is null, populate the values");
             populateChildItems();
         }
         return childItems;
     }
 
     private Page getRootPage(String fieldName) {
-        String parentPath = currentStyle.get(fieldName, currentPage.getPath());
+        ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
+        String parentPath = designMap.get(fieldName, getCurrentPage().getPath());
         LOGGER.debug("getRootPage for : " + parentPath);
-        return pageManager.getContainingPage(resourceResolver.getResource(parentPath));
+        return pageManager.getContainingPage(getResourceResolver().getResource(parentPath));
     }
 
     private void populateChildItems() {

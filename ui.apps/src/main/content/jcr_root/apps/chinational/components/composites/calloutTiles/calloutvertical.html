@@ -1,18 +1,15 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.CalloutTiles"></sly>
 
-<div class="${properties.greybgRequired ?'light-gray':''}">
-<div class="more-events">
-
-			<h3 class="pading-bottom-25" data-sly-test="${properties.selectHeading == 'headingRequired'}">
-	        	${properties.calloutTilesHeading || 'Callout Tiles Heading'}
-			</h3>
+<div class="${properties.greybgRequired ?'light-gray gray-margin-top':''}">
+	<div class="more-events">
+		<h3 class="pading-bottom-25" data-sly-test="${properties.selectHeading == 'headingRequired' && properties.calloutTilesHeading}">
+			${properties.calloutTilesHeading || 'Callout Tiles Heading'}
+		</h3>
 
 		<sly data-sly-list.eachTile="${tiles.calloutTilesList}">
-			<div class="row"
-				 data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout'}">
-	        </div>
+			<div class="callout-vertical" data-sly-resource="${eachTile @ resourceType='chinational/components/content/callout', selectors='embeddedCallout'}">
+			</div>
 		</sly>
-</div>        
+	</div>
 </div>
-
 

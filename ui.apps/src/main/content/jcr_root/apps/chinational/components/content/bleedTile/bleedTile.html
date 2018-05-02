@@ -1,43 +1,47 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
-<div data-sly-test="${properties.imagePosition == 'top'}">
-	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="image-row"
-		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
-	</div>
-	<div class="content-col">
-		<h2>${properties.headingText}</h2>
-		<p>${properties.contentDetail}</p>
-		<div class="link-wrapper">
-			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
-			  <span>${link.linkText || 'Link Text'}</span>
-			</a>
-		</div>
+
+<div  data-sly-test="${properties.selectImage != 'imageRequired'}" class="content-gutter">
+	<h2>${properties.headingText}</h2>
+	<p>${properties.contentDetail}</p>
+	<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
+		<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+			<span>${link.linkText || 'Link Text'}</span>
+		</a>
 	</div>
 </div>
-<div data-sly-test="${properties.imagePosition == 'left'}">
-	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="full-image flex1"
-		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+
+<sly data-sly-test="${properties.selectImage == 'imageRequired'}">
+	<div data-sly-test="${properties.imagePosition == 'top'}">
+		<div class="image-row required-height-style-1"
+			 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
+		</div>
+		<div class="content-gutter">
+			<h2>${properties.headingText}</h2>
+			<p>${properties.contentDetail}</p>
+			<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
+				<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+					<span>${link.linkText || 'Link Text'}</span>
+				</a>
+			</div>
+		</div>
 	</div>
-	<div class="content-col2 flex1">
+	<div data-sly-test="${properties.imagePosition == 'left'}"
+		 class="full-image required-width-style-1"
+		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
+	</div>
+	<div data-sly-test="${properties.imagePosition != 'top'}" class="content-gutter-with-image">
 		<h2>${properties.headingText}</h2>
 		<p>${properties.contentDetail}</p>
-		<div class="link-wrapper">
+		<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
 			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 				<span>${link.linkText || 'Link Text'}</span>
 			</a>
 		</div>
 	</div>
-</div>
-<div data-sly-test="${properties.imagePosition == 'right'}">
-	<div class="content-col2 flex1">
-		<h2>${properties.headingText}</h2>
-		<p>${properties.contentDetail}</p>
-		<div class="link-wrapper">
-			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
-				<span>${link.linkText || 'Link Text'}</span>
-			</a>
-		</div>
+	<div data-sly-test="${properties.imagePosition == 'right'}"
+		 class="full-image required-width-style-1"
+		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
-	<div data-sly-test="${properties.selectImage == 'imageRequired'}" class="full-image flex1"
-		 data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
-	</div>
-</div>
+</sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.headingText}"></sly>

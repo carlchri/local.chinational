@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     cq:icon="multiple"
-    jcr:description="Tiles and News List Component which dynamically pulls most recent news articles, its used in templates"
+    jcr:description="Tiles and List Component which dynamically pulls most recent news/blogs articles, its used in templates"
+    jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
-    jcr:title="Dynamic Tiles/ News List Global"
+    jcr:title="Dynamic Tiles (News/Blogs) List Global"
     allowedParents="[*/parsys]"
     componentGroup=".fixed-chi"/>

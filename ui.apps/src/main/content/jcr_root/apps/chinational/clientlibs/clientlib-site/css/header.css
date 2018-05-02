@@ -20,6 +20,10 @@
 	right: 0;
 }
 
+.main-nav ul {
+	padding-left: 0;
+}
+
 .header ul li {
 	float: left;
 	margin-right: 40px;
@@ -42,7 +46,7 @@
 .search-icon i {
 	width:20px;
 	height:20px;
-	background:#eee;
+	/*background:#eee;*/
 	display:inline-block;
 }
 .logo-strip {
@@ -50,7 +54,7 @@
 }
 
 .logo {
-	padding-top: 30px;
+	padding-top: 20px; /* Naresh - changed padding for logo in header*/
 	display:block;
 }
 .add-nav {
@@ -91,15 +95,15 @@
 	position:relative;
 }
 
-.search-box  i {
+/*.search-box  i {
 	top: 6px;
 	position: relative;
-}
+}*/
 
 .search-box input {
 	width: 185px;
 	border: none;
-	padding: 2px 0 5px 9px;
+	padding: 5px 0 5px 9px;   /* Modified by German to fix Defect DE2689, it was -> padding: 2px 0 5px 9px;  */
 	height:100%;
 	font-size: 16px;
 	float: left;
@@ -238,7 +242,7 @@
 		z-index: 4;
 	}
 	.main-nav {
-		top: -170px;
+		top: -300px;
 		right: 0;
 		left: 0;
 		transition: all 0.5s ease-in-out;
@@ -263,7 +267,7 @@
 		margin: 0;
 		letter-spacing: 1px;
 		float: none;
-		margin-bottom: 7px;
+		/*margin-bottom: 7px;*/
 	}
 	.logo-strip {
 		z-index: 3;
@@ -311,9 +315,9 @@
 	.logo-strip {
 		min-height: 85px;
 	}
-	.logo-strip .logo {
+	/*.logo-strip .logo {
 		padding-top: 23px;
-	}
+	}*/ /* Naresh - removing padding for logo, will use 20 px for both desktop and mobile*/
 	.menu-icon {
 		top: 30px;
 		right: 5%;
@@ -389,7 +393,7 @@
 	}
 	.main-nav {
 		padding: 20px 0;
-		top: -315px;
+		top: -375px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
 	}
 	.hide-on-mobile {
 		display: none;

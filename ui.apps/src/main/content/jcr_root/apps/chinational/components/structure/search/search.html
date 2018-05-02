@@ -14,9 +14,10 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 
-<form method="get" action="${currentStyle.searchDestination}.html">
+<form method="get" action="${currentStyle.searchDestination @ extension = 'html'}">
   <input type="text" name="fulltext" placeholder="${currentStyle.searchDefaultText}"/>
+  <input type="hidden" name="page" value="1"/>
   <span class="search-icon">
-    <i class="icon-search"></i>
+    <i class="sprite-v2 small-icons icon-search"></i>
   </span>
 </form>

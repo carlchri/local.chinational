@@ -1,120 +1,209 @@
 .video {
 	position: relative;
 }
-.embeded-video {
-	padding-bottom:30px;
-}
+
 .video img {
-	width:100%;
-	height:100%;
+	width: 100%;
+	margin: 0 0 15px 0;
 }
+
+.embeded-video {
+	padding-bottom: 30px;
+}
+
+.sub-Thumbs .video img {
+	margin: 0;
+}
+
 .gutter-top {
-	margin-top:10px;
+	margin-top: 10px;
 }
+
 .gutter-bottom {
-	margin-bottom:10px;
+	margin-bottom: 10px;
 }
+
 .callout-content {
-	padding:35px 0;
-	position:relative;
+	padding: 35px 0;
+	position: relative;
 }
-.callout-content .learn-more-btn{
-	margin-top:10px;
+
+.callout-content .learn-more-btn {
+	margin-top: 10px;
 }
+
+/* Added by German as per defect DE2558 by having 60px at top and bottom of header for accordions */
+
+.accordion-wrapper h3 {
+	padding-bottom: 60px;
+}
+
+/* End of additions for defect DE2558 */
+
 .accordion-wrapper {
-	padding-top:20px;
+	/* padding-top: 20px;    Removed by German, padding top shouldn't be there anymore for components */
 	overflow: hidden;
 }
+
 .collapsed {
 	background-color: #fff;
 }
-.card-header {
-	border-top:solid #e1e6ee 2px;
-	background-color:#f8f7f7;
-	cursor:pointer;
-}
-.accordion-header {
-	float:left;
-	padding-left:15px;
-}
+
 .collapsed .accordion-header {
-	color:#009775
+	color: #009775;
 }
+
 .collapsed .card-header {
-	background-color:#fff;
+	background-color: #fff;
 }
-.card-body{
-	background-color:#f8f7f7;
-	padding:5px 10px 15px 15px;
+
+.collapsed .accordion-arrow {
+	transform: rotate(135deg);
+	border-color: #009775;
 }
+
+.card-header {
+	border-top: solid #e1e6ee 2px;
+	background-color: #f8f7f7;
+	cursor: pointer;
+}
+
+.accordion-header {
+	float: left;
+	padding-left: 15px;
+}
+
+.card-body {
+	background-color: #f8f7f7;
+	padding: 5px 10px 15px 15px;
+}
+
 .accordion-arrow {
 	top: 8px;
 	right: 15px;
-	color:#24509a;
-	float:right;
+	color: #24509a;
+	float: right;
 	transform: rotate(-45deg);
-	transition:all .2s ease-in-out;
-	border-width:2px;
-	border-color:#24509a;
+	transition: all 0.2s ease-in-out;
+	border-width: 2px;
+	border-color: #24509a;
+}
 
-}
-.collapsed .accordion-arrow  {
-	transform: rotate(135deg);
-	border-color:#009775;
-}
 .right-rail {
-	background-color:#f8f7f7;
-	padding:20px 0;
+	background-color: #f8f7f7;
+	padding: 20px 0;
 }
+
 .gutter-sides {
-	padding:0 25px;
+	padding: 0 25px;
 }
-@media (min-width:992px) {
+
+/*.video-button, .video-button-small {
+	width: 90px;
+	height: 90px;
+	background-color: #f2a900;
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	font-size: 34px;
+}*/
+
+.video-button-small {
+	width: 38px;
+	height: 38px;
+}
+
+.video-button:hover, .video-button-small:hover {
+	background-color: #fff;
+	color: #f2a900;
+	opacity: .55;
+	filter: alpha(opacity=55);
+}
+
+/*.icon-play, .icon-play-small {
+	background: #fff;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+	margin: auto;
+}*/
+
+/*.icon-play-small {
+	background-color: transparent;
+	width: 0;
+	height: 10px;
+	border-style: solid;
+	border-width: 9px;
+	border-color: transparent transparent transparent #fff;
+	margin: 10px 0 0 16px;
+}*/
+
+@media ( min-width : 992px) {
 	.right-rail {
-		margin-left:40px;
+		margin-left: 40px;
 	}
 	.video-inner {
-		height:388px;
-	}
-}
-@media (max-width:992px) {
-	.right-rail {
-		margin-top:50px;
-	}
-	 .accordion-wrapper {
-		 margin-bottom: 50px;
-	 }
+		height: 388px;
+	}	
 }
 
-@media (max-width:767px) {
+@media ( max-width : 992px) {
 	.right-rail {
-		margin-top:20px;
+		margin-top: 50px;
+		/* Naresh - add the -ve margin to make right rail go full bleed */
+		margin-left: -40px;
+    	margin-right: -40px;
+	}
+	.accordion-wrapper {
+		margin-bottom: 50px;
+	}
+	.gutter-sides {
+		padding: 0 40px; /* Naresh - changed padding for tablet to 40px to offset -ve margin for bleed */
+	}
+}
+
+@media ( max-width : 767px) {
+	.right-rail {
+		margin-top: 20px;
 	}
 	.video-inner {
 		height: 140px;
 	}
 }
 
+/*  Added by German to fix issue with accordion-wrapper as per Defect DE2569  */
 
+/*  ONLY MOBILES */
 
+@media ( max-width :474px) {
+	.accordion-header {
+		max-width: 160px;
+	}
+	
+	/* Removed by German. If we manage to remove container class from accordions then we don't need below style */
+	
+	/* .accordion-wrapper {
+		margin-left: -15%;
+		margin-right: -15%
+	} */  
+	
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* */
+/* End of additions by German */

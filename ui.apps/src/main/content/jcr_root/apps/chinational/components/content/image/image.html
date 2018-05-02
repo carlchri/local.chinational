@@ -1,11 +1,11 @@
-<sly data-sly-use.image="org.chi.aem.common.components.model.Image" />
 
-<a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${link.targetBlank==true ?'_blank':'_self'}">
-    <picture>
-      <source media="(min-width: 1024px)" srcset="${image.fileReference}" sizes="100vw" />
-      <source media="(min-width: 600px)" srcset="${image.imgTabSrc}" sizes="100vw" />
-      <source media="(min-width: 300px)" srcset="${image.imgMobSrc}" sizes="100vw" />
-      <img src="${image.imgMobSrc}" alt="${image.alt || 'Image Component'}"/>
-    </picture>
-</a>
+<div class="component">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+		<div class="col-sm-12">
+			<sly data-sly-include="embeddedImage.html"></sly>
+		</div>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
+
 

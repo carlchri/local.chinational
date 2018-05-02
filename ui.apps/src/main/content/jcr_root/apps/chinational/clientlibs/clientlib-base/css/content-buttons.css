@@ -2,18 +2,27 @@
 	padding-right: 4%
 }
 
+/* Naresh - adding option for this, used on news and blog list */
+.padding-bottom-60 {
+	padding-bottom: 60px;
+}
+
+/*
 .memorial p {
 	margin-bottom: 50px;
 }
+commented by Naresh */
 
 @media(max-width:991px) {
 	.icon-buttons {
 		padding-top: 30px;
 		max-width: 420px;
 	}
+	/*
 	.memorial p {
 		margin-bottom: 35px;
 	}
+	commented by Naresh */
 }
 
 @media(max-width:767px) {

@@ -1,5 +1,8 @@
-<sly data-sly-test="${properties.calloutOrientation == 'horizontalOrientation'}" data-sly-include="callouthorizontal.html"></sly>
-<sly data-sly-test="${properties.calloutOrientation == 'verticalOrientation'}" data-sly-include="calloutvertical.html"></sly>
-<sly data-sly-test="${!properties.calloutOrientation}">Callout Tiles Component</sly>
-
-
+<div class="component ${properties.greybgRequired ?'full-bleed-container':''}">
+    <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'} ${properties.greybgRequired ?'light-gray':''}">
+    	<div class="col-sm-12 col-md-12 ${properties.greybgRequired ?'light-gray':''} padding-fix">
+        	<sly data-sly-include="embeddedCalloutTiles.html"></sly>
+        </div>
+    </div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>

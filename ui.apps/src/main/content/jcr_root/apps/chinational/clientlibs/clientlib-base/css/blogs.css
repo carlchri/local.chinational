@@ -1,6 +1,47 @@
+/* Added by German for media-center_naresh.html */
+
+.stickToBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding-left: 15px;
+}
+
+.stickToTop {
+	position: relative;
+	min-height: 160px;
+	padding-bottom: 45px;
+}
+
+.other-news-padding-top {
+	padding-top: 25px;
+}
+
+.divider-news {
+	border-left: solid 2px #e7e7e7;
+	margin-left: auto;
+	margin-top: 25px;
+}
+
+.hideForDesktop {
+	visibility: hidden;
+	margin-top: -25px;
+}
+
+@media ( max-width :992px) {
+	.hideForDesktop {
+		visibility: visible;
+		margin-top: 0;
+	}
+}
+
+/*  End of additions by German */
+
+
 .blog-image {
 	height: 145px;
 }
+
 .blog-title {
 	font-size: 20px;
 	padding: 25px 0 5px 0;
@@ -9,8 +50,9 @@
 .blog-content {
 	min-height: 230px;
 }
+
 .blog-content p {
-	min-height:90px;
+	min-height: 90px;
 }
 
 .other-new-title {
@@ -18,15 +60,15 @@
 	padding-bottom: 10px;
 }
 
-@media(max-width:991px) {
+@media ( max-width :991px) {
 	.blogs {
-		padding-top:40px;
+		padding-top: 40px;
 	}
 	.blogs .row {
-		display:inherit;
+		display: inherit;
 	}
 	.blog-content p {
-		min-height:initial;
+		min-height: initial;
 	}
 	.blog-content {
 		min-height: 190px;
@@ -45,9 +87,9 @@
 	}
 }
 
-@media(max-width:767px) {
+@media ( max-width :767px) {
 	.blogs {
-		padding-top:20px;
+		padding-top: 20px;
 	}
 	.blog-item {
 		width: 100%;
@@ -61,5 +103,30 @@
 	}
 	.blog-content a {
 		position: static;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.first-tile-image-tablet .blog-image {
+		height: 230px; /* added by Davinder to set image height to 230px in Tablet */
+	}
+	.first-tile-image-tablet {
+		margin-bottom:30px; /* added by Davinder to add margin at bottom in Tablet */
+	}
+}
+
+/* Naresh - three options for images which should not be constrainted in desktop*/
+@media ( min-device-width: 1200px) {
+	.auto-image img {
+		width: auto;
+		height: auto;
+	}
+	
+	.auto-image-width img {
+		width: auto;
+	}
+	
+	.auto-image-height img {
+		height: auto;
 	}
 }

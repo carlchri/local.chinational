@@ -1,138 +1,184 @@
 package org.chi.aem.common.servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.rmi.ServerException;
-import java.util.Dictionary;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
   
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import java.io.StringWriter;
- 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
  
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-      
- 
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;     
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
-import javax.jcr.RepositoryException;
 import org.apache.felix.scr.annotations.Reference;
-import org.apache.jackrabbit.commons.JcrUtils;
- 
  
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
-import org.apache.sling.jcr.api.SlingRepository;
-import org.apache.felix.scr.annotations.Reference;
-import org.osgi.service.component.ComponentContext;
+import org.chi.aem.common.utils.NewsBlogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Session;
-import javax.jcr.Node; 
-import java.util.UUID;
- 
-import javax.jcr.Session;
-import javax.jcr.Node; 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
 //Sling Imports
-import org.apache.sling.api.resource.ResourceResolverFactory ; 
+import org.apache.sling.api.resource.ResourceResolverFactory ;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.resource.ResourceResolver; 
 import org.apache.sling.api.resource.Resource; 
-   
- 
+import org.apache.sling.commons.json.JSONObject;
+import org.apache.sling.commons.json.JSONArray;
+
 //QUeryBuilder APIs
-import com.day.cq.search.QueryBuilder; 
-import com.day.cq.search.Query; 
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.result.SearchResult;
-import com.day.cq.search.result.Hit; 
-import com.day.cq.wcm.api.NameConstants;
+import com.day.cq.wcm.api.Page;
 
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
-@Properties({ @Property(name = "sling.servlet.paths", value = "/bin/services/newsList"),
+@Properties({ 
+		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
+			  @Property(name = "sling.servlet.selectors", value = "newsservlet"),
+			  @Property(name = "sling.servlet.extensions", value = "json"),
 			  @Property(name = "service.description", value = "for News List component"),
-			  @Property(name = "label", value = "News List") })
+			  @Property(name = "label", value = "News List") 
+		  })
+
 public class NewsListServlet extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 9073952766248919847L;
     private static final Logger LOGGER = LoggerFactory.getLogger(NewsListServlet.class);
     
-  //Inject a Sling ResourceResolverFactory
+    //Inject a Sling ResourceResolverFactory
     @Reference
     private ResourceResolverFactory resolverFactory;
                 
-    @Reference
-    private QueryBuilder builder;
-     
-     
+    private ResourceResolver resolver;
+    
     private Session session;
+    
+    private static final int HITS_PER_PAGE = 10;
+    private static final int START_INDEX = 0;
+    private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
+    private static final String NEWS_TEMPLATE = "/apps/chinational/templates/newsdetailspage";
+    
+    // storing list of all news articles sorted by publishDate
+    private java.util.List<Page> allNews;
+    
+    /* allFilteredNews - storing list of all news articles 
+     * filtered based on selection in the dropdown
+     * sorted by publish date
+     * required to get no. of total results to Show-Hide LOAD MORE Button
+    */
+    private java.util.List<Page> allFilteredNews;
+
+    /* listNews - storing list of all news articles used on page
+     * excluding featured article to be displayed at top of page
+     * sorted by publish date
+    */
+    private java.util.List<Page> listNews;
+    
+     /* featuredNews - storing list of featured news articles
+     * sorted by publish date
+    */
+    private java.util.List<Page> featuredNews;
+
+    private Map<String, Object> articleMap = new HashMap<String, Object>();
+
+    private String newsFilter;
+    private String media_page_path;
+    private int start_index;
+    private int hits_per_page;
+    private int totalResults; // used for hide-show "LOAD MORE" button
+    private String newsTemplate;
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
-       
-        // Map<String, Object> param = new HashMap<String, Object>();
-        // param.put(ResourceResolverFactory.SUBSERVICE, "jquerybuilder");
-        ResourceResolver resolver = null;
+        newsFilter = "";
+        media_page_path = "";
+        start_index = START_INDEX;
+        hits_per_page = HITS_PER_PAGE;
+        totalResults = 0;
+        newsTemplate = NEWS_TEMPLATE;
+       	allNews = new ArrayList<>();
+    	listNews = new ArrayList<>();
+    	allFilteredNews = new ArrayList<>();
+        featuredNews = new ArrayList<>();
+                
+        Map<String, Object> param = new HashMap<String, Object>();             
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         try {
-            //Invoke the adaptTo method to create a Session used to create a QueryManager
-            // resolver = resolverFactory.getServiceResourceResolver(param);
-        	// resolver = resolverFactory.getAdministrativeResourceResolver(null);
-        	resolver = request.getResourceResolver();
+        	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
-        String news_filter = request.getParameter("search_news_list");
-        if(news_filter !=null){
-	        if(news_filter.equals("By Year")){
-	        	news_filter = request.getParameter("search_news_year");
+
+            Resource resource = request.getResource();
+    		if (resource != null) {
+    			Iterator<Resource> childResources = resource.listChildren();
+    			while (childResources.hasNext()) {
+    				 Resource property = childResources.next().getChild("news-list/parentPage");
+    				    if (property == null) {
+    				        continue;
+    				    }
+    				    if (property != null) {
+    				    	media_page_path = property.adaptTo(String.class);
+    				    }
+    			}
+    		}
+    		
+    		if(media_page_path == null || media_page_path.isEmpty()){
+    			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".newsservlet"));
+    		}
+    		
+	        String[] selectors = request.getRequestPathInfo().getSelectors();
+	        if(selectors.length >= 2){
+	        	newsFilter = selectors[1];
+	        } else {
+	        	newsFilter = DEFAULT_NEWS_FILTER;
 	        }
-        }
-        LOGGER.info("newsFilter" + news_filter);
-        LOGGER.info("search_news_year : " + request.getParameter("search_news_year"));
-        String contextPath = request.getContextPath();                       
-        // forward to
-        String forwardTo = request.getParameter("media_page_path");
-        if (forwardTo != null) {
-            String path = contextPath + forwardTo;
-            try {
-                Node node = session.getNode(path);
-                if (isPage(node)) {
-                    forwardTo += ".html";
-                }
-            } catch (RepositoryException e) {
-                response.getWriter().write("Resource Not Found:" + forwardTo);
-            }
-        }
-        LOGGER.info("forwardTo : " + forwardTo.toString());
-        request.setAttribute("news_filter", news_filter);
-        request.getRequestDispatcher(forwardTo).forward(request, response);
-        
+	        
+	        if(selectors.length >= 3 && (selectors[2].matches("[0-9]+"))){
+	        	start_index = Integer.parseInt(selectors[2]);	
+	        }
+	        
+	        allNews = NewsBlogUtils.populateListItems(media_page_path, resolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resolver, newsFilter);
+	        featuredNews = (List<Page>) articleMap.get("featuredArticles");
+	        allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
+	        
+		   	for(Page item : featuredNews) {
+				 if(allFilteredNews.contains(item)){
+					 allFilteredNews.remove(item);
+				 } 
+			 }	 
+
+		    // list of news, sorted by Publish date
+	        listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); 
+
+	        totalResults = allFilteredNews.size();
+	        
+	        JSONObject jsonResult = new JSONObject();
+	        JSONArray jsonArray = getJsonNews();
+	        jsonResult.put("jsonNews", jsonArray);
+	        jsonResult.put("total_results", totalResults);
+	        String jsonData = jsonResult.toString();
+	        
+	        response.setContentType("application/json");
+	         
+	       PrintWriter out = response.getWriter();
+	       out.write(jsonData);
+	       out.flush();
 	    } catch (Exception e) {
 	        LOGGER.error("Exception in NewsListServlet",e);
 	        try {
 	            response.getWriter().write(e.getMessage());
 	        } catch (IOException e1) {
-	            LOGGER.error("Exception in NewsListServlet>>>dopost method",e1);
+	            LOGGER.error("Exception in NewsListServlet>>doget method",e1);
 	        }
 	
 	    }
@@ -149,31 +195,42 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        }
 	    }
     }    
-          
+    
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
         doPost(request, response);
     }
 
-    private boolean isPage(Node n) throws RepositoryException {
-        return n.isNodeType(NameConstants.NT_PAGE) || n.isNodeType(NameConstants.NT_PSEUDO_PAGE);
-        // NT_PAGE value is "cq:Page" and NT_PSEUDO_PAGE - value is "cq:PseudoPage"
-        // https://docs.adobe.com/docs/en/aem/6-3/develop/ref/javadoc/constant-values.html
+    public JSONArray getJsonNews() {
+    	JSONArray jsonNews = new  JSONArray();
+    	
+        try {
+	        for (Page item : listNews) {
+	        	JSONObject jsonObject = new  JSONObject();
+	            ValueMap sMap = item.getProperties();
+	            if(sMap.get("newsHeading", String.class) != null) {
+	            	jsonObject.put("newsHeading", sMap.get("newsHeading", String.class));
+	            }
+	            if(sMap.get("publishDate", Calendar.class) != null) {
+	               	Calendar date = item.getProperties().get("publishDate", Calendar.class);
+	            	SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, YYYY"); 
+	        		String formattedDate = formatter.format(date.getTime()).toUpperCase();
+	        		jsonObject.put("publishDate", formattedDate);
+	            }
+	            if(item.getPath() != null) {
+	            	jsonObject.put("newsURL", item.getPath());
+	            }
+	            if(sMap.get("excerpt", String.class) != null) {
+	            	jsonObject.put("excerpt", sMap.get("excerpt", String.class));
+	            }
+	            jsonNews.put(jsonObject);
+	        }
+	        
+        } catch (Exception e) {
+            LOGGER.error("Exception Occured in getJsonNews() method" + e, e);
+        }
+        return jsonNews;
     }
 
-    private String convertToString(Document xml)
-       {
-       try {
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-         StreamResult result = new StreamResult(new StringWriter());
-         DOMSource source = new DOMSource(xml);
-         transformer.transform(source, result);
-         return result.getWriter().toString();
-       } catch(Exception ex) {
-                 ex.printStackTrace();
-       }
-         return null;
-       } 
 }

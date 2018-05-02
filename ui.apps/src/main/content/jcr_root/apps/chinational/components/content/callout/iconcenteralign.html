@@ -1,12 +1,15 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
-<div class="row category-item">
-	<div class="col-md-12 col-sm-12 col-xs-12">
-        <span class="solid-circle"></span>
-        <a href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
-            <span class="small-heading padding-top-10 txt-center">${properties.categoryTitleText || 'Callout Component'}</span>
-        </a>
-		<p>${properties.contentDetail}</p>
-    </div>
-</div>
+        <div class="category-item center">
+            <span class="${properties.calloutIcon || 'solid-circle'}" data-sly-test="${properties.calloutIcon != 'iconNotRequired'}"></span>
+            <a data-sly-test="${link.linkUrl != '#'}" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+                <span class="small-heading padding-top-10 txt-center heading_site_color">
+                    ${properties.categoryTitleText || 'Callout Component'}
+                </span>
+            </a>
+            <span data-sly-test="${link.linkUrl == '#'}" class="small-heading padding-top-10 txt-center heading_site_color">
+            	${properties.categoryTitleText || 'Callout Component'}
+            </span>
+            <p>${properties.contentDetail}</p>
+        </div>
 

@@ -5,22 +5,22 @@
 package org.chi.aem.common.components.model;
 
 public class CarouselItem {
-    private String id;
+    private int id;
     private String name;
     private String type;
+    private String nodeName;
 
-    public CarouselItem(String id, String name, String type) {
+    public CarouselItem(){}
+
+    public CarouselItem(int id, String name, String type) {
         this.id = id;
         this.type = type;
         this.name = name;
+        this.nodeName = id + name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getType() {
@@ -37,5 +37,9 @@ public class CarouselItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNodeName() {
+        return nodeName;
     }
 }

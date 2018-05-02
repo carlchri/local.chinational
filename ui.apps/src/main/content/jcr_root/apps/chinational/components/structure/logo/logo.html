@@ -13,13 +13,32 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-use.siteColors="org.chi.aem.common.components.model.SiteColorsCollection">
+<style>
+	<sly data-sly-list.colorsIterator="${siteColors.colorsMap}">
+		<sly data-sly-test="${siteColors.colorsMap[colorsIterator]}">
+            .${siteColors.colorsMap[colorsIterator]["colorClass"] @ context="unsafe"} {
+                ${siteColors.colorsMap[colorsIterator]["colorStyle"] @ context="styleToken"}: ${siteColors.colorsMap[colorsIterator]["colorValue"] @ context="styleToken"};
+            }
+         </sly>
+    </sly>
+</style>
+
 <sly data-sly-use.logo="org.chi.aem.common.components.model.Logo"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
 <a class="logo dblock"
    href="${logo.linkUrl}"
    target="${logo.targetBlank ? '_blank' : '_self'}">
-    <img alt="${log.imageAltText}" src="${logo.imagePath}" />
+	<picture data-sly-test="${logo.imagePath == logo.imageMobilePath}">
+    	<source srcset="${logo.imagePath}" sizes="100vw" />
+        <img src="${logo.imagePath}" alt="${logo.imageAltText || 'Logo'}"/>
+	</picture>
+	<picture data-sly-test="${logo.imagePath != logo.imageMobilePath}">
+    	<source media="(min-width: 992px)" srcset="${logo.imagePath}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${logo.imageMobilePath}" sizes="100vw" />
+        <img src="${logo.imagePath}" alt="${logo.imageAltText || 'Logo'}"/>
+	</picture>
 </a>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!logo.imagePath}"></sly>

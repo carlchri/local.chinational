@@ -1,0 +1,397 @@
+.sprite {
+  /*default color is grey*/
+  /*social network icons*/
+  /*end of social networkdefault gray*/
+}
+.sprite.small-icons {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-right: 12px;
+}
+.sprite.icon-fb {
+  background-position: -39px -41px;
+}
+.sprite.icon-instagram {
+  background-position: -113px -41px;
+}
+.sprite.icon-twitter {
+  background-position: -186px -41px;
+}
+.sprite.icon-linkedin {
+  background-position: -255px -39px;
+}
+.sprite.icon-youtube {
+  background-position: -332px -41px;
+}
+.sprite.icon-rss {
+  background-position: -413px -44px;
+}
+.sprite.icon-pinterest {
+  background-position: -482px -44px;
+}
+/*location icons*/
+.sprite {
+  overflow: visible;
+}
+.sprite.icon-hours {
+  background-position: -41px -228px;
+}
+.sprite.icon-location {
+  background-position: -260px -226px;
+}
+.sprite.icon-call {
+  background-position: -191px -226px;
+}
+.location .sprite.icon-download {
+  background-position: -42px -716px;
+}
+.sprite.icon-facebook {
+  background-position: -45px -42px;
+}
+/*Media Icons*/
+.sprite.icon-hours {
+  background-position: -41px -228px;
+}
+.sprite.icon-contact {
+  background-position: -115px -224px;
+}
+.sprite.icon-call {
+  background-position: -191px -226px;
+  width: 18px;
+  height: 33px;
+}
+.sprite.icon-location {
+  background-position: -259px -226px;
+}
+.sprite.icon-download {
+  background-position: -43px -520px;
+}
+.sprite.icon-audio {
+  background-position: -115px -527px;
+}
+.sprite.icon-print {
+  background-position: -189px -523px;
+}
+.sprite.icon-share {
+  background-position: -260px -523px;
+}
+.sprite.icon-payment {
+  background-position: -412px -229px;
+}
+.sprite.icon-calender {
+  background-position: -471px -230px;
+}
+.sprite.icon-map {
+  background-position: -542px -220px;
+  width: 24px;
+  height: 37px;
+}
+.sprite.icon-donate {
+  background-position: -485px -525px;
+}
+.sprite.icon-volunteer {
+  background-position: -549px -521px;
+}
+.sprite.icon-play-orange {
+  background-position: -327px -524px;
+  width: 28px;
+  height: 27px;
+}
+.right-rail .sprite.icon-play-orange {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -12% 0 0 -10%;
+}
+.video-container .sprite.icon-play-orange {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 60%;
+  margin: -28px 0 0 -28px;
+}
+.sprite.icon-play-green {
+  background-position: -383px -523px;
+  width: 27px;
+  height: 28px;
+}
+.sprite.icon-play-blue {
+  background-position: -383px -576px;
+  width: 27px;
+  height: 27px;
+}
+.sprite.icon-large-play-orange {
+  background-position: -635px -122px;
+  width: 90px;
+  height: 90px;
+}
+.video .sprite.icon-large-play-orange {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  left: 43%;
+  top: 40%;
+}
+@media (max-width: 480px) {
+  .video .sprite.icon-large-play-orange {
+    background-position: -327px -524px;
+    width: 28px;
+    height: 27px;
+    left: 45%;
+    top: 35%;
+  }
+}
+.intro .sprite.icon-large-play-orange {
+  position: absolute;
+  top: 37%;
+  left: 40%;
+}
+@media (max-width: 992px) {
+  .intro .sprite.icon-large-play-orange {
+    background-position: -327px -524px;
+    width: 28px;
+    height: 27px;
+    left: 39%;
+    top: 41%;
+  }
+}
+@media (max-width: 767px) {
+  .intro .sprite.icon-large-play-orange {
+    background-position: -327px -524px;
+    width: 28px;
+    height: 27px;
+    left: 46%;
+    top: 47%;
+  }
+}
+.mediaCarousel .sprite.icon-large-play-orange {
+  left: 40%;
+  top: 30%;
+}
+.right-rail .sprite.icon-large-play-orange {
+  background-position: -327px -524px;
+  width: 28px;
+  height: 27px;
+  left: 72%;
+  top: 85%;
+}
+.sprite.icon-large-play-green {
+  background-position: -757px -120px;
+  width: 90px;
+  height: 90px;
+}
+.sprite.icon-large-play-blue {
+  background-position: -757px -257px;
+  width: 90px;
+  height: 90px;
+}
+/*Dark sprites*/
+.sprite.icon-download-blue {
+  background-position: -42px -716px;
+}
+.sprite.icon-audio-blue {
+  background-position: -114px -723px;
+}
+.sprite.icon-print-blue {
+  background-position: -188px -719px;
+}
+.sprite.icon-share-blue {
+  background-position: -259px -718px;
+}
+.findAProvider .sprite.icon-share-blue {
+  right: 0%;
+}
+.sprite.icon-download-grey {
+  background-position: -42px -568px;
+}
+.find-provider-form .sprite.icon-download-grey {
+  right: 0%;
+}
+.sprite.icon-download-dark {
+  background-position: -42px -666px;
+}
+.find-provider-form .sprite.icon-download-dark {
+  right: 0%;
+}
+.sprite.icon-audio-dark {
+  background-position: -115px -674px;
+}
+.sprite.icon-print-dark {
+  background-position: -189px -670px;
+}
+.sprite.icon-share-dark {
+  background-position: -260px -669px;
+}
+.sprite.icon-download-light {
+  background-position: -42px -617px;
+}
+.sprite.icon-audio-light {
+  background-position: -115px -624px;
+}
+.audio-container .sprite.icon-audio-light {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 57%;
+  top: 46%;
+  margin: -28px 0 0 -28px;
+}
+.media-carousel-mobile .audio-container .sprite.icon-audio-light {
+  top: 64%;
+}
+.sprite.icon-print-light {
+  background-position: -189px -621px;
+}
+.sprite.icon-share-light {
+  background-position: -260px -620px;
+}
+.sprite.icon-hours-dark {
+  background-position: -41px -374px;
+}
+.sprite.icon-contact-dark {
+  background-position: -115px -369px;
+}
+.sprite.icon-call-dark {
+  background-position: -191px -371px;
+  width: 18px;
+  height: 33px;
+}
+.sprite.icon-location-dark {
+  background-position: -259px -372px;
+}
+.sprite.icon-hours-light {
+  background-position: -41px -325px;
+}
+.sprite.icon-contact-light {
+  background-position: -115px -321px;
+}
+.sprite.icon-call-light {
+  background-position: -191px -321px;
+  width: 18px;
+  height: 33px;
+}
+.sprite.icon-location-light {
+  background-position: -259px -324px;
+}
+/*hospital locations*/
+.sprite-v2 {
+  width: 75px;
+  height: 75px;
+}
+.sprite-v2.icon-search {
+  background-position: -796px -47px;
+  width: 12px;
+  height: 17px;
+  /* Modified by German to fix Defect DE2595, it was height: 12px; */
+  margin: 10px 0 0 0;
+}
+.sprite-v2.icon-clinic {
+  background-position: -52px -154px;
+  width: 33px;
+  height: 67px;
+}
+.sprite-v2.icon-hospital {
+  background-position: -144px -171px;
+  width: 47px;
+  height: 53px;
+}
+.sprite-v2.icon-urgent-care {
+  background-position: -223px -171px;
+  width: 70px;
+  height: 53px;
+}
+.sprite-v2.icon-hospice {
+  background-position: -326px -162px;
+  width: 60px;
+  height: 62px;
+}
+.sprite-v2.icon-pharmacy {
+  background-position: -422px -171px;
+  width: 57px;
+  height: 54px;
+}
+.sprite-v2.icon-surgery {
+  background-position: -512px -161px;
+  width: 74px;
+  height: 63px;
+}
+.sprite-v2.icon-therapy {
+  background-position: -622px -155px;
+  width: 48px;
+  height: 70px;
+}
+.sprite-v2.icon-imaging {
+  background-position: -713px -168px;
+  width: 77px;
+  height: 56px;
+}
+.sprite-v2.icon-new-patients {
+  background-position: -54px -32px;
+  width: 117px;
+  height: 39px;
+}
+.sprite-v2.icon-clinic-dark {
+  background-position: -52px -264px;
+  width: 33px;
+  height: 67px;
+}
+.sprite-v2.icon-hospital-dark {
+  background-position: -144px -281px;
+  width: 47px;
+  height: 53px;
+}
+.sprite-v2.icon-urgent-care-dark {
+  background-position: -223px -281px;
+  width: 70px;
+  height: 53px;
+}
+.sprite-v2.icon-hospice-dark {
+  background-position: -326px -272px;
+  width: 60px;
+  height: 62px;
+}
+.sprite-v2.icon-pharmacy-dark {
+  background-position: -422px -281px;
+  width: 57px;
+  height: 54px;
+}
+.sprite-v2.icon-surgery-dark {
+  background-position: -512px -271px;
+  width: 74px;
+  height: 63px;
+}
+.sprite-v2.icon-therapy-dark {
+  background-position: -622px -265px;
+  width: 48px;
+  height: 70px;
+}
+.sprite-v2.icon-imaging-dark {
+  background-position: -713px -278px;
+  width: 77px;
+  height: 56px;
+}
+.sprite-v2.icon-new-patients-dark {
+  background-position: -54px -32px;
+  width: 117px;
+  height: 39px;
+}
+/*End of media icons*/
+.icons-dark-background {
+  background-color: #24509a;
+  color: #fff;
+}
+.test-icons span {
+  margin: 0 0 20px 0;
+  display: block !important;
+}
+.test-icons .icon-section {
+  padding: 10px;
+}
+.test-icons .icon-section div {
+  display: inline-block;
+  margin: 0 30px 20px 0;
+}

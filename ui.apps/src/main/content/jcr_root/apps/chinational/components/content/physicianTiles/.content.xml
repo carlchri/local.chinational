@@ -3,6 +3,6 @@
     cq:icon="viewList"
     jcr:description="To create a list of Physicians based on Directory Profile Template"
     jcr:primaryType="cq:Component"
-    jcr:title="Physician Tiles"
+    jcr:title="Profile Tiles or Carousel (Dynamic)"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>

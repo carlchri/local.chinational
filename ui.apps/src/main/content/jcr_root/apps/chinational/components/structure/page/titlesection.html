@@ -14,8 +14,8 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <div class="container" data-sly-test="${!properties.hidePageTitle}">
-    <div class="row">
-        <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
+    <div class="row  ${(properties.displayHero || properties.displayBreadcrumb || properties.displaySubnav) ?'':'padding-top-30'}">
+        <div class="${!properties.displayRightRail?'col-xs-12 col-md-12':'col-xs-12 col-md-8'}">
             <h1 class="large-blue-txt">${currentPage.pageTitle || currentPage.title}</h1>
         </div>
     </div>

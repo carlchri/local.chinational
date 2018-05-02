@@ -1,0 +1,153 @@
+
+
+.tales {
+	width: 100%;
+}
+
+.carousel-inner {
+	width: 100%;
+	max-height: 340px !important;
+}
+
+/*  ONLY DESKTOP */
+
+@media only screen and (min-width : 992px) {
+	.title-inner {
+		width: 90%;
+	}
+	
+	.intro-full {
+		height: 231px;
+	}
+	
+	.carousel-inner {
+		width: 100%;
+		max-height: 410px !important;
+	}
+	
+}
+
+/*  FOR TABLETS AND DESKTOP */
+
+@media only screen and (min-width : 768px) {
+	.carousel-inner {
+		width: 100%;
+		max-height: 360px !important;
+	}
+	
+	.intro-full {
+		height: 231px;
+	}
+	
+	.intro-title, .intro-short-title {
+		/*height: 360px !important;*/
+	}
+	
+	
+	
+	.intro-title .learn-more-btn, .intro-short-title .learn-more-btn {
+		margin-top: 17px;
+	}
+	
+	/* Added by German to fix page title band specifications */
+	
+	.intro .page-title-band {
+		max-height: 140px;
+		display: flex;
+		width: 100%;
+	}
+	
+	.intro .page-title-band h1 {
+		font-size: 30px;
+	}
+	
+	/* End of additions by German  */
+}
+
+
+/*  ONLY TABLETS */
+
+@media only screen and (min-width : 768px) 
+and (max-width : 992px ){
+	
+	.intro .page-title-band h1 {
+		font-size: 26px;
+		padding-right: 33px;
+		padding-left: 33px;
+	}
+}
+
+/*  ONLY MOBILES */
+
+@media ( max-width :767px) {
+	.carousel-inner {
+		width: 100%;
+		max-height: 600px !important;
+	}
+	
+	.intro-full {
+		height: 231px;
+	}
+	
+	.narrow-intro .title-inner {
+		width: 100%;
+	}
+	
+	.intro {
+		display: block;
+		max-height: inherit;
+	}
+
+	/* Added by German to fix page title band specifications */
+	
+	.intro .page-title-band {
+		margin: 0 auto 23px;
+		overflow: hidden;
+	}
+	
+	.page-title-band .intro-title, .intro-short-title {
+		min-height: 140px !important;   /* This is important because affects only page title brand pages */
+	}
+	
+	.intro .page-title-band h1 {
+		font-size: 36px;
+		padding-right: 33px;
+		padding-left: 33px;
+	}
+	
+	.intro .intro-short-img {
+		width: 100%;
+		float: none;
+		max-height: 140px;
+	}
+	
+	.intro .intro-short-title {
+		width: 100%;
+	}
+	
+	.intro .banner-short-curvo {
+		display: none;
+	}
+
+	/* End of additions by German  */
+	
+	
+	.intro-title {
+		padding: 30px;
+	}
+	
+	.intro-title, .intro-short-title {
+		min-height: 341px;
+		/* Modified by German for Hero Component in media-center_naresh.html, it was before -> height:444px !important; */
+	}
+	
+	.intro-title .learn-more-btn, .intro-short-title .learn-more-btn {
+		margin-top: 17px;
+	}
+	
+	.intro-caption-white {
+		font-size: 48px;
+		/* Modified by German for Hero Component in media-center_naresh.html, it was before -> font-size: 23px !important; */
+		margin-top: -114px;
+	}
+}

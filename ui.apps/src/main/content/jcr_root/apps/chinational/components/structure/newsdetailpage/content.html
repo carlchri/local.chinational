@@ -2,9 +2,9 @@
 <div class="row"  data-sly-test="${pageProperties.imageSrc}">
     <div class="col-sm-12">
         <div class="full-image">
-            <div class="video-inner">
+            <div>
                 <picture>
-                    <img src="${pageProperties.imageSrc}">
+                    <img class="image-responsive" src="${pageProperties.imageSrc}">
                 </picture>
             </div>
             <div class="padding-5" data-sly-test="${pageProperties.imageCaption}">
@@ -17,4 +17,5 @@
 <div data-sly-resource="${ @path='main-respgrid', resourceType='chinational/components/foundation/responsivegrid'}"></div>
 <div data-sly-test="${pageProperties.displayQuoteComponent}"
         data-sly-resource="${ @path='newstemp-quote', resourceType='chinational/components/composites/quoteAndImage'}"></div>
-<div data-sly-resource="${ @path='newstemp-tiles', resourceType='chinational/components/composites/dynamicTilesNewsListGlobal'}"></div>
+<div data-sly-test="${!pageProperties.hideDynamicComponent}" 
+		data-sly-resource="${ @path='newstemp-tiles', resourceType='chinational/components/composites/dynamicTilesNewsListGlobal'}"></div>

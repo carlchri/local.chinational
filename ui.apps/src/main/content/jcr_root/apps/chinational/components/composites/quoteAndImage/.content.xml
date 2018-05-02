@@ -2,6 +2,7 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     cq:icon="button"
     jcr:description="Display quote and an optional image"
+    jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
     jcr:title="Quote and Image"
     componentGroup="CHI General"/>
