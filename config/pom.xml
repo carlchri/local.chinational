@@ -23,17 +23,18 @@
     <parent>
         <groupId>com.chinational.aem</groupId>
         <artifactId>chi-national-mvp-market</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
+
     <artifactId>com.chinational.aem.config</artifactId>
     <packaging>content-package</packaging>
-
-    <name>CHI National MVP Market - Configurations</name>
+    <name>CHI National MVP Market  - Configurations</name>
+    <description>Configurations package for CHI National MVP Market </description>
 
     <build>
         <sourceDirectory>src/content/jcr_root</sourceDirectory>

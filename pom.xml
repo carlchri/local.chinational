@@ -19,7 +19,7 @@
     <groupId>com.chinational.aem</groupId>
     <artifactId>chi-national-mvp-market</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>CHI National MVP Market</name>
     <description>CHI National, MVP and Market assets</description>
@@ -123,13 +123,6 @@
                         <exclude>**/pom.xml</exclude>
                     </excludes>
                     <group>chinational/aem6</group>
-                    <!--dependencies>
-                        <dependency>
-                            <group>day/cq60/product</group>
-                            <name>cq-platform-content</name>
-                            <version>[1.3.248,)</version>
-                        </dependency>
-                    </dependencies-->
                 </configuration>
             </plugin>
             <!-- Maven Enforcer Plugin -->
@@ -285,11 +278,13 @@
                 <plugin>
                     <groupId>com.day.jcr.vault</groupId>
                     <artifactId>content-package-maven-plugin</artifactId>
-                    <version>0.0.24</version>
+                    <version>1.0.2</version>
                     <configuration>
                         <targetURL>http://${aem.host}:${aem.port}${aem.contextPath}/crx/packmgr/service.jsp</targetURL>
                         <failOnError>true</failOnError>
-                        <failOnMissingEmbed>true</failOnMissingEmbed>
+                        <userId>${vault.user}</userId>
+                        <userId>${vault.password}</userId>
+                        <maxUploadAttemps>3</maxUploadAttemps>
                     </configuration>
                 </plugin>
                 <!-- Apache Felix Bundle Plugin -->

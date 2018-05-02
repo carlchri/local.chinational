@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.chinational.aem</groupId>
         <artifactId>chi-national-mvp-market</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -102,23 +102,6 @@
             <plugin>
                 <groupId>com.day.jcr.vault</groupId>
                 <artifactId>content-package-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <filterSource>${basedir}/META-INF/vault/filter.xml</filterSource>
-                    <verbose>true</verbose>
-                    <failOnError>true</failOnError>
-                    <group>chinational/aem6</group>
-                    <properties>
-                        <acHandling>merge_preserve</acHandling>
-                    </properties>
-                    <dependencies>
-                        <dependency>
-                            <group>chinational/aem6</group>
-                            <name>com.chinational.aem.ui.apps</name>
-                            <version>[0.0.1,)</version>
-                        </dependency>
-                    </dependencies>
-                </configuration>
             </plugin>
         </plugins>
     </build>

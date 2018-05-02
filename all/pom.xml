@@ -24,7 +24,7 @@
     <parent>
         <groupId>com.chinational.aem</groupId>
         <artifactId>chi-national-mvp-market</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -32,7 +32,7 @@
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
     <artifactId>com.chinational.aem.all</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>content-package</packaging>
     <name>CHI National MVP Market - All</name>
     <description>Combined package for CHI National MVP Market</description>
@@ -47,6 +47,7 @@
                 <configuration>
                     <showImportPackageReport>false</showImportPackageReport>
                     <embeddedTarget>/apps/chinational/install</embeddedTarget>
+                    <group>chinational</group>
                     <embeddeds>
                         <embedded>
                             <groupId>com.chinational.aem</groupId>
@@ -76,53 +77,7 @@
         </plugins>
     </build>
 
-    <!--build>
-        <plugins>
-            <plugin>
-                <groupId>com.day.jcr.vault</groupId>
-                <artifactId>content-package-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <failOnError>true</failOnError>
-                    <group>chinational</group>
-                    <failOnMissingEmbed>true</failOnMissingEmbed>
-                    <embeddeds>
-                        <embedded>
-                            <groupId>com.chinational.aem</groupId>
-                            <artifactId>com.chinational.aem.core</artifactId>
-                            <target>/apps/chinational/install</target>
-                            <filter>true</filter>
-                        </embedded>
-                    </embeddeds>
-                    <subPackages>
-                        <subPackage>
-                            <groupId>com.chinational.aem</groupId>
-                            <artifactId>com.chinational.aem.ui.apps</artifactId>
-                            <filter>true</filter>
-                        </subPackage>
-                        <subPackage>
-                            <groupId>com.chinational.aem</groupId>
-                            <artifactId>com.chinational.aem.config</artifactId>
-                            <filter>true</filter>
-                        </subPackage>
-                    </subPackages>
-                    <dependencies>
-                        <dependency>
-                            <group>day/cq60/product</group>
-                            <name>cq-content</name>
-                            <version>[6.3.0,)</version>
-                        </dependency>
-                        <dependency>
-                            <group>adobe/cq60</group>
-                            <name>core.wcm.components.all</name>
-                            <version>[1.0.0,)</version>
-                        </dependency>
-                    </dependencies>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build-->
+
 
     <profiles>
         <profile>
@@ -164,7 +119,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.chinational.aem.</groupId>
+            <groupId>com.chinational.aem</groupId>
             <artifactId>com.chinational.aem.config</artifactId>
             <type>zip</type>
             <version>${project.version}</version>

@@ -15,9 +15,8 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <workspaceFilter version="1.0">
-    <filter root="/apps/chinational/config"/>
-    <filter root="/apps/chinational/config/rewriter"/>
-    <filter root="/apps/chinational/config.author"/>
-    <filter root="/apps/chinational/config.publish"/>
-        <filter root="/apps/chinational/config.publish.prod"/>
+    <filter root="/apps/chinational">
+        <exclude pattern="/apps/chinational(/.*)?"/>
+        <include pattern="/apps/chinational/config(/.*)?"/>
+    </filter>
 </workspaceFilter>
