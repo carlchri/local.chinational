@@ -90,7 +90,7 @@
         $(this).css('cursor', 'pointer');
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
-            console.log("Video was clicked");       
+            //console.log("Video was clicked");
             var videoUrl = $(this).attr("video-url");
             var videoIframe = mountEmbedLink(videoUrl);
 
