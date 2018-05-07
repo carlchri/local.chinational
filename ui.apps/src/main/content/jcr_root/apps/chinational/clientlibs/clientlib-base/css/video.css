@@ -7,6 +7,24 @@
 	margin: 0 0 15px 0;
 }
 
+/* Naresh: Added to create hover over opacity for video images, as all video images are clicable to poup video*/
+.video img:hover {
+	opacity: .55;
+	filter: alpha(opacity=55);
+}
+
+/* Naresh: Added to get both image and play icon go to opacity .55 together */
+.video .video-button-small:hover {
+	opacity: .55;
+	filter: alpha(opacity=55);
+}
+
+/* Naresh: if carousel item is hidden, we don't need hover over effect*/
+.lastActiveItem .video img:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
 .embeded-video {
 	padding-bottom: 30px;
 }
