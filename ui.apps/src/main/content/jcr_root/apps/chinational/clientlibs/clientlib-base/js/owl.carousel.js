@@ -1383,7 +1383,7 @@
 			$(new Image()).one('load', $.proxy(function(e) {
 				element.attr('src', e.target.src);
 				// Naresh - don't set opacity for image here, let hover over decide that (as per business requirements)
-				element.css('opacity', 1);
+				//element.css('opacity', 1);
 				this.leave('pre-loading');
 				!this.is('pre-loading') && !this.is('initializing') && this.refresh();
 			}, this)).attr('src', element.attr('src') || element.attr('data-src') || element.attr('data-src-retina'));

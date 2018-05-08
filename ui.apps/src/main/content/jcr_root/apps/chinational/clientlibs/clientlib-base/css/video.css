@@ -7,22 +7,45 @@
 	margin: 0 0 15px 0;
 }
 
-/* Naresh: Added to create hover over opacity for video images, as all video images are clicable to poup video*/
-.video img:hover {
+/* Naresh: Added to create hover over opacity for video images, as all video images are clicable to poup video
+   This gets doubled when a link also has its hover, as well has video video popup. kepe one
+*/
+.video .link-wrapper img:hover {
 	opacity: .55;
 	filter: alpha(opacity=55);
 }
 
-/* Naresh: Added to get both image and play icon go to opacity .55 together */
-.video .video-button-small:hover {
+.sub-Thumbs .video .video_popup img:hover {
 	opacity: .55;
 	filter: alpha(opacity=55);
 }
+
+
+/* Naresh: Added to get both image and play icon go to opacity .55 together
+   Agains, this gets doubled due to a hover
+*/
+.video .video_popup:hover {
+	opacity: .55;
+	filter: alpha(opacity=55);
+}
+
 
 /* Naresh: if carousel item is hidden, we don't need hover over effect*/
 .lastActiveItem .video img:hover {
 	opacity: 1;
 	filter: alpha(opacity=100);
+}
+
+.video-button-small {
+	width: 38px;
+	height: 38px;
+}
+
+.video-button:hover, .video-button-small:hover {
+	background-color: #fff;
+	color: #f2a900;
+	/*opacity: .55;
+	filter: alpha(opacity=55); TODO - Check what this does?*/
 }
 
 .embeded-video {
@@ -116,62 +139,7 @@
 	padding: 0 25px;
 }
 
-/*.video-button, .video-button-small {
-	width: 90px;
-	height: 90px;
-	background-color: #f2a900;
-	border-radius: 100px;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-	text-align: center;
-	color: #fff;
-	display: flex;
-	justify-content: center;
-	transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-webkit-transition: all 0.2s ease-in-out;
-	font-size: 34px;
-}*/
 
-.video-button-small {
-	width: 38px;
-	height: 38px;
-}
-
-.video-button:hover, .video-button-small:hover {
-	background-color: #fff;
-	color: #f2a900;
-	opacity: .55;
-	filter: alpha(opacity=55);
-}
-
-/*.icon-play, .icon-play-small {
-	background: #fff;
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
-	margin: auto;
-}*/
-
-/*.icon-play-small {
-	background-color: transparent;
-	width: 0;
-	height: 10px;
-	border-style: solid;
-	border-width: 9px;
-	border-color: transparent transparent transparent #fff;
-	margin: 10px 0 0 16px;
-}*/
 
 @media ( min-width : 992px) {
 	.right-rail {
