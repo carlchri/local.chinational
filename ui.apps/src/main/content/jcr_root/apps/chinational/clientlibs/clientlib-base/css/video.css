@@ -7,34 +7,6 @@
 	margin: 0 0 15px 0;
 }
 
-/* Naresh: Added to create hover over opacity for video images, as all video images are clicable to poup video
-   This gets doubled when a link also has its hover, as well has video video popup. kepe one
-*/
-.video .link-wrapper img:hover {
-	opacity: .55;
-	filter: alpha(opacity=55);
-}
-
-.sub-Thumbs .video .video_popup img:hover {
-	opacity: .55;
-	filter: alpha(opacity=55);
-}
-
-
-/* Naresh: Added to get both image and play icon go to opacity .55 together
-   Agains, this gets doubled due to a hover
-*/
-.video .video_popup:hover {
-	opacity: .55;
-	filter: alpha(opacity=55);
-}
-
-
-/* Naresh: if carousel item is hidden, we don't need hover over effect*/
-.lastActiveItem .video img:hover {
-	opacity: 1;
-	filter: alpha(opacity=100);
-}
 
 .video-button-small {
 	width: 38px;
@@ -45,7 +17,11 @@
 	background-color: #fff;
 	color: #f2a900;
 	/*opacity: .55;
-	filter: alpha(opacity=55); TODO - Check what this does?*/
+	filter: alpha(opacity=55);  TODO - do we still need as jquery is changing hover opacity now*/
+}
+
+.video img:hover {
+	opacity: 1; /* Added ny Naresh - no need to create opacity for image, even with hover*/
 }
 
 .embeded-video {

@@ -950,6 +950,15 @@ button i:hover {
 }
 /* EOF -  DE2507 - Set hover state to icons for IE -sbrown */
 
+/* Naresh - we don't need hover over in video, even under a link*/
+.video a:hover{
+    opacity: 1;
+}
+
+/* Naresh - We want to get opacity when someone hover overs video, but not double it when hovering over play icon*/
+.video a i:hover{
+    opacity: unset;
+}
 
 /* Naresh added opacity for link under logo*/
 

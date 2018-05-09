@@ -9,7 +9,7 @@
         }
 
         var settings = $.extend({
-            autoplay: false,
+            autoplay: true,
             showControls: true,
             controlsColor: null,
             loopVideo: false,
@@ -88,6 +88,15 @@
         }
 
         $(this).css('cursor', 'pointer');
+
+         /*$(this).hover(function () {
+               // Naresh: add hover for play icon, when someone hovers the whole video popup div, which has the image
+               $( this ).find( "i" ).css( 'opacity', 0.55 );
+           }, function () {
+             // Naresh: When hover exist, restore back the opacity
+             $( this ).find( "i" ).css( 'opacity', 1 );
+         });*/
+
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
             //console.log("Video was clicked");
@@ -125,6 +134,13 @@
 $(function(){
 		// $("#video").videoPopup();
         $(".video").videoPopup();
+        $(".video_popup").hover(function () {
+               // Naresh: add hover for play icon, when someone hovers the whole video popup div, which has the image
+               $( this ).find( "i" ).css( 'opacity', 0.55 );
+           }, function () {
+             // Naresh: When hover exist, restore back the opacity
+             $( this ).find( "i" ).css( 'opacity', 1 );
+        });
 });
 
 
