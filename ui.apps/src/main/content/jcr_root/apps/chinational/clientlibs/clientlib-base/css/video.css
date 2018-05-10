@@ -20,8 +20,9 @@
 	filter: alpha(opacity=55);  TODO - do we still need as jquery is changing hover opacity now*/
 }
 
-.video img:hover {
-	opacity: 1; /* Added ny Naresh - no need to create opacity for image, even with hover*/
+/* Redudant ? .video img:hover*/
+.video_popup img:hover {
+	opacity: 1; /* Added by Naresh - no need to create opacity for image, even with hover*/
 }
 
 .embeded-video {
