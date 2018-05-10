@@ -100,8 +100,8 @@
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
             //console.log("Video was clicked");
-            if (!$(this).parents(".fullOpacity").length) {
-                //console.log("Video was clicked without fullOpacity, lets return");
+            if ($(this).parents(".media-carousel").length && !$(this).parents(".fullOpacity").length) {
+                //console.log("Video was clicked without fullOpacity for media-carousel, lets return");
                 return;
             }
             var videoUrl = $(this).attr("video-url");
