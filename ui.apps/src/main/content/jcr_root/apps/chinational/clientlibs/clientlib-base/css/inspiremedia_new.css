@@ -299,15 +299,17 @@
     margin-top: 22px;
 }
 
-.mediaCarousel .link-wrapper {
+/* Naresh - changed media craousel HTML and we need to use icon-play-orange class and no link-wrapper*/
+
+.mediaCarousel .icon-play-orange {
     display: none;
 }
 
-.mediaCarousel .media-carousel-mobile .link-wrapper {
+.mediaCarousel .media-carousel-mobile .icon-play-orange {
     display: inline-block;
 }
 
-.mediaCarousel .fullOpacity .link-wrapper {
+.mediaCarousel .fullOpacity .icon-play-orange {
     display: inline-block;
 }
 
@@ -327,7 +329,6 @@
     display: none;
 }
 
-/* Naresh - changed media craousel HTML and we need to use icon-play-orange class and no link-wrapper*/
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .icon-play-orange {
     display: none;
 }

@@ -100,8 +100,8 @@
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
             //console.log("Video was clicked");
-            if ($(this).parents(".lastActiveItem").length) {
-                //console.log("lastActiveItem Video was clicked, lets return");
+            if (!$(this).parents(".fullOpacity").length) {
+                //console.log("Video was clicked without fullOpacity, lets return");
                 return;
             }
             var videoUrl = $(this).attr("video-url");
