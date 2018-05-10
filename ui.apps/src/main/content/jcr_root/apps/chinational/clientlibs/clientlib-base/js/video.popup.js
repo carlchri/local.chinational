@@ -34,7 +34,8 @@
                         showinfo: settings.showVideoInformations,
                     }
 
-                    Object.assign(youtubeOptions, settings.customOptions);
+                    // we are not using any custom options, and this line throws error in IE 11
+                    //Object.assign(youtubeOptions, settings.customOptions);
                     
                     return "https://www.youtube.com/embed/"+videoCode+"/?"+$.param(youtubeOptions);
                 }
@@ -54,7 +55,8 @@
                         title: settings.showVideoInformations,
                     }
 
-                    Object.assign(vimeoOptions, settings.customOptions);
+                    // we are not using any custom options, and this line throws error in IE 11
+                    //Object.assign(vimeoOptions, settings.customOptions);
                     
                     return "https://player.vimeo.com/video/"+videoCode+"/?"+$.param(vimeoOptions);
                 }
@@ -136,7 +138,6 @@
 }(jQuery));
 
 $(function(){
-		// $("#video").videoPopup();
         $(".video").videoPopup();
         $(".video_popup").hover(function () {
                // Naresh: add hover for play icon, when someone hovers the whole video popup div, which has the image
