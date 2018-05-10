@@ -103,7 +103,7 @@
   width: 28px;
   height: 28px;
   left: 57%;
-  top: 60%;
+  top: 50%;
   margin: -12% 0 0 -10%;
 }
 .video-container .sprite.icon-play-orange {
@@ -111,7 +111,7 @@
   width: 28px;
   height: 28px;
   left: 57%;
-  top: 60%;
+  top: 50%;
   margin: -28px 0 0 -28px;
 }
 .sprite.icon-play-green {

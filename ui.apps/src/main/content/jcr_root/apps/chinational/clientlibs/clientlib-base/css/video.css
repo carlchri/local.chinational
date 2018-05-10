@@ -16,6 +16,7 @@
 .video-button:hover, .video-button-small:hover {
 	background-color: #fff;
 	color: #f2a900;
+	opacity: 1;
 	/*opacity: .55;
 	filter: alpha(opacity=55);  TODO - do we still need as jquery is changing hover opacity now*/
 }

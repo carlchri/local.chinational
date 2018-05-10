@@ -9,7 +9,7 @@
         }
 
         var settings = $.extend({
-            autoplay: true,
+            autoplay: 1,
             showControls: true,
             controlsColor: null,
             loopVideo: false,
@@ -100,6 +100,10 @@
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
             //console.log("Video was clicked");
+            if ($(this).parents(".lastActiveItem").length) {
+                //console.log("lastActiveItem Video was clicked, lets return");
+                return;
+            }
             var videoUrl = $(this).attr("video-url");
             var videoIframe = mountEmbedLink(videoUrl);
 
