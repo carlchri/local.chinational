@@ -2,14 +2,14 @@
 <div class="intro-img">
     <span class="banner-curvo"
           style="background-color: ${properties.backgroundColor @ context='styleToken'};"></span>
-    <div class="link-wrapper">
-    <a class="video-button video_popup" id="video" video-url="${hero.videoUrl}">
-        <i class="sprite small-icons icon-large-play-orange"></i>
+    <a class="video-button video_popup" id="video" video-url="${hero.videoUrl}" style="cursor: pointer;">
+        <!--div class="link-wrapper"-->
+            <i class="sprite small-icons icon-large-play-orange"></i>
+        <!--/div-->
+        <picture>
+            <img src="${hero.imageUrl}">
+        </picture>
     </a>
-    </div>
-    <picture>
-        <img src="${hero.imageUrl}">
-    </picture>
 </div>
 <div class="intro-title"
      style="background-color: ${properties.backgroundColor @ context='styleToken'};">

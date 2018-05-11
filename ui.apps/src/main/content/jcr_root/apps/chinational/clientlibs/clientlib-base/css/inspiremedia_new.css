@@ -1,10 +1,4 @@
-/*Popup Styles*/
 
-
-/* Modal Content */
-
-
-/* End Of Popup Styles*/
 
 .mediaCarousel .video-container {
     overflow: hidden;
@@ -305,15 +299,17 @@
     margin-top: 22px;
 }
 
-.mediaCarousel .link-wrapper {
+/* Naresh - changed media craousel HTML and we need to use icon-play-orange class and no link-wrapper*/
+
+.mediaCarousel .icon-play-orange {
     display: none;
 }
 
-.mediaCarousel .media-carousel-mobile .link-wrapper {
+.mediaCarousel .media-carousel-mobile .icon-play-orange {
     display: inline-block;
 }
 
-.mediaCarousel .fullOpacity .link-wrapper {
+.mediaCarousel .fullOpacity .icon-play-orange {
     display: inline-block;
 }
 
@@ -332,11 +328,24 @@
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .audio-player-button i {
     display: none;
 }
-.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .link-wrapper {
+
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .icon-play-orange {
     display: none;
 }
 
-.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .link-wrapper {
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  a {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Naresh: could be used for media carousel
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}*/
+
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .icon-play-orange {
     display: inline-block; 
 } /* Set to show for 5th carousel item in desktop when there are only 5 or less slides */
 
@@ -348,7 +357,7 @@
     display: none;
 }
 
-.mediaCarousel .owl-stage .owl-item.active.forthActiveItem.lastActiveItem  .link-wrapper i {
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem.lastActiveItem  .icon-play-orange i {
     display: none;
 }
 

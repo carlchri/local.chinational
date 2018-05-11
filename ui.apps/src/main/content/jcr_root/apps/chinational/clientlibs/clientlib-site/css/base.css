@@ -55,6 +55,8 @@
 }
 
 .bottom-buffer-gray-line {
+    margin-top: 0px;
+    /* Added by Naresh, as hr has margin top 20px, but we don't need that*/
     margin-bottom: 30px;
     /* Added by German for content-details_RR.html */
 }
@@ -64,6 +66,9 @@
     /* Added by German */
     margin-right: calc(-8.7vw / 2);
     /* Added by German */
+    /* Added by Naresh, as line height and font size was adding 20px to the row, and bottom buffer already adds 30 px*/
+    line-height: 0px;
+    font-size: 0;
 }
 
 .full-bleed-tiles {
@@ -78,6 +83,9 @@
     /* Added by German for content-details_RR.html */
     margin-right: .1%;
     /* Added by German for content-details_RR.html */
+    /* Added by Naresh, as line height and font size was adding 20px to the row, and bottom buffer already adds 30 px*/
+    line-height: 0px;
+    font-size: 0;
 }
 
 .gray-margin-top {
@@ -929,6 +937,7 @@ a {
     font-weight: bold;
 }
 
+
 a:hover,
 button:hover {
     text-decoration: none;
@@ -942,6 +951,15 @@ button i:hover {
 }
 /* EOF -  DE2507 - Set hover state to icons for IE -sbrown */
 
+/* Naresh - we don't need hover over in video, even under a link, and same for video in hero component*/
+.intro_img a:hover, .video a:hover{
+    opacity: 1;
+}
+
+/* Naresh - We want to get opacity when someone hover overs video, but not double it when hovering over play icon*/
+.intro_img a i:hover, .video a i:hover{
+    opacity: unset;
+}
 
 /* Naresh added opacity for link under logo*/
 

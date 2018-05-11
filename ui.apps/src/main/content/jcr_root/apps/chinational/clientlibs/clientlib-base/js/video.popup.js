@@ -9,7 +9,7 @@
         }
 
         var settings = $.extend({
-            autoplay: false,
+            autoplay: 1,
             showControls: true,
             controlsColor: null,
             loopVideo: false,
@@ -34,7 +34,8 @@
                         showinfo: settings.showVideoInformations,
                     }
 
-                    Object.assign(youtubeOptions, settings.customOptions);
+                    // we are not using any custom options, and this line throws error in IE 11
+                    //Object.assign(youtubeOptions, settings.customOptions);
                     
                     return "https://www.youtube.com/embed/"+videoCode+"/?"+$.param(youtubeOptions);
                 }
@@ -54,7 +55,8 @@
                         title: settings.showVideoInformations,
                     }
 
-                    Object.assign(vimeoOptions, settings.customOptions);
+                    // we are not using any custom options, and this line throws error in IE 11
+                    //Object.assign(vimeoOptions, settings.customOptions);
                     
                     return "https://player.vimeo.com/video/"+videoCode+"/?"+$.param(vimeoOptions);
                 }
@@ -88,9 +90,22 @@
         }
 
         $(this).css('cursor', 'pointer');
+
+         /*$(this).hover(function () {
+               // Naresh: add hover for play icon, when someone hovers the whole video popup div, which has the image
+               $( this ).find( "i" ).css( 'opacity', 0.55 );
+           }, function () {
+             // Naresh: When hover exist, restore back the opacity
+             $( this ).find( "i" ).css( 'opacity', 1 );
+         });*/
+
         $(document).on('click', '.video_popup', function (event) {
             event.preventDefault();
-            console.log("Video was clicked");       
+            //console.log("Video was clicked");
+            if ($(this).parents(".media-carousel").length && !$(this).parents(".fullOpacity").length) {
+                //console.log("Video was clicked without fullOpacity for media-carousel, lets return");
+                return;
+            }
             var videoUrl = $(this).attr("video-url");
             var videoIframe = mountEmbedLink(videoUrl);
 
@@ -123,8 +138,14 @@
 }(jQuery));
 
 $(function(){
-		// $("#video").videoPopup();
         $(".video").videoPopup();
+        $(".video_popup").hover(function () {
+               // Naresh: add hover for play icon, when someone hovers the whole video popup div, which has the image
+               $( this ).find( "i" ).css( 'opacity', 0.55 );
+           }, function () {
+             // Naresh: When hover exist, restore back the opacity
+             $( this ).find( "i" ).css( 'opacity', 1 );
+        });
 });
 
 
