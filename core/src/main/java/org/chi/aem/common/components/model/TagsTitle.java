@@ -24,10 +24,12 @@ public class TagsTitle extends WCMUsePojo {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(TagsTitle.class);
 
-	private String tagsDesc = "";
+	private String tagNames = "";
+	private String tagDescriptions = "";
 	
     @Override
     public void activate() throws Exception {
+    	// TODO - do we need toi get system resolved for this, seems like its not working in publish
 		Tag[] tags = null;
     	ResourceResolver resourceResolver = getResourceResolver();
         Resource resource = getResource();
@@ -40,20 +42,42 @@ public class TagsTitle extends WCMUsePojo {
 	    if(tags.length !=0){
 		   	 for(Tag tag : tags){
 		   		String tagName = tag.getTitle();
-		   		// LOGGER.info("Tag Title: " + tagName);
-		   		if(!tagsDesc.isEmpty()){
-		   			tagsDesc += ", " + tagName;
+		   		String tagDescription = tag.getDescription();
+		   		LOGGER.debug("Tag Title: " + tagName);
+				LOGGER.debug("Tag Description: " + tagDescription);
+				// TODO - create link for tags, when clicked on, will take user back to main blog/news page
+				// and display blog marked only for that tag.
+				tagNames = addOrUpdate(tagName, tagNames) ;
+				tagDescriptions = addOrUpdate(tagDescription, tagDescriptions) ;
+		   		/*if(!tagName.isEmpty()){
+					tagNames += ", " + tagName;
 		   		}else{
-		   			tagsDesc = tagName;
-		   		}
+					tagNames = tagName;
+		   		}*/
 		   	 }
 	    }
-   		// LOGGER.info("tagDesc: " + tagsDesc);
+   		LOGGER.debug("tagNames: " + tagNames);
+		LOGGER.debug("tagDescriptions: " + tagDescriptions);
     }
 
-    public String getTagsDesc() {
-        return tagsDesc;
+    private String addOrUpdate(String input, String existingValue) {
+		LOGGER.debug("addOrUpdate value: " + existingValue);
+		if(!existingValue.isEmpty()){
+			existingValue += ", " + input;
+		}else{
+			existingValue = input;
+		}
+		LOGGER.debug("addOrUpdate new value: " + existingValue);
+		return existingValue;
+	}
+
+    public String getTagName() {
+        return tagNames;
     }
+
+	public String getTagDescription() {
+		return tagDescriptions;
+	}
 
 
 }
