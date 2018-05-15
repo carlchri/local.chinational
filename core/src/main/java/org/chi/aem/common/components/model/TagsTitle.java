@@ -4,6 +4,8 @@
 
 package org.chi.aem.common.components.model;
 
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,23 +21,43 @@ import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 
+import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class TagsTitle extends WCMUsePojo {
 
+    //@Inject is not working in WCMUsePojo, hence using SlingScripthandler to get service
+    ResourceResolverFactoryService resourceResolverFactoryService;
+
     public static final Logger LOGGER = LoggerFactory.getLogger(TagsTitle.class);
+
+    ResourceResolverFactory resourceResolverFactory;
+    ResourceResolver resourceResolver;
 
 	private String tagNames = "";
 	private String tagDescriptions = "";
 	
     @Override
     public void activate() throws Exception {
-    	// TODO - do we need toi get system resolved for this, seems like its not working in publish
+    	// We need to use system resolver for getting tags, else its not working in publish
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
+        try {
+            resourceResolverFactoryService= getSlingScriptHelper().getService(ResourceResolverFactoryService.class);
+			if (resourceResolverFactoryService != null)
+            	resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
+            if (resourceResolverFactory != null)
+            	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
+        }
+        catch(Exception e)
+        {
+            LOGGER.error("Exception to get resource resolver:", e);
+        }
 		Tag[] tags = null;
-    	ResourceResolver resourceResolver = getResourceResolver();
-        Resource resource = getResource();
-        // LOGGER.info("Resource: " + resource.getPath());
         Page page = getCurrentPage();
-        if(page != null){
+        if(page != null && resourceResolver != null){
 	        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
 	    	tags = tagManager.getTagsForSubtree(page.adaptTo(Resource.class), false);
         }
@@ -49,11 +71,6 @@ public class TagsTitle extends WCMUsePojo {
 				// and display blog marked only for that tag.
 				tagNames = addOrUpdate(tagName, tagNames) ;
 				tagDescriptions = addOrUpdate(tagDescription, tagDescriptions) ;
-		   		/*if(!tagName.isEmpty()){
-					tagNames += ", " + tagName;
-		   		}else{
-					tagNames = tagName;
-		   		}*/
 		   	 }
 	    }
    		LOGGER.debug("tagNames: " + tagNames);
