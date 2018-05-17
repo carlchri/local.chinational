@@ -122,6 +122,99 @@
                                     </column>
                                 </items>
                             </mainTab>
+                            <buttonTab
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Button Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <buttonSelection
+                                                        granite:class="cq-dialog-dropdown-showhide"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Choose from dropdown to enable or disable button [disabled by default]"
+                                                        name="./selectButton">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <buttonNotRequired
+                                                                jcr:primaryType="nt:unstructured"
+                                                                selected="{Boolean}true"
+                                                                text="Disable Button"
+                                                                value="buttonNotRequired"/>
+                                                            <buttonRequired
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Enable Button"
+                                                                value="buttonRequired"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".list-option-button-showhide-target"/>
+                                                    </buttonSelection>
+                                                    <buttonHeading
+                                                        granite:class="hide list-option-button-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}4"
+                                                        text="Button Text">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="buttonRequired"/>
+                                                    </buttonHeading>
+                                                    <buttonText
+                                                        granite:class="list-option-button-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        emptyText="SEE ALL NEWS"
+                                                        name="./linkText">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="buttonRequired"/>
+                                                    </buttonText>
+                                                    <linkUrlHeading
+                                                        granite:class="hide list-option-button-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}4"
+                                                        text="Link URL [Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com]">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="buttonRequired"/>
+                                                    </linkUrlHeading>
+                                                    <linkUrl
+                                                        granite:class="list-option-button-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        name="./linkUrl"
+                                                        rootPath="/content">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="buttonRequired"/>
+                                                    </linkUrl>
+                                                    <target
+                                                        granite:class="list-option-button-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        name="./targetBlank"
+                                                        text="Select to Open Link in New Window"
+                                                        uncheckedValue="false"
+                                                        value="true">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="buttonRequired"/>
+                                                    </target>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </buttonTab>
                             <greyBarTab
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/include"
