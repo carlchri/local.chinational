@@ -113,6 +113,22 @@
                                                         text="Select to enable image [By Default, Video]"
                                                         uncheckedValue="false"
                                                         value="true"/>
+                                                    <buttonUnderText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under text."
+                                                            name="./buttonUnderText"
+                                                            text="Select to enable button under text"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+                                                    <buttonUnderImage
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under video/image."
+                                                            name="./buttonUnderImage"
+                                                            text="Select to enable button under video/image (optional - if image/video is displayed)"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
                                                 </items>
                                             </well>
                                         </items>
