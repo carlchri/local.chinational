@@ -74,3 +74,10 @@
 }
 
 /* End of additions by German for Defects DE2691 and DE2612 */
+
+@media  (max-width:1024px ) {
+    /* put padding for content band button, when it is used in  tablet/mobile and column flows to the top  */
+    .contentBand .row .col-md-6:first-child {
+        padding-bottom: 20px;
+    }
+}
