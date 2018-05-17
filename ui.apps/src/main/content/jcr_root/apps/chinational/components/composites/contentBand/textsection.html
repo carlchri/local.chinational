@@ -1,5 +1,6 @@
 <!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ 05/16/2018 - creating separate file for text portion of HTML, which is reused in three files
+  ~ 05/17/2018 - Adding padding of 18 px on button top when visible
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 
 <h3 data-sly-test="${properties.contentBandHeading}">${properties.contentBandHeading}</h3>
@@ -9,7 +10,7 @@
 	<div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
 	</div>
 </div>
-<div class="link-wrapper"
+<div class="link-wrapper padding_top_18"
 	 data-sly-resource="${'cbtextbutton' @ resourceType='chinational/components/content/button'}"
 	 data-sly-test="${properties.buttonUnderText}">
 </div>

@@ -126,7 +126,7 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                             fieldDescription="Select this optional checkbox to enable button under video/image."
                                                             name="./buttonUnderImage"
-                                                            text="Select to enable button under video/image (optional - if image/video is displayed)"
+                                                            text="Select to enable button under video/image (only if video/image is displayed)"
                                                             uncheckedValue="false"
                                                             value="true"/>
                                                 </items>
