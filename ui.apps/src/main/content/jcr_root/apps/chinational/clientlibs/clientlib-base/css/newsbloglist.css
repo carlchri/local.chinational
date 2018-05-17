@@ -8,9 +8,23 @@
 #search_blogs_year,
 #search_news_list, 
 #search_news_year {
-	-webkit-appearance:menulist; 
+	-webkit-appearance:menulist;
+	-moz-appearance:menulist; 
 	background-color:#E6FFFF;
 	width:60%;
+}
+
+.news_blog_list_heading {
+	color:#426DA9;
+	display:block;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.news_blog_featured_heading {
+	display:block;
+	margin-top:0px;
+	margin-bottom:0px;
 }
 
 /* added to fix two arrow issue with dropdown in IE11 */
