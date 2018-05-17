@@ -1,9 +1,9 @@
 <template data-sly-template.item="${@ list, item}">
     <article>
         <a href="${item.path @ extension='html'}">
-            <h3><span class="txt-green blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span></h3>
+            <h4 class="news_blog_list_heading"><span class="blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span></h4>
         </a>
-        <span class="txt-green" 
+        <span class="news_blog_list_heading" 
               data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
                  ${formatter.formattedDate}
         </span>
