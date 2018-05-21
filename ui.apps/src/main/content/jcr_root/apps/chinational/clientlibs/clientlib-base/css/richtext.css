@@ -81,3 +81,19 @@
         padding-bottom: 20px;
     }
 }
+
+/* CSS overrides for rich text under full bleed tile*/
+.full-bleed .cmp-text ol li::before {
+    color: #fff;
+}
+
+.full-bleed .cmp-text ul li::before {
+	color: #fff;
+}
+
+.full-bleed .cmp-text a ,
+.full-bleed .cmp-text a:visited,
+.full-bleed .cmp-text a:focus{
+	color: #fff;
+	text-decoration: underline;
+}
