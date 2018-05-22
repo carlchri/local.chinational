@@ -125,16 +125,13 @@
                                                             fieldLabel="Enter content details here"
                                                             name="./contentDetail">
                                                         <rtePlugins jcr:primaryType="nt:unstructured">
-                                                            <subsuperscript
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    features="*"/>
                                                             <format
                                                                     jcr:primaryType="nt:unstructured"
                                                                     features="*"/>
                                                             <justify
                                                                     jcr:primaryType="nt:unstructured"
                                                                     features="*"/>
-                                                            <spellcheck
+                                                            <misctools
                                                                     jcr:primaryType="nt:unstructured"
                                                                     features="*"/>
                                                         </rtePlugins>
