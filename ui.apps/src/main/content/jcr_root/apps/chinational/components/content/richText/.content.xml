@@ -6,5 +6,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Rich Text"
     sling:resourceSuperType="core/wcm/components/text/v2/text"
-    componentGroup="CHI General"
-    designDialogPath="core/wcm/components/text/v1/text/cq:design_dialog"/>
+    componentGroup="CHI General"/>
