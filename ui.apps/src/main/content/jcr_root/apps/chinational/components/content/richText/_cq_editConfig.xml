@@ -5,7 +5,9 @@
         jcr:primaryType="cq:InplaceEditingConfig"
         active="{Boolean}true"
         editorType="text">
-        <config jcr:primaryType="nt:unstructured">
+        <config
+            jcr:primaryType="nt:unstructured"
+            externalStyleSheets="[/apps/chinational/clientlibs/clientlib-base/css/richtext.css,/apps/chinational/clientlibs/clientlib-site/css/base.css,/apps/chinational/clientlibs/clientlib-base/css/newsbloglist.css]">
             <rtePlugins jcr:primaryType="nt:unstructured">
                 <tracklinks
                     jcr:primaryType="nt:unstructured"
@@ -96,30 +98,50 @@
                     jcr:primaryType="nt:unstructured"
                     features="*">
                     <styles jcr:primaryType="cq:WidgetCollection">
-                        <subheader
+                        <h1_headline_style
                             jcr:primaryType="nt:unstructured"
-                            cssName="small-heading heading_site_color"
+                            cssName="h1_headline_style heading_site_color"
+                            text="H1 - Headline"/>
+                        <h2_quote_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h2_quote_style heading_site_color"
+                            text="H2 - Quote"/>
+                        <h3_callout_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h3_callout_style heading_site_color"
+                            text="H3 - Callout"/>
+                        <h4_header_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h4_header_style tiles_heading_site_color"
+                            text="H4 - Header"/>
+                        <subheader_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="subheader_style tiles_heading_site_color"
                             text="Subheader"/>
-                        <bodycopy
+                        <body_copy_style
                             jcr:primaryType="nt:unstructured"
                             cssName="body_copy_style"
                             text="Body Copy"/>
-                        <caption
+                        <button_label_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="button_label_style"
+                            text="BUTTON LABEL"/>
+                        <caption_style
                             jcr:primaryType="nt:unstructured"
                             cssName="caption_style"
                             text="Caption"/>
-                        <small_text
+                        <small_text_style
                             jcr:primaryType="nt:unstructured"
                             cssName="small_text_style small_text_link_site_color"
                             text="Small Text"/>
-                        <news_list_date
-                            jcr:primaryType="nt:unstructured"
-                            cssName="news_blog_list_heading"
-                            text="News/Blog List Date"/>
                         <news_list_heading
                             jcr:primaryType="nt:unstructured"
-                            cssName="news_blog_list_heading news_heading_hover"
+                            cssName="news_blog_list_heading_style news_heading_hover tiles_heading_site_color"
                             text="News/Blog List Heading"/>
+                        <news_list_date
+                            jcr:primaryType="nt:unstructured"
+                            cssName="news_blog_list_date_style"
+                            text="News/Blog List Date"/>
                     </styles>
                 </styles>
             </rtePlugins>

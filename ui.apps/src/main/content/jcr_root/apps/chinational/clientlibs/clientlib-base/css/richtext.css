@@ -77,39 +77,127 @@
 
 /* May 18, 2018 Added by Davinder for richText Header Styles */
 
-.subheader_style {
-	font-size:20px;
-}
-
-.caption_style {
-	color: #94999c;
+.h1_headline_style {
+	font-size: 48px;
+    line-height: 1.1;
+    color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-    line-height: 20px;
+    font-weight: 500;
     font-style: italic;
-    font-size: 14px;
+    font-stretch: normal;
+    padding: 30px 0 15px 0;
+    }
+
+.h2_quote_style {
+	font-size: 36px;
+    line-height: 1.1;
+    color: #24509a;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
     padding: 15px 0 15px 0;
-    display:block;
     }
 
-.small_text__style {
-	color: #0097a9;
+.h3_callout_style {
+	font-size: 28px;
+    line-height: 1.1;
+    color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-    line-height: 20px;
-    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    padding: 15px 0 15px 0;
+    }
+
+.h4_header_style {
+	font-size: 24px;
+    line-height: 1.1;
+    color: #24509a;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
     padding: 10px 0 10px 0;
-    display:block;
-    position:relative;
     }
 
-.body_copy__style {
+.subheader_style {
+	font-size: 20px;
+    line-height: 24px;
+    color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-    line-height: 20px;
-    font-size: 16px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    display:block;
+    padding: 10px 0 10px 0;
+}
+
+.body_copy_style {
+    font-size: 16px;
+    line-height: 20px;
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    padding: 15px 0 15px 0;
     position:relative;
+    }
+
+.button_label_style {
+    font-size: 15px;
+    line-height: 1.7em; /* equivalent to 20px */
+	font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    text-transform: uppercase;
+    padding: 10px 0 10px 0;
+    position:relative;
+    }
+
+.caption_style {
+    font-size: 14px;
+    line-height: 20px;
+	color: #94999c;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    font-stretch: normal;
+    padding: 15px 0 15px 0;
+    }
+
+.small_text_style {
+    font-size: 14px;
+    line-height: 20px;
+	color: #0097a9;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    padding: 10px 0 10px 0;
+    position:relative;
+    }
+
+.news_blog_list_heading_style {
+	font-size: 24px;
+    line-height: 1.1;
+    color: #426DA9;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    padding: 10px 0 0 0;
+    }
+
+.news_blog_list_date_style {
+	font-size: 14px;
+    line-height: 1.1;
+    color: #426DA9;
+    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    padding: 0px;
     }
 
 /* End of additions by Davinder for richText Header Styles */
