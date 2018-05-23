@@ -60,7 +60,7 @@ $(document).ready(function(){
         $('.filtered_blogs_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index + '.json';
+   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index + '.html';
 
         $.ajax({
             type: 'GET',    

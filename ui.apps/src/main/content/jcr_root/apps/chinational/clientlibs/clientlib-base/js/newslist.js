@@ -60,7 +60,7 @@ $(document).ready(function(){
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.json';
+   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.html';
 		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    

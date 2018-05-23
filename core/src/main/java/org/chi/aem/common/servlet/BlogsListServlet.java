@@ -46,7 +46,7 @@ import com.day.cq.wcm.api.Page;
 @Properties({ 
 		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
 			  @Property(name = "sling.servlet.selectors", value = "blogsservlet"),
-			  @Property(name = "sling.servlet.extensions", value = "json"),
+			  @Property(name = "sling.servlet.extensions", value = "html"),
 			  @Property(name = "service.description", value = "for Blogs List component"),
 			  @Property(name = "label", value = "Blogs List") 
 		  })
