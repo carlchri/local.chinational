@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:EditConfig">
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        editorType="text">
+        <config
+            jcr:primaryType="nt:unstructured"
+            externalStyleSheets="[/apps/chinational/clientlibs/clientlib-base/css/richtext.css,/apps/chinational/clientlibs/clientlib-site/css/base.css,/apps/chinational/clientlibs/clientlib-base/css/newsbloglist.css]">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+                <tracklinks
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+                <table
+                    jcr:primaryType="nt:unstructured"
+                    features="-">
+                    <hiddenHeaderConfig
+                        jcr:primaryType="nt:unstructured"
+                        hiddenHeaderClassName="cq-wcm-foundation-aria-visuallyhidden"/>
+                </table>
+                <paraformat jcr:primaryType="nt:unstructured">
+                    <formats jcr:primaryType="nt:unstructured">
+                        <default_p
+                            jcr:primaryType="nt:unstructured"
+                            description="Paragraph"
+                            tag="p"/>
+                        <default_h1
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 1"
+                            tag="h1"/>
+                        <default_h2
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 2"
+                            tag="h2"/>
+                        <default_h3
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 3"
+                            tag="h3"/>
+                        <default_h4
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 4"
+                            tag="h4"/>
+                        <default_h5
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 5"
+                            tag="h5"/>
+                        <default_h6
+                            jcr:primaryType="nt:unstructured"
+                            description="Heading 6"
+                            tag="h6"/>
+                        <default_blockquote
+                            jcr:primaryType="nt:unstructured"
+                            description="Quote"
+                            tag="blockquote"/>
+                        <default_pre
+                            jcr:primaryType="nt:unstructured"
+                            description="Preformatted"
+                            tag="pre"/>
+                        <styles_tag
+                            jcr:primaryType="nt:unstructured"
+                            description="Styles Tag"
+                            tag="div"/>
+                    </formats>
+                </paraformat>
+                <misctools jcr:primaryType="nt:unstructured">
+                    <specialCharsConfig jcr:primaryType="nt:unstructured">
+                        <chars jcr:primaryType="nt:unstructured">
+                            <default_copyright
+                                jcr:primaryType="nt:unstructured"
+                                entity="&amp;copy;"
+                                name="copyright"/>
+                            <default_euro
+                                jcr:primaryType="nt:unstructured"
+                                entity="&amp;euro;"
+                                name="euro"/>
+                            <default_registered
+                                jcr:primaryType="nt:unstructured"
+                                entity="&amp;reg;"
+                                name="registered"/>
+                            <default_trademark
+                                jcr:primaryType="nt:unstructured"
+                                entity="&amp;trade;"
+                                name="trademark"/>
+                        </chars>
+                    </specialCharsConfig>
+                </misctools>
+                <links
+                    jcr:primaryType="nt:unstructured"
+                    features="modifylink,unlink"/>
+                <justify
+                    jcr:primaryType="nt:unstructured"
+                    features="-"/>
+                <format
+                    jcr:primaryType="nt:unstructured"
+                    features="bold,italic"/>
+                <styles
+                    jcr:primaryType="nt:unstructured"
+                    features="*">
+                    <styles jcr:primaryType="cq:WidgetCollection">
+                        <h1_headline_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h1_headline_style heading_site_color"
+                            text="H1 - Headline"/>
+                        <h2_quote_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h2_quote_style heading_site_color"
+                            text="H2 - Quote"/>
+                        <h3_callout_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h3_callout_style heading_site_color"
+                            text="H3 - Callout"/>
+                        <h4_header_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="h4_header_style tiles_heading_site_color"
+                            text="H4 - Header"/>
+                        <subheader_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="subheader_style tiles_heading_site_color"
+                            text="Subheader"/>
+                        <body_copy_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="body_copy_style"
+                            text="Body Copy"/>
+                        <button_label_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="button_label_style"
+                            text="BUTTON LABEL"/>
+                        <caption_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="caption_style"
+                            text="Caption"/>
+                        <small_text_style
+                            jcr:primaryType="nt:unstructured"
+                            cssName="small_text_style small_text_link_site_color"
+                            text="Small Text"/>
+                        <news_list_heading
+                            jcr:primaryType="nt:unstructured"
+                            cssName="news_blog_list_heading_style news_heading_hover tiles_heading_site_color"
+                            text="News/Blog List Heading"/>
+                        <news_list_date
+                            jcr:primaryType="nt:unstructured"
+                            cssName="news_blog_list_date_style"
+                            text="News/Blog List Date"/>
+                    </styles>
+                </styles>
+            </rtePlugins>
+        </config>
+    </cq:inplaceEditing>
+</jcr:root>

@@ -75,11 +75,11 @@ $(document).ready(function(){
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.blogsURL + ".html>").append(
-            				$("<h3>").append(
-            					$("<span class='txt-green blogs_heading_hover'>").text(item.blogsHeading)
+            				$("<h4 class='news_blog_list_heading'>").append(
+            					$("<span class='blogs_heading_hover'>").text(item.blogsHeading)
             				)
             			),
-                        $("<span class='txt-green'>").text(item.publishDate),
+                        $("<span class='news_blog_list_heading'>").text(item.publishDate),
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_blogs_list");
                 });

@@ -1,4 +1,5 @@
 <sly data-sly-use.newsList="${'org.chi.aem.common.components.model.DynamicTileNewsList' @ articleType=properties.selectArticleType}"
+	  data-sly-use.link="org.chi.aem.common.components.model.Link"
       data-sly-use.template="chinational/components/commons/templates.html" />
 
 <div class="component" data-sly-test="${properties.parentPage}">
@@ -49,6 +50,11 @@
                     </div>
                 </sly>
             </div>
+		</div>
+		<div class="col-xs-12 padding-top-30" data-sly-test="${properties.selectButton == 'buttonRequired'}">
+			<a class="learn-more-btn border-orange" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+			   ${link.linkText || 'SEE ALL'}
+			</a>
 		</div>
 		
 	    <sly data-sly-include="../../commons/bottomOption.html"></sly>

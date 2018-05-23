@@ -4,10 +4,14 @@
             <h1 class="news-large-header">${pageProperties.newsHeading}</h1>
             <h3 class="news-sub-header"
                 data-sly-test="${pageProperties.newsSubHeading}">${pageProperties.newsSubHeading}</h3>
-            <p class="news-date"
+            <span class="news-date"
                data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=pageProperties.publishDate, dateFormat='MM/dd/YY'}">
                 ${formatter.formattedDate}
-            </p>
+            </span>
+            <span class="blog-date txt-blue" style="padding-left:20px;" data-sly-test=${pageProperties.cq:tags}
+                  data-sly-use.tags="${'org.chi.aem.common.components.model.TagsTitle'}">
+                   ${tags.tagName}
+            </span>
         </div>
     </div>
 </div>

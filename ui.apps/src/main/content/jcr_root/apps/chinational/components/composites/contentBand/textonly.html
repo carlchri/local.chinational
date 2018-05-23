@@ -1,13 +1,11 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ 05/16/2018 - moving text section of HTML to a different file, which is reused in two files
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+
 <div class="col-sm-12">
 	<div class="row component-gutter">
 		<div class="col-md-12">
-		  <h3 data-sly-test="${properties.contentBandHeading}">${properties.contentBandHeading}</h3>
-		  <div class="image-wrape">
-		    <img data-sly-test="${properties.imageInTextSelection == 'imageRequired'}" 
-		    	 src="${properties.imageSrc @ context='unsafe'}" alt="${properties.contentBandHeading}" />
-		    <div data-sly-resource="${'richText' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
-		    </div>
-		  </div>
+			<sly data-sly-include="textsection.html"></sly>
 		</div>
 	</div>
 </div>
