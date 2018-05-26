@@ -101,19 +101,55 @@
                                                         name="./parentPage"
                                                         required="{Boolean}true"
                                                         rootPath="/content"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </mainTab>
+                            <toggleOptions
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Toggle On/Off Tab"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <imageNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox to disable image"
+                                                        name="./imageNotRequired"
+                                                        text="Select to disable image"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
+                                                    <dateNotRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox to disable date"
+                                                        name="./dateNotRequired"
+                                                        text="Select to disable date"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
                                                     <listOnRightNotRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to enable list on right"
                                                         name="./listOnRightNotRequired"
-                                                        text="Select to enable News/blogs List on right"
+                                                        text="Select to enable List on right"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <listHeading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter heading for the list "
-                                                        fieldDescription="This text will be used as heading for all links (optional)"
+                                                        fieldDescription="This text will be used as heading for all links"
                                                         fieldLabel="List Heading"
                                                         name="./linkHeading"/>
                                                 </items>
@@ -121,7 +157,7 @@
                                         </items>
                                     </column>
                                 </items>
-                            </mainTab>
+                            </toggleOptions>
                             <buttonTab
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="Button Tab"
