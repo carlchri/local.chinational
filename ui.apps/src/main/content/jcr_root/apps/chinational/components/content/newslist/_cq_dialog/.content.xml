@@ -20,7 +20,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <newsListSettings
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="News Liist Settings&#xa;"
+                                jcr:title="News List Settings&#xa;"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
