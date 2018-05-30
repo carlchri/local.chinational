@@ -5,14 +5,14 @@
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
         <div class="col-xs-12">
-			<ul class="mc_list filtered_list" data-sly-list.item="${newsCollection.newsListCollection}"
+			<ul class="mc_list filtered_list news_manual_list" data-sly-list.item="${newsCollection.newsListCollection}"
 				data-sly-use.itemTemplate="item.html">
-				<li data-sly-call="${itemTemplate.item @ list = newsCollection, item = item}"></li>
+				<li data-sly-call="${itemTemplate.item @ list = newsCollection, item = item}" style="display:none;"></li>
 			</ul>
 		</div>
 
 		<div class="col-xs-12 padding_top_18">
-			<a class="learn-more-btn border-orange filtered_list_show_more">${properties.buttonLabel || 'SEE MORE'}</a>
+			<a class="learn-more-btn border-orange news_list_manual_more">${properties.buttonLabel || 'SEE MORE'}</a>
 		</div>
 
 	</div>
