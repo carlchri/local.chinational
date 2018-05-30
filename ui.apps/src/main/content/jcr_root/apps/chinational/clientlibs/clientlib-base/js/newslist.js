@@ -7,7 +7,13 @@ $(document).ready(function(){
 
     var total_results = parseInt($('#total_results').val());
 
-	newsLoadMoreShowHide();          
+	$(window).on('unload', function() {
+        $("#select_news_by_year").hide();
+        $("#search_news_list option:selected").removeAttr("selected");
+        $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');  
+	});
+	
+    newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
       if (this.value == 'ByYear')
@@ -60,14 +66,17 @@ $(document).ready(function(){
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.json';
+   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.html';
 		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    
             url: servletURL,
-            success: function(msg){
-                // var json = jQuery.parseJSON(msg);
+            success: function(msg, status, xhr){
             	var json = msg;
+            	var ct = xhr.getResponseHeader("content-type") || "";
+                if (ct.indexOf('html') > -1) {
+                  json = jQuery.parseJSON(msg);
+                }
                 total_results = json.total_results;  
         		$('.loading').hide();    
         		$('.loading_next').hide();    
