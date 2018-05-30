@@ -7,6 +7,12 @@ $(document).ready(function(){
 
     var blogs_total_results = parseInt($('#total_results').val());
 
+	$(window).on('unload', function() {
+        $("#select_blogs_by_year").hide();
+        $("#search_blogs_list option:selected").removeAttr("selected");
+        $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
+	});
+	
 	blogsLoadMoreShowHide();          
 
     $('#search_blogs_list').on('change', function() {
@@ -60,14 +66,17 @@ $(document).ready(function(){
         $('.filtered_blogs_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index + '.json';
+   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index + '.html';
 
         $.ajax({
             type: 'GET',    
             url: servletURL,
-            success: function(msg){
-                // var json = jQuery.parseJSON(msg);
+            success: function(msg, status, xhr){
             	var json = msg;
+            	var ct = xhr.getResponseHeader("content-type") || "";
+                if (ct.indexOf('html') > -1) {
+                  json = jQuery.parseJSON(msg);
+                }
                 blogs_total_results = json.total_results;            
         		$('.loading_blogs').hide();    
         		$('.loading_blogs_next').hide();    
