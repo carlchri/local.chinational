@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     cq:icon="viewList"
-    jcr:description="Tile Component"
-    jcr:mixinTypes="[]"
+    jcr:description="Media Carousel Image Tile Component - used as part of Media Carousel Carousel Component"
     jcr:primaryType="cq:Component"
-    jcr:title="Tile"
-    allowedParents="[*/parsys]"
+    jcr:title="Media Carousel Image Tile"
     componentGroup=".fixed-chi"/>

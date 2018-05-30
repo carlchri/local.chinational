@@ -66,6 +66,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="Audio"
                                                                             value="audio"/>
+                                                                    <image
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Image"
+                                                                            value="image"/>
                                                                 </items>
                                                             </mediaType>
                                                             <mediaComponentName

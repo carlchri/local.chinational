@@ -11,6 +11,27 @@
     margin-right: -4%;
 }
 
+/* Use this option on desktop to align media carousel, when there are no arrows */
+
+@media (min-width: 1200px) {
+    /* On full width, if media items are less than 8, arrows are hidden and we should align carousel left*/
+    .full-width-container .mediaCarousel .fw-no-arrows {
+        margin-left: 0%;
+    }
+
+    /* With right rail, if media items are less than 4, arrows are hidden and we should align carousel left*/
+    /*.right-rail-container .mediaCarousel .rr-no-arrows {
+        margin-left: 0%;
+    }*/
+}
+
+@media (min-width: 768px) {
+    /* With right rail and in tablet mode, if media items are less than 4, arrows are hidden and we should align carousel left*/
+    .right-rail-container .mediaCarousel .rr-no-arrows {
+        margin-left: 0%;
+    }
+}
+
 .mediaCarousel .video-container img {
     /*max-width: 166px;*/
     max-width: 100%;

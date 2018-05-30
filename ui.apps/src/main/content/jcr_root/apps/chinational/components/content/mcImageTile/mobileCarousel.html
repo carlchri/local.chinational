@@ -1,0 +1,22 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<div class="carousel-item slide item">
+    <div class="flex-box">
+        <div class="carousel-description carousel-image">
+            <div class="video-container">
+                <div class="sub-Thumbs">
+                    <div class="video">
+                        <a href="${properties.linkTo}">
+                            <img src="${properties.imageUrl}">
+                        </a>
+                    </div>
+                </div>
+                <div class="media-text">
+                    <span class="thumb-titles">${properties.title}</span>
+                    <span class="thumb-descrsiption">${properties.description}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.imageUrl}"></sly>
+

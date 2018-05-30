@@ -190,6 +190,12 @@
     position: relative;
 }
 
+/* May 25, 2018 Added by Davinder CHIP12 */
+.padding-top-0 {
+    padding-top: 0 !important;
+}
+/* End of additions */
+
 span {
     display: inline-block;
     vertical-align: baseline;
