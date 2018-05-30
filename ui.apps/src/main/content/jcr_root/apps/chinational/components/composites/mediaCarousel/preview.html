@@ -42,7 +42,7 @@
                             <sly data-sly-repeat="${groups}">
                                 <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='mobileCarousel'}"></sly>
                                 <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='mobileCarousel'}"></sly>
-                                <sly data-sly-test="${item.type == 'image'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/mcImageTile', , selectors='mobileCarousel'}"></sly>
+                                <sly data-sly-test="${item.type == 'image'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/mcImageTile', selectors='mobileCarousel'}"></sly>
                             </sly>
                         </sly>
                     </div>
