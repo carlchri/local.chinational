@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
     jcr:primaryType="cq:EditConfig">
     <cq:inplaceEditing
         jcr:primaryType="cq:InplaceEditingConfig"
         active="{Boolean}true"
         editorType="text">
         <config
+            jcr:mixinTypes="[rep:AccessControllable]"
             jcr:primaryType="nt:unstructured"
             externalStyleSheets="[/apps/chinational/clientlibs/clientlib-base/css/richtext.css,/apps/chinational/clientlibs/clientlib-site/css/base.css,/apps/chinational/clientlibs/clientlib-base/css/newsbloglist.css]">
-            <rtePlugins jcr:primaryType="nt:unstructured">
+            <rtePlugins
+                jcr:mixinTypes="[rep:AccessControllable]"
+                jcr:primaryType="nt:unstructured">
                 <tracklinks
                     jcr:primaryType="nt:unstructured"
                     features="*"/>
@@ -145,6 +148,12 @@
                     </styles>
                 </styles>
             </rtePlugins>
+            <rep:policy jcr:primaryType="rep:ACL">
+                <allow
+                    jcr:primaryType="rep:GrantACE"
+                    rep:principalName="content-authors"
+                    rep:privileges="{Name}[jcr:read]"/>
+            </rep:policy>
         </config>
     </cq:inplaceEditing>
 </jcr:root>
