@@ -7,12 +7,6 @@ $(document).ready(function(){
 
     var blogs_total_results = parseInt($('#total_results').val());
 
-	$(window).on('unload', function() {
-        $("#select_blogs_by_year").hide();
-        $("#search_blogs_list option:selected").removeAttr("selected");
-        $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
-	});
-	
 	blogsLoadMoreShowHide();          
 
     $('#search_blogs_list').on('change', function() {
