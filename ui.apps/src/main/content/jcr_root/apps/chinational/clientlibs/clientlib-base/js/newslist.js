@@ -7,7 +7,18 @@ $(document).ready(function(){
 
     var total_results = parseInt($('#total_results').val());
 
-	newsLoadMoreShowHide();          
+    window.onunload = searchNewsListOption();
+    
+    function searchNewsListOption() {
+        $("#select_news_by_year").hide();
+        $("#search_news_list option:selected").removeAttr("selected");
+        $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');
+        $("#select_blogs_by_year").hide();
+        $("#search_blogs_list option:selected").removeAttr("selected");
+        $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
+	}
+
+	 newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
       if (this.value == 'ByYear')
@@ -60,14 +71,17 @@ $(document).ready(function(){
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.json';
+   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.html';
 		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    
             url: servletURL,
-            success: function(msg){
-                // var json = jQuery.parseJSON(msg);
+            success: function(msg, status, xhr){
             	var json = msg;
+            	var ct = xhr.getResponseHeader("content-type") || "";
+                if (ct.indexOf('html') > -1) {
+                  json = jQuery.parseJSON(msg);
+                }
                 total_results = json.total_results;  
         		$('.loading').hide();    
         		$('.loading_next').hide();    
@@ -75,11 +89,11 @@ $(document).ready(function(){
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.newsURL + ".html>").append(
-            				$("<h3>").append(
-            					$("<span class='txt-green news_heading_hover'>").text(item.newsHeading)
+            				$("<h4 class='news_blog_list_heading'>").append(
+            					$("<span class='news_heading_hover'>").text(item.newsHeading)
             				)
             			),
-                        $("<span class='txt-green'>").text(item.publishDate),
+                        $("<span class='news_blog_list_heading'>").text(item.publishDate),
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_list");
                 });
@@ -90,4 +104,5 @@ $(document).ready(function(){
             }                
         });
     }
+    
 });

@@ -45,7 +45,7 @@ import com.day.cq.wcm.api.Page;
 @Properties({ 
 		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
 			  @Property(name = "sling.servlet.selectors", value = "newsservlet"),
-			  @Property(name = "sling.servlet.extensions", value = "json"),
+			  @Property(name = "sling.servlet.extensions", value = "html"),
 			  @Property(name = "service.description", value = "for News List component"),
 			  @Property(name = "label", value = "News List") 
 		  })
@@ -167,6 +167,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        jsonResult.put("jsonNews", jsonArray);
 	        jsonResult.put("total_results", totalResults);
 	        String jsonData = jsonResult.toString();
+	        // LOGGER.info("jsondata : " + jsonData);
 	        
 	        response.setContentType("application/json");
 	         
