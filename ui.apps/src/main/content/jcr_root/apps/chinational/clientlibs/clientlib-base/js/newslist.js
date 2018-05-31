@@ -7,13 +7,18 @@ $(document).ready(function(){
 
     var total_results = parseInt($('#total_results').val());
 
-	$(window).on('unload', function() {
+    window.onunload = searchNewsListOption();
+    
+    function searchNewsListOption() {
         $("#select_news_by_year").hide();
         $("#search_news_list option:selected").removeAttr("selected");
-        $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');  
-	});
-	
-    newsLoadMoreShowHide();          
+        $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');
+        $("#select_blogs_by_year").hide();
+        $("#search_blogs_list option:selected").removeAttr("selected");
+        $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
+	}
+
+	 newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
       if (this.value == 'ByYear')
