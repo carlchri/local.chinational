@@ -106,20 +106,24 @@ $(document).ready(function(){
     }
     
 /* May 30, 2018 Added by Davinder for CHIP13 - newsListManual component "SEE MORE" button */
-    var news_list_manual_size = $(".news_manual_list li").length;
-    var news_list_manual_load_size=10;
-    $('.news_manual_list li:lt('+news_list_manual_load_size+')').show();
-    
-    if(news_list_manual_load_size >= news_list_manual_size) {
-	    $('.news_list_manual_more').hide();
-    }
+    $('.news_list_manual_wrapper').each(function(){
+    	window.manual_news_id = this.id;
+    	window["news_list_manual_size"+manual_news_id] = $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list li').length;
+	    window["news_list_manual_load_size"+manual_news_id] = 10;
+	    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+manual_news_id]+')').show();
+	    
+	    if(window["news_list_manual_load_size"+manual_news_id] >= window["news_list_manual_size"+manual_news_id]) {
+		    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').hide();
+	    }
+    });
 
-    $('.news_list_manual_more').click(function () {
-    	news_list_manual_load_size= (news_list_manual_load_size+10 <= news_list_manual_size) ? news_list_manual_load_size+10 : news_list_manual_size;
-        $('.news_manual_list li:lt('+news_list_manual_load_size+')').show();
-        if(news_list_manual_load_size >= news_list_manual_size) {
-			    $('.news_list_manual_more').hide();
-        }
+    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').click(function () {
+    	window["news_list_manual_load_size"+manual_news_id]= (window["news_list_manual_load_size"+manual_news_id]+10 <= window["news_list_manual_size"+manual_news_id]) ? window["news_list_manual_load_size"+manual_news_id]+10 : window["news_list_manual_size"+manual_news_id];
+	    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+manual_news_id]+')').show();
+
+	    if(window["news_list_manual_load_size"+manual_news_id] >= window["news_list_manual_size"+manual_news_id]) {
+		    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').hide();
+	    }
     });
 /* End of additions by Davinder */    
 

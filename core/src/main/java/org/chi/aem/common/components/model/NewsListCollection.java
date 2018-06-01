@@ -7,6 +7,7 @@ package org.chi.aem.common.components.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
  
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -57,5 +58,10 @@ public class NewsListCollection {
         // LOGGER.info("newsListCollection:" + array.toString());
 		return array;
 	}
+	
+    public String getHash() {
+        return "myList" + UUID.randomUUID();
+    }
+
  
 }
