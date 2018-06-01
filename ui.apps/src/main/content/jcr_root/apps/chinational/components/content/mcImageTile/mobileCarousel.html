@@ -1,4 +1,4 @@
-<sly data-sly-use.tile="org.chi.aem.common.components.model.Link"
+<sly data-sly-use.tile="org.chi.aem.common.components.model.McImageTile"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <div class="carousel-item slide item">
     <div class="flex-box">
@@ -14,8 +14,8 @@
                     </div>
                 </div>
                 <div class="media-text">
-                    <span class="thumb-titles">${properties.title}</span>
-                    <span class="thumb-descrsiption">${properties.description}</span>
+                    <span class="thumb-titles" data-sly-test="${properties.title}">${properties.title}</span>
+                    <span class="thumb-descrsiption" data-sly-test="${properties.description}">${properties.description}</span>
                 </div>
             </div>
         </div>

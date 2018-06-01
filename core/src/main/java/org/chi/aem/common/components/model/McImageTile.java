@@ -25,6 +25,7 @@ public class McImageTile {
 	public static final Logger LOGGER = LoggerFactory.getLogger(McImageTile.class);
 
 	public static final String PROP_LINK_URL = "linkTo";
+	public static final String TARGET_BLANK = "targetBlank";
 
 	@Inject
 	private ResourceResolver resourceResolver;
@@ -34,6 +35,12 @@ public class McImageTile {
 	@Optional
 	@Default(values="#")
 	private String linkUrl;
+
+	@Inject
+	@Named(TARGET_BLANK)
+	@Optional
+	@Default(values="false")
+	private boolean targetBlank;
 
 
 	@PostConstruct
@@ -47,6 +54,10 @@ public class McImageTile {
 
 	public String getLinkUrl() {
 		return linkUrl;
+	}
+
+	public boolean getTargetBlank() {
+		return targetBlank;
 	}
 
 
