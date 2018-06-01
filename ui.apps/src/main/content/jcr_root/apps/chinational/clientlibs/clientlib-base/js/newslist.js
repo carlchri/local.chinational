@@ -89,11 +89,11 @@ $(document).ready(function(){
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.newsURL + ".html>").append(
-            				$("<h4 class='news_blog_list_heading'>").append(
-            					$("<span class='news_heading_hover'>").text(item.newsHeading)
+            				$("<h3>").append(
+            					$("<span class='txt-green news_heading_hover'>").text(item.newsHeading)
             				)
             			),
-                        $("<span class='news_blog_list_heading'>").text(item.publishDate),
+                        $("<span class='txt-green'>").text(item.publishDate),
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_list");
                 });
