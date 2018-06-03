@@ -191,6 +191,25 @@
 .dropdown-box.open .dropdown-list {
 	display: block;
 }
+
+/* June 1, 2018 Added by Davinder for Compaign landing Page */
+
+.compaignlandingpage .header {
+	position:fixed;
+	background-color:white;
+}
+
+.compaignlandingpage .compaign-header-button {
+	margin-top:25px;
+}
+
+.compaignlandingpage .body-content {
+	margin-top:100px;
+}
+
+/* End of Additions  */
+
+
 @media (max-width:1200px) {
 	.header-right-nav {
 		top:-65px;
@@ -361,6 +380,23 @@
 		right: 50%;
 		left: 50%;
 	}
+	
+	/* June 1, 2018 Added by Davinder for Compaign landing Page */
+
+	.compaignlandingpage .compaign-header-button .learn-more-btn{
+		float:right;
+	}
+	
+	.compaignlandingpage .header:after {
+		content: normal;
+	}
+	
+	.compaignlandingpage .body-content {
+		margin-top:84px; /* same as for other templates */
+	}
+	
+	/* End of Additions  */
+	
 }
 
 @media (max-width:767px) {
@@ -398,4 +434,19 @@
 	.hide-on-mobile {
 		display: none;
 	}
+	
+	/* June 1, 2018 Added by Davinder for Compaign landing Page */
+	.compaignlandingpage .compaign-header-button {
+		margin-top:10px;
+	}
+
+	.compaignlandingpage .compaign-header-button .learn-more-btn{
+		float:none;
+	}
+	
+	.compaignlandingpage .body-content {
+		margin-top:140px; 
+	}
+	/* End of Additions  */
+	
 }

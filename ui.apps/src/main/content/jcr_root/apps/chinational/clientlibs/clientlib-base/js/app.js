@@ -524,3 +524,19 @@ if (jQuery(window).width() > 992) {
         }
     }
 }
+
+if (jQuery(window).width() < 768) {
+    jQuery(function() {
+        compaignButtonHide($(".compaign-header-button"));
+    });
+
+    function compaignButtonHide(buttondiv) {
+        if (typeof buttondiv !== "undefined") {
+            var pos = buttondiv.offset().top,
+                win = $(window);
+            win.on("scroll", function() {
+                win.scrollTop() >= pos ? buttondiv.hide() : buttondiv.show();
+            });
+        }
+    }
+}    

@@ -136,6 +136,14 @@ form .col-md-3 {
     background-position: -332px -41px;
 }
 
+/* June 1, 2018 Added by Davinder for Compaign landing Page */
+
+.compaignlandingpage .footer {
+	margin-top:0px;
+}
+
+/* End of Additions  */
+
 @media(max-width:1200px) {
     .newsletter {
         width: 500px;

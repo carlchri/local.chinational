@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-
     var blogs_start_index = 0;
     var blogs_filter = "SortByMostRecent";
     var BLOGS_HITS_PER_PAGE = 10;
@@ -93,4 +92,5 @@ $(document).ready(function(){
             }                
         });
     }
+
 });
