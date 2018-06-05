@@ -515,7 +515,6 @@ if (jQuery(window).width() > 992) {
     });
 
     function createSticky(sticky) {
-    	alert(sticky);
         if (typeof sticky !== "undefined") {
             var pos = sticky.offset().top,
                 win = $(window);
