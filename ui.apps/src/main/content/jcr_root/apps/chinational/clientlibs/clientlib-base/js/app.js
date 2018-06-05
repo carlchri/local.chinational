@@ -519,10 +519,10 @@ if (jQuery(window).width() < 768) {
 }    
 
 function compaignButtonHide(buttondiv) {
-    if (typeof buttondiv !== "undefined") {
-        var pos = buttondiv.offset().top,
+    if ($( "div" ).hasClass( "compaign-header-button" )) {
+    		var pos = buttondiv.offset().top,
             win = $(window);
-        win.on("scroll", function() {
+    		win.on("scroll", function() {
             win.scrollTop() >= pos ? buttondiv.hide() : buttondiv.show();
         });
     }
@@ -537,7 +537,7 @@ if (jQuery(window).width() > 992) {
 }
 
 function createSticky(sticky) {
-    if (typeof sticky !== "undefined") {
+    if ($( "div" ).hasClass( "main-nav" )) {
         var pos = sticky.offset().top,
             win = $(window);
         win.on("scroll", function() {
