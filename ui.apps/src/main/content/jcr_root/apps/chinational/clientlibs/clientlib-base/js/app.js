@@ -515,6 +515,7 @@ if (jQuery(window).width() > 992) {
     });
 
     function createSticky(sticky) {
+    	alert(sticky);
         if (typeof sticky !== "undefined") {
             var pos = sticky.offset().top,
                 win = $(window);
@@ -524,6 +525,8 @@ if (jQuery(window).width() > 992) {
         }
     }
 }
+
+/* June 4, 2018 Added by Davinder for Compaign landing Page */
 
 if (jQuery(window).width() < 768) {
     jQuery(function() {
@@ -540,3 +543,5 @@ if (jQuery(window).width() < 768) {
         }
     }
 }    
+
+/* End of Additions  */

@@ -106,8 +106,9 @@ $(document).ready(function(){
     }
     
 /* May 30, 2018 Added by Davinder for CHIP13 - newsListManual component "SEE MORE" button */
+    window.manual_news_id = "id1";
     $('.news_list_manual_wrapper').each(function(){
-    	window.manual_news_id = this.id;
+    	manual_news_id = this.id;
     	window["news_list_manual_size"+manual_news_id] = $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list li').length;
 	    window["news_list_manual_load_size"+manual_news_id] = 10;
 	    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+manual_news_id]+')').show();
