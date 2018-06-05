@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     function newsLoadMoreShowHide() {
         // Compare size of results with total results and hide LOAD MORE, if not required
-        size_li = $(".filtered_list li").size();
+        var size_li = $(".filtered_list li").size();
         $('.filtered_list_show_more').show();        
         if(size_li >= total_results) {
 	        $('.filtered_list_show_more').hide();
@@ -108,22 +108,22 @@ $(document).ready(function(){
 /* May 30, 2018 Added by Davinder for CHIP13 - newsListManual component "SEE MORE" button */
     window.manual_news_id = "id1";
     $('.news_list_manual_wrapper').each(function(){
-    	manual_news_id = this.id;
-    	window["news_list_manual_size"+manual_news_id] = $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list li').length;
-	    window["news_list_manual_load_size"+manual_news_id] = 10;
-	    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+manual_news_id]+')').show();
+    	window.manual_news_id = this.id;
+    	window["news_list_manual_size"+window.manual_news_id] = $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_manual_list li').length;
+	    window["news_list_manual_load_size"+window.manual_news_id] = 10;
+	    $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+window.manual_news_id]+')').show();
 	    
-	    if(window["news_list_manual_load_size"+manual_news_id] >= window["news_list_manual_size"+manual_news_id]) {
-		    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').hide();
+	    if(window["news_list_manual_load_size"+window.manual_news_id] >= window["news_list_manual_size"+window.manual_news_id]) {
+		    $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_list_manual_more').hide();
 	    }
     });
 
-    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').click(function () {
-    	window["news_list_manual_load_size"+manual_news_id]= (window["news_list_manual_load_size"+manual_news_id]+10 <= window["news_list_manual_size"+manual_news_id]) ? window["news_list_manual_load_size"+manual_news_id]+10 : window["news_list_manual_size"+manual_news_id];
-	    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+manual_news_id]+')').show();
+    $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_list_manual_more').click(function () {
+    	window["news_list_manual_load_size"+window.manual_news_id]= (window["news_list_manual_load_size"+window.manual_news_id]+10 <= window["news_list_manual_size"+window.manual_news_id]) ? window["news_list_manual_load_size"+window.manual_news_id]+10 : window["news_list_manual_size"+window.manual_news_id];
+	    $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_manual_list  li:lt('+window["news_list_manual_load_size"+window.manual_news_id]+')').show();
 
-	    if(window["news_list_manual_load_size"+manual_news_id] >= window["news_list_manual_size"+manual_news_id]) {
-		    $('.news_list_manual_wrapper#'+manual_news_id + ' .news_list_manual_more').hide();
+	    if(window["news_list_manual_load_size"+window.manual_news_id] >= window["news_list_manual_size"+window.manual_news_id]) {
+		    $('.news_list_manual_wrapper#'+window.manual_news_id + ' .news_list_manual_more').hide();
 	    }
     });
 /* End of additions by Davinder */    

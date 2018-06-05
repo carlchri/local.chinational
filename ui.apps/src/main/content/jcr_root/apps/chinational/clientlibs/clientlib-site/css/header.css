@@ -395,6 +395,10 @@
 		margin-top:84px; /* same as for other templates */
 	}
 	
+	.compaignlandingpage .hide-in-mobile-tablet {
+		display:none; 
+	}
+
 	/* End of Additions  */
 	
 }
