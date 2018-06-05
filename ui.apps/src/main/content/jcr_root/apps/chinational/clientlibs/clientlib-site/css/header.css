@@ -194,16 +194,16 @@
 
 /* June 1, 2018 Added by Davinder for Compaign landing Page */
 
-.compaignlandingpage .header {
+.campaignlandingpage .header {
 	position:fixed;
 	background-color:white;
 }
 
-.compaignlandingpage .compaign-header-button {
+.campaignlandingpage .campaign-header-button {
 	margin-top:25px;
 }
 
-.compaignlandingpage .body-content {
+.campaignlandingpage .body-content {
 	margin-top:100px;
 }
 
@@ -383,19 +383,19 @@
 	
 	/* June 1, 2018 Added by Davinder for Compaign landing Page */
 
-	.compaignlandingpage .compaign-header-button .learn-more-btn{
+	.campaignlandingpage .campaign-header-button .learn-more-btn{
 		float:right;
 	}
 	
-	.compaignlandingpage .header:after {
+	.campaignlandingpage .header:after {
 		content: normal;
 	}
 	
-	.compaignlandingpage .body-content {
+	.campaignlandingpage .body-content {
 		margin-top:84px; /* same as for other templates */
 	}
 	
-	.compaignlandingpage .hide-in-mobile-tablet {
+	.campaignlandingpage .hide-in-mobile-tablet {
 		display:none; 
 	}
 
@@ -440,15 +440,15 @@
 	}
 	
 	/* June 1, 2018 Added by Davinder for Compaign landing Page */
-	.compaignlandingpage .compaign-header-button {
+	.campaignlandingpage .campaign-header-button {
 		margin-top:10px;
 	}
 
-	.compaignlandingpage .compaign-header-button .learn-more-btn{
+	.campaignlandingpage .campaign-header-button .learn-more-btn{
 		float:none;
 	}
 	
-	.compaignlandingpage .body-content {
+	.campaignlandingpage .body-content {
 		margin-top:140px; 
 	}
 	/* End of Additions  */

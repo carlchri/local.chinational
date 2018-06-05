@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    jcr:description="The Compaign Landing Template for CHI Sites"
+    jcr:description="The Campaign Landing Template for CHI Sites"
     jcr:primaryType="cq:Template"
-    jcr:title="Compaign Landing Page"
+    jcr:title="Campaign Landing Page"
     allowedPaths="[/content(/.*)?]"
     ranking="{Long}40">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="chinational/components/structure/compaignlandingpage"
+        sling:resourceType="chinational/components/structure/campaignlandingpage"
         displayBreadcrumb="false"
         displayHero="true"
         displayRightRail="false"

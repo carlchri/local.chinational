@@ -514,12 +514,12 @@ jQuery(document).ready(function() {
 
 if (jQuery(window).width() < 768) {
     jQuery(function() {
-        compaignButtonHide($(".compaign-header-button"));
+        campaignButtonHide($(".campaign-header-button"));
     });
 }    
 
-function compaignButtonHide(buttondiv) {
-    if ($( "div" ).hasClass( "compaign-header-button" )) {
+function campaignButtonHide(buttondiv) {
+    if ($( "div" ).hasClass( "campaign-header-button" )) {
     		var pos = buttondiv.offset().top,
             win = $(window);
     		win.on("scroll", function() {
