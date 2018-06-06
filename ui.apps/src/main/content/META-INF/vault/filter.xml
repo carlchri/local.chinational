@@ -34,4 +34,9 @@
         <exclude pattern="/etc/designs/chicommon(/.*)?"/>
         <include pattern="/etc/designs/chicommon/images(/.*)?"/>
     </filter>
+    <filter root="/conf/chinational">
+        <exclude pattern="/conf/chinational(/.*)?"/>
+        <include pattern="/conf/chinational/.content.xml"/>
+        <include pattern="/conf/chinational/settings(/.*)?"/>
+    </filter>
 </workspaceFilter>

@@ -3,6 +3,5 @@
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
     <rep:policy/>
-    <experience-page/>
-    <experience-fragment-web-variation/>
+    <experience-fragment-chi-variation/>
 </jcr:root>

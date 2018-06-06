@@ -4,10 +4,10 @@
     <jcr:content
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="weretail/components/structure/page">
+        sling:resourceType="chinational/components/structure/xfbasepage">
         <root
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/foundation/components/responsivegrid"/>
+            sling:resourceType="chinational/components/foundation/responsivegrid"/>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone

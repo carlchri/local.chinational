@@ -4,5 +4,4 @@
     jcr:primaryType="cq:Page">
     <empty-page/>
     <rep:policy/>
-    <redirect-page/>
 </jcr:root>
