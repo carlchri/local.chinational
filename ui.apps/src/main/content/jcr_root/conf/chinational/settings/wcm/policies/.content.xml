@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
-    jcr:mixinTypes="[rep:AccessControllable]"
-    jcr:primaryType="cq:Page">
-    <rep:policy/>
+          jcr:mixinTypes="[rep:AccessControllable]"
+          jcr:primaryType="cq:Page">
     <wcm jcr:primaryType="nt:unstructured">
         <foundation jcr:primaryType="nt:unstructured">
             <components jcr:primaryType="nt:unstructured">
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <chi-national-default
-                        jcr:description="Policy for editable layout containers"
-                        jcr:lastModified="{Date}2016-09-16T07:50:27.551+02:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="CHI National Default"
-                        sling:resourceType="wcm/core/components/policy/policy"
-                        components="[group:CHI General,/libs/wcm/foundation/components/responsivegrid,/libs/cq/experience-fragments/editor/components/experiencefragment,/libs/dam/cfm/components/contentfragment]"
-                        policyResourceType="chinational/components/foundation/responsivegrid">
-                        <cq:authoring jcr:primaryType="nt:unstructured">
-
-                        </cq:authoring>
-                        <jcr:content
+                            jcr:description="Policy for editable layout containers"
+                            jcr:lastModified="{Date}2016-09-16T07:50:27.551+02:00"
+                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            mergeList="{Boolean}true"/>
+                            jcr:title="CHI Default"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            components="[group:CHI General,/libs/wcm/foundation/components/responsivegrid,/libs/cq/experience-fragments/editor/components/experiencefragment,/libs/dam/cfm/components/contentfragment]"
+                            policyResourceType="chinational/components/foundation/responsivegrid">
+                        <cq:authoring jcr:primaryType="nt:unstructured"/>
+                        <jcr:content
+                                jcr:primaryType="nt:unstructured"
+                                mergeList="{Boolean}true"/>
                     </chi-national-default>
                 </responsivegrid>
             </components>
         </foundation>
     </wcm>
+    <chinational jcr:primaryType="nt:unstructured">
+        <components jcr:primaryType="nt:unstructured">
+            <foundation jcr:primaryType="nt:unstructured">
+                <responsivegrid jcr:primaryType="nt:unstructured">
+                    <policy_1528235602177
+                            jcr:lastModified="{Date}2018-06-05T15:54:14.779-06:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="CHI Policy"
+                            sling:resourceType="wcm/core/components/policy/policy"
+                            components="group:CHI General">
+                        <jcr:content
+                                cq:lastReplicated="{Date}2018-06-05T15:58:35.489-06:00"
+                                cq:lastReplicatedBy="admin"
+                                cq:lastReplicationAction="Activate"
+                                jcr:mixinTypes="[cq:ReplicationStatus]"
+                                jcr:primaryType="nt:unstructured"/>
+                    </policy_1528235602177>
+                </responsivegrid>
+            </foundation>
+        </components>
+    </chinational>
 </jcr:root>
