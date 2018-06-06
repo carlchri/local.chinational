@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-
     var blogs_start_index = 0;
     var blogs_filter = "SortByMostRecent";
     var BLOGS_HITS_PER_PAGE = 10;
@@ -49,7 +48,7 @@ $(document).ready(function(){
 
     function blogsLoadMoreShowHide() {
         // Compare size of results with total results and hide LOAD MORE, if not required
-        size_li = $(".filtered_blogs_list li").size();
+        var size_li = $(".filtered_blogs_list li").size();
         $('.filtered_blogs_list_show_more').show();        
         if(size_li >= blogs_total_results) {
 	        $('.filtered_blogs_list_show_more').hide();
@@ -93,4 +92,5 @@ $(document).ready(function(){
             }                
         });
     }
+    
 });

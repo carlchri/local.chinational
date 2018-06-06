@@ -508,19 +508,41 @@ jQuery(document).ready(function() {
         }
     });
 
-})
+});
+
+/* June 4, 2018 Added by Davinder for Compaign landing Page */
+
+if (jQuery(window).width() < 768) {
+    jQuery(function() {
+        campaignButtonHide($(".campaign-header-button"));
+    });
+}    
+
+function campaignButtonHide(buttondiv) {
+    if ($( "div" ).hasClass( "campaign-header-button" )) {
+    		var pos = buttondiv.offset().top,
+            win = $(window);
+    		win.on("scroll", function() {
+            win.scrollTop() >= pos ? buttondiv.hide() : buttondiv.show();
+        });
+    }
+}
+
+/* End of Additions  */
+
 if (jQuery(window).width() > 992) {
     jQuery(function() {
         createSticky($(".main-nav"));
     });
+}
 
-    function createSticky(sticky) {
-        if (typeof sticky !== "undefined") {
-            var pos = sticky.offset().top,
-                win = $(window);
-            win.on("scroll", function() {
-                win.scrollTop() >= pos ? sticky.addClass("pstn-fxd") : sticky.removeClass("pstn-fxd");
-            });
-        }
+function createSticky(sticky) {
+    if ($( "div" ).hasClass( "main-nav" )) {
+        var pos = sticky.offset().top,
+            win = $(window);
+        win.on("scroll", function() {
+            win.scrollTop() >= pos ? sticky.addClass("pstn-fxd") : sticky.removeClass("pstn-fxd");
+        });
     }
 }
+

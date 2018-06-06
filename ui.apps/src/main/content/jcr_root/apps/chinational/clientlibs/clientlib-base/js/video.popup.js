@@ -6,7 +6,7 @@
     $.fn.videoPopup = function(options) {
         var videoPopup = {
             embedLink: ''
-        }
+        };
 
         var settings = $.extend({
             autoplay: 1,
@@ -32,7 +32,7 @@
                         loop: settings.loopVideo,
                         controls: settings.showControls,
                         showinfo: settings.showVideoInformations,
-                    }
+                    };
 
                     // we are not using any custom options, and this line throws error in IE 11
                     //Object.assign(youtubeOptions, settings.customOptions);
@@ -53,7 +53,7 @@
                         loop: settings.loopVideo,
                         controls: settings.showControls,
                         title: settings.showVideoInformations,
-                    }
+                    };
 
                     // we are not using any custom options, and this line throws error in IE 11
                     //Object.assign(vimeoOptions, settings.customOptions);
@@ -61,7 +61,7 @@
                     return "https://player.vimeo.com/video/"+videoCode+"/?"+$.param(vimeoOptions);
                 }
             }
-        }
+        };
         
         function mountEmbedLink(videoUrl) {
             $.each(parsers, function(index, parser){
@@ -71,7 +71,7 @@
                     videoPopup.embedLink = parser.mount(videoCode);
                     return this;
                 }
-            })
+            });
         }
 
         function mountIframe() {
