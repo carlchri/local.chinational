@@ -4,7 +4,7 @@
     <jcr:content
         cq:tags="[experience-fragments:variation/chi]"
         cq:template="/conf/chinational/settings/wcm/templates/experience-fragment-chi-variation"
-        cq:xfVariantType="chi"
+        cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
         jcr:title="CHI"
         sling:resourceType="chinational/components/structure/xfpage">
