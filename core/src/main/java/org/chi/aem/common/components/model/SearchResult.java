@@ -83,8 +83,8 @@ public class SearchResult extends WCMUsePojo {
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
             currentPageNumber = Integer.parseInt(pageString);
             resultsOffset = (currentPageNumber - 1) * resultsSize;
-            LOGGER.info("getSearchResults currentPageNumber - " + currentPageNumber);
-            LOGGER.info("getSearchResults resultsOffset - " + resultsOffset);
+            LOGGER.debug("getSearchResults currentPageNumber - " + currentPageNumber);
+            LOGGER.debug("getSearchResults resultsOffset - " + resultsOffset);
         }
 
         fulltext = request.getParameter(PARAM_FULLTEXT);
@@ -216,6 +216,17 @@ public class SearchResult extends WCMUsePojo {
     public int getTotalNumberOfResults() { return totalNumberOfResult; }
 
     public int getCurrentPageNumber() { return currentPageNumber; }
+
+    public int getPreviousPageNumber() {
+        return currentPageNumber-1;
+    }
+
+    public int getNextPageNumber() {
+        if (currentPageNumber == totalNumberPages) {
+            return 0;
+        }
+        return currentPageNumber+1;
+    }
 
     public String getFulltext() {
         return fulltext;
