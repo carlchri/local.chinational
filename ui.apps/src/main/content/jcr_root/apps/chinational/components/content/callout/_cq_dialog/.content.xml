@@ -81,18 +81,73 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/well">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <iconSelector
+                                                    <iconOptions
+                                                        granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Choose an icon to display in the Callout"
-                                                        fieldLabel="Select Icon"
+                                                        fieldDescription="Select an icon option for the callout"
+                                                        fieldLabel="Select an Icon Option:"
+                                                        name="./iconOption">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <preDefinedIcons
+                                                                jcr:primaryType="nt:unstructured"
+                                                                selected="{Boolean}true"
+                                                                text="Use pre-defined icon"
+                                                                value="icon-pre"/>
+                                                            <customIcons
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Use Custom Icon"
+                                                                value="icon-custom"/>
+                                                        </items>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            cq-dialog-dropdown-showhide-target=".list-option-icon-showhide-target"/>
+                                                    </iconOptions>
+                                                    <iconTypeFieldLabel
+                                                        granite:class="list-option-icon-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}4"
+                                                        text="Choose Pre-defined Icon for the callout:">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="icon-pre"/>
+                                                    </iconTypeFieldLabel>
+                                                    <iconSelector
+                                                        granite:class="list-option-icon-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:orderBefore="orderBy"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                         name="./calloutIcon">
                                                         <datasource
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="/apps/chinational/components/datasource"
                                                             path="/etc/config/chinational/components/iconSelector"/>
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="icon-pre"/>
                                                     </iconSelector>
+                                                    <iconImageFieldLabel
+                                                        granite:class="list-option-icon-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}4"
+                                                        text="Custom Icon Image URL [it is strongly recommended to use assets in a 1:1 (square) ratio, ideally 50x50]">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="icon-custom"/>
+                                                    </iconImageFieldLabel>
+                                                    <iconImageSrc
+                                                        granite:class="list-option-icon-showhide-target"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        name="./iconImageSrc"
+                                                        rootPath="/content/dam">
+                                                        <granite:data
+                                                            jcr:primaryType="nt:unstructured"
+                                                            showhidetargetvalue="icon-custom"/>
+                                                    </iconImageSrc>
                                                     <iconOrientation
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
@@ -123,9 +178,9 @@
                                 </items>
                             </otherOptionsTab>
                             <greyBarTab
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/include"
-                                    path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/include"
+                                path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
                         </items>
                     </tabs>
                 </items>

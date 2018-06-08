@@ -8,6 +8,66 @@
     flex-wrap: wrap;
 }
 
+/* June 7, 2018 Added by Davinder CHIP27 */
+
+.icons-row .icon-container {
+	width:35px;
+	height:35px;
+	display:inline-block;
+	margin:15px 30px 15px 0px;
+}
+
+.right-rail .icons-row .icon-container {
+	margin:15px 20px 0px 0px;
+}
+
+.bio-page-icons-row .icons-row .icon-container {
+	margin:15px 5px 15px 0px;
+}
+
+.icons-row .icon-container img{
+	width:35px; 
+	height:35px;
+	margin:0;
+	padding:0;
+}
+
+.icons-row .icon-container a{
+	width:35px; 
+	height:35px;
+	margin:0;
+	padding:0;
+}
+.icons-row .icon-container .sprite, .icons-row .icon-container .sprite-v2{
+	vertical-align: middle; 
+}
+.call-out .icon-container {
+	width:50px;
+	height:50px;
+	display:inline-block;
+	margin:0;
+}
+
+.call-out .icon-container img{
+	width:50px; 
+	height:50px;
+	margin:0;
+	padding:0;
+}
+
+.call-out .icon-container span{
+	width:50px; 
+	height:50px;
+	margin:0;
+	padding:0;
+}
+
+.call-out .icon-container .sprite, .call-out .icon-container .sprite-v2{
+	vertical-align: middle; 
+}
+
+/* End of Additions by Davinder CHIP27 */
+
 /* Added by German to Fix Defect DE2589 */
 
 @media all and (min-width: 768px) {
@@ -34,3 +94,12 @@
 
 /* End of additions by German to Fix Defect DE2590*/
 
+/* June 7, 2018 Added by Davinder CHIP27 */
+
+@media all and (max-width: 350px) {
+	.icons-row .icon-container {
+		margin:15px 14px 15px 0px;
+	}
+
+}
+/*  End of additions by Davinder */

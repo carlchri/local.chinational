@@ -1,9 +1,22 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
-<div class="row category-item">
-    <div class="col-md-2 col-sm-2 col-xs-2 category_icon" data-sly-test="${properties.calloutIcon != 'iconNotRequired'}">
-		<span class="${properties.calloutIcon || 'solid-circle'}"></span>
-    </div>
+<div class="row category-item call-out">
+    <sly data-sly-test="${properties.iconOption == 'icon-pre'}">
+	    <div class="col-md-2 col-sm-2 col-xs-2 category_icon" data-sly-test="${properties.calloutIcon != 'iconNotRequired'}">
+	      	<div class="icon-container">
+				<span class="${properties.calloutIcon || 'solid-circle'}" style="margin:0;"></span>
+			</div>
+	    </div>
+	</sly>
+    <sly data-sly-test="${properties.iconOption == 'icon-custom'}">
+	    <div class="col-md-2 col-sm-2 col-xs-2 category_icon" data-sly-test="${properties.iconImageSrc}">
+	   		<div  class="icon-container" data-sly-test="${properties.iconImageSrc}">
+	       		<img class="" src="${properties.iconImageSrc}" />
+	     	</div>
+	    </div>
+    </sly>
+
+    
     <div class="category_content col-md-10 col-sm-10 col-xs-10">
         <a data-sly-test="${link.linkUrl != '#'}" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
             <span class="small-heading heading_site_color">${properties.categoryTitleText || 'Callout Component'}</span>
