@@ -217,12 +217,16 @@ public class SearchResult extends WCMUsePojo {
 
     public int getCurrentPageNumber() { return currentPageNumber; }
 
+    public int getMaxPageNumber() {
+        return totalNumberPages-1;
+    }
+
     public int getPreviousPageNumber() {
         return currentPageNumber-1;
     }
 
     public int getNextPageNumber() {
-        if (currentPageNumber == totalNumberPages) {
+        if (currentPageNumber == getMaxPageNumber()) {
             return 0;
         }
         return currentPageNumber+1;
