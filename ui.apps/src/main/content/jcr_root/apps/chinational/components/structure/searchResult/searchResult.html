@@ -20,8 +20,13 @@
     <div id="search-pagination" class="pagination" data-sly-list="${searchResult.pages}">
         <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${item}">${item}</a>
     </div>
-    <div>
-        < ${searchResult.currentPageNumber} of ${searchResult.totalNumberPages} >
+    <div class="pagination">
+        ${searchResult.currentPageNumber} of ${searchResult.totalNumberPages}
+        <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${searchResult.previousPageNumber}"
+            data-sly-test="${searchResult.previousPageNumber >0}"><</a>
+        ${searchResult.currentPageNumber} of ${searchResult.totalNumberPages}
+        <a href="${currentPage.path @ extension = 'html'}?fulltext=${searchResult.fulltext}&page=${searchResult.nextPageNumber}"
+           data-sly-test="${searchResult.nextPageNumber >0}">></a>
     </div>
 </div>
 
