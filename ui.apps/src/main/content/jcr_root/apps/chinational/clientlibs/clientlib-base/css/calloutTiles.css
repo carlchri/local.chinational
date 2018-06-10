@@ -18,7 +18,7 @@
 }
 
 .right-rail .icons-row .icon-container {
-	margin:15px 20px 0px 0px;
+	margin:0px 20px 0px 0px;
 }
 
 .bio-page-icons-row .icons-row .icon-container {
@@ -42,27 +42,62 @@
 	vertical-align: middle; 
 }
 .call-out .icon-container {
-	width:50px;
+	/* width:50px; Do not Restrict the width to accomodate for icons with width greater than 50px - 
+	   in case of centrally-aligned and left-aligned options; */
 	height:50px;
 	display:inline-block;
 	margin:0;
+	/* if the container is narrower than the element inside */
+  	white-space: nowrap;
+  	overflow:hidden;
+  	margin-left:-3px;
 }
 
+.call-out.icon-dis-left {
+	display:flex;
+}
+
+.call-out.icon-dis-left .category_content{
+	flex:1; /* added for IE11 as image or icon was getting distorted */
+}
+
+.call-out .category_icon .icon-container {
+	width:50px; 
+	height:auto;
+}
+
+.call-out .category_icon {
+	display:flex;
+	margin-right:12px;
+	text-align:center;
+}
+
+/* added to implement centering for callout icons*/
+.call-out .icon-container:before {
+  content: '\200B';
+/*   content: '';
+  margin-left: -0.25em; */
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+ }
 .call-out .icon-container img{
 	width:50px; 
 	height:50px;
 	margin:0;
 	padding:0;
+	display:inline-block;
+	vertical-align:middle;
 }
 
 .call-out .icon-container span{
-	width:50px; 
-	height:50px;
 	margin:0;
 	padding:0;
+    display: inline-block;
+	vertical-align:middle;
 }
-
-.call-out .icon-container .sprite, .call-out .icon-container .sprite-v2{
+ 
+ .call-out .icon-container .sprite, .call-out .icon-container .sprite-v2{
 	vertical-align: middle; 
 }
 

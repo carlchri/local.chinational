@@ -12,7 +12,7 @@
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <iconsRowTab
+                    <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Main Settings Tab"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
@@ -127,7 +127,42 @@
                                 </items>
                             </column>
                         </items>
-                    </iconsRowTab>
+                    </mainSettingsTab>
+                    <rightRailTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Right Rail Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <rightRailIcons
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Select this checkbox only if Row of Icons is added in right rail"
+                                                name="./rightRailIcons"
+                                                text="Select if Row of Icons is in right rail"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <iconsRowHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Required only if Row of Icons is used in Right Rail. Otherwise leave empty."
+                                                fieldDescription="Required only if Row of Icons is used in Right Rail.This text will be used as heading for row of icons."
+                                                fieldLabel="List Heading"
+                                                name="./iconsRowHeading"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </rightRailTab>
                     <greyBarTab
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"
