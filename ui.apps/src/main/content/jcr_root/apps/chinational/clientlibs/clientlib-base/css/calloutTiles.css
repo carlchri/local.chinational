@@ -21,10 +21,6 @@
 	margin:0px 20px 0px 0px;
 }
 
-.bio-page-icons-row .icons-row .icon-container {
-	margin:15px 5px 15px 0px;
-}
-
 .icons-row .icon-container img{
 	width:35px; 
 	height:35px;
@@ -131,7 +127,7 @@
 
 /* June 7, 2018 Added by Davinder CHIP27 */
 
-@media all and (max-width: 350px) {
+@media all and (max-width: 767px) {
 	.icons-row .icon-container {
 		margin:15px 14px 15px 0px;
 	}
