@@ -27,7 +27,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                         composite="{Boolean}true"
                                         fieldDescription="Click + to add a new entry to the list"
-                                        fieldLabel="Custom Icon Collection"
+                                        fieldLabel="Icon Collection"
                                         name="./multiCol">
                                         <field
                                             jcr:primaryType="nt:unstructured"
