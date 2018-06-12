@@ -25,3 +25,16 @@
   text-align: center;
   text-decoration: none;
 }
+
+.search-result h1 {
+    line-height:48px;
+    padding-bottom: 14px;
+}
+
+.search-result .count-info {
+    font-size: 24px;
+    line-height:24px;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+    color: #97999B;
+    padding-bottom: 30px;
+}
