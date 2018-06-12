@@ -38,8 +38,7 @@
 	vertical-align: middle; 
 }
 .call-out .icon-container {
-	/* width:50px; Do not Restrict the width to accomodate for icons with width greater than 50px - 
-	   in case of centrally-aligned and left-aligned options; */
+	width:50px; 
 	height:50px;
 	display:inline-block;
 	margin:0;
@@ -59,11 +58,12 @@
 
 .call-out .category_icon .icon-container {
 	width:50px; 
-	height:auto;
+	height:50px;
+	/* height:auto; use this if do not want to restrict the height */
 }
 
 .call-out .category_icon {
-	display:flex;
+	/* display:flex; need this only if height is not restricted to 50px and want to vertically when icon is on the left */
 	margin-right:12px;
 	text-align:center;
 }

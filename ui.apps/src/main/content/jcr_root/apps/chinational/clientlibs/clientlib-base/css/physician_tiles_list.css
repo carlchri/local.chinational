@@ -108,11 +108,18 @@
   line-height: 1.2;
   font-size: 20px;
 }
+/* Commented out by Davinder June 6, 2018
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc a,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc a {
   display: inline-block;
   margin-bottom: 13px;
+} */
+/* Added by Davinder June 6, 2018 to replace above */
+.physicianTiles .tiles-wrapper .tile-inner .tile-desc a {
+  display: inline-block;
+  margin-bottom: 13px;
 }
+/* End of Additions */
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc p,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc p {
   margin: 0;
