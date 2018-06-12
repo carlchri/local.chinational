@@ -24,25 +24,37 @@ import org.slf4j.LoggerFactory;
 @Model(adaptables = Resource.class)
 public class IconsRow {
  
-	public java.util.List<Icon> icons;
+	public java.util.List<Icon> preIcons;
+	public java.util.List<Icon> customIcons;
     private static final Logger LOGGER = LoggerFactory.getLogger(IconsRow.class);
 	@Inject
 	private ResourceResolver resourceResolver;
  
 	@Inject
 	@Optional
-	@Named("icons")
-	private Resource iconsResource;
+	@Named("preIcons")
+	private Resource preIconsResource;
+ 
+	@Inject
+	@Optional
+	@Named("customIcons")
+	private Resource customIconsResource;
  
 	@PostConstruct
 	protected void init() {
-		icons = new ArrayList<Icon>();
-		if (iconsResource != null) {
-			populateModel(icons, iconsResource);
+		preIcons = new ArrayList<Icon>();
+		customIcons = new ArrayList<Icon>();
+		if (preIconsResource != null) {
+			populateModel(preIcons, preIconsResource);
 		}else{
-			icons.add(new Icon());
+			preIcons.add(new Icon());
 		}
-        // LOGGER.info("icons:" + icons.toString());
+		if (customIconsResource != null) {
+			populateModel(customIcons, customIconsResource);
+		}else{
+			customIcons.add(new Icon());
+		}
+        // LOGGER.info("preIcons:" + preIcons.toString());
 	}
 	public static java.util.List<Icon> populateModel(
 			java.util.List<Icon> array, Resource resource) {
@@ -54,7 +66,7 @@ public class IconsRow {
 					array.add(icon);
 			}
 		}
-        // LOGGER.info("icons:" + array.toString());
+        // LOGGER.info("preIcons:" + array.toString());
 		return array;
 	}
  
