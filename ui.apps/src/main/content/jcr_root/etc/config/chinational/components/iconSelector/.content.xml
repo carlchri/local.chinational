@@ -202,4 +202,24 @@
         jcr:primaryType="nt:unstructured"
         text="Imaging - Light Color"
         value="sprite-v2 small-icons icon-imaging-dark"/>
+    <facebook
+        jcr:primaryType="nt:unstructured"
+        text="Facebook"
+        value="sprite small-icons icon-fb"/>
+    <instagram
+        jcr:primaryType="nt:unstructured"
+        text="Instagram"
+        value="sprite small-icons icon-instagram"/>
+    <twitter
+        jcr:primaryType="nt:unstructured"
+        text="Twitter"
+        value="sprite small-icons icon-twitter"/>
+    <linkedin
+        jcr:primaryType="nt:unstructured"
+        text="LinkedIn"
+        value="sprite small-icons icon-linkedin"/>
+    <youtube
+        jcr:primaryType="nt:unstructured"
+        text="YouTube"
+        value="sprite small-icons icon-youtube"/>
 </jcr:root>

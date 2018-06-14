@@ -16,10 +16,16 @@
 .physicianTile .tiles-wrapper {
   padding: 0;
 }
+/* Commented out by Davinder June 6, 2018
 .physicianTiles .tiles-wrapper .tile,
 .physicianTile .tiles-wrapper .tile {
   max-width: 400px;
-}
+} */
+/* Added by Davinder June 6, 2018 to replace above */
+.physicianTiles .tiles-wrapper .tile {
+  max-width: 400px;
+} 
+
 .physicianTiles .tiles-wrapper .tile:nth-child(odd),
 .physicianTile .tiles-wrapper .tile:nth-child(odd) {
   padding-right: 0;
@@ -33,16 +39,33 @@
             }*/
 }
 @media (min-width: 1024px) {
+/* Commented out by Davinder June 6, 2018	
   .physicianTiles .tiles-wrapper .tile-inner,
   .physicianTile .tiles-wrapper .tile-inner {
     padding: 0 40px;
+  } */
+/* Added by Davinder June 6, 2018 to replace above */
+  .physicianTiles .tiles-wrapper .tile-inner {
+    padding: 0 40px;
   }
+	.physicianTile .tiles-wrapper .tile-inner .tile-desc span {
+		max-width:198px;
+	} 
+	.physicianTile .tiles-wrapper .tile-inner .tile-desc p {
+		max-width:198px;
+	} 
+/* End of additions */	
 }
 @media (max-width: 1023px) {
+/* Commented out by Davinder June 6, 2018	
   .physicianTiles .tiles-wrapper .tile-inner,
   .physicianTile .tiles-wrapper .tile-inner {
     padding: 0 30px;
-  }
+  } */
+/* Added by Davinder June 6, 2018 to replace above */
+	.physicianTiles .tiles-wrapper .tile-inner {
+    	padding: 0 30px;
+    }
 }
 
 .physicianTiles .tiles-wrapper .tile-inner .tile-img,
@@ -85,11 +108,18 @@
   line-height: 1.2;
   font-size: 20px;
 }
+/* Commented out by Davinder June 6, 2018
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc a,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc a {
   display: inline-block;
   margin-bottom: 13px;
+} */
+/* Added by Davinder June 6, 2018 to replace above */
+.physicianTiles .tiles-wrapper .tile-inner .tile-desc a {
+  display: inline-block;
+  margin-bottom: 13px;
 }
+/* End of Additions */
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc p,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc p {
   margin: 0;
