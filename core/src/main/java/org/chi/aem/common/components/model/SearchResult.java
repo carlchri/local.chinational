@@ -27,7 +27,7 @@ public class SearchResult extends WCMUsePojo {
     private static final String PN_SEARCH_TERM_MINIMUM_LENGTH = "searchTermMinimumLength";
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchResult.class);
     private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
-    private static final int DEFAULT_RESULT_SIZE = 10;
+    private static final int DEFAULT_RESULT_SIZE = 20;
     private static final int DEFAULT_RESULT_OFFSET = 0;
     private static final String DEFAULT_SEARCH_ROOT = "/content/national";
     private static final String DEFAULT_RESULT_TYPE = "cq:Page";
