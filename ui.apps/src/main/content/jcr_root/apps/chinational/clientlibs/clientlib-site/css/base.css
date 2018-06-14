@@ -71,6 +71,28 @@
     font-size: 0;
 }
 
+/* Added to extend grey line  to corners, else it was terminating and showing white space*/
+@media (max-width: 1200px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-11.7vw / 2);
+        margin-right: calc(-11.7vw / 2);
+       }
+}
+
+@media (max-width: 767px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-14.7vw / 2);
+        margin-right: calc(-14.7vw / 2);
+       }
+}
+
+@media (max-width: 320px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-18.7vw / 2);
+        margin-right: calc(-18.7vw / 2);
+       }
+}
+
 .full-bleed-tiles {
     margin-left: -4.633%;
     /* Added by German for special-content.html */

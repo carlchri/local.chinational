@@ -27,5 +27,6 @@ js/footerContactUs.js
 js/physician_tile.js
 js/hoverTouchDevices.js
 js/highlight.js
+js/search.js
 
 

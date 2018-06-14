@@ -1,9 +1,13 @@
 .search-result {
   position: relative;
 }
-.search-result a {
-  font-size: 16px;
+.search-result .search-box  {
+ width: 347px;
+ margin-bottom: 43px;
 }
+
+
+
 .search-result ul {
   list-style-type: none;
 }
@@ -18,10 +22,71 @@
   display: block;
   overflow: auto;
   white-space: nowrap;
-  height: 35px;
+  font-size:28px;
+  color: #24509a;
 }
 .search-result .pagination a {
   display: inline-block;
   text-align: center;
   text-decoration: none;
+}
+
+.search-result .pagination .left-arrow {
+  margin-right: 60px;
+}
+
+.search-result .pagination .right-arrow {
+  margin-left: 60px;
+}
+
+.search-result .rectangle {
+  width: 33px;
+  /*height: 33px;*/
+  border-radius: 7px;
+  border: solid 1px #e7e7e7;
+}
+
+.search-result h1 {
+    line-height:48px;
+    padding-bottom: 14px;
+}
+
+.search-result h3 {
+    line-height:28px;
+    margin-bottom: 8px;
+}
+
+.search-result .no-desc {
+    margin-bottom: 50px;
+}
+
+.search-result p {
+    line-height:1.25;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.search-result .count-info {
+    font-size: 24px;
+    line-height:24px;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+    color: #97999B;
+    padding-bottom: 30px;
+}
+
+.search-result hr {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+    .search-result .search-box  {
+         width: 319px;
+         margin-bottom: 30px;
+         position:static;
+    }
+
+    .search-result .count-info {
+        padding-bottom: 17px;
+    }
+
 }

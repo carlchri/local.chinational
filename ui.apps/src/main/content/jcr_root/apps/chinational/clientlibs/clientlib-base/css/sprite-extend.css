@@ -289,6 +289,20 @@
   /* Modified by German to fix Defect DE2595, it was height: 12px; */
   margin: 10px 0 0 0;
 }
+.sprite-v2.icon-arrow-left {
+  background-position: -701px -48px;
+  width: 12px;
+  height: 12px;
+  transform: rotate(-270deg);
+}
+
+.sprite-v2.icon-arrow-right {
+  background-position: -701px -48px;
+  width: 12px;
+  height: 12px;
+  transform: rotate(-90deg);
+}
+
 .sprite-v2.icon-clinic {
   background-position: -52px -154px;
   width: 33px;
