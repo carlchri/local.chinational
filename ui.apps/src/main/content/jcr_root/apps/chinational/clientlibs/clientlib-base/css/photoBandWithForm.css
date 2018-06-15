@@ -1,0 +1,53 @@
+/* Davinder created this file on June 14, 2018 for photoBandWithCarousel component CHIP28 */
+
+.photo-band-with-form.component {
+	margin-right:-60px;
+	margin-left:-60px;
+}
+
+.photo-band-with-form .intro {
+	margin:0;
+}
+
+.photo-band-with-form .intro-caption-white {
+	font-size:36px;
+}
+
+.photo-band-form .form-group {
+	margin-bottom:12px;
+	width:85%;
+	float:right;
+}
+
+.photo-band-form .form-control {
+	background-color: #ddf4f8;
+	/* border: solid #8db9ca 2px; */
+	padding: 5px 12px 9px 12px!important;
+	font-size:16px;
+	line-height:20px;
+    object-fit: contain;
+    font-family: MyriadPro;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #53565a;
+    border-radius:0px;
+}
+
+.photo-band-form .photo-band-form-select {
+	-webkit-appearance:menulist;
+	-moz-appearance:menulist; 
+	/* background-color:#E6FFFF; */
+	/* width:60%; */
+}
+
+.photo-band-form .photo-band-form-button {
+	margin-top:18px;
+}
+
+.photo-band-form .photo-band-form-select option {
+		padding: 5px 12px 9px 12px!important;
+}

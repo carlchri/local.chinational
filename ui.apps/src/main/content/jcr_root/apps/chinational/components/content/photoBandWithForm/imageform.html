@@ -7,13 +7,6 @@
 <div class="intro-title"
      style="background-color: ${properties.backgroundColor @ context='styleToken'};">
     <div class="title-inner">
-        <h1 class="intro-caption-white">
-            ${properties.heading}
-        </h1>
-        <div class="intro-sub-header" data-sly-test="${properties.subheading}">${properties.subheading}</div>
-        <div class="link-wrapper" data-sly-test="${hero.linkTo}">
-        <a href="${hero.linkTo}" data-sly-test="${properties.label}"
-           class="learn-more-btn white-border">${properties.label}</a>
-        </div>
+	    <sly data-sly-include="photoBandForm.html"></sly>
     </div>
 </div>
