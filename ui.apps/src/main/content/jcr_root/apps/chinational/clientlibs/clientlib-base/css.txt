@@ -30,4 +30,5 @@ css/sprite-extend.css
 css/sub-nav.css
 css/video.css
 css/video.popup.css
+css/search.less
 css/aem-override.css
