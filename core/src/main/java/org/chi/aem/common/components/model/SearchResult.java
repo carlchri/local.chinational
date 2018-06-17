@@ -27,7 +27,7 @@ public class SearchResult extends WCMUsePojo {
     private static final String PN_SEARCH_TERM_MINIMUM_LENGTH = "searchTermMinimumLength";
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchResult.class);
     private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
-    private static final int DEFAULT_RESULT_SIZE = 10;
+    private static final int DEFAULT_RESULT_SIZE = 20;
     private static final int DEFAULT_RESULT_OFFSET = 0;
     private static final String DEFAULT_SEARCH_ROOT = "/content/national";
     private static final String DEFAULT_RESULT_TYPE = "cq:Page";
@@ -83,8 +83,8 @@ public class SearchResult extends WCMUsePojo {
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
             currentPageNumber = Integer.parseInt(pageString);
             resultsOffset = (currentPageNumber - 1) * resultsSize;
-            LOGGER.info("getSearchResults currentPageNumber - " + currentPageNumber);
-            LOGGER.info("getSearchResults resultsOffset - " + resultsOffset);
+            LOGGER.debug("getSearchResults currentPageNumber - " + currentPageNumber);
+            LOGGER.debug("getSearchResults resultsOffset - " + resultsOffset);
         }
 
         fulltext = request.getParameter(PARAM_FULLTEXT);
@@ -216,6 +216,21 @@ public class SearchResult extends WCMUsePojo {
     public int getTotalNumberOfResults() { return totalNumberOfResult; }
 
     public int getCurrentPageNumber() { return currentPageNumber; }
+
+    public int getMaxPageNumber() {
+        return totalNumberPages-1;
+    }
+
+    public int getPreviousPageNumber() {
+        return currentPageNumber-1;
+    }
+
+    public int getNextPageNumber() {
+        if (currentPageNumber == getMaxPageNumber()) {
+            return 0;
+        }
+        return currentPageNumber+1;
+    }
 
     public String getFulltext() {
         return fulltext;
