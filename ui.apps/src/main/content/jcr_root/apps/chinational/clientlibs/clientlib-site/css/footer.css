@@ -143,6 +143,10 @@ form .col-md-3 {
 }
 
 .campaignlandingpage .section {
+	margin-bottom:0 !important;
+}
+
+.campaignlandingpage .cq-Editable-dom--container {
 	margin-bottom:-1.25rem !important;
 }
 /* End of Additions  */

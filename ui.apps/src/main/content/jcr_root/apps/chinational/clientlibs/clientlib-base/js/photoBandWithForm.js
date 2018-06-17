@@ -18,8 +18,6 @@ $(document).ready(function () {
     	// $(".campaignlandingpage .body-content").css( "margin-top", "112px" );
         }
     
-    textScaleToSize();
-    
     function textScaleToSize() {
     	  var elements = $('.photo-band-with-form .intro-caption-white');
     	  if(elements.length < 0) {
@@ -27,10 +25,18 @@ $(document).ready(function () {
     	  }
     	  elements.each(function(i, element) {
     	    while(element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight) {
-    	      var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
+    	      var newFontSize = (parseInt($(element).css('font-size').slice(0, -2)) - 1) + 'px';
     	      $(element).css('font-size', newFontSize);
     	    }
     	  });
     	}
+    
+      // $('#photo-band-form-multiselect').ultipleSelect();
+      $('#photo-band-form-multiselect').multiselect({
+    	  nonSelectedText: 'Checkbox list',
+    	  enableFiltering: false,
+    	  enableCaseInsensitiveFiltering: false
+    	  // buttonWidth:'380px'
+    	 });
 
 });

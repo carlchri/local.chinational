@@ -28,5 +28,6 @@ js/physician_tile.js
 js/photoBandWithForm.js
 js/hoverTouchDevices.js
 js/highlight.js
+js/bootstrap-multiselect.js
 
 

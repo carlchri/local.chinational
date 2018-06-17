@@ -31,4 +31,5 @@ css/sub-nav.css
 css/video.css
 css/video.popup.css
 css/photoBandWithForm.css
+css/bootstrap-multiselect.css
 css/aem-override.css
