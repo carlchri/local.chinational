@@ -3,6 +3,7 @@ $(document).ready(function(){
 
     var start_index = 0;
     var news_filter = "SortByMostRecent";
+    var news_filter_year = "ChooseYear"
     var NEWS_HITS_PER_PAGE = 10;
 
     var total_results = parseInt($('#total_results').val());
@@ -10,10 +11,10 @@ $(document).ready(function(){
     window.onunload = searchNewsListOption();
     
     function searchNewsListOption() {
-        $("#select_news_by_year").hide();
+        // $("#select_news_by_year").hide();
         $("#search_news_list option:selected").removeAttr("selected");
         $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');
-        $("#select_blogs_by_year").hide();
+        // $("#select_blogs_by_year").hide();
         $("#search_blogs_list option:selected").removeAttr("selected");
         $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
 	}
@@ -21,7 +22,15 @@ $(document).ready(function(){
 	 newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
-      if (this.value == 'ByYear')
+        $("#select_news_by_year option:selected").removeAttr("selected");
+        $("#select_news_by_year option[value='ChooseYear']").attr('selected', 'selected');  
+    	start_index = 0;
+        $('.filtered_list').html("");
+        news_filter = $('#search_news_list').val() ;
+        news_filter_year = $('#search_news_year').val(); //will be "ChooseYear always
+		$('.loading').show();
+        newslistAjaxCall();
+/*      if (this.value == 'ByYear')
       {
         $("#select_news_by_year").show();
 
@@ -39,10 +48,18 @@ $(document).ready(function(){
 		$('.loading').show();
         newslistAjaxCall();
       }
+*/      
     });
 
     $('#search_news_year').on('change', function() {
-          if (this.value != 'ChooseYear')
+        start_index = 0;
+        $('.filtered_list').html("");
+        news_filter = $('#search_news_list').val() ;
+        news_filter_year = $('#search_news_year').val() ;    
+		$('.loading').show();
+        newslistAjaxCall();
+
+/*          if (this.value != 'ChooseYear')
           {
             start_index = 0;
             $('.filtered_list').html("");
@@ -50,6 +67,7 @@ $(document).ready(function(){
     		$('.loading').show();
             newslistAjaxCall();
           }
+          */
     });
 
     $('.filtered_list_show_more').click(function () {
@@ -71,7 +89,7 @@ $(document).ready(function(){
         $('.filtered_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.html';
+   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.' + news_filter_year + '.html';
 		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    
@@ -97,6 +115,17 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_list");
                 });
+                $('#search_news_year').html("");
+        		$('#search_news_year').append($('<option>', {
+        		    value: 'ChooseYear',
+        		    text: 'Choose Year'
+        		}));
+        		$.each(json.list_years, function (index, item) {
+        		    $('#search_news_year').append($('<option>', { 
+        		        value: item,
+        		        text : item 
+        		    }));
+        		});
 				newsLoadMoreShowHide();          
             },
 			error: function (err) {

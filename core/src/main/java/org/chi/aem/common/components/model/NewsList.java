@@ -50,6 +50,7 @@ public class NewsList implements ComponentExporter {
     private static final String PN_PARENT_PAGE = "parentPage";
     private static final String NEWS_TEMPLATE = "/apps/chinational/templates/newsdetailspage";
     private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
 
@@ -154,7 +155,7 @@ public class NewsList implements ComponentExporter {
         }
 
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, DEFAULT_NEWS_FILTER);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, DEFAULT_NEWS_FILTER, DEFAULT_NEWS_FILTER_YEAR);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");

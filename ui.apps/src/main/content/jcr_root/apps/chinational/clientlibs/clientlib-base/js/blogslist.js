@@ -3,6 +3,7 @@ $(document).ready(function(){
 
     var blogs_start_index = 0;
     var blogs_filter = "SortByMostRecent";
+    var blogs_filter_year = "ChooseYear"
     var BLOGS_HITS_PER_PAGE = 10;
 
     var blogs_total_results = parseInt($('#total_results').val());
@@ -10,7 +11,18 @@ $(document).ready(function(){
 	blogsLoadMoreShowHide();          
 
     $('#search_blogs_list').on('change', function() {
-      if (this.value == 'ByYear')
+        $("#select_blogs_by_year option:selected").removeAttr("selected");
+        $("#select_blogs_by_year option[value='ChooseYear']").attr('selected', 'selected');  
+        blogs_start_index = 0;
+        // to clear contents on the page  
+        $('.filtered_blogs_list').html("");
+
+        blogs_filter = $('#search_blogs_list').val() ;
+        blogs_filter_year = $('#search_blogs_year').val(); //will be "ChooseYear always
+		$('.loading_blogs').show();
+        blogslistAjaxCall();
+
+/*      if (this.value == 'ByYear')
       {
         $("#select_blogs_by_year").show();
       }
@@ -28,10 +40,18 @@ $(document).ready(function(){
 		$('.loading_blogs').show();
         blogslistAjaxCall();
       }
+*/      
     });
 
     $('#search_blogs_year').on('change', function() {
-          if (this.value != 'ChooseYear')
+        blogs_start_index = 0;
+        $('.filtered_blogs_list').html("");
+        blogs_filter = $('#search_blogs_list').val() ;
+        blogs_filter_year = $('#search_blogs_year').val();
+		$('.loading_blogs').show();
+        newslistAjaxCall();
+    	
+/*          if (this.value != 'ChooseYear')
           {
             blogs_start_index = 0;
             $('.filtered_blogs_list').html("");
@@ -39,6 +59,7 @@ $(document).ready(function(){
     		$('.loading_blogs').show();
             blogslistAjaxCall();
           }
+*/          
     });
 
     $('.filtered_blogs_list_show_more').click(function () {
@@ -60,7 +81,7 @@ $(document).ready(function(){
         $('.filtered_blogs_list_show_more').hide();
 		var current_page_path = $('#current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index + '.html';
+   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index +  '.' + blogs_filter_year + '.html';
 
         $.ajax({
             type: 'GET',    
@@ -86,6 +107,18 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_blogs_list");
                 });
+                $('#search_blogs_year').html("");
+        		$('#search_blogs_year').append($('<option>', {
+        		    value: 'ChooseYear',
+        		    text: 'Choose Year'
+        		}));
+        		$.each(json.list_years, function (index, item) {
+        		    $('#search_blogs_year').append($('<option>', { 
+        		        value: item,
+        		        text : item 
+        		    }));
+        		});
+                
 				blogsLoadMoreShowHide();          
             },
 			error: function (err) {

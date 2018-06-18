@@ -12,14 +12,13 @@
 		<div class="col-xs-12 padding-bottom-30">
 			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
 				<option value="SortByMostRecent" selected>Sort By Most Recent</option>
-				<option value="ByYear">By Year</option>
 				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
 					<option value="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
 				</sly>
 			</select>
 		</div>
 
-		<div class="col-xs-12 padding-bottom-30" id="select_blogs_by_year" style="display:none;">
+		<div class="col-xs-12 padding-bottom-30" id="select_blogs_by_year">
 			<select class="form-control" name="search_blogs_year" id="search_blogs_year">
 				<option value="ChooseYear" selected>Choose Year</option>
 				<sly data-sly-list.listYear="${blogsList.listYears}">
