@@ -1,19 +1,24 @@
+<sly data-sly-use.optionsCollection="org.chi.aem.common.components.model.SelectOptionsCollection" 
+     data-sly-use.template="chinational/components/commons/templates.html"/>
 
-<div class="form-group">
-	<select class="form-control" id="photo-band-form-multiselect"  multiple>
-		<option value="Placeholder Text1">Placeholder Text1</option>
-		<option value="Placeholder Text2">Placeholder Text2</option>
-		<option value="Placeholder Text3">Placeholder Text3</option>
-	</select>
-</div>
-	
-<!--/* for single select dropdown
-<div class="form-group">
-	<select class="form-control photo-band-form-select"  multiple="multiple">
-		<option value="Dropdown list" selected="selected">Dropdown list</option>
-		<option value="Placeholder Text1">Placeholder Text1</option>
-		<option value="Placeholder Text2">Placeholder Text2</option>
-		<option value="Placeholder Text3">Placeholder Text3</option>
-	</select>
-</div>	
-*/-->
+<sly data-sly-test="${properties.optionsType == 'multi-drop-down'}">
+	<div class="form-group">
+		<select class="form-control" id="photo-band-form-multiselect" name="${properties.optionsName}" multiple required>
+		    <sly data-sly-list="${optionsCollection.selectOptionsCollection}">
+				<option value="${item.optionValue}">${item.optionText}</option>
+			</sly>
+		</select>
+	</div>
+</sly>
+
+<sly data-sly-test="${properties.optionsType == 'drop-down'}">
+	<div class="form-group">
+		<select class="form-control" id="photo-band-form-select" name="${properties.optionsName}" size="2" required>
+		    <sly data-sly-list="${optionsCollection.selectOptionsCollection}">
+				<option value="${item.optionValue}">${item.optionText}</option>
+			</sly>
+		</select>
+	</div>	
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.optionsType}"></sly>

@@ -74,11 +74,13 @@
                                                                 <value
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="The value of the field, which is submitted with the form data."
                                                                     fieldLabel="Value"
                                                                     name="./optionValue"/>
                                                                 <text
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="The name of the field, which will be displayed in the dropdown."
                                                                     fieldLabel="Text"
                                                                     name="./optionText"/>
                                                             </items>

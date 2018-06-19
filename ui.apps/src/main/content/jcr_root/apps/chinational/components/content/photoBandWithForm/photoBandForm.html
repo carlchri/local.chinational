@@ -1,33 +1,59 @@
 <span class="intro-caption-white">
     ${properties.heading || 'Ready to schedule a visit?'}
 </span>
- <form class="row photo-band-form">
+ <form class="row photo-band-form" id="">
 
-   <div class="col-xs-12">
-	   <sly data-sly-resource="${'formtext' @ resourceType='chinational/components/form/textfield'}" />
-   </div>
-
-   <div class="col-xs-12">
-	   <sly data-sly-resource="${'formtext1' @ resourceType='chinational/components/form/textfield'}" />
+	<div class="col-xs-12">
+		<sly data-sly-test="${properties.fieldType1 == 'textfield'}">
+		   <sly data-sly-resource="${'formtext1' @ resourceType='chinational/components/form/textfield'}" />
+	   </sly>
+		<sly data-sly-test="${properties.fieldType1 == 'dropdown'}">
+		   <sly data-sly-resource="${'formoptions1' @ resourceType='chinational/components/form/options'}" />
+	   </sly>
    </div>
 
 	<div class="col-xs-12">
-	   <sly data-sly-resource="${'formoptions' @ resourceType='chinational/components/form/options'}" />
-	</div>
-	
-<!--/*	<div class="col-xs-12">
-	   <sly data-sly-resource="${'formoptions1' @ resourceType='chinational/components/form/options'}" />
-	</div>
-*/-->	
+		<sly data-sly-test="${properties.fieldType2 == 'textfield'}">
+		   <sly data-sly-resource="${'formtext2' @ resourceType='chinational/components/form/textfield'}" />
+	   </sly>
+		<sly data-sly-test="${properties.fieldType2 == 'dropdown'}">
+		   <sly data-sly-resource="${'formoptions2' @ resourceType='chinational/components/form/options'}" />
+	   </sly>
+   </div>
+
+	<sly data-sly-test="${!properties.disableField3}">
+		<div class="col-xs-12">
+			<sly data-sly-test="${properties.fieldType3 == 'textfield'}">
+			   <sly data-sly-resource="${'formtext3' @ resourceType='chinational/components/form/textfield'}" />
+		   </sly>
+			<sly data-sly-test="${properties.fieldType3 == 'dropdown'}">
+			   <sly data-sly-resource="${'formoptions3' @ resourceType='chinational/components/form/options'}" />
+		   </sly>
+	   </div>
+   </sly>
+
+	<sly data-sly-test="${!properties.disableField4}">
+		<div class="col-xs-12">
+			<sly data-sly-test="${properties.fieldType4 == 'textfield'}">
+			   <sly data-sly-resource="${'formtext4' @ resourceType='chinational/components/form/textfield'}" />
+		   </sly>
+			<sly data-sly-test="${properties.fieldType4 == 'dropdown'}">
+			   <sly data-sly-resource="${'formoptions4' @ resourceType='chinational/components/form/options'}" />
+		   </sly>
+	   </div>
+   </sly>
+
+	<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
+
 	<div class="col-xs-12">
 		<div class="link-wrapper">
-			<a href="#" data-sly-test="${properties.label}"
-		   class="learn-more-btn white-border">${properties.label || 'Request Appointment'}</a>
+		   <input type="submit" class="learn-more-btn white-border" id="photo-band-form-button" name="submit" 
+		   		  value="${properties.label || 'Request Appointment'}" />
 		</div>
 	</div>
 
 	<div class="col-xs-12">
-		<div class="intro-sub-header">
+		<div class="intro-sub-header" id="pbf_success_message">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr. 
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $(".photo-band-form-select").change(function () {
+/*    $("#photo-band-form-select").change(function () {
         $("option", $(this)).each(function (index) {
             if ($(this).is(":selected")) {
                 $(this).css("backgroundColor", "#FFFFFF");
@@ -10,7 +10,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+*/    
     if ($( "body" ).hasClass( "campaignlandingpage" )) {
     	var $headerHeight = $('.campaignlandingpage .header');
     	// alert($headerHeight.outerHeight(true));
@@ -31,12 +31,55 @@ $(document).ready(function () {
     	  });
     	}
     
-      // $('#photo-band-form-multiselect').ultipleSelect();
+    $('#photo-band-form-select').multiselect({
+  	  nonSelectedText: 'Dropdown list',
+  	  enableFiltering: false,
+  	  enableCaseInsensitiveFiltering: false
+  	  // buttonWidth:'380px'
+  	 });
+
+    // $('#photo-band-form-multiselect').multipleSelect();
       $('#photo-band-form-multiselect').multiselect({
     	  nonSelectedText: 'Checkbox list',
     	  enableFiltering: false,
     	  enableCaseInsensitiveFiltering: false
     	  // buttonWidth:'380px'
     	 });
+      
+      $('.photo-band-form').on('submit', function(event){
+  	      // alert("inside submit");
+    	  event.preventDefault();
+    	  var form_data = $(this).serialize();
+    	  // alert(form_data);
+          $('#pbf_success_message').hide();
+          var current_page_path = $('#current_page_path').val() ; 
 
+          var servletURL = current_page_path + '.photoBandFormServlet.html';
+    	  
+    	  $.ajax({
+    	   url:servletURL,
+    	   method:"GET",
+    	   data:form_data,
+           success: function(msg, status, xhr){
+           	var json = msg;
+           	var ct = xhr.getResponseHeader("content-type") || "";
+               if (ct.indexOf('html') > -1) {
+                 json = jQuery.parseJSON(msg);
+               }
+       	    // alert("msg : " + msg);
+            $('#pbf_success_message').show();
+    	    $(".photo-band-form")[0].reset(); // To reset form fields
+/*
+    	    $('#photo-band-form-multiselect option:selected').each(function(){
+    	     $(this).prop('selected', false);
+    	    });
+    	    $('#photo-band-form-multiselect').multiselect('refresh');
+    	    $('#photo-band-form-select option:selected').prop('selected', false);
+    	    $('#photo-band-form-select').multiselect('refresh');
+    	    $('#photo-band-form-textfield').val("");
+    	    // document.getElementById("photo-band-form").reset();
+*/    	    
+    	   }
+    	  });
+    	 });
 });
