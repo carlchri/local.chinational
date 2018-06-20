@@ -1,0 +1,34 @@
+<span class="intro-caption-white">
+    ${properties.heading || 'Ready to schedule a visit?'}
+</span>
+ <form class="row photo-band-form">
+
+   <div class="col-xs-12">
+	   <sly data-sly-resource="${'formtext' @ resourceType='chinational/components/form/textfield'}" />
+   </div>
+
+   <div class="col-xs-12">
+	   <sly data-sly-resource="${'formtext1' @ resourceType='chinational/components/form/textfield'}" />
+   </div>
+
+	<div class="col-xs-12">
+	   <sly data-sly-resource="${'formoptions' @ resourceType='chinational/components/form/options'}" />
+	</div>
+	
+<!--/*	<div class="col-xs-12">
+	   <sly data-sly-resource="${'formoptions1' @ resourceType='chinational/components/form/options'}" />
+	</div>
+*/-->	
+	<div class="col-xs-12">
+		<div class="link-wrapper">
+			<a href="#" data-sly-test="${properties.label}"
+		   class="learn-more-btn white-border">${properties.label || 'Request Appointment'}</a>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="intro-sub-header">
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr. 
+		</div>
+	</div>
+ </form>

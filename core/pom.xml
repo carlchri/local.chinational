@@ -196,6 +196,14 @@
             <version>2.3.2</version>
             <scope>provided</scope>
         </dependency>
+		<dependency>
+		    <groupId>com.adobe.acs</groupId>
+		    <artifactId>acs-aem-commons-bundle</artifactId>
+		</dependency>	
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		</dependency>
 
         <!--
             AEM APIs; make sure to not move this bundle upper in the list so that newer APIs available in AEM but not in the Uber

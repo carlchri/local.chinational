@@ -39,4 +39,8 @@
         <include pattern="/conf/chinational/.content.xml"/>
         <include pattern="/conf/chinational/settings(/.*)?"/>
     </filter>
+    <filter root="/etc/notification/email">
+        <exclude pattern="/etc/notification/email(/.*)?"/>
+        <include pattern="/etc/notification/email/chinational(/.*)?"/>
+    </filter>
 </workspaceFilter>

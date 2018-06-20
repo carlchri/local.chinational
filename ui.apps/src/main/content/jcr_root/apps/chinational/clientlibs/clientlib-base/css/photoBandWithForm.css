@@ -1,0 +1,240 @@
+/* Davinder created this file on June 14, 2018 for photoBandWithCarousel component CHIP28 */
+
+.photo-band-with-form.component {
+	margin-right:-60px;
+	margin-left:-60px;
+}
+
+/* .campaignlandingpage .photo-band-with-form.component {
+	margin-right:-66px;
+}*/
+
+.photo-band-with-form .intro {
+	margin:0;
+	/* max-height:454px; */
+	max-height:inherit;
+	
+}
+
+.photo-band-with-form .intro-caption-white {
+	font-size:36px;
+	/* height:46px; */
+	/* width:73%;  added to restrict the width of heading */
+	/* float:right; */
+	line-height:normal; /* 46px-36px=10px */
+	margin:36px 0 27px; /* Top Margin --> 46px -10 px[see above] = 36px */
+	/* white-space: nowrap; */
+}
+
+.photo-band-form .form-group {
+	margin-bottom:12px;
+	width:75%;
+	float:right;
+}
+
+.photo-band-form .form-control {
+	background-color: #ddf4f8;
+	/* border: solid #8db9ca 2px; */
+	padding: 5px 12px 9px 12px!important;
+	font-size:16px;
+	line-height:20px;
+    object-fit: contain;
+    font-family: MyriadPro;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #53565a;
+    border-radius:0px;
+}
+
+.photo-band-form .photo-band-form-select {
+	-webkit-appearance:menulist;
+	-moz-appearance:menulist; 
+	/* background-color:#E6FFFF; */
+	/* width:60%; */
+}
+
+.photo-band-form .form-group span{
+	width:100%;
+}
+
+.photo-band-form .form-group span .btn-group{
+	width:inherit;
+}
+
+.photo-band-form .btn-group .btn.btn-default{
+	background-color: #ddf4f8;
+	border-radius: 0px;
+	width:100%;
+    color: #53565a;
+    padding:5px 12px 8px;
+    font-size:16px;
+	text-align:left;
+    font-family: MyriadPro;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    border:none;
+    border-bottom: 1px solid #a8d4db;
+}
+
+.photo-band-form .btn-group ul{
+	background-color: #ddf4f8;
+	width:100%;
+	border-radius:0;
+	border:none;
+	padding:7px 0;
+}
+
+.photo-band-form .btn-group ul input[type="checkbox"]{
+	-webkit-appearance:checkbox;
+	-moz-appearance:checkbox; 
+}
+
+.photo-band-form .multiselect-container>li>a>label {
+    padding: 6px 12px 10px 34px;
+    color: #53565a;
+    font-size:16px;
+	text-align:left;
+    font-family: MyriadPro;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+}
+
+
+/* z-index:3 is added to show dropdown list on top of newsletter in footer.
+	other templates set to z-index:4*/
+.campaignlandingpage .newsletter{
+	z-index:3;
+}
+
+.photo-band-form .btn-group button:hover{
+	opacity:1.0;
+}
+
+.photo-band-form .photo-band-form-button {
+	margin-top:18px;
+}
+
+.photo-band-form .photo-band-form-select option {
+		padding: 5px 12px 9px 12px!important;
+}
+
+.photo-band-form .learn-more-btn {
+	margin-top:18px;
+	margin-bottom:25px;
+}
+
+.photo-band-form .intro-sub-header {
+	margin:0 0 44px;
+	padding-bottom:10px;
+	color:#fff;
+}
+
+@media (max-width:991px) {
+	
+	.photo-band-with-form.component {
+		margin-right:-40px;
+		margin-left:-40px;
+	}
+	
+	.photo-band-with-form .title-inner {
+		width:105%;
+		margin-left:-16px;
+		padding-right:25px;
+	}
+	
+	/* .campaignlandingpage .photo-band-with-form.component {
+		margin-right:-66px;
+	}*/
+	
+	.photo-band-with-form .intro {
+		/* max-height:419px; */
+	}
+	
+	.photo-band-with-form .intro-caption-white {
+		width:100%; /* added to restrict the width of heading */
+		margin:35px 0 30px; /* Top Margin --> 45px -10 px[see above] = 35px */
+		/* white-space: nowrap; */
+	}
+	
+	.photo-band-form {
+	/* we have class row also on the same element. 
+	   So keep in mind 15px added by class row */
+		margin-right:-5px; 
+	}
+	
+	.photo-band-form .form-group {
+		width:82%;
+	}
+	
+	.photo-band-form .learn-more-btn {
+		margin-bottom:21px;
+		margin-top:18px;
+	}
+	
+	.photo-band-form .intro-sub-header {
+		margin:0 0 17px -30px;
+	}
+
+}
+
+@media (max-width:767px) {
+	.photo-band-with-form.component {
+		margin-right:-30px;
+		margin-left:-30px;
+	}
+	
+	.photo-band-with-form .intro {
+		/* max-height:403px; */
+	}
+	
+	.photo-band-with-form .intro-title {
+		padding:27px 33px 0 30px; 
+	}
+	
+	.photo-band-with-form .title-inner {
+		width:100%;
+		margin-left:0;
+		padding-right:0;
+	}
+	
+	.photo-band-with-form .intro-caption-white {
+		font-size:31px !important;
+		width:100%; /* added to restrict the width of heading */
+		margin:0 0 28px; /* Top Margin --> 45px -10 px[see above] = 35px */
+		/* white-space: nowrap; */
+		text-align:left;
+	}
+	
+	.photo-band-form {
+	/* we have class row also on the same element. 
+	   So margin-right is set to -15px. 
+	   To compensate for 15px added by class row*/
+		margin-right:-15px; 
+	}
+	
+	.photo-band-form .form-group {
+		width:100%;
+	}
+	
+	.photo-band-form .learn-more-btn {
+		margin-bottom:12px;
+		width:100%;
+	}
+	
+	.photo-band-form .intro-sub-header {
+		margin:0 18px 22px 3px;
+		padding-bottom:3px;
+		text-align:left;
+	}
+}
+	

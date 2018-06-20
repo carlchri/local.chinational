@@ -192,15 +192,36 @@
 	display: block;
 }
 
-/* June 1, 2018 Added by Davinder for Compaign landing Page */
+/* June 2018 Added by Davinder for Compaign landing Page */
+
+/* .campaignlandingpage .container {
+	padding-right:66px;
+} */
 
 .campaignlandingpage .header {
 	position:fixed;
 	background-color:white;
 }
 
+.campaignlandingpage .logo-strip {
+	min-height:73px;
+}
+
+.campaignlandingpage .logo {
+	padding:15px 0 21px 0;
+}
+
+.campaignlandingpage .logo img{
+	padding:0 0;
+	margin:0 0;
+}
+
 .campaignlandingpage .campaign-header-button {
-	margin-top:25px;
+	padding:19px 88px 16px 0; /* 73px + 15px for col- = 88px */
+}
+
+.campaign-header-button .learn-more-btn {
+	float:right;
 }
 
 .campaignlandingpage .body-content {
@@ -381,24 +402,47 @@
 		left: 50%;
 	}
 	
-	/* June 1, 2018 Added by Davinder for Compaign landing Page */
+	/* June 2018 Added by Davinder for Compaign landing Page */
 
-	.campaignlandingpage .campaign-header-button .learn-more-btn{
-		float:right;
+/*	.campaignlandingpage .container {
+		padding-right:40px;
+	} */ 
+
+	.campaignlandingpage .campaign-header-button {
+		padding:14px 17px 16px 0; /* padding-right --> 2px + 15px for col- = 17px */
 	}
 	
+	.campaignlandingpage .logo-strip {
+		min-height:68px;
+	}
+	
+	.campaignlandingpage .logo {
+		padding:12px 0 18px;
+	}
+	
+	.campaignlandingpage .logo-strip {
+		margin-left:-37px; 
+		/* In zeplin margin-left for tablet logo is 18px. 
+		Container is adding 40px. So 40-18=22px 
+		and row is -15px. So -22-15=-37px */
+	}
+	
+/*	.campaignlandingpage .campaign-header-button .learn-more-btn{
+		float:right;
+	}
+*/	
 	.campaignlandingpage .header:after {
 		content: normal;
 	}
 	
 	.campaignlandingpage .body-content {
-		margin-top:84px; /* same as for other templates */
+		margin-top:68px;
 	}
 	
-	.campaignlandingpage .hide-in-mobile-tablet {
+/*	.campaignlandingpage .hide-in-mobile-tablet {
 		display:none; 
 	}
-
+*/
 	/* End of Additions  */
 	
 }
@@ -439,9 +483,29 @@
 		display: none;
 	}
 	
-	/* June 1, 2018 Added by Davinder for Compaign landing Page */
+	/* June 2018 Added by Davinder for Compaign landing Page */
+/*	.campaignlandingpage .container {
+		padding-right:30px;
+	} */
+
 	.campaignlandingpage .campaign-header-button {
-		margin-top:10px;
+		padding:0 17px 18px 30px; /* padding-right --> 2px + 15px for col- = 17px */
+	}
+	
+/*	cannot set min-height in mobile view, as we need to hide button when user scrolls up
+	.campaignlandingpage .logo-strip {
+		min-height:121px; 
+	}
+*/	
+	.campaignlandingpage .logo {
+		padding:12px 0 24px;
+	}
+	
+	.campaignlandingpage .logo-strip {
+		margin-left:-30px; 
+		/* In zeplin margin-left for mobile logo is 15px. 
+		Container is adding 30px. So 30-15=15px 
+		and row is -15px. So -15-15=-30px */
 	}
 
 	.campaignlandingpage .campaign-header-button .learn-more-btn{
@@ -449,7 +513,7 @@
 	}
 	
 	.campaignlandingpage .body-content {
-		margin-top:140px; 
+		margin-top:125px; 
 	}
 	/* End of Additions  */
 	
