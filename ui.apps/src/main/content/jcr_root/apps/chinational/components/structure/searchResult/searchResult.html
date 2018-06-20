@@ -13,7 +13,7 @@
             </span>
         </form>
     </div>
-    <h1>Search Results</h1>
+    <h1 class="large-blue-txt">${currentPage.pageTitle || currentPage.title}</h1>
     <div class="count-info">${searchResult.totalNumberOfResult} results found</div>
     <hr class="width-for-gray-line"/>
     <sly data-sly-list="${searchResult.results}">
