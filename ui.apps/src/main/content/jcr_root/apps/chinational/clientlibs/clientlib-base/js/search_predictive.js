@@ -163,7 +163,8 @@
         this._elements.input.addEventListener('keydown', this._onKeydown.bind(this));
         this._elements.clear.addEventListener('click', this._onClearClick.bind(this));
         document.addEventListener('click', this._onDocumentClick.bind(this));
-        this._elements.results.addEventListener('scroll', this._onScroll.bind(this));
+        // we don't need to get more results beyond first set
+        //this._elements.results.addEventListener('scroll', this._onScroll.bind(this));
 
         this._makeAccessible();
     }
@@ -218,7 +219,8 @@
             case keyCodes.ESCAPE:
                 self._cancelResults();
                 break;
-            case keyCodes.ARROW_UP:
+            // don't need next set of results, just initial, as per business requirements
+            /*case keyCodes.ARROW_UP:
                 if (self._resultsOpen()) {
                     event.preventDefault();
                     self._stepResultFocus(true);
@@ -232,7 +234,7 @@
                     // test the input and if necessary fetch and display the results
                     self._onInput();
                 }
-                break;
+                break;*/
             default:
                 return;
         }
@@ -253,8 +255,8 @@
         // replace text in search box with text from results
         if (event.target.innerText != '') {
             this._elements.input.value = event.target.innerText;
-            // auto submit form
-            this._elements.form.submit();
+            // no ned to auto submit form as per business requirements
+            return;
         }
 
         if (!(inputContainsTarget || resultsContainTarget)) {

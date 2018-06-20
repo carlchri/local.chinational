@@ -19,7 +19,7 @@
          data-cmp-min-length="${search.searchTermMinimumLength}"
          data-cmp-results-size="${search.resultsSize}">
     <form class="cmp-search__form" data-cmp-hook-search="form"
-          method="get" action="${currentPage.path @ addSelectors=['searchresults'], extension='json', suffix = search.relativePath}"
+          method="get" action="${currentPage.path @ addSelectors=['chisearchresults'], extension='json', suffix = search.relativePath}"
           autocomplete="off">
         <div class="search-box">
             <span class="cmp-search__loading-indicator" data-cmp-hook-search="loadingIndicator"></span>
