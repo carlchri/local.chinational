@@ -16,7 +16,7 @@ function searchResultSubmit() {
 function updateSearchIcon(){
         // update search icon
         document.getElementById('srchicon').classList.remove('sprite');
-        document.getElementById('srchicon').classList.remove('icon-share');
+        document.getElementById('srchicon').classList.remove('icon-search-x');
         document.getElementById('srchicon').classList.add('sprite-v2');
         document.getElementById('srchicon').classList.add('icon-search');
 }
