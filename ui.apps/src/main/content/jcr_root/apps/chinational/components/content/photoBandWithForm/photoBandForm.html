@@ -1,7 +1,8 @@
 <span class="intro-caption-white">
     ${properties.heading || 'Ready to schedule a visit?'}
 </span>
- <form class="row photo-band-form" id="">
+
+ <form class="row photo-band-form" id="" novalidate>
 
 	<div class="col-xs-12">
 		<sly data-sly-test="${properties.fieldType1 == 'textfield'}">
@@ -43,6 +44,7 @@
 	   </div>
    </sly>
 
+	<!-- Make sure to put hidden values just above Submit Button -->
 	<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
 
 	<div class="col-xs-12">
@@ -53,8 +55,15 @@
 	</div>
 
 	<div class="col-xs-12">
-		<div class="intro-sub-header" id="pbf_success_message">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr. 
+		<div class="intro-sub-header" id="pbf_success_message" style="display:none;">
+			${properties.successMessage || 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'} 
 		</div>
 	</div>
+
+	<div class="col-xs-12">
+		<div class="intro-sub-header" id="pbf_error_message" style="display:none;">
+			The above highlighted field is required.
+		</div>
+	</div>
+
  </form>

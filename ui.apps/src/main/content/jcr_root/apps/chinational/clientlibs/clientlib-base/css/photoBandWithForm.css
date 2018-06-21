@@ -16,6 +16,12 @@
 	
 }
 
+.photo-band-with-form .intro-title {
+	align-items: baseline; 
+	height:454px;
+	
+}
+
 .photo-band-with-form .intro-caption-white {
 	font-size:36px;
 	/* height:46px; */
@@ -175,6 +181,7 @@
 	margin:0 0 44px;
 	padding-bottom:10px;
 	color:#fff;
+	text-align: center;
 }
 
 @media (max-width:991px) {
@@ -194,12 +201,13 @@
 		margin-right:-66px;
 	}*/
 	
-	.photo-band-with-form .intro {
+	.photo-band-with-form .intro-title {
 		/* max-height:419px; */
+		height:419px;
 	}
 	
 	.photo-band-with-form .intro-caption-white {
-		width:100%; /* added to restrict the width of heading */
+		width:100%;
 		margin:35px 0 30px; /* Top Margin --> 45px -10 px[see above] = 35px */
 		/* white-space: nowrap; */
 	}
@@ -241,6 +249,7 @@
 	
 	.photo-band-with-form .intro-title {
 		padding:27px 33px 0 30px; 
+		height:403px;
 	}
 	
 	.photo-band-with-form .title-inner {
@@ -251,7 +260,7 @@
 	
 	.photo-band-with-form .intro-caption-white {
 		font-size:31px !important;
-		width:100%; /* added to restrict the width of heading */
+		width:100%;
 		margin:0 0 28px; /* Top Margin --> 45px -10 px[see above] = 35px */
 		/* white-space: nowrap; */
 		text-align:left;
@@ -278,9 +287,18 @@
 		padding-bottom:3px;
 		text-align:left;
 	}
-.photo-band-form .btn-group .btn .caret{
-    margin: 5px 5px 5px -20px;
+	.photo-band-form .btn-group .btn .caret{
+	    margin: 5px 5px 5px -20px;
+	}
+		
 }
+
+@media (max-width:380px) {
+
+	.photo-band-with-form .intro-caption-white {
+		font-size:25px !important;
+	}
+	
+
 	
 }
-	

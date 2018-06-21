@@ -205,6 +205,8 @@
 
 .campaignlandingpage .logo-strip {
 	min-height:73px;
+	display:flex;
+	align-items:center;
 }
 
 .campaignlandingpage .logo {
@@ -217,7 +219,8 @@
 }
 
 .campaignlandingpage .campaign-header-button {
-	padding:19px 88px 16px 0; /* 73px + 15px for col- = 88px */
+	/* padding:19px 88px 16px 0;  73px + 15px for col- = 88px */
+	padding:0 88px 0 0;
 }
 
 .campaign-header-button .learn-more-btn {
@@ -409,7 +412,8 @@
 	} */ 
 
 	.campaignlandingpage .campaign-header-button {
-		padding:14px 17px 16px 0; /* padding-right --> 2px + 15px for col- = 17px */
+		/* padding:14px 17px 16px 0;  padding-right --> 2px + 15px for col- = 17px */
+		padding: 0 17px 0 0;
 	}
 	
 	.campaignlandingpage .logo-strip {
@@ -503,6 +507,7 @@
 	
 	.campaignlandingpage .logo-strip {
 		margin-left:-30px; 
+		display:block;
 		/* In zeplin margin-left for mobile logo is 15px. 
 		Container is adding 30px. So 30-15=15px 
 		and row is -15px. So -15-15=-30px */

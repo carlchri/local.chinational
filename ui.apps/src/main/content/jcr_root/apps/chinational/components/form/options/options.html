@@ -3,7 +3,12 @@
 
 <sly data-sly-test="${properties.optionsType == 'multi-drop-down'}">
 	<div class="form-group">
-		<select class="form-control" id="photo-band-form-multiselect" name="${properties.optionsName}" multiple required>
+		<sly data-sly-test="${properties.required == 'required'}">
+			<select class="form-control photo-band-form-multiselect" id="${properties.optionsName}" name="${properties.optionsName}" multiple required>
+		</sly>
+		<sly data-sly-test="${properties.required == 'optional'}">
+			<select class="form-control photo-band-form-multiselect" id="${properties.optionsName}" name="${properties.optionsName}" multiple>
+		</sly>
 		    <sly data-sly-list="${optionsCollection.selectOptionsCollection}">
 				<option value="${item.optionValue}">${item.optionText}</option>
 			</sly>
@@ -13,7 +18,12 @@
 
 <sly data-sly-test="${properties.optionsType == 'drop-down'}">
 	<div class="form-group">
-		<select class="form-control" id="photo-band-form-select" name="${properties.optionsName}" size="2" required>
+		<sly data-sly-test="${properties.required == 'required'}">
+			<select class="form-control photo-band-form-select" id="${properties.optionsName}" name="${properties.optionsName}" size="2" required>
+		</sly>
+		<sly data-sly-test="${properties.required == 'optional'}">
+			<select class="form-control photo-band-form-select" id="${properties.optionsName}" name="${properties.optionsName}" size="2">
+		</sly>
 		    <sly data-sly-list="${optionsCollection.selectOptionsCollection}">
 				<option value="${item.optionValue}">${item.optionText}</option>
 			</sly>

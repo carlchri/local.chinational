@@ -61,6 +61,25 @@
                                                 fieldDescription="Default value of the field which will be used as placeholder"
                                                 fieldLabel="Value"
                                                 name="./textfieldvalue"/>
+                                            <required
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/radiogroup"
+                                                name="./required">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <option1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                        checked="{Boolean}true"
+                                                        text="Required Field"
+                                                        value="required"/>
+                                                    <option2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/radio"
+                                                        text="Optional"
+                                                        value="optional"/>
+                                                </items>
+                                            </required>
                                         </items>
                                     </column>
                                 </items>

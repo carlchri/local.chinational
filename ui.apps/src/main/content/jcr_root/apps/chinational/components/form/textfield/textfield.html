@@ -1,5 +1,12 @@
 <div class="form-group">
-  <input type="${properties.textfieldType}" class = "form-control photo-band-form-textfield" 
-  		 id="${properties.textfieldName}" name="${properties.textfieldName}" 
-  		 value="" placeholder="${properties.textfieldvalue}" required>
+	<sly data-sly-test="${properties.required == 'required'}">
+		<input type="${properties.textfieldType}" class = "form-control photo-band-form-textfield ${properties.textfieldType}" 
+  			   id="${properties.textfieldName}" name="${properties.textfieldName}" 
+  		 	   value="" placeholder="${properties.textfieldvalue}" required>
+	</sly>  		 	   
+	<sly data-sly-test="${properties.required == 'optional'}">
+		<input type="${properties.textfieldType}" class = "form-control photo-band-form-textfield" 
+  			   id="${properties.textfieldName}" name="${properties.textfieldName}" 
+  		 	   value="" placeholder="${properties.textfieldvalue}">
+	</sly>  		 	   
 </div>
