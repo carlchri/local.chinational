@@ -1,3 +1,5 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"/>
+
 <div class="form-group">
 	<sly data-sly-test="${properties.required == 'required'}">
 		<input type="${properties.textfieldType}" class = "form-control photo-band-form-textfield ${properties.textfieldType}" 
@@ -10,3 +12,5 @@
   		 	   value="" placeholder="${properties.textfieldvalue}">
 	</sly>  		 	   
 </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.textfieldType}"></sly>
