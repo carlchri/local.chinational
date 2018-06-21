@@ -18,7 +18,7 @@ $(document).ready(function(){
         $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
 	}
 
-	 newsLoadMoreShowHide();          
+	 newsLoadMoreShowHide();
 
     $('#search_news_list').on('change', function() {
       if (this.value == 'ByYear')
@@ -104,7 +104,7 @@ $(document).ready(function(){
             }                
         });
     }
-    
+
 /* May 30, 2018 Added by Davinder for CHIP13 - newsListManual component "SEE MORE" button */
     window.manual_news_id = "id1";
     $('.news_list_manual_wrapper').each(function(){
