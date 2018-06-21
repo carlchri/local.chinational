@@ -18,7 +18,7 @@ $(document).ready(function(){
         $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
 	}
 
-    newsLoadMoreShowHide();          
+	 newsLoadMoreShowHide();
 
     $('#search_news_list').on('change', function() {
       if (this.value == 'ByYear')
@@ -104,4 +104,5 @@ $(document).ready(function(){
             }                
         });
     }
+    
 });
