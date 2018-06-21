@@ -154,7 +154,7 @@
         this._cacheElements(config.element);
         this._setupProperties(config.options);
 
-        this._action = this._elements.form.getAttribute('action');
+        this._action = this._elements.form.getAttribute('psaction'); // keep action for form submit, an this for predictive search
         this._resultsOffset = 0;
         this._hasMoreResults = true;
 
@@ -349,6 +349,7 @@
     Search.prototype._updateResults = function() {
         var self = this;
         if (self._hasMoreResults) {
+            console.log("call action: " + self._action);
             var request = new XMLHttpRequest();
             var url = self._action + '?' + serialize(self._elements.form) + '&' + PARAM_RESULTS_OFFSET + '=' + self._resultsOffset;
 

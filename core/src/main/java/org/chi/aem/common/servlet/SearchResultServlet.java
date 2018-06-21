@@ -153,6 +153,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
         int resultsSize = SearchImpl.PROP_RESULTS_SIZE_DEFAULT;
         String searchRootPagePath = null;
         if (searchResource != null) {
+            LOGGER.info("getResults searchResource != null");
             ValueMap valueMap = searchResource.getValueMap();
             ValueMap contentPolicyMap = getContentPolicyProperties(searchResource, request.getResource());
             searchTermMinimumLength = valueMap.get(Search.PN_SEARCH_TERM_MINIMUM_LENGTH, contentPolicyMap.get(Search
@@ -163,10 +164,11 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
             searchRootPagePath = getSearchRootPagePath(searchRoot, currentPage);
         }
         // languageManager is not available through reference
-        //else {
+        else {
+            LOGGER.info("getResults searchResource is null");
             //String languageRoot = languageManager.getLanguageRoot(currentPage.getContentResource()).getPath();
-            //searchRootPagePath = getSearchRootPagePath(languageRoot, currentPage);
-        //}
+            searchRootPagePath = getSearchRootPagePath("en", currentPage);// always en
+        }
         if (StringUtils.isEmpty(searchRootPagePath)) {
             searchRootPagePath = currentPage.getPath();
         }
@@ -250,40 +252,19 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
     private String getSearchRootPagePath(String searchRoot, Page currentPage) {
         String searchRootPagePath = null;
         PageManager pageManager = currentPage.getPageManager();
-        if (StringUtils.isNotEmpty(searchRoot) && pageManager != null) {
-            Page rootPage = pageManager.getPage(searchRoot);
-            if (rootPage != null) {
-                Page searchRootLanguageRoot = null; //languageManager.getLanguageRoot(rootPage.getContentResource());
-                Page currentPageLanguageRoot = null; //languageManager.getLanguageRoot(currentPage.getContentResource());
-                RangeIterator liveCopiesIterator = null;
-                //try {
-                //    liveCopiesIterator = relationshipManager.getLiveRelationships(currentPage.adaptTo(Resource.class), null, null);
-                //} catch (WCMException e) {
-                    // ignore it
-                //}
-                if (searchRootLanguageRoot != null && currentPageLanguageRoot != null && !searchRootLanguageRoot.equals
-                        (currentPageLanguageRoot)) {
-                    // check if there's a language copy of the search root
-                    Page languageCopySearchRoot = pageManager.getPage(ResourceUtil.normalize(currentPageLanguageRoot.getPath() + "/" +
-                            getRelativePath(searchRootLanguageRoot, rootPage)));
-                    if (languageCopySearchRoot != null) {
-                        rootPage = languageCopySearchRoot;
-                    }
-                } else if (liveCopiesIterator != null) {
-                    while (liveCopiesIterator.hasNext()) {
-                        LiveRelationship relationship = (LiveRelationship) liveCopiesIterator.next();
-                        if (currentPage.getPath().startsWith(relationship.getTargetPath() + "/")) {
-                            Page liveCopySearchRoot = pageManager.getPage(relationship.getTargetPath());
-                            if (liveCopySearchRoot != null) {
-                                rootPage = liveCopySearchRoot;
-                                break;
-                            }
-                        }
-                    }
+        LOGGER.debug("getSearchRootPagePath searchRoot 1 : " + searchRoot + ", currentPage: " + currentPage.getPath());
+        if (StringUtils.isNotEmpty(searchRoot) && currentPage != null && currentPage.getPath() != null) {
+                String currentPath = currentPage.getPath();
+                int enIndex = currentPath.indexOf("/" + searchRoot);
+                if (enIndex > -1) {
+                    // get path including language root
+                    searchRootPagePath = currentPath.substring(0,enIndex+3);
+                } else {
+                    LOGGER.warn("getSearchRootPagePath is null, hardcoding it to national for now");
+                    searchRootPagePath = "/content/national/en";
                 }
-                searchRootPagePath = rootPage.getPath();
-            }
         }
+        LOGGER.info("searchRootPagePath: " + searchRootPagePath);
         return searchRootPagePath;
     }
 
