@@ -103,6 +103,10 @@ public class SearchResult extends WCMUsePojo {
         predicatesMap.put(SECOND_GROUP + P_OR, "true");
         predicatesMap.put(PREDICATE_FULLTEXT, fulltext);
 
+        // create standard order by
+        predicatesMap.put("orderby","@jcr:score");
+        predicatesMap.put("orderby.sort","desc");
+
         // hide results based on a property
         //map.put("boolproperty", "jcr:content/hideInNav");
         //map.put("boolproperty.value", "false");
@@ -127,7 +131,7 @@ public class SearchResult extends WCMUsePojo {
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
-            LOGGER.info("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
+            LOGGER.debug("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
             int remainder = totalNumberOfResult % resultsSize;
             if (remainder == 0) {
                 // if remainder is zero, we only need one extra page to from 1 to n, rather than 0 to n-1
@@ -135,7 +139,7 @@ public class SearchResult extends WCMUsePojo {
             } else {
                 totalNumberPages = totalNumberOfResult/resultsSize + 2;
             }
-            LOGGER.info("getSearchResults totalNumberPages - " + totalNumberPages);
+            LOGGER.debug("getSearchResults totalNumberPages - " + totalNumberPages);
 
             for(int i = 1; i < totalNumberPages; i++) {
                 pages.add(Integer.toString(i));

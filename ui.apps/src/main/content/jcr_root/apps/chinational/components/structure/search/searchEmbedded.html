@@ -4,17 +4,26 @@
          data-cmp-min-length="${search.searchTermMinimumLength}"
          data-cmp-results-size="${search.resultsSize}">
   <form class="cmp-search__form" data-cmp-hook-search="form"
-        name="search-form"
+        name="search-form-embedded"
         method="get"
-        action="${currentStyle.searchDestination @ extension = 'html'}"
+        action="${currentPage @ extension = 'html'}"
         psaction="${currentPage.path @ addSelectors=['chisearchresults'], extension='json', suffix = search.relativePath}"
         autocomplete="off">
     <div >
       <span class="cmp-search__loading-indicator" data-cmp-hook-search="loadingIndicator"></span>
-      <input class="cmp-search__input" data-cmp-hook-search="input" type="text" name="fulltext" placeholder="${'Search' @ i18n}"
+      <input class="cmp-search__input"
+             data-cmp-hook-search="input"
+             id="srchtext"
+             type="text"
+             name="fulltext"
+             value="${request.requestParameterMap['fulltext'][0].toString}"
+             oninput="searchTextChanged()"
              role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-invalid="false">
-      <span class="search-icon" data-cmp-hook-search="clear" onclick="document.forms['search-form'].submit();">
-        <i class="sprite-v2 small-icons icon-search"></i>
+      <input type="hidden" id="origText" value="${request.requestParameterMap['fulltext'][0].toString}"/>
+      <input type="hidden" id="origTextChanged" value="0"/>
+      <input type="hidden" name="page" value="1"/>
+      <span class="search-icon" data-cmp-hook-search="clear" onclick="searchResultSubmit();">
+        <i id="srchicon" class="sprite small-icons icon-search-x"></i>
       </span>
     </div>
   </form>
