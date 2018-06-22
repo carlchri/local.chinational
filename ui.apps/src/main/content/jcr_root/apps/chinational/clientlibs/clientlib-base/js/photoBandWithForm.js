@@ -57,7 +57,7 @@ $(document).ready(function () {
 		  			          return false;
 		  			        } else if($(this).attr("type") == "tel" && !numberReg.test($(this).val())){
 		  						  $(this).css('border', 'solid 2px red');
-		  				          $('#'+$formID+' #pbf_error_message').text("Please provide valid telephone address.");
+		  				          $('#'+$formID+' #pbf_error_message').text("Please provide valid telephone number.");
 		  				          $('#'+$formID+' #pbf_error_message').show();
 		  				          $(this).focus();
 		  				          return false;
