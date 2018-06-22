@@ -48,7 +48,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The name of the field, which is submitted with the form data."
-                                                fieldLabel="Dropdown Field Name [submitted with Form Data and also used as placeholder text for end user]"
+                                                fieldLabel="Dropdown Field Name [submitted with Form Data and used as placeholder text]"
                                                 name="./optionsName"
                                                 required="{Boolean}true"/>
                                             <required
