@@ -79,11 +79,19 @@
     margin-bottom: 60px;
 }
 
+.search-result .search-box input {
+    width: 307px;
+}
+
 @media (max-width: 767px) {
     .search-result .search-box  {
          width: 319px;
          margin-bottom: 30px;
          position:static;
+    }
+
+    .search-result .search-box input {
+        width: 279px;
     }
 
     .search-result .count-info {

@@ -3,6 +3,7 @@ function searchResultSubmit() {
     var origText = document.getElementById('origText').value;
     var srchBoxText = srchBoxObj.value;
     if (srchBoxText == origText) {
+        //console.log("clear the content");
         srchBoxObj.value='';
         srchBoxObj.focus();
         srchBoxObj.select();
@@ -14,6 +15,7 @@ function searchResultSubmit() {
 }
 
 function updateSearchIcon(){
+        //console.log("update search icon");
         // update search icon
         document.getElementById('srchicon').classList.remove('sprite');
         document.getElementById('srchicon').classList.remove('icon-search-x');
@@ -22,6 +24,7 @@ function updateSearchIcon(){
 }
 
 function searchTextChanged() {
+    //console.log("searchTextChanged called");
     var hcObj = document.getElementById('origTextChanged');
     var hasChanged = hcObj.value;
     if (hasChanged == 0) {

@@ -146,6 +146,7 @@
     }
 
     function Search(config) {
+        console.log("search config init");
         if (config.element) {
             // prevents multiple initialization
             config.element.removeAttribute('data-' + NS + '-is');
@@ -171,7 +172,8 @@
 
     Search.prototype._displayResults = function() {
         if (this._elements.input.value.length === 0) {
-            toggleShow(this._elements.clear, false);
+            // don't hide search icon
+            //toggleShow(this._elements.clear, false);
             this._cancelResults();
         } else if (this._elements.input.value.length < this._properties.minLength) {
             toggleShow(this._elements.clear, true);
@@ -209,12 +211,16 @@
                 break;
             case keyCodes.ENTER:
                 event.preventDefault();
-                if (self._resultsOpen()) {
+                // clear results pane
+                self._cancelResults();
+                // form submit?
+                this._elements.form.submit();
+                /*if (self._resultsOpen()) {
                     var focused = self._elements.results.querySelector(selectors.item.focused);
                     if (focused) {
                         focused.click();
                     }
-                }
+                }*/
                 break;
             case keyCodes.ESCAPE:
                 self._cancelResults();
@@ -243,7 +249,8 @@
     Search.prototype._onClearClick = function(event) {
         event.preventDefault();
         this._elements.input.value = '';
-        toggleShow(this._elements.clear, false);
+        // don't hide icon
+        //toggleShow(this._elements.clear, false);
         toggleShow(this._elements.results, false);
     };
 
@@ -254,8 +261,11 @@
         //", innerHTML: " + event.target.innerHTML);
         // replace text in search box with text from results
         if (event.target.innerText != '') {
+            // only update search box we are working with, as on search results page, we have two
             this._elements.input.value = event.target.innerText;
             // no ned to auto submit form as per business requirements
+            // clear the results
+            this._cancelResults();
             return;
         }
 
@@ -381,7 +391,8 @@
             };
             // when the results are loading: display the loading indicator and hide the search icon
             toggleShow(self._elements.loadingIndicator, true);
-            toggleShow(self._elements.icon, false);
+            // we want to display icon all the time
+            //toggleShow(self._elements.icon, false);
             request.send();
         }
     };
@@ -392,6 +403,7 @@
         this._resultsOffset = 0;
         this._hasMoreResults = true;
         this._elements.results.innerHTML = '';
+        toggleShow(this._elements.results, false);
     };
 
     Search.prototype._cacheElements = function(wrapper) {
@@ -430,6 +442,7 @@
     function onDocumentReady() {
         var elements = document.querySelectorAll(selectors.self);
         for (var i = 0; i < elements.length; i++) {
+            console.log("elements[i]: " + elements[i]);
             new Search({ element: elements[i], options: readData(elements[i]) });
         }
 
