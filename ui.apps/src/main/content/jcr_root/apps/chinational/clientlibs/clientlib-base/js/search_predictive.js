@@ -146,7 +146,7 @@
     }
 
     function Search(config) {
-        console.log("search config init");
+        //console.log("search config init");
         if (config.element) {
             // prevents multiple initialization
             config.element.removeAttribute('data-' + NS + '-is');
@@ -257,20 +257,23 @@
     Search.prototype._onDocumentClick = function(event) {
         var inputContainsTarget =  this._elements.input.contains(event.target);
         var resultsContainTarget = this._elements.results.contains(event.target);
-        //console.log("results clicked - event.target.innerText: " + event.target.innerText +
+        //console.log("_onDocumentClick inputContainsTarget: " + inputContainsTarget + ", resultsContainTarget: " + resultsContainTarget);
         //", innerHTML: " + event.target.innerHTML);
         // replace text in search box with text from results
-        if (event.target.innerText != '') {
-            // only update search box we are working with, as on search results page, we have two
-            this._elements.input.value = event.target.innerText;
-            // no ned to auto submit form as per business requirements
-            // clear the results
-            this._cancelResults();
-            return;
-        }
 
-        if (!(inputContainsTarget || resultsContainTarget)) {
-            toggleShow(this._elements.results, false);
+
+        if (inputContainsTarget || resultsContainTarget) {
+            //console.log("_onDocumentClick only for target");
+            //toggleShow(this._elements.results, false);
+            if (event.target.innerText != '') {
+                //console.log("_onDocumentClick update form text: " + event.target.innerText);
+                // only update search box we are working with, as on search results page, we have two
+                this._elements.input.value = event.target.innerText;
+                // no ned to auto submit form as per business requirements
+                // clear the results
+                this._cancelResults();
+                return;
+            }
         }
     };
 
@@ -359,7 +362,7 @@
     Search.prototype._updateResults = function() {
         var self = this;
         if (self._hasMoreResults) {
-            console.log("call action: " + self._action);
+            //console.log("call action: " + self._action);
             var request = new XMLHttpRequest();
             var url = self._action + '?' + serialize(self._elements.form) + '&' + PARAM_RESULTS_OFFSET + '=' + self._resultsOffset;
 
@@ -442,7 +445,6 @@
     function onDocumentReady() {
         var elements = document.querySelectorAll(selectors.self);
         for (var i = 0; i < elements.length; i++) {
-            console.log("elements[i]: " + elements[i]);
             new Search({ element: elements[i], options: readData(elements[i]) });
         }
 
