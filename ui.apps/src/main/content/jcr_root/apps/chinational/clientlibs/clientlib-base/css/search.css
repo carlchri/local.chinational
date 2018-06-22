@@ -58,6 +58,7 @@
 
 .search-result .no-desc {
     margin-bottom: 50px;
+    padding-bottom: 0 px;
 }
 
 .search-result p {
@@ -71,11 +72,15 @@
     line-height:24px;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     color: #97999B;
-    padding-bottom: 30px;
 }
 
 .search-result hr {
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.search-result .search-box input {
+    width: 307px;
 }
 
 @media (max-width: 767px) {
@@ -83,6 +88,10 @@
          width: 319px;
          margin-bottom: 30px;
          position:static;
+    }
+
+    .search-result .search-box input {
+        width: 279px;
     }
 
     .search-result .count-info {
