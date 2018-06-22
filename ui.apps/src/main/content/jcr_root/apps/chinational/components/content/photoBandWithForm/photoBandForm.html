@@ -1,8 +1,10 @@
+<sly data-sly-use.formHash="org.chi.aem.common.components.model.SelectOptionsCollection" />
+
 <span class="intro-caption-white">
     ${properties.heading || 'Ready to schedule a visit?'}
 </span>
 
- <form class="row photo-band-form" id="" novalidate>
+ <form class="row photo-band-form" id="${formHash.hash @ context='unsafe'}">
 
 	<div class="col-xs-12">
 		<sly data-sly-test="${properties.fieldType1 == 'textfield'}">
@@ -45,12 +47,12 @@
    </sly>
 
 	<!-- Make sure to put hidden values just above Submit Button -->
+	<input type="hidden" name="current_resource_path" id="current_resource_path" value="${resource.path}">
 	<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
-
 	<div class="col-xs-12">
 		<div class="link-wrapper">
-		   <input type="submit" class="learn-more-btn white-border" id="photo-band-form-button" name="submit" 
-		   		  value="${properties.label || 'Request Appointment'}" />
+		   <input type="button" class="learn-more-btn white-border" id="photo-band-form-button" name="submit" 
+		   		  value="${properties.label || 'Request Appointment'}"/>
 		</div>
 	</div>
 

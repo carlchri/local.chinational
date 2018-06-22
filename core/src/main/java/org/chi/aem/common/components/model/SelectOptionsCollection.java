@@ -60,7 +60,7 @@ public class SelectOptionsCollection {
 	}
 	
     public String getHash() {
-        return "select" + UUID.randomUUID();
+        return "form" + UUID.randomUUID();
     }
 
  

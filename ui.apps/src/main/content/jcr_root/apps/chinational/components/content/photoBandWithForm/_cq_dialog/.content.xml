@@ -180,7 +180,8 @@
                                                         <to
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            name="./ccEmail"/>
+                                                            name="./ccEmail"
+                                                            required="{Boolean}true"/>
                                                     </items>
                                                 </field>
                                             </ccCollection>

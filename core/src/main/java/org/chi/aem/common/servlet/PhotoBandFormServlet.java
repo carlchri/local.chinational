@@ -5,8 +5,6 @@ import com.adobe.acs.commons.email.EmailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.rmi.ServerException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -33,11 +31,7 @@ import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.resource.ResourceResolver; 
 import org.apache.sling.api.resource.Resource; 
-import org.apache.sling.commons.json.JSONObject;
-import org.apache.sling.commons.json.JSONArray;
 
-//QUeryBuilder APIs
-import com.day.cq.wcm.api.Page;
 
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
@@ -66,19 +60,21 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     private Session session;
     
     private static String TEMPLATE_PATH = "/etc/notification/email/chinational/emailTemplate.html";
-    private static String SENDER_EMAIL = "admin@adobe.com";
+    private static String SENDER_EMAIL = "admin@chinational.com";
     private static String SUBJECT = "Campaign Form Submitted";
-    private static String CC_EMAIL = "CC: davinderhooda@gmail.com\nCC: maildhooda@gmail.com";
+    private static String CC_EMAIL = "";
     // private static String EMAIL_BODY = "Here are the details of the Campaign form submitted";
     // private static String SENDER_NAME = "CHI Web Team"; 
     // private static String RECIPIENT_NAME = "CHI Campaign Team";
-    private static String[] TO_EMAIL = { "dhooda@prokarma.com" };
+    private static String[] TO_EMAIL = { "campaign@chinational.com" };
     
     //Set the dynamic vaiables of your email template
 	private Map<String, String> emailParams;
+
 	// Specify the template file to use (this is an absolute path in the JCR)
 	private String templatePath;
-	// Array of email recipients. For testing, you will want to change this to your email address so you can recieve the email
+
+	// Array of email recipients. 
 	private String[] recipients;
 
 	private Map<String, String[]> formParams;
@@ -86,7 +82,6 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
 	@Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
     	
-    	// LOGGER.info("Inside photoband form servlet doPost method");
     	emailParams = new HashMap<String,String>();
     	formParams = new HashMap<String,String[]>();
     	templatePath = TEMPLATE_PATH;
@@ -102,29 +97,19 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     	recipients = TO_EMAIL;
     	
     	// populate Email parameters with values from dialog configured by author
-        Resource resource = request.getResource();
-        LOGGER.info("resource path : " + resource.getPath());
-		if (resource != null) {
-			Iterator<Resource> childResources = resource.listChildren();
-			while (childResources.hasNext()) {
-				 Resource emailResource = childResources.next().getChild("main-respgrid/photobandwithform");
-				    if (emailResource == null) {
-				        continue;
-				    }
-				    if (emailResource != null) {
-				    	LOGGER.info("emailResource path : " + emailResource.getPath());
-				    	populateEmailParams(emailResource);
-				    	break;
-				    }
-			}
-		}
-		
-		// get form field name and values for emailTemplate
+    	resolver=request.getResourceResolver();
+
+    	Resource emailResource = resolver.getResource(request.getParameter("current_resource_path"));
+    	if(emailResource != null){
+    		populateEmailParams(emailResource);
+    	}
+    	
+    	// get form field name and values for emailTemplate
 		formParams = request.getParameterMap();
-    	LOGGER.info("formParams Size : " + formParams.size());
+
     	int i=1;
     	for(String key: formParams.keySet()){
-    		if(!key.equals("current_page_path")){
+    		if(!(key.equals("current_page_path") || key.equals("current_resource_path"))){
     			emailParams.put("fieldName"+i, key + ": ");
     			String[] fieldValueArray = formParams.get(key);
     			String fieldValue = "";
@@ -132,40 +117,37 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     					fieldValue += formParams.get(key)[j] + ", ";
     			}
     			if(fieldValue.trim().endsWith(",")){
-    				LOGGER.info("inside form trim - fieldValue : " + fieldValue);
     				fieldValue = fieldValue.substring(0, fieldValue.trim().lastIndexOf(","));
     			}
     			emailParams.put("fieldName"+i+"Value", fieldValue);
     		}
-    		LOGGER.info("fieldName"+i + " : " + key);
-    		LOGGER.info("fieldName"+i + "Value : " + emailParams.get("fieldName"+i+"Value"));
+    		// LOGGER.info("fieldName"+i + " : " + key);
+    		// LOGGER.info("fieldName"+i + "Value : " + emailParams.get("fieldName"+i+"Value"));
     		i++;
     	}
     	
     	// If form fields are less than 4, to clear extra field values from emailTemplate 
-    	for(int k=formParams.size(); k < 5; k++){
-    		emailParams.put("fieldName"+k, "");
-    		emailParams.put("fieldName"+k+"Value", "");
+    	// If emailTemplate won't find those variables. it will print them as such
+    	// k < 6 is used to take into account 2 hidden fields [4+2=6]
+    	if(formParams.size() > 1){
+	    	for(int k=formParams.size()-1; k < 6; k++){
+	    		emailParams.put("fieldName"+k, "");
+	    		emailParams.put("fieldName"+k+"Value", "");
+	    	}
     	}
     
-    	// emailService = getSlingScriptHelper().getService(EmailService.class);
-    	LOGGER.info("emailService : " + emailService);
     	List<String> failureList = emailService.sendEmail(templatePath, emailParams, recipients);
-    	LOGGER.info("failureList" + failureList);
     	if (failureList.isEmpty()) {
     		LOGGER.info("Email sent successfully to the recipients");
     	} else {
     		LOGGER.info("Email sent failed");
     	}
-    	LOGGER.info("failureList" + failureList);
-    	LOGGER.info("request.getParameterMap() : " + request.getParameterMap().size());
-    	LOGGER.info("request.getParameterNames() : " + request.getParameterNames());
     		
-	        // response.setContentType("application/json");
+        // response.setContentType("application/json");
 	         
-	       PrintWriter out = response.getWriter();
-	       out.write("Form Submitted");
-	       out.flush();
+       PrintWriter out = response.getWriter();
+       out.write("Form Submitted");
+       out.flush();
     }    
     
     @Override
@@ -175,7 +157,6 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     }
     
     public void populateEmailParams(Resource resource) {
-    	LOGGER.info("inside populateEmailParams()");
     	
         try {
 	            ValueMap sMap = resource.getValueMap();
@@ -184,7 +165,6 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
 	            }
 	            if(sMap.get("emailTo", String.class) != null) {
 	            	recipients[0] = sMap.get("emailTo", String.class);
-	            	LOGGER.info("emailTo : " + recipients[0]);
 	            }
 	            if(sMap.get("emailSubject", String.class) != null) {
 	            	emailParams.put("subject", sMap.get("emailSubject", String.class));
@@ -194,21 +174,17 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
 	            Resource ccResource = resource.getChild("ccEmails");
 	    		if (ccResource != null) {
 	    			Iterator<Resource> ccResources = ccResource.listChildren();
-	    			int i =1;
 	    			while (ccResources.hasNext()) {
 	    				String property = ccResources.next().getValueMap().get("ccEmail", String.class);
 	    				ccEmail += property + "\nCC: ";
 	    			}
 	    		}
-	    		if(ccEmail.trim().endsWith("\nCC:")){
-	    			LOGGER.info("inside ccEmail trim");
-	    			ccEmail = ccEmail.substring(0, ccEmail.trim().lastIndexOf("\nCC:"));
+	    		if(ccEmail.trim().endsWith("CC:")){
+	    			ccEmail = ccEmail.substring(0, ccEmail.trim().lastIndexOf("CC:"));
 	    		}
-	            LOGGER.info("ccEmail : " + ccEmail);
 	        	emailParams.put("ccEmail", ccEmail);
 	        
         } catch (Exception e) {
-        	LOGGER.info("Exception occured in populateEmailParams()");
             LOGGER.error("Exception Occured in populateEmailParams() method" + e, e);
         }
 
