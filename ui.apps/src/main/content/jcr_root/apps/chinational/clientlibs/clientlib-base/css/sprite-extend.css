@@ -277,6 +277,15 @@
 .sprite.icon-location-light {
   background-position: -259px -324px;
 }
+
+/* X icon for search*/
+.sprite.icon-search-x {
+  background-position: -555px -1056px;
+  width: 13px;
+  height: 13px;
+  margin: 9px 12px 5px 9px; /* T R B L*/
+}
+
 /*hospital locations*/
 .sprite-v2 {
   width: 75px;

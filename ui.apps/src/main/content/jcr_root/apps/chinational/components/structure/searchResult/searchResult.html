@@ -2,18 +2,11 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="search-result">
-    <div class="search-box">
-        <form method="get" name="search-form-embedded" action="${currentPage @ extension = 'html'}">
-            <input type="text" id="srchtext" name="fulltext" value="${searchResult.fulltext}" oninput="searchTextChanged()"/>
-            <input type="hidden" id="origText" value="${searchResult.fulltext}"/>
-            <input type="hidden" id="origTextChanged" value="0"/>
-            <input type="hidden" name="page" value="1"/>
-            <span class="search-icon" onclick="searchResultSubmit();">
-            <i id="srchicon" class="sprite small-icons icon-share"></i> <!--   icon-search-->
-            </span>
-        </form>
-    </div>
-    <h1>Search Results</h1>
+
+    <div class="search-box"
+             data-sly-resource="${'srchEmbBox' @ resourceType='chinational/components/structure/search', selectors='searchEmbedded'}"></div>
+
+    <h1 class="large-blue-txt">${currentPage.pageTitle || currentPage.title}</h1>
     <div class="count-info">${searchResult.totalNumberOfResult} results found</div>
     <hr class="width-for-gray-line"/>
     <sly data-sly-list="${searchResult.results}">
@@ -40,5 +33,3 @@
         </a>
     </div>
 </div>
-
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.searchRoot}"></sly>
