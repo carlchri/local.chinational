@@ -59,7 +59,7 @@ public class EmailUtils extends WCMUsePojo {
 
     @Override
     public void activate() throws Exception {
-		LOGGER.info("Inside emailutils activete method");
+		LOGGER.info("Inside emailutils activate method");
     	// Specify the template file to use (this is an absolute path in the JCR)
     	String templatePath = TEMPLATE_PATH;
     	//Set the dynamic vaiables of your email template
