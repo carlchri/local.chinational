@@ -39,10 +39,10 @@
                                         disabled="true"/>
                                     <rightrail
                                         jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
+                                        disabled="false"/>
                                     <hidePageTitle
                                         jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
+                                        disabled="false"/>
                                 </items>
                             </column>
                         </items>
