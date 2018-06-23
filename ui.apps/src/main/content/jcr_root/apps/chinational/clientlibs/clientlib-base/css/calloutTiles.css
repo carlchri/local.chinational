@@ -37,6 +37,29 @@
 .icons-row .icon-container .sprite, .icons-row .icon-container .sprite-v2{
 	vertical-align: middle; 
 }
+
+/* Davinder June 23/2018 background-position of social-icons is adjusted  
+   to align them in a row [to look like as in sprite sheet] */
+.icons-row .icon-container .sprite.icon-fb-blue {
+  background-position: -57px -1040px;
+}
+
+.icons-row .icon-container .sprite.icon-twitter-blue {
+  background-position: -162px -1040px;
+}
+
+.icons-row .icon-container .sprite.icon-linkedin-blue {
+  background-position: -216px -1040px;
+}
+
+.icons-row .icon-container .sprite.icon-youtube-blue {
+  background-position: -271px -1040px;
+}
+
+.icons-row .icon-container .sprite.icon-gplus-blue {
+  background-position: -333px -1040px;
+}
+
 .call-out .icon-container {
 	width:50px; 
 	height:50px;
