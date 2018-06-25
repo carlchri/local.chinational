@@ -11,9 +11,9 @@
 
 		<div class="col-xs-12 padding-bottom-30">
 			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
-				<option value="SortByMostRecent" selected>Sort By Most Recent</option>
+				<option value="${currentPage.path}.AllItems.html" selected>All items</option>
 				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
-					<option value="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
+					<option value="${currentPage.path}.${tagsList}.html">${blogsList.tagsMap[tagsList]}</option>
 				</sly>
 			</select>
 		</div>

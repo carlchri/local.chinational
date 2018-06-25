@@ -7,6 +7,7 @@ package org.chi.aem.common.components.model;
 import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import org.chi.aem.common.utils.NewsBlogUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.Session;
 
 import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -49,7 +51,7 @@ public class NewsList implements ComponentExporter {
      */
     private static final String PN_PARENT_PAGE = "parentPage";
     private static final String NEWS_TEMPLATE = "/apps/chinational/templates/newsdetailspage";
-    private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_NEWS_FILTER = "AllItems";
     private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
@@ -83,6 +85,13 @@ public class NewsList implements ComponentExporter {
     // storing list of all news articles sorted by publishDate
     private java.util.List<Page> allNews;
 
+    /* allFilteredNews - storing list of all news articles 
+     * filtered based on selection in the dropdown
+     * sorted by publish date
+     * required to get no. of total results to Show-Hide LOAD MORE Button
+    */
+    private java.util.List<Page> allFilteredNews;
+
     /* listNews - storing list of all news articles used on page
      * excluding featured article to be displayed at top of page
      * sorted by publish date
@@ -112,6 +121,7 @@ public class NewsList implements ComponentExporter {
     private int activePage; // for pagination and for getting offset
     private String parentPage;
     private String newsTemplate;
+    private String news_filter;
     
     @PostConstruct
     private void initModel() {
@@ -122,13 +132,15 @@ public class NewsList implements ComponentExporter {
         activePage = 1;
         parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
         newsTemplate = NEWS_TEMPLATE;
+        news_filter = DEFAULT_NEWS_FILTER;
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
+    	allFilteredNews = new ArrayList<>();
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
         pages = new ArrayList<Integer> ();
-
+        
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
 
@@ -144,8 +156,12 @@ public class NewsList implements ComponentExporter {
         }
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
-        if(selectors.length != 0 && (selectors[0].matches("[0-9]+"))){
-            activePage = Integer.parseInt(selectors[0]);
+        if(selectors.length != 0) {
+        	if(selectors[0].matches("[0-9]+")){
+        		activePage = Integer.parseInt(selectors[0]);
+        	} else {
+        		news_filter = selectors[0];
+        	}
         }
 
         if(activePage != 1 && (activePage > 1)) {
@@ -154,23 +170,30 @@ public class NewsList implements ComponentExporter {
             activePage = 1; //for Pagination active class when page load for the first time
         }
 
+		LOGGER.info("newslist parent page : " + parentPage);
+		LOGGER.info("newslist news_filter : " + news_filter);
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, DEFAULT_NEWS_FILTER, DEFAULT_NEWS_FILTER_YEAR);
+		LOGGER.info("newslist allNewsSize : " + allNews.size());
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, news_filter);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         featuredNews = (List<Page>) articleMap.get("featuredArticles");
+        allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
         
 	   	for(Page item : featuredNews) {
-			 if(allNews.contains(item)){
-				 allNews.remove(item);
+			 if(allFilteredNews.contains(item)){
+				 allFilteredNews.remove(item);
 			 } 
 		 }	 
 
-        listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allNews); //list of news, sorted by Publish date
+	   	LOGGER.info("newslist filtered news : " + allFilteredNews.size());
+
+
+        listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 
         // For AJAX Call - to get Total Results initially for LOAD MORE
-        totalResults = allNews.size();
+        totalResults = allFilteredNews.size();
 
         // to get total no of pages and List of pages for data-sly-list for Pagination
         int total = (allNews.size())/hits_per_page;
@@ -184,7 +207,7 @@ public class NewsList implements ComponentExporter {
             pages.add(i);
         }
 
-    }
+   }
 
     public Collection<Page> getAllNews() {
         return allNews;
@@ -214,6 +237,10 @@ public class NewsList implements ComponentExporter {
 
     public Collection<String> getListTags() {
         return listTags;
+    }
+
+    public String getNewsFilter() {
+        return news_filter;
     }
 
     public int getStartIndex() {

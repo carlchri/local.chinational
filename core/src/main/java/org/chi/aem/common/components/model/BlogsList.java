@@ -48,7 +48,7 @@ public class BlogsList implements ComponentExporter {
 
     private static final String PN_PARENT_PAGE = "parentPage";
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
-    private static final String DEFAULT_BLOGS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_BLOGS_FILTER = "AllItems";
     private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
@@ -82,6 +82,14 @@ public class BlogsList implements ComponentExporter {
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
     
+    /* allFilteredBlogs - storing list of all blogs articles 
+     * filtered based on selection in the dropdown
+     * excluding featured article to be displayed at top of page
+     * sorted by publish date
+     * required to get total results to Show-Hide LOAD MORE Button
+    */
+    private java.util.List<Page> allFilteredBlogs;
+
     /* listBlogs - storing list of all blogs articles used on page
      * excluding featured article to be displayed at top of page
      * sorted by publish date
@@ -111,6 +119,7 @@ public class BlogsList implements ComponentExporter {
     private int activePage; // for pagination and for getting offset
     private String parentPage;
     private String blogsTemplate;
+    private String blogs_filter;
 
     @PostConstruct
     private void initModel() {
@@ -121,7 +130,10 @@ public class BlogsList implements ComponentExporter {
         activePage = 1;
         parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
         blogsTemplate = BLOGS_TEMPLATE;
+        blogs_filter = DEFAULT_BLOGS_FILTER;
+        
     	allBlogs = new ArrayList<>();
+    	allFilteredBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
         listYears = new ArrayList<>();
@@ -154,11 +166,12 @@ public class BlogsList implements ComponentExporter {
         }
     	
         allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resourceResolver, DEFAULT_BLOGS_FILTER, DEFAULT_BLOGS_FILTER_YEAR);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resourceResolver, blogs_filter);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
+        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
         
     	for(Page item : featuredBlogs) {
 			 if(allBlogs.contains(item)){

@@ -2,59 +2,46 @@
 $(document).ready(function(){
 
     var start_index = 0;
-    var news_filter = "SortByMostRecent";
+    var news_filter = "AllItems";
     var news_filter_year = "ChooseYear"
     var NEWS_HITS_PER_PAGE = 10;
 
     var total_results = parseInt($('#total_results').val());
-
+/*
     window.onunload = searchNewsListOption();
     
+    // needs to change this in new logic. we might not need this function
     function searchNewsListOption() {
         // $("#select_news_by_year").hide();
         $("#search_news_list option:selected").removeAttr("selected");
-        $("#search_news_list option[value='SortByMostRecent']").attr('selected', 'selected');
+        #mySelect option:contains(abc)
+        $('#search_news_list option:contains("AllItems")').attr('selected', 'selected');
         // $("#select_blogs_by_year").hide();
         $("#search_blogs_list option:selected").removeAttr("selected");
-        $("#search_blogs_list option[value='SortByMostRecent']").attr('selected', 'selected');  
+        $('#search_blogs_list option:contains("AllItems")').attr('selected', 'selected');  
 	}
-
-	 newsLoadMoreShowHide();          
+*/
+    newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
-        $("#select_news_by_year option:selected").removeAttr("selected");
-        $("#select_news_by_year option[value='ChooseYear']").attr('selected', 'selected');  
-    	start_index = 0;
-        $('.filtered_list').html("");
-        news_filter = $('#search_news_list').val() ;
-        news_filter_year = $('#search_news_year').val(); //will be "ChooseYear always
-		$('.loading').show();
-        newslistAjaxCall();
-/*      if (this.value == 'ByYear')
-      {
-        $("#select_news_by_year").show();
-
-      }
-      else
-      {
-        $("#select_news_by_year").hide();
-        $("#select_news_by_year option:selected").removeAttr("selected");
-        $("#select_news_by_year option[value='ChooseYear']").attr('selected', 'selected');  
-        start_index = 0;
-
-        // to clear contents on the page  
-        $('.filtered_list').html("");
-        news_filter = $('#search_news_list').val() ;
-		$('.loading').show();
-        newslistAjaxCall();
-      }
-*/      
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
     });
+
+    var nfv = $('#news_filter').val();
+alert(nfv);
+	$("#search_news_list option:selected").removeAttr("selected");
+    $('#search_news_list option:contains('+nfv+')').attr('selected', 'selected');
+alert($("#search_news_list").val());
 
     $('#search_news_year').on('change', function() {
         start_index = 0;
         $('.filtered_list').html("");
-        news_filter = $('#search_news_list').val() ;
+        // var xyz = $('option:selected', this).attr('mytag')
+        news_filter = $('#search_news_list option:selected').attr('name') ;
         news_filter_year = $('#search_news_year').val() ;    
 		$('.loading').show();
         newslistAjaxCall();
@@ -115,17 +102,6 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_list");
                 });
-                $('#search_news_year').html("");
-        		$('#search_news_year').append($('<option>', {
-        		    value: 'ChooseYear',
-        		    text: 'Choose Year'
-        		}));
-        		$.each(json.list_years, function (index, item) {
-        		    $('#search_news_year').append($('<option>', { 
-        		        value: item,
-        		        text : item 
-        		    }));
-        		});
 				newsLoadMoreShowHide();          
             },
 			error: function (err) {

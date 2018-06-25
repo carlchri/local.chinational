@@ -66,7 +66,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_BLOGS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_BLOGS_FILTER = "AllItems";
     private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
     
@@ -93,7 +93,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     private java.util.List<Page> featuredBlogs;
 
     // storing list of years of published articles
-    private java.util.List<String> listYears;
+    // private java.util.List<String> listYears;
     
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
@@ -119,7 +119,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     	listBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
-        listYears = new ArrayList<>();
+        // listYears = new ArrayList<>();
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
@@ -165,7 +165,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
 	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter, blogsFilterYear);
-	        listYears = (List<String>) articleMap.get("listYears");
+	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
 	        
@@ -184,7 +184,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        JSONArray jsonArray = getJsonBlogs();
 	        jsonResult.put("jsonBlogs", jsonArray);
 	        jsonResult.put("total_results", totalResults);
-	        jsonResult.put("list_years", listYears);
+	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
 	        
 	        response.setContentType("application/json");

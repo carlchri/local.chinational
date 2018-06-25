@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
     var blogs_start_index = 0;
-    var blogs_filter = "SortByMostRecent";
+    // var blogs_filter = "AllItems";
     var blogs_filter_year = "ChooseYear"
     var BLOGS_HITS_PER_PAGE = 10;
 
@@ -11,42 +11,17 @@ $(document).ready(function(){
 	blogsLoadMoreShowHide();          
 
     $('#search_blogs_list').on('change', function() {
-        $("#select_blogs_by_year option:selected").removeAttr("selected");
-        $("#select_blogs_by_year option[value='ChooseYear']").attr('selected', 'selected');  
-        blogs_start_index = 0;
-        // to clear contents on the page  
-        $('.filtered_blogs_list').html("");
-
-        blogs_filter = $('#search_blogs_list').val() ;
-        blogs_filter_year = $('#search_blogs_year').val(); //will be "ChooseYear always
-		$('.loading_blogs').show();
-        blogslistAjaxCall();
-
-/*      if (this.value == 'ByYear')
-      {
-        $("#select_blogs_by_year").show();
-      }
-      else
-      {
-        $("#select_blogs_by_year").hide();
-        $("#select_blogs_by_year option:selected").removeAttr("selected");
-        $("#select_blogs_by_year option[value='ChooseYear']").attr('selected', 'selected');  
-        blogs_start_index = 0;
-
-        // to clear contents on the page  
-        $('.filtered_blogs_list').html("");
-
-        blogs_filter = $('#search_blogs_list').val() ;
-		$('.loading_blogs').show();
-        blogslistAjaxCall();
-      }
-*/      
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
     });
 
     $('#search_blogs_year').on('change', function() {
         blogs_start_index = 0;
         $('.filtered_blogs_list').html("");
-        blogs_filter = $('#search_blogs_list').val() ;
+        // blogs_filter = $('#search_blogs_list').val() ;
         blogs_filter_year = $('#search_blogs_year').val();
 		$('.loading_blogs').show();
         newslistAjaxCall();
@@ -107,18 +82,6 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_blogs_list");
                 });
-                $('#search_blogs_year').html("");
-        		$('#search_blogs_year').append($('<option>', {
-        		    value: 'ChooseYear',
-        		    text: 'Choose Year'
-        		}));
-        		$.each(json.list_years, function (index, item) {
-        		    $('#search_blogs_year').append($('<option>', { 
-        		        value: item,
-        		        text : item 
-        		    }));
-        		});
-                
 				blogsLoadMoreShowHide();          
             },
 			error: function (err) {

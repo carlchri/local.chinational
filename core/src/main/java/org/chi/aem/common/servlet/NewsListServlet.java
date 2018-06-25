@@ -65,7 +65,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_NEWS_FILTER = "AllItems";
     private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final String NEWS_TEMPLATE = "/apps/chinational/templates/newsdetailspage";
     
@@ -91,7 +91,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     private java.util.List<Page> featuredNews;
 
     // storing list of years of published articles
-    private java.util.List<String> listYears;
+    // private java.util.List<String> listYears;
 
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
@@ -116,7 +116,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     	listNews = new ArrayList<>();
     	allFilteredNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
-        listYears = new ArrayList<>();
+        // listYears = new ArrayList<>();
                 
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
@@ -163,7 +163,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        
 	        allNews = NewsBlogUtils.populateListItems(media_page_path, resolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
 	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resolver, newsFilter, filterYear);
-	        listYears = (List<String>) articleMap.get("listYears");
+	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredNews = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
 	        LOGGER.info("filtered news : " + allFilteredNews.size());
@@ -183,7 +183,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        JSONArray jsonArray = getJsonNews();
 	        jsonResult.put("jsonNews", jsonArray);
 	        jsonResult.put("total_results", totalResults);
-	        jsonResult.put("list_years", listYears);
+	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
 	        // LOGGER.info("jsondata : " + jsonData);
 	        
