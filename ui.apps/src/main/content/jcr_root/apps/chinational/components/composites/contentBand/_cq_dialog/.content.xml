@@ -93,12 +93,16 @@
                                                             <right
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="Video/Image on Right"
+                                                                text="Video/Image on Right Panel"
                                                                 value="rightOrientation"/>
                                                             <left
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Video/Image on Left"
+                                                                text="Video/Image on Left Panel"
                                                                 value="leftOrientation"/>
+                                                            <both
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Video/Image on both Panels"
+                                                                    value="bothOrientation"/>
                                                             <hide
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Video/Image Not Required"
@@ -118,7 +122,7 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                             fieldDescription="Select this optional checkbox to enable button under text."
                                                             name="./buttonUnderText"
-                                                            text="Select to enable button under text"
+                                                            text="Select to enable button under text (or Video/Image, if its used in both panels)"
                                                             uncheckedValue="false"
                                                             value="true"/>
                                                     <buttonUnderImage
