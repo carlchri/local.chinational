@@ -102,11 +102,6 @@ $(document).ready(function () {
 	    	   method:"GET",
 	    	   data:form_data,
 	           success: function(msg, status, xhr){
-	           	var json = msg;
-	           	var ct = xhr.getResponseHeader("content-type") || "";
-	               if (ct.indexOf('html') > -1) {
-	                 json = jQuery.parseJSON(msg);
-	               }
 	            $('#'+$formID+' #pbf_success_message').show();
 	    	    $('#'+$formID)[0].reset(); // To reset form fields
 	    	    $('#'+$formID+' .learn-more-btn').css('border', 'solid 2px');
