@@ -4,14 +4,22 @@
     opacity: .55;                
 }
 
+.select_news_filter, .select_blogs_filter{
+	margin-bottom:45px;
+}
+
 #search_blogs_list, 
 #search_blogs_year,
 #search_news_list, 
 #search_news_year {
 	-webkit-appearance:menulist;
 	-moz-appearance:menulist; 
-	background-color:#E6FFFF;
-	width:60%;
+	background-color: #ddf4f8;
+    border: solid #b2d0da 2px;
+    border-radius:0px;
+    width:265px;
+    margin:0 16px 0 0;
+    display:inline-block;
 }
 
 .news_blog_list_heading {
@@ -56,6 +64,28 @@
 	padding-bottom:60px;
 }
 
+.featured-news-blog .image-col{
+	min-width:349px;
+	min-height:270px;
+	margin-right:26px;
+}
+
+.featured-news-blog .image-col img{
+	margin-bottom:0;
+}
+
+.featured-news-blog p{
+	margin:12px 0 28px;
+}
+
+.mc_list.filtered_list li p, .mc_list.filtered_blogs_list li p{
+	margin:12px 0 0;
+}
+
+.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+	padding:15px 0;
+}
+
 ul.filtered_list, 
 ul.filtered_blogs_list {
 	padding-left:0px;
@@ -67,8 +97,76 @@ ul.filtered_blogs_list {
     }
 }
 
-@media (max-width: 480px) {
-  .blog-news-padding-top {
-    padding-top: 10px;
-  }
+@media (max-width: 991px) {
+	.featured-news-blog .image-col{
+		min-width:309px;
+		margin-right:0;
+	}
+
+	.select_news_filter, .select_blogs_filter{
+		margin-bottom:44px;
+	}
+
+	#search_blogs_list, 
+	#search_blogs_year,
+	#search_news_list, 
+	#search_news_year {
+	    margin:0 16px 0 0;
+	}
+
+	.featured-news-blog.padding-bottom-60{
+		padding-bottom:59px;
+	}
+	.media_page_tag_desc, .blog_page_tag_desc{
+		padding-bottom:59px;
+	}
+
+	.featured-news-blog p{
+		margin:12px 0 34px;
+	}
+
 }
+
+@media (max-width: 767px) {
+	.featured-news-blog .image-col{
+		min-width:100%;
+		margin-right:0;
+	}
+
+	.blog-news-padding-top {
+	    padding-top: 30px;
+	  }
+
+	.media_page_tag_desc, .blog_page_tag_desc{
+		padding-bottom:64px;
+	}
+
+	.featured-news-blog.padding-bottom-60{
+		padding-bottom:60px;
+	}
+
+	.featured-news-blog p{
+		margin:12px 0 29px;
+	}
+	
+	#search_blogs_list, 
+	#search_news_list { 
+	    margin:0 0 30px;
+	    width:100%;
+	}
+
+	#search_blogs_year,
+	#search_news_year {
+	    margin:0;
+	    width:100%;
+	}
+
+	.select_news_filter, .select_blogs_filter{
+		margin-bottom:45px;
+	}
+.featured-news-blog .learn-more-btn.border-orange{
+	display:inline-block;
+}
+
+}
+

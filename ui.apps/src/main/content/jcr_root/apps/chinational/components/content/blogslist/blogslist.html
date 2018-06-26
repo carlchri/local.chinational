@@ -6,19 +6,16 @@
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
 		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-30'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
+			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
 		</sly>
 
-		<div class="col-xs-12 padding-bottom-30">
-			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
+		<div class="col-xs-12 select_blogs_filter">
+			<select class="form-control" name="search_blogs_list" id="search_blogs_list">
 				<option value="${currentPage.path}.AllItems.html" selected>All items</option>
 				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
 					<option value="${currentPage.path}.${tagsList}.html">${blogsList.tagsMap[tagsList]}</option>
 				</sly>
 			</select>
-		</div>
-
-		<div class="col-xs-12 padding-bottom-30" id="select_blogs_by_year">
 			<select class="form-control" name="search_blogs_year" id="search_blogs_year">
 				<option value="ChooseYear" selected>Choose Year</option>
 				<sly data-sly-list.listYear="${blogsList.listYears}">

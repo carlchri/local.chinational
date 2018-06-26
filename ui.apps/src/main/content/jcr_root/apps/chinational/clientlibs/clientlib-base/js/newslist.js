@@ -14,8 +14,8 @@ $(document).ready(function(){
     function searchNewsListOption() {
     	// alert("in firefox");
         // $("#select_news_by_year").hide();
-        $("#select_news_by_year option:selected").removeAttr("selected");
-        $('#select_news_by_year option:contains("ChooseYear")').attr('selected', 'selected');
+        $("#search_news_year option:selected").removeAttr("selected");
+        $('#search_news_year option:contains("ChooseYear")').attr('selected', 'selected');
         // $("#select_blogs_by_year").hide();
         // $("#search_blogs_list option:selected").removeAttr("selected");
         // $('#search_blogs_list option:contains("AllItems")').attr('selected', 'selected');  
