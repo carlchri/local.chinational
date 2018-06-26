@@ -28,7 +28,9 @@
 */
 
 #mcp_heading, #bcp_heading{
-	padding-bottom:20px;
+  font-size: 48px;
+  line-height: 48px;
+  margin-bottom:11px;
 }
 
 .media_page_tag_desc, .blog_page_tag_desc{
