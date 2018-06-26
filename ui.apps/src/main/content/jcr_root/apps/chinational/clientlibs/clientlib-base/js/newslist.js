@@ -7,10 +7,22 @@ $(document).ready(function(){
     var NEWS_HITS_PER_PAGE = 10;
 
     var total_results = parseInt($('#total_results').val());
-/*
-    window.onunload = searchNewsListOption();
     
-    // needs to change this in new logic. we might not need this function
+    /*$('#media_page_refresh').val() == 'yes' ? window.location.reload(true) : $('#media_page_refresh').val('yes');*/
+
+    window.onunload = searchNewsListOption();
+    function searchNewsListOption() {
+    	// alert("in firefox");
+        // $("#select_news_by_year").hide();
+        $("#select_news_by_year option:selected").removeAttr("selected");
+        $('#select_news_by_year option:contains("ChooseYear")').attr('selected', 'selected');
+        // $("#select_blogs_by_year").hide();
+        // $("#search_blogs_list option:selected").removeAttr("selected");
+        // $('#search_blogs_list option:contains("AllItems")').attr('selected', 'selected');  
+	}
+
+    
+/*    // needs to change this in new logic. we might not need this function
     function searchNewsListOption() {
         // $("#select_news_by_year").hide();
         $("#search_news_list option:selected").removeAttr("selected");
@@ -32,11 +44,16 @@ $(document).ready(function(){
     });
 
     var nfv = $('#news_filter').val();
-alert(nfv);
 	$("#search_news_list option:selected").removeAttr("selected");
-    $('#search_news_list option:contains('+nfv+')').attr('selected', 'selected');
-alert($("#search_news_list").val());
-
+    $('#search_news_list option[name='+nfv+']').prop('selected', true);
+    // $('#search_news_list option:contains('+nfv+')').attr('selected', 'selected');
+    if($("#search_news_list option:selected").text() != 'All Items'){
+    	$('#mcp_heading').text(($("#search_news_list option:selected").text())+'s');
+    	$('.media_page_tag_desc').show();
+    	$('.media_page_tag_desc').css('display','block');
+    	$('.media_page_tag_desc').text($('#news_tag_desc').val());
+    }
+    
     $('#search_news_year').on('change', function() {
         start_index = 0;
         $('.filtered_list').html("");

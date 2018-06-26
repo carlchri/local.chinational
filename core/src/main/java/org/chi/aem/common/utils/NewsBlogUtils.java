@@ -36,6 +36,7 @@ public final class NewsBlogUtils {
     private static final java.util.List<String> listYears = new ArrayList<>();;
     private static final java.util.List<String> listTags = new ArrayList<>();;
     private static final Map<String, String> tagsMap = new HashMap<String, String>();
+    private static final Map<String, String> tagsDescMap = new HashMap<String, String>();
 
     public static java.util.List<Page> populateListItems(String parentPage, ResourceResolver resourceResolver, String articlesTemplate) {
 
@@ -115,9 +116,11 @@ public final class NewsBlogUtils {
 		         		if(listTags.isEmpty()){
 		            		listTags.add(tagName);
 		                    tagsMap.put(tag.getName(),tagName);
+		                    tagsDescMap.put(tag.getName(),tag.getDescription());
 		        		} else if (!listTags.contains(tagName)){
 		        			listTags.add(tagName);
 		        			tagsMap.put(tag.getName(),tagName);
+		        			tagsDescMap.put(tag.getName(), tag.getDescription());
 		        		}
 		         		
 		         		if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
@@ -161,6 +164,7 @@ public final class NewsBlogUtils {
 	     m_article.put("listYears", listYears);
 	     m_article.put("listTags", listTags);
 	     m_article.put("tagsMap", tagsMap);
+	     m_article.put("tagsDescMap", tagsDescMap);
 	     m_article.put("featuredArticles", featuredArticles);
 	     m_article.put("filteredArticles", filteredArticles);
 
@@ -169,6 +173,10 @@ public final class NewsBlogUtils {
      
      public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
 
+         LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
+         if(filteredArticles.size() !=0) {
+        	 filteredArticles.clear();
+         }
 	     TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
     	 for(Page item : allArticles) {
     		// to get Year of article 
@@ -177,54 +185,28 @@ public final class NewsBlogUtils {
     		SimpleDateFormat formatter = new SimpleDateFormat("YYYY"); 
     		String year = formatter.format(date.getTime()).toUpperCase(); 
     		
-    		if(filterYear.equals(year)){
+    		if(filterYear.equals(year) || filterYear.equals(DEFAULT_NEWS_FILTER_YEAR)){
 	            // to get tags
 	            Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
 	            // LOGGER.info("tags: " + tags);
 	            if(tags.length !=0){
 		           	 for(Tag tag : tags){
-		           		if(filterYear.equals(year)){
 		         			if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-		         				filteredArticles.add(item);
+		         				addFilteredArticles(item);
 		         			} else if(articleFilter.equals(tag.getName())){
 			         			LOGGER.debug("INSIDE TAG FILTER");
-			                	filteredArticles.add(item);
+			         			addFilteredArticles(item);
 			                }
-		           		}
-		                // to get featured articles
-		                if(featuredArticles.size() < FEATURED_LIMIT){
-		    	            boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-		    	            if(isFeatured){
-		             			if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-		             				featuredArticles.add(item);
-		             			} else if(articleFilter.equals(tag.getName())){
-		    	         			LOGGER.debug("INSIDE TAG FILTER");
-		    	         			featuredArticles.add(item);
-		    	                }
-		    	            }
-		                }
 		           		
 		           	 }
 	            }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-	            	filteredArticles.add(item);
-	                // to get featured articles
-	                if(featuredArticles.size() < FEATURED_LIMIT){
-	    	            boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-	    	            if(isFeatured){
-             				featuredArticles.add(item);
-	    	            }
-	                }
+	            	addFilteredArticles(item);
 	            }
     		}
-            // LOGGER.info("filtered news : " + filteredArticles.size());
             
     	 }
     	 
-         // If no featured article present, add the latest article as featured article.
-         if(featuredArticles.isEmpty() && filteredArticles.size() > 0){
-        	 featuredArticles.add(filteredArticles.get(0));
-         }
-
+         LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
          // populate map
 	     m_article.put("featuredArticles", featuredArticles);
 	     m_article.put("filteredArticles", filteredArticles);
@@ -240,9 +222,17 @@ public final class NewsBlogUtils {
 		}
      }
      
+     public static void addFilteredArticles(Page item){
+ 		if(filteredArticles.isEmpty()){
+ 			filteredArticles.add(item);
+		} else if (!filteredArticles.contains(item)){
+			filteredArticles.add(item);
+		}
+     }
+     
      public static void addFeaturedArticle(Page item){
          boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-         if(featuredArticles.size() < FEATURED_LIMIT && isFeatured){
+         if(featuredArticles.size() < FEATURED_LIMIT && isFeatured && !featuredArticles.contains(item)){
           	featuredArticles.add(item);
       }
   }

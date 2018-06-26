@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
@@ -111,6 +112,9 @@ public class NewsList implements ComponentExporter {
     // storing map of all tags name and title attached to news articles page template
     private Map<String, String> tagsMap = new HashMap<String, String>();
 
+    // storing map of all tags title and desc attached to news articles page template
+    private Map<String, String> tagsDescMap = new HashMap<String, String>();
+
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
     private int start_index;
@@ -122,6 +126,7 @@ public class NewsList implements ComponentExporter {
     private String parentPage;
     private String newsTemplate;
     private String news_filter;
+    private String tagDesc;
     
     @PostConstruct
     private void initModel() {
@@ -133,6 +138,7 @@ public class NewsList implements ComponentExporter {
         parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
         newsTemplate = NEWS_TEMPLATE;
         news_filter = DEFAULT_NEWS_FILTER;
+        tagDesc = ""; 
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -178,10 +184,19 @@ public class NewsList implements ComponentExporter {
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
+        tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         featuredNews = (List<Page>) articleMap.get("featuredArticles");
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
         
-	   	for(Page item : featuredNews) {
+        if(tagsDescMap != null){
+	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
+	            if(pair.getKey().equals(news_filter)){
+	            	tagDesc = pair.getValue();
+	            }
+	        }
+        }
+        
+        for(Page item : featuredNews) {
 			 if(allFilteredNews.contains(item)){
 				 allFilteredNews.remove(item);
 			 } 
@@ -233,6 +248,14 @@ public class NewsList implements ComponentExporter {
 
     public Map<String, String> getTagsMap() {
         return tagsMap;
+    }
+
+    public Map<String, String> getTagsDescMap() {
+        return tagsDescMap;
+    }
+
+    public String getTagsDesc() {
+        return tagDesc;
     }
 
     public Collection<String> getListTags() {

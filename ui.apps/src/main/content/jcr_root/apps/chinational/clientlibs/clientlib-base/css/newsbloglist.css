@@ -27,6 +27,15 @@
 }
 */
 
+#mcp_heading, #bcp_heading{
+	padding-bottom:20px;
+}
+
+.media_page_tag_desc, .blog_page_tag_desc{
+	display:none;
+	padding-bottom:60px;
+}
+
 ul.filtered_list, 
 ul.filtered_blogs_list {
 	padding-left:0px;
