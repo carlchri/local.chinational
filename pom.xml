@@ -19,7 +19,7 @@
     <groupId>com.chinational.aem</groupId>
     <artifactId>chi-national-mvp-market</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <name>CHI National MVP Market</name>
     <description>CHI National, MVP and Market assets</description>

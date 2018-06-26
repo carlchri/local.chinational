@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-
     var blogs_start_index = 0;
     // var blogs_filter = "AllItems";
     var blogs_filter_year = "ChooseYear"
@@ -45,7 +44,7 @@ $(document).ready(function(){
 
     function blogsLoadMoreShowHide() {
         // Compare size of results with total results and hide LOAD MORE, if not required
-        size_li = $(".filtered_blogs_list li").size();
+        var size_li = $(".filtered_blogs_list li").size();
         $('.filtered_blogs_list_show_more').show();        
         if(size_li >= blogs_total_results) {
 	        $('.filtered_blogs_list_show_more').hide();
@@ -74,11 +73,11 @@ $(document).ready(function(){
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.blogsURL + ".html>").append(
-            				$("<h3>").append(
-            					$("<span class='txt-green blogs_heading_hover'>").text(item.blogsHeading)
+            				$("<h4 class='news_blog_list_heading'>").append(
+            					$("<span class='blogs_heading_hover'>").text(item.blogsHeading)
             				)
             			),
-                        $("<span class='txt-green'>").text(item.publishDate),
+                        $("<span class='news_blog_list_heading'>").text(item.publishDate),
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_blogs_list");
                 });
@@ -89,4 +88,5 @@ $(document).ready(function(){
             }                
         });
     }
+    
 });

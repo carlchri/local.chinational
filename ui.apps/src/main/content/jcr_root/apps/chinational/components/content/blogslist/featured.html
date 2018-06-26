@@ -5,7 +5,7 @@
          </div>
          <div class="blog-news-padding-top ${noImagePresent ? 'col-sm-7 col-xs-12' : 'col-xs-12'}">
            <a href="${item.path @ extension='html'}">
-               <span class="small-heading blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span>
+               <h4 class="txt-green news_blog_featured_heading blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</h4>
            </a>
            <span class="txt-green" 
                  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">

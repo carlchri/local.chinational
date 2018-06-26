@@ -8,7 +8,7 @@ $(document).ready(function() {
     
 
 
-    var addHrLength = $('.profileCarousel .row .tiles-wrapper').length - 3;
+    addHrLength = $('.profileCarousel .row .tiles-wrapper').length - 3;
     $('.profileCarousel .row .tiles-wrapper').each(function(index) {
         if (addHrLength % 2 === 0) {
             $('profileCarousel .tiles-wrapper.filler .tile-inner').hide();

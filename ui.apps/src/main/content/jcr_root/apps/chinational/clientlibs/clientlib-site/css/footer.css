@@ -136,6 +136,14 @@ form .col-md-3 {
     background-position: -332px -41px;
 }
 
+/* June 1, 2018 Added by Davinder for Compaign landing Page */
+
+.compaignlandingpage .footer {
+	margin-top:0px;
+}
+
+/* End of Additions  */
+
 @media(max-width:1200px) {
     .newsletter {
         width: 500px;
@@ -149,6 +157,7 @@ form .col-md-3 {
 @media(max-width:991px) {
     .footer {
         padding-top: 0;
+        margin-top: 56px; /* Naresh - matching with Zeplin*/
     }
     .newsletter {
         width: 100%;
@@ -190,7 +199,7 @@ form .col-md-3 {
         text-align: left;
     }
     .footer {
-        margin-top: 65px;
+        margin-top: 56px; /* Naresh - matching with Zeplin*/
     }
     form .col-md-3 {
         padding-left: 15px;

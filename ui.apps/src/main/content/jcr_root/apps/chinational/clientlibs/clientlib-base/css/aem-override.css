@@ -76,6 +76,11 @@ and (orientation : portrait) {
     height: auto;
 }
 
+.image-max-width-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
 /* DE2584 - Tile alignment and all alignments in safari browsers - added by sbrown*/
 .row:before {
     display: inline-block;

@@ -1,0 +1,23 @@
+<sly data-sly-use.link="org.chi.aem.common.components.model.Link" />    
+
+<div class="full-image blog-image" data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
+</div>
+
+<div class="blog-content pstn-reltv stickToTop">
+	<a data-sly-test="${link.linkUrl != '#'}" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+		<span class="blog-title dblock txt-green tiles_heading_site_color news_heading_hover">
+				${properties.headingText || 'Tile Component'}
+		</span>
+	</a>
+	<span data-sly-test="${link.linkUrl == '#'}" class="blog-title dblock txt-green tiles_heading_site_color">
+            	${properties.headingText || 'Tile Component'}
+	</span>
+    <p data-sly-test="${properties.contentDetail}">${properties.contentDetail}</p>
+</div>    
+<a data-sly-test="${link.linkUrl != '#'}" class="bold-link stickToBottom" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+	${link.linkText || 'READ MORE'}
+</a>
+<span data-sly-test="${link.linkUrl == '#'}"  class="bold-link stickToBottom">
+            	${link.linkText || 'READ MORE'}
+</span>
+

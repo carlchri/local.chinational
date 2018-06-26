@@ -1,0 +1,11 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ 05/16/2018 - creating separate file for image/video section of HTML, which is reused in two files
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+
+<sly data-sly-test="${!properties.imageRequired}"
+	 data-sly-resource="${'video' @ resourceType='chinational/components/content/video', selectors='embeddedVideo'}"></sly>
+<div data-sly-test="${properties.imageRequired}"
+	 data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}"></div>
+<div class="link-wrapper"
+	 data-sly-resource="${'cbivbutton' @ resourceType='chinational/components/content/button'}"
+	 data-sly-test="${properties.buttonUnderImage}"></div>
