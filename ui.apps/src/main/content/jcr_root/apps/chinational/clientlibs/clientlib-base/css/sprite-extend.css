@@ -286,6 +286,38 @@
   margin: 9px 12px 5px 9px; /* T R B L*/
 }
 
+/* Social blue icons */
+.sprite.icon-fb-blue {
+  background-position: -57px -1042px;
+  width: 17px;
+  height: 32px;
+}
+.sprite.icon-instagram-blue {
+  background-position: -100px -1040px;
+  width: 36px;
+  height: 36px;
+}
+.sprite.icon-twitter-blue {
+  background-position: -162px -1047px;
+  width: 28px;
+  height: 23px;
+}
+.sprite.icon-linkedin-blue {
+  background-position: -216px -1043px;
+  width: 29px;
+  height: 28px;
+}
+.sprite.icon-youtube-blue {
+  background-position: -271px -1048px;
+  width: 36px;
+  height: 26px;
+}
+.sprite.icon-gplus-blue {
+  background-position: -333px -1047px;
+  width: 43px;
+  height: 27px;
+}
+
 /*hospital locations*/
 .sprite-v2 {
   width: 75px;

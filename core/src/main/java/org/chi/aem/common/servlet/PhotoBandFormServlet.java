@@ -144,6 +144,7 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     	}
     		
         // response.setContentType("application/json");
+    	response.setContentType("text/html");
 	         
        PrintWriter out = response.getWriter();
        out.write("Form Submitted");

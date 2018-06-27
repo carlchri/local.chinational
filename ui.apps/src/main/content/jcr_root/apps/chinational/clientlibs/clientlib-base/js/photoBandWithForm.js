@@ -40,7 +40,9 @@ $(document).ready(function () {
 	          var total_validation_items = $('#'+$formID).find('input, .photo-band-form-multiselect, .photo-band-form-select').length;
 	  		$('#'+$formID).find('input, .photo-band-form-multiselect, .photo-band-form-select').each(function(ind){
 	  			if($(this).is("input")){
-		  			$(this).css('border', 'inherit');
+	  				if($(this).attr("type") != 'button'){
+	  					$(this).css('border', 'inherit');
+	  				}
 		  		    if($(this).prop('required')){
 		  				if ($(this).val() === "") {
 		  					  $(this).css('border', 'solid 2px red');
@@ -55,7 +57,7 @@ $(document).ready(function () {
 		  			          return false;
 		  			        } else if($(this).attr("type") == "tel" && !numberReg.test($(this).val())){
 		  						  $(this).css('border', 'solid 2px red');
-		  				          $('#'+$formID+' #pbf_error_message').text("Please provide valid telephone address.");
+		  				          $('#'+$formID+' #pbf_error_message').text("Please provide valid telephone number.");
 		  				          $('#'+$formID+' #pbf_error_message').show();
 		  				          $(this).focus();
 		  				          return false;
@@ -100,16 +102,11 @@ $(document).ready(function () {
 	    	   method:"GET",
 	    	   data:form_data,
 	           success: function(msg, status, xhr){
-	           	var json = msg;
-	           	var ct = xhr.getResponseHeader("content-type") || "";
-	               if (ct.indexOf('html') > -1) {
-	                 json = jQuery.parseJSON(msg);
-	               }
 	            $('#'+$formID+' #pbf_success_message').show();
 	    	    $('#'+$formID)[0].reset(); // To reset form fields
-	
+	    	    $('#'+$formID+' .learn-more-btn').css('border', 'solid 2px');
 	    	    $('#'+$formID+' .photo-band-form-multiselect option:selected').each(function(){
-	    	     $(this).prop('selected', false);
+	    	    	$(this).prop('selected', false);
 	    	    });
 	    	    $('#'+$formID+' .photo-band-form-multiselect').multiselect('refresh');
 	    	    $('#'+$formID+' .photo-band-form-select option:selected').prop('selected', false);
