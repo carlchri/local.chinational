@@ -7,12 +7,25 @@
 	padding-bottom: 60px;
 }
 
+.contentBand .video .sprite.icon-large-play-orange {
+  left: 38%;
+  top: 34%;
+}
+
 /*
 .memorial p {
 	margin-bottom: 50px;
 }
 commented by Naresh */
 
+/* Handle iPad landscape mode*/
+@media(max-width:1024px) {
+
+	.contentBand .video .sprite.icon-large-play-orange {
+      left: 38%;
+      top: 31%;
+    }
+}
 @media(max-width:991px) {
 	.icon-buttons {
 		padding-top: 30px;
@@ -23,6 +36,11 @@ commented by Naresh */
 		margin-bottom: 35px;
 	}
 	commented by Naresh */
+
+	.contentBand .video .sprite.icon-large-play-orange {
+      left: 42%;
+      top: 38%;
+    }
 }
 
 @media(max-width:767px) {
@@ -34,4 +52,8 @@ commented by Naresh */
 		padding-bottom:40px;
 	}
 
+    .contentBand .video .sprite.icon-large-play-orange {
+      left: 43%;
+      top: 40%;
+    }
 }
