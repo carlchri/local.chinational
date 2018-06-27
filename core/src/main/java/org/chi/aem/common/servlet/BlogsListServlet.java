@@ -21,12 +21,11 @@ import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.chi.aem.common.utils.NewsBlogUtils;
+import org.chi.aem.common.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Session;
- 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
@@ -66,7 +65,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_BLOGS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_BLOGS_FILTER = "AllItems";
+    private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
     
     // storing list of all blogs articles sorted by publishDate
@@ -74,7 +74,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
-     * excluding featured article to be displayed at top of page
      * sorted by publish date
      * required to get total results to Show-Hide LOAD MORE Button
     */
@@ -91,9 +90,13 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     */
     private java.util.List<Page> featuredBlogs;
 
+    // storing list of years of published articles
+    // private java.util.List<String> listYears;
+    
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
     private String blogsFilter;
+    private String blogsFilterYear;
     private String media_page_path;
     private int start_index;
     private int hits_per_page;
@@ -102,8 +105,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
-       
         blogsFilter = "";
+        blogsFilterYear = "";
         media_page_path = "";
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
@@ -113,10 +116,10 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     	listBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
+        // listYears = new ArrayList<>();
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
-        
         try {
         	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
@@ -125,7 +128,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
-    				 Resource property = childResources.next().getChild("news-list/parentPage");
+    				//news-list used in getChild is OK. This is how path is provided in data-sly-resource in blogscenterpage template content.html
+    				 Resource property = childResources.next().getChild("news-list/parentPage"); 
     				    if (property == null) {
     				        continue;
     				    }
@@ -150,10 +154,18 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        	start_index = Integer.parseInt(selectors[2]);	
 	        }
 	        
+	        if(selectors.length >= 4){
+	        	blogsFilterYear = selectors[3];
+	        } else {
+	        	blogsFilterYear = DEFAULT_BLOGS_FILTER_YEAR;
+	        }
+	        
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter);
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter, blogsFilterYear);
+	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
+	        // LOGGER.info("filtered blogs : " + allFilteredBlogs.size());
 	        
 	    	for(Page item : featuredBlogs) {
 				 if(allFilteredBlogs.contains(item)){
@@ -170,7 +182,9 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        JSONArray jsonArray = getJsonBlogs();
 	        jsonResult.put("jsonBlogs", jsonArray);
 	        jsonResult.put("total_results", totalResults);
+	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
+	        // LOGGER.info("jsondata : " + jsonData);
 	        
 	        response.setContentType("application/json");
 	         
@@ -184,7 +198,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        } catch (IOException e1) {
 	            LOGGER.error("Exception in BlogsListServlet>>doget method",e1);
 	        }
-	
 	    }
 	
 	    finally {
