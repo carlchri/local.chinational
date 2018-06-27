@@ -3,36 +3,20 @@ $(document).ready(function(){
 
     var start_index = 0;
     var news_filter = "AllItems";
-    var news_filter_year = "ChooseYear"
+    var news_filter_year = "ChooseYear";
     var NEWS_HITS_PER_PAGE = 10;
 
     var total_results = parseInt($('#total_results').val());
     
-    /*$('#media_page_refresh').val() == 'yes' ? window.location.reload(true) : $('#media_page_refresh').val('yes');*/
-
     window.onunload = searchNewsListOption();
     function searchNewsListOption() {
-    	// alert("in firefox");
-        // $("#select_news_by_year").hide();
         $("#search_news_year option:selected").removeAttr("selected");
         $('#search_news_year option:contains("ChooseYear")').attr('selected', 'selected');
-        // $("#select_blogs_by_year").hide();
-        // $("#search_blogs_list option:selected").removeAttr("selected");
-        // $('#search_blogs_list option:contains("AllItems")').attr('selected', 'selected');  
+        $("#search_blogs_year option:selected").removeAttr("selected");
+        $('#search_blogs_year option:contains("ChooseYear")').attr('selected', 'selected');
 	}
 
     
-/*    // needs to change this in new logic. we might not need this function
-    function searchNewsListOption() {
-        // $("#select_news_by_year").hide();
-        $("#search_news_list option:selected").removeAttr("selected");
-        #mySelect option:contains(abc)
-        $('#search_news_list option:contains("AllItems")').attr('selected', 'selected');
-        // $("#select_blogs_by_year").hide();
-        $("#search_blogs_list option:selected").removeAttr("selected");
-        $('#search_blogs_list option:contains("AllItems")').attr('selected', 'selected');  
-	}
-*/
     newsLoadMoreShowHide();          
 
     $('#search_news_list').on('change', function() {
@@ -46,8 +30,7 @@ $(document).ready(function(){
     var nfv = $('#news_filter').val();
 	$("#search_news_list option:selected").removeAttr("selected");
     $('#search_news_list option[name='+nfv+']').prop('selected', true);
-    // $('#search_news_list option:contains('+nfv+')').attr('selected', 'selected');
-    if($("#search_news_list option:selected").text() != 'All Items'){
+    if($("#search_news_list option:selected").text() != 'Filter by tag'){
     	$('#mcp_heading').text(($("#search_news_list option:selected").text())+'s');
     	$('.media_page_tag_desc').show();
     	$('.media_page_tag_desc').css('display','block');
@@ -57,25 +40,16 @@ $(document).ready(function(){
     $('#search_news_year').on('change', function() {
         start_index = 0;
         $('.filtered_list').html("");
-        // var xyz = $('option:selected', this).attr('mytag')
         news_filter = $('#search_news_list option:selected').attr('name') ;
         news_filter_year = $('#search_news_year').val() ;    
 		$('.loading').show();
         newslistAjaxCall();
-
-/*          if (this.value != 'ChooseYear')
-          {
-            start_index = 0;
-            $('.filtered_list').html("");
-            news_filter = $('#search_news_year').val() ;    
-    		$('.loading').show();
-            newslistAjaxCall();
-          }
-          */
     });
 
     $('.filtered_list_show_more').click(function () {
 		start_index += NEWS_HITS_PER_PAGE; 
+        news_filter = $('#search_news_list option:selected').attr('name') ;
+        news_filter_year = $('#search_news_year').val() ;    
 		$('.loading_next').show();
         newslistAjaxCall();
     });

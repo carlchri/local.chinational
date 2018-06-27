@@ -27,7 +27,6 @@ import com.day.cq.wcm.api.PageManager;
 public final class NewsBlogUtils {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(NewsBlogUtils.class);
-    private static final int FEATURED_LIMIT = 3;
     private static final String DEFAULT_NEWS_FILTER = "AllItems";
     private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final Map<String, Object> m_article = new HashMap<String, Object>();
@@ -51,8 +50,6 @@ public final class NewsBlogUtils {
         map.put("p.guessTotal", "true");
         map.put("p.offset", String.valueOf(0)); // same as query.setStart(0) below
         map.put("p.limit", String.valueOf(-1)); // same as query.setHitsPerPage(20) below
-    	// map.put("tagid.property", "jcr:content/cq:tags");
-		// map.put("tagid.1_value", newsFilter); // value should be in format chi:MediaCenter/PressRelease. Right noe its coming as PressRelease
 
         PredicateGroup group = PredicateGroup.create(map);
         Session session = resourceResolver.adaptTo(Session.class);
@@ -85,9 +82,9 @@ public final class NewsBlogUtils {
          return list;
      }
 
-     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter) {
+     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
 
-         LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
+         // LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
          if(filteredArticles.size() !=0) {
         	 filteredArticles.clear();
          }
@@ -96,6 +93,15 @@ public final class NewsBlogUtils {
          }
          if(listYears.size() !=0) {
         	 listYears.clear();
+         }
+         if(listTags.size() !=0) {
+        	 listTags.clear();
+         }
+         if(tagsMap.size() !=0) {
+        	 tagsMap.clear();
+         }
+         if(tagsDescMap.size() !=0) {
+        	 tagsDescMap.clear();
          }
          
     	 TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
@@ -125,27 +131,21 @@ public final class NewsBlogUtils {
 		         		
 		         		if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
 		                	addYear(listYears, year);
-		                	addFeaturedArticle(item);
+		                	addFeaturedArticle(item, featured_limit);
 		                }else if(articleFilter.equals(tag.getName())){
 		         			addYear(listYears, year);
 		         			filteredArticles.add(item);
-		                	addFeaturedArticle(item);
+		                	addFeaturedArticle(item, featured_limit);
 		         		}
-
-		         		/* // to get filtered articles list, if filter contains tag
-		         		if(tagsMap.containsKey(articleFilter) && articleFilter.equals(tag.getName())){
-		         			LOGGER.debug("INSIDE TAG FILTER");
-		                	filteredArticles.add(item);
-		                }
-		                */
 	           	 }
             }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
             	addYear(listYears, year);
-            	addFeaturedArticle(item);
+            	addFeaturedArticle(item, featured_limit);
             }
     	 }
     	 
-         LOGGER.info("newsblogUtils after for loop - filteredArticles Size : " + filteredArticles.size());
+         // LOGGER.info("newsblogUtils after for loop - filteredArticles Size : " + filteredArticles.size());
+    	 
         // If article filter is allNews, return all articles list
          if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
          	// filteredArticles = allArticles;
@@ -158,7 +158,7 @@ public final class NewsBlogUtils {
         	 featuredArticles.add(filteredArticles.get(0));
          }
          
-         LOGGER.info("newsblogUtils end filteredArticles Size : " + filteredArticles.size());
+         // LOGGER.info("newsblogUtils end filteredArticles Size : " + filteredArticles.size());
 
          // populate map
 	     m_article.put("listYears", listYears);
@@ -173,7 +173,7 @@ public final class NewsBlogUtils {
      
      public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
 
-         LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
+         // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
          if(filteredArticles.size() !=0) {
         	 filteredArticles.clear();
          }
@@ -194,7 +194,7 @@ public final class NewsBlogUtils {
 		         			if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
 		         				addFilteredArticles(item);
 		         			} else if(articleFilter.equals(tag.getName())){
-			         			LOGGER.debug("INSIDE TAG FILTER");
+			         			// LOGGER.debug("INSIDE TAG FILTER");
 			         			addFilteredArticles(item);
 			                }
 		           		
@@ -206,7 +206,8 @@ public final class NewsBlogUtils {
             
     	 }
     	 
-         LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
+         // LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
+    	 
          // populate map
 	     m_article.put("featuredArticles", featuredArticles);
 	     m_article.put("filteredArticles", filteredArticles);
@@ -230,9 +231,9 @@ public final class NewsBlogUtils {
 		}
      }
      
-     public static void addFeaturedArticle(Page item){
+     public static void addFeaturedArticle(Page item, int limit){
          boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-         if(featuredArticles.size() < FEATURED_LIMIT && isFeatured && !featuredArticles.contains(item)){
+         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
           	featuredArticles.add(item);
       }
   }

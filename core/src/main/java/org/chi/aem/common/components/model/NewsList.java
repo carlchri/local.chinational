@@ -56,6 +56,7 @@ public class NewsList implements ComponentExporter {
     private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
+    private static final int NEWS_FEATURED_LIMIT = 3;
 
     @ScriptVariable
     private ValueMap properties;
@@ -127,12 +128,14 @@ public class NewsList implements ComponentExporter {
     private String newsTemplate;
     private String news_filter;
     private String tagDesc;
+    private int newsFeaturedLimit;
     
     @PostConstruct
     private void initModel() {
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
         totalResults = 0;
+        newsFeaturedLimit = NEWS_FEATURED_LIMIT;
         totalNumberPages = 1;
         activePage = 1;
         parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
@@ -176,11 +179,11 @@ public class NewsList implements ComponentExporter {
             activePage = 1; //for Pagination active class when page load for the first time
         }
 
-		LOGGER.info("newslist parent page : " + parentPage);
-		LOGGER.info("newslist news_filter : " + news_filter);
+		// LOGGER.info("newslist parent page : " + parentPage);
+		// LOGGER.info("newslist news_filter : " + news_filter);
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
-		LOGGER.info("newslist allNewsSize : " + allNews.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, news_filter);
+		// LOGGER.info("newslist allNewsSize : " + allNews.size());
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, news_filter, newsFeaturedLimit);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
@@ -202,8 +205,7 @@ public class NewsList implements ComponentExporter {
 			 } 
 		 }	 
 
-	   	LOGGER.info("newslist filtered news : " + allFilteredNews.size());
-
+	   	// LOGGER.info("newslist filtered news : " + allFilteredNews.size());
 
         listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 
@@ -221,7 +223,6 @@ public class NewsList implements ComponentExporter {
         for(int i = 1; i <= totalNumberPages; i++) {
             pages.add(i);
         }
-
    }
 
     public Collection<Page> getAllNews() {

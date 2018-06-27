@@ -61,6 +61,8 @@
 
 .media_page_tag_desc, .blog_page_tag_desc{
 	display:none;
+    font-size: 16px;
+    line-height: 20px;
 	padding-bottom:60px;
 }
 

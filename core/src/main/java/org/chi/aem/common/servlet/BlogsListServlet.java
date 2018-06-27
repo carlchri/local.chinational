@@ -26,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Session;
- 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
@@ -75,7 +74,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
-     * excluding featured article to be displayed at top of page
      * sorted by publish date
      * required to get total results to Show-Hide LOAD MORE Button
     */
@@ -107,7 +105,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
-       
         blogsFilter = "";
         blogsFilterYear = "";
         media_page_path = "";
@@ -123,7 +120,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
-        
         try {
         	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
@@ -132,7 +128,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
-    				 Resource property = childResources.next().getChild("news-list/parentPage");
+    				//news-list used in getChild is OK. This is how path is provided in data-sly-resource in blogscenterpage template content.html
+    				 Resource property = childResources.next().getChild("news-list/parentPage"); 
     				    if (property == null) {
     				        continue;
     				    }
@@ -168,6 +165,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
+	        // LOGGER.info("filtered blogs : " + allFilteredBlogs.size());
 	        
 	    	for(Page item : featuredBlogs) {
 				 if(allFilteredBlogs.contains(item)){
@@ -186,6 +184,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        jsonResult.put("total_results", totalResults);
 	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
+	        // LOGGER.info("jsondata : " + jsonData);
 	        
 	        response.setContentType("application/json");
 	         
@@ -199,7 +198,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        } catch (IOException e1) {
 	            LOGGER.error("Exception in BlogsListServlet>>doget method",e1);
 	        }
-	
 	    }
 	
 	    finally {

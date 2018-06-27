@@ -128,6 +128,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
+    				// to get path of parent page
     				 Resource property = childResources.next().getChild("news-list/parentPage");
     				    if (property == null) {
     				        continue;
@@ -159,14 +160,12 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        	filterYear = DEFAULT_NEWS_FILTER_YEAR;
 	        }
 	        
-	        LOGGER.info("filter Year : " + filterYear.toString());
-	        
 	        allNews = NewsBlogUtils.populateListItems(media_page_path, resolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
 	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resolver, newsFilter, filterYear);
 	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredNews = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
-	        LOGGER.info("filtered news : " + allFilteredNews.size());
+	        // LOGGER.info("filtered news : " + allFilteredNews.size());
 	        
 		   	for(Page item : featuredNews) {
 				 if(allFilteredNews.contains(item)){
@@ -199,7 +198,6 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        } catch (IOException e1) {
 	            LOGGER.error("Exception in NewsListServlet>>doget method",e1);
 	        }
-	
 	    }
 	
 	    finally {

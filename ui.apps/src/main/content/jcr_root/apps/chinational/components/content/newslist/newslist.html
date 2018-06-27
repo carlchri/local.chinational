@@ -11,24 +11,24 @@
 
 		<div class="col-xs-12 select_news_filter">
             <select class="form-control" name="search_news_list" id="search_news_list">
-				<option value="${currentPage.path}.AllItems.html" name="AllItems">All Items</option>
+				<option value="${currentPage.path}.AllItems.html" name="AllItems">Filter by tag</option>
 				<sly data-sly-list.tagsList="${newsList.tagsMap}">
 					<option value="${currentPage.path}.${tagsList}.html" name="${tagsList}">${newsList.tagsMap[tagsList]}</option>
 				</sly>
 			</select>
 			<select class="form-control" name="search_news_year" id="search_news_year">
-				<option value="ChooseYear" selected>Choose Year</option>
+				<option value="ChooseYear" selected>Sort by year</option>
 				<sly data-sly-list.listYear="${newsList.listYears}">
 					<option value="${listYear}">${listYear}</option>
 				</sly>
 			</select>
 		</div>
+
 		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
 		<input type="hidden" name="total_results" id="total_results" value="${newsList.totalResults}">   
 		<input type="hidden" name="news_filter" id="news_filter" value="${newsList.newsFilter}">   
 		<input type="hidden" name="news_tag_desc" id="news_tag_desc" value="${newsList.tagsDesc}">   
-		<input type="hidden" name="media_page_refresh" id="media_page_refresh" value="no">   
 
         <div class="col-xs-12 loading" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">

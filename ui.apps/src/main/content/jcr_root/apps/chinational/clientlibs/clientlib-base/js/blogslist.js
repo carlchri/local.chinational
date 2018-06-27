@@ -1,11 +1,11 @@
 
 $(document).ready(function(){
     var blogs_start_index = 0;
-    // var blogs_filter = "AllItems";
-    var blogs_filter_year = "ChooseYear"
+    var blogs_filter = "AllItems";
+    var blogs_filter_year = "ChooseYear";
     var BLOGS_HITS_PER_PAGE = 10;
 
-    var blogs_total_results = parseInt($('#total_results').val());
+    var blogs_total_results = parseInt($('#blogs_total_results').val());
 
 	blogsLoadMoreShowHide();          
 
@@ -17,27 +17,31 @@ $(document).ready(function(){
         return false;
     });
 
+    var bfv = $('#blogs_filter').val();
+	$("#search_blogs_list option:selected").removeAttr("selected");
+    $('#search_blogs_list option[name='+bfv+']').prop('selected', true);
+    // $('#search_blogs_list option:contains('+nfv+')').attr('selected', 'selected');
+    if($("#search_blogs_list option:selected").text() != 'Filter by topic'){
+    	$('#bcp_heading').text(($("#search_blogs_list option:selected").text())+'s');
+    	$('.blog_page_tag_desc').show();
+    	$('.blog_page_tag_desc').css('display','block');
+    	$('.blog_page_tag_desc').text($('#blogs_tag_desc').val());
+    }
+    
     $('#search_blogs_year').on('change', function() {
         blogs_start_index = 0;
         $('.filtered_blogs_list').html("");
-        // blogs_filter = $('#search_blogs_list').val() ;
+        blogs_filter = $('#search_blogs_list option:selected').attr('name') ;
+        
         blogs_filter_year = $('#search_blogs_year').val();
 		$('.loading_blogs').show();
-        newslistAjaxCall();
-    	
-/*          if (this.value != 'ChooseYear')
-          {
-            blogs_start_index = 0;
-            $('.filtered_blogs_list').html("");
-            blogs_filter = $('#search_blogs_year').val() ;            
-    		$('.loading_blogs').show();
-            blogslistAjaxCall();
-          }
-*/          
+        blogslistAjaxCall();
     });
 
     $('.filtered_blogs_list_show_more').click(function () {
 		blogs_start_index += BLOGS_HITS_PER_PAGE; 
+        blogs_filter = $('#search_blogs_list option:selected').attr('name') ;
+        blogs_filter_year = $('#search_blogs_year').val();
 		$('.loading_blogs_next').show();
         blogslistAjaxCall();
     });
@@ -53,9 +57,9 @@ $(document).ready(function(){
 
     function blogslistAjaxCall() {
         $('.filtered_blogs_list_show_more').hide();
-		var current_page_path = $('#current_page_path').val() ; 
+		var blogs_current_page_path = $('#blogs_current_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index +  '.' + blogs_filter_year + '.html';
+   		var servletURL = blogs_current_page_path + '.blogsservlet.' + blogs_filter + '.' + blogs_start_index +  '.' + blogs_filter_year + '.html';
 
         $.ajax({
             type: 'GET',    
