@@ -164,6 +164,7 @@
         this._elements.input.addEventListener('keydown', this._onKeydown.bind(this));
         this._elements.clear.addEventListener('click', this._onClearClick.bind(this));
         document.addEventListener('click', this._onDocumentClick.bind(this));
+        document.addEventListener('touchstart', this._onDocumentClick.bind(this));
         // we don't need to get more results beyond first set
         //this._elements.results.addEventListener('scroll', this._onScroll.bind(this));
 
@@ -257,7 +258,7 @@
     Search.prototype._onDocumentClick = function(event) {
         var inputContainsTarget =  this._elements.input.contains(event.target);
         var resultsContainTarget = this._elements.results.contains(event.target);
-        //console.log("_onDocumentClick inputContainsTarget: " + inputContainsTarget + ", resultsContainTarget: " + resultsContainTarget);
+        //console.log("_onDocumentClick event: " + event + ", event.target: " + event.target);
         //", innerHTML: " + event.target.innerHTML);
         // replace text in search box with text from results
 
