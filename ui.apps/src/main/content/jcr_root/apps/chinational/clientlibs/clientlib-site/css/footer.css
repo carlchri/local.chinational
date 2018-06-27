@@ -138,10 +138,17 @@ form .col-md-3 {
 
 /* June 1, 2018 Added by Davinder for Compaign landing Page */
 
-.compaignlandingpage .footer {
-	margin-top:0px;
+.campaignlandingpage .footer {
+	margin-top:0px !important;
 }
 
+.campaignlandingpage .section {
+	margin-bottom:0 !important;
+}
+
+.campaignlandingpage .cq-Editable-dom--container {
+	margin-bottom:-1.25rem !important;
+}
 /* End of Additions  */
 
 @media(max-width:1200px) {

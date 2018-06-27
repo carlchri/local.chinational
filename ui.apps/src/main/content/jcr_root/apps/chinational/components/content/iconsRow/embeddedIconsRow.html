@@ -1,0 +1,36 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"
+     data-sly-use.iconsRow="org.chi.aem.common.components.model.IconsRow"/>
+
+  <div class="icons-row">
+
+    <div class="col-xs-12" data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
+       	<h6>Icons Row Component ${wcmmode.edit ? ' [EDIT Mode]' : ''}</h6>
+     </div>
+  
+	<sly data-sly-test="${properties.rightRailIcons}">
+		<label class="button-label">${properties.iconsRowHeading || 'RELATED LINKS'}</label>
+		<hr class="dashed-border">
+	</sly>
+
+ 		    <sly data-sly-test="${properties.iconOption == 'icon-pre'}">
+		<sly data-sly-list="${iconsRow.preIcons}">
+	   		<div class="icon-container">
+	     		<a href="${item.linkUrl}" class="${item.iconType}"
+	        	   target="${item.targetBlank==true ?'_blank':'_self'}">
+	     		</a>
+	    	</div>
+	   </sly>
+   </sly>
+   
+   <sly data-sly-test="${properties.iconOption == 'icon-custom'}">
+		<sly data-sly-list="${iconsRow.customIcons}">
+	   		<div  class="icon-container">
+				<a href="${item.linkUrl}" target="${item.targetBlank==true ?'_blank':'_self'}">
+		       		<img class="" src="${item.iconImageSrc}" />
+	    	    </a>
+	     	</div>
+	   </sly>
+  </sly>
+  </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.iconOption}"></sly>

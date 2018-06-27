@@ -25,7 +25,11 @@ js/popper.js
 js/image.js
 js/footerContactUs.js
 js/physician_tile.js
+js/photoBandWithForm.js
 js/hoverTouchDevices.js
 js/highlight.js
+js/bootstrap-multiselect.js
+js/search.js
+js/search_predictive.js
 
 
