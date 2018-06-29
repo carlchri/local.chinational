@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
@@ -307,6 +308,10 @@ public class NewsList implements ComponentExporter {
 
     public List<Integer> getPages() {
         return pages;
+    }
+
+    public String getHash() {
+        return "news" + UUID.randomUUID();
     }
 
 }

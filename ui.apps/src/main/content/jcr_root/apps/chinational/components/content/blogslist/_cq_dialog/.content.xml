@@ -39,6 +39,14 @@
                                                         fieldLabel="Parent page"
                                                         name="./parentPage"
                                                         rootPath="/content"/>
+                                                    <removeFilter
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Selecting this checkbox will hide both filter dropdowns."
+                                                        name="./removeFilter"
+                                                        text="Select to hide filtering dropdowns"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
                                                 </items>
                                             </well>
                                         </items>
