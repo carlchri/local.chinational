@@ -24,14 +24,16 @@ $(document).ready(function(){
 	    var bfv = $('#'+$blogsID+' #blogs_filter').val();
 		if($('#'+$blogsID+' .select_blogs_filter').length){
 			$('#'+$blogsID+' #search_blogs_list option:selected').removeAttr("selected");
-		    $('#'+$blogsID+' #search_blogs_list option[name='+bfv+']').prop('selected', true);
-		    // $('#'+$blogsID+' #search_blogs_list option:contains('+nfv+')').attr('selected', 'selected');
-		    if($('#'+$blogsID+' #search_blogs_list option:selected').text() != 'All Items'){
-		    	$('#bcp_heading').text(($("#search_blogs_list option:selected").text())+'s');
-		    	$('.blog_page_tag_desc').show();
-		    	$('.blog_page_tag_desc').css('display','block');
-		    	$('.blog_page_tag_desc').text($('#blogs_tag_desc').val());
-		    }
+			if($('#'+$blogsID+' #search_blogs_list option[name='+bfv+']').length){
+			    $('#'+$blogsID+' #search_blogs_list option[name='+bfv+']').prop('selected', true);
+			    // $('#'+$blogsID+' #search_blogs_list option:contains('+nfv+')').attr('selected', 'selected');
+			    if($('#'+$blogsID+' #search_blogs_list option:selected').text() != 'All Items'){
+			    	$('#bcp_heading').text(($('#'+$blogsID+' #search_blogs_list option:selected').text()));
+			    	$('.blog_page_tag_desc').show();
+			    	$('.blog_page_tag_desc').css('display','block');
+			    	$('.blog_page_tag_desc').text($('#'+$blogsID+' #blogs_tag_desc').val());
+			    }
+			}
 		}
 	    
 	    $('#'+$blogsID+' #search_blogs_year').on('change', function() {
@@ -49,6 +51,9 @@ $(document).ready(function(){
 			if($('#'+$blogsID+' .select_blogs_filter').length){
 		        blogs_filter = $('#'+$blogsID+' #search_blogs_list option:selected').attr('name') ;
 		        blogs_filter_year = $('#'+$blogsID+' #search_blogs_year').val();
+		        if(blogs_filter_year === null){
+		        	var blogs_filter_year = "ChooseYear";
+		        }
 			}
 			$('.loading_blogs_next').show();
 	        blogslistAjaxCall($blogsID, blogs_start_index, blogs_filter, blogs_filter_year);
@@ -67,7 +72,7 @@ $(document).ready(function(){
 
     function blogslistAjaxCall(el1, el2, el3, el4) {
         $('#'+el1+' .filtered_blogs_list_show_more').hide();
-		var blogs_current_page_path = $('#'+el1+' #blogs_current_page_path').val() ; 
+		var blogs_current_page_path = $('#'+el1+' #blogs_page_path').val() ; 
 
    		var servletURL = blogs_current_page_path + '.blogsservlet.' + el3 + '.' + el2 +  '.' + el4 + '.html';
 

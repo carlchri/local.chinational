@@ -153,6 +153,14 @@ public final class NewsBlogUtils {
         	 filteredArticles.addAll(allArticles);
          }
 
+         // to handle the use case when we have two BlogList component on the same page
+         // and both have different parent page and different tags associated with it
+         // Users selects a tag from dropdown in one BlogList component
+         // and tag is not there in another Bloglist component dropdown on the same page
+         if(!tagsMap.keySet().contains(articleFilter) && !articleFilter.equals(DEFAULT_NEWS_FILTER)){
+         	populateYearsTagsFeatured(allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
+          }
+
          // If no featured article present, add the latest article as featured article.
          if(featuredArticles.isEmpty() && filteredArticles.size() > 0){
         	 featuredArticles.add(filteredArticles.get(0));
@@ -235,8 +243,17 @@ public final class NewsBlogUtils {
          boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
          if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
           	featuredArticles.add(item);
-      }
-  }
+	      }
+	  }
+  
+     public static void addFeaturedArticles(java.util.List<Page> articles, int limit){
+    	 for(Page item : articles) {
+	         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
+	         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
+	          	featuredArticles.add(item);
+	         }
+	      }
+	  }
   
      public static boolean isFeatured(Page item){
             boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);

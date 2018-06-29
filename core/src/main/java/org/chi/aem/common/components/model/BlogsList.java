@@ -130,6 +130,7 @@ public class BlogsList implements ComponentExporter {
     private String blogs_filter;
     private String tagDesc;
     private int blogsFeaturedLimit;
+    private String article_type;
 
     @PostConstruct
     private void initModel() {
@@ -143,6 +144,7 @@ public class BlogsList implements ComponentExporter {
         blogsTemplate = BLOGS_TEMPLATE;
         blogs_filter = DEFAULT_BLOGS_FILTER;
         tagDesc = ""; 
+        article_type = "";
     	allBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
@@ -170,10 +172,16 @@ public class BlogsList implements ComponentExporter {
         	if(selectors[0].matches("[0-9]+")){
         		activePage = Integer.parseInt(selectors[0]);
         	} else {
-        		blogs_filter = selectors[0];
+        		article_type = selectors[0];
         	}
         }
 
+        if(selectors.length >= 2 && selectors[0].equals("blogs")){
+        	blogs_filter = selectors[1];
+        } else {
+        	blogs_filter = DEFAULT_BLOGS_FILTER;
+        }
+        
         if(activePage != 1 && (activePage > 1)) {
             start_index = ((activePage - 1) * hits_per_page);
         } else {

@@ -33,15 +33,17 @@ $(document).ready(function(){
 	
 	    var nfv = $('#'+$newsID+' #news_filter').val();
 		if($('#'+$newsID+' .select_news_filter').length){
-			alert("filter enabled");
+			// alert("filter enabled");
 			$('#'+$newsID+' #search_news_list option:selected').removeAttr("selected");
-		    $('#'+$newsID+' #search_news_list option[name='+nfv+']').prop('selected', true);
-		    if($('#'+$newsID+' #search_news_list option:selected').text() != 'All Items'){
-		    	$('#mcp_heading').text(($('#'+$newsID+' #search_news_list option:selected').text())+'s');
-		    	$('.media_page_tag_desc').show();
-		    	$('.media_page_tag_desc').css('display','block');
-		    	$('.media_page_tag_desc').text($('#'+$newsID+' #news_tag_desc').val());
-		    }
+			if($('#'+$newsID+' #search_news_list option[name='+nfv+']').length){
+			    $('#'+$newsID+' #search_news_list option[name='+nfv+']').prop('selected', true);
+			    if($('#'+$newsID+' #search_news_list option:selected').text() != 'All Items'){
+			    	$('#mcp_heading').text(($('#'+$newsID+' #search_news_list option:selected').text())+'s');
+			    	$('.media_page_tag_desc').show();
+			    	$('.media_page_tag_desc').css('display','block');
+			    	$('.media_page_tag_desc').text($('#'+$newsID+' #news_tag_desc').val());
+			    }
+			}
 		}
 	    
 	    $('#'+$newsID+' #search_news_year').on('change', function() {
@@ -58,6 +60,9 @@ $(document).ready(function(){
 			if($('#'+$newsID+' .select_news_filter').length){
 		        news_filter = $('#'+$newsID+' #search_news_list option:selected').attr('name') ;
 		        news_filter_year = $('#'+$newsID+' #search_news_year').val() ;   
+		        if(news_filter_year === null){
+		        	var news_filter_year = "ChooseYear";
+		        }
 			}
 			$('.loading_next').show();
 	        newslistAjaxCall($newsID, start_index, news_filter, news_filter_year);
@@ -77,7 +82,7 @@ $(document).ready(function(){
 
     function newslistAjaxCall(el1, el2, el3, el4) {
         $('#'+el1+' .filtered_list_show_more').hide();
-		var current_page_path = $('#'+el1+' #current_page_path').val() ; 
+		var current_page_path = $('#'+el1+' #media_page_path').val() ; 
 
    		var servletURL = current_page_path + '.newsservlet.' + el3 + '.' + el2 + '.' + el4 + '.html';
 		$('#loadingmessage').show();

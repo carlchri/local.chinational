@@ -125,7 +125,11 @@ public class NewsListServlet extends SlingAllMethodsServlet {
             session = resolver.adaptTo(Session.class);
 
             Resource resource = request.getResource();
-    		if (resource != null) {
+            if(resource != null) {
+            	media_page_path = resource.getPath();
+            	LOGGER.info("media_page_path parent_path : " + resource.getPath());
+            }
+/*    		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
     				// to get path of parent page
@@ -138,7 +142,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     				    }
     			}
     		}
-    		
+ */   		
     		if(media_page_path == null || media_page_path.isEmpty()){
     			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".newsservlet"));
     		}
