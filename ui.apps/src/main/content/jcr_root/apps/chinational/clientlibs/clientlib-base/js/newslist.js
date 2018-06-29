@@ -36,7 +36,7 @@ $(document).ready(function(){
 			alert("filter enabled");
 			$('#'+$newsID+' #search_news_list option:selected').removeAttr("selected");
 		    $('#'+$newsID+' #search_news_list option[name='+nfv+']').prop('selected', true);
-		    if($('#'+$newsID+' #search_news_list option:selected').text() != 'Filter by tag'){
+		    if($('#'+$newsID+' #search_news_list option:selected').text() != 'All Items'){
 		    	$('#mcp_heading').text(($('#'+$newsID+' #search_news_list option:selected').text())+'s');
 		    	$('.media_page_tag_desc').show();
 		    	$('.media_page_tag_desc').css('display','block');

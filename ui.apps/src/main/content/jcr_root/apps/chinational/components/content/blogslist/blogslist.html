@@ -12,7 +12,7 @@
 		<sly data-sly-test="${!properties.removeFilter}">
 			<div class="col-xs-12 select_blogs_filter">
 				<select class="form-control" name="search_blogs_list" id="search_blogs_list">
-					<option value="${currentPage.path}.AllItems.html"  name="AllItems">Filter by topic</option>
+					<option value="${currentPage.path}.AllItems.html"  name="AllItems">All Items</option>
 					<sly data-sly-list.tagsList="${blogsList.tagsMap}">
 						<option value="${currentPage.path}.${tagsList}.html"  name="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
 					</sly>
