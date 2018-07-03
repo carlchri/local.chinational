@@ -1,13 +1,6 @@
 
 $(document).ready(function(){
 
-    var start_index = 0;
-    var news_filter = "AllItems";
-    var news_filter_year = "ChooseYear";
-    var NEWS_HITS_PER_PAGE = 10;
-
-    var total_results = parseInt($('#total_results').val());
-    
     window.onunload = searchNewsListOption();
     function searchNewsListOption() {
         $("#search_news_year option:selected").removeAttr("selected");
@@ -16,58 +9,82 @@ $(document).ready(function(){
         $('#search_blogs_year option:contains("ChooseYear")').attr('selected', 'selected');
 	}
 
-    
-    newsLoadMoreShowHide();          
+    var NEWS_HITS_PER_PAGE = 10;
 
-    $('#search_news_list').on('change', function() {
-        var url = $(this).val(); // get selected value
-        if (url) { // require a URL
-            window.location = url; // redirect
-        }
-        return false;
+	$('.news-list-form').each(function(){
+		var $newsID = this.id;
+	    //var window["start_index"+$newsID] = 0;
+		var start_index = 0;
+	    var news_filter = "AllItems";
+	    var news_filter_year = "ChooseYear";
+	
+	    var total_results = parseInt($('#'+$newsID+' #total_results').val());
+	    
+	    
+	    newsLoadMoreShowHide($newsID, total_results);          
+	
+	    $('#'+$newsID+' #search_news_list').on('change', function() {
+	        var url = $(this).val(); // get selected value
+	        if (url) { // require a URL
+	            window.location = url; // redirect
+	        }
+	        return false;
+	    });
+	
+	    var nfv = $('#'+$newsID+' #news_filter').val();
+		if($('#'+$newsID+' .select_news_filter').length){
+			// alert("filter enabled");
+			$('#'+$newsID+' #search_news_list option:selected').removeAttr("selected");
+			if($('#'+$newsID+' #search_news_list option[name='+nfv+']').length){
+			    $('#'+$newsID+' #search_news_list option[name='+nfv+']').prop('selected', true);
+			    if($('#'+$newsID+' #search_news_list option:selected').text() != 'All Items'){
+			    	$('#mcp_heading').text(($('#'+$newsID+' #search_news_list option:selected').text())+'s');
+			    	$('.media_page_tag_desc').show();
+			    	$('.media_page_tag_desc').css('display','block');
+			    	$('.media_page_tag_desc').text($('#'+$newsID+' #news_tag_desc').val());
+			    }
+			}
+		}
+	    
+	    $('#'+$newsID+' #search_news_year').on('change', function() {
+	        start_index = 0;
+	        $('#'+$newsID+' .filtered_list').html("");
+	        news_filter = $('#'+$newsID+' #search_news_list option:selected').attr('name') ;
+	        news_filter_year = $('#'+$newsID+' #search_news_year').val() ;    
+			$('.loading').show();
+	        newslistAjaxCall($newsID, start_index, news_filter, news_filter_year);
+	    });
+	
+	    $('#'+$newsID+' .filtered_list_show_more').click(function () {
+			start_index += NEWS_HITS_PER_PAGE; 
+			if($('#'+$newsID+' .select_news_filter').length){
+		        news_filter = $('#'+$newsID+' #search_news_list option:selected').attr('name') ;
+		        news_filter_year = $('#'+$newsID+' #search_news_year').val() ;   
+		        if(news_filter_year === null){
+		        	var news_filter_year = "ChooseYear";
+		        }
+			}
+			$('.loading_next').show();
+	        newslistAjaxCall($newsID, start_index, news_filter, news_filter_year);
+	    });
+	    
     });
 
-    var nfv = $('#news_filter').val();
-	$("#search_news_list option:selected").removeAttr("selected");
-    $('#search_news_list option[name='+nfv+']').prop('selected', true);
-    if($("#search_news_list option:selected").text() != 'Filter by tag'){
-    	$('#mcp_heading').text(($("#search_news_list option:selected").text())+'s');
-    	$('.media_page_tag_desc').show();
-    	$('.media_page_tag_desc').css('display','block');
-    	$('.media_page_tag_desc').text($('#news_tag_desc').val());
-    }
-    
-    $('#search_news_year').on('change', function() {
-        start_index = 0;
-        $('.filtered_list').html("");
-        news_filter = $('#search_news_list option:selected').attr('name') ;
-        news_filter_year = $('#search_news_year').val() ;    
-		$('.loading').show();
-        newslistAjaxCall();
-    });
 
-    $('.filtered_list_show_more').click(function () {
-		start_index += NEWS_HITS_PER_PAGE; 
-        news_filter = $('#search_news_list option:selected').attr('name') ;
-        news_filter_year = $('#search_news_year').val() ;    
-		$('.loading_next').show();
-        newslistAjaxCall();
-    });
-
-    function newsLoadMoreShowHide() {
+    function newsLoadMoreShowHide(el1, el2) {
         // Compare size of results with total results and hide LOAD MORE, if not required
-        var size_li = $(".filtered_list li").size();
-        $('.filtered_list_show_more').show();        
-        if(size_li >= total_results) {
-	        $('.filtered_list_show_more').hide();
+        var size_li = $('#'+el1+' .filtered_list li').size();
+        $('#'+el1+' .filtered_list_show_more').show();        
+        if(size_li >= el2) {
+	        $('#'+el1+' .filtered_list_show_more').hide();
         }
 	}
 
-    function newslistAjaxCall() {
-        $('.filtered_list_show_more').hide();
-		var current_page_path = $('#current_page_path').val() ; 
+    function newslistAjaxCall(el1, el2, el3, el4) {
+        $('#'+el1+' .filtered_list_show_more').hide();
+		var current_page_path = $('#'+el1+' #media_page_path').val() ; 
 
-   		var servletURL = current_page_path + '.newsservlet.' + news_filter + '.' + start_index + '.' + news_filter_year + '.html';
+   		var servletURL = current_page_path + '.newsservlet.' + el3 + '.' + el2 + '.' + el4 + '.html';
 		$('#loadingmessage').show();
         $.ajax({
             type: 'GET',    
@@ -78,7 +95,7 @@ $(document).ready(function(){
                 if (ct.indexOf('html') > -1) {
                   json = jQuery.parseJSON(msg);
                 }
-                total_results = json.total_results;  
+                var total_results = json.total_results;  
         		$('.loading').hide();    
         		$('.loading_next').hide();    
         		$.each(json.jsonNews, function(index, item) {
@@ -93,7 +110,7 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo(".filtered_list");
                 });
-				newsLoadMoreShowHide();          
+				newsLoadMoreShowHide(el1, total_results);          
             },
 			error: function (err) {
 				// console.log("Error in Loading.");

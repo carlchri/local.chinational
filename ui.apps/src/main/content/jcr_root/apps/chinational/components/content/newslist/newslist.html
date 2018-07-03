@@ -3,26 +3,27 @@
 
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
-	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
-
+	<div class="row news-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${newsList.hash @ context='unsafe'}">
 		<sly data-sly-list.featuredNews="${newsList.featuredNews}">
 			<div class="col-xs-12 featured-news-blog ${featuredNewsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = newsList, item = featuredNews}"></div>
 		</sly>
 
-		<div class="col-xs-12 select_news_filter">
-            <select class="form-control" name="search_news_list" id="search_news_list">
-				<option value="${currentPage.path}.AllItems.html" name="AllItems">Filter by tag</option>
-				<sly data-sly-list.tagsList="${newsList.tagsMap}">
-					<option value="${currentPage.path}.${tagsList}.html" name="${tagsList}">${newsList.tagsMap[tagsList]}</option>
-				</sly>
-			</select>
-			<select class="form-control" name="search_news_year" id="search_news_year">
-				<option value="ChooseYear" selected>Sort by year</option>
-				<sly data-sly-list.listYear="${newsList.listYears}">
-					<option value="${listYear}">${listYear}</option>
-				</sly>
-			</select>
-		</div>
+		<sly data-sly-test="${!properties.removeFilter}">
+			<div class="col-xs-12 select_news_filter">
+	            <select class="form-control" name="search_news_list" id="search_news_list">
+					<option value="${currentPage.path}.news.AllItems.html" name="AllItems">All Items</option>
+					<sly data-sly-list.tagsList="${newsList.tagsMap}">
+						<option value="${currentPage.path}.news.${tagsList}.html" name="${tagsList}">${newsList.tagsMap[tagsList]}</option>
+					</sly>
+				</select>
+				<select class="form-control" name="search_news_year" id="search_news_year">
+					<option value="ChooseYear" selected>Sort by year</option>
+					<sly data-sly-list.listYear="${newsList.listYears}">
+						<option value="${listYear}">${listYear}</option>
+					</sly>
+				</select>
+			</div>
+		</sly>
 
 		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
 		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
@@ -42,7 +43,7 @@
 			</ul>
 		</div>
 
-		<div class="col-xs-12 padding_top_18">
+		<div class="col-xs-12 padding_top_15">
 			<a class="learn-more-btn border-orange filtered_list_show_more">SEE MORE</a>
 		</div>
 

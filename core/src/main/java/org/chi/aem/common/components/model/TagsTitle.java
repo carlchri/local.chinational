@@ -38,6 +38,7 @@ public class TagsTitle extends WCMUsePojo {
 
 	private String tagNames = "";
 	private String tagDescriptions = "";
+    private static final Map<String, String> tagsMap = new HashMap<String, String>();
 	
     @Override
     public void activate() throws Exception {
@@ -65,6 +66,7 @@ public class TagsTitle extends WCMUsePojo {
 		   	 for(Tag tag : tags){
 		   		String tagName = tag.getTitle();
 		   		String tagDescription = tag.getDescription();
+		   		tagsMap.put(tag.getName(),tagName);
 		   		LOGGER.debug("Tag Title: " + tagName);
 				LOGGER.debug("Tag Description: " + tagDescription);
 				// TODO - create link for tags, when clicked on, will take user back to main blog/news page
@@ -96,5 +98,8 @@ public class TagsTitle extends WCMUsePojo {
 		return tagDescriptions;
 	}
 
+    public Map<String, String> getTagsMap() {
+        return tagsMap;
+    }
 
 }

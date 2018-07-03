@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
@@ -129,6 +130,7 @@ public class NewsList implements ComponentExporter {
     private String news_filter;
     private String tagDesc;
     private int newsFeaturedLimit;
+    private String article_type;
     
     @PostConstruct
     private void initModel() {
@@ -142,6 +144,7 @@ public class NewsList implements ComponentExporter {
         newsTemplate = NEWS_TEMPLATE;
         news_filter = DEFAULT_NEWS_FILTER;
         tagDesc = ""; 
+        article_type = "";
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -169,10 +172,16 @@ public class NewsList implements ComponentExporter {
         	if(selectors[0].matches("[0-9]+")){
         		activePage = Integer.parseInt(selectors[0]);
         	} else {
-        		news_filter = selectors[0];
+        		article_type = selectors[0];
         	}
         }
 
+        if(selectors.length >= 2 && selectors[0].equals("news")){
+        	news_filter = selectors[1];
+        } else {
+        	news_filter = DEFAULT_NEWS_FILTER;
+        }
+        
         if(activePage != 1 && (activePage > 1)) {
             start_index = ((activePage - 1) * hits_per_page);
         } else {
@@ -307,6 +316,10 @@ public class NewsList implements ComponentExporter {
 
     public List<Integer> getPages() {
         return pages;
+    }
+
+    public String getHash() {
+        return "news" + UUID.randomUUID();
     }
 
 }

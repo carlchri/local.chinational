@@ -6,4 +6,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Blogs List"
     allowedParents="[*/parsys]"
-    componentGroup=".fixed-chi"/>
+    componentGroup="CHI General"/>

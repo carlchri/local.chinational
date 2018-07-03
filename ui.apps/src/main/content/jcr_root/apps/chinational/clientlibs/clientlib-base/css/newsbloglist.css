@@ -39,6 +39,10 @@
     padding-top: 18px;
 }
 
+.padding_top_15 {
+    padding-top: 15px;
+}
+
 /* added to fix two arrow issue with dropdown in IE11 */
 .dropdown_articles::-ms-expand {
     display: none;
@@ -85,7 +89,7 @@
 }
 
 .mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
-	padding:15px 0;
+	padding:15px 0 41px;
 }
 
 ul.filtered_list, 
@@ -127,6 +131,10 @@ ul.filtered_blogs_list {
 		margin:12px 0 34px;
 	}
 
+	.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+		padding:15px 0 42px;
+	}
+
 }
 
 @media (max-width: 767px) {
@@ -166,9 +174,13 @@ ul.filtered_blogs_list {
 	.select_news_filter, .select_blogs_filter{
 		margin-bottom:45px;
 	}
-.featured-news-blog .learn-more-btn.border-orange{
-	display:inline-block;
-}
+	.featured-news-blog .learn-more-btn.border-orange{
+		display:inline-block;
+	}
+	
+	.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+		padding:15px 0 45px;
+	}
 
 }
 
