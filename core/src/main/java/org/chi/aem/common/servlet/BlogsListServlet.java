@@ -63,7 +63,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     private Session session;
     
-    private static final int HITS_PER_PAGE = 10;
+    private static final int HITS_PER_PAGE = 6;
     private static final int START_INDEX = 0;
     private static final String DEFAULT_BLOGS_FILTER = "AllItems";
     private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
@@ -245,6 +245,15 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	            }
 	            if(sMap.get("excerpt", String.class) != null) {
 	            	jsonObject.put("excerpt", sMap.get("excerpt", String.class));
+	            }
+	            if(sMap.get("tileImageSrc", String.class) != null) {
+	            	jsonObject.put("tileImageSrc", sMap.get("tileImageSrc", String.class));
+	            } else if(sMap.get("imageSrc", String.class) != null){
+	            	jsonObject.put("tileImageSrc", sMap.get("imageSrc", String.class));
+	            } else {
+	            	// TO DO - to be replaced with default image URL from home page template
+	            	jsonObject.put("tileImageSrc", "/content/dam/chi-national/website/images/heart_healthy_tile.png");
+	            	jsonObject.put("noImagePresent", true);
 	            }
 	            jsonBlogs.put(jsonObject);
 	        }

@@ -4,8 +4,12 @@
     opacity: .55;                
 }
 
-.select_news_filter, .select_blogs_filter{
+.select_news_filter{
 	margin-bottom:45px;
+}
+
+.select_blogs_filter{
+	margin-bottom:39px;
 }
 
 #search_blogs_list, 
@@ -35,6 +39,10 @@
 	margin-bottom:0px;
 }
 
+.margin-bottom-60 {
+    margin-bottom:60px;
+}
+
 .padding_top_18 {
     padding-top: 18px;
 }
@@ -57,8 +65,15 @@
 }
 */
 
-#mcp_heading, #bcp_heading{
+#mcp_heading{
   font-size: 48px;
+  line-height: 48px;
+  margin-bottom:11px;
+}
+
+#bcp_heading{
+	display:none;
+	font-size: 48px;
   line-height: 48px;
   margin-bottom:11px;
 }
@@ -76,6 +91,18 @@
 	margin-right:26px;
 }
 
+.full-bleed .featured-news-blog .cmp-text a, 
+.full-bleed .featured-news-blog .cmp-text a:visited, 
+.full-bleed .featured-news-blog .cmp-text a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.featured-news-blog .blog-featured-bleed {
+  	color: #fff;
+  	text-decoration: none !important;
+}
+
 .featured-news-blog .image-col img{
 	margin-bottom:0;
 }
@@ -88,13 +115,31 @@
 	margin:12px 0 0;
 }
 
-.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+.mc_list.filtered_list li{
 	padding:15px 0 41px;
+}
+
+.mc_list.filtered_blogs_list li{
+	padding:0;
 }
 
 ul.filtered_list, 
 ul.filtered_blogs_list {
 	padding-left:0px;
+}
+
+.filtered_blogs_list .blog-item {
+	flex:0 0 auto;
+	margin-bottom:64px;
+}
+
+.filtered_blogs_list .flex {
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.bcp-title-container{
+	min-height:30px;
 }
 
 @media (min-width: 768px) {
@@ -131,10 +176,26 @@ ul.filtered_blogs_list {
 		margin:12px 0 34px;
 	}
 
-	.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+	.mc_list.filtered_list li{
 		padding:15px 0 42px;
 	}
 
+	.mc_list.filtered_blogs_list li{
+		padding:0;
+	}
+
+	.filtered_blogs_list .blog-item {
+		margin-bottom:60px;
+	}
+
+	.blogs-list-form .learn-more-btn.border-orange{
+		margin-top:-27px;
+	}
+
+/*	.filtered_blogs_list .blog-item:last-child {
+		margin-bottom:33px;
+	}
+*/
 }
 
 @media (max-width: 767px) {
@@ -174,13 +235,30 @@ ul.filtered_blogs_list {
 	.select_news_filter, .select_blogs_filter{
 		margin-bottom:45px;
 	}
-	.featured-news-blog .learn-more-btn.border-orange{
+	.featured-news-blog .learn-more-btn.border-orange,
+	.blogs-list-form .learn-more-btn.border-orange{
 		display:inline-block;
 	}
 	
-	.mc_list.filtered_list li, .mc_list.filtered_blogs_list li{
+	.mc_list.filtered_list li{
 		padding:15px 0 45px;
 	}
 
+	.mc_list.filtered_blogs_list li{
+		padding:0;
+	}
+
+	.filtered_blogs_list .blog-item {
+		margin-bottom:58px;
+	}
+
+	.filtered_blogs_list .blog-item:last-child {
+		margin-bottom:35px;
+	}
+
+	.bcp-title-container{
+		min-height:24px;
+	}
+	
 }
 

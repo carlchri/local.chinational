@@ -55,7 +55,7 @@ public class BlogsList implements ComponentExporter {
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
     private static final String DEFAULT_BLOGS_FILTER = "AllItems";
     private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
-    private static final int HITS_PER_PAGE = 10;
+    private static final int HITS_PER_PAGE = 6;
     private static final int START_INDEX = 0;
     private static final int BLOGS_FEATURED_LIMIT = 2;
 

@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    var BLOGS_HITS_PER_PAGE = 10;
+    var BLOGS_HITS_PER_PAGE = 6;
 
 	$('.blogs-list-form').each(function(){
 		var $blogsID = this.id;
@@ -28,6 +28,7 @@ $(document).ready(function(){
 			    $('#'+$blogsID+' #search_blogs_list option[name='+bfv+']').prop('selected', true);
 			    // $('#'+$blogsID+' #search_blogs_list option:contains('+nfv+')').attr('selected', 'selected');
 			    if($('#'+$blogsID+' #search_blogs_list option:selected').text() != 'All Items'){
+			    	$('#bcp_heading').show();
 			    	$('#bcp_heading').text(($('#'+$blogsID+' #search_blogs_list option:selected').text()));
 			    	$('.blog_page_tag_desc').show();
 			    	$('.blog_page_tag_desc').css('display','block');
@@ -38,7 +39,7 @@ $(document).ready(function(){
 	    
 	    $('#'+$blogsID+' #search_blogs_year').on('change', function() {
 	        blogs_start_index = 0;
-	        $('#'+$blogsID+' .filtered_blogs_list').html("");
+	        $('#'+$blogsID+' .filtered_blogs_list div.row.flex').html("");
 	        blogs_filter = $('#'+$blogsID+' #search_blogs_list option:selected').attr('name') ;
 	        
 	        blogs_filter_year = $('#'+$blogsID+' #search_blogs_year').val();
@@ -89,6 +90,23 @@ $(document).ready(function(){
         		$('.loading_blogs').hide();    
         		$('.loading_blogs_next').hide();    
                 $.each(json.jsonBlogs, function(index, item) {
+                	$("<div class='blog-item col-xs-12  col-sm-6 col-md-4'>").append(
+	            		$("<li>").append(
+	            				$("<div class='full-image blog-image'>").append(
+            						$("<img src=" + item.tileImageSrc + " alt='Image' />")
+	            				),
+	            				$("<div class='blog-content pstn-reltv stickToTop'>").append(
+    								$("<a href=" + item.blogsURL + ".html>").append(
+		            					$("<span class='blog-title dblock txt-green tiles_heading_site_color blogs_heading_hover'>").text(item.blogsHeading)
+    			            		),
+    			                    $("<span class='blog-date txt-green tiles_heading_site_color'>").text(item.publishDate),
+    			                    $("<p>").text(item.excerpt)
+	            				),
+	            				$("<a class='bold-link stickToBottom' href=" + item.blogsURL + ".html>").text("READ MORE")
+	            						
+             		)).appendTo('#'+el1+' .filtered_blogs_list div.row.flex');
+                });
+/*                $.each(json.jsonBlogs, function(index, item) {
             		$("<li>").append(
             			$("<article>").append(
 						$("<a href=" + item.blogsURL + ".html>").append(
@@ -100,6 +118,7 @@ $(document).ready(function(){
                         $("<p>").text(item.excerpt)
              		)).appendTo('#'+el1+' .filtered_blogs_list');
                 });
+*/                
 				blogsLoadMoreShowHide(el1, blogs_total_results);          
             },
 			error: function (err) {

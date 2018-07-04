@@ -4,11 +4,20 @@
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
 	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
-
-		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+       <div class="col-xs-12">
+            <div class="visual-box component-gutter full-bleed-tiles">
+                <div class="full-bleed margin-bottom-60">
+	                <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+	                	 <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
+	                	 </sly>
+					</sly>
+				</div>
+			</div>
+		</div>	
+<!--/*		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
 			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
 		</sly>
-
+*/-->
 		<sly data-sly-test="${!properties.removeFilter}">
 			<div class="col-xs-12 select_blogs_filter">
 				<select class="form-control" name="search_blogs_list" id="search_blogs_list">
@@ -37,14 +46,25 @@
 		</div>
 
         <div class="col-xs-12">
+			<ul class="mc_list filtered_blogs_list" data-sly-use.itemTemplate="item.html">
+	        	<div class="row flex" data-sly-list.item="${blogsList.listBlogs}">
+					<div class="blog-item col-xs-12  col-sm-6 col-md-4">
+						<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
+					</div>
+				</div>
+			</ul>
+		</div>
+
+
+<!--/*        <div class="col-xs-12">
 			<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
 				data-sly-use.itemTemplate="item.html">
 				<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
 			</ul>
 		</div>
-
-		<div class="col-xs-12 padding_top_15">
-			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">SEE MORE</a>
+*/-->    		
+		<div class="col-xs-12">
+			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">LOAD MORE</a>
 		</div>
 
         <div class="col-xs-12 loading_blogs_next" style="display:none;">
