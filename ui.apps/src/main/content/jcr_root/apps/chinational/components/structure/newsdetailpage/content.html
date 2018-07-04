@@ -14,6 +14,15 @@
     </div>
 </div>
 
+<sly data-sly-test="${(wcmmode.edit || wcmmode.design) && (pageProperties.imageSrc || pageProperties.tileImageSrc)}">
+    <p>Edit Header image, if required (this is displayed during edit mode only)</p>
+    <div data-sly-test="${pageProperties.imageSrc}"
+         data-sly-resource="${ @path='nb-header-image', resourceType='chinational/components/content/imageHeaderNewsBlog'}"></div>
+    <div data-sly-test="${pageProperties.tileImageSrc}"
+         data-sly-resource="${ @path='nb-tile-image', resourceType='chinational/components/content/imageTileNewsBlog'}"></div>
+
+</sly>
+
 <div data-sly-resource="${ @path='main-respgrid', resourceType='chinational/components/foundation/responsivegrid'}"></div>
 <div data-sly-test="${pageProperties.displayQuoteComponent}"
         data-sly-resource="${ @path='newstemp-quote', resourceType='chinational/components/composites/quoteAndImage'}"></div>
