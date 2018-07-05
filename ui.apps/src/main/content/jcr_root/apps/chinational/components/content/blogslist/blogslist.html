@@ -6,7 +6,7 @@
 	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
        <div class="col-xs-12">
             <div class="visual-box component-gutter full-bleed-tiles">
-                <div class="full-bleed margin-bottom-60">
+                <div class="full-bleed">
 	                <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
 	                	 <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
 	                	 </sly>
@@ -63,7 +63,7 @@
 			</ul>
 		</div>
 */-->    		
-		<div class="col-xs-12">
+		<div class="col-xs-12 blog-show-more-div">
 			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">LOAD MORE</a>
 		</div>
 

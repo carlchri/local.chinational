@@ -65,14 +65,14 @@ $(document).ready(function(){
     function blogsLoadMoreShowHide(el1, el2) {
         // Compare size of results with total results and hide LOAD MORE, if not required
         var size_li = $('#'+el1+' .filtered_blogs_list li').size();
-        $('#'+el1+' .filtered_blogs_list_show_more').show();        
+        $('#'+el1+' .blog-show-more-div').show();        
         if(size_li >= el2) {
-	        $('#'+el1+' .filtered_blogs_list_show_more').hide();
+	        $('#'+el1+' .blog-show-more-div').hide();
         }
 	}
 
     function blogslistAjaxCall(el1, el2, el3, el4) {
-        $('#'+el1+' .filtered_blogs_list_show_more').hide();
+        $('#'+el1+' .blog-show-more-div').hide();
 		var blogs_current_page_path = $('#'+el1+' #blogs_page_path').val() ; 
 
    		var servletURL = blogs_current_page_path + '.blogsservlet.' + el3 + '.' + el2 +  '.' + el4 + '.html';
