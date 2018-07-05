@@ -38,7 +38,7 @@ public class TagsTitle extends WCMUsePojo {
 
 	private String tagNames = "";
 	private String tagDescriptions = "";
-    private static final Map<String, String> tagsMap = new HashMap<String, String>();
+    private Map<String, String> tagsMap = new HashMap<String, String>();
 	
     @Override
     public void activate() throws Exception {
