@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Image Settings"
+    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+    margin="{Boolean}true">
+    <items jcr:primaryType="nt:unstructured">
+        <column
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <well
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                    <items jcr:primaryType="nt:unstructured">
+                        <headerImageSrc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter source for image to be displayed at top of News Details Pages"
+                                fieldLabel="Article Header Image  [16:9 or 9:16 ratio preferred]"
+                                name="./imageSrc"
+                                rootPath="/content/dam"/>
+                        <enableWrapAround
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Selecting this checkbox will enable text to wrap around details image "
+                                name="./enableWrapAround"
+                                text="Select to enable text wrap around header image"
+                                uncheckedValue="false"
+                                value="true"/>
+                        <tileImageOption
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Choose one of the option for tile"
+                                fieldLabel="Tile Image Option"
+                                name="./tileImageOption">
+                            <items jcr:primaryType="nt:unstructured">
+                                <useHeaderImage
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="Use Header image (original or edited)"
+                                        value="useHeaderImage"/>
+                                <editHeaderImage
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Edit header image to create new Tile image"
+                                        value="editHeaderImage"/>
+                                <separateTileImage
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Use separate Tile image"
+                                        value="separateTileImage"/>
+                            </items>
+                        </tileImageOption>
+                        <tileImageSrc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter source for image to be displayed for Tile and Featured list"
+                                fieldLabel="Override Tile/Featured Image [16:9 ratio]"
+                                name="./tileImageSrc"
+                                rootPath="/content/dam">
+                        </tileImageSrc>
+                    </items>
+                </well>
+            </items>
+        </column>
+    </items>
+</jcr:root>

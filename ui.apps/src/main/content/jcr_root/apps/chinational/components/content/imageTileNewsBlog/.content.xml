@@ -4,6 +4,6 @@
     jcr:description="Tile Image Component for News Blog"
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
-    jcr:title="Tile Image News Blog"
+    jcr:title="Tile Image - News Blog"
     sling:resourceSuperType="chinational/components/content/imageHeaderNewsBlog"
     componentGroup=".fixed-chi"/>
