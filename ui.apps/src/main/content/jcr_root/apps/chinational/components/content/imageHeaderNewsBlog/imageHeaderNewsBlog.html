@@ -27,7 +27,7 @@
        class="cmp-image__link" href="${image.link}"
        data-cmp-hook-image="link">
         <noscript data-sly-unwrap="${!image.lazyEnabled && image.widths.length <= 1}" data-cmp-hook-image="noscript">
-            <img src="${image.src}" class="cmp-image__image" data-cmp-hook-image="image"
+            <img src="${image.src}" class="cmp-image__image ${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}" data-cmp-hook-image="image"
                  alt="${image.alt || true}" title="${image.displayPopupTitle && image.title}"/>
         </noscript>
     </a>

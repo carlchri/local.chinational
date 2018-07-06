@@ -45,7 +45,9 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageHeaderNewsBlog.class);
     protected static final String IMAGE_SRC_DIALOG = "fileReference";
     private String IMAGE_SRC = "imageSrc";
-    private String IMAGE_NODE = "nb-header-image";
+    // used to compare and check if oheader image is being updated vs tile image
+    private final static String HEADER_IMAGE_NODE = "nb-header-image";
+    private String IMAGE_NODE = HEADER_IMAGE_NODE;
     private static final String RES_TYPE = "sling:resourceType";
     private String RES_TYPE_VALUE = RESOURCE_TYPE;
 
@@ -127,6 +129,8 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
                     e.printStackTrace();
                 }
             }
+            // TODO add logic to copy image caption and useOriginalSize flag to parent node, if updated
+            // only if it is header image, not for tile images
         }
     }
 
