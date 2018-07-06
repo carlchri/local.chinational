@@ -4,4 +4,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
     categories="[chinational.base]"
-    embed="[chinational.site]"/>
+    embed="[chinational.site, core.wcm.components.image.v2]"/>
