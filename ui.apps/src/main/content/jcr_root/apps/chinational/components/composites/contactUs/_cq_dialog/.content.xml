@@ -44,6 +44,12 @@
                                                         fieldDescription="Sub Heading for the component, displays below heading"
                                                         fieldLabel="Sub Heading"
                                                         name="./subheading"/>
+                                                    <formurl
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="URL of the form to be displayed, if empty, the default is displayed"
+                                                        fieldLabel="Form URL"
+                                                        name="./formurl"/>
                                                 </items>
                                             </well>
                                         </items>
