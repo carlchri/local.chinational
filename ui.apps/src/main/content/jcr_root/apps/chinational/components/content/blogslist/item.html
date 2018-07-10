@@ -1,5 +1,29 @@
 <template data-sly-template.item="${@ list, item}">
-    <article>
+
+	<div class="full-image blog-image" 
+		 data-sly-test.imagePresent="${item.properties.tileImageSrc || item.properties.imageSrc}">
+		<img src="${item.properties.tileImageSrc || item.properties.imageSrc @ context='unsafe'}" 
+	         alt="${item.properties.newsHeading || item.pageTitle || item.title || item.name}" />
+	</div>
+	
+	<div class="blog-content pstn-reltv stickToTop">
+		<a href="${item.path @ extension='html'}">
+	    	<span class="blog-title dblock txt-green tiles_heading_site_color blogs_heading_hover ${imagePresent ? '' : 'padding-top-0'}">
+	     	${item.properties.newsHeading || item.pageTitle || item.title || item.name}
+	    	</span>
+	    </a>
+	    <span class="blog-date txt-green tiles_heading_site_color"
+	          data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
+	             ${formatter.formattedDate}
+	    </span>
+	    <p>${item.properties.excerpt}</p>
+	</div>
+	<a class="bold-link stickToBottom" href="${item.path @ extension='html'}">
+	    READ MORE
+	</a>
+
+
+<!--/*    <article>
         <a href="${item.path @ extension='html'}">
             <h4 class="news_blog_list_heading"><span class="blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</span></h4>
         </a>
@@ -9,4 +33,5 @@
         </span>
         <p data-sly-test="${item.properties.excerpt}">${item.properties.excerpt}</p>
     </article>
+*/-->      
 </template>    
