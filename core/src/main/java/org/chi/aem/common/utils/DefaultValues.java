@@ -34,6 +34,7 @@ public class DefaultValues extends WCMUsePojo {
 
     private static final String DEFAULT_NEWS_PATH  = "defaultNewsPath";
     private static final String DEFAULT_BLOGS_PATH  = "defaultBlogsPath";
+    private static final String DEFAULT_TILE_IMG_SRC  = "defaultTileImgSrc";
     private static final String DEFAULT_MESSAGE  = "could not find default value";
 
     Resource resource;
@@ -58,7 +59,6 @@ public class DefaultValues extends WCMUsePojo {
             defaultNewsPath = DEFAULT_MESSAGE;
     	}
 
-    	
         return defaultNewsPath;
     }
 
@@ -77,8 +77,29 @@ public class DefaultValues extends WCMUsePojo {
             defaultBlogsPath = DEFAULT_MESSAGE;
     	}
 
-    	
         return defaultBlogsPath;
+    }
+
+    public String getDefaultTileImgSrc() {
+		String defaultTileImgSrc = "";
+    	if(resource != null){
+    		// LOGGER.info("Resourec Path : " + resource.getPath());
+			final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
+			defaultTileImgSrc = pageProperties.getInherited(DEFAULT_TILE_IMG_SRC, String.class);
+			// LOGGER.info("Default Tile Image Src : " + defaultTileImgSrc);
+			if (defaultTileImgSrc == null) {
+	            LOGGER.trace("could not find inherited property for ", resource);
+	            defaultTileImgSrc = DEFAULT_MESSAGE;
+			}
+    	} else {
+            defaultTileImgSrc = DEFAULT_MESSAGE;
+    	}
+    	
+       if (StringUtils.isNotEmpty(defaultTileImgSrc) && !"#".equals(defaultTileImgSrc)) {
+    	   defaultTileImgSrc = LinkUtils.externalize(defaultTileImgSrc);            
+        }
+       // LOGGER.info("Default Tile Image Src : " + defaultTileImgSrc);
+        return defaultTileImgSrc;
     }
 
 }

@@ -2,7 +2,7 @@
 	  data-sly-use.link="org.chi.aem.common.components.model.GlobalLink"
       data-sly-use.template="chinational/components/commons/templates.html" />
 
-<div class="component" data-sly-test="${currentStyle.parentPage}">
+<div class="component tnl-wrapper" data-sly-test="${currentStyle.parentPage}">
   	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
   	
 		<div class="col-xs-12" data-sly-test="${currentStyle.selectHeading == 'headingRequired'}">
@@ -14,7 +14,10 @@
 		<div class="col-xs-12">
 	        <div class="row flex">
 				<sly data-sly-list.featuredNews="${newsList.featuredNews}">
-		           	<div class="blog-item ${featuredNewsList.first?'col-xs-12 col-md-4 first-tile-image-tablet':'col-xs-12 col-sm-6 col-md-4'}">
+		           	<div class="blog-item col-xs-12 col-sm-6 col-md-4
+		           				${(newsList.featuredNews.size == 1)?'last-tile-tablet-margin-bottom':''}
+		           				${(newsList.featuredNews.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
+		           				${(newsList.featuredNews.size == 3 && featuredNewsList.count == 3)?'last-tile-tablet-margin-bottom':''}"> 
 	                    <div class="full-image blog-image" 
 	                    	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && (featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc)}">
 	                    	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
@@ -39,8 +42,10 @@
 	                </div>
 	        	</sly>
 	
-	        	<div class="divider-news" data-sly-test="${currentStyle.listOnRightNotRequired && newsList.listNews}"></div>
-				<div class="col-xs-12 col-md-3" data-sly-test="${currentStyle.listOnRightNotRequired && newsList.listNews}">
+<!-- /*        	<div class="divider-news" data-sly-test="${currentStyle.listOnRightNotRequired && newsList.listNews}"></div>
+*/ -->
+				<div class="col-xs-12 col-sm-6 col-md-3 divider-news blog-item ${(newsList.featuredNews.size == 2)?'rr-tt-rd':''}" 
+					 data-sly-test="${currentStyle.listOnRightNotRequired && newsList.listNews}">
 					<hr class="hideForDesktop" />
 	                <h3>${currentStyle.linkHeading || 'Other News'}</h3>
 	                <sly data-sly-list.item="${newsList.listNews}">
@@ -61,9 +66,10 @@
 			</a>
 		</div>
 
-	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
-
     </div>
+
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+
  </div>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!newsList.featuredNews}"></sly>

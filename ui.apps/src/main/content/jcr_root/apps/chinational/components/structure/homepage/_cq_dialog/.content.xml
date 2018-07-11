@@ -71,6 +71,13 @@
                                         fieldLabel="Default Blogs Path"
                                         name="./defaultBlogsPath"
                                         rootPath="/content"/>
+                                    <tileImageSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Tile/Featured Image Src"
+                                        fieldLabel="Default Tile/Featured Image Src"
+                                        name="./defaultTileImgSrc"
+                                        rootPath="/content/dam"/>
                                 </items>
                             </column>
                         </items>
