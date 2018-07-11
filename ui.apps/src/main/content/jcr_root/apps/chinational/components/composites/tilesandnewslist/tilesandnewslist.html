@@ -25,21 +25,21 @@
 		           		 data-sly-test="${properties.imageNotRequired && !properties.dateNotRequired}"
 	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImage'}">
 	                </div>
-		           	<div class="blog-item col-xs-12 col-sm-6 col-md-3
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'}
 		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
 		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
 		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
 		           		 data-sly-test="${!properties.imageNotRequired && properties.dateNotRequired}"
 	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoDate'}">
 	                </div>
-		           	<div class="blog-item col-xs-12 col-sm-6 col-md-3
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'}
 		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
 		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
 		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
 		           		 data-sly-test="${properties.imageNotRequired && properties.dateNotRequired}"
 	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImageDate'}">
 	                </div>
-		           	<div class="blog-item col-xs-12 col-sm-6 col-md-3 
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'} 
 		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
 		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
 		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 

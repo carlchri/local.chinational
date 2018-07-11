@@ -71,12 +71,19 @@
                                         fieldLabel="Default Blogs Path"
                                         name="./defaultBlogsPath"
                                         rootPath="/content"/>
-                                    <tileImageSrc
+                                    <newsTileImageSrc
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default Tile/Featured Image Src"
-                                        fieldLabel="Default Tile/Featured Image Src"
-                                        name="./defaultTileImgSrc"
+                                        fieldDescription="Default News Tile/Featured Image Src"
+                                        fieldLabel="Default News Tile/Featured Image Src"
+                                        name="./defaultNewsTileImgSrc"
+                                        rootPath="/content/dam"/>
+                                    <blogsTileImageSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Blogs Tile/Featured Image Src"
+                                        fieldLabel="Default Blogs Tile/Featured Image Src"
+                                        name="./defaultBlogsTileImgSrc"
                                         rootPath="/content/dam"/>
                                 </items>
                             </column>
