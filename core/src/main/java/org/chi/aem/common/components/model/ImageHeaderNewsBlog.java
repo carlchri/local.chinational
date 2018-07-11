@@ -30,6 +30,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.chi.aem.common.components.internal.models.ImageImplV2;
+import org.chi.aem.common.utils.NewsBlogImageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,11 +44,11 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
 
     public static final String RESOURCE_TYPE = "chinational/components/content/imageHeaderNewsBlog";
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageHeaderNewsBlog.class);
-    protected static final String IMAGE_SRC_DIALOG = "fileReference";
-    private String IMAGE_SRC = "imageSrc";
-    // used to compare and check if oheader image is being updated vs tile image
-    private final static String HEADER_IMAGE_NODE = "nb-header-image";
-    private String IMAGE_NODE = HEADER_IMAGE_NODE;
+    protected static final String IMAGE_SRC_DIALOG = NewsBlogImageUtils.COMPONENT_IMAGE_SRC;
+    private String IMAGE_SRC = NewsBlogImageUtils.HEADER_IMAGE_SRC;
+    // used to compare and check if header image is being updated vs tile image
+
+    private String IMAGE_NODE = NewsBlogImageUtils.HEADER_IMAGE_NODE;
     private static final String RES_TYPE = "sling:resourceType";
     private String RES_TYPE_VALUE = RESOURCE_TYPE;
 
