@@ -25,6 +25,12 @@ $(document).ready(function() {
             iPhoneUseNativeControls: true,
             AndroidUseNativeControls: true
           });
-    $(".mejs__time").after("<div class='mejs-download-control'><a href='#'>&nbsp;</a></div>");
+	$(".mejs__time").each(
+	function (a,b){
+		var ctl = $(b);
+		var aud = ctl.closest(".mejs__container").find(".chi-audio-player");
+		ctl.after("<div class='mejs-download-control'><a href='"+aud.attr("src")+"'>&nbsp;</a></div>");
+	});
+
 
 });
