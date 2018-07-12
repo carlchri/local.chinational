@@ -12,7 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
  
-import org.apache.sling.api.servlets.SlingAllMethodsServlet;     
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.Reference;
@@ -37,6 +38,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.commons.json.JSONObject;
 import org.apache.sling.commons.json.JSONArray;
 
+import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
+import com.day.cq.commons.inherit.InheritanceValueMap;
 //QUeryBuilder APIs
 import com.day.cq.wcm.api.Page;
 
@@ -68,6 +71,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     private static final String DEFAULT_BLOGS_FILTER = "AllItems";
     private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
+    private static final String DEFAULT_BLOGS_TILE_IMG_SRC  = "defaultBlogsTileImgSrc";
+    private static final String DEFAULT_MESSAGE  = "could not find default value";
     
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
@@ -184,7 +189,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        totalResults = allFilteredBlogs.size();
 	        
 	        JSONObject jsonResult = new JSONObject();
-	        JSONArray jsonArray = getJsonBlogs();
+	        JSONArray jsonArray = getJsonBlogs(resource);
 	        jsonResult.put("jsonBlogs", jsonArray);
 	        jsonResult.put("total_results", totalResults);
 	        // jsonResult.put("list_years", listYears);
@@ -224,7 +229,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
         doPost(request, response);
     }
 
-    public JSONArray getJsonBlogs() {
+    public JSONArray getJsonBlogs(Resource resource) {
     	JSONArray jsonBlogs = new  JSONArray();
     	
         try {
@@ -251,8 +256,26 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	            } else if(sMap.get("imageSrc", String.class) != null){
 	            	jsonObject.put("tileImageSrc", sMap.get("imageSrc", String.class));
 	            } else {
-	            	// TO DO - to be replaced with default image URL from home page template
-	            	jsonObject.put("tileImageSrc", "/content/dam/chi-national/website/images/heart_healthy_tile.png");
+	        		String defaultBlogsTileImgSrc = "";
+	            	if(resource != null){
+	            		// LOGGER.info("Resourec Path : " + resource.getPath());
+	        			final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
+	        			defaultBlogsTileImgSrc = pageProperties.getInherited(DEFAULT_BLOGS_TILE_IMG_SRC, String.class);
+	        			// LOGGER.info("Default Blogs Tile Image Src : " + defaultBlogsTileImgSrc);
+	        			if (defaultBlogsTileImgSrc == null) {
+	        	            LOGGER.trace("could not find inherited property for ", resource);
+	        	            defaultBlogsTileImgSrc = DEFAULT_MESSAGE;
+	        			}
+	            	} else {
+	                    defaultBlogsTileImgSrc = DEFAULT_MESSAGE;
+	            	}
+	            	
+	               if (StringUtils.isNotEmpty(defaultBlogsTileImgSrc) && !"#".equals(defaultBlogsTileImgSrc)) {
+	            	   defaultBlogsTileImgSrc = LinkUtils.externalize(defaultBlogsTileImgSrc);            
+	                }
+	                // LOGGER.info("Default Blogs Tile Image Src : " + defaultBlogsTileImgSrc);
+	            	jsonObject.put("tileImageSrc", defaultBlogsTileImgSrc);
+	            	// jsonObject.put("tileImageSrc", "/content/dam/chi-national/website/images/heart_healthy_tile.png");
 	            	jsonObject.put("noImagePresent", true);
 	            }
 	            jsonBlogs.put(jsonObject);
