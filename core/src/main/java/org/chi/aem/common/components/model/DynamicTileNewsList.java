@@ -155,6 +155,7 @@ public class DynamicTileNewsList implements ComponentExporter {
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
         map.put("p.offset", "0");
+        // TODO - why are we using limit = -1, shouldn't we get max 10 or so?
         map.put("p.limit", "-1");
         if(list == featuredNews){
         	map.put("boolproperty", "jcr:content/isFeaturedArticle");

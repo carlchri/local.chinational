@@ -60,12 +60,12 @@ public class MediaCollection extends WCMUsePojo {
 
 				ValueMap properties = ResourceUtil.getValueMap(aMedia);
 				int nodeName = getHash(aMedia.getPath());
-				LOGGER.info("aMedia.getPath(): " + aMedia.getPath()
+				LOGGER.debug("aMedia.getPath(): " + aMedia.getPath()
 						+ ", properties get hash: " + properties.get(NODE_NAME)
 						+ ", hash- " + nodeName);
 				if (properties.containsKey(NODE_NAME)) {
 					nodeName = Integer.valueOf(properties.get(NODE_NAME).toString());
-					LOGGER.info("hash value is using what is coming from itemNode: " + nodeName);
+					LOGGER.debug("hash value is using what is coming from itemNode: " + nodeName);
 				}
 				if(properties.containsKey("name")) {
 					try {
