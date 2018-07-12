@@ -20,6 +20,14 @@
                             fieldLabel="Article Header Image  [16:9 or 9:16 ratio preferred]"
                             name="./imageSrc"
                             rootPath="/content/dam"/>
+                        <imageCaption
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Image Caption"
+                                fieldDescription="This caption appears beneath the photo on the details page (optional)"
+                                fieldLabel="Header Image Caption"
+                                name="./imageCaption"
+                                renderReadOnly="{Boolean}true"/>
                         <enableWrapAround
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

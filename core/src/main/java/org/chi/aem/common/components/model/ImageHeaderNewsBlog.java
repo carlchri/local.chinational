@@ -70,6 +70,7 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
     protected void initModel() {
         initImageSetup();
         super.initModel();
+        saveSrcImage(getSrc());
     }
 
     /**
@@ -83,6 +84,39 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
         this.RES_TYPE_VALUE = resType;
     }
 
+    private void saveSrcImage(String srcImagePath) {
+        if (srcImagePath != null) {
+            try {
+                Session session = resourceResolver.adaptTo(Session.class);
+                Node imageNode = resource.adaptTo(Node.class);
+                if (imageNode != null && imageNode.hasProperties()){
+                    if (imageNode.hasProperty("src")
+                            && imageNode.getProperty("src").getString().equals("srcImagePath")) {
+                        // same image exist in src, no need to make any updates
+                        return;
+                    }
+                    if (
+                            (imageNode.hasProperty("imageCrop")
+                                    && imageNode.getProperty("imageCrop").getString() != null)
+                            || (imageNode.hasProperty("imageMap")
+                                    && imageNode.getProperty("imageMap").getString() != null)
+                            || (imageNode.hasProperty("imageRotate")
+                                    && imageNode.getProperty("imageRotate").getString() != null) ) {
+                        LOGGER.info("save src image, only if editing has happened: " + srcImagePath);
+                        imageNode.setProperty("src", srcImagePath);
+                        session.save();
+                        session.refresh(true);
+                    }
+                }
+                // we store image into src
+
+            } catch (Exception e) {
+                LOGGER.error("Could not update src image reference: " + e);
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * Setup image dialog for image editing
      */
@@ -93,7 +127,7 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
         if (currentPage != null) {
             ValueMap pageProperties = currentPage.getProperties();
             imageSrc = pageProperties.get(IMAGE_SRC, "");
-            LOGGER.info("IMAGE_SRC: " + IMAGE_SRC);
+            LOGGER.debug("IMAGE_SRC: " + IMAGE_SRC);
             if (imageSrc == null || imageSrc.equals("")) {
                 // no need to update any node properties, as node will be hidden
                 return;
@@ -102,7 +136,7 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
                 imageUpdated = true;
             }
             fileReference = imageSrc;
-            LOGGER.info("New file reference: " + fileReference);
+            LOGGER.debug("New file reference: " + fileReference);
         } else {
             LOGGER.error("No page properties available");
         }
@@ -111,10 +145,10 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
             ValueMap imageProps = ResourceUtil.getValueMap(resource);
             LOGGER.debug("Get image properties: " + imageProps);
             if (!imageProps.containsKey(IMAGE_SRC_DIALOG)) {
-                LOGGER.info("Image nodes does not have file ref, create node and ref attr");
+                LOGGER.debug("Image nodes does not have file ref, create node and ref attr");
                 createImageNode(imageSrc);
             } else if (imageUpdated) {
-                LOGGER.info("Image either is updated or deleted");
+                LOGGER.debug("Image either is updated or deleted");
                 // update the node attribute and remove edit options
                 try {
                     Session session = resourceResolver.adaptTo(Session.class);
@@ -123,6 +157,8 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
                     imageNode.setProperty("imageCrop", (javax.jcr.Value)null);
                     imageNode.setProperty("imageMap", (javax.jcr.Value)null);
                     imageNode.setProperty("imageRotate", (javax.jcr.Value)null);
+                    // we store image into src
+                    imageNode.setProperty("src", (javax.jcr.Value)null);
                     session.save();
                     session.refresh(true);
                 } catch (Exception e) {
@@ -144,15 +180,15 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
             LOGGER.warn("Image source is null for creating image node");
             return;
         }
-        LOGGER.info("Image props don't contain imageSrc attribute, lets save it");
-        LOGGER.info("Resource path: " + resource.getPath());
+        LOGGER.debug("Image props don't contain imageSrc attribute, lets save it");
+        LOGGER.debug("Resource path: " + resource.getPath());
         Resource parent = resource.getParent();
         // lets save it
         try {
             // first time, resource itself does not exist, so we need to save that
             Session session = resourceResolver.adaptTo(Session.class);
             if (parent.getChild(IMAGE_NODE) == null) {
-                LOGGER.info("news-header-image does not exist, lets create this node first");
+                LOGGER.debug("news-header-image does not exist, lets create this node first");
                 Node parentNode = parent.adaptTo(Node.class);
                 parentNode.addNode(IMAGE_NODE);
                 session.save();
