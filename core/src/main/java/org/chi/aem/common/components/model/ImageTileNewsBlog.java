@@ -30,6 +30,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.chi.aem.common.components.internal.models.ImageImplV2;
+import org.chi.aem.common.utils.NewsBlogImageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,8 +44,8 @@ public class ImageTileNewsBlog extends ImageHeaderNewsBlog implements Image {
 
     public static final String RESOURCE_TYPE = "chinational/components/content/imageTileNewsBlog";
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageTileNewsBlog.class);
-    private String IMAGE_SRC = "tileImageSrc";
-    private String IMAGE_NODE = "nb-tile-image";
+    private String IMAGE_SRC = NewsBlogImageUtils.TILE_IMAGE_SRC;
+    private String IMAGE_NODE = NewsBlogImageUtils.TILE_IMAGE_NODE;
 
     public ImageTileNewsBlog() {
         selector = AdaptiveImageServlet.CORE_DEFAULT_SELECTOR;
