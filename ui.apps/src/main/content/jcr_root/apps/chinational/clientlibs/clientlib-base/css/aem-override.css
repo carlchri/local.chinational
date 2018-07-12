@@ -81,6 +81,10 @@ and (orientation : portrait) {
     height: auto;
 }
 
+.cmp-image .image-max-width-responsive {
+    width: auto;
+}
+
 /* This is for news and blog details page*/
 .full-image .image-max-width-responsive img {
     max-width: 100%;
