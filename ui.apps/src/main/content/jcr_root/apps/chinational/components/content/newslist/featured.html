@@ -2,7 +2,7 @@
 		  data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = item.path, articleType='news'}">
 	<sly />
 	<div class="row image-content flex">
-	        <div class="image-col col-sm-5 col-xs-12">
+	        <div class="image-col col-sm-6 col-xs-12">
 	                  <img src="${imageInfo.tileImagePath @ context='unsafe'}" alt="Alt Image">
 	        </div>
 
@@ -13,7 +13,7 @@
 	        <div class="blog-news-padding-top ${noImagePresent ? 'col-sm-8 col-xs-12' : 'col-xs-12'}">
 */ -->
 
-	        <div class="blog-news-padding-top col-sm-7 col-xs-12">
+	        <div class="blog-news-padding-top col-sm-6 col-xs-12">
 	          <a href="${item.path @ extension='html'}">
 	              <h4 class="txt-green news_blog_featured_heading news_heading_hover">${item.properties.newsHeading || item.pageTitle || item.title || item.name}</h4>
 	          </a>

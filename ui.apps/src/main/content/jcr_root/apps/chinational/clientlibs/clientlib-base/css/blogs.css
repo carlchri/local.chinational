@@ -54,7 +54,7 @@
     margin-bottom:0;
 }
 
-.blog-image {
+.tnl-wrapper .blog-image {
 	/* height: 145px; commented out by Davinder - Jul 13, 2018*/
 	max-width:420px; /* Davinder July 13, 2018 */
 	/* max-width of image available = 420px - 30px [padding col-] = 390px
@@ -66,7 +66,7 @@
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
 }
 
-.blog-image img{
+.tnl-wrapper .blog-image img{
 	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
 	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
 	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
