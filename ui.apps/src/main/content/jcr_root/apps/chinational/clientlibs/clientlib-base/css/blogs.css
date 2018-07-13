@@ -55,7 +55,21 @@
 }
 
 .blog-image {
-	height: 145px;
+	/* height: 145px; commented out by Davinder - Jul 13, 2018*/
+	max-width:420px; /* Davinder July 13, 2018 */
+	/* max-width of image available = 420px - 30px [padding col-] = 390px
+	   with aspect ratio 16:9 & width 390px - height will be (390/16) x 9 = 220px
+	   So, max-height should be 220px not 236px as mentioned by Chris */
+	max-height:220px; /* Davinder Jul 13, 2018 */
+	width:auto; /* Davinder Jul 13, 2018 - to override width coming from other places */
+	height:auto; /* Davinder Jul 13, 2018 - to override height coming from other places */
+	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+}
+
+.blog-image img{
+	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
+	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
+	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
 }
 
 .blog-title {

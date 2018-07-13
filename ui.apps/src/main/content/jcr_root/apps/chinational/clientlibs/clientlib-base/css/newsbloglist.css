@@ -90,9 +90,21 @@
 }
 
 .featured-news-blog .image-col{
-	min-width:349px;
-	min-height:270px;
+	/* min-width:349px; Commented out by Davinder July 13, 2018 */
+	/* bmin-height:185px; Commented out by Davinder July 13, 2018 */
+	max-width:360px; /* Davinder July 13, 2018 - 330px + 30px [paddong by col-] = 360px */
+	max-height:185px; /* Davinder Jul 13, 2018 */
 	margin-right:26px;
+	width:auto; /* Davinder Jul 13, 2018 - to override width:349px coming from image-col class */
+	height:auto; /* Davinder Jul 13, 2018 - to override height:270px coming from image-col class */
+	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+}
+
+.featured-news-blog .image-col img{
+	margin-bottom:0;
+	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
+	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
+	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
 }
 
 .blogs-list-form .full-bleed-tiles{
@@ -124,10 +136,6 @@
 .featured-news-blog .blog-featured-bleed {
   	color: #fff;
   	text-decoration: none !important;
-}
-
-.featured-news-blog .image-col img{
-	margin-bottom:0;
 }
 
 .featured-news-blog p{
