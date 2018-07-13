@@ -253,7 +253,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	            if(sMap.get("excerpt", String.class) != null) {
 	            	jsonObject.put("excerpt", sMap.get("excerpt", String.class));
 	            }
-	            String tileImgSrc = NewsBlogImageUtils.getTileImage(item, "Blogs");
+	            String tileImgSrc = NewsBlogImageUtils.getTileImage(item, "blogs");
             	jsonObject.put("tileImageSrc", tileImgSrc);
 	            
 	            jsonBlogs.put(jsonObject);
