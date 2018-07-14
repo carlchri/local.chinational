@@ -58,9 +58,10 @@
 	/* max-width of image available = 420px - 30px [padding col-] = 390px
 	   with aspect ratio 16:9 & width 390px - height will be (390/16) x 9 = 220px
 	   So, height should be 220px not 236px as mentioned by Chris */
-	height: 220px; /* Davinder - Jul 13, 2018 - changed from 145px to 220px*/
+	max-height: 220px; /* Davinder - Jul 13, 2018 - changed from 145px to 220px*/
 	max-width:420px; /* Davinder July 13, 2018 */
 	width:auto; /* Davinder Jul 13, 2018 - to override width coming from other places */
+	height: auto; /* Davinder - Jul 13, 2018 */
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
 }
 
@@ -149,9 +150,8 @@
 		position: static;
 	}
 	.tnl-wrapper .blog-image {
-		height: auto; /* Davinder - Jul 13, 2018 */
 		max-width:100%; /* Davinder July 13, 2018 */
-		
+		max-height:none; /* Davinder July 13, 2018 */
 	}
 	
 	/* May 25, 2018 Davinder CHIP12  */
