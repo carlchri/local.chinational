@@ -184,7 +184,7 @@
 
 /* padding for button is 25 px in desktop, its different for mobile and tablet*/
 .contentBand .row .link-wrapper {
-    padding-top: 25px;
+    margin-top: 25px;
 }
 
 .contentBand .row img {
@@ -197,7 +197,7 @@
         padding-bottom: 51px;
     }
     .contentBand .row .link-wrapper {
-        padding-top: 22px;
+        margin-top: 22px;
     }
 }
 
@@ -207,7 +207,7 @@
         padding-bottom: 38px;
     }
     .contentBand .row .link-wrapper {
-            padding-top: 53px;
+            margin-top: 53px;
     }
 }
 
