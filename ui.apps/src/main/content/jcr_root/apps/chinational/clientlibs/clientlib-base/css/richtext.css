@@ -85,7 +85,7 @@
     font-weight: 500;
     font-style: italic;
     font-stretch: normal;
-    padding: 30px 0 15px 0;
+    padding: 0 0 20px;
     }
 
 .h2_quote_style {
@@ -96,7 +96,7 @@
     font-weight: 500;
     font-style: italic;
     font-stretch: normal;
-    padding: 15px 0 15px 0;
+    padding: 0 0 15px;
     }
 
 .h3_callout_style {
@@ -107,7 +107,7 @@
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
-    padding: 15px 0 15px 0;
+    padding: 0 0 15px;
     }
 
 .h4_header_style {
@@ -118,7 +118,7 @@
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
-    padding: 10px 0 10px 0;
+    padding: 0 0 15px;
     }
 
 .subheader_style {
@@ -129,7 +129,7 @@
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    padding: 10px 0 10px 0;
+    padding: 0 0 10px;
 }
 
 .body_copy_style {
@@ -139,7 +139,7 @@
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    padding: 15px 0 15px 0;
+    padding: 0 0 15px;
     position:relative;
     }
 
@@ -151,7 +151,7 @@
     font-style: normal;
     font-stretch: normal;
     text-transform: uppercase;
-    padding: 10px 0 10px 0;
+    padding: 0 0 10px;
     position:relative;
     }
 
@@ -163,7 +163,7 @@
     font-weight: normal;
     font-style: italic;
     font-stretch: normal;
-    padding: 15px 0 15px 0;
+    padding: 0 0 15px;
     }
 
 .small_text_style {
@@ -174,30 +174,8 @@
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    padding: 10px 0 10px 0;
+    padding: 0 0 10px;
     position:relative;
-    }
-
-.news_blog_list_heading_style {
-	font-size: 24px;
-    line-height: 1.1;
-    color: #426DA9;
-    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    padding: 10px 0 0 0;
-    }
-
-.news_blog_list_date_style {
-	font-size: 14px;
-    line-height: 1.1;
-    color: #426DA9;
-    font-family: myriad-pro, 'MyriadPro-It', sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    padding: 0px;
     }
 
 /* End of additions by Davinder for richText Header Styles */
@@ -206,7 +184,7 @@
 
 /* padding for button is 25 px in desktop, its different for mobile and tablet*/
 .contentBand .row .link-wrapper {
-    padding-top: 25px;
+    margin-top: 25px;
 }
 
 .contentBand .row img {
@@ -219,7 +197,7 @@
         padding-bottom: 51px;
     }
     .contentBand .row .link-wrapper {
-        padding-top: 22px;
+        margin-top: 22px;
     }
 }
 
@@ -229,7 +207,7 @@
         padding-bottom: 38px;
     }
     .contentBand .row .link-wrapper {
-            padding-top: 53px;
+            margin-top: 53px;
     }
 }
 

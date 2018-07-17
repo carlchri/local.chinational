@@ -41,6 +41,7 @@
                     <caption
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Image Metadata"
+                        sling:hideResource="{Boolean}true"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -53,14 +54,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <imageCaption
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    emptyText="Image Caption"
-                                                    fieldDescription="This caption appears beneath the photo on the details page (optional)"
-                                                    fieldLabel="Header Image Caption"
-                                                    name="./imageCaption"
-                                                    renderReadOnly="{Boolean}true"/>
                                             <useOriginalSize
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

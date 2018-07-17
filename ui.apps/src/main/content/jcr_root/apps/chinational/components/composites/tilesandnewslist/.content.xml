@@ -4,6 +4,6 @@
     jcr:description="Tiles and News List Component"
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
-    jcr:title="Tiles/ News List"
+    jcr:title="Tiles/ News/Blogs List [Manual]"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>

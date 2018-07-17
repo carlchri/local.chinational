@@ -12,6 +12,11 @@
   top: 34%;
 }
 
+/* Video button adding 38px to bottom of video, fix it for content band and see if it needs to be fixed for other instances as well */
+.contentBand .video .video-button-small {
+  height: auto;
+}
+
 /*
 .memorial p {
 	margin-bottom: 50px;

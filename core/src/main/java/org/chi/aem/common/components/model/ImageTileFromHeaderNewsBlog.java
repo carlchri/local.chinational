@@ -22,6 +22,7 @@ import com.adobe.cq.wcm.core.components.models.Image;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.chi.aem.common.utils.NewsBlogImageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,8 +34,8 @@ public class ImageTileFromHeaderNewsBlog extends ImageHeaderNewsBlog implements 
 
     public static final String RESOURCE_TYPE = "chinational/components/content/imageTileFromHeaderNewsBlog";
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageTileFromHeaderNewsBlog.class);
-    private String IMAGE_SRC = "imageSrc";
-    private String IMAGE_NODE = "nb-tile-from-header-image";
+    private String IMAGE_SRC = NewsBlogImageUtils.HEADER_IMAGE_SRC;
+    private String IMAGE_NODE = NewsBlogImageUtils.TILE_FROM_HEADER_IMAGE_NODE;
 
     public ImageTileFromHeaderNewsBlog() {
         selector = AdaptiveImageServlet.CORE_DEFAULT_SELECTOR;
