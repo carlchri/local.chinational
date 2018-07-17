@@ -5,9 +5,17 @@
     <sly data-sly-use.locationCollection="org.chi.aem.common.components.model.LocationCollection"></sly>
     <sly data-sly-use.coordinates="org.chi.aem.common.components.model.LocationCoordinate"></sly>
 
-    <div class="location card-body">
+    <div class="location location-card-body">
     <div class="row">
-        <div class="col-md-5" data-sly-test="${locationCollection.locationDetails.size > 0}">
+        <div class="col-md-5 location-text-area" data-sly-test="${locationCollection.locationDetails.size > 0}">
+             <div class="location-icon">
+               	<span data-sly-test="${properties.locationIcon && properties.locationIcon != 'iconNotRequired'}" class="${properties.locationIcon}"></span>
+            </div>
+            <div class="txt-location-name">
+            <span>${properties.locationName}</span> 
+ 
+            </div>
+           
             <div class="txt-address">
                 <div class="icons-set">
                     <sly data-sly-list="${locationCollection.locationDetails}">
@@ -27,28 +35,64 @@
                         </sly>
                     </sly>
                 </div>
-                <div class="link-wrapper" 
-                     data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-                </div>
+
+               <div class="link-wrapper ${properties.noDisplayButton? 'in' : ''}" 
+                	data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+           		</div>
+
             </div>
         </div>
-        <div class="${locationCollection.locationDetails.size > 0?'col-md-7':'col-md-12'} ">
-            <div id="map">Put map here</div>
+        <div class="${locationCollection.locationDetails.size > 0 ? 'col-md-7':'col-md-12'}">
+            <sly data-sly-test="${properties.selectLocationImageType == 'imageLocation'}">
+				<div id ="image" class="max-height-element" 
+                	data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}">
+           		</div>
+			</sly>
+			<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
+			
+				<!--  div id ="map_${currentNode.Name}" class="max-height-element">
+           		</div -->
+           		<!--  ATT'N NARESH!!! -->
+           		<!--  The line above can display the node name as unique for every map displayed -->
+           		<!--  and can replace the line below, so we will get: map_location, map_location_435345, and so on -->
+           		
+				<div id ="map" class="max-height-element">
+           		</div>
+			</sly>
         </div>
     </div>
     </div>
 
     <script>
         function initMap() {
+        	
             var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
-            var map = new google.maps.Map(document.getElementById('map'), {
+            
+            // ATT'N NARESH!!!
+            // The next line works to bring the id as: map_location, but doesn't do anything
+            // var map = new google.maps.Map(document.getElementById("map_${currentNode.Name @ context='unsafe'}"), {
+            // 
+            
+            var map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
                 center: uluru
             });
-            new google.maps.Marker({
-                position: uluru,
-                map: map
+            
+         	// ATT'N NARESH!!!
+         	// The following methods will display some window when the user clicks on the red pin on the map
+         	// and display whatever information we will like to. Somewhat the address must be displayed there 
+         	// with a link to Google Maps as https://www.google.com/maps/place/ and the address separated by '+' signs
+         	
+            var infowindow = new google.maps.InfoWindow;
+            infowindow.setContent('<b>This message is for the address</b>');
+
+            var marker = new google.maps.Marker({ position: uluru, map: map });
+            
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
             });
+            
+            
         }
     </script>
     <script async defer

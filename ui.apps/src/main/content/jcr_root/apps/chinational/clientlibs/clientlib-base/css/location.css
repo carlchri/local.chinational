@@ -1,8 +1,9 @@
-@charset "utf-8";
+
 .location {
   background: #f8f7f7;
-  padding: 15px;
+  /* padding: 15px;        Removed by German to fix MAM-26 */
   z-index: 0;
+  margin-bottom: 32px;  /* Added by German to fix MAM-22 */
 }
 .location .in {
   display: none;
@@ -21,12 +22,97 @@
   height: 400px;
   width: 100%;
 }
+
 .location .txt-address span {
-  margin: 0 0 0 40px;
+  margin: 0 0 0 5px;            /* changed by German for MAM-22, it was 0 0 0 40px; */ 
 }
+
+ /* added by German for MAM-26 */ 
+ 
+.location .txt-location-name span {
+  	margin-bottom: 30px;
+	font-size: 20px;
+	color: #426da9; 
+	max-width: 200px;        
+}
+
+.location .location-text-area {
+  	padding-top: 30px;
+	padding-left: 70px;      
+}
+
+.location .location-card-body {
+	background-color: #f8f7f7;
+}
+
+.location .location-icon {
+	float: right;
+}
+
+.location .location-card-body #map {
+    overflow: hidden;
+	max-height: 395px;
+}
+
+.location .location-card-body #image {
+    overflow: hidden;
+	max-height: 395px;
+}
+
+.sprite-v2.icon-hospital {
+	background-position: -142px -161px;
+	width: 53px;
+	height: 65px;
+}
+
+.sprite-v2.icon-clinic {
+	background-position: -50px -144px;
+	width: 36px;
+	height: 78px;
+}
+
+.sprite-v2.icon-hospice {
+	background-position: -322px -158px;
+	width: 66px;
+	height: 68px;
+}
+
+.sprite-v2.icon-imaging {
+	background-position: -710px -163px;
+	width: 88px;
+	height: 65px;
+}
+
+.sprite-v2.icon-pharmacy {
+	background-position: -418px -165px;
+	width: 65px;
+	height: 59px;
+}
+
+.sprite-v2.icon-surgery {
+	background-position: -508px -155px;
+	width: 80px;
+	height: 70px;
+}
+
+.sprite-v2.icon-therapy {
+	background-position: -620px -145px;
+	width: 55px;
+	height: 90px;
+}
+
+.sprite-v2.icon-urgent-care {
+	background-position: -215px -165px;
+	width: 86px;
+	height: 63px;
+}
+
+/* End of additions by German for MAM-26 */
+
+
 .location a.learn-more-btn span,
 .location a.learn-more-btn a {
-  margin: 0 0 0 40px;
+  margin: 0 10px 0 10px;        /* changed by German for MAM-27, it was 0 0 0 40px; */ 
   display: inline-block;
 }
 .location .icon-hours:before {
@@ -48,3 +134,61 @@
 /*.in .location {
   display: none;		It was creating an issue with the accordion feature, removed by German
 } */
+
+@media (max-width: 480px) {
+  	.location #map {
+	  	display: none;   /* Added by German to fix MAM-22  */
+	}
+	
+	.location #image {
+	  	display: none;   /* Added by German to fix MAM-22  */
+	}
+	
+	.location .location-card-body {
+		margin-right: -25px;
+		margin-left: -25px;
+	}
+	
+	.location div.link-wrapper {
+		margin-right: 20px;
+	}
+	
+	.location .location-text-area {
+		padding-left: 40px;
+	}
+	
+	.location .location-icon {
+		padding-right: 5px;
+	}
+}
+
+
+@media (max-width: 1260px) {
+  .location .txt-location-name span {
+    	max-width: 200px;
+  }
+}
+
+@media (max-width: 321px) {
+  .location .txt-location-name span {
+    	max-width: 170px;
+  }
+}
+
+@media (min-width: 1026px) and (max-width: 1260px) {
+  
+  .location .location-icon {
+		padding-right: 35px;
+	}
+}
+
+@media (min-width: 800px) and (max-width: 996px) {
+  
+  .location .txt-location-name span {
+    	max-width: 300px;
+  }
+  
+  .location .location-icon {
+		padding-right: 35px;
+	}
+}

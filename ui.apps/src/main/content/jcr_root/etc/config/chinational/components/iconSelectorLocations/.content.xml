@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <iconNotRequired
+        jcr:primaryType="nt:unstructured"
+        selected="{Boolean}true"
+        text="Icon Not Required"
+        value="iconNotRequired"/>
+    <clinic
+        jcr:primaryType="nt:unstructured"
+        text="Clinic"
+        value="sprite-v2 small-icons icon-clinic"/>
+    <hospital
+        jcr:primaryType="nt:unstructured"
+        text="Hospital"
+        value="sprite-v2 small-icons icon-hospital"/>
+    <therapy
+        jcr:primaryType="nt:unstructured"
+        text="Therapy"
+        value="sprite-v2 small-icons icon-therapy"/>
+    <hospice
+        jcr:primaryType="nt:unstructured"
+        text="Hospice"
+        value="sprite-v2 small-icons icon-hospice"/>
+    <pharmacy
+        jcr:primaryType="nt:unstructured"
+        text="Pharmacy"
+        value="sprite-v2 small-icons icon-pharmacy"/>
+    <surgery
+        jcr:primaryType="nt:unstructured"
+        text="Surgery"
+        value="sprite-v2 small-icons icon-surgery"/>
+    <urgentCare
+        jcr:primaryType="nt:unstructured"
+        text="Urgent Care"
+        value="sprite-v2 small-icons icon-urgent-care"/>
+    <imaging
+        jcr:primaryType="nt:unstructured"
+        text="Imaging"
+        value="sprite-v2 small-icons icon-imaging"/>
+</jcr:root>
