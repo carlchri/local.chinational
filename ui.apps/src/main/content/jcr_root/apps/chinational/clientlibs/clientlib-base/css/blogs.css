@@ -63,6 +63,7 @@
 	width:auto; /* Davinder Jul 13, 2018 - to override width coming from other places */
 	height: auto; /* Davinder - Jul 13, 2018 */
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	padding-bottom: 56.25%; /* Naresh - this maintains the 16:9 ratio*/
 }
 
 .tnl-wrapper .blog-image img{
