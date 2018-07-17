@@ -1,7 +1,7 @@
 .chi-audio-player  {
     background-color: #335898;
 	border-radius: 6px;
-	font-family: MyriadPro;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
 	font-size:16px;
 }
 .chi-audio-player .mejs__inner div {
@@ -14,7 +14,7 @@
 
 .chi-audio-player .mejs__mediaelement, .chi-audio-player .mejs__playpause-button, .chi-audio-player .mejs__time {border-left:none !important;}
 .chi-audio-player .mejs__time-rail {margin-left:0; padding-left:10px; padding-right:10px;}
-.chi-audio-player .mejs__time-total {width:98%;}
+.chi-audio-player .mejs__time-total {width:98%;margin: 7px 0 0;}
 
 .chi-audio-player .mejs-download-control {
 	padding: 0px 5px 0px 5px; 
