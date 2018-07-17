@@ -2,14 +2,16 @@
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
     <div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
-        <label class="button-label" data-sly-test="${audio.sectionHeading}">
-            ${audio.sectionHeading}
-        </label>
-        <div class="chi-audio-player-d">
-            <audio class="chi-audio-player" style="max-width: 650px"
-                   src="${audio.audioUrl}"
-                   type="audio/mp3" controls>
-            </audio>
+        <div class="col-xs-12 col-md-8" style="max-width: 650px">
+            <label class="button-label" data-sly-test="${audio.sectionHeading}">
+                ${audio.sectionHeading}
+            </label>
+            <div class="chi-audio-player-d">
+                <audio class="chi-audio-player"
+                       src="${audio.audioUrl}"
+                       type="audio/mp3" controls>
+                </audio>
+            </div>
         </div>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
