@@ -19,7 +19,7 @@ $(document).ready(function() {
             features: ['playpause','progress','current','duration', 'volume'],
             timeAndDurationSeparator: ' / ',
             audioVolume: 'horizontal',
-            audioWidth: 650,
+            audioWidth: '100%',
             audioHeight: 45,
             iPadUseNativeControls: true,
             iPhoneUseNativeControls: true,
