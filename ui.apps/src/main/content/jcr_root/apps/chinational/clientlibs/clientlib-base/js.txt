@@ -19,7 +19,7 @@ js/blogslist.js
 js/physiciantiles.js
 js/revealReadMoreText.js
 js/owl.carousel.js
-js/audio.popup.js
+js/audio-popup.js
 js/video.popup.js
 js/popper.js
 js/image.js

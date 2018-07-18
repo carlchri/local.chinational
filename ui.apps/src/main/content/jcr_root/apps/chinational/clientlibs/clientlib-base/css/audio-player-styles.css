@@ -1,0 +1,46 @@
+.chi-audio-player  {
+    background-color: #335898;
+	border-radius: 6px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size:16px;
+}
+.chi-audio-player .mejs__inner div {
+	border-left: 1px solid white;
+}
+
+.chi-audio-player .mejs__controls, .chi-audio-player .mejs__time-rail, .chi-audio-player .mejs__time, .chi-audio-player .mejs__button {height:45px;}
+#.chi-audio-player .mejs__playpause-button > button {height:25px; background-position: 0 3px;}
+.chi-audio-player .mejs__playpause-button > button {margin-top:13px;}
+
+.chi-audio-player .mejs__mediaelement, .chi-audio-player .mejs__playpause-button, .chi-audio-player .mejs__time {border-left:none !important;}
+.chi-audio-player .mejs__time-rail {margin-left:0; padding-left:10px; padding-right:10px;}
+.chi-audio-player .mejs__time-total {width:98%;margin: 7px 0 0;}
+
+.chi-audio-player .mejs-download-control {
+	padding: 0px 5px 0px 5px; 
+	vertical-align:middle;
+}
+.chi-audio-player .mejs-download-control a {
+	width:35px; height:30px; display:block; text-decoration:none;
+	background:url(/etc/designs/chicommon/images/download.png) bottom center no-repeat;
+}
+
+.chi-audio-player .mejs__time-float {width: 47px; height: 22px; border-radius: 2px; background-color: #59cae8; border:1px solid #59cae8; color:#fff;}
+.chi-audio-player .mejs__time, .chi-audio-player .mejs__button, .chi-audio-player .mejs__time, .chi-audio-player .mejs__time-rail {font-size:16px; font-weight:normal;}
+.chi-audio-player .mejs__time-float-corner {border-color:#59cae8 transparent transparent;}
+.chi-audio-player .mejs__time-float-current {margin:4px;}
+.chi-audio-player .mejs__time-current, .chi-audio-player .mejs__horizontal-volume-current {background-color:#59cae8;}
+
+/* Devices without volume */
+@media ( max-width : 992px) {
+	.chi-audio-player .mejs__volume-button {display:none;}
+	.chi-audio-player .mejs__horizontal-volume-slider {display:none;}
+}
+@media ( max-width : 767px) {
+	.chi-audio-player .mejs__volume-button {display:none;}
+	.chi-audio-player .mejs__horizontal-volume-slider {display:none;}
+}
+@media ( max-width :474px) {
+	.chi-audio-player .mejs__volume-button {display:none;}
+	.chi-audio-player .mejs__horizontal-volume-slider {display:none;}
+}
