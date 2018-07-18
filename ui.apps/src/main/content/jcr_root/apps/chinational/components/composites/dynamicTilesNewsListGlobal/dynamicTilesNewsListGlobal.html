@@ -22,8 +22,10 @@
 
 	                    <div class="full-image blog-image" 
 	                    	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && imageInfo.tileImagePath}">
-	                    	<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
-	                             alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+	                    	 <div class="blog-image-container">
+	                    		<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
+	                             	 alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+                             </div>
 	                    </div>
 <!--  /* 	                    
  <div class="full-image blog-image" 

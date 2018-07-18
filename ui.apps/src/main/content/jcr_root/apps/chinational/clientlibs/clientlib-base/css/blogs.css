@@ -60,11 +60,21 @@
 	   So, height should be 220px not 236px as mentioned by Chris */
 	max-height: 220px; /* Davinder - Jul 13, 2018 - changed from 145px to 220px*/
 	max-width:420px; /* Davinder July 13, 2018 */
-	width:auto; /* Davinder Jul 13, 2018 - to override width coming from other places */
+	/* width:auto;  Davinder Jul 13, 2018 - to override width coming from other places */
 	height: auto; /* Davinder - Jul 13, 2018 */
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
 }
 
+.tnl-wrapper .blog-image .blog-image-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 .tnl-wrapper .blog-image img{
 	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
 	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
