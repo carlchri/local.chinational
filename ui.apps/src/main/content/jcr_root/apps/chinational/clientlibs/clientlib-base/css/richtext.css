@@ -187,15 +187,12 @@
     margin-top: 25px;
 }
 
-.contentBand .row img {
-    margin-bottom: 0px;
-}
-
 @media  (max-width:1024px ) {
     /* put padding for content band button, when it is used in  tablet and column flows to the top  */
-    .contentBand .row .col-md-6:first-child {
+    .contentBand .row .col-md-6:first-child, .contentBand .row .first-button-padding{
         padding-bottom: 51px;
     }
+
     .contentBand .row .link-wrapper {
         margin-top: 22px;
     }
@@ -203,9 +200,10 @@
 
 @media ( max-width :767px) {
     /* put padding for content band button, when it is used in  mobile and column flows to the top  */
-    .contentBand .row .col-md-6:first-child {
+    .contentBand .row .col-md-6:first-child, .contentBand .row .first-button-padding {
         padding-bottom: 38px;
     }
+
     .contentBand .row .link-wrapper {
             margin-top: 53px;
     }

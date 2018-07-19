@@ -13,7 +13,7 @@
 				 data-sly-include="imagevideosection.html"></sly>
 			<sly data-sly-test="${properties.videoOrientation == 'rightOrientation'}"
 				 data-sly-include="textsection.html"></sly>
-			<div class="link-wrapper"
+			<div class="link-wrapper ${properties.videoOrientation == 'bothOrientation' && properties.contentBandHeading?'first-button-padding':''}"
 				 data-sly-resource="${'cbivbutton' @ resourceType='chinational/components/content/button'}"
 				 data-sly-test="${properties.buttonUnderLeftPanel}"></div>
 		</div>
