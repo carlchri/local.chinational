@@ -41,7 +41,7 @@
 /* Davinder June 23/2018 background-position of social-icons is adjusted  
    to align them in a row [to look like as in sprite sheet] */
 .icons-row .icon-container .sprite.icon-fb-blue {
-  background-position: -57px -1040px;
+  background-position: -50px -1040px; /* to make itr centered on 35x35*/
 }
 
 .icons-row .icon-container .sprite.icon-twitter-blue {
@@ -53,11 +53,18 @@
 }
 
 .icons-row .icon-container .sprite.icon-youtube-blue {
-  background-position: -271px -1040px;
+  background-position: -271px -1045px;
+  width: 38px;
 }
 
 .icons-row .icon-container .sprite.icon-gplus-blue {
-  background-position: -333px -1040px;
+  background-position: -333px -1044px;
+  width: 44px;
+}
+
+.icons-row .icon-container .sprite.icon-instagram-blue {
+  width: 36px;
+  height: 36px;
 }
 
 .call-out .icon-container {
