@@ -116,7 +116,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Video YouTube URL e.g. https://www.youtube.com/embed/yt-ID-here"
-                                                        fieldLabel="Video URL (you tube only)"
+                                                        fieldLabel="Video URL (YouTube only)"
                                                         name="./videoUrl"
                                                         rootPath="/content"/>
                                                     <thumbnailOption

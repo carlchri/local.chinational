@@ -63,8 +63,8 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     private static String SENDER_EMAIL = "admin@chinational.com";
     private static String SUBJECT = "Campaign Form Submitted";
     private static String CC_EMAIL = "";
-    // private static String EMAIL_BODY = "Here are the details of the Campaign form submitted";
-    // private static String SENDER_NAME = "CHI Web Team"; 
+    private static String EMAIL_BODY = "Here are the details of the Campaign form submitted";
+    private static String EMAIL_SIGNATURE = "CHI Web Team";
     // private static String RECIPIENT_NAME = "CHI Campaign Team";
     private static String[] TO_EMAIL = { "campaign@chinational.com" };
     
@@ -87,13 +87,13 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     	templatePath = TEMPLATE_PATH;
     	
     	//populate Email parameters with default values
-    	// emailParams.put("message", EMAIL_BODY);
+    	emailParams.put("emailBodyIntro", EMAIL_BODY);
     	//  Customize the sender email address - if required
     	emailParams.put("senderEmailAddress", SENDER_EMAIL);
     	// emailParams.put("senderName", SENDER_NAME);
     	emailParams.put("ccEmail", CC_EMAIL);
     	emailParams.put("subject", SUBJECT);
-    	// emailParams.put("recipientName", RECIPIENT_NAME);
+    	emailParams.put("emailBodySignature", EMAIL_SIGNATURE);
     	recipients = TO_EMAIL;
     	
     	// populate Email parameters with values from dialog configured by author
@@ -170,6 +170,12 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
 	            if(sMap.get("emailSubject", String.class) != null) {
 	            	emailParams.put("subject", sMap.get("emailSubject", String.class));
 	            }
+				if(sMap.get("emailBodyIntro", String.class) != null) {
+					emailParams.put("emailBodyIntro", sMap.get("emailBodyIntro", String.class));
+				}
+				if(sMap.get("emailBodySignature", String.class) != null) {
+					emailParams.put("emailBodySignature", sMap.get("emailBodySignature", String.class));
+				}
 	            
 	            String ccEmail="CC: ";
 	            Resource ccResource = resource.getChild("ccEmails");
