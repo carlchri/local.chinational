@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+	xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+	xmlns:cq="http://www.day.com/jcr/cq/1.0"
+	xmlns:jcr="http://www.jcp.org/jcr/1.0"
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+	jcr:primaryType="nt:unstructured" jcr:title="Member Tiles"
+	sling:resourceType="cq/gui/components/authoring/dialog">
+	<content granite:class="cmp-list--editor"
+		jcr:primaryType="nt:unstructured"
+		sling:resourceType="granite/ui/components/coral/foundation/container">
+		<items jcr:primaryType="nt:unstructured">
+			<tabs jcr:primaryType="nt:unstructured"
+				sling:resourceType="granite/ui/components/coral/foundation/tabs"
+				maximized="{Boolean}true">
+				<items jcr:primaryType="nt:unstructured">
+					<mainSettingsTab 
+						jcr:primaryType="nt:unstructured"
+						jcr:title="Mandatory Settings"
+						sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+						margin="{Boolean}false">
+						<items jcr:primaryType="nt:unstructured">
+							<column jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/container">
+								<items jcr:primaryType="nt:unstructured">
+									<well jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/well">
+										<items jcr:primaryType="nt:unstructured">
+											<memberName jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												emptyText="This field is mandatory"
+												fieldDescription="Name for the member"
+												fieldLabel="Member Name:" 
+												name="./memberName"
+												required="{Boolean}true" />
+											<memberExpertise
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												emptyText="This field is mandatory"
+												fieldDescription="Expertise for the member:"
+												fieldLabel="Member Title:" 
+												name="./memberExpertise"
+												required="{Boolean}true" />
+										</items>
+									</well>
+								</items>
+							</column>
+						</items>
+					</mainSettingsTab>
+					<otherSettingsTab 
+						jcr:primaryType="nt:unstructured"
+						jcr:title="Optional Settings"
+						sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+						margin="{Boolean}false">
+						<items jcr:primaryType="nt:unstructured">
+							<column jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/container">
+								<items jcr:primaryType="nt:unstructured">
+									<well jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/well">
+										<items jcr:primaryType="nt:unstructured">
+											<memberImageSrc
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+												fieldDescription="Link to photo of Member"
+												fieldLabel="Member Photo URL:" 
+												name="./memberImageSrc"
+												rootPath="/content/dam"/>
+											<selectLinkForMember
+												granite:class="cq-dialog-dropdown-showhide"
+												jcr:primaryType="nt:unstructured"
+												sling:orderBefore="orderBy"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldDescription="Select if a link in Member is required"
+												fieldLabel="Option for Member's detail page:" 
+												name="./selectLinkForMember">
+												<items jcr:primaryType="nt:unstructured">
+													<linkToPageReqd
+														jcr:primaryType="nt:unstructured" 
+														text="Member has a profile page" 
+														value="linkToPageReqd" />
+													<linkToPageNotReqd
+														jcr:primaryType="nt:unstructured"
+														selected="{Boolean}true"
+														text="Member doesn't have a page"
+														value="linkToPageNotReqd" />
+												</items>
+												<granite:data jcr:primaryType="nt:unstructured"
+													cq-dialog-dropdown-showhide-target=".list-option-memberlink-showhide-target" />
+											</selectLinkForMember>
+											<memberLinkTo
+												granite:class="hide list-option-memberlink-showhide-target"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+												name="./memberLinkTo"
+												rootPath="/content/dam">
+												<granite:data jcr:primaryType="nt:unstructured"
+													showhidetargetvalue="linkToPageReqd" />
+											</memberLinkTo>
+											<targetBlank
+												granite:class="hide list-option-memberlink-showhide-target" 
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+												name="./targetBlank"
+												text="Select to Open Link in New Window"
+												uncheckedValue="false" 
+												value="true">
+												<granite:data jcr:primaryType="nt:unstructured"
+													showhidetargetvalue="linkToPageReqd" />
+											</targetBlank>
+											<iconSelector jcr:primaryType="nt:unstructured"
+												sling:orderBefore="orderBy"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldDescription="Choose an icon to display for the member"
+												fieldLabel="Select Member Icon:" 
+												name="./memberIcon">
+												<datasource jcr:primaryType="nt:unstructured"
+													sling:resourceType="/apps/chinational/components/datasource"
+													path="/etc/config/chinational/components/iconSelectorLocations" />
+											</iconSelector>
+										</items>
+									</well>
+								</items>
+							</column>
+						</items>
+					</otherSettingsTab>
+				</items>
+			</tabs>
+		</items>
+	</content>
+</jcr:root>

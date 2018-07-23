@@ -1,0 +1,43 @@
+
+<div class="physicianTiles physician-tiles-padding">
+	<div class="component">
+		<div class="row bottom-buffer">
+
+			<hr class="member-width">
+
+			<div class="tiles-wrapper physician_tiles_list members-tile-width">
+				<div class="tile">
+
+					<div class="row tile-inner">
+
+						<h3 data-sly-test="${!properties.memberName  && wcmmode.edit}">No
+							profile is configured, use dialog to add information</h3>
+
+						<sly data-sly-test="${properties.memberName}">
+
+						<div class="tile-img col-xs-5 col-md-4">
+							<sly data-sly-test.link="${properties.memberImageSrc}"> <img
+								src="${properties.memberImageSrc @ context='unsafe'}"
+								alt="Profile Image"> </sly>
+							<sly data-sly-test="${!link}"> <img
+								src="/content/dam/chi-national/website/sample-page-images/goodrich-chuck.jpg"
+								alt="Default Image"> </sly>
+						</div>
+						<div class="tile-desc col-xs-7 col-md-8 tile-desc-width">
+							<sly
+								data-sly-test.linkMember="${properties.selectLinkForMember == 'linkToPageReqd'}">
+							<span class="small-heading heading_site_color"> <a
+								href="${properties.memberLinkTo}"
+								target="${properties.targetBlank == 'true' ?'_blank':'_self'}">${properties.memberName}</a>
+							</span> </sly>
+							<span data-sly-test="${!linkMember}"
+								class="small-heading heading_site_color">${properties.memberName}</span>
+							<p>${properties.memberExpertise}</p>
+						</div>
+						</sly>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

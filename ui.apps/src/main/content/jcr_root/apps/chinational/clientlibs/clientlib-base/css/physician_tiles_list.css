@@ -289,3 +289,33 @@
     display: none;
   }
 }
+
+
+/* Added by German for Member Tiles */ 
+
+.member-width {
+	max-width: 400px;
+}
+
+.members-tile-width {
+	max-width: 600px;
+}
+
+.tile-desc-width {
+	max-width: 250px;
+}
+
+.column-tiles {
+    width: 50%;
+    float: left;
+}
+
+.physician-tiles-padding {
+	padding-left: 30px;
+}
+
+.physician-tiles-group {
+	width: 600px;
+	display: flex;
+}
+
