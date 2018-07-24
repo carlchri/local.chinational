@@ -15,7 +15,7 @@
 */ -->
 	
 	<div class="blog-content pstn-reltv stickToTop">
-		<a href="${item.path @ extension='html'}">
+		<a href="${item.properties.cq:redirectTarget || item.path @ extension='html'}">
 	    	<span class="blog-title dblock txt-green tiles_heading_site_color blogs_heading_hover">
 	     	${item.properties.newsHeading || item.pageTitle || item.title || item.name}
 	    	</span>
@@ -26,7 +26,7 @@
 	    </span>
 	    <p>${item.properties.excerpt}</p>
 	</div>
-	<a class="bold-link stickToBottom" href="${item.path @ extension='html'}">
+	<a class="bold-link stickToBottom" href="${item.properties.cq:redirectTarget || item.path @ extension='html'}">
 	    READ MORE
 	</a>
 

@@ -20,7 +20,7 @@
 		</div>
 */ -->         	
 		<div class="content-gutter-with-image cmp-text">
-           <a href="${item.path @ extension='html'}">
+           <a href="${item.properties.cq:redirectTarget || item.path @ extension='html'}">
                <h2 class="news_blog_featured_heading blogs_heading_hover blog-featured-bleed">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</h2>
            </a>
            <span data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">
@@ -29,7 +29,7 @@
             
            <p data-sly-test="${item.properties.excerpt}">${item.properties.excerpt}</p>
 			<div class="link-wrapper">
-				<a class="learn-more-btn white-border" href="${item.path @ extension='html'}">
+				<a class="learn-more-btn white-border" href="${item.properties.cq:redirectTarget || item.path @ extension='html'}">
 					<span>READ MORE</span>
 				</a>
 			</div>

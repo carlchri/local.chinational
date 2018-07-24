@@ -1,6 +1,6 @@
 <template data-sly-template.item="${@ list, item}">
     <article>
-        <a href="${item.path @ extension='html'}">
+        <a href="${item.properties.cq:redirectTarget || item.path @ extension='html'}">
             <h4 class="news_blog_list_heading"><span class="news_heading_hover">${item.properties.newsHeading || item.pageTitle || item.title || item.name}</span></h4>
         </a>
         <span class="news_blog_list_heading" 
