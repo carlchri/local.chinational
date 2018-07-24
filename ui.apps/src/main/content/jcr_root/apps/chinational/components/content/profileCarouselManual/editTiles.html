@@ -1,0 +1,14 @@
+<sly data-sly-use.tiles="org.chi.aem.common.components.model.ProfileCarouselManual"></sly>
+
+
+<div class="container">
+	<div class="row">
+		<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
+	       	<div class="col-cx-12 col-sm-6 col-md-4">
+				<span class="sub-heading" style="text-align:center;">${eachTile}</span>
+		  	   	<div data-sly-resource="${eachTile @ resourceType='chinational/components/content/membersTiles'}"></div>
+	        </div>
+	    </sly>
+	</div>
+</div>
+
