@@ -1,34 +1,4 @@
-
-<div class="row"  data-sly-test="${pageProperties.imageSrc}">
-    <div class="col-sm-12">
-        <div class="full-image">
-            <div >
-                <picture>
-                    <img class="image-responsive" src="${pageProperties.imageSrc}">
-                </picture>
-            </div>
-            <div class="padding-5" data-sly-test="${pageProperties.imageCaption}">
-                <p class="light-txt">${pageProperties.imageCaption}</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div style="border: 1px solid black;" data-sly-test="${(wcmmode.edit || wcmmode.design) && (pageProperties.imageSrc || (pageProperties.tileImageSrc && pageProperties.tileImageOption == 'separateTileImage'))}">
-    <h3>Edit Header image, if required (this is displayed during edit mode only)</h3>
-    <div data-sly-test="${pageProperties.imageSrc}"
-         data-sly-resource="${ @path='nb-header-image', resourceType='chinational/components/content/imageHeaderNewsBlog'}"></div>
-    <sly data-sly-test="${pageProperties.tileImageOption == 'editHeaderImage'}">
-        <h4>Edit Header Image to create tile image (displayed during edit mode only)</h4>
-        <div
-                data-sly-resource="${ @path='nb-tile-from-header-image', resourceType='chinational/components/content/imageTileFromHeaderNewsBlog'}"></div>
-    </sly>
-    <sly data-sly-test="${pageProperties.tileImageSrc && pageProperties.tileImageOption == 'separateTileImage'}">
-        <h4>Edit Tile Image (displayed during edit mode only)</h4>
-        <div
-                data-sly-resource="${ @path='nb-tile-image', resourceType='chinational/components/content/imageTileNewsBlog'}"></div>
-    </sly>
-</div>
+<sly data-sly-include="../../commons/newsblogimage.html"></sly>
 
 <div data-sly-resource="${ @path='main-respgrid', resourceType='chinational/components/foundation/responsivegrid'}"></div>
 <div data-sly-test="${pageProperties.displayQuoteComponent}"

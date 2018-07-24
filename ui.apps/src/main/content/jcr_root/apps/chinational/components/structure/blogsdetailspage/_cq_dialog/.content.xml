@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="nt:unstructured">
-    <content jcr:primaryType="nt:unstructured">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    extraClientlibs="[chinational.blogsdetailspage.editor]">
+    <content
+        granite:class="chi-blogs-details-page-editDialog"
+        jcr:primaryType="nt:unstructured"
+        margin="{Boolean}false">
         <items jcr:primaryType="nt:unstructured">
-            <tabs jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                maximized="{Boolean}false">
                 <items jcr:primaryType="nt:unstructured">
                     <basic jcr:primaryType="nt:unstructured"/>
-                    <advanced
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
                     <socialmedia
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
@@ -95,10 +98,84 @@
                         </items>
                     </blogsdetail>
                     <imagedetails
-                            jcr:primaryType="nt:unstructured"
-                            sling:orderBefore="advanced"
-                            sling:resourceType="granite/ui/components/coral/foundation/include"
-                            path="/apps/chinational/components/commons/cq_dialog/granite/newsBlogImageTab"/>
+                        jcr:primaryType="nt:unstructured"
+                        sling:orderBefore="advanced"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/chinational/components/commons/cq_dialog/granite/newsBlogImageTab"/>
+                    <advanced
+                        cq:showOnCreate="{Boolean}true"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Advanced"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <section1
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Settings"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <language
+                                                granite:class="language"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                disabled="{Boolean}true"
+                                                emptyText="Select"
+                                                fieldLabel="Language"
+                                                name="./jcr:language"
+                                                renderReadOnly="{Boolean}true"
+                                                translateOptions="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-msm-lockable="jcr:language"/>
+                                                <datasource
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/common/datasources/languages"
+                                                    addNone="{Boolean}true"/>
+                                            </language>
+                                            <redirect
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Redirect"
+                                                name="./cq:redirectTarget"
+                                                rootPath="/content">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-msm-lockable="cq:redirectPath"/>
+                                            </redirect>
+                                            <designs
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="{Boolean}true"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Design"
+                                                name="./cq:designPath"
+                                                renderReadOnly="{Boolean}true"
+                                                rootPath="/etc/designs">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-msm-lockable="cq:designPath"/>
+                                            </designs>
+                                            <alias
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:hideResource="{Boolean}true"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Alias"
+                                                name="./sling:alias"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-msm-lockable="sling:alias"/>
+                                            </alias>
+                                        </items>
+                                    </section1>
+                                </items>
+                            </column>
+                        </items>
+                    </advanced>
                 </items>
             </tabs>
         </items>

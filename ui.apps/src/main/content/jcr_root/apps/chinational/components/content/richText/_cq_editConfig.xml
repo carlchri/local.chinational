@@ -137,14 +137,6 @@
                             jcr:primaryType="nt:unstructured"
                             cssName="small_text_style small_text_link_site_color"
                             text="Small Text"/>
-                        <news_list_heading
-                            jcr:primaryType="nt:unstructured"
-                            cssName="news_blog_list_heading_style news_heading_hover tiles_heading_site_color"
-                            text="News/Blog List Heading"/>
-                        <news_list_date
-                            jcr:primaryType="nt:unstructured"
-                            cssName="news_blog_list_date_style"
-                            text="News/Blog List Date"/>
                     </styles>
                 </styles>
             </rtePlugins>
