@@ -14,7 +14,7 @@
 
 .chi-audio-player .mejs__mediaelement, .chi-audio-player .mejs__playpause-button, .chi-audio-player .mejs__time {border-left:none !important;}
 .chi-audio-player .mejs__time-rail {margin-left:0; padding-left:10px; padding-right:10px;}
-.chi-audio-player .mejs__time-total {width:98%;margin: 7px 0 0;}
+.chi-audio-player .mejs__time-total {background-color: rgba(255, 255, 255, 0.3);width:98%;margin: 7px 0 0}
 
 .chi-audio-player .mejs-download-control {
 	padding: 0px 5px 0px 5px; 
