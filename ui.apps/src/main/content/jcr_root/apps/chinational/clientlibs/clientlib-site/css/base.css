@@ -809,6 +809,10 @@ label {
     /* Naresh - no padding needed for bottom*/
 }
 
+.image-wrape .nb-textwrap p:first-child{
+    margin-top: -20px;
+}
+
 /*
 .image-wrape p {
     margin: 0 0 30px 0;

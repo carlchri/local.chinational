@@ -1,6 +1,6 @@
 <sly data-sly-use.imageInfo="org.chi.aem.common.components.model.NewsBlogImageModel"/>
 
-<div class="row"  data-sly-test="${imageInfo.imagePath}">
+<div class="row"  data-sly-test="${imageInfo.imagePath && !properties.enableWrapAround}">
     <div class="col-sm-12">
         <div class="full-image">
             <div>
@@ -15,7 +15,15 @@
     </div>
 </div>
 
-<div style="border: 1px solid black;" data-sly-test="${(wcmmode.edit || wcmmode.design) && (pageProperties.imageSrc || (pageProperties.tileImageSrc && pageProperties.tileImageOption == 'separateTileImage'))}">
+<div class="row image-wrape" data-sly-test="${imageInfo.imagePath && properties.enableWrapAround}">
+    <img class="image-max-width-responsive"
+         src="${imageInfo.imagePath @ context='unsafe'}" />
+    <div class="nb-textwrap" data-sly-resource="${'richTextWrap' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
+    </div>
+</div>
+
+<div class="row" style="border: 1px solid black;"
+     data-sly-test="${(wcmmode.edit || wcmmode.design) && (pageProperties.imageSrc || (pageProperties.tileImageSrc && pageProperties.tileImageOption == 'separateTileImage'))}">
     <h3>Edit Header image, if required (this is displayed during edit mode only)</h3>
     <div data-sly-test="${pageProperties.imageSrc}"
          data-sly-resource="${ @path='nb-header-image', resourceType='chinational/components/content/imageHeaderNewsBlog'}"></div>
