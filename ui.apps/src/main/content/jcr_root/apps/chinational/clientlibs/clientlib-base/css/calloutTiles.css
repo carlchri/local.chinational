@@ -11,8 +11,8 @@
 /* June 7, 2018 Added by Davinder CHIP27 */
 
 .icons-row .icon-container {
-	width:35px;
-	height:35px;
+	/*width:35px;
+	height:35px;*/ /* Removed as per Chris*/
 	display:inline-block;
 	margin:15px 30px 15px 0px;
 }
