@@ -305,17 +305,22 @@
 	max-width: 250px;
 }
 
-.column-tiles {
-    width: 50%;
-    float: left;
-}
 
 .physician-tiles-padding {
 	padding-left: 30px;
 }
 
-.physician-tiles-group {
-	width: 600px;
-	display: flex;
+
+#wrapper {
+    width: 100%;
 }
 
+#first {
+    float:left;
+    width:50%;
+}
+
+#second {
+    float:left;
+    width:50%;
+}
