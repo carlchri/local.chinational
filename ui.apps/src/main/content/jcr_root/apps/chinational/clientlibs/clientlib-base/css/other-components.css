@@ -37,7 +37,7 @@
    .Request-appointment {
     width: 153px;
     height: 15px;
-    font-family: MyriadPro;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     font-size: 15px;
     font-weight: bold;
     font-style: normal;
@@ -66,7 +66,7 @@
       .Request-appointment {
         width: 153px;
         height: 15px;
-        font-family: MyriadPro;
+        font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
         font-size: 15px;
         font-weight: bold;
         font-style: normal;
