@@ -8,8 +8,7 @@
 					</h3>
 					<div class="owl-carousel owl-theme profile-carousel">
 						<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
-							<div class="carousel-item item" 
-								 data-sly-resource="${eachTile @ resourceType='chinational/components/content/membersTiles'}">
+							<div data-sly-resource="${eachTile @ resourceType='chinational/components/content/membersTiles', selectors='tilesCarousel'}">
 							</div>
 						</sly>
 					</div>
