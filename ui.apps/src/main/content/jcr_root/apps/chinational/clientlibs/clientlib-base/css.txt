@@ -13,7 +13,6 @@ css/foundation.css
 css/herocomponencarousel.css
 css/inspiremedia_new.css
 css/intro.css
-css/location.css
 css/loading.css
 css/Jobcarousel.css
 css/media-kit.css
@@ -34,4 +33,5 @@ css/video.popup.css
 css/search.less
 css/photoBandWithForm.css
 css/bootstrap-multiselect.css
+css/location.css
 css/aem-override.css
