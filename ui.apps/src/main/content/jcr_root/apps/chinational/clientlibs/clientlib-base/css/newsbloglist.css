@@ -92,12 +92,25 @@
 .featured-news-blog .image-col{
 	/* min-width:349px; Commented out by Davinder July 13, 2018 */
 	/* bmin-height:185px; Commented out by Davinder July 13, 2018 */
-	max-width:360px; /* Davinder July 13, 2018 - 330px + 30px [paddong by col-] = 360px */
 	max-height:185px; /* Davinder Jul 13, 2018 */
+	max-width:360px; /* Davinder July 13, 2018 - 330px + 30px [paddong by col-] = 360px */
 	margin-right:26px;
-	width:auto; /* Davinder Jul 13, 2018 - to override width:349px coming from image-col class */
+	/*width:auto;*/ /* Davinder Jul 13, 2018 - to override width:349px coming from image-col class */
 	height:auto; /* Davinder Jul 13, 2018 - to override height:270px coming from image-col class */
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	/* Naresh - addition for 16:9 and center/crop*/
+	width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+/* New approach for 16:9 and crop to center*/
+.featured-news-blog .image-col img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .featured-news-blog .image-col img{
@@ -106,6 +119,7 @@
 	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
 	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
 }
+
 
 .blogs-list-form .full-bleed-tiles{
 	margin-left:-60px;
