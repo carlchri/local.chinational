@@ -1,3 +1,4 @@
+<sly data-sly-use.defaultValues="org.chi.aem.common.utils.DefaultValues"></sly>
 
 <div class="physicianTiles physician-tiles-padding">
 	<div class="component">
@@ -20,7 +21,7 @@
 								src="${properties.memberImageSrc @ context='unsafe'}"
 								alt="Profile Image"> </sly>
 							<sly data-sly-test="${!link}"> <img
-								src="/content/dam/chi-national/website/sample-page-images/goodrich-chuck.jpg"
+								src="${defaultValues.defaultMembersPhotoSrc}"
 								alt="Default Image"> </sly>
 						</div>
 						<div class="tile-desc col-xs-7 col-md-8 tile-desc-width">
