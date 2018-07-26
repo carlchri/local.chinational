@@ -14,15 +14,26 @@
 		<div class="col-xs-12">
 	        <div class="row flex">
 				<sly data-sly-list.featuredNews="${newsList.featuredNews}">
+		            <sly data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = featuredNews.path, articleType=currentStyle.selectArticleType}" />				
 		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-4':'col-md-3'}
 		           				${(newsList.featuredNews.size == 1)?'last-tile-tablet-margin-bottom':''}
 		           				${(newsList.featuredNews.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
 		           				${(newsList.featuredNews.size == 3 && featuredNewsList.count == 3)?'last-tile-tablet-margin-bottom':''}"> 
+
 	                    <div class="full-image blog-image" 
-	                    	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && (featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc)}">
-	                    	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
-	                             alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+	                    	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && imageInfo.tileImagePath}">
+	                    	 <div class="blog-image-container">
+	                    		<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
+	                             	 alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+                             </div>
 	                    </div>
+<!--  /* 	                    
+ <div class="full-image blog-image" 
+ 	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && (featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc)}">
+ 	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
+          alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
+ </div>
+*/ -->	                    
 	                    
 	                    <div class="blog-content pstn-reltv stickToTop">
 	                    	<a href="${featuredNews.path @ extension='html'}" target="${currentStyle.targetBlank ?'_blank':'_self'}">

@@ -44,7 +44,7 @@
                                                         value="email"/>
                                                     <tel
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Tel"
+                                                        text="Phone"
                                                         value="tel"/>
                                                 </items>
                                             </fieldType>

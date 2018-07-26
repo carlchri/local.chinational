@@ -65,7 +65,7 @@ public final class NewsBlogImageUtils {
         return null;
     }
 
-    public static String getTileImage(Page page){
+    public static String getTileImage(Page page, String articleType){
         String tileImage = null;
         if (page != null) {
             // check tileImageOption
@@ -88,12 +88,17 @@ public final class NewsBlogImageUtils {
             }
         }
         // if all fail, get default image
-        return getDefaultTileImage(tileImage);
+        return getDefaultTileImage(tileImage, articleType, page);
     }
 
-    private static String getDefaultTileImage(String tileImage){
+    private static String getDefaultTileImage(String tileImage, String articleType, Page page){
         if (tileImage == null || tileImage.equals("")) {
             // TODO - lets get tile image
+        	if(articleType.equals("news")){
+        		tileImage = DefaultValuesUtils.getDefaultNewsTileImgSrc(page);
+        	} else if(articleType.equals("blogs")){
+        		tileImage = DefaultValuesUtils.getDefaultBlogsTileImgSrc(page);
+        	}
         }
         return tileImage;
     }

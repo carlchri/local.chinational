@@ -2,21 +2,17 @@
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
     <div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
-        <label class="button-label" data-sly-test="${audio.sectionHeading}">
-            ${audio.sectionHeading}
-        </label>
-        <audio controls preload="none" id="player">
-        <source src="${audio.audioUrl}" type="audio/mpeg">
-        <object width="320" height="188" data="https://home.catholichealth.net/hsfp/fp/flowplayer.min.js" type="application/x-shockwave-flash">
-            <param value="https://home.catholichealth.net/hsfp/fp/flowplayer.min.js" name="audio"></param>
-            <param value="true" name="allowFullScreen"></param>
-            <param value="transparent" name="wmode"></param>
-            <param value="config={'playlist':[{'url':'https://home.catholichealth.net/static-vcm/Inside CHI/Clinical/FY08 Toolkit/SCIP/8 13 07 REORDING SCIP Part I.mp3','autoPlay':false}]}" name="flashVars"></param>
-        </object>
-        Your browser does not support the audio element. Try installing a newer browser such as
-        <a href="http://www.google.com/chrome/" taget="chrome">Chrome</a> or
-        <a href="http://getfirefox.com" target="firefox">Firefox</a>, or clicking a link below
-    </audio>
+        <div class="col-xs-12 col-md-8" style="max-width: 650px">
+            <label class="button-label" data-sly-test="${audio.sectionHeading}">
+                ${audio.sectionHeading}
+            </label>
+            <div class="chi-audio-player-d">
+                <audio class="chi-audio-player"
+                       src="${audio.audioUrl}"
+                       type="audio/mp3" controls>
+                </audio>
+            </div>
+        </div>
     </div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>
