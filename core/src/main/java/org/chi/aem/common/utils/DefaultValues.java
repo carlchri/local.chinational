@@ -133,6 +133,10 @@ public class DefaultValues extends WCMUsePojo {
 			final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
 			defaultMembersPhotoSrc = pageProperties.getInherited(DEFAULT_MEMBERS_TILE_IMG_SRC, String.class);
 			LOGGER.info("Default Members Tile Image Src : " + defaultMembersPhotoSrc);
+			LOGGER.info("Default  Blogs Image Src : " + pageProperties.getInherited(DEFAULT_BLOGS_TILE_IMG_SRC, String.class));
+			LOGGER.info("Default  News Image Src : " + pageProperties.getInherited(DEFAULT_NEWS_TILE_IMG_SRC, String.class));
+			LOGGER.info("Default Blogs path Src : " + pageProperties.getInherited(DEFAULT_BLOGS_PATH, String.class));
+			LOGGER.info("Default News path Src : " + pageProperties.getInherited(DEFAULT_NEWS_PATH, String.class));
 			if (defaultMembersPhotoSrc == null) {
 	            LOGGER.trace("could not find inherited property for ", resource);
 	            defaultMembersPhotoSrc = DEFAULT_MESSAGE;
