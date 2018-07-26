@@ -135,6 +135,97 @@
   display: none;		It was creating an issue with the accordion feature, removed by German
 } */
 
+/* Added by Davinder for EAS4 work */
+
+.loc-details-box {
+  background: #426da9;
+  padding:26px 53px 34px 65px;
+}
+
+.loc-details-box-heading{
+	font-family: MyriadPro;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	color: #ffffff;
+	padding-bottom:23px;
+}
+
+.loc-details-box-desc{
+	font-family: MyriadPro;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	color: #ffffff;	
+}
+
+/* end of additions by Davinder */
+
+@media (max-width:991px) {
+	
+	/* Added by Davinder for EAS4 work */
+	
+	.loc-details-box {
+	  padding:25px 33px 37px 36px;
+	}
+	
+	.loc-details-box-heading{
+		padding-bottom:21px;
+	}
+	
+	/* end of additions by Davinder */
+	
+}
+
+@media (max-width:767px) {
+	
+	/* Added by Davinder for EAS4 work */
+	
+	.loc-details-box {
+	  padding:25px 28px 31px 32px;
+	}
+
+	.read-more-box {
+		max-height: 99px;
+	    overflow: hidden;
+	}	
+	
+	.read-more-button {
+	    width: 100%;
+		font-family: MyriadPro;
+		font-size: 16px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.25;
+		letter-spacing: normal;
+		color: #ffffff;	
+	    background: #426da9;
+	}
+	
+	.read-more-button-wrapper{
+		padding-top:25px;
+	}
+	
+	.read-more-button-wrapper i{	
+		border-color: #ffffff;
+	    left: 3px;
+	    width: 8px;
+	    height: 8px;
+	    border-width: 2px;
+	    margin: 0;
+	}
+		
+	/* end of additions by Davinder */
+	
+}
+
 @media (max-width: 480px) {
   	.location #map {
 	  	display: none;   /* Added by German to fix MAM-22  */

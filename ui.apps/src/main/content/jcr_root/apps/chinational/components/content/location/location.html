@@ -61,6 +61,23 @@
 			</sly>
         </div>
     </div>
+
+    <div class="row" data-sly-test="${properties.detailsBoxOption == 'enable'}">
+	    <div class="col-xs-12">
+		    <div class="loc-details-box">
+			    <span class="loc-details-box-heading">${properties.detailsBoxHeading}</span>
+			    <div class="read-more-box">
+				    <span class="loc-details-box-desc">${properties.locDescription}</span>
+			    </div>
+			    <div class="read-more-button-wrapper" style="display:none;">
+			    	<a href="" class="read-more-button">
+			    	Read More <i class="arrow-right"></i> 
+			    	</a>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+
     </div>
 
     <script>
