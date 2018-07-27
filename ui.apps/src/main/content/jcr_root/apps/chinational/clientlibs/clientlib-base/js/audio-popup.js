@@ -21,9 +21,9 @@ $(document).ready(function() {
             audioVolume: 'horizontal',
             audioWidth: '100%',
             audioHeight: 45,
-            iPadUseNativeControls: true,
-            iPhoneUseNativeControls: true,
-            AndroidUseNativeControls: true
+            iPadUseNativeControls: false,
+            iPhoneUseNativeControls: false,
+            AndroidUseNativeControls: false
           });
 	$(".mejs__time").each(
 	function (a,b){
