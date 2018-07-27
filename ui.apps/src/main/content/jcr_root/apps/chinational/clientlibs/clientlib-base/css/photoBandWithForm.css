@@ -52,7 +52,7 @@
 	font-size:16px;
 	line-height:20px;
     object-fit: contain;
-    font-family: MyriadPro;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -61,6 +61,10 @@
     text-align: left;
     color: #53565a;
     border-radius:0px;
+}
+
+.photo-band-form .form-control::-moz-placeholder {
+  color: #53565a;
 }
 
 .photo-band-form .photo-band-form-select {
@@ -72,7 +76,12 @@
 
 .photo-band-form .form-group span{
 	width:100%;
+	/*color: #53565a;*/
 }
+
+/*.photo-band-form .form-group input{
+	color: #53565a;
+}*/
 
 .photo-band-form .form-group span .btn-group{
 	width:inherit;
@@ -86,7 +95,7 @@
     padding:5px 12px 8px;
     font-size:16px;
 	text-align:left;
-    font-family: MyriadPro;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -117,7 +126,7 @@
     color: #53565a;
     font-size:16px;
 	text-align:left;
-    font-family: MyriadPro;
+    font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -188,7 +197,7 @@
 	margin:0 0 44px;
 	padding-bottom:10px;
 	color:#fff;
-	text-align: center;
+	text-align: right;
 }
 
 @media (max-width:991px) {

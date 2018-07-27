@@ -22,7 +22,9 @@ import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.chi.aem.common.utils.*;
+import org.chi.aem.common.utils.NewsBlogUtils;
+import org.chi.aem.common.utils.DefaultValuesUtils;
+import org.chi.aem.common.utils.NewsBlogImageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -251,33 +253,9 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	            if(sMap.get("excerpt", String.class) != null) {
 	            	jsonObject.put("excerpt", sMap.get("excerpt", String.class));
 	            }
-	            if(sMap.get("tileImageSrc", String.class) != null) {
-	            	jsonObject.put("tileImageSrc", sMap.get("tileImageSrc", String.class));
-	            } else if(sMap.get("imageSrc", String.class) != null){
-	            	jsonObject.put("tileImageSrc", sMap.get("imageSrc", String.class));
-	            } else {
-	        		String defaultBlogsTileImgSrc = "";
-	            	if(resource != null){
-	            		// LOGGER.info("Resourec Path : " + resource.getPath());
-	        			final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
-	        			defaultBlogsTileImgSrc = pageProperties.getInherited(DEFAULT_BLOGS_TILE_IMG_SRC, String.class);
-	        			// LOGGER.info("Default Blogs Tile Image Src : " + defaultBlogsTileImgSrc);
-	        			if (defaultBlogsTileImgSrc == null) {
-	        	            LOGGER.trace("could not find inherited property for ", resource);
-	        	            defaultBlogsTileImgSrc = DEFAULT_MESSAGE;
-	        			}
-	            	} else {
-	                    defaultBlogsTileImgSrc = DEFAULT_MESSAGE;
-	            	}
-	            	
-	               if (StringUtils.isNotEmpty(defaultBlogsTileImgSrc) && !"#".equals(defaultBlogsTileImgSrc)) {
-	            	   defaultBlogsTileImgSrc = LinkUtils.externalize(defaultBlogsTileImgSrc);            
-	                }
-	                // LOGGER.info("Default Blogs Tile Image Src : " + defaultBlogsTileImgSrc);
-	            	jsonObject.put("tileImageSrc", defaultBlogsTileImgSrc);
-	            	// jsonObject.put("tileImageSrc", "/content/dam/chi-national/website/images/heart_healthy_tile.png");
-	            	jsonObject.put("noImagePresent", true);
-	            }
+	            String tileImgSrc = NewsBlogImageUtils.getTileImage(item, "blogs");
+            	jsonObject.put("tileImageSrc", tileImgSrc);
+	            
 	            jsonBlogs.put(jsonObject);
 	        }
 	        

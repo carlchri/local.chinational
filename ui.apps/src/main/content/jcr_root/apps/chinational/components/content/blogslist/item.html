@@ -1,14 +1,22 @@
-<template data-sly-template.item="${@ list, item}">
+<template data-sly-template.item="${@ list, item}"
+		  data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = item.path, articleType='blogs'}">
 
+	<div class="full-image blog-image">
+		<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
+	         alt="${item.properties.newsHeading || item.pageTitle || item.title || item.name}" />
+	</div>
+	
+<!-- /* 	
 	<div class="full-image blog-image" 
 		 data-sly-test.imagePresent="${item.properties.tileImageSrc || item.properties.imageSrc}">
 		<img src="${item.properties.tileImageSrc || item.properties.imageSrc @ context='unsafe'}" 
 	         alt="${item.properties.newsHeading || item.pageTitle || item.title || item.name}" />
 	</div>
+*/ -->
 	
 	<div class="blog-content pstn-reltv stickToTop">
 		<a href="${item.path @ extension='html'}">
-	    	<span class="blog-title dblock txt-green tiles_heading_site_color blogs_heading_hover ${imagePresent ? '' : 'padding-top-0'}">
+	    	<span class="blog-title dblock txt-green tiles_heading_site_color blogs_heading_hover">
 	     	${item.properties.newsHeading || item.pageTitle || item.title || item.name}
 	    	</span>
 	    </a>

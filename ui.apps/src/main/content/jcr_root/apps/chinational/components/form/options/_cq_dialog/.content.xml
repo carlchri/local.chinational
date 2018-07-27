@@ -36,11 +36,11 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <dropdown
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Radio Button"
+                                                        text="Single Select"
                                                         value="drop-down"/>
                                                     <multiDropDown
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Checkbox"
+                                                        text="Multiple Select"
                                                         value="multi-drop-down"/>
                                                 </items>
                                             </optionTypes>

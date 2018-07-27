@@ -1,6 +1,8 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />    
 
-<div class="full-image blog-image" data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
+<div class="full-image blog-image">
+	<div class="blog-image-container" data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedTileImage'}">
+	</div>
 </div>
 
 <div class="blog-content pstn-reltv stickToTop">
