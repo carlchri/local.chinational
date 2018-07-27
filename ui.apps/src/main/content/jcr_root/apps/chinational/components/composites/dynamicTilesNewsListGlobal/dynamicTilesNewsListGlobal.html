@@ -22,19 +22,10 @@
 
 	                    <div class="full-image blog-image" 
 	                    	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && imageInfo.tileImagePath}">
-	                    	 <div class="blog-image-container">
-	                    		<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
+	                    		<img src="${imageInfo.tileImagePath @ context='unsafe'}"
 	                             	 alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
-                             </div>
 	                    </div>
-<!--  /* 	                    
- <div class="full-image blog-image" 
- 	 data-sly-test.imagePresent="${!currentStyle.imageNotRequired && (featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc)}">
- 	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
-          alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
- </div>
-*/ -->	                    
-	                    
+
 	                    <div class="blog-content pstn-reltv stickToTop">
 	                    	<a href="${featuredNews.path @ extension='html'}" target="${currentStyle.targetBlank ?'_blank':'_self'}">
 	                        	<span class="blog-title dblock txt-green tiles_heading_site_color news_heading_hover ${imagePresent ? '' : 'padding-top-0'}">
