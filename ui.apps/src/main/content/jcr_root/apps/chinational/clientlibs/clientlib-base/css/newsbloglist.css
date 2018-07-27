@@ -92,12 +92,25 @@
 .featured-news-blog .image-col{
 	/* min-width:349px; Commented out by Davinder July 13, 2018 */
 	/* bmin-height:185px; Commented out by Davinder July 13, 2018 */
-	max-width:360px; /* Davinder July 13, 2018 - 330px + 30px [paddong by col-] = 360px */
 	max-height:185px; /* Davinder Jul 13, 2018 */
+	max-width:360px; /* Davinder July 13, 2018 - 330px + 30px [paddong by col-] = 360px */
 	margin-right:26px;
-	width:auto; /* Davinder Jul 13, 2018 - to override width:349px coming from image-col class */
+	/*width:auto;*/ /* Davinder Jul 13, 2018 - to override width:349px coming from image-col class */
 	height:auto; /* Davinder Jul 13, 2018 - to override height:270px coming from image-col class */
 	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	/* Naresh - addition for 16:9 and center/crop*/
+	width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+/* New approach for 16:9 and crop to center*/
+.featured-news-blog .image-col img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .featured-news-blog .image-col img{
@@ -106,6 +119,7 @@
 	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
 	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
 }
+
 
 .blogs-list-form .full-bleed-tiles{
 	margin-left:-60px;
@@ -124,7 +138,7 @@
     min-width: 48.8%;
     min-height: 198px;
 }
-    
+
 .full-bleed .featured-news-blog .content-gutter-with-image {
     padding: 31px 25px 26px 25px;
 }
@@ -146,9 +160,39 @@
 	margin:12px 0 0;
 }
 
-.mc_list.filtered_blogs_list .blog-image{
+/*.mc_list.filtered_blogs_list .blog-image{
     height: 233px;
+}*/
+
+.mc_list.filtered_blogs_list .blog-image {
+	/* max-width of image available = 420px - 30px [padding col-] = 390px
+	   with aspect ratio 16:9 & width 390px - height will be (390/16) x 9 = 220px
+	   So, height should be 220px not 236px as mentioned by Chris */
+	max-height: 233px; /* Davinder - Jul 13, 2018 - changed from 145px to 220px*/
+	max-width:416px; /* Davinder July 13, 2018 */
+	/* width:auto;  Davinder Jul 13, 2018 - to override width coming from other places */
+	height: auto; /* Davinder - Jul 13, 2018 */
+	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
 }
+
+/* New approach for 16:9 and crop to center*/
+.mc_list.filtered_blogs_list .blog-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mc_list.filtered_blogs_list .blog-image img{
+	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
+	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
+	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
+}
+
 
 .mc_list.filtered_blogs_list .blog-title{
     line-height: 1.2;
@@ -286,9 +330,6 @@ ul.filtered_blogs_list {
 		padding:0;
 	}
 
-	.mc_list.filtered_blogs_list .blog-image{
-	    height: 186px;
-	}
 
 	.filtered_blogs_list .blog-item {
 		margin-bottom:60px;
@@ -329,6 +370,11 @@ ul.filtered_blogs_list {
 }
 
 @media (max-width: 767px) {
+    .mc_list.filtered_blogs_list .blog-image{
+        max-height: 186px;
+        max-width: 330px;
+    }
+
 	.blogs-list-form .full-bleed-tiles, .right-rail-container .blogs-list-form .full-bleed-tiles{
 		margin-left:-30px;
 		margin-right:-30px;

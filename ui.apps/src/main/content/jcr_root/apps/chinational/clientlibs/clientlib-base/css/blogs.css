@@ -75,6 +75,14 @@
     left: 0;
     right: 0;
 }
+/* New approach for 16:9 and crop to center*/
+.tnl-wrapper .blog-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 .tnl-wrapper .blog-image img{
 	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
 	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
