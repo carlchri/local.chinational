@@ -77,6 +77,14 @@
                 zoom: 15,
                 center: uluru
             });
+
+            map.setOptions({styles: [{
+                featureType: "poi",
+                stylers: [
+                  { visibility: "off" }
+                ]
+            }]});
+
             
          	// ATT'N NARESH!!!
          	// The following methods will display some window when the user clicks on the red pin on the map
