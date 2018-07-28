@@ -67,7 +67,7 @@
 		    <div class="loc-details-box">
 			    <span class="loc-details-box-heading">${properties.detailsBoxHeading}</span>
 			    <div class="read-more-box">
-				    <span class="loc-details-box-desc">${properties.locDescription}</span>
+				    <span class="loc-details-box-desc">${properties.locDescription @context = 'html'}</span>
 			    </div>
 			    <div class="read-more-button-wrapper" style="display:none;">
 			    	<a href="" class="read-more-button">
@@ -95,14 +95,16 @@
                 center: uluru
             });
 
-            map.setOptions({styles: [{
-                featureType: "poi",
-                stylers: [
-                  { visibility: "off" }
-                ]
-            }]});
+            var hidePOI = '${properties.addressHidePOI @ context="scriptToken"}';
+            if ( hidePOI === 'true') {
+                    map.setOptions({styles: [{
+                        featureType: "poi",
+                        stylers: [
+                          { visibility: "off" }
+                        ]
+                    }]});
+            }
 
-            
          	// ATT'N NARESH!!!
          	// The following methods will display some window when the user clicks on the red pin on the map
          	// and display whatever information we will like to. Somewhat the address must be displayed there 

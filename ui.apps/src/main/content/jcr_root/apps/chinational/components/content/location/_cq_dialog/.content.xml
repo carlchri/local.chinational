@@ -82,6 +82,19 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="googleMap"/>
                                             </address>
+                                            <addressHidePOI
+                                                    granite:class="hide list-option-location-showhide-target"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldDescription="Select this checkbox to hide nearby businesses in map"
+                                                    text="Hide nearby businesses in map"
+                                                    uncheckedValue="false"
+                                                    value="true"
+                                                    name="./addressHidePOI">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="googleMap"/>
+                                            </addressHidePOI>
                                             <noDisplayButton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -209,12 +222,25 @@
                                                 wrapperClass="chi-location-details-box-heading"/>
                                             <locationDescription
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                useFixedInlineToolbar="{Boolean}true"
                                                 emptyText="Enter description for location."
                                                 fieldDescription="Enter description for location."
                                                 fieldLabel="Location Description:"
                                                 name="./locDescription"
-                                                wrapperClass="chi-location-description"/>
+                                                wrapperClass="chi-location-description">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <format
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*"/>
+                                                    <justify
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*"/>
+                                                    <misctools
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*"/>
+                                                </rtePlugins>
+                                            </locationDescription>
                                         </items>
                                     </well>
                                 </items>
