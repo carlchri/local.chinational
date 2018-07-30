@@ -80,7 +80,7 @@
 
     </div>
 
-    <script>
+    <script data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
         function initMap() {
         	
             var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
@@ -122,7 +122,7 @@
             
         }
     </script>
-    <script async defer
+    <script data-sly-test="${properties.selectLocationImageType == 'googleMap'}" async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
     </script>
 </sly>
