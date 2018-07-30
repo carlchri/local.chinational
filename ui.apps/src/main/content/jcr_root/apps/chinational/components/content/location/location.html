@@ -109,9 +109,28 @@
          	// The following methods will display some window when the user clicks on the red pin on the map
          	// and display whatever information we will like to. Somewhat the address must be displayed there 
          	// with a link to Google Maps as https://www.google.com/maps/place/ and the address separated by '+' signs
-         	
+
+         	var allHide = '${properties.addressHidePOI @ context="scriptToken"}';
+            var mapAddress = '${properties.address @ context="scriptString"}';
+            var mapName = '${properties.locationName @ context="scriptString"}';
+
+
+            //var mapLink = "<a target='_blank' href='https://www.google.com/maps/place/@" +
+            //                "${coordinates.latCord @ context="unsafe"}" + "," +
+            //                "${coordinates.lngCord @ context="unsafe"}" +
+            //                ",15z'><span> View on Google Maps </span> </a>";
+
+           var mapLink = "<a target='_blank' href='https://maps.google.com/maps?ll=" +
+                            "${coordinates.latCord @ context="unsafe"}" + "," +
+                            "${coordinates.lngCord @ context="unsafe"}" +
+                            "&z=15&t=m&hl=en-US&gl=US&mapclient=apiv3'><span> View on Google Maps </span> </a>";
+
+            var infoWindowContent = "<div class='location-info-window'> <div> <div class='title full-width'>" +
+                                        mapName + "</div> <div class='address'>" +
+                                        mapAddress + "</div> </div> <div class='view-link'>" +
+                                        mapLink + "</div> </div>";
             var infowindow = new google.maps.InfoWindow;
-            infowindow.setContent('<b>This message is for the address</b>');
+            infowindow.setContent(infoWindowContent);
 
             var marker = new google.maps.Marker({ position: uluru, map: map });
             

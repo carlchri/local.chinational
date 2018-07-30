@@ -59,6 +59,46 @@
 	max-height: 395px;
 }
 
+.location-info-window {
+    cursor: default;
+    margin-top: 3px;
+}
+
+.location-info-window .title {
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.location-info-window .full-width {
+    width: 180px;
+}
+
+.location-info-window .address {
+    margin-top: 2px;
+    color: #555;
+}
+
+.location-info-window .view-link, .location-info-window a:visited {
+    color: #427fed;
+}
+
+.location-info-window a:link {
+    text-decoration: none;
+    color: #427fed;
+}
+
+.location-info-window div, .location-info-window a {
+    color: #333;
+    font-family: Roboto,Arial;
+    font-size: 13px;
+    background-color: white;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 .sprite-v2.icon-hospital {
 	background-position: -142px -161px;
 	width: 53px;
