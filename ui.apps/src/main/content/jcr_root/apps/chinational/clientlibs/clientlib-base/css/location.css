@@ -143,7 +143,7 @@
 }
 
 .loc-details-box-heading{
-	font-family: MyriadPro;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
 	font-size: 20px;
 	font-weight: normal;
 	font-style: normal;
@@ -155,7 +155,7 @@
 }
 
 .loc-details-box-desc{
-	font-family: MyriadPro;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
 	font-size: 16px;
 	font-weight: normal;
 	font-style: normal;
@@ -198,7 +198,7 @@
 	
 	.read-more-button {
 	    width: 100%;
-		font-family: MyriadPro;
+		font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
 		font-size: 16px;
 		font-weight: normal;
 		font-style: normal;
