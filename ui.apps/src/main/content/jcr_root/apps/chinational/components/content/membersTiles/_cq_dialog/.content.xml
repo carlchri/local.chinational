@@ -41,7 +41,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="This field is mandatory"
                                                 fieldDescription="Expertise for the member:"
-                                                fieldLabel="Member Title:"
+                                                fieldLabel="Member Expertise:"
                                                 name="./memberExpertise"
                                                 required="{Boolean}true"/>
                                         </items>
@@ -107,18 +107,13 @@
                                                 text="Select to Open Link in New Window"
                                                 uncheckedValue="false"
                                                 value="true"/>
-                                            <iconSelector
+                                            <memberLogo
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="orderBy"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Choose an icon to display for the member"
-                                                fieldLabel="Select Member Icon:"
-                                                name="./memberIcon">
-                                                <datasource
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="/apps/chinational/components/datasource"
-                                                    path="/etc/config/chinational/components/iconSelectorLocations"/>
-                                            </iconSelector>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Provide image source for member logo"
+                                                fieldLabel="Member's Logo:"
+                                                name="./memberLogo"
+                                                rootPath="/content/dam"/>
                                         </items>
                                     </well>
                                 </items>
