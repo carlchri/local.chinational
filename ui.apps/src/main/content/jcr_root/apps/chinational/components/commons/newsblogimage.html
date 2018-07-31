@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="row image-wrape" data-sly-test="${imageInfo.imagePath && properties.enableWrapAround}">
+<div class="row image-wrape wrapper-block-margin" data-sly-test="${imageInfo.imagePath && properties.enableWrapAround}">
     <img class="image-max-width-responsive"
          src="${imageInfo.imagePath @ context='unsafe'}" />
     <div class="nb-textwrap" data-sly-resource="${'richTextWrap' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
