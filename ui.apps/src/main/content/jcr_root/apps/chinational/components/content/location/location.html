@@ -78,7 +78,6 @@
         // add name of function to array
         allMaps.push("initMap_${currentNode.Name @ context="scriptToken"}");
         function initMap_${currentNode.Name @ context="scriptToken"}() {
-        	
             var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
             var mapNode = "map_${currentNode.Name @ context="scriptToken"}";
 
@@ -97,25 +96,31 @@
                     }]});
             }
 
-         	// ATT'N NARESH!!!
-         	// The following methods will display some window when the user clicks on the red pin on the map
-         	// and display whatever information we will like to. Somewhat the address must be displayed there 
-         	// with a link to Google Maps as https://www.google.com/maps/place/ and the address separated by '+' signs
-
-         	var allHide = '${properties.addressHidePOI @ context="scriptToken"}';
             var mapAddress = '${properties.address @ context="scriptString"}';
             var mapName = '${properties.locationName @ context="scriptString"}';
+            var mapPlaceId = '${coordinates.placeId @ context="unsafe"}';
+            var marker;
+            var mapURL;
 
+            if (mapPlaceId != "") {
+                mapURL = "https://www.google.com/maps/place/?q=place_id:" + mapPlaceId;
+                marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map,
+                    placeId: mapPlaceId
+                });
+            } else {
+               mapURL = "https://maps.google.com/maps?q=" +
+                                "${coordinates.latCord @ context="unsafe"}" + "," +
+                                "${coordinates.lngCord @ context="unsafe"}" +
+                                "&z=15&t=m&hl=en-US&gl=US";
 
-            //var mapLink = "<a target='_blank' href='https://www.google.com/maps/place/@" +
-            //                "${coordinates.latCord @ context="unsafe"}" + "," +
-            //                "${coordinates.lngCord @ context="unsafe"}" +
-            //                ",15z'><span> View on Google Maps </span> </a>";
-
-           var mapLink = "<a target='_blank' href='https://maps.google.com/maps?q=" +
-                            "${coordinates.latCord @ context="unsafe"}" + "," +
-                            "${coordinates.lngCord @ context="unsafe"}" +
-                            "&z=15&t=m&hl=en-US&gl=US&mapclient=apiv3'><span> View on Google Maps </span> </a>";
+                marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+            var mapLink = "<a target='_blank' href='" + mapURL + "'><span> View on Google Maps </span> </a>";
 
             var infoWindowContent = "<div class='location-info-window'> <div> <div class='title full-width'>" +
                                         mapName + "</div> <div class='address'>" +
@@ -124,13 +129,10 @@
             var infowindow = new google.maps.InfoWindow;
             infowindow.setContent(infoWindowContent);
 
-            var marker = new google.maps.Marker({ position: uluru, map: map });
-            
             marker.addListener('click', function() {
               infowindow.open(map, marker);
             });
-            
-            
+
         }
     </script>
 
