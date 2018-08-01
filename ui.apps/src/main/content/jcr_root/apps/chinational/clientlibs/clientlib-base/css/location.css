@@ -17,7 +17,7 @@
 .location .row {
   margin-bottom: 0;
 }
-.location #map {
+.location .map-box {
   background: gray;
   height: 400px;
   width: 100%;
@@ -49,7 +49,7 @@
 	float: right;
 }
 
-.location .location-card-body #map {
+.location .location-card-body .map-box {
     overflow: hidden;
 	max-height: 395px;
 }
@@ -267,7 +267,7 @@
 }
 
 @media (max-width: 480px) {
-  	.location #map {
+  	.location .map-box {
 	  	display: none;   /* Added by German to fix MAM-22  */
 	}
 	

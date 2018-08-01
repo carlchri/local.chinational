@@ -50,13 +50,7 @@
 			</sly>
 			<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
 			
-				<!--  div id ="map_${currentNode.Name}" class="max-height-element">
-           		</div -->
-           		<!--  ATT'N NARESH!!! -->
-           		<!--  The line above can display the node name as unique for every map displayed -->
-           		<!--  and can replace the line below, so we will get: map_location, map_location_435345, and so on -->
-           		
-				<div id ="map" class="max-height-element">
+				<div id ="map_${currentNode.Name}" class="map-box">
            		</div>
 			</sly>
         </div>
@@ -81,16 +75,14 @@
     </div>
 
     <script data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
-        function initMap() {
+        // add name of function to array
+        allMaps.push("initMap_${currentNode.Name @ context="scriptToken"}");
+        function initMap_${currentNode.Name @ context="scriptToken"}() {
         	
             var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
-            
-            // ATT'N NARESH!!!
-            // The next line works to bring the id as: map_location, but doesn't do anything
-            // var map = new google.maps.Map(document.getElementById("map_${currentNode.Name @ context='unsafe'}"), {
-            // 
-            
-            var map = new google.maps.Map(document.getElementById("map"), {
+            var mapNode = "map_${currentNode.Name @ context="scriptToken"}";
+
+            var map = new google.maps.Map(document.getElementById(mapNode), {
                 zoom: 15,
                 center: uluru
             });
@@ -141,9 +133,7 @@
             
         }
     </script>
-    <script data-sly-test="${properties.selectLocationImageType == 'googleMap'}" async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
-    </script>
+
 </sly>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!address}"></sly>
