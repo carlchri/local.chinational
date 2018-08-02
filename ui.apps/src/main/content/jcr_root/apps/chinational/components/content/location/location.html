@@ -50,54 +50,92 @@
 			</sly>
 			<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
 			
-				<!--  div id ="map_${currentNode.Name}" class="max-height-element">
-           		</div -->
-           		<!--  ATT'N NARESH!!! -->
-           		<!--  The line above can display the node name as unique for every map displayed -->
-           		<!--  and can replace the line below, so we will get: map_location, map_location_435345, and so on -->
-           		
-				<div id ="map" class="max-height-element">
+				<div id ="map_${currentNode.Name}" class="map-box">
            		</div>
 			</sly>
         </div>
     </div>
+
+    <div class="row" data-sly-test="${properties.detailsBoxOption == 'enable'}">
+	    <div class="col-xs-12">
+		    <div class="loc-details-box">
+			    <span class="loc-details-box-heading">${properties.detailsBoxHeading}</span>
+			    <div class="read-more-box">
+				    <span class="loc-details-box-desc cmp-text">${properties.locDescription @context = 'html'}</span>
+			    </div>
+			    <div class="read-more-button-wrapper" style="display:none;">
+			    	<a href="" class="read-more-button">
+			    	Read More <i class="arrow-right"></i> 
+			    	</a>
+			    </div>
+		    </div>
+	    </div>
     </div>
 
-    <script>
-        function initMap() {
-        	
+    </div>
+
+    <script data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
+        // add name of function to array
+        allMaps.push("initMap_${currentNode.Name @ context="scriptToken"}");
+        function initMap_${currentNode.Name @ context="scriptToken"}() {
             var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
-            
-            // ATT'N NARESH!!!
-            // The next line works to bring the id as: map_location, but doesn't do anything
-            // var map = new google.maps.Map(document.getElementById("map_${currentNode.Name @ context='unsafe'}"), {
-            // 
-            
-            var map = new google.maps.Map(document.getElementById("map"), {
+            var mapNode = "map_${currentNode.Name @ context="scriptToken"}";
+
+            var map = new google.maps.Map(document.getElementById(mapNode), {
                 zoom: 15,
                 center: uluru
             });
-            
-         	// ATT'N NARESH!!!
-         	// The following methods will display some window when the user clicks on the red pin on the map
-         	// and display whatever information we will like to. Somewhat the address must be displayed there 
-         	// with a link to Google Maps as https://www.google.com/maps/place/ and the address separated by '+' signs
-         	
-            var infowindow = new google.maps.InfoWindow;
-            infowindow.setContent('<b>This message is for the address</b>');
 
-            var marker = new google.maps.Marker({ position: uluru, map: map });
-            
+            var hidePOI = '${properties.addressHidePOI @ context="scriptToken"}';
+            if ( hidePOI === 'true') {
+                    map.setOptions({styles: [{
+                        featureType: "poi",
+                        stylers: [
+                          { visibility: "off" }
+                        ]
+                    }]});
+            }
+
+            var mapAddress = '${properties.address @ context="scriptString"}';
+            var mapName = '${properties.locationName @ context="scriptString"}';
+            var mapPlaceId = '${coordinates.placeId @ context="unsafe"}';
+            var marker;
+            var mapURL;
+
+            if (mapPlaceId != "") {
+                mapURL = "https://www.google.com/maps/place/?q=place_id:" + mapPlaceId;
+                marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map,
+                    placeId: mapPlaceId
+                });
+            } else {
+               mapURL = "https://maps.google.com/maps?q=" +
+                                "${coordinates.latCord @ context="unsafe"}" + "," +
+                                "${coordinates.lngCord @ context="unsafe"}" +
+                                "&z=15&t=m&hl=en-US&gl=US";
+
+                marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+            var mapLink = "<a target='_blank' href='" + mapURL + "'><span> View on Google Maps </span> </a>";
+
+            var infoWindowContent = "<div class='location-info-window'> <div> <div class='title full-width'>" +
+                                        mapName + "</div> <div class='address'>" +
+                                        mapAddress + "</div> </div> <div class='view-link'>" +
+                                        mapLink + "</div> </div>";
+            var infowindow = new google.maps.InfoWindow;
+            infowindow.setContent(infoWindowContent);
+
             marker.addListener('click', function() {
               infowindow.open(map, marker);
             });
-            
-            
+
         }
     </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initAutocomplete&callback=initMap">
-    </script>
+
 </sly>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!address}"></sly>
