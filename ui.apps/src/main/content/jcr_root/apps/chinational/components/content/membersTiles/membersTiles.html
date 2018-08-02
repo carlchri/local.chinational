@@ -1,4 +1,5 @@
-<sly data-sly-use.defaultValues="org.chi.aem.common.components.model.DefaultValuesModel"></sly>
+<sly data-sly-use.defaultValues="org.chi.aem.common.components.model.DefaultValuesModel"
+	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="physicianTiles members-tiles-padding">
 	<div class="component">
@@ -42,3 +43,5 @@
 		</div>
 	</div>
 </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.memberName}"></sly>
