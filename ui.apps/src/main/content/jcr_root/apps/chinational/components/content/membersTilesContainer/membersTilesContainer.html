@@ -1,5 +1,4 @@
-<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"
-	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection">
 
 	<div id="wrapper" style="min-height: 300px; margin-top: 20px;" class="${ !wcmmode.edit ? 'previewMode' : 'editMode'}">
 		<div id="membersContainer" class="${properties.numberOfTiles || '4'}" data-sly-list.item="${mediaCollection.editViewItems}">
@@ -20,4 +19,4 @@
 		</div>
 	</div>
 
-<sly data-sly-call="${template.placeholder @ isEmpty=mediaCollection.editViewItems.size == 0}"></sly>
+</sly>
