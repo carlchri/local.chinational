@@ -3,5 +3,5 @@
     cq:icon="viewList"
     jcr:description="to create a list of links"
     jcr:primaryType="cq:Component"
-    jcr:title="News List [Manual]"
+    jcr:title="Article List [Manual]"
     componentGroup="CHI General"/>
