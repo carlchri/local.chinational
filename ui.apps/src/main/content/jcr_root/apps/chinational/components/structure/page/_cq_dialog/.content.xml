@@ -140,6 +140,27 @@
                                             jcr:primaryType="nt:unstructured"
                                             cq-msm-lockable="hidePageTitle"/>
                                     </hidePageTitle>
+                                    <allowTertiaryNav
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./allowTertiaryNav"
+                                            renderReadOnly="{Boolean}true"
+                                            text="Allow third level navigation (only applicable on 2nd level pages)?"
+                                            value="true" />
+                                    <maxTertiaryNavCount
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                            defaultValue="1"
+                                            renderReadOnly="{Boolean}true"
+                                            fieldDescription="Allow third level navigation (only applicable on 2nd level pages)?"
+                                            fieldLabel="Allow third level navigation (only applicable on 2nd level pages)?"
+                                            max="{Long}30"
+                                            min="{Long}1"
+                                            name="./maxTertiaryNavCount"
+                                            step="{Long}1"
+                                            text="Allow third level navigation (only applicable on 2nd level pages)?"/>
                                     <errorpages
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
