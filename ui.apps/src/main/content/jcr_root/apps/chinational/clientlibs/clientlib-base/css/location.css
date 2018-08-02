@@ -268,11 +268,11 @@
 
 @media (max-width: 480px) {
   	.location .map-box {
-	  	display: none;   /* Added by German to fix MAM-22  */
+	  /* 	display: none;   Added by German to fix MAM-22  */
 	}
 	
 	.location #image {
-	  	display: none;   /* Added by German to fix MAM-22  */
+	  /*	display: none;    Added by German to fix MAM-22  */
 	}
 	
 	.location .location-card-body {
@@ -310,7 +310,11 @@
   
   .location .location-icon {
 		padding-right: 35px;
-	}
+  }
+	
+  .location .txt-location-name span {
+    	max-width: 300px;
+  }
 }
 
 @media (min-width: 800px) and (max-width: 996px) {
@@ -321,5 +325,17 @@
   
   .location .location-icon {
 		padding-right: 35px;
+	}
+}
+
+
+.location #location-graphic-area {
+	float: right;
+}
+
+
+@media (max-width: 940px) {
+	.location #location-graphic-area {
+		float: none;
 	}
 }
