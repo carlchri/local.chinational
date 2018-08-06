@@ -347,6 +347,10 @@
     z-index: -1;                                    
 }
 
+.stretchImage {
+   background-size: 100%;                                 
+}
+
 .leftSideTile {
 	margin-top: -5px;
 	position: relative;
