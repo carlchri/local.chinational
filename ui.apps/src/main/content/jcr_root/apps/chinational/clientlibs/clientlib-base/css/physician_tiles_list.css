@@ -289,3 +289,155 @@
     display: none;
   }
 }
+
+
+/* Added by German for Member Tiles */ 
+
+.member-width {
+	max-width: 600px;
+}
+
+.members-tile-width {
+	max-width: 600px;
+}
+
+.tile-desc-width {
+	width: 179px;
+	padding-bottom: 17px;
+}
+
+.tile-desc-width span {
+  	display: inline-block;
+  	margin-bottom: 13px;
+}
+
+.physician-tiles-padding {
+	padding-left: 30px;
+}
+
+.removeTile {
+	display: none;
+}                                                
+
+#wrapper {
+    width: 100%;
+    min-height: 300px; 
+    margin-top: 20px;
+}
+
+#first {
+    float: left;
+    width: 50%;
+}
+
+#first:nth-of-type(even) {
+    padding-left: 15px;
+}
+
+.logoPlaceholder {
+	width: 170px;
+	height: 100px;
+	border-radius: 11px;
+	/* background-color: #d8d8d8; */
+	background-repeat: no-repeat;
+    background-position: center; 
+	clear: both;
+	position: absolute;
+	bottom: 0;
+    z-index: -1;                                    
+}
+
+.stretchImage {
+   background-size: 100%;                                 
+}
+
+.leftSideTile {
+	margin-top: -5px;
+	position: relative;
+	min-height: 207px;
+}
+
+.no-margin-bottom {
+	margin-bottom:0px;
+    margin-top: 20px !important;                      
+}     
+
+.no-margin-top {
+	margin-top: -22px !important;
+}  
+
+
+@media (max-width: 1200px) {
+
+	#first {
+    	float:none;
+	}
+      
+    #first:nth-of-type(even) {
+	    padding-left: 0px;
+	}        
+	
+     .member-width {
+	    width: 460px;                    
+	}  
+	
+	.tile-desc-width {
+		width: 269px;
+	}  
+}
+
+@media (max-width: 860px) {
+            
+
+    .member-width {
+	    width: 440px;                    
+	}        
+
+	.logoPlaceholder {
+		width: 80px;
+		height: 47px;
+		border-radius: 5px;
+	}
+      
+    .leftSideTile {
+		min-height: 0px;
+	}   
+	
+	.tile-desc-width {
+		width: 189px;
+	}            
+}
+
+
+@media (max-width: 550px) {
+
+    .member-width {
+	    width: 340px;                  
+	}    
+
+	.tile-desc-width {
+		width: 179px;
+	}                  
+}
+
+@media (max-width: 380px) {
+
+    .member-width {
+	    width: 300px;                    
+	}    
+	
+	.tile-desc-width {
+		width: 159px;
+	}                  
+}
+
+@media (max-width: 340px) {
+
+    .member-width {
+	    width: 260px;                    
+	}  
+	
+	.tile-desc-width {
+		width: 119px;
+	}                
+}

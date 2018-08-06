@@ -47,7 +47,6 @@
                                                     sling:resourceType="/apps/chinational/components/datasource"
                                                     path="/etc/config/chinational/components/iconSelectorLocations"/>
                                             </iconSelector>
-                                            
                                             <selectLocationImageType
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"

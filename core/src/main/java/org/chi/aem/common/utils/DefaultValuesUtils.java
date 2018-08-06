@@ -36,6 +36,7 @@ public final class DefaultValuesUtils {
     private static final String DEFAULT_BLOGS_PATH  = "defaultBlogsPath";
     private static final String DEFAULT_BLOGS_TILE_IMG_SRC  = "defaultBlogsTileImgSrc";
     private static final String DEFAULT_NEWS_TILE_IMG_SRC  = "defaultNewsTileImgSrc";
+    private static final String DEFAULT_MEMBERS_PHOTO_IMG_SRC  = "defaultMembersPhotoSrc";
     private static final String DEFAULT_MESSAGE  = "could not find default value";
 
     public static String getDefaultValue(Page page, String pName) {
@@ -81,6 +82,15 @@ public final class DefaultValuesUtils {
         }
        // LOGGER.info("Default News Tile Image Src : " + defaultTileImgSrc);
         return defaultNewsTileImgSrc;
+    }
+
+    public static String getDefaultMembersPhotoSrc(Page page) {
+        String defaultMembersPhotoSrc = getDefaultValue(page, DEFAULT_MEMBERS_PHOTO_IMG_SRC);
+        if (StringUtils.isNotEmpty(defaultMembersPhotoSrc) && !"#".equals(defaultMembersPhotoSrc)) {
+            defaultMembersPhotoSrc = LinkUtils.externalize(defaultMembersPhotoSrc);
+        }
+        LOGGER.info("Default Members Photo Image Src : " + defaultMembersPhotoSrc);
+        return defaultMembersPhotoSrc;
     }
 
 }
