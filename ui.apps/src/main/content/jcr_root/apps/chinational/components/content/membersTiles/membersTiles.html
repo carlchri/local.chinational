@@ -10,7 +10,7 @@
 					<hr data-sly-test="${properties.memberName}" class="member-width no-margin-top">
 					<div class="row tile-inner">
 
-						<h4 data-sly-test="${!properties.memberName  && wcmmode.edit}">No profile is configured, use dialog to add information</h4>
+						<!-- h4 data-sly-test="${!properties.memberName  && wcmmode.edit}">No profile is configured, use dialog to add information</h4-->
 
 						<sly data-sly-test="${properties.memberName}">
 
@@ -44,6 +44,4 @@
 	</div>
 </div>
 
-
-<!-- TODO: German to see why this breaks the JavaScript -->
-<!--  sly data-sly-call="${template.placeholder @ isEmpty=!properties.memberName}"></sly-->
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.memberName}"></sly>
