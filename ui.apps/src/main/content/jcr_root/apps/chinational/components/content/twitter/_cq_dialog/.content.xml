@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Twitter"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[chinational.location.editor]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mainSettingsTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Location Settings Tab"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <locationName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Name for the location"
+                                                fieldLabel="Location Name:"
+                                                name="./locationName"
+                                                required="{Boolean}true"/>
+                                            
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </mainSettingsTab>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
