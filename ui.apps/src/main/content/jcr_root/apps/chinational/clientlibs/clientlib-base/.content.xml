@@ -3,5 +3,6 @@
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
-    categories="[chinational.base]"
+    categories="[chinational.base, cq.authoring.dialog.all]"
+    dependencies="[cq.jquery]"
     embed="[chinational.site, core.wcm.components.image.v2]"/>
