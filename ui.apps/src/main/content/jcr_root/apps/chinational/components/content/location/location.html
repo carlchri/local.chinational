@@ -34,14 +34,14 @@
 					<div class="icons-set">
 						<sly data-sly-list="${locationCollection.locationDetails}"> 
 							<sly data-sly-test.link="${item.linkUrl != '#'}">
-								<div class="small-wrapper flex-box">
+								<div class="small-wrapper flex-box dividingColumns">
 									<i class="${item.iconClass}"></i> 
 									<a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}"> ${item.locationText} </a>
 								</div>
 							</sly> 
 							
 							<sly data-sly-test="${!link}">
-								<div class="small-wrapper flex-box">
+								<div class="small-wrapper flex-box dividingColumns">
 									<i class="${item.iconClass}"></i> 
 									<span class="small-txt">${item.locationText}</span>
 								</div>

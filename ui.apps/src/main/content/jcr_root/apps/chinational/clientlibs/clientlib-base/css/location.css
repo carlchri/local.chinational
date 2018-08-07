@@ -326,14 +326,24 @@
 	.location .location-text-area {
 	  	padding-top: 30px;
 	}
+	
+	.location .location-icon {   
+		padding-right: 35px;
+	}
+	
+	.location .dividingColumns {
+		float: left;
+		width: 34%;
+	}
+
+	.location .link-wrapper {
+		clear: both;
+	}
 }
 
 @media (max-width: 860px) {
 	
-    .location .location-icon {   
-		padding-right: 35px;
-	}
-  	
+    
   	.location div.link-wrapper {   
 	  	margin: 0 60px 20px 0;
 	}   
@@ -358,6 +368,11 @@
 	.location .location-icon {  
 		padding-right: 5px;
 	}     
+	
+	.location .dividingColumns {
+		float: none;
+		width: 300px;
+	}
 }
 
 @media (max-width: 380px) {
@@ -372,4 +387,8 @@
   	.location .txt-location-name span {  
     	max-width: 170px;
   	}
+  	
+  	.location .dividingColumns {
+		width: 200px;
+	}
 }
