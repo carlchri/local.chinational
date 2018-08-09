@@ -412,7 +412,11 @@
 	
 	.tile-desc-width {
 		width: 189px;
-	}            
+	}   
+	
+	.expertiseAreaSize {
+		min-height: 110px;
+	}         
 }
 
 
@@ -424,7 +428,11 @@
 
 	.tile-desc-width {
 		width: 179px;
-	}                  
+	}   
+	
+	.expertiseAreaSize {
+		min-height: 20px;
+	}               
 }
 
 @media (max-width: 380px) {
