@@ -139,7 +139,6 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
                                                 eaem-max-items="4"
-                        						eaem-min-items="1"
                                                 fieldDescription="Click + to add a new entry"
                                                 name="./multiCol">
                                                 <field
