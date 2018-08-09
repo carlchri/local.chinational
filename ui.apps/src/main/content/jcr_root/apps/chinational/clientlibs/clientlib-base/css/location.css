@@ -284,6 +284,19 @@
 	padding-bottom: 15px;
 }
 
+#right-rail-container .location .location-text-area {
+	min-width: 100%;
+}  
+	
+#right-rail-container .location #location-graphic-area {
+	min-width: 100%;
+}
+
+#right-rail-container .location .location-icon {   
+	padding-right: 41px;
+	padding-top: 34px;
+}
+
 
 @media (max-width: 1260px) {
   
@@ -315,6 +328,10 @@
 
 @media (max-width: 1006px) {
 	
+	#right-rail-container .location .location-icon {   
+		padding-top: 4px;
+	}
+	
 	.location #location-graphic-area {   
 		float: none;
 	}
@@ -340,6 +357,7 @@
 		clear: both;
 	}
 }
+
 
 @media (max-width: 860px) {
 	
