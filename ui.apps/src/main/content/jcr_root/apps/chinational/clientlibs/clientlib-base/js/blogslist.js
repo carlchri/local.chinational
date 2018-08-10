@@ -30,9 +30,14 @@ $(document).ready(function(){
 			    if($('#'+$blogsID+' #search_blogs_list option:selected').text() != 'All Items'){
 			    	$('#bcp_heading').show();
 			    	$('#bcp_heading').text(($('#'+$blogsID+' #search_blogs_list option:selected').text()));
-			    	$('.blog_page_tag_desc').show();
-			    	$('.blog_page_tag_desc').css('display','block');
-			    	$('.blog_page_tag_desc').text($('#'+$blogsID+' #blogs_tag_desc').val());
+			    	var tagDescVal = $('#'+$blogsID+' #blogs_tag_desc').val();
+			    	if ( tagDescVal != null && tagDescVal != '') {
+			    	    // reduce marging for heading, when tag desc is available
+                        $('#bcp_heading').css('margin-bottom','11px');
+                        $('.blog_page_tag_desc').show();
+                        $('.blog_page_tag_desc').css('display','block');
+                        $('.blog_page_tag_desc').text($('#'+$blogsID+' #blogs_tag_desc').val());
+			    	}
 			    }
 			}
 		}

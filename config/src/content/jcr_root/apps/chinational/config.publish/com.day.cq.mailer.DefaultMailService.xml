@@ -3,8 +3,8 @@
     jcr:primaryType="sling:OsgiConfig"
     debug.email="{Boolean}true"
     from.address=""
-    smtp.host="smtp.gmail.com"
+    smtp.host="relay.catholichealth.net"
     smtp.password="ToBeModified"
     smtp.port="465"
     smtp.ssl="{Boolean}true"
-    smtp.user="photobandsample@gmail.com"/>
+    smtp.user="campaigns@catholichealth.net"/>
