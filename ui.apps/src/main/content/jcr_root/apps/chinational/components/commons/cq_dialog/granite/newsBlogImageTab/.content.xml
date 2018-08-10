@@ -28,14 +28,28 @@
                                 fieldLabel="Header Image Caption"
                                 name="./imageCaption"
                                 renderReadOnly="{Boolean}true"/>
-                        <enableWrapAround
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                            fieldDescription="Selecting this checkbox will enable text to wrap around details image "
-                            name="./enableWrapAround"
-                            text="Select to enable text wrap around header image"
-                            uncheckedValue="false"
-                            value="true"/>
+                        <wrapAroundOption
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Different options for wrapping text around image"
+                                fieldLabel="Text warp around image options"
+                                name="./wrapAroundOption">
+                            <items jcr:primaryType="nt:unstructured">
+                                <useHeaderImage
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="No text wrap around image"
+                                        value="noWrapperText"/>
+                                <enableWrapAround
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Enable text wrap around header image"
+                                        value="enableWrapAround"/>
+                                <separateTileImage
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Display text below image, not wrap around image"
+                                        value="wrapTextBelowImage"/>
+                            </items>
+                        </wrapAroundOption>
                         <tileImageOption
                             granite:class="chi-details-page-tile-image-options"
                             jcr:primaryType="nt:unstructured"
