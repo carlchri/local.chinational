@@ -28,7 +28,6 @@ $(document).ready(function(){
 			    $('#'+$blogsID+' #search_blogs_list option[name='+bfv+']').prop('selected', true);
 			    // $('#'+$blogsID+' #search_blogs_list option:contains('+nfv+')').attr('selected', 'selected');
 			    if($('#'+$blogsID+' #search_blogs_list option:selected').text() != 'All Items'){
-			    	$('#bcp_heading').show();
 			    	$('#bcp_heading').text(($('#'+$blogsID+' #search_blogs_list option:selected').text()));
 			    	var tagDescVal = $('#'+$blogsID+' #blogs_tag_desc').val();
 			    	if ( tagDescVal != null && tagDescVal != '') {

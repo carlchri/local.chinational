@@ -5,6 +5,6 @@
     from.address=""
     smtp.host="relay.catholichealth.net"
     smtp.password="ToBeModified"
-    smtp.port="465"
+    smtp.port="25"
     smtp.ssl="{Boolean}true"
     smtp.user="campaigns@catholichealth.net"/>

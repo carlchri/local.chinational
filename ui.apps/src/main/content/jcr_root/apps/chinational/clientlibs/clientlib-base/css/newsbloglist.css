@@ -61,19 +61,12 @@
 }
 
 
-#mcp_heading{
+#mcp_heading, #bcp_heading{
   font-size: 48px;
   line-height: 48px;
   margin-bottom:50px;
 }
 
-
-#bcp_heading{
-	display:none;
-	font-size: 48px;
-  line-height: 48px;
-  margin-bottom:50px;
-}
 
 .media_page_tag_desc, .blog_page_tag_desc{
 	display:none;

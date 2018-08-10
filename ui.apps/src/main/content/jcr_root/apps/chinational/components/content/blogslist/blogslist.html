@@ -5,20 +5,21 @@
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
 	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
-       <div class="col-xs-12">
-            <div class="visual-box component-gutter full-bleed-tiles">
-                <div class="full-bleed">
-	                <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-	                	 <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
-	                	 </sly>
-					</sly>
-				</div>
-			</div>
-		</div>	
-<!--/*		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
-		</sly>
-*/-->
+		<!--/*<div class="col-xs-12">
+             <div class="visual-box component-gutter full-bleed-tiles">
+                 <div class="full-bleed">
+                     <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+                          <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
+                          </sly>
+                     </sly>
+                 </div>
+             </div>
+         </div> */-->
+
+         <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+             <div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
+         </sly>
+
 		<sly data-sly-test="${!properties.removeFilter}">
 			<div class="col-xs-12 select_blogs_filter">
 				<select class="form-control" name="search_blogs_list" id="search_blogs_list">
