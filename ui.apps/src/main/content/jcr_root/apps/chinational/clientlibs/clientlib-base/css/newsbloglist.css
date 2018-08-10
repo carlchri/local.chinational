@@ -72,8 +72,9 @@
 #mcp_heading{
   font-size: 48px;
   line-height: 48px;
-  margin-bottom:11px;
+  margin-bottom:50px;
 }
+
 
 #bcp_heading{
 	display:none;
@@ -459,5 +460,9 @@ ul.filtered_blogs_list {
 	.full-bleed .featured-news-blog .full-image.required-width-style-1 {
 	    height: 213px;
 	}
+
+	#mcp_heading{
+      margin-bottom:32px;
+    }
 }
 
