@@ -286,7 +286,7 @@
 
 #right-rail-container .location .location-text-area {
 	min-width: 100%;
-}  
+}
 	
 #right-rail-container .location #location-graphic-area {
 	min-width: 100%;
@@ -294,9 +294,42 @@
 
 #right-rail-container .location .location-icon {   
 	padding-right: 41px;
-	padding-top: 34px;
+	padding-top: 4px;
 }
 
+#right-rail-container .location .dividingColumns {
+	float: left;
+	width: 34%;
+}
+
+#right-rail-container .location .link-wrapper {
+	clear: both;
+}
+
+@media (max-width: 1370px) {
+  
+  	#full-width-container .location .location-text-area {
+		min-width: 100%;
+	}  
+			
+	#full-width-container .location #location-graphic-area {
+		min-width: 100%;
+	}
+	
+	#full-width-container .location .dividingColumns {
+		float: left;
+		width: 34%;
+	}
+	
+	#full-width-container .location .link-wrapper {
+		clear: both;
+	}
+	
+	#full-width-container .location .location-icon {   
+		padding-right: 41px;
+		padding-top: 4px;
+	}
+}
 
 @media (max-width: 1260px) {
   
@@ -307,20 +340,15 @@
 }
 
 @media (max-width: 1200px) {
-	
-  	.location .txt-location-name span {  
-    	max-width: 200px;
-  	}
   
-  	.location .location-text-area {
-	  	padding-top: 5px;
+  	#full-width-container .location .location-text-area {
+	  	padding-top: 30px;
 	}
-  
 }
 
 @media (max-width: 1024px) {
 	
-	.location .txt-location-name span { 
+	#right-rail-container .location .txt-location-name span { 
     	max-width: 200px;
   	}
   
@@ -346,15 +374,6 @@
 	
 	.location .location-icon {   
 		padding-right: 35px;
-	}
-	
-	.location .dividingColumns {
-		float: left;
-		width: 34%;
-	}
-
-	.location .link-wrapper {
-		clear: both;
 	}
 }
 
@@ -387,23 +406,40 @@
 		padding-right: 5px;
 	}     
 	
-	.location .dividingColumns {
+	#full-width-container .location .dividingColumns {
 		float: none;
 		width: 300px;
 	}
+	
+	#right-rail-container .location .dividingColumns {
+		float: none;
+		width: 300px;
+	}
+	
+	.location .txt-location-name span { 
+    	max-width: 200px;
+  	}
+  	
+  	#right-rail-container .location .location-icon {   
+		padding-right: 4px;
+		padding-top: 4px;
+	}
+	
+	#full-width-container .location .location-icon {   
+		padding-right: 4px;
+		padding-top: 4px;
+	}
 }
 
-@media (max-width: 380px) {
-	
-	.location .txt-location-name span {  
-    	max-width: 220px;
-  	}      
-}
 
 @media (max-width: 340px) {
 
-  	.location .txt-location-name span {  
-    	max-width: 170px;
+	#right-rail-container .location .txt-location-name span { 
+    	max-width: 150px;
+  	}
+  	
+  	#full-width-container .location .txt-location-name span {  
+    	max-width: 150px;
   	}
   	
   	.location .dividingColumns {
