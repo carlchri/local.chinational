@@ -162,15 +162,15 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             emptyText="This field is mandatory."
-                                                            fieldDescription="Enter the location details text,e.g., hours, phone no etc."
-                                                            fieldLabel="Location Text"
+                                                            fieldDescription="Enter the details for the icon selected. Avoid if selecting Location or Call"
+                                                            fieldLabel="Text for the icon selected (not required for Location)"
                                                             name="./locationText"
                                                             required="{Boolean}true"/>
                                                         <linkUrl
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Link to resourcess on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                            fieldLabel="Link URL"
+                                                            fieldDescription="Select link or for External Links, use format http(s)://www.example.com"
+                                                            fieldLabel="Link URL (not required for Location or Call)"
                                                             name="./linkUrl"
                                                             rootPath="/content/dam"/>
                                                         <target
