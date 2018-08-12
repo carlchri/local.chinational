@@ -30,28 +30,63 @@
 					<span>${properties.locationName}</span>
 				</div>
 	
-				<div class="txt-address" data-sly-test="${locationCollection.locationDetails.size > 0}">
-					<div class="icons-set">
-						<sly data-sly-list="${locationCollection.locationDetails}"> 
-							<sly data-sly-test.link="${item.linkUrl != '#'}">
-								<div class="small-wrapper flex-box dividingColumns">
-									<i class="${item.iconClass}"></i> 
-									<a class="spl-link" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}"> ${item.locationText} </a>
-								</div>
-							</sly> 
-							
-							<sly data-sly-test="${!link}">
-								<div class="small-wrapper flex-box dividingColumns">
-									<i class="${item.iconClass}"></i> 
-									<span class="small-txt">${item.locationText}</span>
-								</div>
-							</sly> 
-						</sly>
-					</div>
-				</div>
-				
-				<div class="link-wrapper ${properties.noDisplayButton? 'in' : ''}" data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}"></div>
+				<div class="txt-address">
+ 
+	                <div class="icons-set" data-sly-test="${locationCollection.locationDetails.size > 0}">
+	                    <sly data-sly-list="${locationCollection.locationDetails}">
+	                        <sly data-sly-test.link="${ (item.linkUrl != '#')}">
+	                            <div class="small-wrapper flex-box dividingColumns">
 	
+	                                <i class="setTop ${item.iconClass}"></i>
+	                                <a class="spl-link locationLink" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+	                                    ${item.locationText}
+	                                </a>
+	
+	                            </div>
+	                        </sly>
+							
+	                        <sly data-sly-test="${!link}">
+	                             <div class="small-wrapper flex-box dividingColumns">
+	                             
+	                             	<!-- If the category is a location icon then: -->
+	                             	
+	                            	<div data-sly-test.isLocation="${ (item.iconClass == 'sprite small-icons icon-location') }" >
+                                        <div data-sly-use.info="${'clientlibs/js/convertLocation.js' @ value=item.locationText, value2=properties.selectLocationImageType}">
+											<i class="setTop ${item.iconClass}"></i>
+                                            <span class="small-txt">
+                                                <a href='${info.addressURL}' target='_blank'>${info.address? info.address : item.locationText}</a>
+											</span>
+										</div>
+									</div>
+									
+									<!-- If the category is not a location icon then: -->
+									
+									<div data-sly-test="${!isLocation}">
+									
+										<!-- If the category is a phone icon then: -->
+										
+										 <div data-sly-test.isPhone="${ (item.iconClass == 'sprite small-icons icon-call') }" >
+				                             <i class="setTop ${item.iconClass}"></i>
+				                             <span class="small-txt">
+												<a href="tel:${item.locationText}">${item.locationText}</a>
+											</span>
+				                         </div>  
+				                         
+				                         <!-- If the category is not a phone icon then: -->
+				                         
+				                         <div data-sly-test="${!isPhone}">
+				                             <i class="setTop ${item.iconClass}"></i>
+				                             <span class="small-txt">${item.locationText}</span>
+				                         </div>
+	                             	</div>
+	                             </div>
+	                        </sly>
+	                    </sly>
+	                </div>
+	               <div class="link-wrapper ${properties.noDisplayButton? 'in' : ''}" 
+	                	data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+	           		</div>
+	            </div>
 			</div>
 		</div>
 	
