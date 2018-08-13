@@ -146,21 +146,21 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                             name="./allowTertiaryNav"
                                             renderReadOnly="{Boolean}true"
-                                            text="Allow third level navigation (only applicable on 2nd level pages)?"
+                                            text="Display third level navigation (only applicable on 2nd level pages)?"
                                             value="true" />
                                     <maxTertiaryNavCount
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                            defaultValue="1"
+                                            defaultValue="9"
                                             renderReadOnly="{Boolean}true"
-                                            fieldDescription="Allow third level navigation (only applicable on 2nd level pages)?"
-                                            fieldLabel="Allow third level navigation (only applicable on 2nd level pages)?"
+                                            fieldDescription="Max count for 3rd level nav (only for Desktop)"
+                                            fieldLabel="Max count for 3rd level nav (only for Desktop)"
                                             max="{Long}30"
                                             min="{Long}1"
                                             name="./maxTertiaryNavCount"
                                             step="{Long}1"
-                                            text="Allow third level navigation (only applicable on 2nd level pages)?"/>
+                                            text="Max count for 3rd level nav (only for Desktop)"/>
                                     <errorpages
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"

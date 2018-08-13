@@ -11,6 +11,11 @@
                 <ul data-sly-list.indNav="${mainnav.items[outerNav]}">
                     <li class="col-xs-6">
                         <a href="${indNav.url}" class="txt-gray">${indNav.title}</a>
+                        <sly data-sly-list.thirdNav="${indNav.childItems}">
+                            <li class="col-xs-6">
+                                <a href="${thirdNav.url}">${thirdNav.title}</a>
+                            </li>
+                        </sly>
                     </li>
                 </ul>
             </div>

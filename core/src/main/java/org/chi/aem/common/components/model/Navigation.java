@@ -132,7 +132,6 @@ public class  Navigation extends WCMUsePojo {
                     continue;
                 }
                 LOGGER.debug("collectChildren grandChild path: " + grandChild.getPath());
-                // TODO - check if we need to hide it?
                 listItems.add(new MenuItem(grandChild));
             }
             mapItems.put(String.valueOf(count++), listItems);
@@ -144,7 +143,7 @@ public class  Navigation extends WCMUsePojo {
      * @param page
      * @return
      */
-    private boolean checkIfHidden(Page page) {
+    public static boolean checkIfHidden(Page page) {
         return page.isHideInNav() ;
     }
 }
