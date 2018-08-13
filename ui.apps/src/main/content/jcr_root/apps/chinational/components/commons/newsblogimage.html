@@ -1,6 +1,6 @@
 <sly data-sly-use.imageInfo="org.chi.aem.common.components.model.NewsBlogImageModel"/>
 
-<div class="row"  data-sly-test="${imageInfo.imagePath && !properties.enableWrapAround}">
+<div class="row"  data-sly-test="${imageInfo.imagePath && (!properties.wrapAroundOption || properties.wrapAroundOption != 'enableWrapAround') }">
     <div class="col-sm-12">
         <div class="full-image">
             <div>
@@ -12,12 +12,22 @@
                 <p class="light-txt">${pageProperties.imageCaption}</p>
             </div>
         </div>
+        <div class="nb-textwrap"
+             data-sly-test="${properties.wrapAroundOption == 'wrapTextBelowImage'}"
+             data-sly-resource="${'richTextWrap' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
+        </div>
     </div>
 </div>
 
-<div class="row image-wrape wrapper-block-margin" data-sly-test="${imageInfo.imagePath && properties.enableWrapAround}">
-    <img class="image-max-width-responsive"
-         src="${imageInfo.imagePath @ context='unsafe'}" />
+<div class="row image-wrape wrapper-block-margin"
+     data-sly-test="${imageInfo.imagePath && properties.wrapAroundOption == 'enableWrapAround'}">
+    <div class="float-left">
+        <img class="image-max-width-responsive"
+             src="${imageInfo.imagePath @ context='unsafe'}" />
+        <div class="padding-5" data-sly-test="${pageProperties.imageCaption}">
+            <div class="light-txt">${pageProperties.imageCaption}</div>
+        </div>
+    </div>
     <div class="nb-textwrap" data-sly-resource="${'richTextWrap' @ resourceType='chinational/components/content/richText', selectors='embeddedRichText'}">
     </div>
 </div>

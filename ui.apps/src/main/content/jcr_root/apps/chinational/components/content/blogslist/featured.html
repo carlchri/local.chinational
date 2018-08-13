@@ -1,6 +1,7 @@
 <template data-sly-template.item="${@ list, item, itemList}"
 		  data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = item.path, articleType='blogs'}">
 		  
+	<!--/*
 	<sly data-sly-test="${itemList.count == 1}">
 	<div class="bleed-box${itemList.count} fixingTile featured-news-blog"
 			style="background-color: ${properties.backgroundColorTileOne @ context='styleToken'};">
@@ -14,11 +15,6 @@
 		<div class="full-image required-width-style-1">
             <img src="${imageInfo.tileImagePath @ context='unsafe'}" alt="Alt Image">
 		</div>
-<!-- /* 
-		<div class="full-image required-width-style-1" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
-         	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Image">
-		</div>
-*/ -->         	
 		<div class="content-gutter-with-image cmp-text">
            <a href="${item.path @ extension='html'}">
                <h2 class="news_blog_featured_heading blogs_heading_hover blog-featured-bleed">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</h2>
@@ -35,12 +31,15 @@
 			</div>
 		</div>
 	</div>
+	*/-->
 
-<!--/*    <div class="row image-content flex">
-         <div class="image-col col-sm-4 col-xs-12" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
-         	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Image">
-         </div>
-         <div class="blog-news-padding-top ${noImagePresent ? 'col-sm-8 col-xs-12' : 'col-xs-12'}">
+    <div class="row image-content flex">
+		<div class="tnl-wrapper col-sm-6 col-xs-12">
+			<div class="full-image blog-image">
+				<img src="${imageInfo.tileImagePath @ context='unsafe'}" alt="Alt Image">
+			</div>
+		</div>
+		<div class="blog-news-padding-top col-sm-6 col-xs-12">
            <a href="${item.path @ extension='html'}">
                <h4 class="txt-green news_blog_featured_heading blogs_heading_hover">${item.properties.blogHeading || item.pageTitle || item.title || item.name}</h4>
            </a>
@@ -52,5 +51,5 @@
            <a href="${item.path @ extension='html'}" class="learn-more-btn border-orange">LEARN MORE</a>
          </div>
     </div>
-*/-->    
+
 </template>    
