@@ -3,5 +3,5 @@
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
-    categories="[chinational.base, aem.integrations.twitter]"
+    categories="[chinational.base]"
     embed="[chinational.site, core.wcm.components.image.v2]"/>

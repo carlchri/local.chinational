@@ -1,9 +1,5 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
-<sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-unwrap>
-    <js data-sly-call="${clientLib.js @ categories='aem.integrations.twitter'}" data-sly-unwrap/>
-</sly>
-
 <sly data-sly-test.userAccount="${properties.user}">
 
 	<div class="twitterWidth">
