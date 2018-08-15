@@ -5,9 +5,7 @@ import org.apache.sling.api.resource.ValueMap;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -23,12 +21,18 @@ public class MenuItem {
 	private String url;
 	private String title;
 	private boolean newWindow;
+
+
+	private boolean firstLevel = false;
+	private boolean thirdLevel = false;
 	private boolean displayThirdLevel = false;
 	// default is level 9
 	private int maxThirdLevelCount = 9;
 	// this is  last link for desktop, if required
 	private boolean seeMoreLink = false;
-	private List childItems = new ArrayList<MenuItem>();
+	private List<MenuItem> childItems = new ArrayList<MenuItem>();
+
+	private Map<String, List<MenuItem>> childMap;
 
 	public MenuItem(){
 	}
@@ -44,6 +48,7 @@ public class MenuItem {
 
 	public void setSeeMoreLinkItem(Page parentPage ) {
 		seeMoreLink = true;
+		thirdLevel = true;
 		title = SEE_MORE_LINK_TEXT;
 		url = LinkUtils.externalize(parentPage.getPath());
 	}
@@ -68,7 +73,10 @@ public class MenuItem {
 				}
 				if (childItems.size() < maxThirdLevelCount) {
 					LOGGER.debug("Add child path to list item: " + child.getPath());
-					childItems.add(new MenuItem(child));
+					MenuItem cItem = new MenuItem(child);
+					// so UI can display it accordingly
+					cItem.setThirdLevel(true);
+					childItems.add(cItem);
 				} else {
 					// more items left out, create seeMoreLink
 					childItemsLeft = true;
@@ -113,11 +121,35 @@ public class MenuItem {
 		return seeMoreLink;
 	}
 
-	public List getChildItems() {
+	public List<MenuItem> getChildItems() {
 		return childItems;
 	}
 
 	public boolean isThirdLevelItems() {
 		return childItems.size() > 0;
+	}
+
+	public Map<String, List<MenuItem>> getChildMap() {
+		return childMap;
+	}
+
+	public void setChildMap(Map<String, List<MenuItem>> childMap) {
+		this.childMap = childMap;
+	}
+
+	public boolean isThirdLevel() {
+		return thirdLevel;
+	}
+
+	public void setThirdLevel(boolean thirdLevel) {
+		this.thirdLevel = thirdLevel;
+	}
+
+	public boolean isFirstLevel() {
+		return firstLevel;
+	}
+
+	public void setFirstLevel(boolean firstLevel) {
+		this.firstLevel = firstLevel;
 	}
 }

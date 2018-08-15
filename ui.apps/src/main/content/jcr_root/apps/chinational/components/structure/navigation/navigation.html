@@ -7,17 +7,15 @@
             <i class="arrow-down" aria-hidden="true"></i>
         </a>
         <ul class="hidden-menu pstn-abslt bgnd-white">
-            <div class="row">
-                <ul data-sly-list.indNav="${mainnav.items[outerNav]}">
-                    <li class="col-xs-6">
-                        <a href="${indNav.url}" class="txt-gray">${indNav.title}</a>
-                        <sly data-sly-list.thirdNav="${indNav.childItems}">
-                            <li class="col-xs-6">
-                                <a href="${thirdNav.url}">${thirdNav.title}</a>
-                            </li>
-                        </sly>
-                    </li>
-                </ul>
+            <div class="row" data-sly-list.mapNav="${mainnav.items[outerNav][0].childMap.keySet.iterator}">
+                <div class="col-md-3">
+                    <ul data-sly-list.indNav="${mainnav.items[outerNav][0].childMap[mapNav]}">
+                        <li>
+                            <a href="${indNav.url}"
+                               class="${indNav.thirdLevel?'':'txt-gray'}">${indNav.title}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ul>
     </li>

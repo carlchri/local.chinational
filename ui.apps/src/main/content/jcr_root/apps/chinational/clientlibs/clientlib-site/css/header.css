@@ -110,13 +110,18 @@
 }
 
 .header .hidden-menu {
-	width: 370px;
+	width: 870px; /* Update for MAM-30*/
 	z-index: 4;
 	padding: 20px;
 	top: 51px;
 	left: 0;
 	display: none;
 	box-shadow: -4px 7px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Update for MAM-30 */
+.header .hidden-menu .col-md-3 {
+    width: 200px;
 }
 
 .header ul li a.dd-opened {
