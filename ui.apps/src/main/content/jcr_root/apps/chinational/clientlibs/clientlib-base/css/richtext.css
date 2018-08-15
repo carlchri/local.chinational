@@ -209,14 +209,16 @@
     }
 }
 
-/* CSS overrides for rich text under full bleed tile*/
-.full-bleed .cmp-text ol li::before {
+/* CSS overrides for rich text under full bleed tile & description under location comoponent*/
+.full-bleed .cmp-text ol li::before, .loc-details-box .cmp-text ol li::before {
     color: #fff;
 }
 
-.full-bleed .cmp-text ul li::before {
+.full-bleed .cmp-text ul li::before, .loc-details-box .cmp-text ul li::before {
 	color: #fff;
 }
+
+
 
 .full-bleed .cmp-text a ,
 .full-bleed .cmp-text a:visited,

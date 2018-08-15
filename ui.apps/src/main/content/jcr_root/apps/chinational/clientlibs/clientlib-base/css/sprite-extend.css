@@ -58,8 +58,8 @@
 }
 .sprite.icon-call {
   background-position: -191px -226px;
-  width: 18px;
-  height: 33px;
+  /* width: 18px;
+  height: 33px; */
 }
 .sprite.icon-location {
   background-position: -259px -226px;
@@ -84,8 +84,8 @@
 }
 .sprite.icon-map {
   background-position: -542px -220px;
-  width: 24px;
-  height: 37px;
+  /* width: 24px;
+  height: 37px; */
 }
 .sprite.icon-donate {
   background-position: -485px -525px;
@@ -257,8 +257,8 @@
 }
 .sprite.icon-call-dark {
   background-position: -191px -371px;
-  width: 18px;
-  height: 33px;
+  /* width: 18px;
+  height: 33px;  */
 }
 .sprite.icon-location-dark {
   background-position: -259px -372px;
@@ -271,8 +271,8 @@
 }
 .sprite.icon-call-light {
   background-position: -191px -321px;
-  width: 18px;
-  height: 33px;
+  /*  width: 18px;
+  height: 33px;  */
 }
 .sprite.icon-location-light {
   background-position: -259px -324px;
