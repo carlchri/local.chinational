@@ -12,13 +12,15 @@
                     <ul data-sly-list.indNav="${mainnav.items[outerNav][0].childMap[mapNav]}">
                         <li class="${indNav.thirdLevel?'hidden-sm hidden-xs':''}">
                             <a href="${indNav.url}"
-                               class="${indNav.thirdLevel?'':'txt-gray'}"
-                               data-sly-unwrap="${indNav.thirdLevelItems}">${indNav.title}</a>
+                               class="${indNav.thirdLevel?'second-level':'top-level'} ${indNav.seeMoreLink?'second-level-more':''}"
+                               >${indNav.title}</a>
+                            <i class="hidden-md hidden-lg arrow-down" aria-hidden="true"
+                               data-sly-test="${indNav.thirdLevelItems}"></i>
                         </li>
-                        <li class="${indNav.thirdLevelItems?'hidden-md hidden-lg':''}"
+                        <li class="${indNav.thirdLevelItems?'hidden':''}"
                             data-sly-test="${indNav.thirdLevelItems}">
                             <a href="${indNav.url}"
-                               class="txt-gray">${indNav.title}</a>
+                               class="second-level">${indNav.title}</a>
                         </li>
                     </ul>
                 </div>

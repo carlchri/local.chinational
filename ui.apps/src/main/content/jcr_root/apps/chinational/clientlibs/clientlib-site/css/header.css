@@ -110,7 +110,7 @@
 }
 
 .header .hidden-menu {
-	width: 870px; /* Update for MAM-30*/
+	width: 1328px; /* Update for MAM-30*/
 	z-index: 4;
 	padding: 20px;
 	top: 51px;
@@ -121,12 +121,37 @@
 
 /* Update for MAM-30 */
 .header .hidden-menu .col-md-3 {
-    width: 200px;
+    width: 300px;
+}
+
+.header .hidden-menu .arrow-down {
+    margin-left: 13px;
 }
 
 .header ul li a.dd-opened {
 	color: #426da9;
 }
+
+.header .hidden-menu a.top-level {
+    font-size: 15px;
+    letter-spacing: 1.7px;
+    font-weight: bold;
+    color: #24509a;
+}
+
+.header .hidden-menu a.second-level {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #53565a;
+}
+
+.header .hidden-menu a.second-level-more {
+    color: #0097a9;
+}
+
+
 
 .header .hidden-menu li {
 	margin-right: 0;
