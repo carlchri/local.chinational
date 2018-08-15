@@ -1,0 +1,343 @@
+/*****************************************/
+/*          General Styles               */
+/*****************************************/
+
+.interactive-wheel .wrapper {
+    width: 100vw;
+    height: 100vh;
+    /*overflow: hidden;*/
+    overflow: auto;
+}
+
+.interactive-wheel .container {
+    /* max-width:491px;  */
+    padding: 0 22px;
+    margin: auto;
+    position: relative;
+    box-sizing:border-box;
+    background: #476EA1;
+    font-family: "myriad-pro", sans-serif;
+    font-weight: 300;
+    min-height: 320px;
+}
+
+.interactive-wheel h1 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 200;
+    text-align: center;
+	width: 80%;
+	margin-top: 15px;
+}
+
+
+/*****************************************/
+/*          Left Half                    */
+/*****************************************/
+
+.interactive-wheel .left {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+	padding-left: 29%;
+	padding-right: 5%;
+}
+
+.interactive-wheel .left p {
+    font-size: 14px;
+    color: #fff;
+    line-height: 16px;
+    margin-top: 0;
+}
+
+.interactive-wheel .footer-cta a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.interactive-wheel .footer-cta .icon {
+    background-size: cover;
+    height: 22px;
+    width: 22px;
+    display: inline-block;
+    margin-right: 6px;
+    transform: translateY(6px);
+}
+
+.interactive-wheel h2 {
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.interactive-wheel .color-text {
+    display: none;
+}
+
+/*****************************************/
+/*          Right Half                    */
+/*****************************************/
+
+.interactive-wheel .right {
+    float: right;
+    width: 50%;
+    position: relative;
+    
+}
+
+
+/* WHEEL */
+.interactive-wheel .wheel {
+    position: relative;
+    width: 236px;
+    height: 225px;
+}
+
+/* ARROW */
+.interactive-wheel .wheel .arrow {
+    position: absolute;
+    width: 6.5%;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.interactive-wheel .wheel .arrow img {
+    width: 100%;
+}
+
+/* CIRCLE CONTAINER */
+.interactive-wheel .wheel .circle {
+    position: absolute;
+    width: 94%;
+    height: 100%;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+/* CIRCLE ELEMENTS THAT WILL ROTATE */
+
+.wheel .circle .circle-rotate {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    transition: transform 1s ease;
+}
+
+.wheel .circle .circle-rotate .circle-image {
+    width: 100%;
+}
+
+/* NOSE AND NOSE BG */
+.wheel .circle .nose {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background: #FFB731;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.wheel .circle .nose img {
+    width: 70%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.nose-img-mobile {
+    display: none;
+}
+.nose-img-desktop {
+    display: block;
+}
+
+/* SNOT */
+.interactive-wheel .black {
+    position: absolute;
+    width: auto;
+    top: 34%;
+    left: 5%;
+    cursor: pointer;
+}
+
+.interactive-wheel .brown {
+    position: absolute;
+    width: auto;
+    top: 8%;
+    left: 25%;
+    cursor: pointer;
+}
+
+.interactive-wheel .white {
+    position: absolute;
+    width: auto;
+    top: 23%;
+    left: 66%;
+    cursor: pointer;
+}
+
+.interactive-wheel .red {
+    position: absolute;
+    width: auto;
+    top: 62%;
+    left: 70%;
+    cursor: pointer;
+}
+
+.interactive-wheel .green {
+    position: absolute;
+    width: auto;
+    top: 73%;
+    left: 27.5%;
+    cursor: pointer;
+}
+
+/* LARGE SNOT */
+
+.interactive-wheel .black.largeSnot {
+    position: absolute;
+    width: auto;
+    top: 29%;
+    left: -14%;
+}
+
+.interactive-wheel .brown.largeSnot {
+    position: absolute;
+    width: auto;
+    top: -11%;
+    left: 19%;
+    transform: rotate(-288deg);
+}
+
+.interactive-wheel .white.largeSnot {
+    position: absolute;
+    width: auto;
+    top: -12%;
+    left: 54%;
+    transform: rotate(-216deg);
+}
+
+.interactive-wheel .red.largeSnot {
+    position: absolute;
+    width: auto;
+    top: 54%;
+    left: 64%;
+    transform: rotate(-144deg);
+}
+
+.interactive-wheel .green.largeSnot {
+    position: absolute;
+    width: auto;
+    top: 59%;
+    left: 8%;
+    transform: rotate(-72deg);
+}
+
+
+/*****************************************/
+/*          Animation                    */
+/*****************************************/
+.transformZero {
+    transform: rotate(0deg);
+}
+.transformOne {
+    transform: rotate(72deg);
+}
+.transformTwo {
+    transform: rotate(144deg);
+}
+.transformThree {
+    transform: rotate(216deg);
+}
+.transformFour {
+    transform: rotate(288deg);
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+
+
+}
+
+
+@media (max-width: 860px) {
+            
+        
+}
+
+
+@media (max-width: 550px) {
+
+             
+}
+
+
+@media (max-width: 460px) {
+	
+	.interactive-wheel .container {
+	    min-height: 500px !important;
+	}
+
+    .interactive-wheel .left {
+        width: 100%;
+        clear: both;
+        float: none;
+        margin-top: 60px;
+    }
+    .interactive-wheel .right {
+        width: 100%;
+        clear: both;
+        float: none;
+    }
+    .wheel {
+        margin: auto;
+    }
+    .wheel .arrow {
+        transform: rotate(-90deg) translate(50%, -35%) !important;
+        top: 100% !important;
+        left: 50% !important;
+    }
+
+    .wheel .circle {
+        transform: rotate(-90deg) translate(50%, -50%) !important;
+        left: 50%;
+    }
+
+    .wheel .circle .nose img {
+        /*transform: rotate(90deg) translate(-50%, 50%);*/
+    }
+    .nose-img-mobile {
+        display: block;
+    }
+    .nose-img-desktop {
+        display: none;
+    }
+}
+
+
+
+@media (max-width: 380px) {
+
+                
+}
+
+
+@media (max-width: 340px) {
+
+              
+}

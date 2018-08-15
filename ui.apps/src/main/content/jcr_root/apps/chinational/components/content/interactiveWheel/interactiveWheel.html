@@ -1,0 +1,96 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<sly data-sly-test.header="${properties.title}">
+
+    
+    <div class="interactive-wheel">
+    	<div class="container">
+            <h1>${properties.title}</h1>
+
+
+            <div class="right">
+                <div class="wheel">
+                    <div class="arrow">
+                        <img src="${properties.image_arrow}">
+                    </div>
+                    <div class="circle">
+                        <div class="circle-rotate transformOne">
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/wheel.svg" class="circle-image">
+
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/snot-black-small.png" class="black snot sectionOne" alt="black snot">
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/snot-brown-small.png" class="brown snot sectionTwo" alt="brown snot">
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/snot-white-small.png" class="white snot sectionThree" alt="white snot">
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/snot-red-small.png" class="red snot sectionFour" alt="red snot">
+                            <img src="/content/dam/chi-national/website/images/snot-wheel/snot-yellowgreen-large.png" class="green snot sectionFive largeSnot" alt="green snot">
+                        </div>
+
+                        <div class="nose">
+                            <img class="nose-img-desktop" src="/content/dam/chi-national/website/images/snot-wheel/nose.svg" alt="nose">
+                            <img class="nose-img-mobile" src="/content/dam/chi-national/website/images/snot-wheel/nose-mobile.svg">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="left">
+                <div class="initial-text" style="display: none;">
+                    <p>
+                        Normally, the mucus in your nasal passage is clear when you’re healthy. But when viruses, bacteria, allergens or other irritants affect you, mucus production kicks into high gear. And sometimes what’s expelled from your nose is not only disgusting, it’s colorful too.
+                    </p>
+                    <p>
+                        <strong>Click on a color to learn what your snot might indicate.</strong>
+                    </p>
+                </div>
+
+                <div class="color-text black-text" style="display: none;">
+                    <h2>Black</h2>
+                    <p>
+                        Black snot can be alarming. Commonly, it results from dried blood, inhaling dirt, coal dust or cigarette smoke. More seriously, it can indicate a rare fungal infection due to a weakened immune system. If it’s not clear why your snot is black and the problem persists, consult your doctor.
+                    </p>
+                </div>
+
+                <div class="color-text brown-text" style="display: none;">
+                    <h2>Brown</h2>
+                    <p>
+                        Did you just sweep out your garage? If your snot is brown, it’s probably because you’ve recently been in a dirty, dusty environment and the debris you inhaled is stuck to your mucus. Or it could simply be dried blood.
+                    </p>
+                </div>
+
+                <div class="color-text white-text" style="display: none;">
+                    <h2>White</h2>
+                    <p>
+                        Some people experience white mucus after consuming milk and dairy products. But more often, it’s an early indicator that you’re preparing to fight an infection or illness as your nasal passage becomes inflamed and your mucus becomes cloudy and thick.
+                    </p>
+                </div>
+
+                <div class="color-text red-text" style="display: none;">
+                    <h2>Red</h2>
+                    <p>
+                        Red or pinkish snot is usually due to blood seeping into your mucus. Your nasal passage contains a lot of delicate capillaries that are prone to rupturing if they become disturbed, irritated or dry. So a little bit of red snot is nothing to panic about.
+                    </p>
+                </div>
+
+                <div class="color-text green-text" style="display: block;">
+                    <h2>Yellow / Green</h2>
+                    <p>
+                        When your body encounters infectious organisms, white blood cells go into attack mode. They produce enzymes that contain iron. In the course of battle, dead white blood cells and excess iron give your snot its hue. If this lasts more than 2 weeks, you may want to consult your doctor.
+                    </p>
+                </div>
+
+                <div class="footer-cta">
+                    <img src="/content/dam/chi-national/website/images/snot-wheel/schedule-checkup.svg" class="icon"> <a href="#">schedule an appointment »</a>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+    
+    
+    <script src="https://use.typekit.net/jnd5ogo.js"></script>
+    
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!header}"></sly>

@@ -34,4 +34,5 @@ css/search.less
 css/photoBandWithForm.css
 css/bootstrap-multiselect.css
 css/location.css
+css/interactiveWheel.css
 css/aem-override.css
