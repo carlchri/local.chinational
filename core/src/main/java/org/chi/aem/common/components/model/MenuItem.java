@@ -152,4 +152,5 @@ public class MenuItem {
 	public void setFirstLevel(boolean firstLevel) {
 		this.firstLevel = firstLevel;
 	}
+
 }

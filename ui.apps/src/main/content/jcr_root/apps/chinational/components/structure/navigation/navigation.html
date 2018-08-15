@@ -10,9 +10,15 @@
             <div class="row" data-sly-list.mapNav="${mainnav.items[outerNav][0].childMap.keySet.iterator}">
                 <div class="col-md-3">
                     <ul data-sly-list.indNav="${mainnav.items[outerNav][0].childMap[mapNav]}">
-                        <li>
+                        <li class="${indNav.thirdLevel?'hidden-sm hidden-xs':''}">
                             <a href="${indNav.url}"
-                               class="${indNav.thirdLevel?'':'txt-gray'}">${indNav.title}</a>
+                               class="${indNav.thirdLevel?'':'txt-gray'}"
+                               data-sly-unwrap="${indNav.thirdLevelItems}">${indNav.title}</a>
+                        </li>
+                        <li class="${indNav.thirdLevelItems?'hidden-md hidden-lg':''}"
+                            data-sly-test="${indNav.thirdLevelItems}">
+                            <a href="${indNav.url}"
+                               class="txt-gray">${indNav.title}</a>
                         </li>
                     </ul>
                 </div>
