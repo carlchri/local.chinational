@@ -1,4 +1,4 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<sly data-sly-test="${properties.buttonStyle == 'solid'}" data-sly-include="compositeSolidButtons.html"></sly>
+<sly data-sly-test="${!properties.buttonStyle || properties.buttonStyle == 'solid'}" data-sly-include="compositeSolidButtons.html"></sly>
 <sly data-sly-test="${properties.buttonStyle == 'outlined'}" data-sly-include="compositeOutlinedButtons.html"></sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.buttonStyle}"></sly>

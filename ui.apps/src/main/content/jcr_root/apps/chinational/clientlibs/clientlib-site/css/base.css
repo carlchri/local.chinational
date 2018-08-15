@@ -818,6 +818,27 @@ label {
     margin-top: -20px;
 }
 
+@media(max-width:767px) {
+    .image-wrape .nb-textwrap p:first-child{
+        margin-top: 20px;
+    }
+
+    /* In mobile, there is no text wrap*/
+    .image-wrape .nb-textwrap {
+        float: right;
+    }
+
+    /* Padding and marging around image caption is controlled by image and text aorund it*/
+    .image-wrape .light-txt {
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+.float-left {
+    float: left;
+}
+
 /*
 .image-wrape p {
     margin: 0 0 30px 0;

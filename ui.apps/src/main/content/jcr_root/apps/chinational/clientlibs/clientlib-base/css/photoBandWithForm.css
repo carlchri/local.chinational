@@ -63,9 +63,20 @@
     border-radius:0px;
 }
 
-.photo-band-form .form-control::-moz-placeholder {
+/* These css elements get the right placeholder color*/
+
+.form-control::-moz-placeholder {
+  color: #53565a;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
   color: #53565a;
 }
+.form-control::-webkit-input-placeholder {
+  color: #53565a;
+}
+
+
 
 .photo-band-form .photo-band-form-select {
 	-webkit-appearance:menulist;

@@ -40,6 +40,7 @@ public class LocationCoordinate {
 	    public static final Logger LOGGER = LoggerFactory.getLogger(LocationCoordinate.class);
 	    
 	    public static final String PROP_LOCATION_ADDRESS = "address";
+		public static final String PROP_LOCATION_ADDRESS_PLACE_ID = "addressPlaceId";
 
 		@Inject
 		private ResourceResolver resourceResolver;
@@ -49,6 +50,11 @@ public class LocationCoordinate {
 		@Optional
 		@Default(values="11045 East Lansing Circle, Englewood, CO")
 		private String address;
+
+		@Inject
+		@Named(PROP_LOCATION_ADDRESS_PLACE_ID)
+		@Optional
+		private String addressPlaceId;
 		
 		private String latCord;
 		private String lngCord;
@@ -100,7 +106,11 @@ public class LocationCoordinate {
 	            lngCord = location.get("lng").toString();
 	            LOGGER.debug("lngCord:" + lngCord);
 
-				placeId = jsonObject2.getString("place_id");
+	            if (StringUtils.isEmpty(addressPlaceId)) {
+					placeId = jsonObject2.getString("place_id");
+				} else {
+					placeId = addressPlaceId;
+				}
 
             } catch(Exception e) {
             	LOGGER.error("Inside json read Exception");

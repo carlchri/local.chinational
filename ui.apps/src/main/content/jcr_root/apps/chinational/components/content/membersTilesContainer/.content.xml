@@ -3,6 +3,6 @@
     cq:icon="viewList"
     jcr:description="To keep the tiles of Members"
     jcr:primaryType="cq:Component"
-    jcr:title="Container for Profile Tiles (Manual version)"
+    jcr:title="Profile Tiles [Manual]"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>

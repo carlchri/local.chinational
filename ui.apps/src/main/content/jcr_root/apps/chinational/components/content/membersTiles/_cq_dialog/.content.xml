@@ -38,12 +38,23 @@
                                                 required="{Boolean}true"/>
                                             <memberExpertise
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="This field is mandatory"
-                                                fieldDescription="Expertise for the member:"
-                                                fieldLabel="Member Expertise:"
-                                                name="./memberExpertise"
-                                                required="{Boolean}true"/>
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                useFixedInlineToolbar="{Boolean}true"
+                                                fieldDescription="Expertise for the member"
+                                                fieldLabel="Enter member expertise: "
+                                                name="./memberExpertise">
+	                                            <rtePlugins jcr:primaryType="nt:unstructured">
+	                                                <format
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                                <justify
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                                <misctools
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                            </rtePlugins>
+	                                        </memberExpertise>
                                         </items>
                                     </well>
                                 </items>

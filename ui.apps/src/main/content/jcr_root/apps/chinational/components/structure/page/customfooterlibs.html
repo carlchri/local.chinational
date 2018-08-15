@@ -21,7 +21,7 @@
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.js @ categories='chinational.dependencies'}"/>
 <!-- Including direcrly for audio player, as AEM minify is not working with this JS -->
-<script src="http://cdn.jsdelivr.net/npm/mediaelement@4.2.9/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.9/build/mediaelement-and-player.min.js"></script>
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.js @ categories='chinational.base'}"/>
 <script>
@@ -35,7 +35,7 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqUgK2PIBsQyukPU1BMoOJlPG4HhxxkS0&libraries=places&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvu8-51Yc2plXv5exDp2KRdIBVXpG8mIA&libraries=places&callback=initMap">
 </script>
 <sly data-sly-use.snippets="org.chi.aem.common.components.model.Analyticsnippets"></sly>
 <sly data-sly-test="${snippets.analyticSnippets}">

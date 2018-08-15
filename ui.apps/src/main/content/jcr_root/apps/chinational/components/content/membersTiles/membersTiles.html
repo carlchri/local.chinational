@@ -1,4 +1,5 @@
-<sly data-sly-use.defaultValues="org.chi.aem.common.components.model.DefaultValuesModel"></sly>
+<sly data-sly-use.defaultValues="org.chi.aem.common.components.model.DefaultValuesModel"
+	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
 <div class="physicianTiles members-tiles-padding">
 	<div class="component">
@@ -7,9 +8,7 @@
 			<div class="tiles-wrapper members_tiles_list members-tile-width">
 				<div class="tile">
 					<hr data-sly-test="${properties.memberName}" class="member-width no-margin-top">
-					<div class="row tile-inner">
-
-						<h4 data-sly-test="${!properties.memberName  && wcmmode.edit}">No profile is configured, use dialog to add information</h4>
+					<div id="autoHeightData" class="row tile-inner columnFix">
 
 						<sly data-sly-test="${properties.memberName}">
 
@@ -30,9 +29,14 @@
 										</span> 
 									</sly>
 									<span data-sly-test="${!linkMember}" class="small-heading heading_site_color">${properties.memberName}</span>
-									<p>${properties.memberExpertise}</p>
+									<div class="expertiseAreaSize">
+										<p>${properties.memberExpertise @context = 'html'}</p>
+									</div>
+									<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder stretchImage" style="background-image:url('${properties.memberLogo @ context='styleString'}');"></div>
+									
 								</div>
-								<div class="logoPlaceholder" style="background-image:url('${properties.memberLogo @ context='styleString'}');"></div>
+								
+          
 							</div>
 						</sly>
 					</div>
@@ -42,3 +46,5 @@
 		</div>
 	</div>
 </div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.memberName}"></sly>

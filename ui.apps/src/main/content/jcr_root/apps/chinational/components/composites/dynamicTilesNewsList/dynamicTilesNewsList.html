@@ -25,13 +25,6 @@
 	                    		<img src="${imageInfo.tileImagePath @ context='unsafe'}" 
                              		 alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
 	                    </div>
-<!--  /* 	                    
-<div class="full-image blog-image" 
-	 data-sly-test.imagePresent="${!properties.imageNotRequired && (featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc)}">
-	<img src="${featuredNews.properties.tileImageSrc || featuredNews.properties.imageSrc @ context='unsafe'}" 
-         alt="${featuredNews.properties.newsHeading || featuredNews.pageTitle || featuredNews.title || featuredNews.name}" />
-</div>
-*/ -->	                    
 
 	                    <div class="blog-content pstn-reltv stickToTop">
 							<a href="${featuredNews.path @ extension='html'}" target="${properties.targetBlank ?'_blank':'_self'}">
@@ -51,9 +44,7 @@
 	                </div>
 	        	</sly>
 	
-<!-- /*        	
-<div class="divider-news" data-sly-test="${properties.listOnRightNotRequired && newsList.listNews}"></div>
- */ -->
+
 				<div class="col-xs-12 col-sm-6 col-md-3 divider-news blog-item ${(newsList.featuredNews.size == 2)?'rr-tt-rd':''}" 
 					 data-sly-test="${properties.listOnRightNotRequired && newsList.listNews}">
 					<hr class="hideForDesktop" />

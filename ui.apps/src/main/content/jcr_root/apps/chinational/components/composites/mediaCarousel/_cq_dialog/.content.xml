@@ -68,7 +68,7 @@
                                                                             value="audio"/>
                                                                     <image
                                                                             jcr:primaryType="nt:unstructured"
-                                                                            text="Image"
+                                                                            text="Image with link"
                                                                             value="image"/>
                                                                 </items>
                                                             </mediaType>
