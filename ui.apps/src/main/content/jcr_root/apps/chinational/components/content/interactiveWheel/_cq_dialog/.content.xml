@@ -14,7 +14,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Interactive Wheel Settings Tab"
+                        jcr:title="Interactive Wheel General Settings Tab"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -34,19 +34,226 @@
                                                 fieldLabel="Title for Interactive Wheel:"
                                                 name="./title"
                                                 required="{Boolean}true"/>
+                                            <initial_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Initial text of the Interactive Wheel"
+                                                fieldLabel="Initial text for Interactive Wheel:"
+                                                name="./initial_text"
+                                                required="{Boolean}true"/>
+                                            <initial_text_message
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Initial Messaje of the Interactive Wheel"
+                                                fieldLabel="Initial Message for Interactive Wheel:"
+                                                name="./initial_text_message"
+                                                required="{Boolean}true"/>
                                             <image_arrow
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
                                                 fieldDescription="Select Arrow Image for Interactive Wheel"
-                                                fieldLabel="Arrow"
+                                                fieldLabel="Arrow Image:"
                                                 name="./image_arrow"
-                                                rootPath="/content/dam"/>
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <image_wheel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Select Wheel Image"
+                                                fieldLabel="Wheel Image:"
+                                                name="./image_wheel"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <image_nose
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Select Nose Image"
+                                                fieldLabel="Nose Image:"
+                                                name="./image_nose"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <image_small_nose
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Select Small Nose Image"
+                                                fieldLabel="Small Nose Image:"
+                                                name="./image_small_nose"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <footer_icon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Select Footer Icon for Appointment"
+                                                fieldLabel="Footer Icon for Appointment:"
+                                                name="./footer_icon"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <schedule_appointment
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Schedule an Appointment Messaje of the Interactive Wheel"
+                                                fieldLabel="Message to Schedule an Appointment in Interactive Wheel:"
+                                                name="./schedule_appointment"
+                                                required="{Boolean}true"/>
                                         </items>
                                     </well>
                                 </items>
                             </column>
                         </items>
                     </mainSettingsTab>
+                    <detailsSettingsTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Interactive Wheel Details Settings Tab"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        	<black_image_title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Black Image Title in Interactive Wheel"
+                                                fieldLabel="Black Image Title:"
+                                                name="./black_image_title"
+                                                required="{Boolean}true"/>
+                                        	<black_image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Black Image in Interactive Wheel"
+                                                fieldLabel="Black Image path:"
+                                                name="./black_image"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <black_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Text for Black Image in Interactive Wheel"
+                                                fieldLabel="Text for Black Image:"
+                                                name="./black_text"
+                                                required="{Boolean}true"/>
+                                            <white_image_title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="White Image Title in Interactive Wheel"
+                                                fieldLabel="White Image Title:"
+                                                name="./white_image_title"
+                                                required="{Boolean}true"/>
+                                            <white_image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="White Image in Interactive Wheel"
+                                                fieldLabel="White Image path:"
+                                                name="./white_image"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <white_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Text for White Image in Interactive Wheel"
+                                                fieldLabel="Text for White Image:"
+                                                name="./white_text"
+                                                required="{Boolean}true"/>
+                                            <brown_image_title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Brown Image Title in Interactive Wheel"
+                                                fieldLabel="Brown Image Title:"
+                                                name="./brown_image_title"
+                                                required="{Boolean}true"/>
+                                            <brown_image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Brown Image in Interactive Wheel"
+                                                fieldLabel="Brown Image path:"
+                                                name="./brown_image"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <brown_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Text for Brown Image in Interactive Wheel"
+                                                fieldLabel="Text for Brown Image:"
+                                                name="./brown_text"
+                                                required="{Boolean}true"/>
+                                            <green_image_title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Green Image Title in Interactive Wheel"
+                                                fieldLabel="Green Image Title:"
+                                                name="./green_image_title"
+                                                required="{Boolean}true"/>
+                                            <green_image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Green Image in Interactive Wheel"
+                                                fieldLabel="Green Image path:"
+                                                name="./green_image"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <green_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Text for Green Image in Interactive Wheel"
+                                                fieldLabel="Text for Green Image:"
+                                                name="./green_text"
+                                                required="{Boolean}true"/>
+                                            <red_image_title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Red Image Title in Interactive Wheel"
+                                                fieldLabel="Red Image Title:"
+                                                name="./red_image_title"
+                                                required="{Boolean}true"/>
+                                            <red_image
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Red Image in Interactive Wheel"
+                                                fieldLabel="Red Image path:"
+                                                name="./red_image"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <red_text
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="Text for Red Image in Interactive Wheel"
+                                                fieldLabel="Text for Red Image:"
+                                                name="./red_text"
+                                                required="{Boolean}true"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </detailsSettingsTab>
                 </items>
             </tabs> 
         </items>
