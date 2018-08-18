@@ -27,15 +27,7 @@ import com.day.cq.wcm.api.PageManager;
 public final class NewsBlogUtils {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(NewsBlogUtils.class);
-    private static final String DEFAULT_NEWS_FILTER = "AllItems";
-    private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
-    private static final Map<String, Object> m_article = new HashMap<String, Object>();
-    private static final java.util.List<Page> featuredArticles = new ArrayList<>();;
-    private static final java.util.List<Page> filteredArticles = new ArrayList<>();;
-    private static final java.util.List<String> listYears = new ArrayList<>();;
-    private static final java.util.List<String> listTags = new ArrayList<>();;
-    private static final Map<String, String> tagsMap = new HashMap<String, String>();
-    private static final Map<String, String> tagsDescMap = new HashMap<String, String>();
+    private static final int FEATURED_LIMIT = 3;
 
     public static java.util.List<Page> populateListItems(String parentPage, ResourceResolver resourceResolver, String articlesTemplate) {
 
@@ -61,7 +53,7 @@ public final class NewsBlogUtils {
 
         try {
             SearchResult result = query.getResult();
-            // LOGGER.info("result.getTotalMatchees() : " + list + " : " + result.getTotalMatches());
+            // LOGGER.info("result.getTotalMatchefs() : " + list + " : " + result.getTotalMatches());
 
             list = collectSearchResults(query.getResult(), list, resourceResolver);
         } catch (RepositoryException e) {
@@ -82,35 +74,32 @@ public final class NewsBlogUtils {
          return list;
      }
 
-     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
+     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter) {
+	     Map<String, Object> m_article = new HashMap<String, Object>();
+	     java.util.List<Page> featuredArticles = new ArrayList<>();;
+	     java.util.List<Page> filteredArticles = new ArrayList<>();;
+	     java.util.List<String> listYears = new ArrayList<>();;
+	     java.util.List<String> listTags = new ArrayList<>();;
+	     Map<String, String> tagsMap = new HashMap<String, String>();
 
-         // LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
-         if(filteredArticles.size() !=0) {
-        	 filteredArticles.clear();
-         }
-         if(featuredArticles.size() !=0) {
-        	 featuredArticles.clear();
-         }
-         if(listYears.size() !=0) {
-        	 listYears.clear();
-         }
-         if(listTags.size() !=0) {
-        	 listTags.clear();
-         }
-         if(tagsMap.size() !=0) {
-        	 tagsMap.clear();
-         }
-         if(tagsDescMap.size() !=0) {
-        	 tagsDescMap.clear();
-         }
-         
-    	 TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+	     TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
     	 for(Page item : allArticles) {
     		// to get listYears 
     		Calendar date = item.getProperties().get("publishDate", Calendar.class); 
     		//int year = date.get(Calendar.YEAR);
     		SimpleDateFormat formatter = new SimpleDateFormat("YYYY"); 
     		String year = formatter.format(date.getTime()).toUpperCase(); 
+
+    		if(listYears.isEmpty()){
+        		listYears.add(year);
+    		} else if (!listYears.contains(year)){
+    			listYears.add(year);
+    		}
+    		
+            // to get filtered articles list, if filter contains Year
+            if(listYears.contains(articleFilter) && articleFilter.equals(year)){
+            	filteredArticles.add(item);
+            }
 
             // to get tags
             Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
@@ -122,142 +111,47 @@ public final class NewsBlogUtils {
 		         		if(listTags.isEmpty()){
 		            		listTags.add(tagName);
 		                    tagsMap.put(tag.getName(),tagName);
-		                    tagsDescMap.put(tag.getName(),tag.getDescription());
 		        		} else if (!listTags.contains(tagName)){
 		        			listTags.add(tagName);
 		        			tagsMap.put(tag.getName(),tagName);
-		        			tagsDescMap.put(tag.getName(), tag.getDescription());
 		        		}
-		         		
-		         		if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-		                	addYear(listYears, year);
-		                	addFeaturedArticle(item, featured_limit);
-		                }else if(articleFilter.equals(tag.getName())){
-		         			addYear(listYears, year);
-		         			filteredArticles.add(item);
-		                	addFeaturedArticle(item, featured_limit);
-		         		}
+
+	         			// to get filtered articles list, if filter contains tag
+		         		if(tagsMap.containsKey(articleFilter) && articleFilter.equals(tag.getName())){
+		         			LOGGER.debug("INSIDE TAG FILTER");
+		                	filteredArticles.add(item);
+		                }
+		                
 	           	 }
-            }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-            	addYear(listYears, year);
-            	addFeaturedArticle(item, featured_limit);
+            }
+            
+            // to get featured articles
+            if(featuredArticles.size() < FEATURED_LIMIT){
+	            boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
+	            if(isFeatured){
+	            	featuredArticles.add(item);
+	            }
             }
     	 }
     	 
-         // LOGGER.info("newsblogUtils after for loop - filteredArticles Size : " + filteredArticles.size());
-    	 
-        // If article filter is allNews, return all articles list
-         if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-         	// filteredArticles = allArticles;
-        	 filteredArticles.clear();
-        	 filteredArticles.addAll(allArticles);
-         }
-
-         // to handle the use case when we have two BlogList component on the same page
-         // and both have different parent page and different tags associated with it
-         // Users selects a tag from dropdown in one BlogList component
-         // and tag is not there in another Bloglist component dropdown on the same page
-         if(!tagsMap.keySet().contains(articleFilter) && !articleFilter.equals(DEFAULT_NEWS_FILTER)){
-         	populateYearsTagsFeatured(allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
-          }
-
          // If no featured article present, add the latest article as featured article.
-         if(featuredArticles.isEmpty() && filteredArticles.size() > 0){
-        	 featuredArticles.add(filteredArticles.get(0));
+         if(featuredArticles.isEmpty() && allArticles.size() > 0){
+        	 featuredArticles.add(allArticles.get(0));
          }
-         
-         // LOGGER.info("newsblogUtils end filteredArticles Size : " + filteredArticles.size());
+
+         // If article filter does not contain Year or Tag, return all articles list
+         if(!(listYears.contains(articleFilter) || tagsMap.containsKey(articleFilter))){
+         	filteredArticles = allArticles;
+         }
 
          // populate map
 	     m_article.put("listYears", listYears);
 	     m_article.put("listTags", listTags);
 	     m_article.put("tagsMap", tagsMap);
-	     m_article.put("tagsDescMap", tagsDescMap);
 	     m_article.put("featuredArticles", featuredArticles);
 	     m_article.put("filteredArticles", filteredArticles);
 
          return m_article;
-     }
-     
-     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
-
-         // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
-         if(filteredArticles.size() !=0) {
-        	 filteredArticles.clear();
-         }
-	     TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-    	 for(Page item : allArticles) {
-    		// to get Year of article 
-    		Calendar date = item.getProperties().get("publishDate", Calendar.class); 
-    		//int year = date.get(Calendar.YEAR);
-    		SimpleDateFormat formatter = new SimpleDateFormat("YYYY"); 
-    		String year = formatter.format(date.getTime()).toUpperCase(); 
-    		
-    		if(filterYear.equals(year) || filterYear.equals(DEFAULT_NEWS_FILTER_YEAR)){
-	            // to get tags
-	            Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
-	            // LOGGER.info("tags: " + tags);
-	            if(tags.length !=0){
-		           	 for(Tag tag : tags){
-		         			if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-		         				addFilteredArticles(item);
-		         			} else if(articleFilter.equals(tag.getName())){
-			         			// LOGGER.debug("INSIDE TAG FILTER");
-			         			addFilteredArticles(item);
-			                }
-		           		
-		           	 }
-	            }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-	            	addFilteredArticles(item);
-	            }
-    		}
-            
-    	 }
-    	 
-         // LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
-    	 
-         // populate map
-	     m_article.put("featuredArticles", featuredArticles);
-	     m_article.put("filteredArticles", filteredArticles);
-
-         return m_article;
-     }
-     
-     public static void addYear(java.util.List<String> listYears, String year){
- 		if(listYears.isEmpty()){
-    		listYears.add(year);
-		} else if (!listYears.contains(year)){
-			listYears.add(year);
-		}
-     }
-     
-     public static void addFilteredArticles(Page item){
- 		if(filteredArticles.isEmpty()){
- 			filteredArticles.add(item);
-		} else if (!filteredArticles.contains(item)){
-			filteredArticles.add(item);
-		}
-     }
-     
-     public static void addFeaturedArticle(Page item, int limit){
-         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
-          	featuredArticles.add(item);
-	      }
-	  }
-  
-     public static void addFeaturedArticles(java.util.List<Page> articles, int limit){
-    	 for(Page item : articles) {
-	         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-	         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
-	          	featuredArticles.add(item);
-	         }
-	      }
-	  }
-  
-     public static boolean isFeatured(Page item){
-            boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-            return isFeatured;
      }
      
      public static java.util.List<Page> populateListArticles(int start_index, int hits_per_page, java.util.List<Page> allArticles) {

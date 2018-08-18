@@ -1,8 +1,7 @@
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />    
 
-<div class="full-image blog-image">
-	<div class="blog-image-container" data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedTileImage'}">
-	</div>
+<div class="full-image blog-image icon-responsive" data-sly-test="${!properties.imageNotRequired}"
+	 data-sly-resource="${'image' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 </div>
 
 <div class="blog-content pstn-reltv stickToTop">
@@ -15,7 +14,7 @@
             	${properties.headingText || 'Tile Component'}
 	</span>
     <sly data-sly-test="${properties.enterDate}">
-		<span class="blog-date txt-green tiles_heading_site_color"
+		<span class="blog-date txt-green tiles_heading_site_color" data-sly-test="${!properties.dateNotRequired}"
 			  data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=properties.enterDate, dateFormat='MMM dd, YYYY'}">
 	          ${formatter.formattedDate}
 		</span>

@@ -16,16 +16,10 @@
 .physicianTile .tiles-wrapper {
   padding: 0;
 }
-/* Commented out by Davinder June 6, 2018
 .physicianTiles .tiles-wrapper .tile,
 .physicianTile .tiles-wrapper .tile {
   max-width: 400px;
-} */
-/* Added by Davinder June 6, 2018 to replace above */
-.physicianTiles .tiles-wrapper .tile {
-  max-width: 400px;
-} 
-
+}
 .physicianTiles .tiles-wrapper .tile:nth-child(odd),
 .physicianTile .tiles-wrapper .tile:nth-child(odd) {
   padding-right: 0;
@@ -39,33 +33,16 @@
             }*/
 }
 @media (min-width: 1024px) {
-/* Commented out by Davinder June 6, 2018	
   .physicianTiles .tiles-wrapper .tile-inner,
   .physicianTile .tiles-wrapper .tile-inner {
     padding: 0 40px;
-  } */
-/* Added by Davinder June 6, 2018 to replace above */
-  .physicianTiles .tiles-wrapper .tile-inner {
-    padding: 0 40px;
   }
-	.physicianTile .tiles-wrapper .tile-inner .tile-desc span {
-		max-width:198px;
-	} 
-	.physicianTile .tiles-wrapper .tile-inner .tile-desc p {
-		max-width:198px;
-	} 
-/* End of additions */	
 }
 @media (max-width: 1023px) {
-/* Commented out by Davinder June 6, 2018	
   .physicianTiles .tiles-wrapper .tile-inner,
   .physicianTile .tiles-wrapper .tile-inner {
     padding: 0 30px;
-  } */
-/* Added by Davinder June 6, 2018 to replace above */
-	.physicianTiles .tiles-wrapper .tile-inner {
-    	padding: 0 30px;
-    }
+  }
 }
 
 .physicianTiles .tiles-wrapper .tile-inner .tile-img,
@@ -108,18 +85,11 @@
   line-height: 1.2;
   font-size: 20px;
 }
-/* Commented out by Davinder June 6, 2018
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc a,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc a {
   display: inline-block;
   margin-bottom: 13px;
-} */
-/* Added by Davinder June 6, 2018 to replace above */
-.physicianTiles .tiles-wrapper .tile-inner .tile-desc a {
-  display: inline-block;
-  margin-bottom: 13px;
 }
-/* End of Additions */
 .physicianTiles .tiles-wrapper .tile-inner .tile-desc p,
 .physicianTile .tiles-wrapper .tile-inner .tile-desc p {
   margin: 0;
@@ -288,171 +258,4 @@
   .physicianTiles .filler .tile {
     display: none;
   }
-}
-
-
-/* Added by German for Member Tiles */ 
-
-.expertiseAreaSize {
-	min-height: 60px;
-}
-
-.member-width {
-	max-width: 600px;
-}
-
-.members-tile-width {
-	max-width: 600px;
-}
-
-.tile-desc-width {
-	width: 179px;
-	padding-bottom: 17px;
-}
-
-.tile-desc-width span {
-  	display: inline-block;
-  	margin-bottom: 13px;
-}
-
-.physician-tiles-padding {
-	padding-left: 30px;
-}
-
-.removeTile {
-	display: none;
-}                                                
-
-#wrapper {
-    width: 100%;
-    min-height: 300px; 
-    margin-top: 20px;
-}
-
-#first {
-    float: left;
-    width: 50%;
-}
-
-#first:nth-of-type(even) {
-    padding-left: 15px;
-}
-
-.logoPlaceholder {
-	width: 170px;
-	height: 100px;
-	border-radius: 11px;
-	background-repeat: no-repeat;
-    background-position: center; 
-	clear: both;
-	bottom: 0;
-    z-index: -1;  
-    margin-top: 17px;                                  
-}
-
-.stretchImage {
-   background-size: 100%;                                 
-}
-
-.leftSideTile {
-	margin-top: -5px;
-	position: relative;
-	min-height: 207px;
-}
-
-.no-margin-bottom {
-	margin-bottom:0px;
-    margin-top: 20px !important;                      
-}     
-
-.no-margin-top {
-	margin-top: -22px !important;
-}  
-
-
-@media (max-width: 1200px) {
-
-	#first {
-    	float:none;
-	}
-      
-    #first:nth-of-type(even) {
-	    padding-left: 0px;
-	}        
-	
-     .member-width {
-	    width: 460px;                    
-	}  
-	
-	.tile-desc-width {
-		width: 269px;
-	}  
-	
-	#autoHeightData[style] {
-	   height: auto !important;
-	}
-}
-
-@media (max-width: 860px) {
-            
-
-    .member-width {
-	    width: 440px;                    
-	}        
-
-	.logoPlaceholder {
-		width: 80px;
-		height: 47px;
-		border-radius: 5px;
-	}
-      
-    .leftSideTile {
-		min-height: 0px;
-	}   
-	
-	.tile-desc-width {
-		width: 189px;
-	}   
-	
-	.expertiseAreaSize {
-		min-height: 110px;
-	}         
-}
-
-
-@media (max-width: 550px) {
-
-    .member-width {
-	    width: 340px;                  
-	}    
-
-	.tile-desc-width {
-		width: 179px;
-	}   
-	
-	.expertiseAreaSize {
-		min-height: 20px;
-	}               
-}
-
-@media (max-width: 380px) {
-
-    .member-width {
-	    width: 300px;                    
-	}    
-	
-	.tile-desc-width {
-		width: 159px;
-	}                  
-}
-
-@media (max-width: 340px) {
-
-    .member-width {
-	    width: 260px;                    
-	}  
-	
-	.tile-desc-width {
-		width: 119px;
-	}                
 }

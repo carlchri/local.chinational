@@ -58,8 +58,8 @@
 }
 .sprite.icon-call {
   background-position: -191px -226px;
-  /* width: 18px;
-  height: 33px; */
+  width: 18px;
+  height: 33px;
 }
 .sprite.icon-location {
   background-position: -259px -226px;
@@ -84,8 +84,8 @@
 }
 .sprite.icon-map {
   background-position: -542px -220px;
-  /* width: 24px;
-  height: 37px; */
+  width: 24px;
+  height: 37px;
 }
 .sprite.icon-donate {
   background-position: -485px -525px;
@@ -103,7 +103,7 @@
   width: 28px;
   height: 28px;
   left: 57%;
-  top: 50%;
+  top: 60%;
   margin: -12% 0 0 -10%;
 }
 .video-container .sprite.icon-play-orange {
@@ -111,7 +111,7 @@
   width: 28px;
   height: 28px;
   left: 57%;
-  top: 50%;
+  top: 60%;
   margin: -28px 0 0 -28px;
 }
 .sprite.icon-play-green {
@@ -257,8 +257,8 @@
 }
 .sprite.icon-call-dark {
   background-position: -191px -371px;
-  /* width: 18px;
-  height: 33px;  */
+  width: 18px;
+  height: 33px;
 }
 .sprite.icon-location-dark {
   background-position: -259px -372px;
@@ -271,53 +271,12 @@
 }
 .sprite.icon-call-light {
   background-position: -191px -321px;
-  /*  width: 18px;
-  height: 33px;  */
+  width: 18px;
+  height: 33px;
 }
 .sprite.icon-location-light {
   background-position: -259px -324px;
 }
-
-/* X icon for search*/
-.sprite.icon-search-x {
-  background-position: -555px -1056px;
-  width: 13px;
-  height: 13px;
-  margin: 9px 12px 5px 9px; /* T R B L*/
-}
-
-/* Social blue icons */
-.sprite.icon-fb-blue {
-  background-position: -57px -1042px;
-  width: 17px;
-  height: 32px;
-}
-.sprite.icon-instagram-blue {
-  background-position: -100px -1040px;
-  width: 36px;
-  height: 36px;
-}
-.sprite.icon-twitter-blue {
-  background-position: -162px -1047px;
-  width: 28px;
-  height: 23px;
-}
-.sprite.icon-linkedin-blue {
-  background-position: -216px -1043px;
-  width: 29px;
-  height: 28px;
-}
-.sprite.icon-youtube-blue {
-  background-position: -271px -1048px;
-  width: 36px;
-  height: 26px;
-}
-.sprite.icon-gplus-blue {
-  background-position: -333px -1047px;
-  width: 43px;
-  height: 27px;
-}
-
 /*hospital locations*/
 .sprite-v2 {
   width: 75px;
@@ -330,20 +289,6 @@
   /* Modified by German to fix Defect DE2595, it was height: 12px; */
   margin: 10px 0 0 0;
 }
-.sprite-v2.icon-arrow-left {
-  background-position: -701px -48px;
-  width: 12px;
-  height: 12px;
-  transform: rotate(-270deg);
-}
-
-.sprite-v2.icon-arrow-right {
-  background-position: -701px -48px;
-  width: 12px;
-  height: 12px;
-  transform: rotate(-90deg);
-}
-
 .sprite-v2.icon-clinic {
   background-position: -52px -154px;
   width: 33px;

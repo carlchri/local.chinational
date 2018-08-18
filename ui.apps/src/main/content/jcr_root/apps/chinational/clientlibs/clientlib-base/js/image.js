@@ -5,7 +5,7 @@ $(document).ready(function() {
     var isIE11orLess = isIE11 || navigator.appVersion.indexOf("MSIE") != -1;
 
     function isIE() {
-        if (isIE11orLess === true) {
+        if (isIE11orLess == true) {
             $('html').addClass('isIE');
         } else {
             $('html').addClass('isNotIE');
@@ -19,7 +19,7 @@ $(document).ready(function() {
         	// this is for tiles & news list component
             var $container = $(this),
             imgWithPicture = $container.find('picture');
-            if (!imgWithPicture || imgWithPicture.length === 0) {
+            if (!imgWithPicture || imgWithPicture.length == 0) {
                 imgUrl = $container.find('img').attr('src');
                 if (imgUrl ) {
                     $container

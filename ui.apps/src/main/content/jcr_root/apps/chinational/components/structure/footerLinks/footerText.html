@@ -1,10 +1,7 @@
-<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ 05/16/2018 - Add option to hide global link based on dialog config. Expand cols to 12, when global link is hidden
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-use.linkCollection="org.chi.aem.common.components.model.FooterLinkCollection"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
-<div class="${currentStyle.hideGlobalLink?'col-md-12':'col-md-7'}" data-sly-list="${linkCollection.items}">
+<div class="col-md-7" data-sly-list="${linkCollection.items}">
         <span class="${itemList.first?'copyrght-txt':''}">
             <a href="${item.linkUrl}"
                target="${item.targetBlank==true ?'_blank':'_self'}"
@@ -16,8 +13,7 @@
     <span class="separator pstn-reltv" data-sly-test="${!itemList.last}">|</span>
 </div>
 <div class="col-md-5 visit-txt"
-     data-sly-resource="${'footerTextGlobal' @ resourceType='chinational/components/content/globalLink'}"
-    data-sly-test="${!currentStyle.hideGlobalLink}">
+     data-sly-resource="${'footerTextGlobal' @ resourceType='chinational/components/content/globalLink'}">
 </div>
 
 <sly data-sly-call="${template.placeholder @isEmpty=linkCollection.items.size == 0}"></sly>

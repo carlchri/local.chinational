@@ -2,8 +2,9 @@
 
 <div class="component">
 	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+		<sly data-sly-test="${properties.videoOrientation == 'rightOrientation'}" data-sly-include="videoOnRight.html"></sly>
+		<sly data-sly-test="${properties.videoOrientation == 'leftOrientation'}" data-sly-include="videoOnLeft.html"></sly>
 		<sly data-sly-test="${properties.videoOrientation == 'hideOrientation'}" data-sly-include="textonly.html"></sly>
-		<sly data-sly-test="${properties.videoOrientation != 'hideOrientation'}" data-sly-include="videoImageOption.html"></sly>
 	</div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>
 </div>

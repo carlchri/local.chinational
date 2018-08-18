@@ -23,9 +23,7 @@ public class Icon {
  
 	    public static final Logger LOGGER = LoggerFactory.getLogger(Icon.class);
 	    
-	    public static final String PROP_ICON_OPTION = "iconOption";
 	    public static final String PROP_ICON_TYPE = "iconType";
-	    public static final String PROP_ICON_IMAGE_SOURCE = "iconImageSrc";
 	    public static final String PROP_LINK_URL = "linkUrl";
 	    public static final String TARGET_BLANK = "targetBlank";
 
@@ -36,16 +34,6 @@ public class Icon {
 		@Named(PROP_ICON_TYPE)
 		@Optional
 		private String iconType;
-	
-		@Inject
-		@Named(PROP_ICON_OPTION)
-		@Optional
-		private String iconOption;
-	
-		@Inject
-		@Named(PROP_ICON_IMAGE_SOURCE)
-		@Optional
-		private String iconImageSrc;
 	
 		@Inject
 		@Named(PROP_LINK_URL)
@@ -66,16 +54,8 @@ public class Icon {
 	        }
 		}
 	
-		public String getIconOption() {
-			return iconOption;
-		}
-	
 		public String getIconType() {
 			return iconType;
-		}
-	
-		public String getIconImageSrc() {
-			return iconImageSrc;
 		}
 	
 		public String getLinkUrl() {

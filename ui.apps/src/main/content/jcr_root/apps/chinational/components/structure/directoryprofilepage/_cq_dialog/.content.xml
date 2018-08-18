@@ -86,14 +86,6 @@
                                         fieldDescription="Enter Text to be displayed on the Button"
                                         fieldLabel="Button Text"
                                         name="./buttonText"/>
-                                    <socialIcons
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Select this checkbox to enable row of Social Icons"
-                                        name="./iconsReqd"
-                                        text="Select to enable row of Social Icons"
-                                        uncheckedValue="false"
-                                        value="true"/>
                                 </items>
                             </column>
                         </items>

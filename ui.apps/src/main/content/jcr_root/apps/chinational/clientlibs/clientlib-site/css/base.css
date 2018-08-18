@@ -55,8 +55,6 @@
 }
 
 .bottom-buffer-gray-line {
-    margin-top: 0px;
-    /* Added by Naresh, as hr has margin top 20px, but we don't need that*/
     margin-bottom: 30px;
     /* Added by German for content-details_RR.html */
 }
@@ -66,31 +64,6 @@
     /* Added by German */
     margin-right: calc(-8.7vw / 2);
     /* Added by German */
-    /* Added by Naresh, as line height and font size was adding 20px to the row, and bottom buffer already adds 30 px*/
-    line-height: 0px;
-    font-size: 0;
-}
-
-/* Added to extend grey line  to corners, else it was terminating and showing white space*/
-@media (max-width: 1200px) {
-    .full-width-container .width-for-gray-line {
-        margin-left: calc(-11.7vw / 2);
-        margin-right: calc(-11.7vw / 2);
-       }
-}
-
-@media (max-width: 767px) {
-    .full-width-container .width-for-gray-line {
-        margin-left: calc(-14.7vw / 2);
-        margin-right: calc(-14.7vw / 2);
-       }
-}
-
-@media (max-width: 320px) {
-    .full-width-container .width-for-gray-line {
-        margin-left: calc(-18.7vw / 2);
-        margin-right: calc(-18.7vw / 2);
-       }
 }
 
 .full-bleed-tiles {
@@ -105,9 +78,6 @@
     /* Added by German for content-details_RR.html */
     margin-right: .1%;
     /* Added by German for content-details_RR.html */
-    /* Added by Naresh, as line height and font size was adding 20px to the row, and bottom buffer already adds 30 px*/
-    line-height: 0px;
-    font-size: 0;
 }
 
 .gray-margin-top {
@@ -211,12 +181,6 @@
     padding-top: 30px;
     position: relative;
 }
-
-/* May 25, 2018 Added by Davinder CHIP12 */
-.padding-top-0 {
-    padding-top: 0 !important;
-}
-/* End of additions */
 
 span {
     display: inline-block;
@@ -803,40 +767,10 @@ label {
     padding-top: 20px;
 }*/
 
-/* Used on news/blog details page*/
-.wrapper-block-margin {
-    margin: 0 0 15px 0; /* TRBL*/
-}
-
 .image-wrape img {
     float: left;
     padding: 0 30px 0 0;
     /* Naresh - no padding needed for bottom*/
-}
-
-.image-wrape .nb-textwrap p:first-child{
-    margin-top: -20px;
-}
-
-@media(max-width:767px) {
-    .image-wrape .nb-textwrap p:first-child{
-        margin-top: 20px;
-    }
-
-    /* In mobile, there is no text wrap*/
-    .image-wrape .nb-textwrap {
-        float: right;
-    }
-
-    /* Padding and marging around image caption is controlled by image and text aorund it*/
-    .image-wrape .light-txt {
-        padding: 0px;
-        margin: 0px;
-    }
-}
-
-.float-left {
-    float: left;
 }
 
 /*
@@ -924,29 +858,8 @@ p:last-child {
     margin-bottom: 5px;
 }
 
-/* When experience fragment uses right rail border, it does not show up as red, this is to fix that */
-.right-rail .red-border, .xfpage .red-border {
+.right-rail .red-border {
     border-color: #e1523d;
-}
-
-/* these overrides to make separator under expereinence fragment work within right rail*/
-.right-rail .experiencefragment .separator {
-    margin-left: -25px;
-    margin-right: -25px;
-}
-
-@media (max-width: 1023px) {
-  .right-rail .experiencefragment .separator {
-      margin-left: -40px;
-      margin-right: -40px;
-  }
-}
-
-@media (max-width: 767px) {
-    .right-rail .experiencefragment .separator {
-        margin-left: -30px;
-        margin-right: -30px;
-    }
 }
 
 .pstn-abslt {
@@ -1016,7 +929,6 @@ a {
     font-weight: bold;
 }
 
-
 a:hover,
 button:hover {
     text-decoration: none;
@@ -1030,15 +942,6 @@ button i:hover {
 }
 /* EOF -  DE2507 - Set hover state to icons for IE -sbrown */
 
-/* Naresh - we don't need hover over in video, even under a link, and same for video in hero component*/
-.intro_img a:hover, .video a:hover{
-    opacity: 1;
-}
-
-/* Naresh - We want to get opacity when someone hover overs video, but not double it when hovering over play icon*/
-.intro_img a i:hover, .video a i:hover{
-    opacity: unset;
-}
 
 /* Naresh added opacity for link under logo*/
 
@@ -1464,7 +1367,6 @@ img {
     line-height: 20px;
     font-style: italic;
     font-size: 14px;
-    margin: 0 0 15px 0; /* Updated margin to only have bottom padding, as image above adds its own margin bottom, for video*/
     /*     padding: 8px 0 20px 0;    Removed by German for content-details_RR.html */
 }
 

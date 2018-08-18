@@ -1,72 +1,50 @@
 <sly data-sly-use.blogsList="org.chi.aem.common.components.model.BlogsList"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
-<span class="blog_page_tag_desc"></span>
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
-	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
-		<!--/*<div class="col-xs-12">
-             <div class="visual-box component-gutter full-bleed-tiles">
-                 <div class="full-bleed">
-                     <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-                          <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
-                          </sly>
-                     </sly>
-                 </div>
-             </div>
-         </div> */-->
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
-         <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-             <div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
-         </sly>
-
-		<sly data-sly-test="${!properties.removeFilter}">
-			<div class="col-xs-12 select_blogs_filter">
-				<select class="form-control" name="search_blogs_list" id="search_blogs_list">
-					<option value="${currentPage.path}.blogs.AllItems.html"  name="AllItems">All Items</option>
-					<sly data-sly-list.tagsList="${blogsList.tagsMap}">
-						<option value="${currentPage.path}.blogs.${tagsList}.html"  name="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
-					</sly>
-				</select>
-				<select class="form-control" name="search_blogs_year" id="search_blogs_year">
-					<option value="ChooseYear" selected>Sort by year</option>
-					<sly data-sly-list.listYear="${blogsList.listYears}">
-						<option value="${listYear}">${listYear}</option>
-					</sly>
-				</select>
-			</div>
+		<sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
+			<div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-30'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
 		</sly>
+
+		<div class="col-xs-12 padding-bottom-30">
+			<select name="search_blogs_list" id="search_blogs_list" class="form-control">
+				<option value="SortByMostRecent" selected>Sort By Most Recent</option>
+				<option value="ByYear">By Year</option>
+				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
+					<option value="${tagsList}">${blogsList.tagsMap[tagsList]}</option>
+				</sly>
+			</select>
+		</div>
+
+		<div class="col-xs-12 padding-bottom-30" id="select_blogs_by_year" style="display:none;">
+			<select class="form-control" name="search_blogs_year" id="search_blogs_year">
+				<option value="ChooseYear" selected>Choose Year</option>
+				<sly data-sly-list.listYear="${blogsList.listYears}">
+					<option value="${listYear}">${listYear}</option>
+				</sly>
+			</select>
+		</div>
 		
-		<input type="hidden" name="blogs_page_path" id="blogs_page_path" value="${properties.parentPage || currentPage.path }">
-		<input type="hidden" name="blogs_current_page_path" id="blogs_current_page_path" value="${currentPage.path}">
-		<input type="hidden" name="blogs_total_results" id="blogs_total_results" value="${blogsList.totalResults}">   
-		<input type="hidden" name="blogs_filter" id="blogs_filter" value="${blogsList.blogsFilter}">   
-		<input type="hidden" name="blogs_tag_desc" id="blogs_tag_desc" value="${blogsList.tagsDesc}">   
+		<input type="hidden" name="media_page_path" id="media_page_path" value="${properties.parentPage || currentPage.path }">
+		<input type="hidden" name="current_page_path" id="current_page_path" value="${currentPage.path}">
+		<input type="hidden" name="total_results" id="total_results" value="${blogsList.totalResults}">   
 
         <div class="col-xs-12 loading_blogs" style="display:none;">
 			<img id="loading-status" src="/etc/designs/chicommon/images/loading.gif">
 		</div>
 
         <div class="col-xs-12">
-			<ul class="mc_list filtered_blogs_list" data-sly-use.itemTemplate="item.html">
-	        	<div class="row flex" data-sly-list.item="${blogsList.listBlogs}">
-					<div class="blog-item col-xs-12  col-sm-6 col-md-4">
-						<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
-					</div>
-				</div>
-			</ul>
-		</div>
-
-
-<!--/*        <div class="col-xs-12">
 			<ul class="mc_list filtered_blogs_list" data-sly-list.item="${blogsList.listBlogs}"
 				data-sly-use.itemTemplate="item.html">
 				<li data-sly-call="${itemTemplate.item @ list = blogsList, item = item}"></li>
 			</ul>
 		</div>
-*/-->    		
-		<div class="col-xs-12 blog-show-more-div">
-			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">LOAD MORE</a>
+
+		<div class="col-xs-12">
+			<a class="learn-more-btn border-orange filtered_blogs_list_show_more">SEE MORE</a>
 		</div>
 
         <div class="col-xs-12 loading_blogs_next" style="display:none;">
@@ -74,28 +52,26 @@
 		</div>
 
 		<noscript>
-            <div class="col-xs-12">
-				<ul class="pagination pagination-lg pager">
-					<sly data-sly-test.previousPage="${blogsList.previousPage}"></sly>
-					<sly data-sly-test.nextPage="${blogsList.nextPage}"></sly>
-					<sly data-sly-test.activePage="${blogsList.activePage}"></sly>        
-					<sly data-sly-test.totalPages="${blogsList.totalPages}"></sly>        
-	
-					<li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
-						<a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
-							Previous
-						</a>
+			<ul class="pagination pagination-lg pager">
+				<sly data-sly-test.previousPage="${blogsList.previousPage}"></sly>
+				<sly data-sly-test.nextPage="${blogsList.nextPage}"></sly>
+				<sly data-sly-test.activePage="${blogsList.activePage}"></sly>        
+				<sly data-sly-test.totalPages="${blogsList.totalPages}"></sly>        
+
+				<li class="previous ${(activePage  <= 1) ? 'disabled' : '' @ context='attribute'}">
+					<a href="${currentPage.path}.${previousPage @ context='unsafe'}.html">
+						Previous
+					</a>
+				</li>
+				<sly data-sly-list="${blogsList.pages}">
+					<li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
+						<a href="${currentPage.path}.${item}.html">${item}</a>
 					</li>
-					<sly data-sly-list="${blogsList.pages}">
-						<li class="${activePage  == item ? 'active' : '' @ context='unsafe'}">
-							<a href="${currentPage.path}.${item}.html">${item}</a>
-						</li>
-					</sly>
-					<li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
-						<a href="${currentPage.path}.${nextPage}.html">Next</a>
-					</li>
-				</ul>
-			</div>
+				</sly>
+				<li class="next ${activePage >= totalPages ? 'disabled' : '' @ context='attribute'}">
+					<a href="${currentPage.path}.${nextPage}.html">Next</a>
+				</li>
+			</ul>
 		</noscript>
 	</div>
     <sly data-sly-include="../../commons/bottomOption.html"></sly>

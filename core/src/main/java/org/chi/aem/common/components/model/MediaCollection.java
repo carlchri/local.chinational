@@ -1,8 +1,3 @@
-// 05/31/2018 - When order of items were changed, UI was displaying empty area rather than display the item
-//            - This was happening as itemNode was not storing hash value, and logic was using carouselNode
-//            - to pick up value, which was place dependant. itemNode has correct value and it should not change
-//            - So, that value shouls be used. Also dialog was modified to carry over nodeName value during order change
-
 package org.chi.aem.common.components.model;
 
 import com.adobe.cq.sightly.WCMUsePojo;
@@ -40,7 +35,6 @@ public class MediaCollection extends WCMUsePojo {
 		return (additionalHashString + MEDIA_COLLECTION).hashCode();
 	}
 
-
 	private void setEditViewItems() {
 		boolean isFirst = true;
 		editViewItems = new ArrayList<CarouselItem>();
@@ -52,43 +46,22 @@ public class MediaCollection extends WCMUsePojo {
 		Resource mediaCarouselR = getResource();
 		ValueMap carouselProps = ResourceUtil.getValueMap(mediaCarouselR);
 		sectionHeading = carouselProps.get("sectionHeading", "");
-		LOGGER.debug("common sectionHeading: " + sectionHeading);
 		if(mediaCollectionR != null) {
 			Node carouselNode = mediaCarouselR.adaptTo(Node.class);
 			Iterable<Resource> medias = mediaCollectionR.getChildren();
 			for(Resource aMedia : medias) {
-
 				ValueMap properties = ResourceUtil.getValueMap(aMedia);
 				int nodeName = getHash(aMedia.getPath());
-				LOGGER.debug("aMedia.getPath(): " + aMedia.getPath()
-						+ ", properties get hash: " + properties.get(NODE_NAME)
-						+ ", hash- " + nodeName);
-				if (properties.containsKey(NODE_NAME)) {
-					nodeName = Integer.valueOf(properties.get(NODE_NAME).toString());
-					LOGGER.debug("hash value is using what is coming from itemNode: " + nodeName);
-				}
 				if(properties.containsKey("name")) {
 					try {
 						Node itemNode = aMedia.adaptTo(Node.class);
 						if(!properties.containsKey(NODE_NAME) && !carouselProps.containsKey(itemNode.getName())) {
-							// save node for first time
-							LOGGER.debug("Add node for first time to carousel: " + itemNode.getName());
-							itemNode.setProperty(NODE_NAME, nodeName);
-							carouselNode.setProperty(itemNode.getName(), nodeName);
-							session.save();
-							LOGGER.debug("Get node hash value from itemNode: " + itemNode.getProperty(NODE_NAME));
-						}else if(carouselProps.containsKey(itemNode.getName())){
-							LOGGER.debug("node exist in carousel: " + itemNode.getName()
-									+ ", properties.containsKey(NODE_NAME): " + properties.containsKey(NODE_NAME));
-							if (! properties.containsKey(NODE_NAME)) {
-								nodeName = ((Long) carouselProps.get(itemNode.getName())).intValue();
-								// lets add the nodeName to property, this is to take care of existing nodes
 								itemNode.setProperty(NODE_NAME, nodeName);
+							carouselNode.setProperty(itemNode.getName(), nodeName);
 								session.save();
-								LOGGER.debug("Saved the nodeName to current itemNode, no need to do it again");
-							}
+						}else if(carouselProps.containsKey(itemNode.getName())){
+							nodeName = ((Long) carouselProps.get(itemNode.getName())).intValue();
 						}else {
-							LOGGER.debug("node does not exist in carousel?: " + itemNode.getName());
 							nodeName = ((Long) properties.get(NODE_NAME)).intValue();
 							carouselNode.setProperty(itemNode.getName(), nodeName);
 							session.save();

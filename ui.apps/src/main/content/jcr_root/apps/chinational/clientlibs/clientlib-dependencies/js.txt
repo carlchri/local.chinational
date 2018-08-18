@@ -15,5 +15,3 @@
 ###############################################################################
 js/jquery.min.js
 js/bootstrap.js
-# AEM minify is throwing error with using this JS, so we will include through CDN for Audio player in footer
-# js/mediaelement-and-player.js

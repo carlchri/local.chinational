@@ -12,8 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
  
-import org.apache.sling.api.servlets.SlingAllMethodsServlet;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;     
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.Reference;
@@ -23,12 +22,11 @@ import org.apache.felix.scr.annotations.Property;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.chi.aem.common.utils.NewsBlogUtils;
-import org.chi.aem.common.utils.DefaultValuesUtils;
-import org.chi.aem.common.utils.NewsBlogImageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Session;
+ 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
@@ -40,8 +38,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.commons.json.JSONObject;
 import org.apache.sling.commons.json.JSONArray;
 
-import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
-import com.day.cq.commons.inherit.InheritanceValueMap;
 //QUeryBuilder APIs
 import com.day.cq.wcm.api.Page;
 
@@ -50,7 +46,7 @@ import com.day.cq.wcm.api.Page;
 @Properties({ 
 		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
 			  @Property(name = "sling.servlet.selectors", value = "blogsservlet"),
-			  @Property(name = "sling.servlet.extensions", value = "html"),
+			  @Property(name = "sling.servlet.extensions", value = "json"),
 			  @Property(name = "service.description", value = "for Blogs List component"),
 			  @Property(name = "label", value = "Blogs List") 
 		  })
@@ -68,19 +64,17 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     
     private Session session;
     
-    private static final int HITS_PER_PAGE = 6;
+    private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_BLOGS_FILTER = "AllItems";
-    private static final String DEFAULT_BLOGS_FILTER_YEAR = "ChooseYear";
+    private static final String DEFAULT_BLOGS_FILTER = "SortByMostRecent";
     private static final String BLOGS_TEMPLATE = "/apps/chinational/templates/blogsdetailspage";
-    private static final String DEFAULT_BLOGS_TILE_IMG_SRC  = "defaultBlogsTileImgSrc";
-    private static final String DEFAULT_MESSAGE  = "could not find default value";
     
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
+     * excluding featured article to be displayed at top of page
      * sorted by publish date
      * required to get total results to Show-Hide LOAD MORE Button
     */
@@ -97,13 +91,9 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     */
     private java.util.List<Page> featuredBlogs;
 
-    // storing list of years of published articles
-    // private java.util.List<String> listYears;
-    
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
     private String blogsFilter;
-    private String blogsFilterYear;
     private String media_page_path;
     private int start_index;
     private int hits_per_page;
@@ -112,8 +102,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
+       
         blogsFilter = "";
-        blogsFilterYear = "";
         media_page_path = "";
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
@@ -123,25 +113,19 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     	listBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
-        // listYears = new ArrayList<>();
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
+        
         try {
         	resolver = resolverFactory.getServiceResourceResolver(param);
             session = resolver.adaptTo(Session.class);
             
             Resource resource = request.getResource();
-            if(resource != null) {
-            	media_page_path = resource.getPath();
-            	LOGGER.info("media_page_path parent_path : " + resource.getPath());
-            }
-
-/*            if (resource != null) {
+    		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
-    				//news-list used in getChild is OK. This is how path is provided in data-sly-resource in blogscenterpage template content.html
-    				 Resource property = childResources.next().getChild("news-list/parentPage"); 
+    				 Resource property = childResources.next().getChild("news-list/parentPage");
     				    if (property == null) {
     				        continue;
     				    }
@@ -150,7 +134,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     				    }
     			}
     		}
-*/
+
     		if(media_page_path == null || media_page_path.isEmpty()){
     			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".blogsservlet"));
     		}
@@ -166,18 +150,10 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        	start_index = Integer.parseInt(selectors[2]);	
 	        }
 	        
-	        if(selectors.length >= 4){
-	        	blogsFilterYear = selectors[3];
-	        } else {
-	        	blogsFilterYear = DEFAULT_BLOGS_FILTER_YEAR;
-	        }
-	        
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter, blogsFilterYear);
-	        // listYears = (List<String>) articleMap.get("listYears");
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter);
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
-	        // LOGGER.info("filtered blogs : " + allFilteredBlogs.size());
 	        
 	    	for(Page item : featuredBlogs) {
 				 if(allFilteredBlogs.contains(item)){
@@ -191,12 +167,10 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        totalResults = allFilteredBlogs.size();
 	        
 	        JSONObject jsonResult = new JSONObject();
-	        JSONArray jsonArray = getJsonBlogs(resource);
+	        JSONArray jsonArray = getJsonBlogs();
 	        jsonResult.put("jsonBlogs", jsonArray);
 	        jsonResult.put("total_results", totalResults);
-	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
-	        // LOGGER.info("jsondata : " + jsonData);
 	        
 	        response.setContentType("application/json");
 	         
@@ -210,6 +184,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        } catch (IOException e1) {
 	            LOGGER.error("Exception in BlogsListServlet>>doget method",e1);
 	        }
+	
 	    }
 	
 	    finally {
@@ -231,7 +206,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
         doPost(request, response);
     }
 
-    public JSONArray getJsonBlogs(Resource resource) {
+    public JSONArray getJsonBlogs() {
     	JSONArray jsonBlogs = new  JSONArray();
     	
         try {
@@ -253,9 +228,6 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	            if(sMap.get("excerpt", String.class) != null) {
 	            	jsonObject.put("excerpt", sMap.get("excerpt", String.class));
 	            }
-	            String tileImgSrc = NewsBlogImageUtils.getTileImage(item, "blogs");
-            	jsonObject.put("tileImageSrc", tileImgSrc);
-	            
 	            jsonBlogs.put(jsonObject);
 	        }
 	        

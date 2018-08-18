@@ -39,9 +39,8 @@
 	color: #fff;
 }
 
-/* Page title abnd also should use white text*/
 .intro-title .intro-caption-black {
-	color: #fff;
+	color: #000;
 }
 
 .intro-short-title {
@@ -61,7 +60,7 @@
 }
 
 .intro-caption-black {
-	color: #fff; /*Page title band also uses white font color*/
+	color: #000;
 	font-size: 36px;
 	text-align: left;
 	line-height: 32px;

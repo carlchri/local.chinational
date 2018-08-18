@@ -21,11 +21,10 @@
 	text-align: center;
 }	
 
-/* commented out by Davinder on June 23, 2018 as per CHIP23
 .category-item.center p {  /*sbrown - added for callout icon center */
 	text-align: left;
 }
-*/
+
 .category-item .small-heading {
 	line-height: 1;
 }

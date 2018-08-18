@@ -40,14 +40,6 @@
                                                         name="./fileReference"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
-                                                    <useOriginalSize
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldDescription="Display image in original size, rather than stretching it to cover the width."
-                                                            name="./useOriginalSize"
-                                                            text="Display image in original size?"
-                                                            uncheckedValue="false"
-                                                            value="true"/>
                                                     <imageCaption
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"

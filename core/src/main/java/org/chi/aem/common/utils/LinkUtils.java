@@ -1,13 +1,8 @@
 package org.chi.aem.common.utils;
 
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
@@ -98,40 +93,6 @@ public final class LinkUtils {
             return url;
         }
         return url.replaceAll(" ", "%20");
-    }
-
-    /**
-     * If the provided {@code path} identifies a {@link Page}, this method will generate the correct URL for the page. Otherwise the
-     * original {@code String} is returned.
-     *
-     * @param request     the current request, used to determine the server's context path
-     * @param pageManager the page manager
-     * @param path        the page path
-     * @return the URL of the page identified by the provided {@code path}, or the original {@code path} if this doesn't identify a
-     * {@link Page}
-     */
-    @Nonnull
-    public static String getURL(@Nonnull SlingHttpServletRequest request, @Nonnull PageManager pageManager, @Nonnull String path) {
-        Page page = pageManager.getPage(path);
-        if (page != null) {
-            return getURL(request, page);
-        }
-        return path;
-    }
-
-    /**
-     * Given a {@link Page}, this method returns the correct URL, taking into account that the provided {@code page} might provide a
-     * vanity URL.
-     *
-     * @param request the current request, used to determine the server's context path
-     * @param page    the page
-     * @return the URL of the page identified by the provided {@code path}, or the original {@code path} if this doesn't identify a
-     * {@link Page}
-     */
-    @Nonnull
-    public static String getURL(@Nonnull SlingHttpServletRequest request, @Nonnull Page page) {
-        String vanityURL = page.getVanityUrl();
-        return StringUtils.isEmpty(vanityURL) ? request.getContextPath() + page.getPath() + ".html" : request.getContextPath() + vanityURL;
     }
 
 }

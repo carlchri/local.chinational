@@ -41,83 +41,34 @@
                                         jcr:primaryType="nt:unstructured"
                                         disabled="true"/>
                                     <hidePageTitle
-                                        jcr:primaryType="nt:unstructured"
-                                        disabled="true"/>
+                                            jcr:primaryType="nt:unstructured"
+                                            disabled="true"/>
                                 </items>
                             </column>
                         </items>
                     </chinational>
-                    <defaultValues
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Default Values"
-                        sling:orderBefore="advanced"
-                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
-                        <items jcr:primaryType="nt:unstructured">
-                            <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <newsPath
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default News Path"
-                                        fieldLabel="Template to serve as basis for News tag landing pages"
-                                        name="./defaultNewsPath"
-                                        rootPath="/content"/>
-                                    <blogsPath
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default News Path"
-                                        fieldLabel="Template to serve as basis for Blog tag landing pages"
-                                        name="./defaultBlogsPath"
-                                        rootPath="/content"/>
-                                    <newsTileImageSrc
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default News Tile/Featured Image Src"
-                                        fieldLabel="Default News Tile/Featured Image Src"
-                                        name="./defaultNewsTileImgSrc"
-                                        rootPath="/content/dam"/>
-                                    <blogsTileImageSrc
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default Blogs Tile/Featured Image Src"
-                                        fieldLabel="Default Blogs Tile/Featured Image Src"
-                                        name="./defaultBlogsTileImgSrc"
-                                        rootPath="/content/dam"/>
-                                    <defaultMembersPhotoSrc
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Default Members Tile Photo Src"
-                                        fieldLabel="Default Members Tile Photo Src"
-                                        name="./defaultMembersPhotoSrc"
-                                        rootPath="/content/dam"/>
-                                </items>
-                            </column>
-                        </items>
-                    </defaultValues>
                     <chianalytics
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="CHI Analytics"
-                        sling:orderBefore="advanced"
-                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="CHI Analytics"
+                            sling:orderBefore="advanced"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                         <items jcr:primaryType="nt:unstructured">
                             <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
                                     <snippets
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                        fieldDescription="Add analytic snippets here"
-                                        fieldLabel="Analytic Snippets"
-                                        name="./analyticsnippets"/>
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldDescription="Add analytic snippets here"
+                                            fieldLabel="Analytic Snippets"
+                                            name="./analyticsnippets"/>
                                     <gsearchid
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Google Search Console to track how Google is indexing your website"
-                                        fieldLabel="Google Search Console ID"
-                                        name="./gsearchid"/>
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Google Search Console to track how Google is indexing your website"
+                                            fieldLabel="Google Search Console ID"
+                                            name="./gsearchid"/>
                                 </items>
                             </column>
                         </items>

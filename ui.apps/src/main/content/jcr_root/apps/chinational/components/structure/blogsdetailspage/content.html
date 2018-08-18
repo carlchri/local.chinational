@@ -1,4 +1,18 @@
-<sly data-sly-include="../../commons/newsblogimage.html"></sly>
+
+<div class="row"  data-sly-test="${pageProperties.imageSrc}">
+    <div class="col-sm-12">
+        <div class="full-image">
+            <div >
+                <picture>
+                    <img class="image-responsive" src="${pageProperties.imageSrc}">
+                </picture>
+            </div>
+            <div class="padding-5" data-sly-test="${pageProperties.imageCaption}">
+                <p class="light-txt">${pageProperties.imageCaption}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div data-sly-resource="${ @path='main-respgrid', resourceType='chinational/components/foundation/responsivegrid'}"></div>
 <div data-sly-test="${pageProperties.displayQuoteComponent}"

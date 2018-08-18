@@ -173,11 +173,9 @@ jQuery(document).ready(function() {
     function checkClasses() {
 
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        //console.log("carousel total:  " + total);
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-            //console.log('full width container');
             // add class to first item
             if (index === 0) {
                 // this is the first one
@@ -206,9 +204,9 @@ jQuery(document).ready(function() {
             }
 
             if ($(window).width() > 1024) {
-                //console.log("desktop");
+                // console.log("desktop");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
-            } else if ($(window).width() <= 1024 && $(window).width() >= 768) { /* Changed it to >= from >, as tablet mode starts at 768*/
+            } else if ($('window').width() <= 1024 && $('window').width() > 768) {
                 // console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
                     // console.log('First and second large')
@@ -235,7 +233,7 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 }
-            } else if ($(window).width() <= 767 && $(window).width() >= 0) { /* changes it to <=, as mobile mode starts at 767*/
+            } else if ($('window').width() < 767 && $('window').width() >= 0) {
                 // console.log('Small Tablets');
                 if (fOwlActive.first().width() > 300) {
                     if (index === 0) {
@@ -283,7 +281,6 @@ jQuery(document).ready(function() {
         var rrOwlActive = $('#right-rail-container .media-carousel .owl-stage .owl-item.active');
         $('#right-rail-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#right-rail-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-            //console.log("right rail container width - " + $(window).width());
             // add class to first item
             if (index === 0) {
                 // this is the first one
@@ -299,12 +296,9 @@ jQuery(document).ready(function() {
             // }
             // add class to last class
             if (rrOwlActive.first().width() > 300) {
-
                 if (total >= 3) {
                     // add class to last class
                     if (index === total - 1 && total > 1) {
-                        //console.log("rrOwlActive.first().width() > 300");
-                        //console.log("total >= 3 -- index: " + index + ", total - " + total);
                         $(this).addClass('lastActiveItem');
                     }
                 }
@@ -312,8 +306,6 @@ jQuery(document).ready(function() {
                 if (total >= 4) {
                     // add class to last class
                     if (index === total - 1 && total > 1) {
-                        //console.log("rrOwlActive.first().width() > 300");
-                        //console.log("total >= 4 -- index: " + index + ", total - " + total);
                         $(this).addClass('lastActiveItem');
                     }
                 }
@@ -327,14 +319,11 @@ jQuery(document).ready(function() {
             //     }
             // }
 
-            //console.log("window width - " + $(window).width());
-            //console.log("window width by quote - " + $('window').width());
             if ($(window).width() > 1024) {
-                //console.log("Desktop - " + $(window).width());
+                // console.log("desktop");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
                 if (rrOwlActive.first().width() > 300) {
                     if (total >= 3) {
-                        //console.log("desktop window).width() > 1024, rrOwlActive.first().width() > 300,  total >= 3");
                         $(this).not('.lastActiveItem').addClass('fullOpacity');}
                     
                 } else {
@@ -342,10 +331,10 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 }
-            } else if ($(window).width() <= 1024 && $(window).width() >= 768) {
-                //console.log("tablet 1024 to 768");
+            } else if ($('window').width() <= 1024 && $('window').width() > 768) {
+                // console.log("tablet");
                 if (rrOwlActive.first().width() > 300 || rrOwlActive.first().next().width() > 300) {
-                    //console.log('tablet First and second large - index - ' + index)
+                    // console.log('First and second large')
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -355,7 +344,7 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 } else {
-                    //console.log('tablet All Small - index - ' + index);
+                    // console.log('All Small');
                     if (index === 0) {
                         // this is the first one
                         $(this).addClass('fullOpacity');
@@ -369,8 +358,8 @@ jQuery(document).ready(function() {
                         $(this).addClass('fullOpacity');
                     }
                 }
-            } else if ($(window).width() <= 767 && $(window).width() >= 0) {
-                //console.log('Small Tablets');
+            } else if ($('window').width() < 767 && $('window').width() >= 0) {
+                // console.log('Small Tablets');
                 if (rrOwlActive.first().width() > 300) {
                     if (index === 0) {
                         // this is the first one
@@ -508,41 +497,19 @@ jQuery(document).ready(function() {
         }
     });
 
-});
-
-/* June 4, 2018 Added by Davinder for Compaign landing Page */
-
-if (jQuery(window).width() < 768) {
-    jQuery(function() {
-        campaignButtonHide($(".campaign-header-button"));
-    });
-}    
-
-function campaignButtonHide(buttondiv) {
-    if ($( "div" ).hasClass( "campaign-header-button" )) {
-    		var pos = buttondiv.offset().top,
-            win = $(window);
-    		win.on("scroll", function() {
-            win.scrollTop() >= pos ? buttondiv.hide() : buttondiv.show();
-        });
-    }
-}
-
-/* End of Additions  */
-
+})
 if (jQuery(window).width() > 992) {
     jQuery(function() {
         createSticky($(".main-nav"));
     });
-}
 
-function createSticky(sticky) {
-    if ($( "div" ).hasClass( "main-nav" )) {
-        var pos = sticky.offset().top,
-            win = $(window);
-        win.on("scroll", function() {
-            win.scrollTop() >= pos ? sticky.addClass("pstn-fxd") : sticky.removeClass("pstn-fxd");
-        });
+    function createSticky(sticky) {
+        if (typeof sticky !== "undefined") {
+            var pos = sticky.offset().top,
+                win = $(window);
+            win.on("scroll", function() {
+                win.scrollTop() >= pos ? sticky.addClass("pstn-fxd") : sticky.removeClass("pstn-fxd");
+            });
+        }
     }
 }
-
