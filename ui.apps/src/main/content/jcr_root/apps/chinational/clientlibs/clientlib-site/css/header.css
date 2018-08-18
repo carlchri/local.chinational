@@ -31,7 +31,7 @@
 	font-weight: bold;
 	letter-spacing: 1px;
 	/*position: relative; For MAM-30 */
-    position: static !important; /* Fix it for other nav locations*/
+    position: static !important; /* Fix it for other nav locations */
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
