@@ -1,8 +1,19 @@
 <!-- Placeholder Content -->
 
 <sly data-sly-template.placeholder="${@ isEmpty, classAppend, emptyTextAppend}">
+
+<!--/*    <div data-sly-test="${(wcmmode.edit || wcmmode.preview) && isEmpty}"
+         class="cq-placeholder ${classAppend}"
+         data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}"
+         style="text-align:center; color:blue;">
+         ${component.properties.jcr:title}
+     </div>
+*/-->
+
     <div data-sly-test="${(wcmmode.edit || wcmmode.preview) && isEmpty}"
          class="cq-placeholder ${classAppend}"
-         data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}"></div>
+         style="text-align:center; color:blue;">
+         ${component.properties.jcr:title}
+     </div>
 </sly>
 

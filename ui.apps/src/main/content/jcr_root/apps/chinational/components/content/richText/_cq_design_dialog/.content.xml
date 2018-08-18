@@ -3,39 +3,19 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Text"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    helpPath="https://www.adobe.com/go/aem_cmp_text_v1">
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <plugins
+            <tabs
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/accordion">
-                <items jcr:primaryType="nt:unstructured">
-                    <Features
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Features"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        maximized="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <fixedcol
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                maximized="{Boolean}false">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <col1
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:hideChildren="[editHTML]"/>
-                                    </col1>
-                                </items>
-                            </fixedcol>
-                        </items>
-                    </Features>
-                </items>
-            </plugins>
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[styletab]"/>
+            </tabs>
         </items>
     </content>
 </jcr:root>

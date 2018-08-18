@@ -93,12 +93,16 @@
                                                             <right
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="Video/Image on Right"
+                                                                text="Video/Image on Right Panel"
                                                                 value="rightOrientation"/>
                                                             <left
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Video/Image on Left"
+                                                                text="Video/Image on Left Panel"
                                                                 value="leftOrientation"/>
+                                                            <both
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Video/Image on both Panels"
+                                                                    value="bothOrientation"/>
                                                             <hide
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Video/Image Not Required"
@@ -113,6 +117,22 @@
                                                         text="Select to enable image [By Default, Video]"
                                                         uncheckedValue="false"
                                                         value="true"/>
+                                                    <buttonUnderLeftPanel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under left panel."
+                                                            name="./buttonUnderLeftPanel"
+                                                            text="Select to enable button under left panel (or under text, if no video/image is displayed)"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+                                                    <buttonUnderRightPanel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under right panel."
+                                                            name="./buttonUnderRightPanel"
+                                                            text="Select to enable button under right panel"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
                                                 </items>
                                             </well>
                                         </items>

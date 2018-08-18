@@ -30,7 +30,8 @@
 	padding: 16px 0;
 	font-weight: bold;
 	letter-spacing: 1px;
-	position: relative;
+	/*position: relative; For MAM-30 */
+    position: static !important; /* Fix it for other nav locations*/
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
@@ -110,7 +111,7 @@
 }
 
 .header .hidden-menu {
-	width: 370px;
+	max-width: 1328px; /* Update for MAM-30*/
 	z-index: 4;
 	padding: 20px;
 	top: 51px;
@@ -119,9 +120,43 @@
 	box-shadow: -4px 7px 25px rgba(0, 0, 0, 0.5);
 }
 
+.header .hidden-menu .row {
+	width: 100%;
+}
+
+/* Update for MAM-30 */
+.header .hidden-menu .col-md-3 {
+    max-width: 300px;
+}
+
+.header .hidden-menu .arrow-down {
+    margin-left: 13px;
+}
+
 .header ul li a.dd-opened {
 	color: #426da9;
 }
+
+.header .hidden-menu a.top-level {
+    font-size: 15px;
+    letter-spacing: 1.7px;
+    font-weight: bold;
+    color: #24509a;
+}
+
+.header .hidden-menu a.second-level {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #53565a;
+}
+
+.header .hidden-menu a.second-level-more {
+    color: #0097a9;
+}
+
+
 
 .header .hidden-menu li {
 	margin-right: 0;
@@ -191,6 +226,49 @@
 .dropdown-box.open .dropdown-list {
 	display: block;
 }
+
+/* June 2018 Added by Davinder for Compaign landing Page */
+
+/* .campaignlandingpage .container {
+	padding-right:66px;
+} */
+
+.campaignlandingpage .header {
+	position:fixed;
+	background-color:white;
+}
+
+.campaignlandingpage .logo-strip {
+	min-height:73px;
+	display:flex;
+	align-items:center;
+}
+
+.campaignlandingpage .logo {
+	padding:15px 0 21px 0;
+}
+
+.campaignlandingpage .logo img{
+	padding:0 0;
+	margin:0 0;
+}
+
+.campaignlandingpage .campaign-header-button {
+	/* padding:19px 88px 16px 0;  73px + 15px for col- = 88px */
+	padding:0 88px 0 0;
+}
+
+.campaign-header-button .learn-more-btn {
+	float:right;
+}
+
+.campaignlandingpage .body-content {
+	margin-top:100px;
+}
+
+/* End of Additions  */
+
+
 @media (max-width:1200px) {
 	.header-right-nav {
 		top:-65px;
@@ -361,6 +439,51 @@
 		right: 50%;
 		left: 50%;
 	}
+	
+	/* June 2018 Added by Davinder for Compaign landing Page */
+
+/*	.campaignlandingpage .container {
+		padding-right:40px;
+	} */ 
+
+	.campaignlandingpage .campaign-header-button {
+		/* padding:14px 17px 16px 0;  padding-right --> 2px + 15px for col- = 17px */
+		padding: 0 17px 0 0;
+	}
+	
+	.campaignlandingpage .logo-strip {
+		min-height:68px;
+	}
+	
+	.campaignlandingpage .logo {
+		padding:12px 0 18px;
+	}
+	
+	.campaignlandingpage .logo-strip {
+		margin-left:-37px; 
+		/* In zeplin margin-left for tablet logo is 18px. 
+		Container is adding 40px. So 40-18=22px 
+		and row is -15px. So -22-15=-37px */
+	}
+	
+/*	.campaignlandingpage .campaign-header-button .learn-more-btn{
+		float:right;
+	}
+*/	
+	.campaignlandingpage .header:after {
+		content: normal;
+	}
+	
+	.campaignlandingpage .body-content {
+		margin-top:68px;
+	}
+	
+/*	.campaignlandingpage .hide-in-mobile-tablet {
+		display:none; 
+	}
+*/
+	/* End of Additions  */
+	
 }
 
 @media (max-width:767px) {
@@ -398,4 +521,40 @@
 	.hide-on-mobile {
 		display: none;
 	}
+	
+	/* June 2018 Added by Davinder for Compaign landing Page */
+/*	.campaignlandingpage .container {
+		padding-right:30px;
+	} */
+
+	.campaignlandingpage .campaign-header-button {
+		padding:0 17px 18px 30px; /* padding-right --> 2px + 15px for col- = 17px */
+	}
+	
+/*	cannot set min-height in mobile view, as we need to hide button when user scrolls up
+	.campaignlandingpage .logo-strip {
+		min-height:121px; 
+	}
+*/	
+	.campaignlandingpage .logo {
+		padding:12px 0 24px;
+	}
+	
+	.campaignlandingpage .logo-strip {
+		margin-left:-30px; 
+		display:block;
+		/* In zeplin margin-left for mobile logo is 15px. 
+		Container is adding 30px. So 30-15=15px 
+		and row is -15px. So -15-15=-30px */
+	}
+
+	.campaignlandingpage .campaign-header-button .learn-more-btn{
+		float:none;
+	}
+	
+	.campaignlandingpage .body-content {
+		margin-top:125px; 
+	}
+	/* End of Additions  */
+	
 }

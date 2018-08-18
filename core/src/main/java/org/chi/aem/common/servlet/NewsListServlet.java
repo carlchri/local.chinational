@@ -45,7 +45,7 @@ import com.day.cq.wcm.api.Page;
 @Properties({ 
 		      @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
 			  @Property(name = "sling.servlet.selectors", value = "newsservlet"),
-			  @Property(name = "sling.servlet.extensions", value = "json"),
+			  @Property(name = "sling.servlet.extensions", value = "html"),
 			  @Property(name = "service.description", value = "for News List component"),
 			  @Property(name = "label", value = "News List") 
 		  })
@@ -65,7 +65,8 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     
     private static final int HITS_PER_PAGE = 10;
     private static final int START_INDEX = 0;
-    private static final String DEFAULT_NEWS_FILTER = "SortByMostRecent";
+    private static final String DEFAULT_NEWS_FILTER = "AllItems";
+    private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     private static final String NEWS_TEMPLATE = "/apps/chinational/templates/newsdetailspage";
     
     // storing list of all news articles sorted by publishDate
@@ -89,9 +90,13 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     */
     private java.util.List<Page> featuredNews;
 
+    // storing list of years of published articles
+    // private java.util.List<String> listYears;
+
     private Map<String, Object> articleMap = new HashMap<String, Object>();
 
     private String newsFilter;
+    private String filterYear;
     private String media_page_path;
     private int start_index;
     private int hits_per_page;
@@ -101,6 +106,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
         newsFilter = "";
+        filterYear = "";
         media_page_path = "";
         start_index = START_INDEX;
         hits_per_page = HITS_PER_PAGE;
@@ -110,6 +116,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     	listNews = new ArrayList<>();
     	allFilteredNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
+        // listYears = new ArrayList<>();
                 
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
@@ -118,9 +125,14 @@ public class NewsListServlet extends SlingAllMethodsServlet {
             session = resolver.adaptTo(Session.class);
 
             Resource resource = request.getResource();
-    		if (resource != null) {
+            if(resource != null) {
+            	media_page_path = resource.getPath();
+            	LOGGER.info("media_page_path parent_path : " + resource.getPath());
+            }
+/*    		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();
     			while (childResources.hasNext()) {
+    				// to get path of parent page
     				 Resource property = childResources.next().getChild("news-list/parentPage");
     				    if (property == null) {
     				        continue;
@@ -130,7 +142,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
     				    }
     			}
     		}
-    		
+ */   		
     		if(media_page_path == null || media_page_path.isEmpty()){
     			media_page_path = request.getRequestURI().substring(0, request.getRequestURI().indexOf(".newsservlet"));
     		}
@@ -146,10 +158,18 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        	start_index = Integer.parseInt(selectors[2]);	
 	        }
 	        
+	        if(selectors.length >= 4){
+	        	filterYear = selectors[3];
+	        } else {
+	        	filterYear = DEFAULT_NEWS_FILTER_YEAR;
+	        }
+	        
 	        allNews = NewsBlogUtils.populateListItems(media_page_path, resolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resolver, newsFilter);
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resolver, newsFilter, filterYear);
+	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredNews = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
+	        // LOGGER.info("filtered news : " + allFilteredNews.size());
 	        
 		   	for(Page item : featuredNews) {
 				 if(allFilteredNews.contains(item)){
@@ -166,7 +186,9 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        JSONArray jsonArray = getJsonNews();
 	        jsonResult.put("jsonNews", jsonArray);
 	        jsonResult.put("total_results", totalResults);
+	        // jsonResult.put("list_years", listYears);
 	        String jsonData = jsonResult.toString();
+	        // LOGGER.info("jsondata : " + jsonData);
 	        
 	        response.setContentType("application/json");
 	         
@@ -180,7 +202,6 @@ public class NewsListServlet extends SlingAllMethodsServlet {
 	        } catch (IOException e1) {
 	            LOGGER.error("Exception in NewsListServlet>>doget method",e1);
 	        }
-	
 	    }
 	
 	    finally {

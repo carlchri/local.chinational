@@ -9,7 +9,6 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
   overflow-y: scroll;
 }
 
-
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
   padding-bottom: 160%;
@@ -74,6 +73,22 @@ and (orientation : portrait) {
 
 .image-responsive {
     width: 100%;
+    height: auto;
+}
+
+.image-max-width-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.cmp-image .image-max-width-responsive {
+    width: auto;
+}
+
+/* This is for news and blog details page*/
+.full-image .image-max-width-responsive img {
+    max-width: 100%;
+    width: auto;
     height: auto;
 }
 

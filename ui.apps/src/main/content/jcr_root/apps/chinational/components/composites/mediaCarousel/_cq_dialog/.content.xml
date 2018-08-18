@@ -66,6 +66,10 @@
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="Audio"
                                                                             value="audio"/>
+                                                                    <image
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            text="Image with link"
+                                                                            value="image"/>
                                                                 </items>
                                                             </mediaType>
                                                             <mediaComponentName
@@ -75,6 +79,10 @@
                                                                     fieldLabel="Enter A Video or Audio Tile Name (visible in edit mode only)"
                                                                     name="./name"
                                                                     required="{Boolean}true"/>
+                                                            <nodeName
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                                    name="./nodeName"/>
                                                         </items>
                                                     </field>
                                                 </multifieldcollection>

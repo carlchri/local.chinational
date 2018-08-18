@@ -27,7 +27,7 @@ public class SearchResult extends WCMUsePojo {
     private static final String PN_SEARCH_TERM_MINIMUM_LENGTH = "searchTermMinimumLength";
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchResult.class);
     private static final int DEFAULT_SEARCH_TERM_MINIM_LENGTH = 3;
-    private static final int DEFAULT_RESULT_SIZE = 10;
+    private static final int DEFAULT_RESULT_SIZE = 20;
     private static final int DEFAULT_RESULT_OFFSET = 0;
     private static final String DEFAULT_SEARCH_ROOT = "/content/national";
     private static final String DEFAULT_RESULT_TYPE = "cq:Page";
@@ -83,8 +83,8 @@ public class SearchResult extends WCMUsePojo {
         if(pageString != null && !pageString.equalsIgnoreCase("1")) {
             currentPageNumber = Integer.parseInt(pageString);
             resultsOffset = (currentPageNumber - 1) * resultsSize;
-            LOGGER.info("getSearchResults currentPageNumber - " + currentPageNumber);
-            LOGGER.info("getSearchResults resultsOffset - " + resultsOffset);
+            LOGGER.debug("getSearchResults currentPageNumber - " + currentPageNumber);
+            LOGGER.debug("getSearchResults resultsOffset - " + resultsOffset);
         }
 
         fulltext = request.getParameter(PARAM_FULLTEXT);
@@ -102,6 +102,10 @@ public class SearchResult extends WCMUsePojo {
         }
         predicatesMap.put(SECOND_GROUP + P_OR, "true");
         predicatesMap.put(PREDICATE_FULLTEXT, fulltext);
+
+        // create standard order by
+        predicatesMap.put("orderby","@jcr:score");
+        predicatesMap.put("orderby.sort","desc");
 
         // hide results based on a property
         //map.put("boolproperty", "jcr:content/hideInNav");
@@ -127,7 +131,7 @@ public class SearchResult extends WCMUsePojo {
             com.day.cq.search.result.SearchResult searchResult = query.getResult();
 
             totalNumberOfResult = (int) searchResult.getTotalMatches();
-            LOGGER.info("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
+            LOGGER.debug("getSearchResults totalNumberOfResult - " + totalNumberOfResult);
             int remainder = totalNumberOfResult % resultsSize;
             if (remainder == 0) {
                 // if remainder is zero, we only need one extra page to from 1 to n, rather than 0 to n-1
@@ -135,7 +139,7 @@ public class SearchResult extends WCMUsePojo {
             } else {
                 totalNumberPages = totalNumberOfResult/resultsSize + 2;
             }
-            LOGGER.info("getSearchResults totalNumberPages - " + totalNumberPages);
+            LOGGER.debug("getSearchResults totalNumberPages - " + totalNumberPages);
 
             for(int i = 1; i < totalNumberPages; i++) {
                 pages.add(Integer.toString(i));
@@ -216,6 +220,21 @@ public class SearchResult extends WCMUsePojo {
     public int getTotalNumberOfResults() { return totalNumberOfResult; }
 
     public int getCurrentPageNumber() { return currentPageNumber; }
+
+    public int getMaxPageNumber() {
+        return totalNumberPages-1;
+    }
+
+    public int getPreviousPageNumber() {
+        return currentPageNumber-1;
+    }
+
+    public int getNextPageNumber() {
+        if (currentPageNumber == getMaxPageNumber()) {
+            return 0;
+        }
+        return currentPageNumber+1;
+    }
 
     public String getFulltext() {
         return fulltext;
