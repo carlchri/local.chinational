@@ -68,6 +68,20 @@
     position: relative;
 }
 
+.full-width-container .tnl-wrapper .blog-image {
+    max-width:500px; /* CHIP-41 */
+}
+
+.full-width-container .featured-news-blog .tnl-wrapper {
+    max-width:530px; /* CHIP-41 , includes padding*/
+}
+
+
+.full-width-container .blog-news-padding-top {
+    max-width:630px; /* CHIP-41 , includes padding*/
+}
+
+
 .tnl-wrapper .blog-image .blog-image-container {
     position: absolute;
     top: 0;

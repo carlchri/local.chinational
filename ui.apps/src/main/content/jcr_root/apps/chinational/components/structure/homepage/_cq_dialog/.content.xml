@@ -61,14 +61,14 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Default News Path"
-                                        fieldLabel="Default News Path"
+                                        fieldLabel="Template to serve as basis for News tag landing pages"
                                         name="./defaultNewsPath"
                                         rootPath="/content"/>
                                     <blogsPath
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Default News Path"
-                                        fieldLabel="Default Blogs Path"
+                                        fieldLabel="Template to serve as basis for Blog tag landing pages"
                                         name="./defaultBlogsPath"
                                         rootPath="/content"/>
                                     <newsTileImageSrc
@@ -84,6 +84,13 @@
                                         fieldDescription="Default Blogs Tile/Featured Image Src"
                                         fieldLabel="Default Blogs Tile/Featured Image Src"
                                         name="./defaultBlogsTileImgSrc"
+                                        rootPath="/content/dam"/>
+                                    <defaultMembersPhotoSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Members Tile Photo Src"
+                                        fieldLabel="Default Members Tile Photo Src"
+                                        name="./defaultMembersPhotoSrc"
                                         rootPath="/content/dam"/>
                                 </items>
                             </column>

@@ -60,27 +60,13 @@
     display: none;
 }
 
-/*
-#search_news_list option, 
-#search_news_year option, 
-#search_blogs_list option, 
-#search_blogs_year option {
-	background-color:#F2F2F2;
-}
-*/
 
-#mcp_heading{
+#mcp_heading, #bcp_heading{
   font-size: 48px;
   line-height: 48px;
-  margin-bottom:11px;
+  margin-bottom:50px;
 }
 
-#bcp_heading{
-	display:none;
-	font-size: 48px;
-  line-height: 48px;
-  margin-bottom:11px;
-}
 
 .media_page_tag_desc, .blog_page_tag_desc{
 	display:none;
@@ -459,5 +445,10 @@ ul.filtered_blogs_list {
 	.full-bleed .featured-news-blog .full-image.required-width-style-1 {
 	    height: 213px;
 	}
+
+	#mcp_heading, #bcp_heading{
+      margin-bottom:32px;
+    }
+
 }
 

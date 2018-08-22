@@ -39,9 +39,16 @@ $(document).ready(function(){
 			    $('#'+$newsID+' #search_news_list option[name='+nfv+']').prop('selected', true);
 			    if($('#'+$newsID+' #search_news_list option:selected').text() != 'All Items'){
 			    	$('#mcp_heading').text(($('#'+$newsID+' #search_news_list option:selected').text())+'s');
-			    	$('.media_page_tag_desc').show();
-			    	$('.media_page_tag_desc').css('display','block');
-			    	$('.media_page_tag_desc').text($('#'+$newsID+' #news_tag_desc').val());
+			    	// if tag desc is null, do not show the tag desc tag
+			    	var tagDescVal = $('#'+$newsID+' #news_tag_desc').val();
+			    	//console.log("tag desc value : '" + tagDescVal + "'");
+			    	if ( tagDescVal != null && tagDescVal != '') {
+			    	    // reduce marging for heading, when tag desc is available
+			    	    $('#mcp_heading').css('margin-bottom','11px');
+                        $('.media_page_tag_desc').show();
+                        $('.media_page_tag_desc').css('display','block');
+                        $('.media_page_tag_desc').text(tagDescVal);
+			    	}
 			    }
 			}
 		}
