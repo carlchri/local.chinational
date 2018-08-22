@@ -13,6 +13,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,15 +56,26 @@ public class LocationCoordinate {
 		@Named(PROP_LOCATION_ADDRESS_PLACE_ID)
 		@Optional
 		private String addressPlaceId;
+
+		@SlingObject
+		private Resource resource;
 		
 		private String latCord;
 		private String lngCord;
 		private String placeId = "";
+		private int hash = Math.abs((int)Math.random());
 	
 		@PostConstruct
 		protected void init() {
             InputStream inputStream = null;
             String json = "";
+
+            // get hash code
+			if (resource != null) {
+				hash = Math.abs(resource.getPath().hashCode());
+			} else if (address != null){
+				hash = Math.abs(address.hashCode());
+			}
 
             try {           
                 // HttpClient client = new DefaultHttpClient();  
@@ -116,6 +128,10 @@ public class LocationCoordinate {
             	LOGGER.error("Inside json read Exception");
             	e.printStackTrace();
             }
+		}
+
+		public int getHash() {
+			return hash;
 		}
 	
 		public String getLatCord() {

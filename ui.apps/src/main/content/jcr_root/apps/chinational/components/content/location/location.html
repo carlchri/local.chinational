@@ -15,7 +15,7 @@
 				</sly>
 				
 				<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
-					<div id="map_${currentNode.Name}" class="map-box"></div>
+					<div id="map_${coordinates.hash}" class="map-box"></div>
 				</sly>
 				
 			</div>
@@ -110,10 +110,10 @@
 	
 	<script data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
 	        // add name of function to array
-	        allMaps.push("initMap_${currentNode.Name @ context="scriptToken"}");
-	        function initMap_${currentNode.Name @ context="scriptToken"}() {
+	        allMaps.push("initMap_${coordinates.hash @ context="scriptToken"}");
+	        function initMap_${coordinates.hash @ context="scriptToken"}() {
 	            var uluru = {lat: ${coordinates.latCord @ context="unsafe"}, lng: ${coordinates.lngCord @ context="unsafe"}};
-	            var mapNode = "map_${currentNode.Name @ context="scriptToken"}";
+	            var mapNode = "map_${coordinates.hash @ context="scriptToken"}";
 	
 	            var map = new google.maps.Map(document.getElementById(mapNode), {
 	                zoom: 15,
