@@ -342,7 +342,7 @@
   	}
   	
   	#right-rail-container .txt-address .small-txt {
-		max-width: 120px;
+		max-width: 120px !important;
 	}
 	
 	#full-width-container .txt-address .small-txt {
