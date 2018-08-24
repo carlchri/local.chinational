@@ -30,8 +30,7 @@
 	padding: 16px 0;
 	font-weight: bold;
 	letter-spacing: 1px;
-	/*position: relative; For MAM-30 */
-    position: static !important; /* Fix it for other nav locations */
+	position: relative;
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
@@ -122,11 +121,14 @@
 
 .header .hidden-menu .row {
 	width: 100%;
+	display: flex;
 }
 
 /* Update for MAM-30 */
 .header .hidden-menu .col-md-3 {
     max-width: 300px;
+    flex: 1;
+    min-width: 240px;
 }
 
 .header .hidden-menu .arrow-down {
