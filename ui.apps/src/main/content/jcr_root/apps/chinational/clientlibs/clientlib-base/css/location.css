@@ -2,7 +2,7 @@
   background: #f8f7f7;
   /* padding: 15px;        Removed by German to fix MAM-26 */
   z-index: 0;
-  margin-bottom: 32px;  /* Added by German to fix MAM-22 */
+  margin-bottom: 52px;  /* Added by German to fix MAM-22 */
 }
 .location .in {
   display: none;
@@ -297,7 +297,7 @@
 }
 
 #right-rail-container .location .txt-address .small-txt{
-	max-width: 200px;
+	max-width: 140px;
 }
 
 #right-rail-container .location .location-text-area {
@@ -322,14 +322,46 @@
 	clear: both;
 }
 
-@media (max-width: 1350px) {
+
+@media (min-width: 1028px) and (max-width: 1124px) {
+	
+	#full-width-container .txt-address .small-txt {
+		max-width: 200px;
+	}
+}
+
+
+@media (min-width: 996px) and (max-width: 1026px) {
+	
+	#right-rail-container .txt-location-name span { 
+    	max-width: 150px;
+  	}
+  	
+  	#full-width-container .txt-location-name span { 
+    	max-width: 200px;
+  	}
+  	
+  	#right-rail-container .txt-address .small-txt {
+		max-width: 120px !important;
+	}
+	
+	#full-width-container .txt-address .small-txt {
+		max-width: 200px;
+	}
+	
+}
+
+
+@media (max-width: 992px) {
   
   	#full-width-container .location .location-text-area {
 		min-width: 100%;
+		padding-top: 30px;
 	}  
 			
-	#full-width-container .location #location-graphic-area {
+	.location #location-graphic-area {
 		min-width: 100%;
+		float: none;
 	}
 	
 	#full-width-container .location .dividingColumns {
@@ -346,63 +378,26 @@
 		padding-top: 4px;
 	}
 	
+	#right-rail-container .location .location-icon {   
+		padding-top: 4px;
+	}
+	
 	#full-width-container .location .txt-address .small-txt{
 		max-width: 200px;
 	}
 	
 	#right-rail-container .location .txt-address .small-txt{
-		max-width: 100px;
-	}
-}
-
-@media (max-width: 1260px) {
-  
-  	.location div.small-wrapper {   
-	  	margin: 0 0 15px 0;
+		max-width: 150px;
 	}
 	
-}
-
-@media (max-width: 1200px) {
-  
-  	#full-width-container .location .location-text-area {
-	  	padding-top: 30px;
+	.location div.small-wrapper {   
+	  	margin: 0 0 15px 0;
 	}
-}
-
-@media (max-width: 1024px) {
 	
 	#right-rail-container .location .txt-location-name span { 
     	max-width: 200px;
   	}
-  
-}
-
-@media (max-width: 1006px) {
 	
-	#right-rail-container .location .location-icon {   
-		padding-top: 4px;
-	}
-	
-	.location #location-graphic-area {   
-		float: none;
-	}
-	
-	.location .txt-location-name span {  
-    	max-width: 300px;
-  	}
-	
-	.location .location-text-area {
-	  	padding-top: 30px;
-	}
-	
-	.location .location-icon {   
-		padding-right: 35px;
-	}
-	
-	#right-rail-container .location .txt-address .small-txt{
-		max-width: 200px;
-	}
 }
 
 
@@ -414,7 +409,7 @@
 	}   
 	
 	#right-rail-container .location .txt-address .small-txt{
-		max-width: 100px;
+		max-width: 150px;
 	}
 	
 	#full-width-container .location .txt-address .small-txt{
