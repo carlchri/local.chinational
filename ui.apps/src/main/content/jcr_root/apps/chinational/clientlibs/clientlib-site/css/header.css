@@ -30,7 +30,7 @@
 	padding: 16px 0;
 	font-weight: bold;
 	letter-spacing: 1px;
-	position: relative;
+	/*position: relative; for MAM-30 */
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
@@ -365,6 +365,7 @@
 		display: block;
 	}
 	.header .hidden-menu {
+	    max-width: auto; /* MAM-30 */
 		position: relative;
 		top: 0;
 		overflow: hidden;
@@ -380,6 +381,17 @@
 		font-weight: bold;
 		float: right;
 	}
+
+	.header .hidden-menu .col-md-3 {
+        max-width: auto;
+        flex: 0;
+        min-width: auto;
+    }
+
+    .header .hidden-menu .row {
+    	display: block;
+    }
+
 	.main-nav .content-middle {
 		max-width: 100%;
 	}
