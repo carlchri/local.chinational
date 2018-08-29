@@ -129,7 +129,7 @@
 
 .mediaCarousel .main-player {
     width: 100%;
-    min-height: 388px;
+    min-height: 380px;   /* Changed by German. It was 388 px */ 
     background-color: #e7e7e7;
     border: 15px solid #e7e7e7;
     overflow: hidden;
@@ -336,7 +336,7 @@
     margin: auto;
     padding: 5px 8px 15px 10px;
     border: 1px solid #888;
-    width: 350px;
+    width: 750px;    /* Changed by German. It was 350 px */ 
 }
 
 .mediaCarousel .modal-content .close {
@@ -620,4 +620,25 @@
     .mediaCarousel .owl-item .tablet {
         width: 350px !important;
     }
+}
+
+
+/*  Added by German  */
+
+@media (max-width: 340px) {
+	.mediaCarousel #audio-modal .modal-content {
+		width: 285px !important;
+	}   
+}
+
+@media (max-width: 860px) {
+	.mediaCarousel #audio-modal .modal-content {
+		width: 325px;
+	}
+}
+
+@media (min-width: 861px) and (max-width: 1024px) {
+    .mediaCarousel #audio-modal .modal-content {
+		width: 650px;
+	}
 }

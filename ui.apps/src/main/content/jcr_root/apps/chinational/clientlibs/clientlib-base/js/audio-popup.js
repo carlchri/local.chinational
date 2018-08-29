@@ -1,36 +1,47 @@
-$(document).ready(function() {
-    $('#audio-modal').on('hidden.bs.modal', function() {
-    	//console.log("Hello Simon");
-        var ply = document.getElementById('audio-player');
+(function($) {
+	$(function() {
 
-        var oldSrc = ply.src; // just to remember the old source
+		$('#audio-modal').on('hidden.bs.modal', function() {
 
-        ply.src = "";
-    });
+			// Every time the user closes the modal window the DOWNLOAD control gets removed from player
+			
+			$(".mejs-download-control").remove();
 
-    $('#audio-modal').on('show.bs.modal', function() {
-    	//console.log("Hello Simon Modal Show");
-    });
+		});
 
-    // this is for new audio player
-    // it works with multiple instances of player
-    $('.chi-audio-player').mediaelementplayer({
-            alwaysShowControls: true,
-            features: ['playpause','progress','current','duration', 'volume'],
-            timeAndDurationSeparator: ' / ',
-            audioVolume: 'horizontal',
-            audioWidth: '100%',
-            audioHeight: 45,
-            iPadUseNativeControls: false,
-            iPhoneUseNativeControls: false,
-            AndroidUseNativeControls: false
-          });
-	$(".mejs__time").each(
-	function (a,b){
-		var ctl = $(b);
-		var aud = ctl.closest(".mejs__container").find(".chi-audio-player");
-		ctl.after("<div class='mejs-download-control'><a download='audio_file' href='"+aud.attr("src")+"'>&nbsp;</a></div>");
+		// Setting the player options 
+		
+		$('.chi-audio-player').mediaelementplayer(
+				{
+					alwaysShowControls : true,
+					features : [ 'playpause', 'progress', 'current', 'duration', 'volume' ],
+					timeAndDurationSeparator : ' / ',
+					audioVolume : 'horizontal',
+					audioWidth : '100%',
+					audioHeight : 45,
+					iPadUseNativeControls : false,
+					iPhoneUseNativeControls : false,
+					AndroidUseNativeControls : false
+				});
+
+		// Triggered when the user clicks on the audio tile from media carousel
+		
+		$(document).on('click','button[class="audio-player-button"]', function() {
+
+			// Getting the file source to play
+			
+			var myAudio = $(this).attr("data-file");
+
+			// Adding DOWNLOAD control to player
+			
+			$("<div class='mejs-download-control'><a download='audio_file' href='"+ myAudio + "'>&nbsp;</a></div>").insertAfter(".mejs__time");
+			
+			// Adding file source to player
+			
+			$("#audio-player_html5").attr("src", myAudio);
+
+		});
+
 	});
 
-
-});
+})(jQuery);
