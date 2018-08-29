@@ -102,9 +102,10 @@
 .interactive-wheel .wheel .arrow {
     position: absolute;
     width: 6.5%;
-    left: 0;
-    top: 40%;
-    transform: translateY(-50%);
+    left: 5px;
+    top: 15%;
+	transform: rotate(20deg);
+	height: 35.4px;
 }
 
 .interactive-wheel .wheel .arrow img {
@@ -249,20 +250,23 @@
 /*****************************************/
 /*          Animation                    */
 /*****************************************/
+
+/* Changing all 20deg up to adjust to new arrow position */
+
 .transformZero {
-    transform: rotate(0deg);
+    transform: rotate(20deg);
 }
 .transformOne {
-    transform: rotate(72deg);
+    transform: rotate(92deg);
 }
 .transformTwo {
-    transform: rotate(144deg);
+    transform: rotate(164deg);
 }
 .transformThree {
-    transform: rotate(216deg);
+    transform: rotate(236deg);
 }
 .transformFour {
-    transform: rotate(288deg);
+    transform: rotate(308deg);
 }
 
 
