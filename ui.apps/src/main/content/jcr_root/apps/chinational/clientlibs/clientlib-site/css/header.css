@@ -30,8 +30,7 @@
 	padding: 16px 0;
 	font-weight: bold;
 	letter-spacing: 1px;
-	/*position: relative; For MAM-30 */
-    position: static !important; /* Fix it for other nav locations */
+	/*position: relative; for MAM-30 */
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
@@ -122,11 +121,14 @@
 
 .header .hidden-menu .row {
 	width: 100%;
+	display: flex;
 }
 
 /* Update for MAM-30 */
 .header .hidden-menu .col-md-3 {
     max-width: 300px;
+    flex: 1;
+    min-width: 240px;
 }
 
 .header .hidden-menu .arrow-down {
@@ -363,6 +365,7 @@
 		display: block;
 	}
 	.header .hidden-menu {
+	    max-width: auto; /* MAM-30 */
 		position: relative;
 		top: 0;
 		overflow: hidden;
@@ -378,6 +381,17 @@
 		font-weight: bold;
 		float: right;
 	}
+
+	.header .hidden-menu .col-md-3 {
+        max-width: auto;
+        flex: 0;
+        min-width: auto;
+    }
+
+    .header .hidden-menu .row {
+    	display: block;
+    }
+
 	.main-nav .content-middle {
 		max-width: 100%;
 	}

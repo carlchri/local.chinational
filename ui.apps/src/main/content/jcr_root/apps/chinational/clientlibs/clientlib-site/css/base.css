@@ -390,7 +390,7 @@ hr {
     font-size: 48px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-    margin: -2px 0 5px 0px;
+    margin: -2px 0 11px 0px; /* fix the bottom padding to 11 px matc Zeplin */
 }
 
 .large-blue-txt.page-title {
