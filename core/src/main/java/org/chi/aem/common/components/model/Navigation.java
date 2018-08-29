@@ -163,10 +163,20 @@ public class  Navigation extends WCMUsePojo {
     private SortedMap <String, List<MenuItem>> arrangeMenuItems(List<MenuItem> listItems, int totalCount) {
         // if total count is less than or equal to 16, treat it differently
         SortedMap <String, List<MenuItem>> colMenuMap  = new TreeMap<>();
-        if (totalCount <= 16) {
-            arrangeMenuItemsInCols(colMenuMap, listItems, 4);
+        // update logic as per updated requirement
+        // 1-2 in first column
+        // 3-8, flow top-to-bottom, left-to-right to fill the remaining 4 columns
+        // means 2 in each column till we fill 4 columns
+        // 9th onward, every 4 in new rows
+        if (totalCount <= 8) {
+            arrangeMenuItemsInCols(colMenuMap, listItems, 2);
         } else {
-            arrangeMenuItemsInCols(colMenuMap, listItems, ((int)Math.floor(totalCount/4)+1));
+            int rowsCount = (int)Math.floor(totalCount/4);
+            if (totalCount%4 != 0) {
+                // add extra row to cover nav
+                rowsCount++;
+            }
+            arrangeMenuItemsInCols(colMenuMap, listItems, rowsCount);
         }
         return  colMenuMap;
     }
