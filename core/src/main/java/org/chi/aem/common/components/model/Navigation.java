@@ -143,7 +143,7 @@ public class  Navigation extends WCMUsePojo {
                 childAndGrandChildCount = childAndGrandChildCount + childItem.getChildItems().size();
                 childListItems.add(childItem);
             }
-            LOGGER.info("Arrange items for child: " + child.getPath() + " wuth total count: " + childAndGrandChildCount);
+            LOGGER.debug("Arrange items for child: " + child.getPath() + " wuth total count: " + childAndGrandChildCount);
             cItem.setChildMap(arrangeMenuItems(childListItems, childAndGrandChildCount));
             listItems.add(cItem);
             mapItems.put(String.valueOf(count++), listItems);
@@ -176,11 +176,11 @@ public class  Navigation extends WCMUsePojo {
        int currCount = 0;
        int currColCount = 0;
        List<MenuItem> currColList = new ArrayList<>();
-       LOGGER.info("arrangeMenuItemsInCols rowCount: " + rowsCount + " for total child count: " + listItems.size());
+       LOGGER.debug("arrangeMenuItemsInCols rowCount: " + rowsCount + " for total child count: " + listItems.size());
        for(MenuItem item : listItems) {
            if (currCount != 0 && currCount%rowsCount == 0 ) {
                // create new column
-               LOGGER.info("Add list size" + currColList.size() + " to column: " + String.valueOf(currColCount));
+               LOGGER.debug("Add list size" + currColList.size() + " to column: " + String.valueOf(currColCount));
                colMenuMap.put(String.valueOf(currColCount++), currColList);
                currColList = new ArrayList<>();
            }
@@ -191,7 +191,7 @@ public class  Navigation extends WCMUsePojo {
                 for ( MenuItem cItem : item.getChildItems()) {
                     if (currCount%rowsCount == 0 ) {
                         // create new column
-                        LOGGER.info("Add cList size " + currColList.size() + " to column: " + String.valueOf(currColCount));
+                        LOGGER.debug("Add cList size " + currColList.size() + " to column: " + String.valueOf(currColCount));
                         colMenuMap.put(String.valueOf(currColCount++), currColList);
                         currColList = new ArrayList<>();
                     }
@@ -202,11 +202,11 @@ public class  Navigation extends WCMUsePojo {
        }
        // if there are any items in currColList, lets add them to colMenuMap
         if (currColList.size() > 0) {
-           LOGGER.info("add to next map? currColCount: " + currColCount);
+           LOGGER.debug("add to next map? currColCount: " + currColCount);
            colMenuMap.put(String.valueOf(currColCount), currColList);
         }
        // we should have 1-4 cols each with max 4 in each
-        LOGGER.info("arrangeMenuItemsInCols map: " + colMenuMap);
+        LOGGER.debug("arrangeMenuItemsInCols map: " + colMenuMap);
     }
 
     /**
