@@ -162,8 +162,9 @@
 
 .header .hidden-menu li {
 	margin-right: 0;
-	padding:10px 15px;
+	padding:10px 0px; /* remove left-right padding, we get that padding from col */
 	font-weight: normal;
+	min-width:150px; /* This prevents two nav on same row*/
 }
 
 .dropdown-box {
