@@ -19,8 +19,8 @@
 
 .divider-news {
 	border-left: solid 2px #e7e7e7;
-	margin-left: auto;
-	margin-top: 25px;
+	/* margin-left: auto; commented out by Davinder on Jul 10, 2018 CHIP66*/
+	/* margin-top: 25px; commented out by Davinder on May 25, 2018 CHIP12*/
 }
 
 .hideForDesktop {
@@ -28,18 +28,79 @@
 	margin-top: -25px;
 }
 
-@media ( max-width :992px) {
+@media ( max-width :991px) {
+/* commented out by Davinder on July 10, 2018 CHIP66	
 	.hideForDesktop {
 		visibility: visible;
-		margin-top: 0;
+		margin-top: 48px; May 25, 2018 Davinder CHIP12 - Changed from 0px to 48 px for tablet as per Zeplin
 	}
+*/
 }
 
 /*  End of additions by German */
 
 
-.blog-image {
-	height: 145px;
+.tnl-wrapper .flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tnl-wrapper .blog-item {
+    flex: 0 0 auto;
+}
+
+.tnl-wrapper .divider-news.blog-item,
+.right-rail-container .tnl-wrapper .divider-news.blog-item {
+    margin-bottom:0;
+}
+
+.tnl-wrapper .blog-image {
+	/* max-width of image available = 420px - 30px [padding col-] = 390px
+	   with aspect ratio 16:9 & width 390px - height will be (390/16) x 9 = 220px
+	   So, height should be 220px not 236px as mentioned by Chris */
+	max-height: 220px; /* Davinder - Jul 13, 2018 - changed from 145px to 220px*/
+	max-width:420px; /* Davinder July 13, 2018 */
+	/* width:auto;  Davinder Jul 13, 2018 - to override width coming from other places */
+	height: auto; /* Davinder - Jul 13, 2018 */
+	overflow:hidden; /* Davinder Jul 13, 2018 - to hide overflow */
+	width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+.full-width-container .tnl-wrapper .blog-image {
+    max-width:500px; /* CHIP-41 */
+}
+
+.full-width-container .featured-news-blog .tnl-wrapper {
+    max-width:530px; /* CHIP-41 , includes padding*/
+}
+
+
+.full-width-container .blog-news-padding-top {
+    max-width:630px; /* CHIP-41 , includes padding*/
+}
+
+
+.tnl-wrapper .blog-image .blog-image-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/* New approach for 16:9 and crop to center*/
+.tnl-wrapper .blog-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.tnl-wrapper .blog-image img{
+	width:auto; /* Davinder Jul 13, 2018 - to override width:100% coming from /image-col .img class */
+	height:auto; /* Davinder Jul 13, 2018 - to override height:100% and to keep aspect ration */
+	max-width:100%; /* Davinder Jul 13, 2018 - to keep aspect ratio */
 }
 
 .blog-title {
@@ -60,12 +121,24 @@
 	padding-bottom: 10px;
 }
 
+.right-rail-container .tnl-wrapper .blog-item {
+    width:50%;
+    margin-bottom:60px;
+}
+
+.right-rail-container .tnl-wrapper .divider-news.rr-tt-rd {
+    border-left:none;
+}
+
 @media ( max-width :991px) {
 	.blogs {
 		padding-top: 40px;
 	}
 	.blogs .row {
 		display: inherit;
+	}
+	.blog-item {
+		margin-bottom: 60px;
 	}
 	.blog-content p {
 		min-height: initial;
@@ -85,13 +158,17 @@
 	.large-box .blog-image {
 		height: 230px;
 	}
+	.divider-news {
+		border-left: none;
+	}
 }
 
 @media ( max-width :767px) {
 	.blogs {
 		padding-top: 20px;
 	}
-	.blog-item {
+	.blog-item,
+	.right-rail-container .tnl-wrapper .blog-item {
 		width: 100%;
 		margin-bottom: 25px;
 	}
@@ -104,6 +181,17 @@
 	.blog-content a {
 		position: static;
 	}
+	.tnl-wrapper .blog-image {
+		max-width:100%; /* Davinder July 13, 2018 */
+		max-height:none; /* Davinder July 13, 2018 */
+	}
+	
+	/* May 25, 2018 Davinder CHIP12  */
+	.hideForDesktop {
+		visibility: visible;
+		margin-top: 0; 
+	}
+	/* End of Additions */
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -112,6 +200,16 @@
 	}
 	.first-tile-image-tablet {
 		margin-bottom:30px; /* added by Davinder to add margin at bottom in Tablet */
+	}
+	.blog-item.last-tile-tablet-margin-bottom {
+		margin-bottom: 0;
+	}
+}
+
+@media (min-width: 768px) {
+	.blog-item.last-tile-tablet-margin-bottom,
+	.right-rail-container .blog-item.last-tile-tablet-margin-bottom {
+		margin-bottom: 0;
 	}
 }
 

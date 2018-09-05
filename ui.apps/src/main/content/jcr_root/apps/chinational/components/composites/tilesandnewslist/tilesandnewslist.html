@@ -1,36 +1,91 @@
 <sly data-sly-use.tiles="org.chi.aem.common.components.model.TilesAndNewsList"
+	 data-sly-use.link="org.chi.aem.common.components.model.Link"
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
 
-<div class="component">
+<div class="component tnl-wrapper">
   	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 
-	    <div data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
+	    <div class="col-xs-12" data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
         	<h5>Tiles and News List Component ${wcmmode.edit ? ' [EDIT Mode]' : ''}</h5>
         </div>
 
-		<div class="rowFix" data-sly-test="${properties.selectHeading == 'headingRequired'}">
+		<div class="col-xs-12" data-sly-test="${properties.selectHeading == 'headingRequired'}">
 			<span class="sub-heading">
 	        	${properties.contentTilesHeading || 'Content Tiles Heading'}
 			</span>
 		</div>
 
-        <div class="flex">
-			<sly data-sly-list.eachTile="${tiles.contentTilesList}">
-	           	<div class="blog-item ${eachTileList.first?'col-md-4 first-tile-image-tablet':'col-sm-6 col-md-4'}"
-    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
-                </div>
-        	</sly>
-        	<div class="divider-news" data-sly-test="${!properties.listOnRightNotRequired}"></div>
-			<div class="other-news-padding-top col-sm-12 col-md-3" data-sly-test="${!properties.listOnRightNotRequired}">
-				<hr class="hideForDesktop" />
-        		<sly data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}"></sly>
-            </div>
-
+		<div class="col-xs-12">
+	        <div class="row flex">
+				<sly data-sly-list.eachTile="${tiles.contentTilesList}">
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'}
+		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
+		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
+		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
+		           		 data-sly-test="${properties.imageNotRequired && !properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImage'}">
+	                </div>
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'}
+		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
+		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
+		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
+		           		 data-sly-test="${!properties.imageNotRequired && properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoDate'}">
+	                </div>
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'}
+		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
+		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
+		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
+		           		 data-sly-test="${properties.imageNotRequired && properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImageDate'}">
+	                </div>
+		           	<div class="blog-item col-xs-12 col-sm-6 ${properties.listOnRightNotRequired?'col-md-3':'col-md-4'} 
+		           				${(tiles.contentTilesList.size == 1)?'last-tile-tablet-margin-bottom':''}
+		           				${(tiles.contentTilesList.size == 2 && !properties.listOnRightNotRequired)?'last-tile-tablet-margin-bottom':''} 
+		           				${(tiles.contentTilesList.size == 3 && eachTileList.count == 3)?'last-tile-tablet-margin-bottom':''}" 
+		           		 data-sly-test="${!properties.imageNotRequired && !properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
+	                </div>
+	        	</sly>
+	        	
+<!--/*			<sly data-sly-list.eachTile="${tiles.contentTilesList}">
+		           	<div class="blog-item ${eachTileList.first?'col-xs-12 col-md-4 first-tile-image-tablet':'col-xs-12 col-sm-6 col-md-4'}"
+		           		 data-sly-test="${properties.imageNotRequired && !properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImage'}">
+	                </div>
+		           	<div class="blog-item ${eachTileList.first?'col-xs-12 col-md-4 first-tile-image-tablet':'col-xs-12 col-sm-6 col-md-4'}"
+		           		 data-sly-test="${!properties.imageNotRequired && properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoDate'}">
+	                </div>
+		           	<div class="blog-item ${eachTileList.first?'col-xs-12 col-md-4 first-tile-image-tablet':'col-xs-12 col-sm-6 col-md-4'}"
+		           		 data-sly-test="${properties.imageNotRequired && properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile', selectors='tileNoImageDate'}">
+	                </div>
+		           	<div class="blog-item ${eachTileList.first?'col-xs-12 col-md-4 first-tile-image-tablet':'col-xs-12 col-sm-6 col-md-4'}"
+		           		 data-sly-test="${!properties.imageNotRequired && !properties.dateNotRequired}"
+	    	        	 data-sly-resource="${eachTile @ resourceType='chinational/components/content/tile'}">
+	                </div>
+	        	</sly>
+	        	<div class="divider-news" data-sly-test="${properties.listOnRightNotRequired}"></div>
+*/-->	        	
+				<div class="col-xs-12 col-sm-6 col-md-3 divider-news blog-item ${(tiles.contentTilesList.size == 2)?'rr-tt-rd':''}" 
+					 data-sly-test="${properties.listOnRightNotRequired}">
+					<hr class="hideForDesktop" />
+	        		<sly data-sly-resource="${'list' @ resourceType='chinational/components/content/list'}"></sly>
+	            </div>
+			</div>
+		</div>
+		
+		<div class="col-xs-12 padding-top-30" data-sly-test="${properties.selectButton == 'buttonRequired'}">
+			<a class="learn-more-btn border-orange" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
+			   ${link.linkText || 'SEE ALL'}
+			</a>
 		</div>
 
-	    <sly data-sly-include="../../commons/bottomOption.html"></sly>
-		
     </div>
+
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+		
  </div>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!tiles.contentTilesList}"></sly>

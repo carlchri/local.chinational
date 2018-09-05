@@ -1,0 +1,32 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ 05/16/2018 - creating separate file for image/video section of HTML, which is reused in two files
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+
+<div class="col-sm-12">
+	<div class="row component-gutter">
+		<div class="col-sm-12"
+			 data-sly-test="${properties.videoOrientation == 'bothOrientation'}">
+			<h3 data-sly-test="${properties.contentBandHeading}">${properties.contentBandHeading}</h3>
+		</div>
+		<div class="col-md-6">
+			<sly data-sly-test="${properties.videoOrientation == 'leftOrientation' || properties.videoOrientation == 'bothOrientation'}"
+				 data-sly-include="imagevideosection.html"></sly>
+			<sly data-sly-test="${properties.videoOrientation == 'rightOrientation'}"
+				 data-sly-include="textsection.html"></sly>
+			<div class="link-wrapper ${properties.videoOrientation == 'bothOrientation' && properties.contentBandHeading?'first-button-padding':''}"
+				 data-sly-resource="${'cbivbutton' @ resourceType='chinational/components/content/button'}"
+				 data-sly-test="${properties.buttonUnderLeftPanel}"></div>
+		</div>
+
+		<div class="col-md-6">
+			<sly data-sly-test="${properties.videoOrientation == 'rightOrientation' || properties.videoOrientation == 'bothOrientation'}"
+				 data-sly-include="imagevideosection-right.html"></sly>
+			<sly data-sly-test="${properties.videoOrientation == 'leftOrientation'}"
+				 data-sly-include="textsection.html"></sly>
+			<div class="link-wrapper"
+				 data-sly-resource="${'cbivbutton-right' @ resourceType='chinational/components/content/button'}"
+				 data-sly-test="${properties.buttonUnderRightPanel}"></div>
+		</div>
+	</div>
+</div>
+

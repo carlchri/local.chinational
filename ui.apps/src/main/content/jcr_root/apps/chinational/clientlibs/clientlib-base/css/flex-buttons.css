@@ -129,6 +129,7 @@
 .icon-map-guide,
 .icon-call,
 .icon-locations,
+.icon-location,
 .icon-download,
 .icon-request {
     width: 26px;
@@ -171,6 +172,19 @@
     padding-right: 2px;
 }
 
+/* May 24, 2018 Added by Davinder for CHIP11 */
+
+.composite-outlined-buttons {
+	display:inline-block;
+	margin:25px 36.1px 0 0;
+}
+
+.compositeButtons .comp-outlined-button-heading {
+	padding-left: 0px;
+}
+
+/*   End of additions by Davinder */
+
 @media(max-width:991px) {
     .buttons-outer {
         flex-flow: row wrap;
@@ -195,6 +209,16 @@
     .find-provider-form .flexible-button {
         width: 87%;
     }
+    /* May 24, 2018 Added by Davinder for CHIP11 */
+
+	.composite-outlined-buttons {
+		display:inline-block;
+		margin:36px 34.5px 0 0;
+	}
+	
+/*   End of additions by Davinder */
+
+    
 }
 
 @media(max-width:767px) {
@@ -209,7 +233,13 @@
     .flexible-button {
         min-height: inherit;
     }
+/* May 24,2018 commented out by Davinder, as col-md-12 is changed to col-xs-12.
+   Another class added with col-xs-12 
     .col-md-12.txt-right .show-on-mobile {
+        padding-right: 15px;
+    }
+*/
+    .col-xs-12.txt-right.show-on-mobile {
         padding-right: 15px;
     }
     .flexible-box-wrapper .small-header {
@@ -238,6 +268,19 @@
 	
 	/* End of additions for Defect DE2573 */
 	
+	/* May 24, 2018 Added by Davinder for CHIP11 */
+	
+	.composite-outlined-buttons {
+		display:block;
+		margin:27px 0 0 0;
+	}
+	
+	.composite-outlined-buttons.comp-outlined-button-last {
+		padding-bottom:15px;
+	}
+	
+/*   End of additions by Davinder */
+
 }
 
 

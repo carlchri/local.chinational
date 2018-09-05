@@ -1,0 +1,12 @@
+<template data-sly-template.item="${@ list, item}">
+    <article>
+        <a href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+            <h4 class="news_blog_list_heading"><span class="news_heading_hover">${item.newsHeading}</span></h4>
+        </a>
+        <span class="news_blog_list_heading" data-sly-test="${!properties.dateNotRequired && item.publishDate}"
+              data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.publishDate, dateFormat='MMM dd, YYYY'}">
+                 ${formatter.formattedDate}
+        </span>
+        <p data-sly-test="${!properties.excerptNotRequired && item.excerpt}">${item.excerpt}</p>
+    </article>
+</template>    

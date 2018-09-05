@@ -1,0 +1,20 @@
+<sly data-sly-use.tiles="org.chi.aem.common.components.model.ProfileCarouselManual"></sly>
+<div class="component">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+		<div class="profileCarousel">
+				<div class="col-sm-12">
+					<h3 data-sly-test="${properties.selectHeading == 'headingRequired'}">
+						${properties.carouselHeading || 'Profile Tiles Heading'}
+					</h3>
+					<div class="owl-carousel owl-theme profile-carousel">
+						<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
+							<div data-sly-resource="${eachTile @ resourceType='chinational/components/content/membersTiles', selectors='tilesCarousel'}">
+							</div>
+						</sly>
+					</div>
+				</div>
+		</div>
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
+

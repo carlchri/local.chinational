@@ -11,11 +11,41 @@
     margin-right: -4%;
 }
 
+/* Use this option on desktop to align media carousel, when there are no arrows */
+
+@media (min-width: 1200px) {
+    /* On full width, if media items are less than 8, arrows are hidden and we should align carousel left*/
+    .full-width-container .mediaCarousel .fw-no-arrows {
+        margin-left: 0%;
+    }
+
+    /* With right rail, if media items are less than 4, arrows are hidden and we should align carousel left*/
+    /*.right-rail-container .mediaCarousel .rr-no-arrows {
+        margin-left: 0%;
+    }*/
+}
+
+@media (min-width: 768px) {
+    /* With right rail and in tablet mode, if media items are less than 4, arrows are hidden and we should align carousel left*/
+    .right-rail-container .mediaCarousel .rr-no-arrows {
+        margin-left: 0%;
+    }
+}
+
 .mediaCarousel .video-container img {
     /*max-width: 166px;*/
     max-width: 100%;
     margin: 0 auto;
 }
+
+
+
+/* For image tile in Media carousel, we need to set max height, else image takes over bigger area, except first item*/
+.mediaCarousel .mc-image img {
+    max-height: 110px;
+}
+
+
 
 .mediaCarousel .audio-container {
     overflow: hidden;
@@ -25,8 +55,22 @@
 .mediaCarousel .audio-container img {
     margin: 0 auto;
     max-width: 100%;
-    /*max-width: 100%;*/
-    /*max-width: 166px;*/
+}
+
+/* Not used for first item, but after wards*/
+.mediaCarousel .mc-audio img {
+    max-height: 110px; /* Adding to keep image in same spec as video*/
+}
+
+/* Override for mobile, for Audio and Image tiles in media carousel*/
+@media (max-width: 767px) {
+    .mediaCarousel .mc-image img {
+        max-height: 136px; /* For mobile view, it should be 136 px height*/
+    }
+
+    .mediaCarousel .mc-audio img {
+       max-height: 136px; /* For mobile view, it should be 136 px height*/
+    }
 }
 
 .mediaCarousel .thumb-titles {
