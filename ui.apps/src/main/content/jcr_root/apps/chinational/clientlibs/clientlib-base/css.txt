@@ -36,3 +36,4 @@ css/bootstrap-multiselect.css
 css/location.css
 css/twitter.css
 css/aem-override.css
+css/table.css
