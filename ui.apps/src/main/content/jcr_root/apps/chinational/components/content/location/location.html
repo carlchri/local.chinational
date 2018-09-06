@@ -137,7 +137,7 @@
 	            var mapURL;
 	
 	            if (mapPlaceId != "") {
-	                mapURL = "https://www.google.com/maps/place/?q=place_id:" + mapPlaceId;
+	                mapURL = "https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + mapPlaceId;
 	                marker = new google.maps.Marker({
 	                    position: uluru,
 	                    map: map,
