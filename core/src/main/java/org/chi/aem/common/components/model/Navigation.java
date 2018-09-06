@@ -143,7 +143,7 @@ public class  Navigation extends WCMUsePojo {
                 childAndGrandChildCount = childAndGrandChildCount + childItem.getChildItems().size();
                 childListItems.add(childItem);
             }
-            LOGGER.info("Arrange items for child: " + child.getPath() + " wuth total count: " + childAndGrandChildCount);
+            LOGGER.debug("Arrange items for child: " + child.getPath() + " wuth total count: " + childAndGrandChildCount);
             cItem.setChildMap(arrangeMenuItems(childListItems, childAndGrandChildCount));
             listItems.add(cItem);
             mapItems.put(String.valueOf(count++), listItems);
@@ -163,10 +163,20 @@ public class  Navigation extends WCMUsePojo {
     private SortedMap <String, List<MenuItem>> arrangeMenuItems(List<MenuItem> listItems, int totalCount) {
         // if total count is less than or equal to 16, treat it differently
         SortedMap <String, List<MenuItem>> colMenuMap  = new TreeMap<>();
-        if (totalCount <= 16) {
-            arrangeMenuItemsInCols(colMenuMap, listItems, 4);
+        // update logic as per updated requirement
+        // 1-2 in first column
+        // 3-8, flow top-to-bottom, left-to-right to fill the remaining 4 columns
+        // means 2 in each column till we fill 4 columns
+        // 9th onward, every 4 in new rows
+        if (totalCount <= 8) {
+            arrangeMenuItemsInCols(colMenuMap, listItems, 2);
         } else {
-            arrangeMenuItemsInCols(colMenuMap, listItems, ((int)Math.floor(totalCount/4)+1));
+            int rowsCount = (int)Math.floor(totalCount/4);
+            if (totalCount%4 != 0) {
+                // add extra row to cover nav
+                rowsCount++;
+            }
+            arrangeMenuItemsInCols(colMenuMap, listItems, rowsCount);
         }
         return  colMenuMap;
     }
@@ -176,11 +186,11 @@ public class  Navigation extends WCMUsePojo {
        int currCount = 0;
        int currColCount = 0;
        List<MenuItem> currColList = new ArrayList<>();
-       LOGGER.info("arrangeMenuItemsInCols rowCount: " + rowsCount + " for total child count: " + listItems.size());
+       LOGGER.debug("arrangeMenuItemsInCols rowCount: " + rowsCount + " for total child count: " + listItems.size());
        for(MenuItem item : listItems) {
            if (currCount != 0 && currCount%rowsCount == 0 ) {
                // create new column
-               LOGGER.info("Add list size" + currColList.size() + " to column: " + String.valueOf(currColCount));
+               LOGGER.debug("Add list size" + currColList.size() + " to column: " + String.valueOf(currColCount));
                colMenuMap.put(String.valueOf(currColCount++), currColList);
                currColList = new ArrayList<>();
            }
@@ -191,7 +201,7 @@ public class  Navigation extends WCMUsePojo {
                 for ( MenuItem cItem : item.getChildItems()) {
                     if (currCount%rowsCount == 0 ) {
                         // create new column
-                        LOGGER.info("Add cList size " + currColList.size() + " to column: " + String.valueOf(currColCount));
+                        LOGGER.debug("Add cList size " + currColList.size() + " to column: " + String.valueOf(currColCount));
                         colMenuMap.put(String.valueOf(currColCount++), currColList);
                         currColList = new ArrayList<>();
                     }
@@ -202,11 +212,11 @@ public class  Navigation extends WCMUsePojo {
        }
        // if there are any items in currColList, lets add them to colMenuMap
         if (currColList.size() > 0) {
-           LOGGER.info("add to next map? currColCount: " + currColCount);
+           LOGGER.debug("add to next map? currColCount: " + currColCount);
            colMenuMap.put(String.valueOf(currColCount), currColList);
         }
        // we should have 1-4 cols each with max 4 in each
-        LOGGER.info("arrangeMenuItemsInCols map: " + colMenuMap);
+        LOGGER.debug("arrangeMenuItemsInCols map: " + colMenuMap);
     }
 
     /**

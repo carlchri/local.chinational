@@ -24,6 +24,19 @@
 	padding-left: 0;
 }
 
+.header .top-level {
+	text-transform: uppercase;
+    width: 100.4px;
+ 	height: 15px;
+  	font-size: 15px;
+  	font-weight: bold;
+  	font-style: normal;
+  	font-stretch: normal;
+  	line-height: normal;
+  	letter-spacing: 1.7px;
+  	color: #24509a;        
+}
+
 .header ul li {
 	float: left;
 	margin-right: 40px;
@@ -43,6 +56,7 @@
 	top:7px;
 	border-color:#426da9;
 }
+
 .search-icon i {
 	width:20px;
 	height:20px;
@@ -115,7 +129,7 @@
 	padding: 20px;
 	top: 51px;
 	left: 0;
-	display: none;
+	display: none; 
 	box-shadow: -4px 7px 25px rgba(0, 0, 0, 0.5);
 }
 
@@ -162,8 +176,9 @@
 
 .header .hidden-menu li {
 	margin-right: 0;
-	padding:10px 15px;
+	padding:10px 0px; /* remove left-right padding, we get that padding from col */
 	font-weight: normal;
+	min-width:150px; /* This prevents two nav on same row*/
 }
 
 .dropdown-box {
