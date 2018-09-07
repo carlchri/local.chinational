@@ -102,8 +102,8 @@
   position: absolute;
   width: 28px;
   height: 28px;
-  left: 57%;
-  top: 50%;
+  left: 54%;
+  top: 60%; /* align it center*/
   margin: -12% 0 0 -10%;
 }
 .video-container .sprite.icon-play-orange {
@@ -158,6 +158,11 @@
     left: 39%;
     top: 41%;
   }
+
+  .right-rail .sprite.icon-play-orange {
+    left: 56%;
+    top: 66%; /* align it center*/
+  }
 }
 @media (max-width: 767px) {
   .intro .sprite.icon-large-play-orange {
@@ -167,6 +172,10 @@
     left: 46%;
     top: 47%;
   }
+
+  .right-rail .sprite.icon-play-orange {
+      top: 60%; /* align it center*/
+   }
 }
 .mediaCarousel .sprite.icon-large-play-orange {
   left: 40%;
