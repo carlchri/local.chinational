@@ -1,79 +1,63 @@
 jQuery( document ).ready( function( $ ) {
 
-    /*************************************
-        .snot gets .largeSnot when clicked
-    *************************************/
-    $('.snot').on('click', function() {
-
-        /* Reset */
-        if($('.snot').hasClass('largeSnot')){
-            var oldSnot = $('.largeSnot').attr('src');
-            var oldSnotReset = oldSnot.replace(/large/i, 'small');
-            $('.largeSnot').attr('src', oldSnotReset);
-
-            $(this).siblings('.snot').removeClass('largeSnot');
-        }
-
-        /* Change the src of the image from small to large */
-
-        $(this).addClass('largeSnot');
-
-        if($(this).hasClass('largeSnot')) {
-            var snotSrc = $(this).attr('src');
-            var largeSnotSrc = snotSrc.replace(/small/i, 'large');
-
-            $(this).attr('src', largeSnotSrc);
-        }
-
-    });
-
 
     /*************************************
         Rotate Sections
     *************************************/
-    $('.sectionOne').on('click', function(){
-        $('.circle-rotate').removeClass('transformOne');
-        $('.circle-rotate').removeClass('transformTwo');
-        $('.circle-rotate').removeClass('transformThree');
-        $('.circle-rotate').removeClass('transformFour');
-        $('.circle-rotate').removeClass('transformZero');
-        $('.circle-rotate').addClass('transformZero');
+	
+    $('.section0').on('click', function(){
+        $('.circle-rotate').removeClass('transform0');
+        $('.circle-rotate').removeClass('transform1');
+        $('.circle-rotate').removeClass('transform2');
+        $('.circle-rotate').removeClass('transform3');
+        $('.circle-rotate').removeClass('transform4');
+        $('.circle-rotate').addClass('transform0');
+        $('.snot').removeClass('zoomed');
+        $('.snot.section0').addClass('zoomed');
     });
 
-    $('.sectionTwo').on('click', function(){
-        $('.circle-rotate').removeClass('transformOne');
-        $('.circle-rotate').removeClass('transformTwo');
-        $('.circle-rotate').removeClass('transformThree');
-        $('.circle-rotate').removeClass('transformFour');
-        $('.circle-rotate').removeClass('transformZero');
-        $('.circle-rotate').addClass('transformFour');
+    $('.section1').on('click', function(){
+    	$('.circle-rotate').removeClass('transform0');
+        $('.circle-rotate').removeClass('transform1');
+        $('.circle-rotate').removeClass('transform2');
+        $('.circle-rotate').removeClass('transform3');
+        $('.circle-rotate').removeClass('transform4');
+        $('.circle-rotate').addClass('transform4');
+        $('.snot').removeClass('zoomed');
+        $('.snot.section1').addClass('zoomed');
     });
 
-    $('.sectionThree').on('click', function(){
-        $('.circle-rotate').removeClass('transformOne');
-        $('.circle-rotate').removeClass('transformTwo');
-        $('.circle-rotate').removeClass('transformThree');
-        $('.circle-rotate').removeClass('transformFour');
-        $('.circle-rotate').removeClass('transformZero');
-        $('.circle-rotate').addClass('transformThree');
+    $('.section2').on('click', function(){
+    	$('.circle-rotate').removeClass('transform0');
+        $('.circle-rotate').removeClass('transform1');
+        $('.circle-rotate').removeClass('transform2');
+        $('.circle-rotate').removeClass('transform3');
+        $('.circle-rotate').removeClass('transform4');
+        $('.circle-rotate').addClass('transform3');
+        $('.snot').removeClass('zoomed');
+        $('.snot.section2').addClass('zoomed');
     });
 
-    $('.sectionFour').on('click', function(){
-        $('.circle-rotate').removeClass('transformOne');
-        $('.circle-rotate').removeClass('transformTwo');
-        $('.circle-rotate').removeClass('transformThree');
-        $('.circle-rotate').removeClass('transformFour');
-        $('.circle-rotate').removeClass('transformZero');
-        $('.circle-rotate').addClass('transformTwo');
+    $('.section3').on('click', function(){
+    	$('.circle-rotate').removeClass('transform0');
+        $('.circle-rotate').removeClass('transform1');
+        $('.circle-rotate').removeClass('transform2');
+        $('.circle-rotate').removeClass('transform3');
+        $('.circle-rotate').removeClass('transform4');
+        $('.circle-rotate').addClass('transform2');
+        $('.snot').removeClass('zoomed');
+        $('.snot.section3').addClass('zoomed');
     });
 
-    $('.sectionFive').on('click', function(){
-        $('.circle-rotate').removeClass('transformOne');
-        $('.circle-rotate').removeClass('transformTwo');
-        $('.circle-rotate').removeClass('transformThree');
-        $('.circle-rotate').removeClass('transformFour');
-        $('.circle-rotate').removeClass('transformZero');
-        $('.circle-rotate').addClass('transformOne');
+    $('.section4').on('click', function(){
+    	$('.circle-rotate').removeClass('transform0');
+        $('.circle-rotate').removeClass('transform1');
+        $('.circle-rotate').removeClass('transform2');
+        $('.circle-rotate').removeClass('transform3');
+        $('.circle-rotate').removeClass('transform4');
+        $('.circle-rotate').addClass('transform1');
+        $('.snot').removeClass('zoomed');
+        $('.snot.section4').addClass('zoomed');
     });
 
 
@@ -81,34 +65,34 @@ jQuery( document ).ready( function( $ ) {
         Hide/show the text for colors
     *************************************/
 
-    $('.green').on('click', function() {
+    $('.section0').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
-        $('.green-text').show();
+        $('.text0').show();
     });
 
-    $('.red').on('click', function() {
+    $('.section1').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
-        $('.red-text').show();
+        $('.text1').show();
     });
 
-    $('.white').on('click', function() {
+    $('.section2').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
-        $('.white-text').show();
+        $('.text2').show();
     });
 
-    $('.brown').on('click', function() {
+    $('.section3').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
-        $('.brown-text').show();
+        $('.text3').show();
     });
 
-    $('.black').on('click', function() {
+    $('.section4').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
-        $('.black-text').show();
+        $('.text4').show();
     });
 
 });

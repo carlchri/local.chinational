@@ -1,91 +1,75 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.wheelCollection="org.chi.aem.common.components.model.WheelCompartmentsCollection"></sly>
 
 <sly data-sly-test.header="${properties.title}">
 
     
-    <div class="interactive-wheel">
-    	<div class="container">
-            <h1>${properties.title}</h1>
+    <div class="interactive-wheel" data-sly-test="${wheelCollection.wheelCompartmentsDetails.size > 1}">
+    	<div class="wheelContainer" style="background-color: ${properties.backgroundColor @ context='styleToken'};">
+	    	<div class="sub-wheelContainer">
+	            <h1 class="header-padding" style="color: ${properties.fontColor @ context='styleToken'};">${properties.title}</h1>
+	
+				
+	
+	            <div class="right">
+	                <div class="wheel">
+	                    <div class="arrow">
+	                        <img src="/etc/designs/chicommon/images/arrow.svg">
+	                    </div>
+	                    <div class="circle small-wheel">
+	
+	                        <div class="circle-rotate transform1">
+	                            <img src="${properties.image_wheel}" class="circle-image">
+	
+	
+	
+								<sly data-sly-list.wheelItem="${wheelCollection.wheelCompartmentsDetails}">
+		                        
+		                        	 <img src="${wheelItem.compartment_image}" class="location${wheelItemList.index}${properties.noNoseImage? '-withoutCenter' : ''} snot section${wheelItemList.index}" alt="${wheelItem.compartment_image_alt_text}">
+		                        	
+		                    	</sly>
+	                        </div>
+	
+	
+	                        <div class="nose ${properties.noNoseImage? 'in' : ''}">
+	                            <img class="nose-img-desktop" src="${properties.image_nose}" alt="nose">
+	                            <img class="nose-img-mobile" src="${properties.image_small_nose}">
+	                        </div>
+	                    </div>
+	
+	                </div>
+	            </div>
+	
+	
+	            <div class="left">
+	                <div class="initial-text" style="color: ${properties.fontColor @ context='styleToken'};">
+	                    <p>
+							${properties.initial_text  @context = 'html'}                    
+						</p>
+	                    <p>
+	                        <strong>${properties.initial_text_message}</strong>
+	                    </p>
+	                </div>
 
+					<sly data-sly-list.wheelItem="${wheelCollection.wheelCompartmentsDetails}">
+		                        		                 
+		                 <div class="color-text text${wheelItemList.index}" style="display: none; color: ${properties.fontColor @ context='styleToken'};">
+		                    <h2 style="color: ${properties.fontColor @ context='styleToken'};">${wheelItem.compartment_title}</h2>
+		                    <p>
+								${wheelItem.compartment_text  @context = 'html'}                    
+							</p>
+		                </div>  
+		                
+		            </sly>
+		            
 
-            <div class="right">
-                <div class="wheel">
-                    <div class="arrow">
-                        <img src="${properties.image_arrow}">
-                    </div>
-                    <div class="circle">
-                        <div class="circle-rotate transformOne">
-                            <img src="${properties.image_wheel}" class="circle-image">
-
-                            <img src="${properties.black_image}" class="black snot sectionOne" alt="black snot">
-                            <img src="${properties.brown_image}" class="brown snot sectionTwo" alt="brown snot">
-                            <img src="${properties.white_image}" class="white snot sectionThree" alt="white snot">
-                            <img src="${properties.red_image}" class="red snot sectionFour" alt="red snot">
-                            <img src="${properties.green_image}" class="green snot sectionFive" alt="green snot">
-                        </div>
-
-                        <div class="nose">
-                            <img class="nose-img-desktop" src="${properties.image_nose}" alt="nose">
-                            <img class="nose-img-mobile" src="${properties.image_small_nose}">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="left">
-                <div class="initial-text" style="display: none;">
-                    <p>
-						${properties.initial_text}                    
-					</p>
-                    <p>
-                        <strong>${properties.initial_text_message}</strong>
-                    </p>
-                </div>
-
-                <div class="color-text black-text" style="display: none;">
-                    <h2>${properties.black_image_title}</h2>
-                    <p>
-						${properties.black_text}                    
-					</p>
-                </div>
-
-                <div class="color-text brown-text" style="display: none;">
-                    <h2>${properties.brown_image_title}</h2>
-                    <p>
-						${properties.brown_text}                    
-					</p>
-                </div>
-
-                <div class="color-text white-text" style="display: none;">
-                    <h2>${properties.white_image_title}</h2>
-                    <p>
-						${properties.white_text}                    
-					</p>
-                </div>
-
-                <div class="color-text red-text" style="display: none;">
-                    <h2>${properties.red_image_title}</h2>
-                    <p>
-						${properties.red_text}                    
-					</p>
-                </div>
-
-                <div class="color-text green-text" style="display: block;">
-                    <h2>${properties.green_image_title}</h2>
-                    <p>
-						${properties.green_text}                    
-					</p>
-                </div>
-
-                <div class="footer-cta">
-                    <img src="${properties.footer_icon}" class="icon"> <a href="#">${properties.schedule_appointment} »</a>
-                </div>
-            </div>
-
-        </div>
-    
+	                <div class="footer-cta">
+	                    <img src="/etc/designs/chicommon/images/schedule-checkup.svg" class="icon"> <a href="${properties.destinationCTA}" style="color: ${properties.fontColor @ context='styleToken'};">${properties.schedule_appointment} »</a>
+	                </div>
+	            </div>
+	
+	        </div>
+    	</div>
     </div>
     
     

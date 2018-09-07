@@ -9,27 +9,38 @@
     overflow: auto;
 }
 
-.interactive-wheel .container {
-    /* max-width:491px;  */
-    padding: 0 22px;
-    margin: auto;
+.interactive-wheel .in {
+  display: none;
+}
+
+.interactive-wheel .wheelContainer {
+    max-width:700px;					/*   	German: Container sizes as per directions in Zeplin 	*/
+    min-width:600px;					/*   	German: Container sizes as per directions from PK 		*/
+    min-height: 410px;  				/*   	German: Container sizes as per directions in Zeplin 	*/
+    /* margin: auto; 							German: Removing centered component 			*/
     position: relative;
     box-sizing:border-box;
-    background: #476EA1;
+    /* background: #476EA1;						German: Removing background color from component 		*/
     font-family: "myriad-pro", sans-serif;
     font-weight: 300;
-    min-height: 320px;
+}
+
+.interactive-wheel .sub-wheelContainer {
+    padding-top: 50px;				/*   	German: Individual padding  	*/
+    padding-left: 75px;				/*   	German: Individual padding for container as per directed by PK 	*/
+    padding-right: 25px;			/*   	German: Individual padding  	*/
+    padding-bottom: 75px;			/*   	German: Individual padding for container as per directed by PK 	*/
 }
 
 .interactive-wheel h1 {
-    color: #fff;
+    /* color: #fff;							German: Removing font color from component 		*/
     font-size: 30px;
     font-weight: 200;
-    text-align: center;
-	width: 80%;
-	margin-top: 15px;
 }
 
+.interactive-wheel .color-text {
+    display: none;
+}
 
 /*****************************************/
 /*          Left Half                    */
@@ -37,21 +48,30 @@
 
 .interactive-wheel .left {
     float: left;
-    width: 50%;
+    width: 50%;					
     box-sizing: border-box;
-	padding-left: 29%;
-	padding-right: 5%;
+    margin-top: -15px;					/*   	German: Fix for RichText default extra padding at top 	*/
+	padding-right: 69px;				/*   	German: Padding as per directions in Zeplin 	*/
 }
 
 .interactive-wheel .left p {
     font-size: 14px;
-    color: #fff;
+    /* color: #fff;								German: Removing font color from component 		*/
     line-height: 16px;
     margin-top: 0;
 }
 
+.interactive-wheel .footer-cta {
+    padding-top: 25px;   				/* 		German: Requirement for the space between Text and CTA	 */ 
+}
+
+.interactive-wheel .header-padding {
+    padding-bottom: 25px;   			/* 		German: Requirement for the space between Header and Text	 */ 
+	line-height: 35px;					/*   	German: Fix to avoid extra padding for header 	*/
+}
+
 .interactive-wheel .footer-cta a {
-    color: #fff;
+    /* color: #fff;								German: Removing font color from component 		*/
     text-decoration: none;
     font-weight: normal;
     font-size: 14px;
@@ -69,14 +89,19 @@
 
 .interactive-wheel h2 {
     font-weight: bold;
-    color: #fff;
+    /* color: #fff;								German: Removing font color from component 		*/
     margin: 0;
     text-transform: uppercase;
     font-size: 14px;
 }
 
-.interactive-wheel .color-text {
-    display: none;
+.interactive-wheel .wheel .circle .circle-rotate .snot {
+    width: 45px;						/* 		German: Standard size for snot images	 */
+	height: 45px;						/* 		German: Standard size for snot images	 */
+}
+
+.interactive-wheel .wheel .circle .circle-rotate .zoomed {
+    zoom: 130%							/* 		German: Increased size for snot images	 */
 }
 
 /*****************************************/
@@ -92,19 +117,22 @@
 
 
 /* WHEEL */
+
 .interactive-wheel .wheel {
     position: relative;
     width: 236px;
     height: 225px;
 }
 
+
 /* ARROW */
+
 .interactive-wheel .wheel .arrow {
     position: absolute;
     width: 6.5%;
-    left: 5px;
+    left: 6px;
     top: 15%;
-	transform: rotate(20deg);
+	transform: rotate(22deg);
 	height: 35.4px;
 }
 
@@ -112,15 +140,21 @@
     width: 100%;
 }
 
+
 /* CIRCLE CONTAINER */
+
 .interactive-wheel .wheel .circle {
     position: absolute;
-    width: 94%;
-    height: 100%;
     right: 0;
     top: 40%;
     transform: translateY(-50%);
 }
+
+.interactive-wheel .wheel .small-wheel {
+	width: 222px;							/* 		German: Size of wheel goes here 	*/
+    height: 222px;							/* 		German: Size of wheel goes here 	*/
+}
+
 
 /* CIRCLE ELEMENTS THAT WILL ROTATE */
 
@@ -135,7 +169,9 @@
     width: 100%;
 }
 
+
 /* NOSE AND NOSE BG */
+
 .wheel .circle .nose {
     position: absolute;
     width: 40%;
@@ -160,112 +196,107 @@
 .nose-img-mobile {
     display: none;
 }
+
 .nose-img-desktop {
     display: block;
 }
 
+
 /* SNOT */
-.interactive-wheel .black {
+
+/* With Center image (nose) */
+
+.interactive-wheel .location0 {			/* 		German: Element 1 location with nose 	*/
     position: absolute;
-    width: auto;
-    top: 34%;
-    left: 5%;
+    top: 40%;
+    left: 4%;
     cursor: pointer;
 }
 
-.interactive-wheel .brown {
+.interactive-wheel .location1 {			/* 		German: Element 2 location with nose 	*/
     position: absolute;
-    width: auto;
-    top: 8%;
-    left: 25%;
+    top: 9%;
+    left: 28%;
     cursor: pointer;
 }
 
-.interactive-wheel .white {
+.interactive-wheel .location2 {			/* 		German: Element 3 location with nose 	*/
     position: absolute;
-    width: auto;
-    top: 23%;
-    left: 66%;
-    cursor: pointer;
-}
-
-.interactive-wheel .red {
-    position: absolute;
-    width: auto;
-    top: 62%;
-    left: 70%;
-    cursor: pointer;
-}
-
-.interactive-wheel .green {
-    position: absolute;
-    width: auto;
-    top: 73%;
-    left: 27.5%;
-    cursor: pointer;
-}
-
-/* LARGE SNOT */
-
-.interactive-wheel .black.largeSnot {
-    position: absolute;
-    width: auto;
-    top: 29%;
-    left: -14%;
-}
-
-.interactive-wheel .brown.largeSnot {
-    position: absolute;
-    width: auto;
-    top: -11%;
-    left: 19%;
-    transform: rotate(-288deg);
-}
-
-.interactive-wheel .white.largeSnot {
-    position: absolute;
-    width: auto;
-    top: -12%;
-    left: 54%;
-    transform: rotate(-216deg);
-}
-
-.interactive-wheel .red.largeSnot {
-    position: absolute;
-    width: auto;
-    top: 54%;
+    top: 18%;
     left: 64%;
-    transform: rotate(-144deg);
+    cursor: pointer;
 }
 
-.interactive-wheel .green.largeSnot {
+.interactive-wheel .location3 {			/* 		German: Element 4 location with nose 	*/
     position: absolute;
-    width: auto;
-    top: 59%;
-    left: 8%;
-    transform: rotate(-72deg);
+    top: 58%;
+    left: 64%;
+    cursor: pointer;
 }
 
+.interactive-wheel .location4 {			/* 		German: Element 5 location with nose 	*/
+    position: absolute;
+    top: 71%;
+    left: 29%;
+    cursor: pointer;
+}
+
+/* Without Center image (nose) */
+
+.interactive-wheel .location0-withoutCenter {		/* 		German: Element 1 location without nose 	*/
+    position: absolute;
+    top: 38%;
+    left: 7%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location1-withoutCenter { 		/* 		German: Element 2 location without nose 	*/
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location2-withoutCenter {		/* 		German: Element 3 location without nose 	*/
+    position: absolute;
+    top: 20%;
+    left: 62%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location3-withoutCenter {		/* 		German: Element 4 location without nose 	*/
+    position: absolute;
+    top: 55%;
+    left: 62%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location4-withoutCenter {		/* 		German: Element 5 location without nose 	*/
+    position: absolute;
+    top: 69%;
+    left: 29%;
+    cursor: pointer;
+}
 
 /*****************************************/
 /*          Animation                    */
 /*****************************************/
 
-/* Changing all 20deg up to adjust to new arrow position */
+							/* 		German: Changing all 20deg up to adjust to new arrow position 		*/
 
-.transformZero {
+.transform0 {
     transform: rotate(20deg);
 }
-.transformOne {
+.transform1 {
     transform: rotate(92deg);
 }
-.transformTwo {
+.transform2 {
     transform: rotate(164deg);
 }
-.transformThree {
+.transform3 {
     transform: rotate(236deg);
 }
-.transformFour {
+.transform4 {
     transform: rotate(308deg);
 }
 
@@ -274,27 +305,10 @@
 /* Added by German */
 
 
-@media (max-width: 1200px) {
 
-
-}
-
-
-@media (max-width: 860px) {
-            
-        
-}
-
-
-@media (max-width: 550px) {
-
-             
-}
-
-
-@media (max-width: 460px) {
+@media (max-width: 599px) {
 	
-	.interactive-wheel .container {
+	.interactive-wheel .wheelContainer {
 	    min-height: 500px !important;
 	}
 
