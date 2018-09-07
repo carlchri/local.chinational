@@ -1,6 +1,8 @@
 (function($) {
 	$(function() {
 
+		// Audio Modal starts here
+		
 		$('#audio-modal').on('hidden.bs.modal', function() {
 
 			// Every time the user closes the modal window the DOWNLOAD control gets removed from player
