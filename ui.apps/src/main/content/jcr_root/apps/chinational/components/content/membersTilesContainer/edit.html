@@ -1,0 +1,12 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"></sly>
+
+	<div id="wrapper" class="editMode">
+		<h3>Member Tiles Container Edit View</h3>
+		<div data-sly-list.item="${mediaCollection.editViewItems}">
+			<h3>Here goes ${item.name}:</h3>
+			<div data-sly-resource="${item.id @ resourceType='chinational/components/content/membersTiles'}"></div>
+		</div>
+	</div>
+	
+<sly data-sly-call="${template.placeholder @ isEmpty=mediaCollection.editViewItems.size == 0}"></sly>
