@@ -1,6 +1,0 @@
-<div data-sly-use.api="com.day.cq.wcm.foundation.model.responsivegrid.ResponsiveGrid" class="${api.cssClass}">
-    <sly data-sly-repeat.child="${api.paragraphs}" data-sly-resource="${child.path @ decorationTagName='div', cssClassName='gutter-sides'}" />
-     <!--/* Don't ask why */-->
-    <sly data-sly-test.editmode="${wcmmode.edit}"></sly>
-    <div data-sly-test="${editmode}" class="new section aem-Grid-newComponent" data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/responsivegrid/new', appendPath='/*'}"></div>
-</div>

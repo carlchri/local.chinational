@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    cq:icon="layers"
-    jcr:description="Right Rail Section Component"
-    jcr:primaryType="cq:Component"
-    jcr:title="Right Rail Section"
-    allowedParents="[*/parsys]"
-    componentGroup="CHI General"/>

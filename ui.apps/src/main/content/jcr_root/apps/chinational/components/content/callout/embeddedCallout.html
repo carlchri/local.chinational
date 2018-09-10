@@ -1,5 +1,0 @@
-<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
-    <sly data-sly-test="${properties.iconOrientation == 'iconLeftAligned'}" data-sly-include="iconleftalign.html"></sly>
-    <sly data-sly-test="${properties.iconOrientation == 'iconCenterAlign'}" data-sly-include="iconcenteralign.html"></sly>
-    <sly data-sly-test="${properties.iconOrientation == 'iconDisplayedLeft'}" data-sly-include="icondispleft.html"></sly>
-<sly data-sly-call="${template.placeholder @ isEmpty=!properties.iconOrientation}"></sly>

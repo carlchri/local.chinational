@@ -1,4 +1,3 @@
-css/audio-player-styles.css
 css/blogs.css
 css/calloutTiles.css
 css/contactus.css
@@ -13,6 +12,7 @@ css/foundation.css
 css/herocomponencarousel.css
 css/inspiremedia_new.css
 css/intro.css
+css/location.css
 css/loading.css
 css/Jobcarousel.css
 css/media-kit.css
@@ -30,10 +30,7 @@ css/sprite-extend.css
 css/sub-nav.css
 css/video.css
 css/video.popup.css
-css/search.less
-css/photoBandWithForm.css
-css/bootstrap-multiselect.css
-css/location.css
-css/twitter.css
 css/table.css
+css/selectlist.css
+css/dual-box.css
 css/aem-override.css
