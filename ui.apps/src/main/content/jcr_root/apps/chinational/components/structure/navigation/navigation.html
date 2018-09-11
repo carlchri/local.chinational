@@ -10,13 +10,36 @@
             <div class="row" data-sly-list.mapNav="${mainnav.items[outerNav][0].childMap.keySet.iterator}">
                 <div class="col-md-3">
                     <ul data-sly-list.indNav="${mainnav.items[outerNav][0].childMap[mapNav]}">
-                        <li data-sly-test.liClassName="${indNav.navClass} hidden-sm hidden-xs" class="${indNav.thirdLevel? liClassName : 'top-level'}">
-                            <a href="${indNav.thirdLevelItems? '#': indNav.url}"
-                               class="${indNav.thirdLevel? 'second-level' : indNav.navClass } ${indNav.seeMoreLink?'second-level-more':''}">
+                        <li data-sly-test.liClassName="${indNav.navClass} hidden-sm hidden-xs"
+                            class="${indNav.thirdLevel? liClassName : 'top-level'}"
+                            data-sly-test="${!indNav.thirdLevelItems}">
+                            <a href="${indNav.url}"
+                               class="${indNav.thirdLevel? 'second-level' : indNav.navClass } ${indNav.seeMoreLink?'second-level-more':''} ">
                                 ${indNav.title}
-                                <i class="hidden-md hidden-lg arrow-down" aria-hidden="true" data-sly-test="${indNav.thirdLevelItems}"></i>
                             </a>
-                        </li>  
+                        </li>
+                        <li class="top-level hidden-sm hidden-xs"
+                            data-sly-test="${indNav.thirdLevelItems}">
+                            <a href="${indNav.url}">
+                                ${indNav.title}
+                            </a>
+                        </li>
+                        <li class="top-level hidden-md hidden-lg"
+                            data-sly-test="${indNav.thirdLevelItems}">
+                            <a href="#"
+                               class="${indNav.navClass} ">
+                                ${indNav.title}
+                                <i class="arrow-down"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="${indNav.navClass} hidden-sm hidden-xs hidden-md hidden-lg"
+                            data-sly-test="${indNav.thirdLevelItems}">
+                            <a href="${indNav.url}"
+                               class="second-level">
+                                ${indNav.title}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

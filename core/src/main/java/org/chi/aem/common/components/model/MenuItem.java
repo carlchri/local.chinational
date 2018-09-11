@@ -41,16 +41,23 @@ public class MenuItem {
 
 
 	public MenuItem(int currCount, Page page) {
-        this.url = LinkUtils.externalize(page.getPath());
-        this.navClass = this.navClass + currCount;
-        // not used for nav - page.getPageTitle();
-        String baseTitle = LinkUtils.isNullOrBlank(page.getTitle())?page.getName():page.getTitle();
-        title = LinkUtils.isNullOrBlank(page.getNavigationTitle())?baseTitle:page.getNavigationTitle();
-        populateThirdLevelNav(currCount, page);
+        this(currCount, page, true);
 	}
 
-	public void setSeeMoreLinkItem(Page parentPage ) {
+	public MenuItem(int currCount, Page page, boolean populateNextLevel) {
+		this.url = LinkUtils.externalize(page.getPath());
+		this.navClass = this.navClass + currCount;
+		// not used for nav - page.getPageTitle();
+		String baseTitle = LinkUtils.isNullOrBlank(page.getTitle())?page.getName():page.getTitle();
+		title = LinkUtils.isNullOrBlank(page.getNavigationTitle())?baseTitle:page.getNavigationTitle();
+		if (populateNextLevel) {
+			populateThirdLevelNav(currCount, page);
+		}
+	}
+
+	public void setSeeMoreLinkItem(int currCount, Page parentPage ) {
 		seeMoreLink = true;
+		this.navClass = this.navClass + currCount;
 		thirdLevel = true;
 		title = SEE_MORE_LINK_TEXT;
 		url = LinkUtils.externalize(parentPage.getPath());
@@ -89,7 +96,7 @@ public class MenuItem {
 			if (childItemsLeft) {
 				LOGGER.debug("Add see more item");
 				MenuItem seeMoreItem = new MenuItem();
-				seeMoreItem.setSeeMoreLinkItem(page);
+				seeMoreItem.setSeeMoreLinkItem(currCount, page);
 				childItems.add(seeMoreItem);
 			}
 		}
@@ -159,4 +166,5 @@ public class MenuItem {
 	public String getNavClass() {
 		return navClass;
 	}
+
 }
