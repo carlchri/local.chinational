@@ -36,8 +36,14 @@
   	letter-spacing: normal;
   	text-align: left;
   	color: #426da9;
-  	margin-left: -87px;
   	cursor: pointer;
+  	margin-left: 0px;
+}
+
+.mediaCarousel .custom-button.header-fix {
+
+  	margin-left: -87px !important;
+
 }
 
 .mediaCarousel .a-brief-description {
@@ -688,6 +694,11 @@
     .mediaCarousel .owl-item .tablet {
         width: 350px !important;
     }
+    
+    .mediaCarousel .custom-button {
+	  	margin-left: 0px;
+	}
+    
 }
 
 
