@@ -17,10 +17,12 @@ public class MenuItem {
 	private final static String DISP_THIRD_LEVEL_PROP = "allowTertiaryNav";
 	private final static String MAX_THIRD_LEVEL_PROP = "maxTertiaryNavCount";
 	private final static String SEE_MORE_LINK_TEXT = "See More";
+	private final static String NAV_CLASS_PREFIX = "nav-toggle-id-";
 
 	private String url;
 	private String title;
 	private boolean newWindow;
+	private String navClass = NAV_CLASS_PREFIX;
 
 
 	private boolean firstLevel = false;
@@ -38,12 +40,13 @@ public class MenuItem {
 	}
 
 
-	public MenuItem(Page page) {
-		this.url = LinkUtils.externalize(page.getPath());
-		// not used for nav - page.getPageTitle();
-		String baseTitle = LinkUtils.isNullOrBlank(page.getTitle())?page.getName():page.getTitle();
-		title = LinkUtils.isNullOrBlank(page.getNavigationTitle())?baseTitle:page.getNavigationTitle();
-		populateThirdLevelNav(page);
+	public MenuItem(int currCount, Page page) {
+        this.url = LinkUtils.externalize(page.getPath());
+        this.navClass = this.navClass + currCount;
+        // not used for nav - page.getPageTitle();
+        String baseTitle = LinkUtils.isNullOrBlank(page.getTitle())?page.getName():page.getTitle();
+        title = LinkUtils.isNullOrBlank(page.getNavigationTitle())?baseTitle:page.getNavigationTitle();
+        populateThirdLevelNav(currCount, page);
 	}
 
 	public void setSeeMoreLinkItem(Page parentPage ) {
@@ -53,7 +56,7 @@ public class MenuItem {
 		url = LinkUtils.externalize(parentPage.getPath());
 	}
 
-	private void populateThirdLevelNav(Page page) {
+	private void populateThirdLevelNav(int currCount, Page page) {
 		ValueMap pageProps = page.getProperties();
 		displayThirdLevel = pageProps.get(DISP_THIRD_LEVEL_PROP, false);
 		// 3rd level would be /content/sitename/en/level1/level2/level3
@@ -73,7 +76,7 @@ public class MenuItem {
 				}
 				if (childItems.size() < maxThirdLevelCount) {
 					LOGGER.debug("Add child path to list item: " + child.getPath());
-					MenuItem cItem = new MenuItem(child);
+					MenuItem cItem = new MenuItem(currCount, child);
 					// so UI can display it accordingly
 					cItem.setThirdLevel(true);
 					childItems.add(cItem);
@@ -153,4 +156,7 @@ public class MenuItem {
 		this.firstLevel = firstLevel;
 	}
 
+	public String getNavClass() {
+		return navClass;
+	}
 }
