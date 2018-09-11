@@ -32,8 +32,8 @@
 
 			// Getting the file source to play
 			
-			var myAudio = $("button.audio-player-button").attr("data-file");
-
+			var myAudio = $(this).find("button").attr("data-file");
+			
 			// Adding DOWNLOAD control to player
 			
 			$("<div class='mejs-download-control'><a download='audio_file' href='"+ myAudio + "'>&nbsp;</a></div>").insertAfter(".mejs__time");
