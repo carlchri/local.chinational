@@ -3,26 +3,40 @@
 	border-radius:0;
 	border:none;
 }
-.modal-footer {
+.modal-footer, .modal-footer-audio {
 	text-align:left;
 }
+
 .modal-body {
 	padding:0 30px 15px 30px;
 }
+
 .modal-header {
 	padding:15px 30px 0 30px;
 }
+
+.modal-header-audio {
+	padding-top:15px;
+}
+
 .modal-footer {
 	padding:0 30px 30px 30px;
 }
-.modal-header, .modal-footer {
+
+.modal-footer-audio {
+	padding:0 30px 0 30px;
+}
+
+.modal-header, .modal-footer, .modal-footer-audio, .modal-header-audio {
 	border:none;
 }
+
 .close {
 	font-size:24px;
 	opacity:1;
 	color:#0097a9;
 }
+
 @media (min-width:768px) {
 	.modal-dialog {
 		width:80%;

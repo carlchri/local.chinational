@@ -50,7 +50,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: false,
         autoHeight: true,
-        margin: 15,
+        margin: 10,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 10,

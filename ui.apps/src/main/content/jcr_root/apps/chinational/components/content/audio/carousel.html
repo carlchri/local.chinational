@@ -1,7 +1,8 @@
 <sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
         data-sly-use.template="chinational/components/commons/templates.html"></sly>
+        
 <div class="audio-container mc-audio">
-    <div class="sub-Thumbs">
+    <div class="sub-Thumbs" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
         <button type="button" class="audio-player-button" data-audio-title="${audio.sectionHeading}" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
             <img src="${audio.audioImage}"/>
             <i class="sprite small-icons icon-audio-light"></i>
@@ -11,4 +12,5 @@
         <span class="thumb-titles">${audio.sectionHeading}</span>
     </div>
 </div>
+
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>

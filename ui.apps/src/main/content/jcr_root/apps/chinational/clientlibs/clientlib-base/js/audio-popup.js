@@ -28,11 +28,11 @@
 
 		// Triggered when the user clicks on the audio tile from media carousel
 		
-		$(document).on('click','button[class="audio-player-button"]', function() {
+		$(document).on('click','div[class="audio-container"]', function() {
 
 			// Getting the file source to play
 			
-			var myAudio = $(this).attr("data-file");
+			var myAudio = $("button.audio-player-button").attr("data-file");
 
 			// Adding DOWNLOAD control to player
 			

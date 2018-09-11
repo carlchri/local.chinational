@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <colors jcr:primaryType="nt:unstructured">
+        <darkPastelGreen
+            jcr:primaryType="nt:unstructured"
+            text="Dark Pastel Green"
+            value="#00B140"/>
+        <irisBlue
+            jcr:primaryType="nt:unstructured"
+            text="Iris Blue"
+            value="#00B0B9"/>
+        <endeavour
+            jcr:primaryType="nt:unstructured"
+            text="Endeavour"
+            value="#24509A"/>
+        <cinnabar
+            jcr:primaryType="nt:unstructured"
+            text="Cinnabar"
+            value="#E1523D"/>
+        <freeSpeechAquamarine
+            jcr:primaryType="nt:unstructured"
+            text="Free Speech Aquamarine"
+            value="#009775"/>
+        <shamrock
+            jcr:primaryType="nt:unstructured"
+            text="Shamrock"
+            value="#47D7AC"/>
+        <studio
+            jcr:primaryType="nt:unstructured"
+            text="Studio"
+            value="#8246AF"/>
+        <brinkPink
+            jcr:primaryType="nt:unstructured"
+            text="Brink Pink"
+            value="#EF6079"/>
+        <gray
+            jcr:primaryType="nt:unstructured"
+            text="Gray"
+            value="#e7e7e7"/>
+    </colors>
+</jcr:root>

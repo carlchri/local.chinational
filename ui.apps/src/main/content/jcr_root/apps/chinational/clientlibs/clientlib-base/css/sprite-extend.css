@@ -129,13 +129,16 @@
   width: 90px;
   height: 90px;
 }
+
 .video .sprite.icon-large-play-orange {
   position: absolute;
   width: 90px;
   height: 90px;
   left: 43%;
   top: 40%;
+  zoom: 50%;
 }
+
 @media (max-width: 480px) {
   .video .sprite.icon-large-play-orange {
     background-position: -327px -524px;
@@ -168,10 +171,7 @@
     top: 47%;
   }
 }
-.mediaCarousel .sprite.icon-large-play-orange {
-  left: 40%;
-  top: 30%;
-}
+
 .right-rail .sprite.icon-large-play-orange {
   background-position: -327px -524px;
   width: 28px;
