@@ -1,29 +1,51 @@
 .location {
-  background: #f8f7f7;
-  /* padding: 15px;        Removed by German to fix MAM-26 */
-  z-index: 0;
-  margin-bottom: 52px;  /* Added by German to fix MAM-22 */
+  	/* padding: 15px;        Removed by German to fix MAM-26 */
+  	z-index: 0;
+  	margin-bottom: 60px;	/* Default padding at bottom for location component */
 }
+
+#myLocationComponent {
+	background: #f8f7f7;
+	min-height: 395px;	
+}
+
+.anti-bottom-buffer60 {
+	margin-bottom: -60px !important;
+}
+
 .location .in {
-  display: none;
+  	display: none;
 }
+
 .location div.small-wrapper {
-  margin: 0 0 20px 0;
+  	margin: 0 0 20px 0;
 }
 .location div.link-wrapper {
-  margin: 0 0 20px 0;
+  	margin: 0 0 20px 0;
 }
-.location .row {
-  margin-bottom: 0;
+
+.location .adjust-width {
+	margin-right: -15px;
+	margin-left: -15px;   	
 }
+
+.location .positionRel {
+	position: relative;
+}
+
+.location .adjust-blue-section {
+	margin-left: -15px;   
+	margin-right: -15px; 	
+}
+
 .location .map-box {
-  background: gray;
-  height: 400px;
-  width: 100%;
+  	background: gray;
+  	height: 400px;
+  	width: 100%;
 }
 
 .location .txt-address span {
-  margin: 0 0 0 5px;            /* changed by German for MAM-22, it was 0 0 0 40px; */ 
+  	margin: 0 0 0 5px;            /* changed by German for MAM-22, it was 0 0 0 40px; */ 
 }
 
  /* added by German for MAM-26 */ 
@@ -36,8 +58,8 @@
 }
 
 .location .location-text-area {
-  	padding-top: 30px;
-	padding-left: 70px;      
+    padding-top: 30px;
+	padding-left: 70px;     
 }
 
 .location .location-card-body {
@@ -179,6 +201,7 @@
 .loc-details-box {
   background: #426da9;
   padding:26px 53px 34px 65px;
+  margin-top: -5px;
 }
 
 .loc-details-box-heading{
@@ -266,12 +289,6 @@
 }
 
 
-
-
-
-
-
-
 .location #location-graphic-area {   
 	float: right;
 }
@@ -323,6 +340,13 @@
 }
 
 
+@media (min-width: 551px) and (max-width: 1007px) {
+	
+	.location .location-card-body .adjust-width {
+		margin-left: -15px;   	
+	}
+}
+	
 @media (min-width: 1028px) and (max-width: 1124px) {
 	
 	#full-width-container .txt-address .small-txt {
@@ -351,6 +375,12 @@
 	
 }
 
+@media (max-width: 1024px) {
+	
+	#myLocationComponent .row .bottom-buffer {
+		padding-bottom: 0px;	
+	}
+}
 
 @media (max-width: 992px) {
   
@@ -359,6 +389,10 @@
 		padding-top: 30px;
 	}  
 			
+	 .location .adjust-height {
+		margin-top: -20px; 	
+	}
+	
 	.location #location-graphic-area {
 		min-width: 100%;
 		float: none;
@@ -420,22 +454,42 @@
 
 @media (max-width: 550px) {
    	
-	.location .location-card-body {   
-		margin-right: -25px;
-		margin-left: -25px;
+	.location {   
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+	
+	.location #location-graphic-area {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	
+	.location #location-blue-area {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	
+	.location .adjust-width {
+		margin-right: 0px;
+		margin-left: 0px;   	
 	}
 	
 	.location div.link-wrapper {    
-		margin-right: 20px;
+		margin-right: 15px;
+		margin-left: 0px;
 	}
 	
 	.location .location-text-area {  
-		padding-left: 40px;
+		padding-left: 30px;
 	}
 	
 	.location .location-icon {  
 		padding-right: 5px;
 	}     
+	
+	.location .location-icon {   
+		padding-right: 0px !important;
+	}
 	
 	#full-width-container .location .dividingColumns {
 		float: none;
@@ -452,12 +506,12 @@
   	}
   	
   	#right-rail-container .location .location-icon {   
-		padding-right: 4px;
+		
 		padding-top: 4px;
 	}
 	
 	#full-width-container .location .location-icon {   
-		padding-right: 4px;
+		
 		padding-top: 4px;
 	}
 	

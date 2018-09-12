@@ -91,7 +91,7 @@ public class  Navigation extends WCMUsePojo {
                     LOGGER.debug("populateChildItems hidden child path: " + child.getPath());
                     continue;
                 }
-                childItems.add(new MenuItem(child));
+                childItems.add(new MenuItem(0, child));
             }
         }
     }
@@ -108,6 +108,7 @@ public class  Navigation extends WCMUsePojo {
     private void collectChildren(Page parent) {
         Iterator<Page> childIterator = parent.listChildren();
         int count = 0;
+        int secondLvlCount=1;
         while (childIterator.hasNext()) {
             Page child = childIterator.next();
             if (checkIfHidden(child)) {
@@ -123,7 +124,7 @@ public class  Navigation extends WCMUsePojo {
             // create new List
             List listItems = new ArrayList<MenuItem>();
             // first item is current child
-            MenuItem cItem = new MenuItem(child);
+            MenuItem cItem = new MenuItem(0, child);
             cItem.setFirstLevel(true);
             // get grandchildren, if any
             Iterator<Page> grandChildIterator = child.listChildren();
@@ -139,9 +140,10 @@ public class  Navigation extends WCMUsePojo {
                 }
                 LOGGER.debug("collectChildren grandChild path: " + grandChild.getPath());
                 childAndGrandChildCount++;
-                MenuItem childItem = new MenuItem(grandChild);
+                MenuItem childItem = new MenuItem(secondLvlCount, grandChild);
                 childAndGrandChildCount = childAndGrandChildCount + childItem.getChildItems().size();
                 childListItems.add(childItem);
+                secondLvlCount++;
             }
             LOGGER.debug("Arrange items for child: " + child.getPath() + " wuth total count: " + childAndGrandChildCount);
             cItem.setChildMap(arrangeMenuItems(childListItems, childAndGrandChildCount));

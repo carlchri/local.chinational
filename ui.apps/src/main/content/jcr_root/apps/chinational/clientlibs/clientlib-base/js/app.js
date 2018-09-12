@@ -20,108 +20,59 @@ jQuery(document).ready(function() {
     //
 
     $(document).ready(function () {
-	  
+
       	var lastItem;
-    
+
       	// When you click on the menu item...
-      	
+
         $('.header ul li a').click(function(e) {
-            
+
         	// Remove any other element open (close it)
-        	
+
             jQuery('.header ul li a').removeClass('dd-opened');
 
             // Add to this element the open class
-            
+
             jQuery(this).addClass('dd-opened');
-            
             // Stop checking the rest of the DOM
-            
             e.stopPropagation();
-            
+
             // If opening a menu item that has sub elements hidden then...
-    
             if ($(this).next('.hidden-menu').css('display') == ('none')) {
-                
-                // let's close the last element if any 
-                
+                // let's close the last element if any
                 $(lastItem).next('.hidden-menu').slideUp();
-                
                 // Show the elements underneath the current element
-                
                 $(this).next('.hidden-menu').slideDown();
-                
                 // Remove any other element open if any
-                
                 jQuery('.header ul li a').removeClass('dd-opened');
-                
                 // Add to this element the status of open
-                
                 jQuery(this).addClass('dd-opened');
-
-
             } else {
-                
                 $(this).next('.hidden-menu').slideUp();
-                
                 jQuery('.header ul li a').removeClass('dd-opened');
-                
             }
-            
             lastItem = $(this);
         });
 
-
         // Added by German to open the second level navigation items
-        
-        $('.hidden-menu a:has(i)').click(function(){
-    
-        	// Remove every status of hidden for the children
-        	
-            $(this).parent().siblings('li').removeClass('hidden-sm hidden-xs');
-            
-            // Add a status of open for the second level parent
-            
-            $(this).parent().siblings('li a').addClass('showing-now');
-            
-            // Open the children in second level
-            
-            $(this).parent().siblings('li a').next('.showing-now').slideDown();
-            
-            // Add class to parent of second level navigation children
-            
-            $(this).addClass('open-menu');
-            
-            // Change arrow directions when open
-            
-            $('.top-level.open-menu i').removeClass('arrow-down');
-            $('.top-level.open-menu i').addClass('arrow-up');
-  
+        $('.header .hidden-menu a:has(i)').click(function(){
+			var toggleClassName = $(this).attr('class');
+            if ($(this).is('#third-level-menu-open')) {
+                // This will close the second level children when the object includes all children
+                $(this).removeAttr('id');
+				$(this).children('i').removeClass('arrow-up').addClass('arrow-down');
+                $('.header .hidden-menu li.'+toggleClassName).addClass('hidden-sm hidden-xs');
+            } else {
+				// Remove every status of hidden for the children
+				$('.header .hidden-menu li.'+toggleClassName).removeClass('hidden-sm hidden-xs');
+                $(this).attr('id', 'third-level-menu-open');
+                $(this).children('i').removeClass('arrow-down').addClass('arrow-up');
+            }
         });
 
-        // This will close the second level children when the object includes all children
-        
-        //$('mobile-menu-li').on('click', 'li', function() {
-
-            //$(this).removeClass('open-menu');
-        
-            //$(this).parent().siblings('li a.second-level').next('.showing-now').slideUp();
-    
-            //$(this).parent().siblings('li a').next('.showing-now').slideUp();
-        
-            //$(this).addClass('arrow-up');
-    
-            // $(this).parents().next('li').addClass('hidden-sm hidden-xs');
-    
-     	//});
-
-
 		$(document).click(function() {
-    	
             jQuery('.hidden-menu', this).slideUp();
-            
             jQuery('.header ul li a').removeClass('dd-opened');
-    
         });
     });
 
@@ -132,10 +83,10 @@ jQuery(document).ready(function() {
     //
 
 
-    
-    
-    
-    
+
+
+
+
     $('#myDropdown').on('show.bs.dropdown', function() {
         // do something…
     });
