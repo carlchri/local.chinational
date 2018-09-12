@@ -477,7 +477,7 @@ jQuery(document).ready(function() {
 
 
 
-    /* Audio Player */
+    /* Audio Player 		Removed by German because the replacing code is included in audio-popup.js
     var audioFile;
     var audioTitle;
     var ply = document.getElementById('audio-player');
@@ -496,6 +496,8 @@ jQuery(document).ready(function() {
         ply.src = audioFile;
         $('#audio-modal-Label').text(audioTitle);
     });
+    
+    */
 
     /* Read more function */
     $('.more').each(function() {
