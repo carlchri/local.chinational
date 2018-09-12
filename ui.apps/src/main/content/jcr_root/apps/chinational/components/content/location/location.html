@@ -4,108 +4,115 @@
 
 	<sly data-sly-use.locationCollection="org.chi.aem.common.components.model.LocationCollection"></sly>
 	<sly data-sly-use.coordinates="org.chi.aem.common.components.model.LocationCoordinate"></sly>
+	<div id="myLocationComponent" class="${properties.bottomOption == 'nomargin' ? 'anti-bottom-buffer60' : '' } 
+				${properties.bottomOption == 'minmargin' ? 'anti-bottom-buffer60' : ''}">
+		<div class="component">
 	
-	<div id="location-container" class="location location-card-body">
-		<div class="row">
-	
-			<div id="location-graphic-area" class="${locationCollection.locationDetails.size > 0 ? 'col-md-7':'col-md-12'}">
+			<div id="location-container" class="location-card-body">
+		    	<div id="defaultArea" class="adjust-width">
 			
-				<sly data-sly-test="${properties.selectLocationImageType == 'imageLocation'}">
-					<div id="image" class="max-height-element" data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
-				</sly>
-				
-				<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
-					<div id="map_${coordinates.hash}" class="map-box"></div>
-				</sly>
-				
-			</div>
+					<div id="location-graphic-area" class="positionRel adjust-height ${locationCollection.locationDetails.size > 0 ? 'col-md-7':'col-md-12'}">
+					
+						<sly data-sly-test="${properties.selectLocationImageType == 'imageLocation'}">
+							<div id="image" class="max-height-element" data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
+						</sly>
+						
+						<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
+							<div id="map_${coordinates.hash}" class="map-box"></div>
+						</sly>
+						
+					</div>
+					
+					<div id="location-text-area" class="positionRel col-md-5 location-text-area">
+						
+						<div class="location-icon">
+							<span data-sly-test="${properties.locationIcon && properties.locationIcon != 'iconNotRequired'}" class="${properties.locationIcon}"></span>
+						</div>
+						
+						<div class="txt-location-name">
+							<span>${properties.locationName}</span>
+						</div>
 			
-			<div id="location-text-area" class="col-md-5 location-text-area">
+						<div class="txt-address">
+		 
+			                <div class="icons-set" data-sly-test="${locationCollection.locationDetails.size > 0}">
+			                    <sly data-sly-list="${locationCollection.locationDetails}">
+			                        <sly data-sly-test.link="${ (item.linkUrl != '#')}">
+			                            <div class="small-wrapper flex-box dividingColumns">
+			
+			                                <i class="setTop ${item.iconClass}"></i>
+			                                <a class="spl-link locationLink" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
+			                                    ${item.locationText}
+			                                </a>
+			
+			                            </div>
+			                        </sly>
+									
+			                        <sly data-sly-test="${!link}">
+			                             <div class="small-wrapper flex-box dividingColumns">
+			                             
+			                             	<!-- If the category is a location icon then: -->
+			                             	
+			                            	<div data-sly-test.isLocation="${ (item.iconClass == 'sprite small-icons icon-location') }" >
+		                                        <div data-sly-use.info="${'clientlibs/js/convertLocation.js' @ value=item.locationText, value2=properties.selectLocationImageType}">
+													<i class="setTop ${item.iconClass}"></i>
+		                                            <span class="small-txt">
+		                                                <a href='${info.addressURL}' target='_blank'>${info.address? info.address : item.locationText}</a>
+													</span>
+												</div>
+											</div>
+											
+											<!-- If the category is not a location icon then: -->
+											
+											<div data-sly-test="${!isLocation}">
+											
+												<!-- If the category is a phone icon then: -->
+												
+												 <div data-sly-test.isPhone="${ (item.iconClass == 'sprite small-icons icon-call') }" >
+						                             <i class="setTop ${item.iconClass}"></i>
+						                             <span class="small-txt">
+														<a href="tel:${item.locationText}">${item.locationText}</a>
+													</span>
+						                         </div>  
+						                         
+						                         <!-- If the category is not a phone icon then: -->
+						                         
+						                         <div data-sly-test="${!isPhone}">
+						                             <i class="setTop ${item.iconClass}"></i>
+						                             <span class="small-txt">${item.locationText}</span>
+						                         </div>
+			                             	</div>
+			                             </div>
+			                        </sly>
+			                    </sly>
+			                </div>
+			               <div class="link-wrapper ${properties.noDisplayButton? 'in' : ''}" 
+			                	data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
+			           		</div>
+			            </div>
+			            
+					</div>
 				
-				<div class="location-icon">
-					<span data-sly-test="${properties.locationIcon && properties.locationIcon != 'iconNotRequired'}" class="${properties.locationIcon}"></span>
+					<div id="location-blue-area" class="positionRel col-md-12" data-sly-test="${properties.detailsBoxOption == 'enable'}">
+						<div class="loc-details-box">
+							<span class="loc-details-box-heading">${properties.detailsBoxHeading}</span>
+							<div class="read-more-box">
+								<span class="loc-details-box-desc cmp-text">${properties.locDescription @context = 'html'}</span>
+							</div>
+							<div class="read-more-button-wrapper" style="display: none;">
+								<a href="" class="read-more-button"> Read More 
+									<i class="arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				
-				<div class="txt-location-name">
-					<span>${properties.locationName}</span>
-				</div>
-	
-				<div class="txt-address">
- 
-	                <div class="icons-set" data-sly-test="${locationCollection.locationDetails.size > 0}">
-	                    <sly data-sly-list="${locationCollection.locationDetails}">
-	                        <sly data-sly-test.link="${ (item.linkUrl != '#')}">
-	                            <div class="small-wrapper flex-box dividingColumns">
-	
-	                                <i class="setTop ${item.iconClass}"></i>
-	                                <a class="spl-link locationLink" href="${item.linkUrl || '#'}" target="${item.targetBlank==true ?'_blank':'_self'}">
-	                                    ${item.locationText}
-	                                </a>
-	
-	                            </div>
-	                        </sly>
-							
-	                        <sly data-sly-test="${!link}">
-	                             <div class="small-wrapper flex-box dividingColumns">
-	                             
-	                             	<!-- If the category is a location icon then: -->
-	                             	
-	                            	<div data-sly-test.isLocation="${ (item.iconClass == 'sprite small-icons icon-location') }" >
-                                        <div data-sly-use.info="${'clientlibs/js/convertLocation.js' @ value=item.locationText, value2=properties.selectLocationImageType}">
-											<i class="setTop ${item.iconClass}"></i>
-                                            <span class="small-txt">
-                                                <a href='${info.addressURL}' target='_blank'>${info.address? info.address : item.locationText}</a>
-											</span>
-										</div>
-									</div>
-									
-									<!-- If the category is not a location icon then: -->
-									
-									<div data-sly-test="${!isLocation}">
-									
-										<!-- If the category is a phone icon then: -->
-										
-										 <div data-sly-test.isPhone="${ (item.iconClass == 'sprite small-icons icon-call') }" >
-				                             <i class="setTop ${item.iconClass}"></i>
-				                             <span class="small-txt">
-												<a href="tel:${item.locationText}">${item.locationText}</a>
-											</span>
-				                         </div>  
-				                         
-				                         <!-- If the category is not a phone icon then: -->
-				                         
-				                         <div data-sly-test="${!isPhone}">
-				                             <i class="setTop ${item.iconClass}"></i>
-				                             <span class="small-txt">${item.locationText}</span>
-				                         </div>
-	                             	</div>
-	                             </div>
-	                        </sly>
-	                    </sly>
-	                </div>
-	               <div class="link-wrapper ${properties.noDisplayButton? 'in' : ''}" 
-	                	data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
-	           		</div>
-	            </div>
 			</div>
 		</div>
-	
-		<div class="row" data-sly-test="${properties.detailsBoxOption == 'enable'}">
-			<div class="col-xs-12">
-				<div class="loc-details-box">
-					<span class="loc-details-box-heading">${properties.detailsBoxHeading}</span>
-					<div class="read-more-box">
-						<span class="loc-details-box-desc cmp-text">${properties.locDescription @context = 'html'}</span>
-					</div>
-					<div class="read-more-button-wrapper" style="display: none;">
-						<a href="" class="read-more-button"> Read More 
-							<i class="arrow-right"></i>
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="row width-for-gray-line">
+		    <div class="bottom-buffer"></div>
+		    
 		</div>
-	
 	</div>
 	
 	<script data-sly-test="${properties.selectLocationImageType == 'googleMap'}">
@@ -137,7 +144,7 @@
 	            var mapURL;
 	
 	            if (mapPlaceId != "") {
-	                mapURL = "https://www.google.com/maps/place/?q=place_id:" + mapPlaceId;
+	                mapURL = "https://www.google.com/maps/search/?api=1&query=Google&query_place_id=" + mapPlaceId;
 	                marker = new google.maps.Marker({
 	                    position: uluru,
 	                    map: map,

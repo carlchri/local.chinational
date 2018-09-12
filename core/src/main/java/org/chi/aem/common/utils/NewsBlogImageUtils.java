@@ -93,8 +93,8 @@ public final class NewsBlogImageUtils {
 
     private static String getDefaultTileImage(String tileImage, String articleType, Page page){
         if (tileImage == null || tileImage.equals("")) {
-            // TODO - lets get tile image
-        	if(articleType.equals("news")){
+            // if no article type is defined, default would be news
+        	if(StringUtils.isEmpty(articleType) || articleType.equals("news")){
         		tileImage = DefaultValuesUtils.getDefaultNewsTileImgSrc(page);
         	} else if(articleType.equals("blogs")){
         		tileImage = DefaultValuesUtils.getDefaultBlogsTileImgSrc(page);
