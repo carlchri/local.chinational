@@ -3,9 +3,9 @@
 	<div class="carousel-item hide-mobile slide item desktop">
 	    <div class="flex-box">
 	        <div class="carousel-description carousel-image firstTile">
-	            <div class="main-player" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">  
+	            <div class="main-player">  
 	                <div class="audio-container">
-	               		<div class="link-wrapper">
+	               		<div class="link-wrapper" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
 		                	<button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
 		                        <img src="${audio.audioImage}">		                        
 		                        <i class="sprite small-icons icon-audio-light"></i>
