@@ -59,7 +59,7 @@
 }
 
 .mediaCarousel .a-brief-description.sub-header-fix {
-  	margin-left: -87px !important;
+  	width: 100%;
 }
 
 .mediaCarousel .thumb-titles {
