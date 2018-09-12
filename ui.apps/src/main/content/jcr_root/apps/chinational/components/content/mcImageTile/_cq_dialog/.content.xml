@@ -71,14 +71,6 @@
                                                         fieldLabel="Description"
                                                         name="./description"
                                                         required="{Boolean}false"/>
-                                                    <backgroundColor
-		                                                jcr:primaryType="nt:unstructured"
-		                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-		                                                colorsPath="/etc/config/chinational/components/colorpicker/mediacarouselbackgroundcolorpicker"
-		                                                fieldDescription="Click on the color box to choose a different color for the image tile background"
-		                                                fieldLabel="Background Color (only works when in carousel)"
-		                                                freestylePalette="{Boolean}true"
-		                                                name="./backgroundColor"/>
                                                 </items>
                                             </well>
                                         </items>
