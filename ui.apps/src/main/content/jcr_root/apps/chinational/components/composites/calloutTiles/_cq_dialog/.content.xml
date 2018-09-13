@@ -36,18 +36,18 @@
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Yes, if Callout Tiles Heading is required."
-                                                        fieldLabel="Callout Tiles Heading"
+                                                        fieldDescription='Select "Yes", if you want to display a main heading for the table of tiles'
+                                                        fieldLabel="Enable/Disable Callout Tiles Heading"
                                                         name="./selectHeading">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <headingNotRequired
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="No, Callout Tiles Heading Not Required."
+                                                                text="Disable Callout Tiles Heading"
                                                                 value="headingNotRequired"/>
                                                             <headingRequired
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Yes, Callout Tiles Heading Required."
+                                                                text="Enable Callout Tiles Heading"
                                                                 value="headingRequired"/>
                                                         </items>
                                                         <granite:data
@@ -59,7 +59,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/heading"
                                                         level="{Long}3"
-                                                        text="Enter Callout Tiles Heading:">
+                                                        text="Callout Tiles Heading:">
                                                         <granite:data
                                                             jcr:primaryType="nt:unstructured"
                                                             showhidetargetvalue="headingRequired"/>
@@ -69,7 +69,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Callout Tiles Heading"
-                                                        fieldDescription="This text will be used as heading for callout tiles"
+                                                        fieldDescription=" If you select �Yes� to a callout heading, enter the text here"
                                                         name="./calloutTilesHeading">
                                                         <granite:data
                                                             jcr:primaryType="nt:unstructured"
@@ -79,7 +79,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                                                         defaultValue="1"
-                                                        fieldDescription="Select How many Callout Tiles are required"
+                                                        fieldDescription="Select how many callouts you want to display together"
                                                         fieldLabel="No. of Callout Tiles Required"
                                                         max="{Long}4"
                                                         min="{Long}1"
@@ -90,7 +90,7 @@
                                                     <greybgRequired
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Select this checkbox to enable grey background"
+                                                        fieldDescription="Leave unchecked if you want a clear/white background"
                                                         name="./greybgRequired"
                                                         text="Select to enable grey background"
                                                         uncheckedValue="false"
@@ -98,18 +98,18 @@
                                                     <calloutOrientation
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Choose Callout Orientation"
+                                                        fieldDescription="Vertical will stack; horizontal will align side-by-side in 2 rows"
                                                         fieldLabel="Callout Orientation"
                                                         name="./calloutOrientation">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <horizontal
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="Horizontal Orientation"
+                                                                text="Horizontal, Side-by-Side Orientation"
                                                                 value="horizontalOrientation"/>
                                                             <vertical
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Vertical Orientation"
+                                                                text="Vertical, Stacked Orientation"
                                                                 value="verticalOrientation"/>
                                                         </items>
                                                     </calloutOrientation>
