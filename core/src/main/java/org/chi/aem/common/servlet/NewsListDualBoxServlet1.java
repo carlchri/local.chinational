@@ -1,9 +1,4 @@
 package org.chi.aem.common.servlet;
-import org.apache.sling.api.resource.Resource;
-import com.day.cq.wcm.api.*;
-
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceUtil;
 
 import java.io.IOException;
 
@@ -13,6 +8,8 @@ import javax.servlet.ServletException;
 import org.apache.felix.scr.annotations.*;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ModifiableValueMap;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.chi.aem.common.utils.SendEmail;
@@ -26,20 +23,21 @@ import com.day.cq.wcm.api.PageManager;
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
 @Properties({ 
-		@Property(name = "sling.servlet.selectors", value = "newslistfeaturedselect"),
-        @Property(name = "service.description", value = "Dual Box Select"),
-        @Property(name = "label", value = "Dual Box Select") 
+			@Property(name = "sling.servlet.paths", value = "/bin/services/newslisttest"),
+			@Property(name = "service.description", value = "Dual Box Select"),
+			@Property(name = "label", value = "Dual Box Select") 
 })
-public class newsListDualBoxSelect extends SlingAllMethodsServlet {
-   
+public class NewsListDualBoxServlet1 extends SlingAllMethodsServlet {
 
-    @Reference
-    private MessageGatewayService messageGatewayService;
+
+    private static final Logger log = LoggerFactory.getLogger(NewsListDualBoxServlet1.class);
     
+    Page currentPage;
+    Resource currentResource;
     
     private Page getCurrentPage(SlingHttpServletRequest request) {
-        Page currentPage = null;
-        Resource currentResource = request.getResource();
+        currentPage = null;
+        currentResource = request.getResource();
         ResourceResolver resourceResolver = currentResource.getResourceResolver();
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
         if (pageManager != null) {
@@ -51,13 +49,17 @@ public class newsListDualBoxSelect extends SlingAllMethodsServlet {
     public void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException{
 
         ResourceResolver resolver = request.getResourceResolver();
-        String location = "jcr:content";
-        Resource myPageResource = resolver.getResource(location);
         String message = "News Select List Loaded!";
-        response.getWriter().print("Hello Simon From the Servlet!");
-        
-        Page currentPage = getCurrentPage(request);
-        
-//        response.getWriter().print(currentPage.toString());
+        response.getWriter().println("Hello Simon From the Servlet!");
+        Resource testResource = resolver.getResource(request.getParameter("value1" ) + "/jcr:content");
+        ModifiableValueMap map = testResource.adaptTo(ModifiableValueMap.class);
+        map.put("property", request.getParameter("value1"));
+        testResource.getResourceResolver().commit();
+        log.info("Simons servlet test!");
+//        currentResource.setProperty("propertyName", "propertyValue");
+//        String currrentPath1 = currentResource.getPath();
+//        currentPage = getCurrentPage(request);
+//        log.info( "Current Title" + currentPage.getTitle() );
+     	response.getWriter().println( "What?");
     }
 }
