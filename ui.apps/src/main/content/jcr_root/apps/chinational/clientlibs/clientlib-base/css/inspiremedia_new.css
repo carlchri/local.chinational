@@ -15,14 +15,33 @@
 	position: relative;
 }
 
+.mediaCarousel .firstTile .audio-container .link-wrapper {
+	margin: 16px 16px 0 16px;
+}
+
 .mediaCarousel .audio-container img {
 	margin: 0 auto;
 	max-width: 100%;
 	height: 290px;
 }
 
+.mediaCarousel .audio-container .audioTile {
+  	width: 196px;
+  	height: 110px;
+}
+
+.mediaCarousel .audio-container .audioTile-first-item {
+  	width: 420px;
+  	height: 300px;
+}
+
+.media-carousel-mobile .audio-container .audioTile {
+  	width: 213px;
+  	height: 152px;
+}
+
 .mediaCarousel .custom-button {
-	padding-top: 10px;
+	padding-top: 5px;
 	width: 323.1px;
 	max-height: 24px;
 	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
@@ -40,6 +59,10 @@
 
 .mediaCarousel .custom-button.header-fix {
 	width: 100%;
+}
+
+.media-carousel-mobile .header-fix, .sub-header-fix {
+	padding-left: 25px;
 }
 
 .mediaCarousel .a-brief-description {
@@ -61,7 +84,7 @@
 }
 
 .mediaCarousel .thumb-titles {
-	margin: 6px 0px 0px 0px;
+	margin: 6px 0px 0px 5px;
 	color: #426da9;
 	font-weight: 600;
 	overflow: hidden;
@@ -90,8 +113,12 @@
 	width: 28px;
 	height: 28px;
 	left: 55%;
-	top: 50%;
+	top: 45%;
 	margin: -28px 0 0 -28px;
+}
+
+.mediaCarousel .firstTile .audio-container .sprite.icon-audio-light {
+	top: 50%;
 }
 
 .media-carousel-mobile .audio-container .sprite.icon-audio-light {
@@ -114,6 +141,11 @@
 	overflow: hidden;
 	text-align: center;
 	border-top: 0px;
+	max-height: 388px;
+}
+
+.mediaCarousel .main-player span {
+	padding-left: 17px;
 }
 
 .mediaCarousel .media-carousel-mobile .media-text {
@@ -158,7 +190,7 @@
 	left: 16px;
 	right: 0;
 	margin-right: auto;
-	margin-left: auto;
+	margin-left: 0px;
 }
 
 .mediaCarousel .video-container {
@@ -169,13 +201,15 @@
 
 .mediaCarousel .video-container img {
 	margin: 0 auto;
+	width: 196px;
+	height: 110px;
 }
 
 .mediaCarousel .video-container .sprite.icon-play-orange {
 	position: absolute;
 	width: 28px;
 	height: 28px;
-	left: 55%;
+	left: 57%;
 	top: 65%;
 	margin: -28px 0 0 -28px;
 }
@@ -639,8 +673,8 @@
 		margin-left: 0px;
 	}
 	.mediaCarousel .main-player {
-		border: 60px solid #e7e7e7;
-		border: 10px solid #e7e7e7;
+		/* border: 60px solid #e7e7e7;
+		border: 10px solid #e7e7e7; */
 		border-top: 30px solid #e7e7e7;
 	}
 	.mediaCarousel .cur-prev {
@@ -729,7 +763,7 @@
 		display: none !important;
 	}
 	.mediaCarousel .main-player {
-		border: 16px solid #e7e7e7;
+		/* border: 16px solid #e7e7e7; */
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 0;

@@ -2,14 +2,15 @@
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
 	<div class="carousel-item hide-mobile slide item desktop">
 	    <div class="flex-box">
-	        <div class="carousel-description carousel-image firstTile">
+	        <div class="carousel-description carousel-image firstTile" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
 	            <div class="main-player">  
 	                <div class="audio-container">
-	               		<div class="link-wrapper" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+	               		<div class="link-wrapper">
 		                	<button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
-		                        <img src="${audio.audioImage}">		                        
-		                        <i class="sprite small-icons icon-audio-light"></i>
-		                	</button>
+								<div class="audioTile-first-item" style="background-color: ${properties.backgroundImageColor || '#8db9ca' @ context='styleToken'};"> 
+									<i class="sprite small-icons icon-audio-light"></i>
+								</div>
+							</button>
 		                </div>
 		                <a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal"><span class="custom-button header-fix">${audio.sectionHeading}</span></a>
 					</div>
