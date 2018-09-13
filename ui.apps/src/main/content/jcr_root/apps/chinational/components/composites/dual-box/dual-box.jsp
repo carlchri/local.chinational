@@ -52,26 +52,31 @@
 %>
 <script>
     $('document').ready(function(){
-        console.log('Dual List box loaded! OK Great!!!');
+        console.log('Dual List box loaded! OK Great Simon!!!');
         var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
+        var pageUrl = String(window.location.pathname);
+        var pageUrlsplit = pageUrl.replace(".html","");
+        console.log("The page Url : "+pageUrlsplit);
+
+        // Submit function
         $("#listBoxForm").submit(function() {
             alert($('[name="duallistbox_output[]"]').val());
-
+            $.ajax({
+                type: 'GET',
+                url:'/bin/services/newslisttest',
+                data:{'value1' : '/content/national/en/media/news/chi-mission-and-ministry-fund-awards-grants-nearly-1million' },          //passing values to servlet
+                success: function(msg){
+                    //Success logic here(The response from servlet)
+                    alert("Save Complete");
+                },
+                error: function(msg) {
+                    alert("Save ERROR!");
+                }
+            });
             return false;
         });
 
-        $.ajax({
-            type: 'GET',
-            url:'/bin/services/newslisttest',
-            data:{'value1' : '/content/national/en/media/news/chi-mission-and-ministry-fund-awards-grants-nearly-1million' },          //passing values to servlet
-            success: function(msg){
-                //Success logic here(The response from servlet)
-                alert("Save Complete");
-            },
-            error: function(msg) {
-                alert("Save ERROR!");
-            }
-        });
+
     });
 </script>
 <%}%>
