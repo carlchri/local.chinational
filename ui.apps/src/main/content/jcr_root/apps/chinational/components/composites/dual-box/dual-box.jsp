@@ -60,17 +60,19 @@
 
         // Submit function
         $("#listBoxForm").submit(function() {
-            alert($('[name="duallistbox_output[]"]').val());
+            var featuredListPages = $('[name="duallistbox_output[]"]').val();
+            var featuredListPagesJsonString = JSON.stringify(featuredListPages);
+            console.log(featuredListPagesJsonString);
             $.ajax({
                 type: 'GET',
                 url:'/bin/services/newslisttest',
-                data:{'value1' : '/content/national/en/media/news/chi-mission-and-ministry-fund-awards-grants-nearly-1million' },          //passing values to servlet
+                data:{'value1' : pageUrlsplit, 'featuredPagesList' : featuredListPagesJsonString }, //passing values to servlet
                 success: function(msg){
                     //Success logic here(The response from servlet)
                     alert("Save Complete");
                 },
-                error: function(msg) {
-                    alert("Save ERROR!");
+                error: function(xhr, status, error) {
+                    console.log(error);
                 }
             });
             return false;

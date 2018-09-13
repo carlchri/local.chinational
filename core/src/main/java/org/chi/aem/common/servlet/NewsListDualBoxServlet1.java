@@ -52,9 +52,13 @@ public class NewsListDualBoxServlet1 extends SlingAllMethodsServlet {
         String message = "News Select List Loaded!";
         response.getWriter().println("Hello Simon From the Servlet!");
         Resource testResource = resolver.getResource(request.getParameter("value1" ) + "/jcr:content");
-        ModifiableValueMap map = testResource.adaptTo(ModifiableValueMap.class);
-        map.put("property", request.getParameter("value1"));
-        testResource.getResourceResolver().commit();
+//        Resource featureListResource = resolver.getResource(request.getParameter("featuredPagesList" );
+        if(testResource != null) {
+            ModifiableValueMap map = testResource.adaptTo(ModifiableValueMap.class);
+            map.put("jcrPath", request.getParameter("value1"));
+            map.put("featuredList", request.getParameter("featuredPagesList"));
+            testResource.getResourceResolver().commit();
+        }
         log.info("Simons servlet test!");
 //        currentResource.setProperty("propertyName", "propertyValue");
 //        String currrentPath1 = currentResource.getPath();
