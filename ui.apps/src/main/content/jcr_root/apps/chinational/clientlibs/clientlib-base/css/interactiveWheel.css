@@ -48,10 +48,10 @@
 
 .interactive-wheel .left {
     float: left;
-    width: 50%;					
+    max-width: 272px;					/*   	German: Marked as per directions in Zeplin 	*/
     box-sizing: border-box;
     margin-top: -15px;					/*   	German: Fix for RichText default extra padding at top 	*/
-	padding-right: 69px;				/*   	German: Padding as per directions in Zeplin 	*/
+	/* padding-right: 69px;				removed now   	German: Padding as per directions in Zeplin 	*/
 }
 
 .interactive-wheel .left p {
@@ -308,28 +308,47 @@
 
 @media (max-width: 599px) {
 	
-	.interactive-wheel .wheelContainer {
+	.interactive-wheel .wheelContainer.mobile-adjustment {
 	    min-height: 500px !important;
+	    min-width: 100px;
+	    margin-left: -25px;
+	    margin-right: -25px;
+	}
+	
+	.interactive-wheel .sub-wheelContainer.mobile-adjustment {
+    	padding-top: 0px;
+    	padding-left: 50px;
+    	padding-right: 50px;
 	}
 
-    .interactive-wheel .left {
+	.interactive-wheel .header-padding.mobile-adjustment {
+	    position: absolute;
+	    padding-top: 340px;
+	}
+
+    .interactive-wheel .left.mobile-adjustment {
         width: 100%;
         clear: both;
         float: none;
-        margin-top: 60px;
+        padding-top: 122px;
+        max-width: 275px;
     }
-    .interactive-wheel .right {
+    
+    .interactive-wheel .right.mobile-adjustment {
         width: 100%;
         clear: both;
         float: none;
+        padding-top: 70px;
     }
+    
     .wheel {
         margin: auto;
     }
-    .wheel .arrow {
+    
+    .wheel .arrow.mobile-adjustment {
         transform: rotate(-90deg) translate(50%, -35%) !important;
-        top: 100% !important;
-        left: 50% !important;
+        top: 88% !important;
+        left: 55% !important;
     }
 
     .wheel .circle {
@@ -340,23 +359,44 @@
     .wheel .circle .nose img {
         /*transform: rotate(90deg) translate(-50%, 50%);*/
     }
+    
     .nose-img-mobile {
         display: block;
     }
+    
     .nose-img-desktop {
         display: none;
     }
+    
+    .transform0 {
+	    transform: rotate(0deg);
+	}
+	.transform1 {
+	    transform: rotate(72deg);
+	}
+	.transform2 {
+	    transform: rotate(144deg);
+	}
+	.transform3 {
+	    transform: rotate(216deg);
+	}
+	.transform4 {
+	    transform: rotate(288deg);
+	}
 }
 
 
 
 @media (max-width: 380px) {
 
-                
-}
-
-
-@media (max-width: 340px) {
-
-              
+   .interactive-wheel .sub-wheelContainer.mobile-adjustment {
+    	padding-left: 40px;
+    	padding-right: 40px;
+	}
+	
+	.interactive-wheel .header-padding.mobile-adjustment {
+	    max-width: 278px;
+		padding-top: 320px;
+	}
+	             
 }
