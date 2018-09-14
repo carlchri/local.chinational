@@ -52,17 +52,22 @@
 %>
 <script>
     $('document').ready(function(){
-        console.log('Dual List box loaded! OK Great Simon!!!');
+        // console.log('Dual List box loaded! OK Great Simon!!!');
         var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
         var pageUrl = String(window.location.pathname);
         var pageUrlsplit = pageUrl.replace(".html","");
-        console.log("The page Url : "+pageUrlsplit);
+        // console.log("The page Url : "+pageUrlsplit);
 
         // Submit function
         $("#listBoxForm").submit(function() {
             var featuredListPages = $('[name="duallistbox_output[]"]').val();
-            var featuredListPagesJsonString = JSON.stringify(featuredListPages);
+            var featuredListPagesJsonString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
+            var featuredObj = {};
+
             console.log(featuredListPagesJsonString);
+            console.log(featuredListPagesJsonString[0]);
+            console.log(featuredListPagesJsonString[1]);
+            console.log(featuredListPagesJsonString[2]);
             $.ajax({
                 type: 'GET',
                 url:'/bin/services/newslisttest',
@@ -77,8 +82,6 @@
             });
             return false;
         });
-
-
     });
 </script>
 <%}%>

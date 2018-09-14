@@ -27,43 +27,23 @@ import com.day.cq.wcm.api.PageManager;
 			@Property(name = "service.description", value = "Dual Box Select"),
 			@Property(name = "label", value = "Dual Box Select") 
 })
+
 public class NewsListDualBoxServlet1 extends SlingAllMethodsServlet {
 
-
     private static final Logger log = LoggerFactory.getLogger(NewsListDualBoxServlet1.class);
-    
-    Page currentPage;
-    Resource currentResource;
-    
-    private Page getCurrentPage(SlingHttpServletRequest request) {
-        currentPage = null;
-        currentResource = request.getResource();
-        ResourceResolver resourceResolver = currentResource.getResourceResolver();
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        if (pageManager != null) {
-            currentPage = (Page) pageManager.getContainingPage(currentResource.getPath());
-        }
-        return currentPage;
-    }
 
     public void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException{
 
         ResourceResolver resolver = request.getResourceResolver();
         String message = "News Select List Loaded!";
         response.getWriter().println("Hello Simon From the Servlet!");
+        response.setContentType("text/html");
         Resource testResource = resolver.getResource(request.getParameter("value1" ) + "/jcr:content");
-//        Resource featureListResource = resolver.getResource(request.getParameter("featuredPagesList" );
         if(testResource != null) {
             ModifiableValueMap map = testResource.adaptTo(ModifiableValueMap.class);
             map.put("jcrPath", request.getParameter("value1"));
             map.put("featuredList", request.getParameter("featuredPagesList"));
             testResource.getResourceResolver().commit();
         }
-        log.info("Simons servlet test!");
-//        currentResource.setProperty("propertyName", "propertyValue");
-//        String currrentPath1 = currentResource.getPath();
-//        currentPage = getCurrentPage(request);
-//        log.info( "Current Title" + currentPage.getTitle() );
-     	response.getWriter().println( "What?");
     }
 }
