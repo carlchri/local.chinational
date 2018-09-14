@@ -69,7 +69,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Callout Tiles Heading"
-                                                        fieldDescription=" If you select �Yes� to a callout heading, enter the text here"
+                                                        fieldDescription=" If you select &quot;Yes&quot; to a callout heading, enter the text here"
                                                         name="./calloutTilesHeading">
                                                         <granite:data
                                                             jcr:primaryType="nt:unstructured"
