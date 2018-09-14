@@ -45,7 +45,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     emptyText="This field is mandatory"
-                                                    fieldDescription="Accordion Title"
+                                                    fieldDescription="Accordion Title (allows HTML tags)"
                                                     fieldLabel="Accordion Title"
                                                     name="./accordionTitle"
                                                     required="{Boolean}true"
