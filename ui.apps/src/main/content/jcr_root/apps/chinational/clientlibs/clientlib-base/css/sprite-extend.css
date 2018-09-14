@@ -129,13 +129,16 @@
   width: 90px;
   height: 90px;
 }
+
 .video .sprite.icon-large-play-orange {
   position: absolute;
   width: 90px;
   height: 90px;
   left: 43%;
   top: 40%;
+  zoom: 50%;
 }
+
 @media (max-width: 480px) {
   .video .sprite.icon-large-play-orange {
     background-position: -327px -524px;
@@ -177,10 +180,7 @@
       top: 60%; /* align it center*/
    }
 }
-.mediaCarousel .sprite.icon-large-play-orange {
-  left: 40%;
-  top: 30%;
-}
+
 .right-rail .sprite.icon-large-play-orange {
   background-position: -327px -524px;
   width: 28px;
@@ -249,9 +249,7 @@
   top: 46%;
   margin: -28px 0 0 -28px;
 }
-.media-carousel-mobile .audio-container .sprite.icon-audio-light {
-  top: 64%;
-}
+
 .sprite.icon-print-light {
   background-position: -189px -621px;
 }

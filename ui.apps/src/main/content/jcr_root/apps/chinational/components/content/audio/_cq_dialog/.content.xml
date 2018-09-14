@@ -18,9 +18,9 @@
                         sling:resourceType="granite/ui/components/coral/foundation/tabs"
                         maximized="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
-                            <Tab
+                            <tab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Audio Settings&#xa;"
+                                jcr:title="Audio Settings"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -39,13 +39,13 @@
                                                         fieldDescription="This text will be used as heading for the audio section"
                                                         fieldLabel="Audio Heading (usually used in media carousel):"
                                                         name="./sectionHeading"/>
-                                                    <audioImage
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Audio Image"
-                                                            fieldLabel="Audio Image (only used in media carousel)"
-                                                            name="./audioImage"
-                                                            rootPath="/content/dam"/>
+                                                    <audioText
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        emptyText="Enter Caption"
+                                                        fieldDescription="This text will be used as caption for the audio section"
+                                                        fieldLabel="Audio Text (usually used in media carousel):"
+                                                        name="./audioText"/>
                                                     <audioUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -54,12 +54,20 @@
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
+                                                    <backgroundImageColor
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
+		                                                colorsPath="/etc/config/chinational/components/colorpicker/mediacarouselbackgroundcolorpicker"
+		                                                fieldDescription="Click on the color box to choose a different color for the media carousel default image background"
+		                                                fieldLabel="Background Color (only works when in carousel)"
+		                                                freestylePalette="{Boolean}true"
+		                                                name="./backgroundImageColor"/>
                                                 </items>
                                             </well>
                                         </items>
                                     </column>
                                 </items>
-                            </Tab>
+                            </tab>
                             <greyBarTab
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/include"
