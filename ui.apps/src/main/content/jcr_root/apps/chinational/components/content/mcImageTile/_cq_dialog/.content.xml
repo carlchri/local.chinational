@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Media Carousel Image with link Tile Settings"
+    jcr:title="Media Carousel Image"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         granite:class="cmp-list--editor"
@@ -18,9 +18,9 @@
                         sling:resourceType="granite/ui/components/coral/foundation/tabs"
                         maximized="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
-                            <mainTab
+                            <tab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Main Settings"
+                                jcr:title="Image Settings"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -35,53 +35,52 @@
                                                     <title
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        emptyText="Enter Job Title. This field is mandatory."
+                                                        emptyText="This field is mandatory."
                                                         fieldDescription="Enter Title"
                                                         fieldLabel="Title:"
                                                         name="./title"
                                                         required="{Boolean}true"/>
                                                     <imageUrl
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Image Path"
-                                                            fieldLabel="Image"
-                                                            name="./imageUrl"
-                                                            required="{Boolean}true"
-                                                            rootPath="/content/dam"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Image Path"
+                                                        fieldLabel="Image"
+                                                        name="./imageUrl"
+                                                        required="{Boolean}true"
+                                                        rootPath="/content/dam"/>
                                                     <linkTo
-                                                            granite:class="list-option-modal-showhide-target"
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                            fieldLabel="Link to"
-                                                            name="./linkTo"
-                                                            rootPath="/content">
-                                                        <granite:data
-                                                                jcr:primaryType="nt:unstructured"
-                                                                showhidetargetvalue="modalNotRequired"/>
-                                                    </linkTo>
-                                                    <target
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldDescription="Selecting this checkbox will open link in new window."
-                                                            name="./targetBlank"
-                                                            text="Select to Open Link in New Window"
-                                                            uncheckedValue="false"
-                                                            value="true"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        fieldDescription="Link to pages on this site. For External Links, use format http(s)://www.example.com"
+                                                        fieldLabel="Link to"
+                                                        name="./linkTo"
+                                                        required="{Boolean}true"
+                                                        rootPath="/content"/>
+                                                    <targetBlank
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Selecting this checkbox will open link in new window."
+                                                        name="./targetBlank"
+                                                        text="Select to Open Link in New Window"
+                                                        uncheckedValue="false"
+                                                        value="true"/>
                                                     <description
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                            emptyText=""
-                                                            fieldDescription="This text is shown below the image"
-                                                            fieldLabel="Description"
-                                                            name="./description"
-                                                            required="{Boolean}false"/>
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="This text is shown below the image"
+                                                        fieldLabel="Description"
+                                                        name="./description"
+                                                        required="{Boolean}false"/>
                                                 </items>
                                             </well>
                                         </items>
                                     </column>
                                 </items>
-                            </mainTab>
+                            </tab>
+                            <greyBarTab
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/include"
+                                    path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
                         </items>
                     </tabs>
                 </items>
