@@ -41,11 +41,24 @@
                                                         name="./categoryTitleText"
                                                         required="{Boolean}true"/>
                                                     <contentDetail
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="Enter the detailed text here"
-                                                        fieldLabel="Enter content details here"
-                                                        name="./contentDetail"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                            useFixedInlineToolbar="{Boolean}true"
+                                                            fieldDescription="Enter the detailed text here"
+                                                            fieldLabel="Enter content details here"
+                                                            name="./contentDetail">
+                                                        <rtePlugins jcr:primaryType="nt:unstructured">
+                                                            <format
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <justify
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <misctools
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                        </rtePlugins>
+                                                    </contentDetail>
                                                     <linkUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"

@@ -2,9 +2,9 @@
 
 
 <div class="container">
-	<div class="row">
+	<div class="row profileCarousel">
 		<sly data-sly-list.eachTile="${tiles.tilesIdentifier}">
-	       	<div class="col-cx-12 col-sm-6 col-md-4">
+	       	<div class="col-md-12">
 				<span class="sub-heading" style="text-align:center;">${eachTile}</span>
 		  	   	<div data-sly-resource="${eachTile @ resourceType='chinational/components/content/membersTiles', selectors='tilesCarousel'}"></div>
 	        </div>
