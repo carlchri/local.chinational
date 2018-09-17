@@ -14,27 +14,79 @@ jQuery(document).ready(function() {
             jQuery('.menu-label').text('MENU');
         }
     });
-    var lastItem;
-    $('.header ul li a').click(function(e) {
-        var currentItem = $(this);
-        jQuery('.header ul li a').removeClass('dd-opened');
-        jQuery(this).addClass('dd-opened');
-        e.stopPropagation();
-        if ($(this).next('.hidden-menu').css('display') == ('none')) {
-            $(lastItem).next('.hidden-menu').slideUp();
-            $(this).next('.hidden-menu').slideDown();
+    
+    //
+    // Start for Menu Events
+    //
+
+    $(document).ready(function () {
+
+      	var lastItem;
+
+      	// When you click on the menu item...
+
+        $('.header ul li a').click(function(e) {
+
+        	// Remove any other element open (close it)
+
             jQuery('.header ul li a').removeClass('dd-opened');
+
+            // Add to this element the open class
+
             jQuery(this).addClass('dd-opened');
-        } else {
-            $(this).next('.hidden-menu').slideUp();
+            // Stop checking the rest of the DOM
+            e.stopPropagation();
+
+            // If opening a menu item that has sub elements hidden then...
+            if ($(this).next('.hidden-menu').css('display') == ('none')) {
+                // let's close the last element if any
+                $(lastItem).next('.hidden-menu').slideUp();
+                // Show the elements underneath the current element
+                $(this).next('.hidden-menu').slideDown();
+                // Remove any other element open if any
+                jQuery('.header ul li a').removeClass('dd-opened');
+                // Add to this element the status of open
+                jQuery(this).addClass('dd-opened');
+            } else {
+                $(this).next('.hidden-menu').slideUp();
+                jQuery('.header ul li a').removeClass('dd-opened');
+            }
+            lastItem = $(this);
+        });
+
+        // Added by German to open the second level navigation items
+        $('.header .hidden-menu a:has(i)').click(function(){
+			var toggleClassName = $(this).attr('class');
+            if ($(this).is('#third-level-menu-open')) {
+                // This will close the second level children when the object includes all children
+                $(this).removeAttr('id');
+				$(this).children('i').removeClass('arrow-up').addClass('arrow-down');
+                $('.header .hidden-menu li.'+toggleClassName).addClass('hidden-sm hidden-xs');
+            } else {
+				// Remove every status of hidden for the children
+				$('.header .hidden-menu li.'+toggleClassName).removeClass('hidden-sm hidden-xs');
+                $(this).attr('id', 'third-level-menu-open');
+                $(this).children('i').removeClass('arrow-down').addClass('arrow-up');
+            }
+        });
+
+		$(document).click(function() {
+            jQuery('.hidden-menu', this).slideUp();
             jQuery('.header ul li a').removeClass('dd-opened');
-        }
-        lastItem = $(this);
+        });
     });
-    $(document).click(function() {
-        jQuery('.hidden-menu', this).slideUp();
-        jQuery('.header ul li a').removeClass('dd-opened');
-    });
+
+
+    //
+	// End of Menu Events
+	//
+    //
+
+
+
+
+
+
     $('#myDropdown').on('show.bs.dropdown', function() {
         // do something…
     });
@@ -50,7 +102,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: false,
         autoHeight: true,
-        margin: 15,
+        margin: 10,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 10,
@@ -425,7 +477,7 @@ jQuery(document).ready(function() {
 
 
 
-    /* Audio Player */
+    /* Audio Player 		Removed by German because the replacing code is included in audio-popup.js
     var audioFile;
     var audioTitle;
     var ply = document.getElementById('audio-player');
@@ -444,6 +496,8 @@ jQuery(document).ready(function() {
         ply.src = audioFile;
         $('#audio-modal-Label').text(audioTitle);
     });
+    
+    */
 
     /* Read more function */
     $('.more').each(function() {

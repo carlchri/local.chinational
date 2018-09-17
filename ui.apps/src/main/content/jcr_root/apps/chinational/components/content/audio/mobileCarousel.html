@@ -1,20 +1,22 @@
 <sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
-        data-sly-use.template="chinational/components/commons/templates.html"></sly>
-    <div class="carousel-item slide item">
-        <div class="flex-box">
-            <div class="carousel-description carousel-image">
-                <div class="sub-Thumbs">
-                    <button type="button" class="audio-player-button" data-audio-title="${audio.sectionHeading}" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
-                        <div class="audio-container  mc-audio">
-                            <img class="img-responsives" src="${audio.audioImage}">
-                            <i class="sprite small-icons icon-audio-light"></i>
-                        </div>
-                    </button>
-                    <div class="media-text">
-                        <span class="thumb-titles">${audio.sectionHeading}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	data-sly-use.template="chinational/components/commons/templates.html"></sly>
+	<div class="carousel-item slide item">
+		<div class="carousel-description carousel-image">
+			<div class="audio-container">
+				<div class="link-wrapper sub-Thumbs mc-audio" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+					<button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
+						<div class="audioTile" style="background-color: ${properties.backgroundImageColor || '#8db9ca' @ context='styleToken'};"> 
+							<i class="sprite small-icons icon-audio-light"></i>
+						</div>
+					</button>
+					<a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal"> 
+						<i class="sprite small-icons icon-audio-light"></i> 
+						<span class="custom-button header-fix">${audio.sectionHeading}</span>
+					</a> 
+					<span class="a-brief-description sub-header-fix" data-sly-test="${audio.audioText}">${audio.audioText}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
