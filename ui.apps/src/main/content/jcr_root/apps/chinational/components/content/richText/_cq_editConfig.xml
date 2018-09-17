@@ -8,7 +8,7 @@
         <config
             jcr:mixinTypes="[rep:AccessControllable]"
             jcr:primaryType="nt:unstructured"
-            externalStyleSheets="[/apps/chinational/clientlibs/clientlib-base/css/richtext.css,/apps/chinational/clientlibs/clientlib-site/css/base.css,/apps/chinational/clientlibs/clientlib-base/css/newsbloglist.css]">
+            externalStyleSheets="[/apps/chinational/clientlibs/clientlib-base/css/richtext.css,/apps/chinational/clientlibs/clientlib-base/css/table.css,/apps/chinational/clientlibs/clientlib-site/css/base.css,/apps/chinational/clientlibs/clientlib-base/css/newsbloglist.css]">
             <rtePlugins
                 jcr:mixinTypes="[rep:AccessControllable]"
                 jcr:primaryType="nt:unstructured">
