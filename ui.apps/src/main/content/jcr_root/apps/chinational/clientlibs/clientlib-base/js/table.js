@@ -8,9 +8,9 @@ $(document).ready(function(){
         var thCount = 0;
         var tableWidth = 0;
         var caption = $(this).find('caption');
-        var tabw = $(this).attr('width') || '216';
+        var tabw = $(this).attr('width') || 'auto';
         var tabh = $(this).attr('height') || 'auto';
-        var tabDWidth = $(this).find('td:first').attr('width' ) || 216 ;
+        var tabDWidth = $(this).find('td:first').attr('width' ) || 'auto' ;
         var tabDWHeaderCellWidth = $(this).find('th:first').attr('width') || 216;
         var tabDWHeaderWidth = 0;
 
