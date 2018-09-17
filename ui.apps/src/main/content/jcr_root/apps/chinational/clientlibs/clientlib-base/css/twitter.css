@@ -5,6 +5,11 @@
 
 .twitterAlignRight {
 	float: right;
+	margin-bottom: 6%;
+}
+
+.twitterPaddingAdjustment {
+	padding-top: 2.7%;
 }
 
 .twitter-separator {
