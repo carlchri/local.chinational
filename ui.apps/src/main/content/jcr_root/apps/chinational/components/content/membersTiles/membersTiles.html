@@ -32,8 +32,12 @@
 									<div class="expertiseAreaSize">
 										<p>${properties.memberExpertise @context = 'html'}</p>
 									</div>
-									<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder stretchImage" style="background-image:url('${properties.memberLogo @ context='styleString'}');"></div>
-									
+									<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder">
+										<picture>
+									    	<source srcset="${properties.memberLogo}" sizes="100vw">
+									        <img src="${properties.memberLogo}" class="radiusForImage image-max-width-responsive" alt="Logo">
+										</picture>
+									</div>
 								</div>
 								
           
