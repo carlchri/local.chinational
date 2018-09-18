@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:icon="table"
+    jcr:primaryType="cq:Component"
+    jcr:title="Table"
+    sling:resourceSuperType="foundation/components/parbase"
+    componentGroup="CHI General"
+    tableData="&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;1&quot; border=&quot;1&quot;>&#xa;&lt;tbody>&lt;tr>&lt;td>Cell 1&lt;br>&#xa;&lt;/td>&#xa;&lt;td>Cell 2&lt;/td>&#xa;&lt;td>Cell 3&lt;br>&#xa;&lt;/td>&#xa;&lt;/tr>&lt;tr>&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;/tr>&lt;/tbody>&lt;/table>&#xa;"
+    value="&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;1&quot; border=&quot;1&quot;>&#xa;&lt;tbody>&lt;tr>&lt;td>Cell 1&lt;br>&#xa;&lt;/td>&#xa;&lt;td>Cell 2&lt;/td>&#xa;&lt;td>Cell 3&lt;br>&#xa;&lt;/td>&#xa;&lt;/tr>&lt;tr>&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;td>&amp;nbsp;&lt;/td>&#xa;&lt;/tr>&lt;/tbody>&lt;/table>"/>
