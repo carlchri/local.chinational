@@ -37,4 +37,5 @@ css/location.css
 css/interactiveWheel.css
 css/twitter.css
 css/table.css
+css/dual-box.css
 css/aem-override.css
