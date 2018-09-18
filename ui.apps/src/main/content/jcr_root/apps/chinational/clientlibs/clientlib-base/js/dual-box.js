@@ -890,10 +890,38 @@
 }));
 
 $('document').ready(function(){
-    // console.log('File change 1');
-    //  var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox();
-    // $("#demoform").submit(function() {
-    //  alert($('[name="duallistbox_demo1[]"]').val());
-    //  	return false;
-    //  });
+    console.log('Dual List box loaded! OK Great Simon!!!');
+    var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
+    var pageUrl = String(window.location.pathname);
+    var pageUrlsplit = pageUrl.replace(".html","");
+    // console.log("The page Url : "+pageUrlsplit);
+
+    // Submit function
+    $("#listBoxForm").submit(function() {
+        var featuredListPages = $('[name="duallistbox_output[]"]').val();
+        var featuredListPagesJsonString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
+        var featuredObj = {};
+        if (featuredListPagesJsonString.length == 3) {
+            console.log(featuredListPagesJsonString);
+            console.log(featuredListPagesJsonString[0]);
+            console.log(featuredListPagesJsonString[1]);
+            console.log(featuredListPagesJsonString[2]);
+            $.ajax({
+                type: 'GET',
+                url:'/bin/services/newslisttest',
+                data:{'value1' : pageUrlsplit, 'featuredPagesList' : featuredListPagesJsonString }, //passing values to servlet
+                success: function(msg){
+                    //Success logic here(The response from servlet)
+                    alert("Save Complete");
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+            return false;
+        } else {
+            alert("Please select three items in the order of appearence.");
+            return false;
+        }
+    });
 });

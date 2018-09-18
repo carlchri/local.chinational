@@ -85,3 +85,14 @@
 .bootstrap-duallistbox-container.moveonselect .removeall {
   width: 100%;
 }
+
+/* Additional css added by sbrown */
+.chi_dual_box {
+  padding: 10px 0 30px;
+  border-bottom: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.bootstrap-duallistbox-container .buttons {
+  width: 96%;
+}

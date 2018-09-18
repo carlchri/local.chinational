@@ -22,10 +22,18 @@ import com.day.cq.wcm.api.PageManager;
 
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
-@Properties({ 
-			@Property(name = "sling.servlet.paths", value = "/bin/services/newslisttest"),
-			@Property(name = "service.description", value = "Dual Box Select"),
-			@Property(name = "label", value = "Dual Box Select") 
+//@Properties({
+//			@Property(name = "sling.servlet.paths", value = "/bin/services/newslisttest"),
+//			@Property(name = "service.description", value = "Dual Box Select"),
+//			@Property(name = "label", value = "Dual Box Select")
+//})
+
+@Properties({
+        @Property(name = "sling.servlet.resourceTypes", value = "sling/servlet/default"),
+        @Property(name = "sling.servlet.selectors", value = "featurednewslistservlet"),
+        @Property(name = "sling.servlet.extensions", value = "html"),
+        @Property(name = "service.description", value = "For News List component"),
+        @Property(name = "label", value = "Featured News List")
 })
 
 public class NewsListDualBoxServlet1 extends SlingAllMethodsServlet {
