@@ -337,12 +337,14 @@
     padding-left: 15px;
 }
 
+.radiusForImage {
+	border-radius: 11px;
+}
+
 .logoPlaceholder {
 	width: 170px;
 	height: 100px;
 	border-radius: 11px;
-	background-repeat: no-repeat;
-    background-position: center; 
 	clear: both;
 	bottom: 0;
     z-index: -1;  
