@@ -89,27 +89,31 @@
                                             <image_small_nose
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Select Small Nose Image"
-                                                fieldLabel="Small Nose Image:"
+                                                fieldDescription="Select Nose Image for Mobile"
+                                                fieldLabel="Nose Image for mobile devices:"
                                                 name="./image_small_nose"
                                                 rootPath="/content/dam"/>
+                                            <noCTAbutton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Selecting this checkbox will hide the CTA link from being displayed."
+                                                name="./noCTAButton"
+                                                text="Select to Hide CTA link"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                             <schedule_appointment
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="This field is mandatory"
                                                 fieldDescription="Message for the CTA link of the Interactive Wheel"
                                                 fieldLabel="Message in CTA Link:"
-                                                name="./schedule_appointment"
-                                                required="{Boolean}true"/>
+                                                name="./schedule_appointment"/>
                                             <destinationCTA
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                emptyText="This field is mandatory"
                                                 fieldDescription="Select Link for CTA botton"
                                                 fieldLabel="CTA Link to:"
                                                 name="./destinationCTA"
-                                                rootPath="/content/dam"
-                                                required="{Boolean}true"/>  
+                                                rootPath="/content"/>  
                                             <backgroundColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
@@ -148,6 +152,7 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <wheelCompartmentsDetails
                                                 jcr:primaryType="nt:unstructured"
+                                                fieldLabel="This component ONLY works (temporarily) with 5 elements (no more or less)"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
                                                 fieldDescription="Click + to add a new entry"
@@ -177,11 +182,9 @@
 			                                            <compartment_image_alt_text
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-			                                                emptyText="This field is mandatory"
 			                                                fieldDescription="Compartment Image ALT text in Interactive Wheel"
 			                                                fieldLabel="Compartment Image ALT text:"
-			                                                name="./compartment_image_alt_text"
-			                                                required="{Boolean}true"/>
+			                                                name="./compartment_image_alt_text"/>
 			                                            <compartment_text
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
