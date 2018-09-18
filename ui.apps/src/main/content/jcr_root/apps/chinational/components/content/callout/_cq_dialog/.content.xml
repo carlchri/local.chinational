@@ -36,21 +36,21 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="This field is mandatory"
-                                                        fieldDescription="Enter the Category Title"
-                                                        fieldLabel="Category Title"
+                                                        fieldDescription="This is the title for this callout."
+                                                        fieldLabel="Callout Title"
                                                         name="./categoryTitleText"
                                                         required="{Boolean}true"/>
                                                     <contentDetail
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                         fieldDescription="Enter the detailed text here"
-                                                        fieldLabel="Enter content details here"
+                                                        fieldLabel="Enter callout text here"
                                                         name="./contentDetail"/>
                                                     <linkUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                        fieldLabel="Link URL (for the callout title)"
+                                                        fieldDescription="AEM path or link for callout heading.  Use this format for external links https://www.example.com"
+                                                        fieldLabel="AEM path/Link URL for the callout heading"
                                                         name="./linkUrl"
                                                         rootPath="/content"/>
                                                     <target
