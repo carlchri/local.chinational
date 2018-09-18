@@ -890,11 +890,11 @@
 }));
 
 $('document').ready(function(){
-    console.log('Dual List box loaded! OK Great Simon!!!');
+    // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
     var pageUrl = String(window.location.pathname);
     var pageUrlsplit = pageUrl.replace(".html","");
-    // console.log("The page Url : "+pageUrlsplit);
+    console.log("The page Url : "+pageUrlsplit);
 
     // Submit function
     $("#listBoxForm").submit(function() {
@@ -902,13 +902,13 @@ $('document').ready(function(){
         var featuredListPagesJsonString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
         var featuredObj = {};
         if (featuredListPagesJsonString.length == 3) {
-            console.log(featuredListPagesJsonString);
+            console.log( JSON.stringify(featuredListPagesJsonString) );
             console.log(featuredListPagesJsonString[0]);
             console.log(featuredListPagesJsonString[1]);
             console.log(featuredListPagesJsonString[2]);
             $.ajax({
                 type: 'GET',
-                url:'/bin/services/newslisttest',
+                url:'/content/national/en.featurednewslistservlet.html',
                 data:{'value1' : pageUrlsplit, 'featuredPagesList' : featuredListPagesJsonString }, //passing values to servlet
                 success: function(msg){
                     //Success logic here(The response from servlet)
