@@ -4,6 +4,6 @@
     jcr:description="Featured news and news list"
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
-    jcr:title="News List"
+    jcr:title="News List [Dynamic]"
     allowedParents="[*/parsys]"
-    componentGroup=".fixed-chi"/>
+    componentGroup="CHI General"/>

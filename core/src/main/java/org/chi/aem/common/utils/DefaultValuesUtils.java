@@ -1,0 +1,97 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ Copyright 2017 Catholic Health Initiatives
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+package org.chi.aem.common.utils;
+
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.chi.aem.common.utils.ResourceResolverFactoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
+import org.chi.aem.common.utils.LinkUtils;
+import com.adobe.cq.sightly.WCMUsePojo;
+
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
+import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
+import com.day.cq.commons.inherit.InheritanceValueMap;
+
+import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
+
+
+public final class DefaultValuesUtils {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(DefaultValuesUtils.class);
+
+    private static final String DEFAULT_NEWS_PATH  = "defaultNewsPath";
+    private static final String DEFAULT_BLOGS_PATH  = "defaultBlogsPath";
+    private static final String DEFAULT_BLOGS_TILE_IMG_SRC  = "defaultBlogsTileImgSrc";
+    private static final String DEFAULT_NEWS_TILE_IMG_SRC  = "defaultNewsTileImgSrc";
+    private static final String DEFAULT_NEWS_BLOG_IMG  = "/etc/designs/chicommon/images/blogNewsDefGraphic.jpg";
+    private static final String EXTERNALIZER_DOMAIN  = "siteExternailizer";
+    private static final String DEFAULT_EXTERNALIZER_DOMAIN = "national";
+    private static final String DEFAULT_MESSAGE  = "could not find default value";
+
+    public static String getDefaultValue(Page page, String pName) {
+        return getDefaultValue(page, pName, DEFAULT_MESSAGE);
+    }
+
+    public static String getDefaultValue(Page page, String pName, String defValue) {
+        String defaultPath = "";
+        if(page != null){
+            Resource resource = page.adaptTo(Resource.class);
+            // LOGGER.info("Resourec Path : " + resource.getPath());
+            final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
+            defaultPath = pageProperties.getInherited(pName, String.class);
+            // LOGGER.info("Default Path : " + defaultPath);
+            if (defaultPath == null) {
+                LOGGER.trace("could not find inherited property for ", resource);
+                defaultPath = defValue;
+            }
+        } else {
+            defaultPath = defValue;
+        }
+
+        return defaultPath;
+    }
+
+    public static String getSiteExternalizer(Page page) {
+        return getDefaultValue(page, EXTERNALIZER_DOMAIN, DEFAULT_EXTERNALIZER_DOMAIN);
+    }
+
+    public static String getDefaultNewsPath(Page page) {
+        return getDefaultValue(page, DEFAULT_NEWS_PATH);
+    }
+
+    public static String getDefaultBlogsPath(Page page) {
+        return getDefaultValue(page, DEFAULT_BLOGS_PATH);
+    }
+
+    public static String getDefaultBlogsTileImgSrc(Page page) {
+		String defaultBlogsTileImgSrc = getDefaultValue(page, DEFAULT_BLOGS_TILE_IMG_SRC, DEFAULT_NEWS_BLOG_IMG);
+       if (StringUtils.isNotEmpty(defaultBlogsTileImgSrc) && !"#".equals(defaultBlogsTileImgSrc)) {
+    	   defaultBlogsTileImgSrc = LinkUtils.externalize(defaultBlogsTileImgSrc);            
+        }
+       // LOGGER.info("Default Blogs Tile Image Src : " + defaultTileImgSrc);
+        return defaultBlogsTileImgSrc;
+    }
+
+    public static String getDefaultNewsTileImgSrc(Page page) {
+		String defaultNewsTileImgSrc = getDefaultValue(page, DEFAULT_NEWS_TILE_IMG_SRC, DEFAULT_NEWS_BLOG_IMG);
+       if (StringUtils.isNotEmpty(defaultNewsTileImgSrc) && !"#".equals(defaultNewsTileImgSrc)) {
+    	   defaultNewsTileImgSrc = LinkUtils.externalize(defaultNewsTileImgSrc);            
+        }
+       // LOGGER.info("Default News Tile Image Src : " + defaultTileImgSrc);
+        return defaultNewsTileImgSrc;
+    }
+
+}

@@ -1,0 +1,26 @@
+<sly data-sly-use.newsCollection="org.chi.aem.common.components.model.NewsListCollection"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+<div class="component">
+	<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'} news_list_manual_wrapper" id="${newsCollection.hash}">
+
+ 	    <div class="col-xs-12" data-sly-test="${wcmmode.edit || wcmmode.design}" style="text-align:center; padding-bottom:20px;">
+        	<h5>Article List Manual Component ${wcmmode.edit ? ' [EDIT Mode]' : ''}</h5>
+        </div>
+ 
+        <div class="col-xs-12">
+			<ul class="mc_list filtered_list news_manual_list" data-sly-list.item="${newsCollection.newsListCollection}"
+				data-sly-use.itemTemplate="item.html">
+				<li data-sly-call="${itemTemplate.item @ list = newsCollection, item = item}" style="display:none;"></li>
+			</ul>
+		</div>
+
+		<div class="col-xs-12 padding_top_18 news_list_manual_more">
+			<a class="learn-more-btn border-orange">${properties.buttonLabel || 'SEE MORE'}</a>
+		</div>
+
+	</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!newsCollection.newsListCollection}"></sly>

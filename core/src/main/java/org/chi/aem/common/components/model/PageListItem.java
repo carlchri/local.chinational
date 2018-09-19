@@ -41,6 +41,16 @@ public class PageListItem {
         }
     }
 
+    public PageListItem(@Nonnull SlingHttpServletRequest request, @Nonnull Page page) {
+        this.request = request;
+        this.page = page;
+        Page redirectTarget = getRedirectTarget(page);
+        if (redirectTarget != null && !redirectTarget.equals(page)) {
+            this.page = redirectTarget;
+        }
+    }
+
+
     public String getTitle() {
         String title = null;
         if(page != null) {

@@ -1,11 +1,15 @@
-<template data-sly-template.item="${@ list, item}">
+<template
+		data-sly-template.item="${@ list, item}"
+		  data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = item.path, articleType='news'}">
 	<div class="row image-content flex">
-	        <div class="image-col col-sm-5 col-xs-12" data-sly-test.noImagePresent="${item.properties.featuredImageSrc || item.properties.imageSrc}">
-	                  <img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">
+	        <div class="tnl-wrapper col-sm-6 col-xs-12">
+				<div class="full-image blog-image">
+	                  <img src="${imageInfo.tileImagePath @ context='unsafe'}" alt="Alt Image">
+				</div>
 	        </div>
-	        <div class="blog-news-padding-top ${noImagePresent ? 'col-sm-7 col-xs-12' : 'col-xs-12'}">
+	        <div class="blog-news-padding-top col-sm-6 col-xs-12">
 	          <a href="${item.path @ extension='html'}">
-	              <span class="small-heading news_heading_hover">${item.properties.newsHeading || item.pageTitle || item.title || item.name}</span>
+	              <h4 class="txt-green news_blog_featured_heading news_heading_hover">${item.properties.newsHeading || item.pageTitle || item.title || item.name}</h4>
 	          </a>
 	          <span class="txt-green" 
 	                data-sly-use.formatter="${'org.chi.aem.common.components.model.DateFormatting' @ date=item.properties.publishDate, dateFormat='MMM dd, YYYY'}">

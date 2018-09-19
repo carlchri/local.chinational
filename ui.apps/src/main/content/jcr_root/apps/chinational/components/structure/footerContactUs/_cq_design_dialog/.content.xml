@@ -14,60 +14,58 @@
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
                     <footerCUMainTab
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Basic"
-                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                            margin="{Boolean}true">
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Basic"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <column
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
                                     <well
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
                                         <items jcr:primaryType="nt:unstructured">
                                             <tileHeading
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
-                                                    level="{Long}3"
-                                                    text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored">
-                                            </tileHeading>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}3"
+                                                text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored"/>
                                             <heading
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Heading text for the component"
-                                                    fieldLabel="Contact CHI Heading"
-                                                    name="./heading"
-                                                    required="{Boolean}true"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Heading text for the component"
+                                                fieldLabel="Contact CHI Heading"
+                                                name="./heading"
+                                                required="{Boolean}true"/>
                                             <subheading
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Sub Heading for the component, displays below heading"
-                                                    fieldLabel="Call Number text"
-                                                    name="./subheading"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Sub Heading for the component, displays below heading"
+                                                fieldLabel="Call Number text"
+                                                name="./subheading"/>
                                             <label
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="This Text is for Request Appointment link"
-                                                    fieldLabel="Request Appt Text"
-                                                    name="./label"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="This Text is for Request Appointment link"
+                                                fieldLabel="Request Appt Text"
+                                                name="./label"/>
                                             <linkTo
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                    fieldLabel="Link to"
-                                                    name="./linkTo"
-                                                    rootPath="/content"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
+                                                fieldLabel="Link to"
+                                                name="./linkTo"
+                                                rootPath="/content"/>
                                             <target
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="Selecting this checkbox will open link in new window."
-                                                    name="./targetBlank"
-                                                    text="Select to Open Link in New Window"
-                                                    uncheckedValue="false"
-                                                    value="true"/>
-
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Selecting this checkbox will open link in new window."
+                                                name="./targetBlank"
+                                                text="Select to Open Link in New Window"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                         </items>
                                     </well>
                                 </items>
@@ -75,39 +73,38 @@
                         </items>
                     </footerCUMainTab>
                     <footerCUNewsTab
-                            granite:class="list-option-modal-showhide-target"
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="News Settings"
-                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                            margin="{Boolean}true">
+                        granite:class="list-option-modal-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="News Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <column
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
                                     <well
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
                                         <items jcr:primaryType="nt:unstructured">
                                             <nlButtonText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Newsletter button label is required to display newsletter subscribe"
-                                                    fieldLabel="NewsLetter Button Label (this is required to display newsletter subscribe)"
-                                                    name="./nlButtonText"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Newsletter button label is required to display newsletter subscribe"
+                                                fieldLabel="NewsLetter Button Label (this is required to display newsletter subscribe)"
+                                                name="./nlButtonText"/>
                                             <nlPlaceholderText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Newsletter placeholder text for textfield"
-                                                    fieldLabel="Newsletter placeholder text for textfield"
-                                                    name="./nlPlaceholderText"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Newsletter placeholder text for textfield"
+                                                fieldLabel="Newsletter placeholder text for textfield"
+                                                name="./nlPlaceholderText"/>
                                             <nlErrorText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Newsletter error text for incorrect email"
-                                                    fieldLabel="Newsletter error text for incorrect email"
-                                                    name="./nlErrorText"/>
-
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Newsletter error text for incorrect email"
+                                                fieldLabel="Newsletter error text for incorrect email"
+                                                name="./nlErrorText"/>
                                         </items>
                                     </well>
                                 </items>
@@ -137,33 +134,33 @@
                                             name="./icons">
                                             <items jcr:primaryType="nt:unstructured">
                                                 <iconType
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:orderBefore="orderBy"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select a icon type"
-                                                        fieldLabel="Icon Type"
-                                                        name="./iconType">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:orderBefore="orderBy"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldDescription="Select a icon type"
+                                                    fieldLabel="Icon Type"
+                                                    name="./iconType">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <facebook
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Facebook"
-                                                                value="icon-fb"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Facebook"
+                                                            value="icon-fb"/>
                                                         <instagram
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Instagram"
-                                                                value="icon-instagram"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Instagram"
+                                                            value="icon-instagram"/>
                                                         <twitter
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Twitter"
-                                                                value="icon-twitter"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Twitter"
+                                                            value="icon-twitter"/>
                                                         <linkedin
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="LinkedIn"
-                                                                value="icon-linkedin"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="LinkedIn"
+                                                            value="icon-linkedin"/>
                                                         <youtube
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="YouTube"
-                                                                value="icon-youtube"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="YouTube"
+                                                            value="icon-youtube"/>
                                                     </items>
                                                 </iconType>
                                                 <linkUrl

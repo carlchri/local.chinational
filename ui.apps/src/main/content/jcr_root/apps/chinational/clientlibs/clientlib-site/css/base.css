@@ -71,6 +71,28 @@
     font-size: 0;
 }
 
+/* Added to extend grey line  to corners, else it was terminating and showing white space*/
+@media (max-width: 1200px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-11.7vw / 2);
+        margin-right: calc(-11.7vw / 2);
+       }
+}
+
+@media (max-width: 767px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-14.7vw / 2);
+        margin-right: calc(-14.7vw / 2);
+       }
+}
+
+@media (max-width: 320px) {
+    .full-width-container .width-for-gray-line {
+        margin-left: calc(-18.7vw / 2);
+        margin-right: calc(-18.7vw / 2);
+       }
+}
+
 .full-bleed-tiles {
     margin-left: -4.633%;
     /* Added by German for special-content.html */
@@ -189,6 +211,12 @@
     padding-top: 30px;
     position: relative;
 }
+
+/* May 25, 2018 Added by Davinder CHIP12 */
+.padding-top-0 {
+    padding-top: 0 !important;
+}
+/* End of additions */
 
 span {
     display: inline-block;
@@ -775,10 +803,40 @@ label {
     padding-top: 20px;
 }*/
 
+/* Used on news/blog details page*/
+.wrapper-block-margin {
+    margin: 0 0 15px 0; /* TRBL*/
+}
+
 .image-wrape img {
     float: left;
     padding: 0 30px 0 0;
     /* Naresh - no padding needed for bottom*/
+}
+
+.image-wrape .nb-textwrap p:first-child{
+    margin-top: -20px;
+}
+
+@media(max-width:767px) {
+    .image-wrape .nb-textwrap p:first-child{
+        margin-top: 20px;
+    }
+
+    /* In mobile, there is no text wrap*/
+    .image-wrape .nb-textwrap {
+        float: right;
+    }
+
+    /* Padding and marging around image caption is controlled by image and text aorund it*/
+    .image-wrape .light-txt {
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+.float-left {
+    float: left;
 }
 
 /*
@@ -866,8 +924,29 @@ p:last-child {
     margin-bottom: 5px;
 }
 
-.right-rail .red-border {
+/* When experience fragment uses right rail border, it does not show up as red, this is to fix that */
+.right-rail .red-border, .xfpage .red-border {
     border-color: #e1523d;
+}
+
+/* these overrides to make separator under expereinence fragment work within right rail*/
+.right-rail .experiencefragment .separator {
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+@media (max-width: 1023px) {
+  .right-rail .experiencefragment .separator {
+      margin-left: -40px;
+      margin-right: -40px;
+  }
+}
+
+@media (max-width: 767px) {
+    .right-rail .experiencefragment .separator {
+        margin-left: -30px;
+        margin-right: -30px;
+    }
 }
 
 .pstn-abslt {
@@ -1385,6 +1464,7 @@ img {
     line-height: 20px;
     font-style: italic;
     font-size: 14px;
+    margin: 0 0 15px 0; /* Updated margin to only have bottom padding, as image above adds its own margin bottom, for video*/
     /*     padding: 8px 0 20px 0;    Removed by German for content-details_RR.html */
 }
 

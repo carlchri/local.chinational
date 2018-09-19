@@ -1,3 +1,5 @@
+<sly data-sly-use.defaultValues="org.chi.aem.common.components.model.DefaultValuesModel"></sly>
+
 <div class="container">
     <div class="row">
         <div class="${!properties.displayRightRail?'col-md-12':'col-md-8'}">
@@ -10,9 +12,13 @@
             </span>
             <span class="blog-date txt-blue" style="padding-left:20px;" data-sly-test=${pageProperties.cq:tags}
             	  data-sly-use.tags="${'org.chi.aem.common.components.model.TagsTitle'}">
-                   ${tags.tagsDesc}
-            </span> 
-
+                <sly data-sly-list.tagsList="${tags.tagsMap}">
+                   <a href="${defaultValues.defaultBlogsPath}.blogs.${tagsList}.html">
+	                   	${tags.tagsMap[tagsList]}
+                   </a>
+                   <span data-sly-test="${!tagsListList.last}">, &nbsp;</span>
+				</sly>
+            </span>
         </div>
     </div>
 </div>

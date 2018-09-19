@@ -1,5 +1,6 @@
 .video {
 	position: relative;
+	max-width: 1000px;
 }
 
 .video img {
@@ -10,7 +11,7 @@
 
 .video-button-small {
 	width: 38px;
-	height: 38px;
+	height: auto; /* changed to auto, as this was adding extra space after video image*/
 }
 
 .video-button:hover, .video-button-small:hover {

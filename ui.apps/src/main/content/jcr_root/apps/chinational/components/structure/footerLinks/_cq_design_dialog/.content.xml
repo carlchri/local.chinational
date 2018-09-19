@@ -24,11 +24,18 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
                                     <tileHeading
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/heading"
-                                            level="{Long}3"
-                                            text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored">
-                                    </tileHeading>
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}3"
+                                        text="This component's attributes should only be set on a page created through 'Default Template', else they will be ignored"/>
+                                    <hideGlobalLink
+                                           jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            fieldDescription="Hide global footer link (e.g. Visit CHI) from bottom right corner of the page. Only applies to links at the bottom of the page"
+                                            name="./hideGlobalLink"
+                                            text="Hide global footer link (bottom right corner)"
+                                            uncheckedValue="false"
+                                            value="true"/>
                                     <linkHeading
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

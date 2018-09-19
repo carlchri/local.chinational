@@ -1,0 +1,36 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ This version has no margin, used when embedded in other components
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-use.image="org.chi.aem.common.components.model.Image"
+	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+
+
+<a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
+	<picture data-sly-test="${((image.imgTabSrc == image.fileReference) && (image.imgMobSrc == image.fileReference))}">
+    	<source srcset="${image.fileReference}" sizes="100vw" />
+        <img src="${image.fileReference}"
+			 class="${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}"
+			 alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${(image.imgTabSrc == image.fileReference) && (image.imgMobSrc != image.fileReference)}">
+    	<source media="(min-width: 768px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${image.imgMobSrc}" sizes="100vw" />
+        <img src="${image.fileReference}"
+			 class="${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${(image.imgMobSrc == image.fileReference) && (image.imgTabSrc != image.fileReference)}">
+    	<source media="(min-width: 992px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 768px)" srcset="${image.imgTabSrc}" sizes="100vw" />
+        <img src="${image.fileReference}"
+			 class="${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+	<picture data-sly-test="${(image.imgTabSrc != image.fileReference) && (image.imgMobSrc != image.fileReference)}">
+    	<source media="(min-width: 992px)" srcset="${image.fileReference}" sizes="100vw" />
+        <source media="(min-width: 768px)" srcset="${image.imgTabSrc}" sizes="100vw" />
+        <source media="(min-width: 10px)" srcset="${image.imgMobSrc}" sizes="100vw" />
+        <img src="${image.fileReference}"
+			 class="${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}" alt="${image.alt || 'Image Component'}"/>
+	</picture>
+</a>
+<sly data-sly-call="${template.placeholder @ isEmpty=!image.fileReference}"></sly>

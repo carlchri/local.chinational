@@ -4,20 +4,26 @@
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
             <div class="col-sm-12">
                 <h4 class="media-fifty" data-sly-test="${mediaCollection.sectionHeading}">${mediaCollection.sectionHeading}</h4>
-                <div class="cus-curosal pstn-reltv hide-mobile full-bleed-tiles">
+                <div class="cus-curosal pstn-reltv hide-mobile full-bleed-tiles ${mediaCollection.editViewItems.size < 8 ?'fw-no-arrows':''} ${mediaCollection.editViewItems.size < 4 ?'rr-no-arrows':''}">
                     <div class="owl-carousel owl-theme media-carousel">
                         <div class="slide-container">
                             <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}"
                                  data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
                             <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}"
                                  data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='carouselFirstItem'}"></sly>
+                            <div data-sly-test="${mediaCollection.firstItem.type == 'image'}"
+                                 data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/mcImageTile', selectors='carouselFirstItem'}"></div>
                             <sly data-sly-list.groups="${mediaCollection.previewItems}">
                                 <div class="carousel-item item slide twoItemColumn" style="width: 229px">
                                     <div class="flex-box">
                                         <div class="carousel-description carousel-image">
                                             <sly data-sly-repeat="${groups}">
-                                                <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
-                                                <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
+                                                <sly data-sly-test="${item.type == 'video'}"
+                                                     data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='carousel'}"></sly>
+                                                <sly data-sly-test="${item.type == 'audio'}"
+                                                     data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='carousel'}"></sly>
+                                                <sly data-sly-test="${item.type == 'image'}"
+                                                     data-sly-resource="${item.id @ resourceType='chinational/components/content/mcImageTile', selectors='carousel'}"></sly>
                                             </sly>
                                         </div>
                                     </div>
@@ -32,10 +38,13 @@
                              data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='mobileCarousel'}"></sly>
                         <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}"
                              data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/audio', selectors='mobileCarousel'}"></sly>
+                        <sly data-sly-test="${mediaCollection.firstItem.type == 'image'}"
+                             data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/mcImageTile', selectors='mobileCarousel'}"></sly>
                         <sly data-sly-list.groups="${mediaCollection.previewItems}">
                             <sly data-sly-repeat="${groups}">
                                 <sly data-sly-test="${item.type == 'video'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/video', selectors='mobileCarousel'}"></sly>
                                 <sly data-sly-test="${item.type == 'audio'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/audio', selectors='mobileCarousel'}"></sly>
+                                <sly data-sly-test="${item.type == 'image'}" data-sly-resource="${item.id @ resourceType='chinational/components/content/mcImageTile', selectors='mobileCarousel'}"></sly>
                             </sly>
                         </sly>
                     </div>
@@ -55,8 +64,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <audio id="audio-player" controls preload="none">
+            <div class="modal-body chi-audio-player-d">
+                <audio id="audio-player" class="chi-audio-player" controls preload="none">
                     <source src="" type="audio/ogg">
                     <source class="srcmp" src="" type="audio/mpeg">
                     Your browser does not support the audio element.

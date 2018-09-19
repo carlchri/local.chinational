@@ -32,6 +32,7 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.chi.aem.common.utils.DefaultValuesUtils;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -227,7 +228,9 @@ public class SocialMediaHelper implements com.adobe.cq.wcm.core.components.model
         public String getURL() {
             String pagePath = currentPage.getPath();
             String extension = request.getRequestPathInfo().getExtension();
-            String url = externalizer.publishLink(resourceResolver, pagePath) + "." + extension;
+            // changing it to external link, for multiple domains
+            String url = externalizer.externalLink(resourceResolver,
+                    DefaultValuesUtils.getSiteExternalizer(currentPage),pagePath) + "." + extension;
             return url;
         }
 
@@ -247,7 +250,9 @@ public class SocialMediaHelper implements com.adobe.cq.wcm.core.components.model
             if (LinkUtils.isNullOrBlank(image)) {
                 image = getThumbnailUrl(currentPage, 800, 480);
             }
-            image = externalizer.publishLink(resourceResolver, image);
+            // changing it to external link, for multiple domains
+            image = externalizer.externalLink(resourceResolver,
+                    DefaultValuesUtils.getSiteExternalizer(currentPage), image);
             return image;
         }
 

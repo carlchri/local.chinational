@@ -1,3 +1,4 @@
+css/audio-player-styles.css
 css/blogs.css
 css/calloutTiles.css
 css/contactus.css
@@ -30,4 +31,7 @@ css/sprite-extend.css
 css/sub-nav.css
 css/video.css
 css/video.popup.css
+css/search.less
+css/photoBandWithForm.css
+css/bootstrap-multiselect.css
 css/aem-override.css

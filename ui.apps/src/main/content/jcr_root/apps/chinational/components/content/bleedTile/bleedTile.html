@@ -1,9 +1,9 @@
 <sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <sly data-sly-use.link="org.chi.aem.common.components.model.Link" />
 
-<div  data-sly-test="${properties.selectImage != 'imageRequired'}" class="content-gutter">
+<div  data-sly-test="${properties.selectImage != 'imageRequired'}" class="content-gutter cmp-text">
 	<h2>${properties.headingText}</h2>
-	<p>${properties.contentDetail}</p>
+	${properties.contentDetail @context = 'html'}
 	<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
 		<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 			<span>${link.linkText || 'Link Text'}</span>
@@ -16,9 +16,9 @@
 		<div class="image-row required-height-style-1"
 			 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 		</div>
-		<div class="content-gutter">
+		<div class="content-gutter cmp-text">
 			<h2>${properties.headingText}</h2>
-			<p>${properties.contentDetail}</p>
+			${properties.contentDetail @context = 'html'}
 			<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
 				<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 					<span>${link.linkText || 'Link Text'}</span>
@@ -30,9 +30,9 @@
 		 class="full-image required-width-style-1"
 		 data-sly-resource="${'image-bt' @ resourceType='chinational/components/content/image', selectors='embeddedImage'}">
 	</div>
-	<div data-sly-test="${properties.imagePosition != 'top'}" class="content-gutter-with-image">
+	<div data-sly-test="${properties.imagePosition != 'top'}" class="content-gutter-with-image cmp-text">
 		<h2>${properties.headingText}</h2>
-		<p>${properties.contentDetail}</p>
+		${properties.contentDetail @context = 'html'}
 		<div  data-sly-test="${properties.selectButton == 'buttonRequired'}" class="link-wrapper">
 			<a class="learn-more-btn white-border" href="${link.linkUrl}" target="${link.targetBlank==true ?'_blank':'_self'}">
 				<span>${link.linkText || 'Link Text'}</span>
