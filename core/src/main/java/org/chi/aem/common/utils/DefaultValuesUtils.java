@@ -36,25 +36,36 @@ public final class DefaultValuesUtils {
     private static final String DEFAULT_BLOGS_PATH  = "defaultBlogsPath";
     private static final String DEFAULT_BLOGS_TILE_IMG_SRC  = "defaultBlogsTileImgSrc";
     private static final String DEFAULT_NEWS_TILE_IMG_SRC  = "defaultNewsTileImgSrc";
+    private static final String DEFAULT_NEWS_BLOG_IMG  = "/etc/designs/chicommon/images/blogNewsDefGraphic.jpg";
+    private static final String EXTERNALIZER_DOMAIN  = "siteExternailizer";
+    private static final String DEFAULT_EXTERNALIZER_DOMAIN = "national";
     private static final String DEFAULT_MESSAGE  = "could not find default value";
 
     public static String getDefaultValue(Page page, String pName) {
-		String defaultPath = "";
-    	if(page != null){
-    		Resource resource = page.adaptTo(Resource.class);
-    		// LOGGER.info("Resourec Path : " + resource.getPath());
-			final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
-			defaultPath = pageProperties.getInherited(pName, String.class);
-			// LOGGER.info("Default Path : " + defaultPath);
-			if (defaultPath == null) {
-	            LOGGER.trace("could not find inherited property for ", resource);
-	            defaultPath = DEFAULT_MESSAGE;
-			}
-    	} else {
-            defaultPath = DEFAULT_MESSAGE;
-    	}
+        return getDefaultValue(page, pName, DEFAULT_MESSAGE);
+    }
+
+    public static String getDefaultValue(Page page, String pName, String defValue) {
+        String defaultPath = "";
+        if(page != null){
+            Resource resource = page.adaptTo(Resource.class);
+            // LOGGER.info("Resourec Path : " + resource.getPath());
+            final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
+            defaultPath = pageProperties.getInherited(pName, String.class);
+            // LOGGER.info("Default Path : " + defaultPath);
+            if (defaultPath == null) {
+                LOGGER.trace("could not find inherited property for ", resource);
+                defaultPath = defValue;
+            }
+        } else {
+            defaultPath = defValue;
+        }
 
         return defaultPath;
+    }
+
+    public static String getSiteExternalizer(Page page) {
+        return getDefaultValue(page, EXTERNALIZER_DOMAIN, DEFAULT_EXTERNALIZER_DOMAIN);
     }
 
     public static String getDefaultNewsPath(Page page) {
@@ -66,7 +77,7 @@ public final class DefaultValuesUtils {
     }
 
     public static String getDefaultBlogsTileImgSrc(Page page) {
-		String defaultBlogsTileImgSrc = getDefaultValue(page, DEFAULT_BLOGS_TILE_IMG_SRC);
+		String defaultBlogsTileImgSrc = getDefaultValue(page, DEFAULT_BLOGS_TILE_IMG_SRC, DEFAULT_NEWS_BLOG_IMG);
        if (StringUtils.isNotEmpty(defaultBlogsTileImgSrc) && !"#".equals(defaultBlogsTileImgSrc)) {
     	   defaultBlogsTileImgSrc = LinkUtils.externalize(defaultBlogsTileImgSrc);            
         }
@@ -75,7 +86,7 @@ public final class DefaultValuesUtils {
     }
 
     public static String getDefaultNewsTileImgSrc(Page page) {
-		String defaultNewsTileImgSrc = getDefaultValue(page, DEFAULT_NEWS_TILE_IMG_SRC);
+		String defaultNewsTileImgSrc = getDefaultValue(page, DEFAULT_NEWS_TILE_IMG_SRC, DEFAULT_NEWS_BLOG_IMG);
        if (StringUtils.isNotEmpty(defaultNewsTileImgSrc) && !"#".equals(defaultNewsTileImgSrc)) {
     	   defaultNewsTileImgSrc = LinkUtils.externalize(defaultNewsTileImgSrc);            
         }
