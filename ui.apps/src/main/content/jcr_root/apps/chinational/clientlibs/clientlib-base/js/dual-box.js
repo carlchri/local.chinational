@@ -899,17 +899,19 @@ $('document').ready(function(){
     // Submit function
     $("#listBoxForm").submit(function() {
         var featuredListPages = $('[name="duallistbox_output[]"]').val();
-        var featuredListPagesJsonString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
+        var featuredListPagesString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
         var featuredObj = {};
-        if (featuredListPagesJsonString.length == 3) {
-            console.log( JSON.stringify(featuredListPagesJsonString) );
-            console.log(featuredListPagesJsonString[0]);
-            console.log(featuredListPagesJsonString[1]);
-            console.log(featuredListPagesJsonString[2]);
+        if (featuredListPagesString.length == 3) {
+            console.log( featuredListPagesString );
+            console.log(featuredListPagesString[0]);
+            console.log(featuredListPagesString[1]);
+            console.log(featuredListPagesString[2]);
+            console.log(JSON.stringify(featuredListPagesString));
+            var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
             $.ajax({
                 type: 'GET',
                 url:'/content/national/en.featurednewslistservlet.html',
-                data:{'value1' : pageUrlsplit, 'featuredPagesList' : featuredListPagesJsonString }, //passing values to servlet
+                data:{'featuredPagesList' : featuredListPagesJsonString, 'requestPagePath': pageUrlsplit }, //passing values to servlet
                 success: function(msg){
                     //Success logic here(The response from servlet)
                     alert("Save Complete");
