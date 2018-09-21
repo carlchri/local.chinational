@@ -54,14 +54,6 @@
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
-                                                    <backgroundImageColor
-		                                                jcr:primaryType="nt:unstructured"
-		                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-		                                                colorsPath="/etc/config/chinational/components/colorpicker/mediacarouselbackgroundcolorpicker"
-		                                                fieldDescription="Click on the color box to choose a different color for the media carousel default image background"
-		                                                fieldLabel="Background Color (only works when in carousel)"
-		                                                freestylePalette="{Boolean}true"
-		                                                name="./backgroundImageColor"/>
                                                 </items>
                                             </well>
                                         </items>

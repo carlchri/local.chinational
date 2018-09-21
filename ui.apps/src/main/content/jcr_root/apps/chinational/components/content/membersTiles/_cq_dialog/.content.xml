@@ -108,7 +108,7 @@
                                                 fieldDescription="Provide internal or external link for Member's Page"
                                                 fieldLabel="Member's Link Page URL:"
                                                 name="./memberLinkTo"
-                                                rootPath="/content/dam"
+                                                rootPath="/content"
                                                 wrapperClass="chi-mt-member-link-url"/>
                                             <targetBlank
                                                 granite:class="chi-mt-link-target"
