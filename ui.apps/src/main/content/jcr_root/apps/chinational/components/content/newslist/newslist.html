@@ -2,6 +2,18 @@
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
 <div class="chi_dual_box" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
+    <!-- Select Tags for featured article selection -->
+    <p>Select Three Titles for Featured Articles</p>
+    <select multiple="multiple" class="form-control-1" name="search_news_list" id="search_news_list">
+        <option value="${currentPage.path}.news.AllItems.html" name="AllItems">All Items</option>
+        <sly data-sly-list.tagsList="${newsList.tagsMap}">
+            <option value="${currentPage.path}.news.${tagsList}.html" name="${tagsList}">
+                ${newsList.tagsMap[tagsList]}
+            </option>
+        </sly>
+    </select>
+
+    <!-- Select box for featured article selection -->
     <p>Select Three Titles for Featured Articles</p>
     <form id="listBoxForm" action="#" method="post">
         <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]"
@@ -11,6 +23,10 @@
         <br>
         <button type="submit" class="btn btn-default btn-block">Submit Pages</button>
     </form>
+
+    <ul data-sly-repeat.child="${currentPage.listChildren}">
+        <li>${child.title'}</li>
+    </ul>
 </div>
 
 

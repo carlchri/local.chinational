@@ -51,7 +51,7 @@
                 Session session = resolver.adaptTo(Session.class);
                 Node root = session.getRootNode();
                 String rootPath = root.getPath();
-                log.info("Root node path : "+ rootPath);
+//                log.info("Root node path : "+ rootPath);
 
                 if (request.getParameter("resourcePath")!=null) {
                     String resourcePath = request.getParameter("resourcePath");
@@ -88,8 +88,8 @@
 
                 response.setContentType("text/html");
                 response.getWriter().println("Page Featured List : "+featuredPagesArray);
-                log.info("Featured page list : "+featuredPagesArray);
-                log.info("Featured page request Path : "+ requestPagePath);
+//                log.info("Featured page list : "+featuredPagesArray);
+//                log.info("Featured page request Path : "+ requestPagePath);
 
 
 //                if(pageResource != null) {
@@ -102,9 +102,9 @@
 //                }
 
                 session.save();
-                log.info("After Save");
+//                log.info("After Save");
                 session.refresh(true);
-                log.info("After Refresh");
+//                log.info("After Refresh");
 
             } catch (Exception e) {
                 log.error("Could not update Featured List reference: " + e);
