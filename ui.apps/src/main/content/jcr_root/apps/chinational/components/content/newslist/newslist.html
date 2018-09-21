@@ -20,7 +20,7 @@
     <form id="listBoxForm" action="#" method="post">
         <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]"
                 data-sly-list.selectnewslist="${newsList.allNews}">
-            <option class="${selectnewslist.properties.cq:tags}" value="${selectnewslist.path}">${selectnewslist.title}</option>
+            <option class="${selectnewslist.properties.cq:tags} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
         </select>
         <br>
         <button type="submit" class="btn btn-default btn-block">Submit Pages</button>
