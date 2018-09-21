@@ -33,7 +33,6 @@ import org.slf4j.LoggerFactory;
 public class FeaturedNewsTagServlet extends SlingAllMethodsServlet {
 
     private static final Logger log = LoggerFactory.getLogger(FeaturedNewsTagServlet.class);
-    public String currentPagePath;
 
     @Reference
     private ResourceResolverFactory resolverFactory;
