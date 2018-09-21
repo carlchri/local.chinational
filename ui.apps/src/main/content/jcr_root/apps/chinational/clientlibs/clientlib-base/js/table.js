@@ -8,9 +8,9 @@ $(document).ready(function(){
         var thCount = 0;
         var tableWidth = 0;
         var caption = $(this).find('caption');
-        var tabw = $(this).attr('width') || 'auto';
+        var tabw = $(this).attr('width') || '216';
         var tabh = $(this).attr('height') || 'auto';
-        var tabDWidth = $(this).find('td:first').attr('width' ) || 'auto' ;
+        var tabDWidth = $(this).find('td:last').attr('width' ) || '216' ;
         var tabDWHeaderCellWidth = $(this).find('th:first').attr('width') || 216;
         var tabDWHeaderWidth = 0;
 
@@ -31,7 +31,7 @@ $(document).ready(function(){
         // console.log("TD Count : "+tdCount);
 
         tableWidth = tabw;
-        tabDWHeaderWidth = tabDWHeaderCellWidth*thCount;
+        tabDWHeaderWidth = tabDWidth*tdCount;
 
         // if (tableWidth)
         //     console.log('tableWidth : '+tableWidth+', tabDWidth : '+tabDWidth+', tdCount : '+tdCount );
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
         $(this).removeClass('wHeader');
         $(this).addClass('noHeader');
-        $(this).width(tableWidth).height(tabh).css('overflow-y','auto').css('overflow-x','hidden').css('display','block');
+        $(this).width(tabDWHeaderWidth).height(tabh).css('overflow-y','auto').css('overflow-x','hidden').css('display','block');
         $(this).wrap('<div class="chi-table"><div class="scroller-container" style="width: '+tableWidth+'px"></div></div>');
         var tHeader = $(this).find('tr th');
         if (tHeader.length ) {
