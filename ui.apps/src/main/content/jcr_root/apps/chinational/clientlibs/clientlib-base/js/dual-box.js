@@ -893,8 +893,27 @@ $('document').ready(function(){
     // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
     var pageUrl = String(window.location.pathname);
-    var pageUrlsplit = pageUrl.replace(".html","");
+    console.log("page url : "+pageUrl)
+    var pageUrlsplit = pageUrl.split(".")[0];
     console.log("The page Url : "+pageUrlsplit);
+
+    //TagsFormBox
+    $('#tagsFormBox select').on('change', function () {
+        var tagValue = $(this).val().toString();
+        console.log("This Value : "+tagValue);
+
+        $.ajax({
+            type: 'GET',
+            url:'/content/national/en.featurednewslisttagservlet.html',
+            data: {'featuredPagesTag': tagValue, 'requestPagePath': pageUrlsplit},
+            success: function(msg){
+                alert("Tag Selection Complete");
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        })
+    });
 
     // Submit function
     $("#listBoxForm").submit(function() {
