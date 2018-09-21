@@ -919,6 +919,10 @@ p:last-child {
     padding: 0;
 }
 
+.right-rail-standalone-twitter {
+	margin: 20px 0;
+}
+
 .right-rail-text p {
     margin-top: 5px;
     margin-bottom: 5px;
