@@ -2,14 +2,13 @@
 <sly data-sly-use.wheelCollection="org.chi.aem.common.components.model.WheelCompartmentsCollection"></sly>
 
 <sly data-sly-test.header="${properties.title}">
-
 	<div class="component">
 		<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
 			<div class="col-sm-12">
 			    <div class="interactive-wheel" data-sly-test="${wheelCollection.wheelCompartmentsDetails.size > 1}">
 			    	<div class="wheelContainer mobile-adjustment" style="background-color: ${properties.backgroundColor @ context='styleToken'};">
 				    	<div class="sub-wheelContainer mobile-adjustment">
-				            <h1 class="header-padding mobile-adjustment" style="color: ${properties.fontColor @ context='styleToken'};">${properties.title}</h1>
+				            <h1 class="header-padding mobile-adjustment ${properties.noTitle? 'in' : ''}" style="color: ${properties.fontColor @ context='styleToken'};">${properties.title}</h1>
 				            <div class="right mobile-adjustment">
 				                <div class="wheel">
 				                    <div class="arrow mobile-adjustment">
@@ -55,7 +54,8 @@
 			    </div>
 	    	</div>
 		</div>
-		<sly data-sly-include="../../commons/bottomOption.html"></sly>
+		
+		<sly data-sly-test="${wcmmode.edit}" data-sly-include="../../commons/bottomOption.html"></sly>
 	</div>
     <script src="https://use.typekit.net/jnd5ogo.js"></script>
 </sly>
