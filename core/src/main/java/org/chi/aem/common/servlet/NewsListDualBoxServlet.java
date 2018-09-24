@@ -53,52 +53,36 @@
                 String rootPath = root.getPath();
 //                log.info("Root node path : "+ rootPath);
 
-                if (request.getParameter("resourcePath")!=null) {
-                    String resourcePath = request.getParameter("resourcePath");
-                    log.info("Resource Path : "+resourcePath);
-                }
+                //                response.setContentType("text/html");
+                response.setContentType("text/plain");
 
-                Node featuredListNode = resolver.adaptTo(Node.class);
-
-
-//                log.info("Featured list path : "+featuredListNode.getPath());
-    //                log.info("Set Featured List Node");
-    //                log.info("Get value of featured page list : "+request.getParameter("featuredPagesList"));
-    //                featuredListNode.setProperty("featuredList", request.getParameter("featuredPagesList"));
-    //                log.info("Set Featured List Property");
-
-//                if(featuredListNode.hasProperty("featuredList")) {
-//                    log.info("featured Node has featuredList property");
+//                if (request.getParameter("resourcePath")!=null) {
+//                    String resourcePath = request.getParameter("resourcePath");
+////                    log.info("Resource Path : "+resourcePath);
 //                }
 
-
-
-                Resource pageResource = request.getResource().adaptTo(Page.class).getContentResource();
-                currentPagePath = pageResource.getPath();
-
-
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
+//                log.info("Resoure resolver set");
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
                 String featuredPagesList  = request.getParameter("featuredPagesList");
-                String [] featuredPagesArray = featuredPagesList.split(",");
+//                log.info("Get request path");
+//                log.info("Request path :: "+requestPagePath);
                 Resource res = resourceResolver.getResource(requestPagePath);
+
+//                log.info("Set feature page list string");
+//                log.info("Feature pages list string :: "+ featuredPagesList);
+                String [] featuredPagesArray = featuredPagesList.split(",");
+//                log.info("Set featured page list array");
+
+//                log.info("request page path :: "+requestPagePath);
                 Node pageNode = res.adaptTo(Node.class);
 //                log.info("Get Current Property :"+ pageNode.getProperty("featuredList"));
                 pageNode.setProperty("featuredList", featuredPagesArray);
 
-                response.setContentType("text/html");
                 response.getWriter().println("Page Featured List : "+featuredPagesArray);
 //                log.info("Featured page list : "+featuredPagesArray);
 //                log.info("Featured page request Path : "+ requestPagePath);
 
-
-//                if(pageResource != null) {
-//                    log.info("pageResource not null");
-//                    ModifiableValueMap map = pageResource.adaptTo(ModifiableValueMap.class);
-//                    map.put("featuredList", request.getParameter("featuredPagesList"));
-//                    log.info("map info : "+map.get("featuredList"));
-//                    log.info("Page Resource : "+pageResource.getPath());
-//                    pageResource.getResourceResolver().commit();
 //                }
 
                 session.save();

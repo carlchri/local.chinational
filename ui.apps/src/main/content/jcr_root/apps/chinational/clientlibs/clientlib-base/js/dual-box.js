@@ -890,6 +890,7 @@
 }));
 
 $('document').ready(function(){
+
     // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
     var pageUrl = String(window.location.pathname);
@@ -908,6 +909,7 @@ $('document').ready(function(){
             data: {'featuredPagesTag': tagValue, 'requestPagePath': pageUrlsplit},
             success: function(msg){
                 alert("Tag Selection Complete");
+                location.reload();
             },
             error: function(xhr, status, error) {
                 console.log(error);
@@ -918,22 +920,28 @@ $('document').ready(function(){
     // Submit function
     $("#listBoxForm").submit(function() {
         var featuredListPages = $('[name="duallistbox_output[]"]').val();
+        // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
         var featuredListPagesString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
         var featuredObj = {};
-        if (featuredListPagesString.length == 3) {
-            console.log( featuredListPagesString );
-            console.log(featuredListPagesString[0]);
-            console.log(featuredListPagesString[1]);
-            console.log(featuredListPagesString[2]);
-            console.log(JSON.stringify(featuredListPagesString));
+
+        if (featuredListPages.length > 0 && featuredListPagesString.length == 3) {
+            // console.log( featuredListPagesString );
+            // console.log(featuredListPagesString[0]);
+            // console.log(featuredListPagesString[1]);
+            // console.log(featuredListPagesString[2]);
+            // console.log(JSON.stringify(featuredListPagesString));
             var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
+            // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
             $.ajax({
                 type: 'GET',
+                async: false,
                 url:'/content/national/en.featurednewslistservlet.html',
-                data:{'featuredPagesList' : featuredListPagesJsonString, 'requestPagePath': pageUrlsplit }, //passing values to servlet
+                data:{'featuredPagesList' : featuredListPagesJsonString     , 'requestPagePath': pageUrlsplit }, //passing values to servlet
                 success: function(msg){
                     //Success logic here(The response from servlet)
                     alert("Save Complete");
+                    location.reload();
+                    console.log("Featured Pages :: "+featuredListPagesString);
                 },
                 error: function(xhr, status, error) {
                     console.log(error);
