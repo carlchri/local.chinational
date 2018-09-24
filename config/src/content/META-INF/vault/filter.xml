@@ -18,5 +18,6 @@
     <filter root="/apps/chinational">
         <exclude pattern="/apps/chinational(/.*)?"/>
         <include pattern="/apps/chinational/config(/.*)?"/>
+        <include pattern="/apps/chinational/config(.*)(/.*)?"/>
     </filter>
 </workspaceFilter>
