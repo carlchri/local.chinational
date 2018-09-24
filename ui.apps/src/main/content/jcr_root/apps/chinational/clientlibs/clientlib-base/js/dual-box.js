@@ -921,7 +921,7 @@ $('document').ready(function(){
     $("#listBoxForm").submit(function() {
         var featuredListPages = $('[name="duallistbox_output[]"]').val();
         // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
-        var featuredListPagesString = featuredListPages.toString().replace("[", "{").replace("]","}").split(',');
+        var featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]","").split(',');
         var featuredObj = {};
 
         if (featuredListPages.length > 0 && featuredListPagesString.length == 3) {

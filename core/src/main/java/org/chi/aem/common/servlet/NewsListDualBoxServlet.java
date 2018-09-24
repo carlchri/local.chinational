@@ -38,7 +38,6 @@
     public class NewsListDualBoxServlet extends SlingAllMethodsServlet {
 
         private static final Logger log = LoggerFactory.getLogger(NewsListDualBoxServlet.class);
-        public String currentPagePath;
 
         @Reference
         private ResourceResolverFactory resolverFactory;
@@ -50,16 +49,9 @@
                 ResourceResolver resolver = request.getResourceResolver();
                 Session session = resolver.adaptTo(Session.class);
                 Node root = session.getRootNode();
-                String rootPath = root.getPath();
-//                log.info("Root node path : "+ rootPath);
 
-                //                response.setContentType("text/html");
+                // response.setContentType("text/html");
                 response.setContentType("text/plain");
-
-//                if (request.getParameter("resourcePath")!=null) {
-//                    String resourcePath = request.getParameter("resourcePath");
-////                    log.info("Resource Path : "+resourcePath);
-//                }
 
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
 //                log.info("Resoure resolver set");
@@ -71,7 +63,7 @@
 
 //                log.info("Set feature page list string");
 //                log.info("Feature pages list string :: "+ featuredPagesList);
-                String [] featuredPagesArray = featuredPagesList.split(",");
+                String [] featuredPagesArray = featuredPagesList.replace("[","").replace("]","").replace("\"", "").split(",");
 //                log.info("Set featured page list array");
 
 //                log.info("request page path :: "+requestPagePath);

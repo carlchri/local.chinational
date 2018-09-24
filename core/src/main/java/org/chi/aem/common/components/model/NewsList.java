@@ -167,6 +167,8 @@ public class NewsList implements ComponentExporter {
          e.printStackTrace();
         }
 
+
+//        LOGGER.info( "Pagth Info :: "+request.getRequestPathInfo() );
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if(selectors.length != 0) {
         	if(selectors[0].matches("[0-9]+")){
@@ -199,7 +201,11 @@ public class NewsList implements ComponentExporter {
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         featuredNews = (List<Page>) articleMap.get("featuredArticles");
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
-        
+
+        // log featured news list
+//        for (Page fnam : featuredNews ) {
+//            LOGGER.info("Article Map :: " + fnam.getPath());
+//        }
         if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(news_filter)){

@@ -6,11 +6,14 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,6 +58,8 @@ public final class NewsBlogUtils {
         Session session = resourceResolver.adaptTo(Session.class);
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
         Query query = builder.createQuery(group, session);
+
+		getFeaturedArtiles(parentPage, resourceResolver);
 
         // query.setStart(start_index);
         // query.setHitsPerPage(hits_per_page);
@@ -222,6 +227,33 @@ public final class NewsBlogUtils {
 
          return m_article;
      }
+
+     public static void getFeaturedArtiles(String parentPage, ResourceResolver resourceResolver){
+
+		 // get featured pages
+		 String featuredPagesPath = parentPage + "/jcr:content";
+		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
+		 String [] featurdList = featuredPagesMap.get("featuredList", String[].class);
+		 for (String fl : featurdList) {
+//			LOGGER.info("FeaturedList ::  "+ fl);
+		 }
+
+		 if (featurdList.length == 3) {
+//			LOGGER.info("Node has featured list property");
+			 for (String fl : featurdList) {
+				 String spnPath = fl;
+				 LOGGER.info("Spn Path String :: " + spnPath);
+				 Resource flRes = resourceResolver.getResource(spnPath);
+				 LOGGER.info("Resoure resolver has resolved :: "+flRes.getPath());
+				 Page flPage = flRes.adaptTo(Page.class);
+				 LOGGER.info("Page Title :: "+flPage.getTitle());
+				 LOGGER.info(("Page Tag :: "+flPage.getProperties().get("cq:tags", String[].class)[0]));
+				 ValueMap flMap = flRes.adaptTo(ValueMap.class);
+//				LOGGER.info("Resource has resovedto Valuemap :: "+flMap);
+			 }
+		 }
+	 }
      
      public static void addYear(java.util.List<String> listYears, String year){
  		if(listYears.isEmpty()){
