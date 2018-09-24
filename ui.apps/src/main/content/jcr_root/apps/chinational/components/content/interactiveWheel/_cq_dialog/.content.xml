@@ -30,11 +30,17 @@
                                         	<title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="This field is mandatory"
                                                 fieldDescription="Title of the Interactive Wheel"
                                                 fieldLabel="Title for Interactive Wheel:"
-                                                name="./title"
-                                                required="{Boolean}true"/>
+                                                name="./title"/>
+                                             <noTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Selecting this checkbox will hide the title."
+                                                name="./noTitle"
+                                                text="Select to Hide Title"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                             <initial_text
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"

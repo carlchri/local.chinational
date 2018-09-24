@@ -1,5 +1,6 @@
 jQuery( document ).ready( function( $ ) {
 
+	reCalculateHeight();
 
     /*************************************
         Rotate Sections
@@ -14,6 +15,7 @@ jQuery( document ).ready( function( $ ) {
         $('.circle-rotate').addClass('transform0');
         $('.snot').removeClass('zoomed');
         $('.snot.section0').addClass('zoomed');
+
     });
 
     $('.section1').on('click', function(){
@@ -69,30 +71,49 @@ jQuery( document ).ready( function( $ ) {
         $('.initial-text').hide();
         $('.color-text').hide();
         $('.text0').show();
+        reCalculateHeight();
     });
 
     $('.section1').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
         $('.text1').show();
+        reCalculateHeight();
     });
 
     $('.section2').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
         $('.text2').show();
+        reCalculateHeight();
     });
 
     $('.section3').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
         $('.text3').show();
+        reCalculateHeight();
     });
 
     $('.section4').on('click', function() {
         $('.initial-text').hide();
         $('.color-text').hide();
         $('.text4').show();
+        reCalculateHeight();
     });
+
+
+    function reCalculateHeight() {
+        
+    	var parent = $('.wheelContainer');
+        var header = $('.header-padding.mobile-adjustment');
+    	var child = $('.left');
+
+        var addingHeights = (child.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')));
+
+        if ( addingHeights > parent.height()) {
+            parent.css({ height: addingHeights });
+    	}
+    }
 
 });
