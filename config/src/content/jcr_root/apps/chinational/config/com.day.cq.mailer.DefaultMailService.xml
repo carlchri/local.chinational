@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
     debug.email="{Boolean}true"
-    from.address=""
+    from.address="PkChiTesting@gmail.com"
     smtp.host="smtp.gmail.com"
     smtp.password="MktsBased#17"
     smtp.port="465"

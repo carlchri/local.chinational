@@ -10,7 +10,7 @@ $(document).ready(function(){
         var caption = $(this).find('caption');
         var tabw = $(this).attr('width') || 'auto';
         var tabh = $(this).attr('height') || 'auto';
-        var tabDWidth = $(this).find('td:first').attr('width' ) || 'auto' ;
+        var tabDWidth = $(this).find('td').attr('width' ) || $(this).find('td:last').attr('width' ) || '216' ;
         var tabDWHeaderCellWidth = $(this).find('th:first').attr('width') || 216;
         var tabDWHeaderWidth = 0;
 
@@ -18,20 +18,26 @@ $(document).ready(function(){
         // console.log("TabDWidth : "+tabDWidth);
         // console.log("tabDWHeaderCellWidth : "+tabDWHeaderCellWidth);
 
-        $(this).find('tr:first th').each(function(){
+        $(this).find('tr th').each(function(){
+            $(this).width(tabDWHeaderCellWidth);
+            $(this).removeAttr('width');
             thCount++;
         });
-        // console.log("TH Count :"+thCount);
+
+        // console.log("tabDWHeaderCellWidth : "+tabDWHeaderCellWidth);
+        $(this).find('th').width(tabDWHeaderCellWidth);
+        $(this).find('td').width(tabDWidth);
 
         $(this).find('tr:last td').each(function(){
-            $(this).width(tabDWidth);
+            // $(this).width(tabDWidth);
             tdCount++;
         });
         // console.log("Table Data Width : "+tabDWidth);
         // console.log("TD Count : "+tdCount);
 
         tableWidth = tabw;
-        tabDWHeaderWidth = tabDWHeaderCellWidth*thCount;
+        tabDWHeaderWidth = tabDWidth*tdCount;
+        // console.log("tabDWHeaderWidth : "+tabDWHeaderWidth);
 
         // if (tableWidth)
         //     console.log('tableWidth : '+tableWidth+', tabDWidth : '+tabDWidth+', tdCount : '+tdCount );
@@ -41,12 +47,13 @@ $(document).ready(function(){
 
         $(this).removeClass('wHeader');
         $(this).addClass('noHeader');
-        $(this).width(tableWidth).height(tabh).css('overflow-y','auto').css('overflow-x','hidden').css('display','block');
+        $(this).width(tabDWHeaderWidth).height(tabh).css('overflow-y','auto').css('overflow-x','hidden').css('display','block');
         $(this).wrap('<div class="chi-table"><div class="scroller-container" style="width: '+tableWidth+'px"></div></div>');
         var tHeader = $(this).find('tr th');
         if (tHeader.length ) {
             var newTHeaderHTML = tHeader.parent('tr').html();
             var newCaption = caption;
+            tabDWHeaderWidth = tabDWHeaderCellWidth*tdCount;
             tHeader.remove();
             caption.remove();
             $(this).removeClass('noHeader');
@@ -56,9 +63,8 @@ $(document).ready(function(){
 
             if (newCaption)
                 $(this).parent('.scroller-container').prepend(newCaption);
-
-            $(this).find('th').width(tabDWHeaderCellWidth);
             $(this).find('td').width(tabDWHeaderCellWidth);
+
             $('<div />', { html: '&shy;<style> table.headerTable'+tableCount+' th {width :'+tabDWHeaderCellWidth+'px;} table.headerTable'+tableCount+' td {width :'+tabDWHeaderCellWidth+'px;}</style>' }).appendTo("body");
         }
     });
