@@ -134,15 +134,15 @@ public final class NewsBlogUtils {
 		        		}
 		         		
 		         		if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
-							LOGGER.info("Article Filter :: "+articleFilter);
+//							LOGGER.info("Article Filter :: "+articleFilter);
 		                	addYear(listYears, year);
 		                	addFeaturedArticle(item, featured_limit);
-							getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+//							getFeaturedArticles(parentPage, resourceResolver, articleFilter);
 		                }else if(articleFilter.equals(tag.getName())){
-		         			LOGGER.info("Article Filter :: "+articleFilter);
+//		         			LOGGER.info("Article Filter :: "+articleFilter);
 		         			addYear(listYears, year);
 		         			filteredArticles.add(item);
-		                	addFeaturedArticle(item, featured_limit);
+//		                	addFeaturedArticle(item, featured_limit);
 		                	getFeaturedArticles(parentPage, resourceResolver, articleFilter);
 		         		}
 	           	 }
@@ -171,10 +171,10 @@ public final class NewsBlogUtils {
 
          // If no featured article present, add the latest article as featured article.
          if(featuredArticles.isEmpty() && filteredArticles.size() > 0){
-         	LOGGER.info("Articles are empty");
-         	LOGGER.info("Tags list :: "+tagName);
+//         	LOGGER.info("Articles are empty");
+//         	LOGGER.info("Tags list :: "+tagName);
 //         	featuredArticles.add(filteredArticles.get(0));
-			 getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+			getFeaturedArticles(parentPage, resourceResolver, articleFilter);
          }
          
          // LOGGER.info("newsblogUtils end filteredArticles Size : " + filteredArticles.size());
@@ -261,7 +261,7 @@ public final class NewsBlogUtils {
 //				 ValueMap flMap = flRes.adaptTo(ValueMap.class);
 //				 LOGGER.info("Resource has resoved to Valuemap :: "+flMap);
 				 if (flPage.getProperties().get("cq:tags", String[].class)[0].contains(articleFilter) || articleFilter.contains("AllItems") ) {
-				 	LOGGER.info("Article tags match");
+//				 	LOGGER.info("Article tags match");
 				 	featuredArticles.add(flPage);
 				 }
 			 }
