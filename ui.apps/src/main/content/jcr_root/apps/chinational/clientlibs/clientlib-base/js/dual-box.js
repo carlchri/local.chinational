@@ -894,9 +894,9 @@ $('document').ready(function(){
     // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
     var pageUrl = String(window.location.pathname);
-    console.log("page url : "+pageUrl)
+    // console.log("page url : "+pageUrl)
     var pageUrlsplit = pageUrl.split(".")[0];
-    console.log("The page Url : "+pageUrlsplit);
+    // console.log("The page Url : "+pageUrlsplit);
 
     //TagsFormBox
     $('#tagsFormBox select').on('change', function () {
@@ -919,37 +919,43 @@ $('document').ready(function(){
 
     // Submit function
     $("#listBoxForm").submit(function() {
-        var featuredListPages = $('[name="duallistbox_output[]"]').val();
+        var featuredListPages;
+        var featuredListPagesString
+        featuredListPages = $('[name="duallistbox_output[]"]').val();
         // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
-        var featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]","").split(',');
-        var featuredObj = {};
+        if (featuredListPages != null) {
+            featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
 
-        if (featuredListPages.length > 0 && featuredListPagesString.length == 3) {
-            // console.log( featuredListPagesString );
-            // console.log(featuredListPagesString[0]);
-            // console.log(featuredListPagesString[1]);
-            // console.log(featuredListPagesString[2]);
-            // console.log(JSON.stringify(featuredListPagesString));
-            var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
-            // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
-            $.ajax({
-                type: 'GET',
-                async: false,
-                url:'/content/national/en.featurednewslistservlet.html',
-                data:{'featuredPagesList' : featuredListPagesJsonString     , 'requestPagePath': pageUrlsplit }, //passing values to servlet
-                success: function(msg){
-                    //Success logic here(The response from servlet)
-                    alert("Save Complete");
-                    location.reload();
-                    console.log("Featured Pages :: "+featuredListPagesString);
-                },
-                error: function(xhr, status, error) {
-                    console.log(error);
-                }
-            });
-            return false;
+            if (featuredListPages != null || featuredListPagesString.length > 0 && featuredListPagesString.length == 3) {
+                // console.log( featuredListPagesString );
+                // console.log(featuredListPagesString[0]);
+                // console.log(featuredListPagesString[1]);
+                // console.log(featuredListPagesString[2]);
+                // console.log(JSON.stringify(featuredListPagesString));
+                var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
+                // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
+                $.ajax({
+                    type: 'GET',
+                    async: false,
+                    url: '/content/national/en.featurednewslistservlet.html',
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit}, //passing values to servlet
+                    success: function (msg) {
+                        //Success logic here(The response from servlet)
+                        alert("Save Complete");
+                        location.reload();
+                        console.log("Featured Pages :: " + featuredListPagesString);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+                return false;
+            } else {
+                alert("Please select three items in the order of appearance.");
+                return false;
+            }
         } else {
-            alert("Please select three items in the order of appearence.");
+            alert("Please select three items in the order of appearance.");
             return false;
         }
     });
