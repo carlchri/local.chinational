@@ -194,7 +194,7 @@ public class NewsList implements ComponentExporter {
 		// LOGGER.info("newslist news_filter : " + news_filter);
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
 		// LOGGER.info("newslist allNewsSize : " + allNews.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, news_filter, newsFeaturedLimit);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");

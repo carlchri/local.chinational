@@ -67,7 +67,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     private ResourceResolver resolver;
     
     private Session session;
-    
+
+	private static final String PN_PARENT_PAGE = "parentPage";
     private static final int HITS_PER_PAGE = 6;
     private static final int START_INDEX = 0;
     private static final String DEFAULT_BLOGS_FILTER = "AllItems";
@@ -109,6 +110,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     private int hits_per_page;
     private int totalResults; // used for hide-show "LOAD MORE" button
     private String blogsTemplate;
+	private String parentPage;
+
              
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServerException, IOException {
@@ -124,6 +127,8 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
     	allFilteredBlogs = new ArrayList<>();
         featuredBlogs = new ArrayList<>();
         // listYears = new ArrayList<>();
+		parentPage = request.getPathInfo();
+		LOGGER.info("Parent path Info from Blog :: "+parentPage);
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
@@ -173,7 +178,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        }
 	        
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resolver, blogsFilter, blogsFilterYear);
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear);
 	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");

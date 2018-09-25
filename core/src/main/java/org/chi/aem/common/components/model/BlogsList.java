@@ -192,7 +192,7 @@ public class BlogsList implements ComponentExporter {
 		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
         allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate); //to get all the blogs using defined template, sorted by Publish date
 		// LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");

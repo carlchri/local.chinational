@@ -59,11 +59,9 @@ public final class NewsBlogUtils {
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
         Query query = builder.createQuery(group, session);
 
-		getFeaturedArtiles(parentPage, resourceResolver);
-
         // query.setStart(start_index);
         // query.setHitsPerPage(hits_per_page);
-
+		getFeaturedArticles(parentPage, resourceResolver);
         try {
             SearchResult result = query.getResult();
             // LOGGER.info("result.getTotalMatchees() : " + list + " : " + result.getTotalMatches());
@@ -87,7 +85,7 @@ public final class NewsBlogUtils {
          return list;
      }
 
-     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
+     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
 
          // LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
          if(filteredArticles.size() !=0) {
@@ -108,7 +106,7 @@ public final class NewsBlogUtils {
          if(tagsDescMap.size() !=0) {
         	 tagsDescMap.clear();
          }
-         
+
     	 TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
     	 for(Page item : allArticles) {
     		// to get listYears 
@@ -163,12 +161,14 @@ public final class NewsBlogUtils {
          // Users selects a tag from dropdown in one BlogList component
          // and tag is not there in another Bloglist component dropdown on the same page
          if(!tagsMap.keySet().contains(articleFilter) && !articleFilter.equals(DEFAULT_NEWS_FILTER)){
-         	populateYearsTagsFeatured(allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
+         	populateYearsTagsFeatured(parentPage, allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
           }
 
          // If no featured article present, add the latest article as featured article.
          if(featuredArticles.isEmpty() && filteredArticles.size() > 0){
-        	 featuredArticles.add(filteredArticles.get(0));
+         	LOGGER.info("Articles are empty");
+//         	featuredArticles.add(filteredArticles.get(0));
+			 getFeaturedArticles(parentPage, resourceResolver);
          }
          
          // LOGGER.info("newsblogUtils end filteredArticles Size : " + filteredArticles.size());
@@ -184,7 +184,7 @@ public final class NewsBlogUtils {
          return m_article;
      }
      
-     public static Map<String, Object> populateYearsTagsFeatured(java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
+     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
 
          // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
          if(filteredArticles.size() !=0) {
@@ -228,31 +228,38 @@ public final class NewsBlogUtils {
          return m_article;
      }
 
-     public static void getFeaturedArtiles(String parentPage, ResourceResolver resourceResolver){
+     public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver){
 
 		 // get featured pages
 		 String featuredPagesPath = parentPage + "/jcr:content";
 		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
 		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
 		 String [] featurdList = featuredPagesMap.get("featuredList", String[].class);
-		 for (String fl : featurdList) {
+//		 for (String fl : featurdList) {
 //			LOGGER.info("FeaturedList ::  "+ fl);
-		 }
+//		 }
+
+		 featuredArticles.clear();
 
 		 if (featurdList.length == 3) {
 //			LOGGER.info("Node has featured list property");
 			 for (String fl : featurdList) {
 				 String spnPath = fl;
-				 LOGGER.info("Spn Path String :: " + spnPath);
+//				 LOGGER.info("Spn Path String :: " + spnPath);
 				 Resource flRes = resourceResolver.getResource(spnPath);
-				 LOGGER.info("Resoure resolver has resolved :: "+flRes.getPath());
+//				 LOGGER.info("Resoure resolver has resolved :: "+flRes.getPath());
 				 Page flPage = flRes.adaptTo(Page.class);
-				 LOGGER.info("Page Title :: "+flPage.getTitle());
-				 LOGGER.info(("Page Tag :: "+flPage.getProperties().get("cq:tags", String[].class)[0]));
-				 ValueMap flMap = flRes.adaptTo(ValueMap.class);
-//				LOGGER.info("Resource has resovedto Valuemap :: "+flMap);
+//				 LOGGER.info("Page Title :: "+flPage.getTitle());
+//				 LOGGER.info(("Page Tag :: "+flPage.getProperties().get("cq:tags", String[].class)[0]));
+//				 ValueMap flMap = flRes.adaptTo(ValueMap.class);
+//				 LOGGER.info("Resource has resoved to Valuemap :: "+flMap);
+				 featuredArticles.add(flPage);
 			 }
 		 }
+		 for (Page fa : featuredArticles) {
+			 LOGGER.info("Featured Article List Page :: "+fa.getTitle());
+		 }
+		 LOGGER.info("Featured article length :: "+featuredArticles.size());
 	 }
      
      public static void addYear(java.util.List<String> listYears, String year){
@@ -272,10 +279,10 @@ public final class NewsBlogUtils {
      }
      
      public static void addFeaturedArticle(Page item, int limit){
-         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
-         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
-          	featuredArticles.add(item);
-	      }
+//         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
+//         if(featuredArticles.size() < limit && isFeatured && !featuredArticles.contains(item)){
+//          	featuredArticles.add(item);
+//	      }
 	  }
   
      public static void addFeaturedArticles(java.util.List<Page> articles, int limit){
