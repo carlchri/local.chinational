@@ -1,5 +1,7 @@
-jQuery( document ).ready( function( $ ) {
 
+
+function loadAndResizeEvents() {
+	 
 	reCalculateHeight();
 
     /*************************************
@@ -101,19 +103,28 @@ jQuery( document ).ready( function( $ ) {
         $('.text4').show();
         reCalculateHeight();
     });
+    
+}
 
+function reCalculateHeight() {
+    
+	var parent = $('.wheelContainer');
+    var header = $('.header-padding.mobile-adjustment');
+	var child = $('.left');
+	var child2 = $('.right');
 
-    function reCalculateHeight() {
-        
-    	var parent = $('.wheelContainer');
-        var header = $('.header-padding.mobile-adjustment');
-    	var child = $('.left');
-
+	if ($(window).width() < 610) {
+        var addingHeights = (child.height() + child2.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')) + 70);
+	}
+	else {
         var addingHeights = (child.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')));
+	}
+    
+    if ( addingHeights > parent.height()) {
+        parent.css({ height: addingHeights });
+	}
+}
 
-        if ( addingHeights > parent.height()) {
-            parent.css({ height: addingHeights });
-    	}
-    }
+$(document).ready(loadAndResizeEvents);
 
-});
+$(window).resize(loadAndResizeEvents);

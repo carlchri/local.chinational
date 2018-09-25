@@ -305,6 +305,12 @@
 /* Added by German */
 
 
+@media (min-width: 610px) and (max-width: 720px) {
+	
+	.interactive-wheel .left {
+	    max-width: 222px;					/*   	German: Adjusted to fix MAM-100 	*/
+	}
+}
 
 @media (max-width: 599px) {
 	
