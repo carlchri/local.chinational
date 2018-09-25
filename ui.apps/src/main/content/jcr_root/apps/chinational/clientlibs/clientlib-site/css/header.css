@@ -126,9 +126,9 @@
 .header .hidden-menu {
 	max-width: 1328px; /* Update for MAM-30*/
 	z-index: 4;
-	padding: 20px;
+	padding: 20px 20px 50px 55px; /* Update to match Zeplin*/
 	top: 51px;
-	left: 0;
+	left: 15px; /* to match Zeplin*/
 	display: none; 
 	box-shadow: -4px 7px 25px rgba(0, 0, 0, 0.5);
 }
@@ -291,6 +291,14 @@
 		top:-65px;
 	}
 }
+
+/* Extra padding in desktop mode for navigation to match Zeplin*/
+@media (min-width:992px) {
+    .header .hidden-menu .row {
+        padding-top: 18px;
+    }
+}
+
 @media (max-width:991px) {
 	.header-right-nav {
 		position:static;
@@ -389,13 +397,15 @@
 	    max-width: auto; /* MAM-30 */
 		position: relative;
 		top: 0;
+		left: 0; /* back to 0 for mobile, from 15 for desktop*/
 		overflow: hidden;
 		background-color: #e7e7e7;
 		box-shadow: none;
 		-moz-box-shadow: none;
 		-webkit-box-shadow: none;
 		width: 100%;
-		padding-top: 0;
+		/*padding-top: 0;*/
+		padding: 0px 20px 27px 24px; /* Update to match Zeplin*/
 	}
 	.header ul li .fa-angle-down {
 		font-size: 20px;
