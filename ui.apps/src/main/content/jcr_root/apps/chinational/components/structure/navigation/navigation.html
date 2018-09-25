@@ -10,7 +10,7 @@
             <div class="row" data-sly-list.mapNav="${mainnav.items[outerNav][0].childMap.keySet.iterator}">
                 <div class="col-md-3">
                     <ul data-sly-list.indNav="${mainnav.items[outerNav][0].childMap[mapNav]}">
-                        <li data-sly-test.liClassName="${indNav.navClass} hidden-sm hidden-xs"
+                        <li data-sly-test.liClassName="${indNav.navClass} nav-mobile-cols hidden-sm hidden-xs"
                             class="${indNav.thirdLevel? liClassName : 'top-level'}"
                             data-sly-test="${!indNav.thirdLevelItems}">
                             <a href="${indNav.url}"
@@ -33,7 +33,7 @@
                                    aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="${indNav.navClass} hidden-sm hidden-xs hidden-md hidden-lg"
+                        <li class="${indNav.navClass} nav-mobile-cols hidden-sm hidden-xs hidden-md hidden-lg"
                             data-sly-test="${indNav.thirdLevelItems}">
                             <a href="${indNav.url}"
                                class="second-level">

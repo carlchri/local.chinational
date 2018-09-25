@@ -362,8 +362,14 @@
 		margin: 0;
 		letter-spacing: 1px;
 		float: none;
-		/*margin-bottom: 7px;*/
+		margin-bottom: 3px; /* To match Zeplin*/
 	}
+
+	.header .hidden-menu li.nav-mobile-cols {
+        max-width: 135px;
+        min-width: 135px; /* we want two cols of nav for mobile and table */
+	}
+
 	.logo-strip {
 		z-index: 3;
 		background: #fff;
@@ -586,4 +592,20 @@
 	}
 	/* End of Additions  */
 	
+}
+
+/* Special fix for phones 360 px or lower width*/
+@media (max-width:360px) {
+.header .hidden-menu li.nav-mobile-cols {
+        max-width: 115px;
+        min-width: 115px; /* we want two cols of nav for mobile and table */
+	}
+}
+
+/* Special fix for phones 320 px or lower width*/
+@media (max-width:320px) {
+.header .hidden-menu li.nav-mobile-cols {
+        max-width: 95px;
+        min-width: 95px; /* we want two cols of nav for mobile and table */
+	}
 }
