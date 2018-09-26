@@ -910,8 +910,8 @@ $('document').ready(function(){
             url:'/content/national/en.featurednewslisttagservlet.html',
             data: {'featuredPagesTag': tagValue, 'requestPagePath': pageUrlsplit},
             success: function(msg){
-                alert("Tag Selection Complete");
-                location.reload();
+                alert("Press OK to refresh page.");
+                location.reload(true);
             },
             error: function(xhr, status, error) {
                 console.log(error);
@@ -926,7 +926,7 @@ $('document').ready(function(){
         var featuredTag, featuredSelectTag;
 
         featuredSelectTag = $('#featuredTag').val().split("/")[1];
-        featuredTag = $("#search_news_list").attr('name').val().split("/")[1];
+        featuredTag = $("#search_news_list").attr('name').split("/")[1];
         featuredListPages = $('[name="duallistbox_output[]"]').val();
         // console.log("featured  selected Tag :: "+featuredSelectTag);
         // console.log("Featured Pages tag :: "+ featuredTag);
@@ -952,10 +952,10 @@ $('document').ready(function(){
                     url: '/content/national/en.featurednewslistservlet.html',
                     data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag, "featuredPagesTag": featuredTag}, //passing values to servlet
                     success: function (msg) {
-                        //Success logic here(The response from servlet)
-                        alert("Save Complete");
-                        // location.reload();
-                        console.log("Featured Pages :: " + featuredListPagesString);
+                        // $(this).find('select').refresh();
+                        alert("Press OK to refresh page.");
+                        location.reload(true);
+                        // console.log("Featured Pages :: " + featuredListPagesString);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);

@@ -140,7 +140,8 @@ public final class NewsBlogUtils {
 		                	addFeaturedArticle(item, featured_limit);
 //							getFeaturedArticles(parentPage, resourceResolver, articleFilter);
 		                }else if(articleFilter.equals(tag.getName())){
-//		         			LOGGER.info("Article Filter :: "+articleFilter);
+		         			LOGGER.info("Article Filter :: "+articleFilter);
+		         			LOGGER.info("Tag Filter :: "+ tag.getName());
 		         			addYear(listYears, year);
 		         			filteredArticles.add(item);
 //		                	addFeaturedArticle(item, featured_limit);
@@ -243,7 +244,7 @@ public final class NewsBlogUtils {
 		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
 		 String featuredTag = featuredPagesMap.get("featuredTag", String.class);
 		 LOGGER.info("featured page tag string :: "+featuredTag);
-		 String [] featurdList = featuredPagesMap.get(featuredTag, String[].class);
+		 String [] featurdList = featuredPagesMap.get(articleFilter, String[].class);
 //		 for (String fl : featurdList) {
 //			LOGGER.info("FeaturedList ::  "+ fl);
 //		 }
@@ -257,16 +258,16 @@ public final class NewsBlogUtils {
 				 String spnPath = fl;
 //				 LOGGER.info("Spn Path String :: " + spnPath);
 				 Resource flRes = resourceResolver.getResource(spnPath);
-//				 LOGGER.info("Resoure resolver has resolved :: "+flRes.getPath());
+//				 LOGGER.info("Resoure resolver has resolved :: "+flRes.getName());
 				 Page flPage = flRes.adaptTo(Page.class);
 //				 LOGGER.info("Page Title :: "+flPage.getTitle());
 //				 LOGGER.info(("Page Tag :: "+flPage.getProperties().get("cq:tags", String[].class)[0]));
 //				 ValueMap flMap = flRes.adaptTo(ValueMap.class);
 //				 LOGGER.info("Resource has resoved to Valuemap :: "+flMap);
-				 if (flPage.getProperties().get("cq:tags", String[].class)[0].contains(articleFilter) || articleFilter.contains("AllItems") ) {
-//				 	LOGGER.info("Article tags match");
-				 	featuredArticles.add(flPage);
-				 }
+//				 if (flPage.getProperties().get("cq:tags", String[].class)[0].contains(articleFilter) || articleFilter.contains("AllItems") ) {
+//				 	LOGGER.info("Article tags match :: Article Filter :: "+articleFilter);
+				 featuredArticles.add(flPage);
+//				 }
 			 }
 		 }
 //		 for (Page fa : featuredArticles) {

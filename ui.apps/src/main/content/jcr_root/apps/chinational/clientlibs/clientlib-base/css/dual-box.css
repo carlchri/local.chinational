@@ -96,3 +96,7 @@
 .bootstrap-duallistbox-container .buttons {
   width: 96%;
 }
+
+.moveall {
+  display: none;
+}

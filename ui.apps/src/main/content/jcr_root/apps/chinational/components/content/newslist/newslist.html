@@ -3,7 +3,7 @@
 
 <div class="chi_dual_box" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
     <!-- Select Tags for featured article selection -->
-    <p>Select Three Titles for Featured Articles</p>
+    <p>Select Tag for Featured Articles selection</p>
     <form id="tagsFormBox" action="#" method="post">
         <select multiple="multiple" class="form-control-1" name="search_news_list">
             <option value="AllItems" name="AllItems">All Items</option>
@@ -17,7 +17,11 @@
 
     <!-- Select box for featured article selection -->
     <p>Select Three Titles for Featured Articles</p>
-    <p>Current tag selection: ${currentPage.properties.featuredPagesTag} ${selectednewslist.properties['cq:tags'].size}</p>
+    <span>Current tag: </span>
+    <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}">All Items</span>
+    <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
+    <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
+
     <form id="listBoxForm" action="#" method="post">
         <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
             <sly data-sly-list.selectedItems="${newsList.featuredArticlesSelectedCn}">
