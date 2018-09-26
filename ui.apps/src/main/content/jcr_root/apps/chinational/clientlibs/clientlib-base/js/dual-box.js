@@ -903,7 +903,7 @@ $('document').ready(function(){
     //TagsFormBox
     $('#tagsFormBox select').on('change', function () {
         var tagValue = $(this).val().toString();
-        console.log("This Value : "+tagValue);
+        // console.log("This Value : "+tagValue);
 
         $.ajax({
             type: 'GET',
@@ -923,12 +923,13 @@ $('document').ready(function(){
     $("#listBoxForm").submit(function() {
         var featuredListPages = [] || {} ;
         var featuredListPagesString = [] || {} ;
-        var featuredTag;
+        var featuredTag, featuredSelectTag;
 
-        featuredTag = $('#featuredTag').val().split("/")[1];
+        featuredSelectTag = $('#featuredTag').val().split("/")[1];
+        featuredTag = $("#search_news_list").attr('name').val().split("/")[1];
         featuredListPages = $('[name="duallistbox_output[]"]').val();
-        console.log("featured Tag :: "+featuredTag);
-
+        // console.log("featured  selected Tag :: "+featuredSelectTag);
+        // console.log("Featured Pages tag :: "+ featuredTag);
         // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
         if (featuredListPages == null || featuredTag == "") {
             featuredListPages = ['No articele selected for '+featuredTag+' tag'];
@@ -936,7 +937,7 @@ $('document').ready(function(){
         featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
             console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
-                console.log("featuredListPagesString length :: "+featuredListPagesString.length);
+                // console.log("featuredListPagesString length :: "+featuredListPagesString.length);
 
                 // console.log( featuredListPagesString );
                 // console.log(featuredListPagesString[0]);
@@ -949,11 +950,11 @@ $('document').ready(function(){
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
-                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredTag}, //passing values to servlet
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag, "featuredPagesTag": featuredTag}, //passing values to servlet
                     success: function (msg) {
                         //Success logic here(The response from servlet)
                         alert("Save Complete");
-                        location.reload();
+                        // location.reload();
                         console.log("Featured Pages :: " + featuredListPagesString);
                     },
                     error: function (xhr, status, error) {
@@ -962,7 +963,7 @@ $('document').ready(function(){
                 });
                 return false;
             } else {
-                alert("Please select up to three items in the order of article appearance.");
+                alert("Please select up to three Articles");
                 return false;
             }
     });

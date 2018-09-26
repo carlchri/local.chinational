@@ -197,7 +197,7 @@ public class NewsList implements ComponentExporter {
         featuredArticlesSelectedCn = new ArrayList<>(new HashSet<>(featuredArticlesSelected));
 
         for (Page fsa : featuredArticlesSelected) {
-            LOGGER.info("Featured page title :: "+fsa.getTitle());
+//            LOGGER.info("Featured page title :: "+fsa.getTitle());
         }
 
         String featuredTag = currentPage.getProperties().get("featuredTag", String.class);

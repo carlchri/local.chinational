@@ -241,7 +241,9 @@ public final class NewsBlogUtils {
 		 String featuredPagesPath = parentPage + "/jcr:content";
 		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
 		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
-		 String [] featurdList = featuredPagesMap.get("featuredList", String[].class);
+		 String featuredTag = featuredPagesMap.get("featuredTag", String.class);
+		 LOGGER.info("featured page tag string :: "+featuredTag);
+		 String [] featurdList = featuredPagesMap.get(featuredTag, String[].class);
 //		 for (String fl : featurdList) {
 //			LOGGER.info("FeaturedList ::  "+ fl);
 //		 }
@@ -332,12 +334,15 @@ public final class NewsBlogUtils {
 		 String featuredPagesPath = parentPage + "/jcr:content";
 		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
 		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
-		 String[] featurdList = featuredPagesMap.get("featuredList", String[].class);
-//		 for (String fl : featurdList) {
-//			LOGGER.info("FeaturedList ::  "+ fl);
-//		 }
+		 String featuredTag = featuredPagesMap.get("featuredPagesTag", String.class).split("/")[1];
+		 LOGGER.info("Selected Featured Tag :: "+featuredTag);
+		 String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
 
-		 featuredArticles.clear();
+		 for (String fl : featurdList) {
+			LOGGER.info("FeaturedList ::  "+ fl);
+		 }
+
+		 featuredSelectedArticles.clear();
 		 String pageTag = tagName.replace(" ", "");
 		 if (featurdList.length <= 3 && featurdList.length > 0) {
 //			LOGGER.info("Node has featured list property");
