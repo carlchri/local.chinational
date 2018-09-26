@@ -71,41 +71,36 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     cq-dialog-dropdown-showhide-target=".list-option-location-showhide-target"/>
                                             </selectLocationImageType>
-                                            <address
-                                                granite:class="hide list-option-location-showhide-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Address for the location"
-                                                fieldLabel="Address [used for Google Map]:"
-                                                name="./address">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="googleMap"/>
-                                            </address>
-                                            <addressPlaceId
+                                            <extrafieldcontainer
                                                     granite:class="hide list-option-location-showhide-target"
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Place Id to link to correct place, when marker link takes user to google maps site"
-                                                    fieldLabel="Address Place Id [used for link to Google Maps from marker pop-up]:"
-                                                    name="./addressPlaceId">
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                                 <granite:data
                                                         jcr:primaryType="nt:unstructured"
                                                         showhidetargetvalue="googleMap"/>
-                                            </addressPlaceId>
-                                            <addressHidePOI
-                                                    granite:class="hide list-option-location-showhide-target"
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="Select this checkbox to hide nearby businesses in map"
-                                                    text="Hide nearby businesses in map"
-                                                    uncheckedValue="false"
-                                                    value="true"
-                                                    name="./addressHidePOI">
-                                                <granite:data
-                                                        jcr:primaryType="nt:unstructured"
-                                                        showhidetargetvalue="googleMap"/>
-                                            </addressHidePOI>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <address
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Address for the location"
+                                                            fieldLabel="Address [used for Google Map]:"
+                                                            name="./address" />
+                                                    <addressPlaceId
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Place Id to link to correct place, when marker link takes user to google maps site"
+                                                            fieldLabel="Address Place Id [used for link to Google Maps from marker pop-up]:"
+                                                            name="./addressPlaceId" />
+                                                    <addressHidePOI
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this checkbox to hide nearby businesses in map"
+                                                            text="Hide nearby businesses in map"
+                                                            uncheckedValue="false"
+                                                            value="true"
+                                                            name="./addressHidePOI" />
+                                                </items>
+                                            </extrafieldcontainer>
                                             <noDisplayButton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
