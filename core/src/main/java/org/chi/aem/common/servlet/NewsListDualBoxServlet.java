@@ -57,6 +57,8 @@
 //                log.info("Resoure resolver set");
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
                 String featuredPagesList  = request.getParameter("featuredPagesList");
+                String featuredTag = request.getParameter("featuredTag");
+                log.info("Featured Tag :: "+featuredTag);
 //                log.info("Get request path");
 //                log.info("Request path :: "+requestPagePath);
                 Resource res = resourceResolver.getResource(requestPagePath);
@@ -69,7 +71,8 @@
 //                log.info("request page path :: "+requestPagePath);
                 Node pageNode = res.adaptTo(Node.class);
 //                log.info("Get Current Property :"+ pageNode.getProperty("featuredList"));
-                pageNode.setProperty("featuredList", featuredPagesArray);
+                pageNode.setProperty(featuredTag, featuredPagesArray);
+                pageNode.setProperty("featuredTag", featuredTag);
 
                 response.getWriter().println("Page Featured List : "+featuredPagesArray);
 //                log.info("Featured page list : "+featuredPagesArray);

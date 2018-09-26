@@ -8,12 +8,7 @@ import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import org.chi.aem.common.utils.NewsBlogUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
@@ -88,6 +83,10 @@ public class NewsList implements ComponentExporter {
     // storing list of all news articles sorted by publishDate
     private java.util.List<Page> allNews;
 
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelected;
+    private java.util.List<Page> featuredArticlesSelectedCn;
+
     /* allFilteredNews - storing list of all news articles 
      * filtered based on selection in the dropdown
      * sorted by publish date
@@ -145,6 +144,8 @@ public class NewsList implements ComponentExporter {
         news_filter = DEFAULT_NEWS_FILTER;
         tagDesc = ""; 
         article_type = "";
+        featuredArticlesSelected = new ArrayList<>();
+        featuredArticlesSelectedCn = new ArrayList<>();
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -188,10 +189,19 @@ public class NewsList implements ComponentExporter {
             start_index = ((activePage - 1) * hits_per_page);
         } else {
             activePage = 1; //for Pagination active class when page load for the first time
-        }
+        };
 
 		// LOGGER.info("newslist parent page : " + parentPage);
 		// LOGGER.info("newslist news_filter : " + news_filter);
+        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
+        featuredArticlesSelectedCn = new ArrayList<>(new HashSet<>(featuredArticlesSelected));
+
+        for (Page fsa : featuredArticlesSelected) {
+            LOGGER.info("Featured page title :: "+fsa.getTitle());
+        }
+
+        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
+
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
 		// LOGGER.info("newslist allNewsSize : " + allNews.size());
         articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit);
@@ -242,6 +252,14 @@ public class NewsList implements ComponentExporter {
 
     public Collection<Page> getAllNews() {
         return allNews;
+    }
+
+    public Collection<Page> getFeaturedArticlesSelected() {
+        return featuredArticlesSelected;
+    }
+
+    public Collection<Page> featuredArticlesSelectedCn() {
+        return featuredArticlesSelectedCn;
     }
 
     @Nonnull

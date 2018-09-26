@@ -892,7 +892,9 @@
 $('document').ready(function(){
 
     // console.log('Dual List box loaded! OK Great Simon!!!');
-    var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox();
+    var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox({
+        // preserveSelectionOnMove: 'moved'
+    });
     var pageUrl = String(window.location.pathname);
     // console.log("page url : "+pageUrl)
     var pageUrlsplit = pageUrl.split(".")[0];
@@ -919,14 +921,23 @@ $('document').ready(function(){
 
     // Submit function
     $("#listBoxForm").submit(function() {
-        var featuredListPages;
-        var featuredListPagesString
-        featuredListPages = $('[name="duallistbox_output[]"]').val();
-        // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
-        if (featuredListPages != null) {
-            featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
+        var featuredListPages = [] || {} ;
+        var featuredListPagesString = [] || {} ;
+        var featuredTag;
 
-            if (featuredListPages != null || featuredListPagesString.length > 0 && featuredListPagesString.length == 3) {
+        featuredTag = $('#featuredTag').val().split("/")[1];
+        featuredListPages = $('[name="duallistbox_output[]"]').val();
+        console.log("featured Tag :: "+featuredTag);
+
+        // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
+        if (featuredListPages == null || featuredTag == "") {
+            featuredListPages = ['No articele selected for '+featuredTag+' tag'];
+        }
+        featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
+            console.log("featuredListPages length :: "+featuredListPages.length);
+            if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
+                console.log("featuredListPagesString length :: "+featuredListPagesString.length);
+
                 // console.log( featuredListPagesString );
                 // console.log(featuredListPagesString[0]);
                 // console.log(featuredListPagesString[1]);
@@ -938,7 +949,7 @@ $('document').ready(function(){
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
-                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit}, //passing values to servlet
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredTag}, //passing values to servlet
                     success: function (msg) {
                         //Success logic here(The response from servlet)
                         alert("Save Complete");
@@ -951,12 +962,8 @@ $('document').ready(function(){
                 });
                 return false;
             } else {
-                alert("Please select three items in the order of appearance.");
+                alert("Please select up to three items in the order of article appearance.");
                 return false;
             }
-        } else {
-            alert("Please select three items in the order of appearance.");
-            return false;
-        }
     });
 });
