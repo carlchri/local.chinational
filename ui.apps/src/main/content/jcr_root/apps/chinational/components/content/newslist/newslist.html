@@ -24,7 +24,7 @@
 
     <form id="listBoxForm" action="#" method="post">
         <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
-            <sly data-sly-list.selectedItems="${newsList.featuredArticlesSelectedCn}">
+            <sly data-sly-list.selectedItems="${newsList.featuredArticles}">
                 <option data-sly-test="${selectedItems.properties.cq:tags[0] == currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" selected value="${selectedItems.path}">${selectedItems.title} ${selectedItems.index}</option>
             </sly>
             <sly data-sly-list.selectnewslist="${newsList.allNews}">

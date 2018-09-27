@@ -932,7 +932,7 @@ $('document').ready(function(){
         // console.log("Featured Pages tag :: "+ featuredTag);
         // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
         if (featuredListPages == null || featuredTag == "") {
-            featuredListPages = ['No articele selected for '+featuredTag+' tag'];
+            featuredListPages = ['NoArticle'];
         }
         featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
             console.log("featuredListPages length :: "+featuredListPages.length);
