@@ -151,7 +151,7 @@ public class NewsList implements ComponentExporter {
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
         pages = new ArrayList<Integer> ();
-        LOGGER.info("Parent Page from newsList :: "+parentPage);
+//        LOGGER.info("Parent Page from newsList :: "+parentPage);
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
 
