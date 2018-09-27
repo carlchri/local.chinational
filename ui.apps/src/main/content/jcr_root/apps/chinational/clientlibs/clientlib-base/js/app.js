@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: false,
         autoHeight: true,
-        margin: 10,					// German: margin-right for tiles, it was 15
+        margin: 6,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 10,
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: true,
         autoHeight: true,
-        margin: 15,
+        margin: 6,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 100,

@@ -12,9 +12,11 @@
 								</div>
 							</button>
 		                </div>
-		                <a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal"><span class="custom-button header-fix">${audio.sectionHeading}</span></a>
+		                <a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
+		                	<span class="custom-button header-fix">${audio.sectionHeading}</span>
+		                </a>
 					</div>
-	                <span class="a-brief-description sub-header-fix" data-sly-test="${audio.audioText}">${audio.audioText}</span>
+	                <span class="a-fix-for-padding a-brief-description sub-header-fix truncate" data-sly-test="${audio.audioText}">${audio.audioText}</span>
 	            </div>
 	        </div>
 	    </div>
