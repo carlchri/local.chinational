@@ -16,21 +16,20 @@
     </form>
 
     <!-- Select box for featured article selection -->
-    <p>Select Three Titles for Featured Articles</p>
-    <span>Current tag: </span>
+    <span>Current article filter tag: </span>
     <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}">All Items</span>
     <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
     <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
+    <p>Select Three Titles for Featured Articles</p>
 
     <form id="listBoxForm" action="#" method="post">
         <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
-            <sly data-sly-list.selectedItems="${newsList.featuredArticles}">
-                <option data-sly-test="${selectedItems.properties.cq:tags[0] == currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" selected value="${selectedItems.path}">${selectedItems.title} ${selectedItems.index}</option>
+            <sly data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
+                <option selected value="${selectedItems.path}">${selectedItems.title} </option>
             </sly>
             <sly data-sly-list.selectnewslist="${newsList.allNews}">
-                <option data-sly-test="${selectnewslist.properties.cq:tags[0] == currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
+                <option data-sly-test="${selectnewslist.properties.cq:tags[0] != currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
             </sly>
-                <!-- selectnewslist.properties.cq:tags -->
         </select>
         <br>
         <button type="submit" class="btn btn-default btn-block">Submit Pages</button>

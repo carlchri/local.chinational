@@ -128,7 +128,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
         featuredBlogs = new ArrayList<>();
         // listYears = new ArrayList<>();
 		parentPage = request.getPathInfo();
-		LOGGER.info("Parent path Info from Blog :: "+parentPage);
+//		LOGGER.info("Parent path Info from Blog :: "+parentPage);
         
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");

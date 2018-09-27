@@ -169,6 +169,7 @@ public class NewsList implements ComponentExporter {
 
 //        LOGGER.info( "Pagth Info :: "+request.getRequestPathInfo() );
         String[] selectors = request.getRequestPathInfo().getSelectors();
+
         if(selectors.length != 0) {
         	if(selectors[0].matches("[0-9]+")){
         		activePage = Integer.parseInt(selectors[0]);

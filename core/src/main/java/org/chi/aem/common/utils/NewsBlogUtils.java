@@ -252,7 +252,7 @@ public final class NewsBlogUtils {
 		 for (String fl : featurdList) {
 //			 LOGGER.info("FeaturedList ::  " + fl);
 			 if (fl.contains("NoArticle") ) {
-			 	LOGGER.info("No Article set");
+//			 	LOGGER.info("No Article set");
 				 noArticle = "NoArticle";
 			 }
 		 }
@@ -275,7 +275,7 @@ public final class NewsBlogUtils {
 			 }
 	 	} else {
 			 featuredArticles.add(filteredArticles.get(0));
-			 LOGGER.info("No Article was found :: "+featurdList[0]);
+//			 LOGGER.info("No Article was found :: "+featurdList[0]);
 		 }
 	 }
      
@@ -331,6 +331,7 @@ public final class NewsBlogUtils {
      }
 
      public static java.util.List<Page> populateSeletedItems(String parentPage, ResourceResolver resourceResolver) {
+//    	LOGGER.info("Selecteed pages Started!");
 		 // get featured pages
 		 String featuredPagesPath = parentPage + "/jcr:content";
 		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
@@ -339,9 +340,9 @@ public final class NewsBlogUtils {
 //		 LOGGER.info("Selected Featured Tag :: "+featuredTag);
 		 String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
 
-		 for (String fl : featurdList) {
-			LOGGER.info("FeaturedList ::  "+ fl);
-		 }
+//		 for (String fl : featurdList) {
+//			LOGGER.info("FeaturedList ::  "+ fl);
+//		 }
 
 		 featuredSelectedArticles.clear();
 		 String pageTag = tagName.replace(" ", "");
@@ -351,10 +352,12 @@ public final class NewsBlogUtils {
 			 for (String fl : featurdList) {
 				 String spnPath = fl;
 //				 LOGGER.info("Spn Path String :: " + spnPath);
-				 Resource flRes = resourceResolver.getResource(spnPath);
-//				 LOGGER.info("Resoure resolver has resolved :: " + flRes.getPath());
-				 Page flPage = flRes.adaptTo(Page.class);
-				 featuredSelectedArticles.add(flPage);
+				 if (!spnPath.contains("NoArticle")) {
+					 Resource flRes = resourceResolver.getResource(spnPath);
+//					 LOGGER.info("Resoure resolver has resolved :: " + flRes.getPath());
+					 Page flPage = flRes.adaptTo(Page.class);
+					 featuredSelectedArticles.add(flPage);
+				 }
 			 }
 			 for (Page fsa : featuredSelectedArticles) {
 //				 LOGGER.info("Featured Seleted Title" + fsa.getTitle());
