@@ -7,12 +7,12 @@
 	                <div class="v-container">
 	                    <div class="link-wrapper">
 	                        <a href="${tile.linkUrl}" target="${tile.targetBlank==true ?'_blank':'_self'}" data-sly-unwrap="${tile.linkUrl == '#'}">
-	                            <img src="${properties.imageUrl}"/>
+	                            <img class="cover" src="${properties.imageUrl}"/>
 	                            <span class="main-play-title custom-button" data-sly-test="${properties.title}">${properties.title}</span>
 	                        </a>
 	                    </div>
 	                </div>
-					<span class="a-brief-description sub-header-fix" data-sly-test="${properties.description}">${properties.description}</span>
+					<span class="a-brief-description sub-header-fix truncate" data-sly-test="${properties.description}">${properties.description}</span>
 	
 	            </div>
 	        </div>
