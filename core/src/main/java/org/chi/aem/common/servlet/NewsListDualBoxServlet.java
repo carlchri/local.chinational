@@ -58,6 +58,9 @@
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
                 String featuredPagesList  = request.getParameter("featuredPagesList");
                 String featuredTag = request.getParameter("featuredTag");
+                if (featuredTag == null) {
+                    featuredTag = "AllItems";
+                }
                 log.info("Featured Tag :: "+featuredTag);
 //                log.info("Get request path");
 //                log.info("Request path :: "+requestPagePath);

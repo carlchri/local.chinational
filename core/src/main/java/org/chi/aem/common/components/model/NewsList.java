@@ -138,7 +138,7 @@ public class NewsList implements ComponentExporter {
         newsFeaturedLimit = NEWS_FEATURED_LIMIT;
         totalNumberPages = 1;
         activePage = 1;
-        parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
+        parentPage = properties.get(PN_PARENT_PAGE, "/content/national/en/media/news"); //currentPage.getPath()
         newsTemplate = NEWS_TEMPLATE;
         news_filter = DEFAULT_NEWS_FILTER;
         tagDesc = ""; 
@@ -151,7 +151,7 @@ public class NewsList implements ComponentExporter {
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
         pages = new ArrayList<Integer> ();
-        
+        LOGGER.info("Parent Page from newsList :: "+parentPage);
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
 
