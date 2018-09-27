@@ -305,7 +305,7 @@
 /* Added by German */
 
 
-@media (min-width: 610px) and (max-width: 720px) {
+@media (min-width: 600px) and (max-width: 720px) {
 	
 	.interactive-wheel .left {
 	    max-width: 222px;					/*   	German: Adjusted to fix MAM-100 	*/
@@ -339,6 +339,10 @@
         padding-top: 122px;
         max-width: 275px;
     }
+    
+    .interactive-wheel .shortPadding {
+		padding-top: 22px !important;					/*   	German: Adjusted to fix MAM-100 	*/
+	}
     
     .interactive-wheel .right.mobile-adjustment {
         width: 100%;
