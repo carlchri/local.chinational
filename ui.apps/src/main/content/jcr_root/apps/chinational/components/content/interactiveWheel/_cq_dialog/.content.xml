@@ -131,7 +131,7 @@
                                             <fontColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/interactiveWheelbackgroundcolorpicker"
+                                                colorsPath="/etc/config/chinational/components/colorpicker/interactiveWheelfontcolorpicker"
                                                 fieldDescription="Click on the color box to choose a different color for the component font"
                                                 fieldLabel="Font Color"
                                                 freestylePalette="{Boolean}true"
