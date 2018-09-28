@@ -331,7 +331,7 @@
 }
 
 #right-rail-container .location .dividingColumns {
-	float: none; /* Making it none, else it is covering icons*/
+	float: none; /* Making it */
 	width: 34%;
 }
 
@@ -392,6 +392,10 @@
 	 .location .adjust-height {
 		margin-top: -20px; 	
 	}
+
+	.location .adjust-height .map-box {
+    		margin-top: 20px; /* removing -20px margin for map for CHIMCM-1207 */
+    }
 	
 	.location #location-graphic-area {
 		min-width: 100%;
