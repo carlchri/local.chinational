@@ -225,14 +225,15 @@ jQuery(document).ready(function() {
     function checkClasses() {
 
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        //console.log("carousel total:  " + total);
+        console.log("checkClasses carousel total:  " + total);
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-            //console.log('full width container');
+            console.log('full width container');
             // add class to first item
             if (index === 0) {
                 // this is the first one
+                console.log('this is the first one: ' + index);
                 $(this).addClass('firstActiveItem');
             }
             // if (index === 1) {
@@ -246,19 +247,27 @@ jQuery(document).ready(function() {
             // add class to last class
             if (index === 3) {
                 // this is the forth item.
+                console.log('this is the fourth one: ' + index);
                 $(this).addClass('forthActiveItem');
             }
 
             if (total >= 5) {
                 // add class to last class
                 if (index === total - 1 && total > 1) {
-                    $(this).addClass('lastActiveItem');
+                    console.log('add lastActiveItem to last one: ' + index);
+                    // if screen size is bigger than 1290, we can show 5 at a time
+                    if ($(window).width() <= 1290) {
+                        $(this).addClass('lastActiveItem');
+                    } else if ($(window).width() > 1290 && total > 5) {
+                        // if there is a 6th col, then keep it with opacity 0.3
+                        $(this).addClass('lastActiveItem');
+                    }
                 }
 
             }
 
             if ($(window).width() > 1024) {
-                //console.log("desktop");
+                console.log("desktop add fullOpacity to all except lastActiveItem ");
                 $(this).not('.lastActiveItem').addClass('fullOpacity');
             } else if ($(window).width() <= 1024 && $(window).width() >= 768) { /* Changed it to >= from >, as tablet mode starts at 768*/
                 // console.log("tablet");
