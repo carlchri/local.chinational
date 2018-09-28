@@ -61,7 +61,7 @@
                 if (featuredTag == null) {
                     featuredTag = "AllItems";
                 }
-                log.info("Featured Tag :: "+featuredTag);
+//                log.info("Featured Tag :: "+featuredTag);
 //                log.info("Get request path");
 //                log.info("Request path :: "+requestPagePath);
                 Resource res = resourceResolver.getResource(requestPagePath);

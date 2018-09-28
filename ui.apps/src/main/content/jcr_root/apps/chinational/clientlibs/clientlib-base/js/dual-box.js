@@ -926,14 +926,14 @@ $('document').ready(function(){
         var featuredTag, featuredSelectTag;
 
         featuredSelectTag = $('#featuredTag').val().split("/")[1];
-        featuredTag = $("#search_news_list").attr('name').split("/")[1];
+        // featuredTag = $("#search_news_list").attr('name').split("/")[1];
         featuredListPages = $('[name="duallistbox_output[]"]').val();
         // console.log("featured  selected Tag :: "+featuredSelectTag);
         // console.log("Featured Pages tag :: "+ featuredTag);
         // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
-        if (featuredListPages == null || featuredTag == "") {
-            featuredListPages = ['NoArticle'];
-        }
+        // if (featuredListPages == null || featuredTag == "") {
+        //     featuredListPages = ['NoArticle'];
+        // }
         featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
             console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
@@ -950,7 +950,7 @@ $('document').ready(function(){
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
-                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag, "featuredPagesTag": featuredTag}, //passing values to servlet
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag}, //passing values to servlet
                     success: function (msg) {
                         // $(this).find('select').refresh();
                         alert("Press OK to refresh page.");

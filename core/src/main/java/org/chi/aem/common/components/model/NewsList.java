@@ -198,7 +198,7 @@ public class NewsList implements ComponentExporter {
 //            LOGGER.info("Featured page title :: "+fsa.getTitle());
 //        }
 
-        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
+//        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
 
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
 		// LOGGER.info("newslist allNewsSize : " + allNews.size());

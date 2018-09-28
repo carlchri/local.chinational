@@ -87,6 +87,9 @@ public class BlogsList implements ComponentExporter {
 
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
+
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelected;
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
@@ -145,6 +148,7 @@ public class BlogsList implements ComponentExporter {
         blogs_filter = DEFAULT_BLOGS_FILTER;
         tagDesc = ""; 
         article_type = "";
+        featuredArticlesSelected = new ArrayList<>();
     	allBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
@@ -187,7 +191,12 @@ public class BlogsList implements ComponentExporter {
         } else {
         	activePage = 1; //for Pagination active class when page load for the first time
         }
-    	
+
+//        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
+//        for (Page fsa : featuredArticlesSelected) {
+//            LOGGER.info("Featured page title :: "+fsa.getTitle());
+//        }
+
 		// LOGGER.info("blogslist parent page : " + parentPage);
 		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
         allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate); //to get all the blogs using defined template, sorted by Publish date
@@ -199,7 +208,7 @@ public class BlogsList implements ComponentExporter {
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
-        
+
         if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(blogs_filter)){
