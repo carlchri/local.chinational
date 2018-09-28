@@ -331,7 +331,7 @@
 }
 
 #right-rail-container .location .dividingColumns {
-	float: left;
+	float: none; /* Making it none, else it is covering icons*/
 	width: 34%;
 }
 
