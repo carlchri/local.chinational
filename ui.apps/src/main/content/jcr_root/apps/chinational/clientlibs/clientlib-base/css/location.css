@@ -201,7 +201,7 @@
 .loc-details-box {
   background: #426da9;
   padding:26px 53px 34px 65px;
-  margin-top: -5px;
+  /*margin-top: -5px; not needed as per Ze*/
 }
 
 .loc-details-box-heading{
@@ -399,7 +399,7 @@
 	}
 	
 	#full-width-container .location .dividingColumns {
-		float: left;
+		float: none; /* changed from left to none, it was hiding icons under blue box and moving blue box heading to middle */
 		width: 34%;
 	}
 	
