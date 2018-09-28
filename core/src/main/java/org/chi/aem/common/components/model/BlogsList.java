@@ -192,7 +192,7 @@ public class BlogsList implements ComponentExporter {
         	activePage = 1; //for Pagination active class when page load for the first time
         }
 
-//        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
+        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
 //        for (Page fsa : featuredArticlesSelected) {
 //            LOGGER.info("Featured page title :: "+fsa.getTitle());
 //        }
@@ -245,6 +245,10 @@ public class BlogsList implements ComponentExporter {
 
     public Collection<Page> getAllBlogs() {
         return allBlogs;
+    }
+
+    public Collection<Page> getFeaturedArticlesSelected() {
+        return featuredArticlesSelected;
     }
 
     @Nonnull

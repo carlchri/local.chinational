@@ -46,13 +46,13 @@ public class FeaturedNewsTagServlet extends SlingAllMethodsServlet {
 
             ResourceResolver resourceResolver = request.getResource().getResourceResolver();
             String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
-            log.info("requestPagePath : "+requestPagePath);
+//            log.info("requestPagePath : "+requestPagePath);
             String tagPrefix = "chi:MediaCenter/";
             if (requestPagePath.contains("blogs")) {
                 tagPrefix = "chi:Blogs/";
             }
             String featuredPagesTag  = tagPrefix + request.getParameter("featuredPagesTag");
-            log.info("Get Tag Property value : "+featuredPagesTag );
+//            log.info("Get Tag Property value : "+featuredPagesTag );
 
             Resource res = resourceResolver.getResource(requestPagePath);
             Node pageNode = res.adaptTo(Node.class);

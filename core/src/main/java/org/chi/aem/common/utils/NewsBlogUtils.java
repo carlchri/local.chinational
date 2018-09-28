@@ -91,6 +91,7 @@ public final class NewsBlogUtils {
      public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
 
 //        LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
+//         LOGGER.info("Pagent Page :: "+parentPage);
          if(filteredArticles.size() !=0) {
         	 filteredArticles.clear();
          }
@@ -112,19 +113,27 @@ public final class NewsBlogUtils {
 
     	 TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
     	 for(Page item : allArticles) {
+
     		// to get listYears 
     		Calendar date = item.getProperties().get("publishDate", Calendar.class); 
     		//int year = date.get(Calendar.YEAR);
     		SimpleDateFormat formatter = new SimpleDateFormat("YYYY"); 
     		String year = formatter.format(date.getTime()).toUpperCase(); 
 
+//    		String[] itemsTags = item.getProperties().get("cq:tags", String[].class);
+//    		if (itemsTags.length != 0) {
+//                for (String it : itemsTags) {
+//                    LOGGER.info("Items Tags :: " + it);
+//                }
+//            }
             // to get tags
             Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
-            // LOGGER.info("tags: " + tags);
+             LOGGER.info("tags: " + tags.length );
             if(tags.length !=0){
 	           	 for(Tag tag : tags){
 	           		tagName = tag.getTitle();
-	           		// LOGGER.info("tagTitle: " + tag.getTitle());
+
+	           		 LOGGER.info("tagTitle: " + tag.getTitle());
 		         		if(listTags.isEmpty()){
 		            		listTags.add(tagName);
 		                    tagsMap.put(tag.getName(),tagName);
@@ -169,7 +178,10 @@ public final class NewsBlogUtils {
          // and both have different parent page and different tags associated with it
          // Users selects a tag from dropdown in one BlogList component
          // and tag is not there in another Bloglist component dropdown on the same page
+         LOGGER.info("Article filter :: "+articleFilter);
+         LOGGER.info("Article default filter :: "+DEFAULT_NEWS_FILTER);
          if(!tagsMap.keySet().contains(articleFilter) && !articleFilter.equals(DEFAULT_NEWS_FILTER)){
+             LOGGER.info("Contains article filter ::::::::::::");
          	populateYearsTagsFeatured(parentPage, allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
           }
 
