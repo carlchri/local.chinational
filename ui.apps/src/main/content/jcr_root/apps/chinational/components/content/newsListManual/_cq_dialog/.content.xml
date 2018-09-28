@@ -29,7 +29,7 @@
                                             <dateNotRequired
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Select this checkbox to disable date"
+                                                fieldDescription="Check if you want article dates to not be displayed in article list"
                                                 name="./dateNotRequired"
                                                 text="Select to disable date"
                                                 uncheckedValue="false"
@@ -37,7 +37,7 @@
                                             <excerptNotRequired
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Select this checkbox to disable excerpt"
+                                                fieldDescription="Check if you want article excerpts to not be displayed in article list"
                                                 name="./excerptNotRequired"
                                                 text="Select to disable excerpt"
                                                 uncheckedValue="false"
