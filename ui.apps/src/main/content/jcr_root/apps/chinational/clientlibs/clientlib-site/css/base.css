@@ -1527,6 +1527,18 @@ img {
     .custome-dd-outer .dropdown-menu {
         width: 688px;
     }
+
+    /* Updated as margin was nor working with z-index of components, like location map
+        so, converted to padding for tablet and mobile*/
+    .heading h1,
+    .heading h2,
+    .heading h3,
+    .heading h4,
+    .heading h5,
+    .heading h6 {
+        margin-bottom: 0;
+        padding-bottom: 8px;
+    }
     
 }
 
