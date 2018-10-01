@@ -362,6 +362,12 @@ public final class NewsBlogUtils {
 //		 LOGGER.info("All items from path :: "+allItems[0]);
 
 //		 LOGGER.info("Selected Featured Tag :: "+featuredTag);
+         if (featuredTag == null || featuredTag.isEmpty()) {
+             featuredTag = "chi:MediaCenter/AllItems";
+             if ( parentPage.contains("Blogs") ) {
+                 featuredTag = "chi:Blogs/AllItems";
+             }
+         }
 		 String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
 
 //		 for (String fl : featurdList) {
