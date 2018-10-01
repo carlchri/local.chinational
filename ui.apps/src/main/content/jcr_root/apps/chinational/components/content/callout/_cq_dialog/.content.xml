@@ -36,13 +36,11 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="This field is mandatory"
-<<<<<<< HEAD
-                                                        fieldDescription="This is the title for this callout"
-                                                        fieldLabel="Category Title"
-=======
+
+
                                                         fieldDescription="This is the title for this callout."
                                                         fieldLabel="Callout Title"
->>>>>>> 675c81d0a0f0e5da192c922768e1913838820220
+
                                                         name="./categoryTitleText"
                                                         required="{Boolean}true"/>
                                                     <contentDetail
@@ -54,13 +52,10 @@
                                                     <linkUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-<<<<<<< HEAD
-                                                        fieldDescription="AEM path or link for callout heading. Use this format for external links https://www.example.com"
-                                                        fieldLabel="Link URL (for the callout title)"
-=======
-                                                        fieldDescription="AEM path or link for callout heading.  Use this format for external links https://www.example.com"
+                                                        
+                                                        fieldDescription="AEM path or link for callout heading.Use this format for external links https://www.example.com"
                                                         fieldLabel="AEM path/Link URL for the callout heading"
->>>>>>> 675c81d0a0f0e5da192c922768e1913838820220
+
                                                         name="./linkUrl"
                                                         rootPath="/content"/>
                                                     <target
