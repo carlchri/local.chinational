@@ -13,6 +13,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.chi.aem.common.utils.LinkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +29,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.sling.commons.json.JSONArray;
-import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 
 
@@ -42,6 +41,7 @@ public class LocationCoordinate {
 	    public static final Logger LOGGER = LoggerFactory.getLogger(LocationCoordinate.class);
 	    
 	    public static final String PROP_LOCATION_ADDRESS = "address";
+		public static final String PROP_LOCATION_ADDRESS_PLACE_ID = "addressPlaceId";
 
 		@Inject
 		private ResourceResolver resourceResolver;
@@ -51,14 +51,31 @@ public class LocationCoordinate {
 		@Optional
 		@Default(values="11045 East Lansing Circle, Englewood, CO")
 		private String address;
+
+		@Inject
+		@Named(PROP_LOCATION_ADDRESS_PLACE_ID)
+		@Optional
+		private String addressPlaceId;
+
+		@SlingObject
+		private Resource resource;
 		
 		private String latCord;
 		private String lngCord;
+		private String placeId = "";
+		private int hash = Math.abs((int)Math.random());
 	
 		@PostConstruct
 		protected void init() {
             InputStream inputStream = null;
             String json = "";
+
+            // get hash code
+			if (resource != null) {
+				hash = Math.abs(resource.getPath().hashCode());
+			} else if (address != null){
+				hash = Math.abs(address.hashCode());
+			}
 
             try {           
                 // HttpClient client = new DefaultHttpClient();  
@@ -69,7 +86,8 @@ public class LocationCoordinate {
                 HttpEntity entity = response.getEntity();
                 inputStream = entity.getContent();
             } catch(Exception e) {
-            	LOGGER.info("Inside Exception :");
+            	LOGGER.error("Inside httpCall Exception :");
+            	e.printStackTrace();
             }
 
             try {           
@@ -81,7 +99,7 @@ public class LocationCoordinate {
                 }
                 inputStream.close();
                 json = sbuild.toString();      
-                // LOGGER.info("json:" + json);
+                LOGGER.debug("Location json:" + json);
 
 	            //now parse
 	            // JSONParser parser = new JSONParser();
@@ -92,15 +110,28 @@ public class LocationCoordinate {
 	            JSONArray jsonObject1 = (JSONArray) jb.get("results");
 	            JSONObject jsonObject2 = (JSONObject)jsonObject1.get(0);
 	            JSONObject jsonObject3 = (JSONObject)jsonObject2.get("geometry");
+
 	            JSONObject location = (JSONObject) jsonObject3.get("location");
 	
 	            latCord = location.get("lat").toString();
-	            // LOGGER.info("latCord:" + latCord);
+	            LOGGER.debug("latCord:" + latCord);
 	            lngCord = location.get("lng").toString();
-	            // LOGGER.info("lngCord:" + lngCord);
+	            LOGGER.debug("lngCord:" + lngCord);
+
+	            if (StringUtils.isEmpty(addressPlaceId)) {
+					placeId = jsonObject2.getString("place_id");
+				} else {
+					placeId = addressPlaceId;
+				}
+
             } catch(Exception e) {
-            	LOGGER.info("Inside Exception");
+            	LOGGER.error("Inside json read Exception");
+            	e.printStackTrace();
             }
+		}
+
+		public int getHash() {
+			return hash;
 		}
 	
 		public String getLatCord() {
@@ -110,4 +141,8 @@ public class LocationCoordinate {
 		public String getLngCord() {
 			return lngCord;
 		}
+
+		public String getPlaceId() {
+		return placeId;
+	}
 }

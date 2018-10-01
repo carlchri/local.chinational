@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Twitter"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mainSettingsTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Twitter Settings Tab"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        	<sectionHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldDescription="This text will be used as heading for the Twitter section"
+                                                fieldLabel="Twitter Heading:"
+                                                name="./sectionHeading"
+                                                required="{Boolean}true"/>
+                                            <user
+						                        jcr:primaryType="nt:unstructured"
+						                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+						                        emptyText="This field is mandatory"
+						                        fieldDescription="Twitter user to follow"
+						                        fieldLabel="User @"
+						                        name="./user"
+						                        required="{Boolean}true"/>
+						                    <limit
+						                        jcr:primaryType="nt:unstructured"
+						                        sling:resourceType="/libs/granite/ui/components/foundation/form/numberfield"
+						                        fieldLabel="Tweet limit"
+						                        fieldDescription="Tweet limit. If a limit is applied, the option to load more is not shown." 
+						                        min="3"
+						                        max="20"
+						                        name="./limit"/>
+						                    <selectFollowIconType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="orderBy"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select the type of Twitter Follow design to be displayed"
+                                                fieldLabel="Options for Twitter Follow Icon"
+                                                name="./selectFollowIconType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <traditional
+                                                        jcr:primaryType="nt:unstructured"
+                                                        selected="{Boolean}true"
+                                                        text="Use Traditional (Twitter Style)"
+                                                        value="traditional"/>
+                                                    <modern
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Use Modern (New Style)"
+                                                        value="modern"/>
+                                                </items>
+                                            </selectFollowIconType>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </mainSettingsTab>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

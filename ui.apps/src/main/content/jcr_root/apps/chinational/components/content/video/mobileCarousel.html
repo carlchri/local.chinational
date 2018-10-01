@@ -1,28 +1,25 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
-<div class="carousel-item slide item">
-    <div class="flex-box">
-        <div class="carousel-description carousel-image">
-            <div class="video-container">
-                <div class="sub-Thumbs">
-                    <div class="video">
-                        <a class="video_popup" id="video" video-url="${video.videoUrl}">
-                            <img src="${video.imageUrl}">
-                            <div class="link-wrapper">
-                                <div class="video-button-small" >
-                                    <i class="sprite small-icons icon-play-orange"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="media-text">
-                    <span class="thumb-titles">${video.sectionHeading}</span>
-                    <span class="thumb-descrsiption">${video.videoText}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="carousel-item slide item">
+	    <div class="flex-box">
+	        <div class="carousel-description carousel-image">
+			    <div class="video-container mc-video-mobile">
+			        <div class="sub-Thumbs" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+			            <div class="video mobile-align">
+			                <a class="video_popup" id="video" video-url="${video.videoUrl}">
+			                    <img src="${video.imageUrl}">
+			                    <i class="sprite small icons icon-play-orange"></i>
+			                </a>
+			            </div>
+			        </div>		
+			        <div class="media-text">
+			            <span class="custom-button">${video.sectionHeading}</span>
+			            <span class="a-brief-description" data-sly-test="${video.videoText}">${video.videoText}</span>
+			        </div>
+			    </div>
+    		</div>
+	    </div>
+	</div>
+	        
 <sly data-sly-call="${template.placeholder @ isEmpty=!video.videoUrl}"></sly>
 
