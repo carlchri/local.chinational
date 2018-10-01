@@ -24,13 +24,26 @@
 	padding-left: 0;
 }
 
+.header .top-level a{
+	text-transform: uppercase;
+    width: 100.4px;
+ 	height: 15px;
+  	font-size: 15px;
+  	font-weight: bold;
+  	font-style: normal;
+  	font-stretch: normal;
+  	line-height: normal;
+  	letter-spacing: 1.7px;
+  	color: #24509a;        
+}
+
 .header ul li {
 	float: left;
 	margin-right: 40px;
 	padding: 16px 0;
 	font-weight: bold;
 	letter-spacing: 1px;
-	position: relative;
+	/*position: relative; for MAM-30 */
 }
 .header ul li [class*="arrow-"]{
 	width:8px;
@@ -43,6 +56,7 @@
 	top:7px;
 	border-color:#426da9;
 }
+
 .search-icon i {
 	width:20px;
 	height:20px;
@@ -110,23 +124,61 @@
 }
 
 .header .hidden-menu {
-	width: 370px;
+	max-width: 1328px; /* Update for MAM-30*/
 	z-index: 4;
-	padding: 20px;
+	padding: 20px 20px 50px 55px; /* Update to match Zeplin*/
 	top: 51px;
-	left: 0;
-	display: none;
+	left: 15px; /* to match Zeplin*/
+	display: none; 
 	box-shadow: -4px 7px 25px rgba(0, 0, 0, 0.5);
+}
+
+.header .hidden-menu .row {
+	width: 100%;
+	display: flex;
+}
+
+/* Update for MAM-30 */
+.header .hidden-menu .col-md-3 {
+    max-width: 300px;
+    flex: 1;
+    min-width: 240px;
+}
+
+.header .hidden-menu .arrow-down, .header .hidden-menu .arrow-up {
+    margin-left: 13px;
 }
 
 .header ul li a.dd-opened {
 	color: #426da9;
 }
 
+.header .hidden-menu li.top-level a{
+    font-size: 15px;
+    letter-spacing: 1.7px;
+    font-weight: bold;
+    color: #24509a;
+}
+
+.header .hidden-menu a.second-level {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #53565a;
+}
+
+.header .hidden-menu a.second-level-more {
+    color: #0097a9;
+}
+
+
+
 .header .hidden-menu li {
 	margin-right: 0;
-	padding:10px 15px;
+	padding:10px 0px; /* remove left-right padding, we get that padding from col */
 	font-weight: normal;
+	min-width:150px; /* This prevents two nav on same row*/
 }
 
 .dropdown-box {
@@ -239,6 +291,14 @@
 		top:-65px;
 	}
 }
+
+/* Extra padding in desktop mode for navigation to match Zeplin*/
+@media (min-width:992px) {
+    .header .hidden-menu .row {
+        padding-top: 18px;
+    }
+}
+
 @media (max-width:991px) {
 	.header-right-nav {
 		position:static;
@@ -310,8 +370,19 @@
 		margin: 0;
 		letter-spacing: 1px;
 		float: none;
-		/*margin-bottom: 7px;*/
+		margin-bottom: 3px; /* To match Zeplin*/
 	}
+
+	.header .hidden-menu li {
+    	min-width:220px; /* This prevents two nav on same row for tablet*/
+    }
+
+
+	.header .hidden-menu li.nav-mobile-cols {
+        max-width: 50%;
+        min-width: 50%; /* we want two cols of nav for mobile and table */
+	}
+
 	.logo-strip {
 		z-index: 3;
 		background: #fff;
@@ -328,21 +399,35 @@
 		display: block;
 	}
 	.header .hidden-menu {
+	    max-width: auto; /* MAM-30 */
 		position: relative;
 		top: 0;
+		left: 0; /* back to 0 for mobile, from 15 for desktop*/
 		overflow: hidden;
 		background-color: #e7e7e7;
 		box-shadow: none;
 		-moz-box-shadow: none;
 		-webkit-box-shadow: none;
 		width: 100%;
-		padding-top: 0;
+		/*padding-top: 0;*/
+		padding: 0px 20px 27px 24px; /* Update to match Zeplin*/
 	}
 	.header ul li .fa-angle-down {
 		font-size: 20px;
 		font-weight: bold;
 		float: right;
 	}
+
+	.header .hidden-menu .col-md-3 {
+        max-width: 415px; /* FOr tablet*/
+        flex: 0;
+        min-width: 250px;
+    }
+
+    .header .hidden-menu .row {
+    	display: block;
+    }
+
 	.main-nav .content-middle {
 		max-width: 100%;
 	}
@@ -523,3 +608,22 @@
 	/* End of Additions  */
 	
 }
+
+/* Special fix for phones 360 px or lower width*/
+/*
+@media (max-width:360px) {
+.header .hidden-menu li.nav-mobile-cols {
+        max-width: 115px;
+        min-width: 115px;
+	}
+}
+*/
+
+/* Special fix for phones 320 px or lower width*/
+/*
+@media (max-width:320px) {
+.header .hidden-menu li.nav-mobile-cols {
+        max-width: 95px;
+        min-width: 95px; /
+	}
+}*/

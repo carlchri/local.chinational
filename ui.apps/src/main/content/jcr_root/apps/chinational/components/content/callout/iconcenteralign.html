@@ -20,6 +20,6 @@
     <span data-sly-test="${link.linkUrl == '#'}" class="small-heading padding-top-10 txt-center heading_site_color">
     	${properties.categoryTitleText || 'Callout Component'}
     </span>
-    <p>${properties.contentDetail}</p>
+    <p>${properties.contentDetail @context = 'html'}</p>
 </div>
 

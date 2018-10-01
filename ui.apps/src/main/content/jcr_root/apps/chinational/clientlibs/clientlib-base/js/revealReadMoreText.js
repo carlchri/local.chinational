@@ -32,3 +32,37 @@ $(".sidebar-box .button").click(function() {
   return false;
     
 });
+
+if (jQuery(window).width() < 768) {
+   if(($(".loc-details-box-desc").outerHeight()) > 100){
+    	$(".read-more-button-wrapper").show();
+    }
+    
+}    
+
+var $locReadMoreButton, $ldbs, $locDetailsBox, locTotalHeight;
+
+$(".loc-details-box .read-more-button").click(function() {
+    
+	  locTotalHeight = 0;
+
+	  $locReadMoreButton = $(this);
+	  $readMoreButtonWrapper  = $locReadMoreButton.parent();
+	  $locDetailsBox = $readMoreButtonWrapper.parent();
+	  $ldbs = $locDetailsBox.find(".loc-details-box-desc");
+	  $readMoreBox = $locDetailsBox.find(".read-more-box");
+	  
+	  // added by Davinder for Location read-more
+	  $ldbs.each(function() {
+		    locTotalHeight += $(this).outerHeight();
+		  });
+	  $readMoreBox.css( "min-height", locTotalHeight+'px' );        
+	  
+	  // fade out read-more
+	  // $readMoreButtonWrapper.fadeOut(10);
+	  $readMoreButtonWrapper.hide();
+	  
+	  // prevent jump-down
+	  return false;
+	    
+	});

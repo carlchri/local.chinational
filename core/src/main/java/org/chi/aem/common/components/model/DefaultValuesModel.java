@@ -42,4 +42,8 @@ public class DefaultValuesModel extends WCMUsePojo {
         return DefaultValuesUtils.getDefaultNewsTileImgSrc(getCurrentPage());
     }
 
+    public String getDefaultMembersPhotoSrc() {
+        return DefaultValuesUtils.getDefaultMembersPhotoSrc(getCurrentPage());
+    }
+
 }

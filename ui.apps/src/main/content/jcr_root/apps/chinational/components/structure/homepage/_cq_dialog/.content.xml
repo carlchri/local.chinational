@@ -85,6 +85,13 @@
                                         fieldLabel="Default Blogs Tile/Featured Image Src"
                                         name="./defaultBlogsTileImgSrc"
                                         rootPath="/content/dam"/>
+                                    <defaultMembersPhotoSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Members Tile Photo Src"
+                                        fieldLabel="Default Members Tile Photo Src"
+                                        name="./defaultMembersPhotoSrc"
+                                        rootPath="/content/dam"/>
                                     <siteExternailizer
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

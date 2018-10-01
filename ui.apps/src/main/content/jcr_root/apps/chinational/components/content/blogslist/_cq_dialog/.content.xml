@@ -47,22 +47,6 @@
                                                         text="Select to hide filtering dropdowns"
                                                         uncheckedValue="false"
                                                         value="true"/>
-                                                    <backgroundColor1
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                            colorsPath="/etc/config/chinational/components/colorpicker/bleedtilebackgroundcolorpicker"
-                                                            fieldDescription="Click on the color box to choose a different color for the tile background"
-                                                            fieldLabel="Background Color for 1st tile"
-                                                            freestylePalette="{Boolean}true"
-                                                            name="./backgroundColorTileOne"/>
-                                                    <backgroundColor2
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                            colorsPath="/etc/config/chinational/components/colorpicker/bleedtilebackgroundcolorpicker"
-                                                            fieldDescription="Click on the color box to choose a different color for the tile background"
-                                                            fieldLabel="Background Color for 2nd tile"
-                                                            freestylePalette="{Boolean}true"
-                                                            name="./backgroundColorTileTwo"/>
                                                 </items>
                                             </well>
                                         </items>

@@ -56,7 +56,8 @@
 
 .cmp-text ol li {
 	counter-increment: li;
-	display: flex;
+	text-indent: -1.28571429em;   /* Added by German to show indent in bullet list (MAM-120) */
+	/* display: flex;          Removed by German to fix an issue with bullet lists (MAM-120) */
 }
 
 /* Added by German for Defect DE2691 */
@@ -209,14 +210,16 @@
     }
 }
 
-/* CSS overrides for rich text under full bleed tile*/
-.full-bleed .cmp-text ol li::before {
+/* CSS overrides for rich text under full bleed tile & description under location comoponent*/
+.full-bleed .cmp-text ol li::before, .loc-details-box .cmp-text ol li::before {
     color: #fff;
 }
 
-.full-bleed .cmp-text ul li::before {
+.full-bleed .cmp-text ul li::before, .loc-details-box .cmp-text ul li::before {
 	color: #fff;
 }
+
+
 
 .full-bleed .cmp-text a ,
 .full-bleed .cmp-text a:visited,
