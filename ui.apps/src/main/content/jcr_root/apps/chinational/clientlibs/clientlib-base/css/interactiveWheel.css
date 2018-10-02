@@ -68,6 +68,13 @@
 .interactive-wheel .header-padding {
     padding-bottom: 25px;   			/* 		German: Requirement for the space between Header and Text	 */ 
 	line-height: 35px;					/*   	German: Fix to avoid extra padding for header 	*/
+	font-family: "myriad-pro", sans-serif;	/*	German: Fixing defect MAM-142 */
+  	font-size: 30px;						/*	German: Fixing defect MAM-142 */
+  	font-weight: normal;					/*	German: Fixing defect MAM-142 */
+  	font-style: normal;						/*	German: Fixing defect MAM-142 */
+  	font-stretch: normal;					/*	German: Fixing defect MAM-142 */
+  	line-height: normal;					/*	German: Fixing defect MAM-142 */
+  	letter-spacing: normal;					/*	German: Fixing defect MAM-142 */
 }
 
 .interactive-wheel .footer-cta a {
