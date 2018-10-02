@@ -93,7 +93,7 @@
                             </buttonMainTab>
                             <smallLinkTab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Small Link Tab"
+                                jcr:title="Upper-Right Link Tab"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
