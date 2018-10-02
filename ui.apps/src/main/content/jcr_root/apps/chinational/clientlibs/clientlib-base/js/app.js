@@ -212,7 +212,7 @@ jQuery(document).ready(function() {
             }
          }
     });
-    checkClasses();
+   /* checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
         removedActiveItem();
@@ -220,7 +220,7 @@ jQuery(document).ready(function() {
     $(window).resize(function() {
         checkClasses();
         removedActiveItem();
-    });
+    }); */
 
     function checkClasses() {
 
@@ -259,7 +259,9 @@ jQuery(document).ready(function() {
 
             if ($(window).width() > 1024) {
                 //console.log("desktop");
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                $(this).not('.lastActiveItem').addClass('fullOpacity');  
+
+
             } else if ($(window).width() <= 1024 && $(window).width() >= 768) { /* Changed it to >= from >, as tablet mode starts at 768*/
                 // console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
@@ -383,11 +385,11 @@ jQuery(document).ready(function() {
             //console.log("window width by quote - " + $('window').width());
             if ($(window).width() > 1024) {
                 //console.log("Desktop - " + $(window).width());
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                $(this).not('.lastActiveItem').addClass('fullOpacity');  
                 if (rrOwlActive.first().width() > 300) {
                     if (total >= 3) {
                         //console.log("desktop window).width() > 1024, rrOwlActive.first().width() > 300,  total >= 3");
-                        $(this).not('.lastActiveItem').addClass('fullOpacity');}
+                        $(this).not('.lastActiveItem').addClass('fullOpacity');}  
                     
                 } else {
                     if (total < 3) {
@@ -466,6 +468,7 @@ jQuery(document).ready(function() {
         });
     }
 
+    /*
     function removedActiveItem() {
         $('.firstActiveItem').each(function(index) {
             if (index === 1) {
@@ -475,7 +478,7 @@ jQuery(document).ready(function() {
         });
     }
 
-
+*/
 
     /* Audio Player 		Removed by German because the replacing code is included in audio-popup.js
     var audioFile;
@@ -599,4 +602,3 @@ function createSticky(sticky) {
         });
     }
 }
-

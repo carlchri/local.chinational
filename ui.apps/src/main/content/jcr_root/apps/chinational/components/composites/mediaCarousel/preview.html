@@ -6,7 +6,7 @@
                 <h4 class="media-fifty" data-sly-test="${mediaCollection.sectionHeading}">${mediaCollection.sectionHeading}</h4>
                 <div class="cus-curosal pstn-reltv hide-mobile full-bleed-tiles ${mediaCollection.editViewItems.size < 8 ?'fw-no-arrows':''} ${mediaCollection.editViewItems.size < 4 ?'rr-no-arrows':''}">
                     <div class="owl-carousel owl-theme media-carousel">
-                        <div class="slide-container">
+                        <div class="slide-container fullOpacity">
                             <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}"
                                  data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='carouselFirstItem'}"></sly>
                             <sly data-sly-test="${mediaCollection.firstItem.type == 'audio'}"
