@@ -220,7 +220,7 @@ public class NewsList implements ComponentExporter {
 
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){
-                LOGGER.info(":: HAS ITEM ::");
+//                LOGGER.info(":: HAS ITEM ::");
                 allNews.remove(item);
             }
         }
@@ -237,7 +237,7 @@ public class NewsList implements ComponentExporter {
 	        }
         }
         
-        for(Page item : featuredNews) {
+        for(Page item : featuredArticlesSelected) {
 			 if(allFilteredNews.contains(item)){
 				 allFilteredNews.remove(item);
 			 } 

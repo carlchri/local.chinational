@@ -220,7 +220,7 @@ public class BlogsList implements ComponentExporter {
 
         for(Page item : featuredArticlesSelected) {
             if (featuredArticlesSelectionList.contains(item)) {
-                LOGGER.info(":: HAS ITEM ::");
+//                LOGGER.info(":: HAS ITEM ::");
                 allBlogs.remove(item);
             }
         }
@@ -234,7 +234,7 @@ public class BlogsList implements ComponentExporter {
 	        }
         }
         
-    	for(Page item : featuredBlogs) {
+    	for(Page item : featuredArticlesSelected) {
 			 if(allFilteredBlogs.contains(item)){
 				 allFilteredBlogs.remove(item);
 			 } 
