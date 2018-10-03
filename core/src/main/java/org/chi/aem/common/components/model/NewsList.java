@@ -138,7 +138,7 @@ public class NewsList implements ComponentExporter {
         newsFeaturedLimit = NEWS_FEATURED_LIMIT;
         totalNumberPages = 1;
         activePage = 1;
-        parentPage = properties.get(PN_PARENT_PAGE, "/content/national/en/media/news"); //currentPage.getPath()
+        parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath()); // properties.get(PN_PARENT_PAGE, "/content/national/en/media/news"); //currentPage.getPath()
         newsTemplate = NEWS_TEMPLATE;
         news_filter = DEFAULT_NEWS_FILTER;
         tagDesc = ""; 
@@ -166,9 +166,9 @@ public class NewsList implements ComponentExporter {
          e.printStackTrace();
         }
 
-
-//        LOGGER.info( "Pagth Info :: "+request.getRequestPathInfo() );
         String[] selectors = request.getRequestPathInfo().getSelectors();
+        String requestPathInfo = request.getRequestPathInfo().toString();
+//        LOGGER.info("Request path info to string :: "+requestPathInfo);
 
         if(selectors.length != 0) {
         	if(selectors[0].matches("[0-9]+")){
@@ -192,7 +192,7 @@ public class NewsList implements ComponentExporter {
 
 		// LOGGER.info("newslist parent page : " + parentPage);
 		// LOGGER.info("newslist news_filter : " + news_filter);
-        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
+
 
 //        for (Page fsa : featuredArticlesSelected) {
 //            LOGGER.info("Featured page title :: "+fsa.getTitle());
@@ -200,15 +200,17 @@ public class NewsList implements ComponentExporter {
 
 //        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
 
-        allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
+        allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate, requestPathInfo); //to get all the news using defined template, sorted by Publish date
 		// LOGGER.info("newslist allNewsSize : " + allNews.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         featuredNews = (List<Page>) articleMap.get("featuredArticles");
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
+
+        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
 
         // log featured news list
 //        for (Page fnam : featuredNews ) {

@@ -180,6 +180,9 @@ public class BlogsList implements ComponentExporter {
         	}
         }
 
+        String requestPathInfo = request.getRequestPathInfo().toString();
+//        LOGGER.info("Request path info to string :: "+requestPathInfo);
+
         if(selectors.length >= 2 && selectors[0].equals("blogs")){
         	blogs_filter = selectors[1];
         } else {
@@ -192,16 +195,16 @@ public class BlogsList implements ComponentExporter {
         	activePage = 1; //for Pagination active class when page load for the first time
         }
 
-        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver);
-//        for (Page fsa : featuredArticlesSelected) {
+        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
+//        for (Page  fsa : featuredArticlesSelected) {
 //            LOGGER.info("Featured page title :: "+fsa.getTitle());
 //        }
 
 		// LOGGER.info("blogslist parent page : " + parentPage);
 		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
-        allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate); //to get all the blogs using defined template, sorted by Publish date
+        allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate, requestPathInfo); //to get all the blogs using defined template, sorted by Publish date
 		// LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit);
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");

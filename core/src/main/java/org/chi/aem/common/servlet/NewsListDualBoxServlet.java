@@ -48,7 +48,7 @@
             try {
                 ResourceResolver resolver = request.getResourceResolver();
                 Session session = resolver.adaptTo(Session.class);
-                Node root = session.getRootNode();
+//                Node root = session.getRootNode();
 
                 // response.setContentType("text/html");
                 response.setContentType("text/plain");
@@ -56,6 +56,7 @@
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
 //                log.info("Resoure resolver set");
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
+                log.info("Request Path from servlet :: "+requestPagePath);
                 String featuredPagesList  = request.getParameter("featuredPagesList");
                 String featuredTag = request.getParameter("featuredTag");
                 if (featuredTag == null) {
@@ -67,7 +68,7 @@
                 Resource res = resourceResolver.getResource(requestPagePath);
 
 //                log.info("Set feature page list string");
-//                log.info("Feature pages list string :: "+ featuredPagesList);
+                log.info("Feature pages list string : Servlet "+ featuredPagesList);
                 String [] featuredPagesArray = featuredPagesList.replace("[","").replace("]","").replace("\"", "").split(",");
 //                log.info("Set featured page list array");
 
@@ -77,19 +78,19 @@
                 pageNode.setProperty(featuredTag, featuredPagesArray);
                 pageNode.setProperty("featuredTag", featuredTag);
 
-                response.getWriter().println("Page Featured List : "+featuredPagesArray);
-//                log.info("Featured page list : "+featuredPagesArray);
-//                log.info("Featured page request Path : "+ requestPagePath);
+                response.getWriter().println("Page Featured List : "+featuredPagesArray.toString());
+                log.info("Featured page list servlet : "+featuredPagesArray[0]);
+                log.info("Featured page request Path servlet : "+ requestPagePath);
 
 //                }
 
                 session.save();
 //                log.info("After Save");
-                session.refresh(true);
+//                session.refresh(true);
 //                log.info("After Refresh");
 
             } catch (Exception e) {
-                log.error("Could not update Featured List reference: " + e);
+                log.error("Could not update Featured List from servlet: " + e);
                 e.printStackTrace();
             }
         }

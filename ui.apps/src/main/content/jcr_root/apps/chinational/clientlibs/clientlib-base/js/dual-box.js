@@ -946,11 +946,14 @@ $('document').ready(function(){
                 // console.log(JSON.stringify(featuredListPagesString));
                 var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
                 // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
+                console.log("Featured selected tag :: "+featuredSelectTag)
+                // debugger;
                 $.ajax({
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
                     data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag}, //passing values to servlet
+
                     success: function (msg) {
                         // $(this).find('select').refresh();
                         alert("Press OK to refresh page.");

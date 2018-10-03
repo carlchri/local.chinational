@@ -11,6 +11,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.Value;
 
+import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
@@ -43,7 +44,7 @@ public final class NewsBlogUtils {
     private static final Map<String, String> tagsMap = new HashMap<String, String>();
     private static final Map<String, String> tagsDescMap = new HashMap<String, String>();
 
-    public static java.util.List<Page> populateListItems(String parentPage, ResourceResolver resourceResolver, String articlesTemplate) {
+    public static java.util.List<Page> populateListItems(String parentPage, ResourceResolver resourceResolver, String articlesTemplate, String requestPathInfo) {
 
     	java.util.List<Page> list = new ArrayList<>();
     	Map<String, String> map = new HashMap<String, String>();
@@ -64,7 +65,7 @@ public final class NewsBlogUtils {
 
         // query.setStart(start_index);
         // query.setHitsPerPage(hits_per_page);
-		getFeaturedArticles(parentPage, resourceResolver, DEFAULT_NEWS_FILTER);
+		getFeaturedArticles(parentPage, resourceResolver, DEFAULT_NEWS_FILTER, requestPathInfo);
         try {
             SearchResult result = query.getResult();
             // LOGGER.info("result.getTotalMatchees() : " + list + " : " + result.getTotalMatches());
@@ -88,7 +89,7 @@ public final class NewsBlogUtils {
          return list;
      }
 
-     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit) {
+     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, int featured_limit, String requestPathInfo) {
 
 //        LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
 //         LOGGER.info("Pagent Page :: "+parentPage);
@@ -128,12 +129,12 @@ public final class NewsBlogUtils {
 //            }
             // to get tags
             Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
-             LOGGER.info("tags: " + tags.length );
+//            LOGGER.info("tags: " + tags.length );
             if(tags.length !=0){
 	           	 for(Tag tag : tags){
 	           		tagName = tag.getTitle();
 
-	           		 LOGGER.info("tagTitle: " + tag.getTitle());
+//	           		    LOGGER.info("tagTitle: " + tag.getTitle());
 		         		if(listTags.isEmpty()){
 		            		listTags.add(tagName);
 		                    tagsMap.put(tag.getName(),tagName);
@@ -148,20 +149,20 @@ public final class NewsBlogUtils {
 //							LOGGER.info("Article Filter :: "+articleFilter);
 		                	addYear(listYears, year);
 //		                	addFeaturedArticle(item, featured_limit);
-							getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+							getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
 		                }else if(articleFilter.equals(tag.getName())){
-//		         			LOGGER.info("Article Filter :: "+articleFilter);
-//		         			LOGGER.info("Tag Filter :: "+ tag.getName());
+		         			LOGGER.info("Article Filter :: "+articleFilter);
+		         			LOGGER.info("Tag Filter :: "+ tag.getName());
 		         			addYear(listYears, year);
 		         			filteredArticles.add(item);
 //		                	addFeaturedArticle(item, featured_limit);
-		                	getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+		                	getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
 		         		}
 	           	 }
             }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
             	addYear(listYears, year);
 //            	addFeaturedArticle(item, featured_limit);
-                getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+                getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
             }
     	 }
     	 
@@ -178,11 +179,11 @@ public final class NewsBlogUtils {
          // and both have different parent page and different tags associated with it
          // Users selects a tag from dropdown in one BlogList component
          // and tag is not there in another Bloglist component dropdown on the same page
-         LOGGER.info("Article filter :: "+articleFilter);
-         LOGGER.info("Article default filter :: "+DEFAULT_NEWS_FILTER);
+//         LOGGER.info("Article filter :: "+articleFilter);
+//         LOGGER.info("Article default filter :: "+DEFAULT_NEWS_FILTER);
          if(!tagsMap.keySet().contains(articleFilter) && !articleFilter.equals(DEFAULT_NEWS_FILTER)){
              LOGGER.info("Contains article filter ::::::::::::");
-         	populateYearsTagsFeatured(parentPage, allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit);
+         	populateYearsTagsFeatured(parentPage, allArticles, resourceResolver, DEFAULT_NEWS_FILTER, featured_limit, requestPathInfo);
           }
 
          // If no featured article present, add the latest article as featured article.
@@ -208,7 +209,7 @@ public final class NewsBlogUtils {
          return m_article;
      }
      
-     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear) {
+     public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear, String requestPathInfo) {
 
          // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
          if(filteredArticles.size() !=0) {
@@ -230,16 +231,16 @@ public final class NewsBlogUtils {
 		           	 for(Tag tag : tags){
 		         			if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
 //		         				addFilteredArticles(item);
-                                getFeaturedArticles(parentPage, resourceResolver, articleFilter);		         			} else if(articleFilter.equals(tag.getName())){
+                                getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);		         			} else if(articleFilter.equals(tag.getName())){
 			         			// LOGGER.debug("INSIDE TAG FILTER");
 //			         			addFilteredArticles(item);
-                                getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+                                getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
 			                }
 		           		
 		           	 }
 	            }else if(articleFilter.equals(DEFAULT_NEWS_FILTER)){
 //	            	addFilteredArticles(item);
-                    getFeaturedArticles(parentPage, resourceResolver, articleFilter);
+                    getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
 	            }
     		}
             
@@ -254,18 +255,47 @@ public final class NewsBlogUtils {
          return m_article;
      }
 
-     public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver, String articleFilter) {
+     public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver, String articleFilter, String  requestPathInfo) {
 
 		 featuredArticles.clear();
+//		 Check parent pages
+//         LOGGER.info("Parent Page :: "+parentPage);
+//         LOGGER.info("Request path info :: "+requestPathInfo);
+//         if ( parentPage != requestPathInfo ) {
+//             parentPage = requestPathInfo;
+////             LOGGER.info("Parent Page changed to :: "+parentPage);
+//         } else {
+////             LOGGER.info("Parent page remains unchanged :: "+parentPage);
+//         }
 		 // get featured pages
 		 String featuredPagesPath = parentPage + "/jcr:content";
-		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
-		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
+//		 LOGGER.info("Parent Page :: "+parentPage);
+
+         // check Page resource
+         String requestPathInfoPath = requestPathInfo + "/jcr:content";
+         Resource requestPathInfoRes = resourceResolver.getResource(requestPathInfoPath);
+//         ValueMap requsetSourceMap = requestPathInfoRes.adaptTo(ValueMap.class);
+//         String fscheck = requsetSourceMap.get("requestPagePath", String.class);
+
+         Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+         ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
+
+         ValueMap requsetSource;
+//         if (fscheck != null || !fscheck.isEmpty() ) {
+//             LOGGER.info("fs check is not empty :: "+fscheck );
+//             requsetSource = requsetSourceMap;
+//
+//         } else {
+//             requsetSource = featuredPagesMap;
+//         }
+//         LOGGER.info("Requst string is Set as :: "+parentPage);
+
+
 //		 String featuredTag = featuredPagesMap.get("featuredTag", String.class);
 //		 LOGGER.info("featured page article filter :: "+articleFilter);
 		 String[] featurdList = featuredPagesMap.get(articleFilter, String[].class);
 		 String noArticle = "Article found";
-////		 LOGGER.info(noArticle);
+//		 LOGGER.info(noArticle);
 		 if (featurdList != null) {
 			 for (String fl : featurdList) {
 //				 LOGGER.info("FeaturedList ::  " + fl);
@@ -278,7 +308,7 @@ public final class NewsBlogUtils {
 			 noArticle = "NoArticle";
 //			 LOGGER.info("Article flag :: "+noArticle);
 		 }
-//
+//		 LOGGER.info("NoArticle equals :: "+noArticle);
 		 if (noArticle != "NoArticle") {
 //		 	LOGGER.info("Articles found :: "+ noArticle);
 			 if (featurdList.length <= 3 && featurdList.length > 0) {
@@ -350,49 +380,83 @@ public final class NewsBlogUtils {
     	 return listArticles;
      }
 
-     public static java.util.List<Page> populateSeletedItems(String parentPage, ResourceResolver resourceResolver) {
-//    	LOGGER.info("Selecteed pages Started!");
-		 // get featured pages
-		 String featuredPagesPath = parentPage + "/jcr:content";
-		 Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
-//		 LOGGER.info("Featured pages res All Items"+featuredPagesRes
-		 ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
-		 String featuredTag = featuredPagesMap.get("featuredPagesTag", String.class).split("/")[1];
-		 String allItems [] = featuredPagesMap.get("AllItems", String[].class);
-//		 LOGGER.info("All items from path :: "+allItems[0]);
+     public static java.util.List<Page> populateSeletedItems(String parentPage, ResourceResolver resourceResolver,String currentPagePath) {
+//         LOGGER.info("Selected pages Started!");
+        try {
+         // get featured pages
+         String featuredTag;
+         String featuredPagesPath = parentPage + "/jcr:content";
+         Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+         ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
 
-//		 LOGGER.info("Selected Featured Tag :: "+featuredTag);
-         if (featuredTag == null || featuredTag.isEmpty()) {
+         String currentPagesJCRPath = currentPagePath  + "/jcr:content";
+         Resource curentPageRes = resourceResolver.getResource(currentPagesJCRPath);
+         ValueMap currentPagesMap = curentPageRes.adaptTo(ValueMap.class);
+         ModifiableValueMap currentPathMap = curentPageRes.adaptTo(ModifiableValueMap.class);
+
+         String featuredTagString = currentPagesMap.get("featuredPagesTag", String.class);
+
+         LOGGER.info("Feature pages String:: " + featuredTagString);
+         if (featuredTagString == null || featuredTagString.isEmpty()) {
+//             LOGGER.info("Featured tag null!!!! " + featuredSelectedArticles.size() +" and " + filteredArticles.size());
+//             featuredSelectedArticles.add(filteredArticles.get(0));
+//             LOGGER.info("Filtered articles added!!!!!");
+//             LOGGER.info("Featured tag string is null!");
              featuredTag = "chi:MediaCenter/AllItems";
-             if ( parentPage.contains("Blogs") ) {
+             if (parentPage.contains("Blogs")) {
                  featuredTag = "chi:Blogs/AllItems";
              }
-         }
-		 String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
+             try {
+//                 LOGGER.info("Featured tag string was null it is now :: "+featuredTag);
+                 currentPathMap.put("featuredPagesTag", featuredTag);
+                 curentPageRes.getResourceResolver().commit();
+             } catch (Exception e) {
+                 LOGGER.error("Could not update featured pages tag reference: " + e);
+                 e.printStackTrace();
+             }
+         } else {
+             featuredTag = featuredTagString.split("/")[1];
 
-//		 for (String fl : featurdList) {
-//			LOGGER.info("FeaturedList ::  "+ fl);
-//		 }
+             LOGGER.info("Selected Featured Tag :: " + featuredTag);
 
-		 featuredSelectedArticles.clear();
-		 if (featurdList.length <= 3 && featurdList.length > 0) {
-//			LOGGER.info("Node has featured list property");
 
-			 for (String fl : featurdList) {
-				 String spnPath = fl;
+             String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
+
+             if (featurdList != null) {
+                 for (String fl : featurdList) {
+                     LOGGER.info("FeaturedList :: " + fl);
+
+                 }
+             }
+
+             featuredSelectedArticles.clear();
+             if (featurdList.length <= 3 && featurdList.length > 0) {
+			 LOGGER.info("Node has featured list property :: "+featurdList.length);
+
+                 for (String fl : featurdList) {
+                     String spnPath = fl;
 //				 LOGGER.info("Spn Path String :: " + spnPath);
-				 if (!spnPath.contains("NoArticle")) {
-					 Resource flRes = resourceResolver.getResource(spnPath);
+                     if (!spnPath.contains("NoArticle")) {
+                         Resource flRes = resourceResolver.getResource(spnPath);
 //					 LOGGER.info("Resoure resolver has resolved :: " + flRes.getPath());
-					 Page flPage = flRes.adaptTo(Page.class);
-					 featuredSelectedArticles.add(flPage);
-				 }
-			 }
-			 for (Page fsa : featuredSelectedArticles) {
-//				 LOGGER.info("Featured Seleted Title" + fsa.getTitle());
-			 }
-		 }
-		 return featuredSelectedArticles;
-	 }
+                         Page flPage = flRes.adaptTo(Page.class);
+                         featuredSelectedArticles.add(flPage);
+                     }
+                 }
+                 for (Page fsa : featuredSelectedArticles) {
+				    LOGGER.info("Featured Seleted Title :: " + fsa.getTitle());
+                 }
+             }
+         }
+//         if (featuredSelectedArticles == null || featuredSelectedArticles.isEmpty() ) {
+//             featuredSelectedArticles.add(filteredArticles.get(0));
+//         }
 
+        } catch (Exception e) {
+            LOGGER.error("Could not populate selected pages pages tag reference: " + e);
+            e.printStackTrace();
+        }
+         return featuredSelectedArticles;
+     }
 }
+

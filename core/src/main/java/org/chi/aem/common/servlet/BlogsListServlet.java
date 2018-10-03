@@ -44,6 +44,7 @@ import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 //QUeryBuilder APIs
 import com.day.cq.wcm.api.Page;
+import sun.rmi.runtime.Log;
 
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
@@ -176,9 +177,10 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        } else {
 	        	blogsFilterYear = DEFAULT_BLOGS_FILTER_YEAR;
 	        }
-	        
-	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear);
+
+	        LOGGER.info("Blogs request path info :: "+request.getPathInfo());
+	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate, request.getPathInfo()); //to get all the news using defined template, sorted by Publish date
+	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear, parentPage);
 	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
