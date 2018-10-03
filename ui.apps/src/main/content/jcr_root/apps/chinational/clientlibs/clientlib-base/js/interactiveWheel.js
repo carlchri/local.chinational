@@ -1,24 +1,34 @@
-var waitForFinalEvent = (function() {
-	var timers = {};
-	return function(callback, ms, uniqueId) {
-		if (!uniqueId) {
-			uniqueId = "Don't call this twice without a uniqueId";
-		}
-		if (timers[uniqueId]) {
-			clearTimeout(timers[uniqueId]);
-		}
-		timers[uniqueId] = setTimeout(callback, ms);
-	};
-})();
 
+$(document).ready(function(){
+  // Variables that you only need to declare once here
 
-// Usage
-$(window).resize(function() {
-	
-	waitForFinalEvent(reCalculateHeight(), 500, "initial resizing");
+	function reCalculateHeight() {
+	    
+		var addingHeights = 0;
+		var parent = $('.wheelContainer');
+	    var header = $('.header-padding.mobile-adjustment');
+		var child = $('.left');
+		var child2 = $('.right');
+
+	    
+		if ($(window).width() <= 600) {
+	        addingHeights = (child.height() + child2.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')) + 100);
+		}
+		else {
+	        addingHeights = (child.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')));
+		}
+	    
+	    parent.css({ height: addingHeights });   // Updating container height with the total height of all elements in container
+		
+	}
+
+  $(window).on("resize", reCalculateHeight);
+
+ 
+  reCalculateHeight();
 	
 	/*************************************
-    Rotate Sections
+  Rotate Sections
 	*************************************/
 	
 	$('.section0').on('click', function(){
@@ -86,55 +96,34 @@ $(window).resize(function() {
 	    $('.initial-text').hide();
 	    $('.color-text').hide();
 	    $('.text0').show();
-	    waitForFinalEvent(reCalculateHeight(), 500, "resizing after section 0");
+	    reCalculateHeight();
 	});
 	
 	$('.section1').on('click', function() {
 	    $('.initial-text').hide();
 	    $('.color-text').hide();
 	    $('.text1').show();
-	    waitForFinalEvent(reCalculateHeight(), 500, "resizing after section 1");
+	    reCalculateHeight();
 	});
 	
 	$('.section2').on('click', function() {
 	    $('.initial-text').hide();
 	    $('.color-text').hide();
 	    $('.text2').show();
-	    waitForFinalEvent(reCalculateHeight(), 500, "resizing after section 2");
+	    reCalculateHeight();
 	});
 	
 	$('.section3').on('click', function() {
 	    $('.initial-text').hide();
 	    $('.color-text').hide();
 	    $('.text3').show();
-	    waitForFinalEvent(reCalculateHeight(), 500, "resizing after section 3");
+	    reCalculateHeight();
 	});
 	
 	$('.section4').on('click', function() {
 	    $('.initial-text').hide();
 	    $('.color-text').hide();
 	    $('.text4').show();
-	    waitForFinalEvent(reCalculateHeight(), 500, "resizing after section 4");
+	    reCalculateHeight();
 	});
-	
-	
-	function reCalculateHeight() {
-	    
-		var addingHeights = 0;
-		var parent = $('.wheelContainer');
-	    var header = $('.header-padding.mobile-adjustment');
-		var child = $('.left');
-		var child2 = $('.right');
-
-	    
-		if ($(window).width() <= 600) {
-	        addingHeights = (child.height() + child2.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')) + 100);
-		}
-		else {
-	        addingHeights = (child.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')));
-		}
-	    
-	    parent.css({ height: addingHeights });   // Updating container height with the total height of all elements in container
-		
-	}
 });
