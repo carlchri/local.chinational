@@ -167,7 +167,7 @@ public class NewsList implements ComponentExporter {
         }
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
-        String requestPathInfo = request.getRequestPathInfo().toString();
+        String requestPathInfo = currentPage.getPath();
 //        LOGGER.info("Request path info to string :: "+requestPathInfo);
 
         if(selectors.length != 0) {
