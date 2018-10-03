@@ -408,8 +408,8 @@ public final class NewsBlogUtils {
              }
              try {
 //                 LOGGER.info("Featured tag string was null it is now :: "+featuredTag);
-                 currentPathMap.put("featuredPagesTag", featuredTag);
-                 curentPageRes.getResourceResolver().commit();
+//                 currentPathMap.put("featuredPagesTag", featuredTag);
+//                 curentPageRes.getResourceResolver().commit();
              } catch (Exception e) {
                  LOGGER.error("Could not update featured pages tag reference: " + e);
                  e.printStackTrace();
@@ -420,7 +420,7 @@ public final class NewsBlogUtils {
              LOGGER.info("Selected Featured Tag :: " + featuredTag);
 
 
-             String[] featurdList = featuredPagesMap.get(featuredTag, String[].class);
+             String[] featurdList = currentPagesMap.get(featuredTag, String[].class);
 
              if (featurdList != null) {
                  for (String fl : featurdList) {
