@@ -90,6 +90,9 @@ public class BlogsList implements ComponentExporter {
 
     // Storing selected featured articles
     private java.util.List<Page> featuredArticlesSelected;
+
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelectionList;
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
@@ -149,6 +152,7 @@ public class BlogsList implements ComponentExporter {
         tagDesc = ""; 
         article_type = "";
         featuredArticlesSelected = new ArrayList<>();
+        featuredArticlesSelectionList = new ArrayList<>();
     	allBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
@@ -212,7 +216,17 @@ public class BlogsList implements ComponentExporter {
         featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
 
-        if(tagsDescMap != null){
+        featuredArticlesSelectionList = allBlogs;
+
+        for(Page item : featuredArticlesSelected) {
+            if (featuredArticlesSelectionList.contains(item)) {
+                LOGGER.info(":: HAS ITEM ::");
+                allBlogs.remove(item);
+            }
+        }
+
+
+                if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(blogs_filter)){
 	            	tagDesc = pair.getValue();
@@ -253,6 +267,8 @@ public class BlogsList implements ComponentExporter {
     public Collection<Page> getFeaturedArticlesSelected() {
         return featuredArticlesSelected;
     }
+
+    public  Collection<Page> geFeaturedArticlesSelectionList() { return featuredArticlesSelectionList; }
 
     @Nonnull
     @Override

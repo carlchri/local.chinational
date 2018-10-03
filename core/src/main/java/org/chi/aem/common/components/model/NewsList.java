@@ -217,7 +217,6 @@ public class NewsList implements ComponentExporter {
         featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
 
         featuredArticlesSelectionList = allNews;
-//        allNews = new ArrayList<>();
 
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){
