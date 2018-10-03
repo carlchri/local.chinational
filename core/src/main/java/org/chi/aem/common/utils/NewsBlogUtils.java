@@ -374,15 +374,15 @@ public final class NewsBlogUtils {
 //             featuredSelectedArticles.add(filteredArticles.get(0));
 //             LOGGER.info("Filtered articles added!!!!!");
 //             LOGGER.info("Featured tag string is null!");
-                featuredTag = "FTAllItems";
-                if (parentPage.contains("Blogs")) {
-                    featuredTag = "FTAllItems";
-                }
+//                featuredTag = "FTAllItems";
+//                if (parentPage.contains("Blogs")) {
+//                    featuredTag = "FTAllItems";
+//                }
                 try {
-                    LOGGER.info("Featured tag string was null it is now :: "+featuredTag);
+                    LOGGER.info("Featured tag string was null it is now :: "+currentPageNode.getProperty("featuredPagesTag"));
                     LOGGER.info("Current page node path is :: "+currentPageNode.getPath());
 //                 currentPagesMap.put("featuredPagesTag", featuredTag);
-                 currentPageNode.setProperty("featuredPagesTag", featuredTag);
+//                 currentPageNode.setProperty("featuredPagesTag", featuredTag);
                  LOGGER.info("featuredPagesTag set");
 //                 curentPageRes.getResourceResolver().commit();
                 } catch (Exception e) {

@@ -927,7 +927,7 @@ $('document').ready(function(){
 
         featuredSelectTagPrefix = $('#featuredTagPrefix').val();
         featuredTagSuffix = $("#tagsFormBox select").val() || "AllItems";
-        if (featuredTagSuffix == nullx) {
+        if (featuredTagSuffix == null) {
             featuredTag = "AllItems";
         }
         featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;

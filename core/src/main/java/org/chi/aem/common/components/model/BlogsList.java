@@ -180,8 +180,8 @@ public class BlogsList implements ComponentExporter {
         	}
         }
 
-        String requestPathInfo = request.getRequestPathInfo().toString();
-//        LOGGER.info("Request path info to string :: "+requestPathInfo);
+        String requestPathInfo = currentPage.getPath();
+        LOGGER.info("Request path info Blogs List :: "+requestPathInfo);
 
         if(selectors.length >= 2 && selectors[0].equals("blogs")){
         	blogs_filter = selectors[1];

@@ -4,7 +4,7 @@
 <div class="chi_dual_box" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
 	<p>Select Tag for Featured Articles selection</p>
 	<form id="tagsFormBox" action="#" method="post">
-		<select multiple="multiple" class="form-control-1" name="search_news_list">
+		<select multiple="multiple" class="form-control-1" name="blog_tags">
 			<option value="AllItems" name="AllItems">All Items</option>
 			<sly data-sly-list.tagsList="${blogsList.tagsMap}">
 				<option value="${tagsList}" name="${tagsList}">
@@ -35,7 +35,7 @@
 		</select>
 		<br>
 		<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
-		<input id="featuredTag" type="hidden" value="${currentPage.properties.featuredPagesTag}" name="featuredTag">
+		<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTagPrefix">
 	</form>
 
 	<!--<ul data-sly-repeat.child="${currentPage.properties['/news-list']}">-->
