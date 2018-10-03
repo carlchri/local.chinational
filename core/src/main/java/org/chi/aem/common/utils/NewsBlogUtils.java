@@ -392,19 +392,19 @@ public final class NewsBlogUtils {
             } else {
                 String featuredTagString = currentPagesMap.get("featuredPagesTag", String.class);
                 featuredTag = featuredTagString.split("/")[1];
-                LOGGER.info("Feature pages String:: " + featuredTagString);
+//                LOGGER.info("Feature pages String:: " + featuredTagString);
 
 //             LOGGER.info("Selected Featured Tag :: " + featuredTag);
 
 
                 String[] featurdList = currentPagesMap.get(featuredTag, String[].class);
 
-                if (featurdList != null) {
-                    for (String fl : featurdList) {
+//                if (featurdList != null) {
+//                    for (String fl : featurdList) {
 //                     LOGGER.info("FeaturedList :: " + fl);
-
-                    }
-                }
+//
+//                    }
+//                }
 
                 featuredSelectedArticles.clear();
                 if (featurdList.length <= 3 && featurdList.length > 0) {

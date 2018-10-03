@@ -28,8 +28,8 @@
             <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
                 <option selected value="${selectedItems.path}">${selectedItems.title} </option>
             </sly>
-            <sly data-sly-list.selectnewslist="${newsList.allNews}">
-                <option data-sly-test="${selectnewslist.properties.cq:tags[0] != currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
+            <sly data-sly-list.selectnewslist="${newsList.featuredArticlesSelectionList}">
+                <option  class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
             </sly>
         </select>
         <br>

@@ -86,6 +86,9 @@ public class NewsList implements ComponentExporter {
     // Storing selected featured articles
     private java.util.List<Page> featuredArticlesSelected;
 
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelectionList;
+
     /* allFilteredNews - storing list of all news articles 
      * filtered based on selection in the dropdown
      * sorted by publish date
@@ -144,6 +147,7 @@ public class NewsList implements ComponentExporter {
         tagDesc = ""; 
         article_type = "";
         featuredArticlesSelected = new ArrayList<>();
+        featuredArticlesSelectionList = new ArrayList<>();
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -212,6 +216,16 @@ public class NewsList implements ComponentExporter {
 
         featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
 
+        featuredArticlesSelectionList = allNews;
+//        allNews = new ArrayList<>();
+
+        for(Page item : featuredArticlesSelected) {
+            if(featuredArticlesSelectionList.contains(item)){
+                LOGGER.info(":: HAS ITEM ::");
+                allNews.remove(item);
+            }
+        }
+
         // log featured news list
 //        for (Page fnam : featuredNews ) {
 //            LOGGER.info("Article Map :: " + fnam.getPath());
@@ -257,6 +271,8 @@ public class NewsList implements ComponentExporter {
     public Collection<Page> getFeaturedArticlesSelected() {
         return featuredArticlesSelected;
     }
+
+    public Collection<Page> getFeaturedArticlesSelectionList() { return featuredArticlesSelectionList; }
 
     @Nonnull
     @Override
