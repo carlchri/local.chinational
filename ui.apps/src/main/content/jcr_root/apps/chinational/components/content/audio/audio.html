@@ -3,8 +3,8 @@
 <div class="component" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
     <div class="row bottom-buffer" data-sly-unwrap = "${properties.bottomOption == 'nomargin'}">
         <div class="col-xs-12 col-md-8" style="max-width: 650px">
-            <label class="button-label">
-                ${audio.sectionHeading || 'Audio Title'}
+            <label class="button-label" data-sly-test="${audio.sectionHeading}">
+                ${audio.sectionHeading}
             </label>
             <div class="chi-audio-player-d">
                 <audio class="chi-audio-player"
