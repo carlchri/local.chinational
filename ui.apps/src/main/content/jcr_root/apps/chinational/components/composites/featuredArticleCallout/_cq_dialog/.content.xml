@@ -47,11 +47,24 @@
                                                         fieldLabel="Enter featured Article Title here:"
                                                         name="./featuredArticleTitle"/>
                                                     <featuredArticleDetail
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="Enter featured Article details here"
-                                                        fieldLabel="Enter featured Article details here:"
-                                                        name="./featuredArticleDetail"/>
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                            useFixedInlineToolbar="{Boolean}true"
+                                                            fieldDescription="Enter featured Article details here"
+                                                            fieldLabel="Enter featured Article details here:"
+                                                            name="./featuredArticleDetail">
+                                                        <rtePlugins jcr:primaryType="nt:unstructured">
+                                                            <format
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <justify
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <misctools
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                        </rtePlugins>
+                                                    </featuredArticleDetail>
                                                 </items>
                                             </well>
                                         </items>
