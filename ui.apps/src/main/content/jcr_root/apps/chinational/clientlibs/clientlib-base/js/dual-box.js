@@ -910,7 +910,7 @@ $('document').ready(function(){
             url:'/content/national/en.featurednewslisttagservlet.html',
             data: {'featuredPagesTag': tagValue, 'requestPagePath': pageUrlsplit},
             success: function(msg){
-                alert("Press OK to refresh page.");
+                // alert("Press OK to refresh page.");
                 location.reload(true);
             },
             error: function(xhr, status, error) {
@@ -954,8 +954,8 @@ $('document').ready(function(){
                 // console.log(JSON.stringify(featuredListPagesString));
                 var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
                 // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
-                console.log("Featured selected tag :: "+featuredSelectTag);
-                console.log("Featured Tag :: "+featuredTag);
+                // console.log("Featured selected tag :: "+featuredSelectTag);
+                // console.log("Featured Tag :: "+featuredTag);
                 // debugger;
                 $.ajax({
                     type: 'GET',
@@ -965,7 +965,7 @@ $('document').ready(function(){
 
                     success: function (msg) {
                         // $(this).find('select').refresh();
-                        alert("Press OK to refresh page.");
+                        // alert("Press OK to refresh page.");
                         location.reload(true);
                         // console.log("Featured Pages :: " + featuredListPagesString);
                     },
