@@ -56,9 +56,12 @@
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
 //                log.info("Resoure resolver set");
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
-//                log.info("Request Path from servlet :: "+requestPagePath);
+                log.info("Request Path from servlet :: "+requestPagePath);
                 String featuredPagesList  = request.getParameter("featuredPagesList");
+                String featuredPagesTag = request.getParameter("featuredPagesTag");
+                log.info("featuredPagesTag :: "+featuredPagesTag);
                 String featuredTag = request.getParameter("featuredTag");
+                log.info("Featured tag from servlet :: "+featuredTag);
                 if (featuredTag == null) {
                     featuredTag = "AllItems";
                 }
@@ -76,7 +79,8 @@
                 Node pageNode = res.adaptTo(Node.class);
 //                log.info("Get Current Property :"+ pageNode.getProperty("featuredList"));
                 pageNode.setProperty(featuredTag, featuredPagesArray);
-                pageNode.setProperty("featuredTag", featuredTag);
+//                pageNode.setProperty("featuredTag", featuredTag);
+                pageNode.setProperty("featuredPagesTag", featuredPagesTag);
 
                 response.getWriter().println("Page Featured List : "+featuredPagesArray.toString());
 //                log.info("Featured page list servlet : "+featuredPagesArray[0]);

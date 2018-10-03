@@ -923,10 +923,14 @@ $('document').ready(function(){
     $("#listBoxForm").submit(function() {
         var featuredListPages = [] || {} ;
         var featuredListPagesString = [] || {} ;
-        var featuredTag, featuredSelectTag;
+        var featuredTag, featuredSelectTag, featuredTagSuffix, featuredSelectTagPrefix;
 
-        featuredSelectTag = $('#featuredTag').val().split("/")[1];
-        // featuredTag = $("#search_news_list").attr('name').split("/")[1];
+        featuredSelectTagPrefix = $('#featuredTagPrefix').val();
+        featuredTagSuffix = $("#tagsFormBox select").val() || "AllItems";
+        if (featuredTagSuffix == nullx) {
+            featuredTag = "AllItems";
+        }
+        featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
         featuredListPages = $('[name="duallistbox_output[]"]').val();
         // console.log("featured  selected Tag :: "+featuredSelectTag);
         // console.log("Featured Pages tag :: "+ featuredTag);
@@ -934,6 +938,10 @@ $('document').ready(function(){
         // if (featuredListPages == null || featuredTag == "") {
         //     featuredListPages = ['NoArticle'];
         // }
+        // if (featuredSelectTag == null) {
+        //     featuredSelectTag = $('#tagsFormBox select option:first').val();
+        // }
+        // debugger;
         featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
             console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
@@ -946,13 +954,14 @@ $('document').ready(function(){
                 // console.log(JSON.stringify(featuredListPagesString));
                 var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
                 // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
-                console.log("Featured selected tag :: "+featuredSelectTag)
+                console.log("Featured selected tag :: "+featuredSelectTag);
+                console.log("Featured Tag :: "+featuredTag);
                 // debugger;
                 $.ajax({
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
-                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredSelectTag}, //passing values to servlet
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredTag, "featuredPagesTag": featuredSelectTag}, //passing values to servlet
 
                     success: function (msg) {
                         // $(this).find('select').refresh();

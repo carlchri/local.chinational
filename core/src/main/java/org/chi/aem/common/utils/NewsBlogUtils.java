@@ -260,85 +260,7 @@ public final class NewsBlogUtils {
         return m_article;
     }
 
-    public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver, String articleFilter, String requestPathInfo) {
-        try {
-            featuredArticles.clear();
-//            LOGGER.info("Article Filter :: " + articleFilter);
-//		 Check parent pages
-//         LOGGER.info("Parent Page :: "+parentPage);
-//         LOGGER.info("Request path info :: "+requestPathInfo);
-//         if ( parentPage != requestPathInfo ) {
-//             parentPage = requestPathInfo;
-////             LOGGER.info("Parent Page changed to :: "+parentPage);
-//         } else {
-////             LOGGER.info("Parent page remains unchanged :: "+parentPage);
-//         }
-            // get featured pages
 
-            // check Page resource
-//         String requestPathInfoPath = requestPathInfo;
-//         Resource requestPathInfoRes = resourceResolver.getResource(requestPathInfoPath);
-//         ValueMap requsetSourceMap = requestPathInfoRes.adaptTo(ValueMap.class);
-//         String fscheck = requsetSourceMap.get("requestPagePath", String.class);
-            String featuredPagesPath = requestPathInfo + "/jcr:content";
-//            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath);
-            Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
-            ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
-
-//         ValueMap requsetSource;
-//         if (fscheck != null || !fscheck.isEmpty() ) {
-//             LOGGER.info("fs check is not empty :: "+fscheck );
-//             requsetSource = requsetSourceMap;
-//
-//         } else {
-//             requsetSource = featuredPagesMap;
-//         }
-
-            String featuredTag = featuredPagesMap.get("featuredTag", String.class);
-//            LOGGER.info("featured page article filter :: " + articleFilter);
-            String[] featurdList = featuredPagesMap.get(articleFilter, String[].class);
-            String noArticle = "Article found";
-//		 LOGGER.info(noArticle);
-//            if (featurdList != null) {
-//                for (String fl : featurdList) {
-////				 LOGGER.info("FeaturedList ::  " + fl);
-//                    if (fl.contains("NoArticle") || fl == null) {
-////                     LOGGER.info("No Article set");
-//                        noArticle = "NoArticle";
-//                    }
-//                }
-//            } else {
-//                noArticle = "NoArticle";
-////			 LOGGER.info("Article flag :: "+noArticle);
-//            }
-//		 LOGGER.info("NoArticle equals :: "+noArticle);
-//            if (noArticle != "NoArticle") {
-////		 	LOGGER.info("Articles found :: "+ noArticle);
-            if (featurdList != null) {
-                if (featurdList.length <= 3 && featurdList.length > 0) {
-//                 LOGGER.info("Node has featured list property");
-
-                    for (String fl : featurdList) {
-                        String spnPath = fl;
-                        Resource flRes = resourceResolver.getResource(spnPath);
-                        Page flPage = flRes.adaptTo(Page.class);
-                        featuredArticles.add(flPage);
-                    }
-                }
-            }
-            LOGGER.info("Number of featured articles :: " + featuredArticles.size());
-            LOGGER.info("Number of filtered articles :: " + filteredArticles.size());
-//            } else {
-            if (featuredArticles.size() == 0) {
-                featuredArticles.add(filteredArticles.get(0));
-                LOGGER.info("No Article was found :: " + filteredArticles.get(0).getTitle());
-            }
-//            }
-        } catch (Exception e) {
-            LOGGER.error("Could not get featured pages :: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
     public static void addYear(java.util.List<String> listYears, String year) {
         if (listYears.isEmpty()) {
@@ -392,42 +314,85 @@ public final class NewsBlogUtils {
         return listArticles;
     }
 
+    public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver, String articleFilter, String requestPathInfo) {
+        try {
+            featuredArticles.clear();
+
+            String featuredPagesPath = requestPathInfo + "/jcr:content";
+//            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath);
+            Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+            ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
+
+//            String featuredTag = featuredPagesMap.get("featuredTag", String.class);
+            String[] featurdList = featuredPagesMap.get(articleFilter, String[].class);
+            String noArticle = "Article found";
+
+            if (featurdList != null) {
+                if (featurdList.length <= 3 && featurdList.length > 0) {
+//                 LOGGER.info("Node has featured list property");
+
+                    for (String fl : featurdList) {
+                        String spnPath = fl;
+                        Resource flRes = resourceResolver.getResource(spnPath);
+                        Page flPage = flRes.adaptTo(Page.class);
+                        featuredArticles.add(flPage);
+                    }
+                }
+            }
+//            LOGGER.info("Number of featured articles :: " + featuredArticles.size());
+//            LOGGER.info("Number of filtered articles :: " + filteredArticles.size());
+//            } else {
+            if (featuredArticles.size() == 0) {
+                featuredArticles.add(filteredArticles.get(0));
+//                LOGGER.info("No Article was found :: " + filteredArticles.get(0).getTitle());
+            }
+//            }
+        } catch (Exception e) {
+            LOGGER.error("Could not get featured pages :: " + e);
+            e.printStackTrace();
+        }
+    }
+
     public static java.util.List<Page> populateSeletedItems(String parentPage, ResourceResolver resourceResolver, String currentPagePath) {
 //         LOGGER.info("Selected pages Started!");
         try {
             // get featured pages
             String featuredTag;
-            String featuredPagesPath = parentPage + "/jcr:content";
-            Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+//            String featuredPagesPath = currentPagePath + "/jcr:content";
+//            Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
 //            ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
 
             String currentPagesJCRPath = currentPagePath + "/jcr:content";
             Resource curentPageRes = resourceResolver.getResource(currentPagesJCRPath);
             ValueMap currentPagesMap = curentPageRes.adaptTo(ValueMap.class);
+            Node currentPageNode = curentPageRes.adaptTo(Node.class);
 //            ModifiableValueMap currentPathMap = curentPageRes.adaptTo(ModifiableValueMap.class);
 
-            String featuredTagString = currentPagesMap.get("featuredPagesTag", String.class);
+            if (!currentPageNode.hasProperty("featuredPagesTag")) {
 
-//         LOGGER.info("Feature pages String:: " + featuredTagString);
-            if (featuredTagString == null || featuredTagString.isEmpty()) {
 //             LOGGER.info("Featured tag null!!!! " + featuredSelectedArticles.size() +" and " + filteredArticles.size());
 //             featuredSelectedArticles.add(filteredArticles.get(0));
 //             LOGGER.info("Filtered articles added!!!!!");
 //             LOGGER.info("Featured tag string is null!");
-                featuredTag = "chi:MediaCenter/AllItems";
+                featuredTag = "FTAllItems";
                 if (parentPage.contains("Blogs")) {
-                    featuredTag = "chi:Blogs/AllItems";
+                    featuredTag = "FTAllItems";
                 }
                 try {
-//                 LOGGER.info("Featured tag string was null it is now :: "+featuredTag);
-//                 currentPathMap.put("featuredPagesTag", featuredTag);
+                    LOGGER.info("Featured tag string was null it is now :: "+featuredTag);
+                    LOGGER.info("Current page node path is :: "+currentPageNode.getPath());
+//                 currentPagesMap.put("featuredPagesTag", featuredTag);
+                 currentPageNode.setProperty("featuredPagesTag", featuredTag);
+                 LOGGER.info("featuredPagesTag set");
 //                 curentPageRes.getResourceResolver().commit();
                 } catch (Exception e) {
                     LOGGER.error("Could not update featured pages tag reference: " + e);
                     e.printStackTrace();
                 }
             } else {
+                String featuredTagString = currentPagesMap.get("featuredPagesTag", String.class);
                 featuredTag = featuredTagString.split("/")[1];
+                LOGGER.info("Feature pages String:: " + featuredTagString);
 
 //             LOGGER.info("Selected Featured Tag :: " + featuredTag);
 
