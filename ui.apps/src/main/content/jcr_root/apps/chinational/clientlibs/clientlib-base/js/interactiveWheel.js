@@ -1,7 +1,16 @@
 
 $(document).ready(function(){
-  // Variables that you only need to declare once here
 
+	// Changing the style for ul elements in the text if any
+	
+	var lineStyle = $('.left ul').css('list-style-position');
+	
+	if (lineStyle == "inside") { 
+		
+		$('.left ul').css('list-style-position','outside')
+		
+	}
+	
 	function reCalculateHeight() {
 	    
 		var addingHeights = 0;
