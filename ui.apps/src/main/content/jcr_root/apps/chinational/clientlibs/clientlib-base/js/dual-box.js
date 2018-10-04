@@ -891,6 +891,11 @@
 
 $('document').ready(function(){
 
+    // Show hide feature article management
+    $(".selectionShowHide").click(function () {
+        $(".chi_dual_box").toggle();
+    });
+
     // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox({
         // preserveSelectionOnMove: 'moved'

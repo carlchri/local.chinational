@@ -87,10 +87,39 @@
 }
 
 /* Additional css added by sbrown */
-.chi_dual_box {
-  padding: 10px 0 30px;
-  border-bottom: 1px solid black;
+.featuredArticleManagement {
+  padding: 20px;
+  border: 1px solid grey;
   margin-bottom: 30px;
+}
+.selectionShowHide {
+  position: relative;
+}
+.selectionShowHide p {
+  position: absolute;
+  top: -5px;
+  right: 20px;
+}
+
+.chi_dual_box p {
+  margin: 0;
+}
+
+.chi_dual_box  p:first-child {
+  margin: 15px 0 0 0;
+}
+
+.chi_dual_box {
+
+}
+
+.selection_labels span {
+  width: 40%;
+  float: left;
+}
+
+.selection_labels span:first-child {
+  width: 52%;
 }
 
 .bootstrap-duallistbox-container .buttons {
