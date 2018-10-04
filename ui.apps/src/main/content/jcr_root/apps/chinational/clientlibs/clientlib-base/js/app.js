@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: false,
         autoHeight: true,
-        margin: 6,					// German: margin-right for tiles, it was 15
+        margin: 5,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 10,
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: true,
         autoHeight: true,
-        margin: 6,					// German: margin-right for tiles, it was 15
+        margin: 5,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 100,
@@ -157,6 +157,7 @@ jQuery(document).ready(function() {
             }
         }
     });
+    
     $('#right-rail-container .media-carousel-mobile').owlCarousel({
         nav: true,
         // loop: false,
@@ -173,6 +174,7 @@ jQuery(document).ready(function() {
             }
         }
     });
+        
     $('#full-width-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
@@ -194,6 +196,7 @@ jQuery(document).ready(function() {
             } 
         }
     });
+    
     $('#right-rail-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
@@ -212,6 +215,7 @@ jQuery(document).ready(function() {
             }
          }
     });
+
    checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
@@ -485,8 +489,6 @@ jQuery(document).ready(function() {
             }
         });
     }
-
-
 
     /* Audio Player 		Removed by German because the replacing code is included in audio-popup.js
     var audioFile;
