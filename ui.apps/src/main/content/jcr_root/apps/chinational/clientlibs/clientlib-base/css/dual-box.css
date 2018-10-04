@@ -102,8 +102,12 @@
   cursor: pointer;
 }
 
-.listBoxForm {
+#listBoxForm {
   margin: 10px 0 0;
+}
+
+.chi_dual_box label {
+  font-size: 20px;
 }
 
 .chi_dual_box p {

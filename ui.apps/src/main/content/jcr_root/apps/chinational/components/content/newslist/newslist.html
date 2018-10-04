@@ -27,7 +27,9 @@
             <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
             <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
         </p>
+
         <p>Select up to Three Titles for Featured Articles</p>
+        <br/>
         <form id="listBoxForm" action="#" method="post">
             <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
                 <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">

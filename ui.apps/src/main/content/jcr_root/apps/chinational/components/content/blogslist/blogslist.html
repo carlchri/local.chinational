@@ -1,46 +1,53 @@
 <sly data-sly-use.blogsList="org.chi.aem.common.components.model.BlogsList"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
-<div class="chi_dual_box" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
-	<p>Select Tag for Featured Articles selection</p>
-	<form id="tagsFormBox" action="#" method="post">
-		<select multiple="multiple" class="form-control-1" name="blog_tags">
-			<option value="AllItems" name="AllItems">All Items</option>
-			<sly data-sly-list.tagsList="${blogsList.tagsMap}">
-				<option value="${tagsList}" name="${tagsList}">
-					${blogsList.tagsMap[tagsList]}
-				</option>
-			</sly>
-		</select>
-	</form>
+<div class="featuredArticleManagement" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
+	<div class="selectionShowHide"><p>+ / -</p></div>
+	<h2>Featured Article Management</h2>
+	<div class="chi_dual_box">
+		<!-- Select Tags for featured article selection -->
+		<p>Select Tag for Featured Articles selection</p>
+		<form id="tagsFormBox" action="#" method="post">
+			<select multiple="multiple" class="form-control-1" name="blog_tags">
+				<option value="AllItems" name="AllItems">All Items</option>
+				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
+					<option value="${tagsList}" name="${tagsList}">
+						${blogsList.tagsMap[tagsList]}
+					</option>
+				</sly>
+			</select>
+		</form>
 
-	<!-- Select box for featured article selection -->
-	<span>Current article filter tag: </span>
-	<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/AllItems'}">From Our CEO</span>
-	<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/FromOurCEO'}">From Our CEO</span>
-	<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/CommunityBenefit'}">Community Benefit</span>
-	<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/WeightManagement'}">Weight Management</span>
-	<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/Cancer'}">Cancer</span>
+		<!-- Select box for featured article selection -->
+		<p>
+			<span>Current article filter tag: </span>
+			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/AllItems'}">From Our CEO</span>
+			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/FromOurCEO'}">From Our CEO</span>
+			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/CommunityBenefit'}">Community Benefit</span>
+			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/WeightManagement'}">Weight Management</span>
+			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/Cancer'}">Cancer</span>
+		</p>
 
-	<p>Select Three Titles for Featured Articles</p>
+		<p>Select Three Titles for Featured Articles</p>
+		<br/>
+		<form id="listBoxForm" action="#" method="post">
+			<select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
+				<sly data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
+					<option selected value="${selectedItems.path}">${selectedItems.title} </option>
+				</sly>
+				<sly data-sly-list.selectnewslist="${blogsList.allBlogs}">
+					<option data-sly-test="${selectnewslist.properties.cq:tags[0] != currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
+				</sly>
+			</select>
+			<br>
+			<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
+			<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTagPrefix">
+		</form>
 
-	<form id="listBoxForm" action="#" method="post">
-		<select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
-			<sly data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
-				<option selected value="${selectedItems.path}">${selectedItems.title} </option>
-			</sly>
-			<sly data-sly-list.selectnewslist="${blogsList.allBlogs}">
-				<option data-sly-test="${selectnewslist.properties.cq:tags[0] != currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}" class=" ${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectnewslist.path}">${selectnewslist.title}</option>
-			</sly>
-		</select>
-		<br>
-		<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
-		<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTagPrefix">
-	</form>
-
-	<!--<ul data-sly-repeat.child="${currentPage.properties['/news-list']}">-->
-	<!--<li>${child.title}</li>-->
-	<!--</ul>-->
+		<!--<ul data-sly-repeat.child="${currentPage.properties['/news-list']}">-->
+		<!--<li>${child.title}</li>-->
+		<!--</ul>-->
+	</div>
 </div>
 
 <span class="blog_page_tag_desc"></span>
