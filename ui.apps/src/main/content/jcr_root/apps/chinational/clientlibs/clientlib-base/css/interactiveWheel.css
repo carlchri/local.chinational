@@ -50,7 +50,7 @@
     float: left;
     max-width: 272px;					/*   	German: Marked as per directions in Zeplin 	*/
     box-sizing: border-box;
-    margin-top: -15px;					/*   	German: Fix for RichText default extra padding at top 	*/
+    /* margin-top: -15px;				removed now	   	German: Fix for RichText default extra padding at top 	*/
 	/* padding-right: 69px;				removed now   	German: Padding as per directions in Zeplin 	*/
 }
 
@@ -191,7 +191,6 @@
     /* background: #FFB731;  	German: Removed to fix defect MAM-150 */
     border: 2px solid #fff;
     border-radius: 50%;
-    z-index: -1;    		/*  German: Added to fix defect MAM-151 */
 }
 
 .wheel .circle .nose img {
@@ -201,6 +200,7 @@
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
+    z-index: 1;    		/*  German: Added to fix defect MAM-151 */
 }
 
 .nose-img-mobile {
@@ -311,9 +311,7 @@
 }
 
 
-
 /* Added by German */
-
 
 @media (min-width: 600px) and (max-width: 720px) {
 	
@@ -346,7 +344,7 @@
         width: 100%;
         clear: both;
         float: none;
-        padding-top: 122px;
+        padding-top: 122px;  /* must change to 152 when the header is 2 lines instead of one. */
         max-width: 275px;
     }
     

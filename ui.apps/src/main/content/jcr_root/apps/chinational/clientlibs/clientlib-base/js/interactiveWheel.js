@@ -1,6 +1,10 @@
 
 $(document).ready(function(){
 
+	// only for initial text
+	
+	$('.interactive-wheel .left').css('margin-top','-15px')
+		
 	// Changing the style for ul elements in the text if any
 	
 	var lineStyle = $('.left ul').css('list-style-position');
@@ -13,6 +17,57 @@ $(document).ready(function(){
 	
 	function reCalculateHeight() {
 	    
+		// Checking the height of the header for adjustment of the text in mobile
+		
+		var $heightDiv = $('.header-padding');
+
+
+		// Adjustments for text container
+		
+        if ( (($("#right-rail-container").length > 0) && ($(window).width() > 990) && ($(window).width() < 1125)) || (($(window).width() > 599) && ($(window).width() < 720))) {
+			$(".interactive-wheel .left").css("max-width", "222px");
+		}
+		else {
+			$(".interactive-wheel .left").css("max-width", "272px");
+		}
+
+        // Adjustments for space between header and text depending on the element/initial text shown
+        
+		if (($(".header-padding").height() > 40) && ($(window).width() < 600)) {
+
+            if ($('.initial-text').css('display') == 'none') {
+				var new_val = "152px";    // When the header uses 2 lines height and any element is active
+	       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+            }
+            else {
+				var new_val = "135px";    // When the header uses 2 lines height and initial text is active
+	       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+            }
+	    }
+		
+		else {
+			
+			if (($(".header-padding").height() < 40) && ($(window).width() < 600)) {
+				var old_val = "122px";    // When the header uses 1 line height
+			    $(".interactive-wheel .left.mobile-adjustment").css("padding-top", old_val);
+			}
+			
+			else {
+				 if($('.initial-text').css('display') == 'none') {
+					 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '17px');
+				 }
+				 else {
+					 
+						 $(".interactive-wheel .left.mobile-adjustment").css("margin-top", '-15px');
+						 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '0px');
+					 
+				 }
+			}
+		}
+			
+		
+		// Recalculate the size of the other elements...
+		
 		var addingHeights = 0;
 		var parent = $('.wheelContainer');
 	    var header = $('.header-padding.mobile-adjustment');
