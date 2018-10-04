@@ -218,6 +218,12 @@ public class NewsList implements ComponentExporter {
 
         featuredArticlesSelectionList = allNews;
 
+        if (featuredNews.size() == 0) {
+            featuredNews.add(allFilteredNews.get(0));
+        }
+//        LOGGER.info("Featured News no of articles :: "+featuredNews.size());
+//        LOGGER.info("Filtered News no of articles :: "+allFilteredNews.size());
+
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){
 //                LOGGER.info(":: HAS ITEM ::");

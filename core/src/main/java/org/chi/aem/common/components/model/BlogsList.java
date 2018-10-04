@@ -218,6 +218,10 @@ public class BlogsList implements ComponentExporter {
 
         featuredArticlesSelectionList = allBlogs;
 
+        if (featuredBlogs.size() == 0) {
+            featuredBlogs.add(allFilteredBlogs.get(0));
+        }
+
         for(Page item : featuredArticlesSelected) {
             if (featuredArticlesSelectionList.contains(item)) {
 //                LOGGER.info(":: HAS ITEM ::");

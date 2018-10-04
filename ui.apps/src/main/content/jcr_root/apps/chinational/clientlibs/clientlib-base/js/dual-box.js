@@ -942,8 +942,12 @@ $('document').ready(function(){
         //     featuredSelectTag = $('#tagsFormBox select option:first').val();
         // }
         // debugger;
-        featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
-            console.log("featuredListPages length :: "+featuredListPages.length);
+        if (featuredListPages != null ) {
+            featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
+        } else {
+            featuredListPagesString = ["No article"];
+        }
+            // console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
                 // console.log("featuredListPagesString length :: "+featuredListPagesString.length);
 

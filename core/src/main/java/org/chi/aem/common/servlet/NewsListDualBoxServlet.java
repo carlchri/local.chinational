@@ -56,12 +56,12 @@
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
 //                log.info("Resoure resolver set");
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
-                log.info("Request Path from servlet :: "+requestPagePath);
+//                log.info("Request Path from servlet :: "+requestPagePath);
                 String featuredPagesList  = request.getParameter("featuredPagesList");
                 String featuredPagesTag = request.getParameter("featuredPagesTag");
-                log.info("featuredPagesTag :: "+featuredPagesTag);
+//                log.info("featuredPagesTag :: "+featuredPagesTag);
                 String featuredTag = request.getParameter("featuredTag");
-                log.info("Featured tag from servlet :: "+featuredTag);
+//                log.info("Featured tag from servlet :: "+featuredTag);
                 if (featuredTag == null) {
                     featuredTag = "AllItems";
                 }

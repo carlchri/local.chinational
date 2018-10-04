@@ -69,7 +69,7 @@ public final class NewsBlogUtils {
 
         // query.setStart(start_index);
         // query.setHitsPerPage(hits_per_page);
-        getFeaturedArticles(parentPage, resourceResolver, DEFAULT_NEWS_FILTER, requestPathInfo);
+//        getFeaturedArticles(parentPage, resourceResolver, DEFAULT_NEWS_FILTER, requestPathInfo);
         try {
             SearchResult result = query.getResult();
             // LOGGER.info("result.getTotalMatchees() : " + list + " : " + result.getTotalMatches());
@@ -326,8 +326,9 @@ public final class NewsBlogUtils {
 //            String featuredTag = featuredPagesMap.get("featuredTag", String.class);
             String[] featurdList = featuredPagesMap.get(articleFilter, String[].class);
             String noArticle = "Article found";
-
-            if (featurdList != null) {
+            if (featurdList[0].contains("No article")) {
+                LOGGER.info("Featured List no Article");
+            } else  {
                 if (featurdList.length <= 3 && featurdList.length > 0) {
 //                 LOGGER.info("Node has featured list property");
 
@@ -344,7 +345,7 @@ public final class NewsBlogUtils {
 //            } else {
             if (featuredArticles.size() == 0) {
                 featuredArticles.add(filteredArticles.get(0));
-//                LOGGER.info("No Article was found :: " + filteredArticles.get(0).getTitle());
+                LOGGER.info("No Article was found :: " + filteredArticles.get(0).getTitle());
             }
 //            }
         } catch (Exception e) {
