@@ -33,7 +33,5 @@
 			 class="${properties.useOriginalSize?'image-max-width-responsive':'image-responsive'}" alt="${image.alt || 'Image Component'}"/>
 	</picture>
 </a>
-<div class="" data-sly-test="${properties.imageCaption}">
-	<p class="light-txt">${properties.imageCaption}</p>
-</div>
+<p class="light-txt" data-sly-test="${properties.imageCaption}">${properties.imageCaption}</p>
 <sly data-sly-call="${template.placeholder @ isEmpty=!image.fileReference}"></sly>

@@ -201,7 +201,7 @@
 .loc-details-box {
   background: #426da9;
   padding:26px 53px 34px 65px;
-  margin-top: -5px;
+  /*margin-top: -5px; not needed as per Ze*/
 }
 
 .loc-details-box-heading{
@@ -331,7 +331,7 @@
 }
 
 #right-rail-container .location .dividingColumns {
-	float: left;
+	float: none; /* Making it */
 	width: 34%;
 }
 
@@ -392,6 +392,10 @@
 	 .location .adjust-height {
 		margin-top: -20px; 	
 	}
+
+	.location .adjust-height .map-box {
+    		margin-top: 20px; /* removing -20px margin for map for CHIMCM-1207 */
+    }
 	
 	.location #location-graphic-area {
 		min-width: 100%;
@@ -399,7 +403,7 @@
 	}
 	
 	#full-width-container .location .dividingColumns {
-		float: left;
+		float: none; /* changed from left to none, it was hiding icons under blue box and moving blue box heading to middle */
 		width: 34%;
 	}
 	

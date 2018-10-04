@@ -60,7 +60,7 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     private Session session;
     
     private static String TEMPLATE_PATH = "/etc/notification/email/chinational/emailTemplate.html";
-    private static String SENDER_EMAIL = "admin@chinational.com";
+    //private static String SENDER_EMAIL = "admin@chinational.com";
     private static String SUBJECT = "Campaign Form Submitted";
     private static String CC_EMAIL = "";
     private static String EMAIL_BODY = "Here are the details of the Campaign form submitted";
@@ -89,7 +89,8 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     	//populate Email parameters with default values
     	emailParams.put("emailBodyIntro", EMAIL_BODY);
     	//  Customize the sender email address - if required
-    	emailParams.put("senderEmailAddress", SENDER_EMAIL);
+    	// No need to send this, email service has the config
+		// emailParams.put("senderEmailAddress", SENDER_EMAIL);
     	// emailParams.put("senderName", SENDER_NAME);
     	emailParams.put("ccEmail", CC_EMAIL);
     	emailParams.put("subject", SUBJECT);
