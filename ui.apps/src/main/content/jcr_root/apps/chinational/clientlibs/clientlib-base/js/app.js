@@ -212,7 +212,7 @@ jQuery(document).ready(function() {
             }
          }
     });
-    checkClasses();
+   checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
         removedActiveItem();
@@ -220,20 +220,20 @@ jQuery(document).ready(function() {
     $(window).resize(function() {
         checkClasses();
         removedActiveItem();
-    });
+    }); 
 
     function checkClasses() {
 
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        console.log("checkClasses carousel total:  " + total);
+        //console.log("checkClasses carousel total:  " + total);
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
-            console.log('full width container');
+            //console.log('full width container');
             // add class to first item
             if (index === 0) {
                 // this is the first one
-                console.log('this is the first one: ' + index);
+                //console.log('this is the first one: ' + index);
                 $(this).addClass('firstActiveItem');
             }
             // if (index === 1) {
@@ -247,14 +247,14 @@ jQuery(document).ready(function() {
             // add class to last class
             if (index === 3) {
                 // this is the forth item.
-                console.log('this is the fourth one: ' + index);
+                //console.log('this is the fourth one: ' + index);
                 $(this).addClass('forthActiveItem');
             }
 
             if (total >= 5) {
                 // add class to last class
                 if (index === total - 1 && total > 1) {
-                    console.log('add lastActiveItem to last one: ' + index);
+                    //console.log('add lastActiveItem to last one: ' + index);
                     // if screen size is bigger than 1290, we can show 5 at a time
                     if ($(window).width() <= 1290) {
                         $(this).addClass('lastActiveItem');
@@ -267,8 +267,9 @@ jQuery(document).ready(function() {
             }
 
             if ($(window).width() > 1024) {
-                console.log("desktop add fullOpacity to all except lastActiveItem ");
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                //console.log("desktop");
+                //$(this).not('.lastActiveItem').addClass('fullOpacity');  
+            	$(this).addClass('fullOpacity');
             } else if ($(window).width() <= 1024 && $(window).width() >= 768) { /* Changed it to >= from >, as tablet mode starts at 768*/
                 // console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
@@ -392,11 +393,11 @@ jQuery(document).ready(function() {
             //console.log("window width by quote - " + $('window').width());
             if ($(window).width() > 1024) {
                 //console.log("Desktop - " + $(window).width());
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                $(this).not('.lastActiveItem').addClass('fullOpacity');  
                 if (rrOwlActive.first().width() > 300) {
                     if (total >= 3) {
                         //console.log("desktop window).width() > 1024, rrOwlActive.first().width() > 300,  total >= 3");
-                        $(this).not('.lastActiveItem').addClass('fullOpacity');}
+                        $(this).not('.lastActiveItem').addClass('fullOpacity');}  
                     
                 } else {
                     if (total < 3) {
@@ -474,6 +475,7 @@ jQuery(document).ready(function() {
             }
         });
     }
+
 
     function removedActiveItem() {
         $('.firstActiveItem').each(function(index) {
@@ -608,4 +610,3 @@ function createSticky(sticky) {
         });
     }
 }
-

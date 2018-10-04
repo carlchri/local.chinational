@@ -387,7 +387,7 @@
 
 .mediaCarousel .inactive-Thumbs {
 	min-height: 170px;
-	opacity: 0.3;
+	opacity: 0.3; 
 	background-color: #e7e7e7;
 	border: 10px solid #e7e7e7;
 	margin-top: 1px;
@@ -598,11 +598,11 @@
 
 .mediaCarousel .media-carousel .owl-item {
 	transition: all 0.25s ease 0s;
-	opacity: .3;
+	opacity: .3;	
 }
 
 .mediaCarousel .owl-stage .owl-item {
-	opacity: .3;
+	opacity: .3;	
 }
 
 .mediaCarousel .media-carousel-mobile .owl-stage .owl-item {
@@ -610,7 +610,7 @@
 }
 
 .mediaCarousel .owl-stage .owl-item.lastActiveItem {
-	opacity: .3;
+	opacity: .3;	
 }
 
 .mediaCarousel .owl-stage .owl-item.firstActiveItem:nth-child(2) {
