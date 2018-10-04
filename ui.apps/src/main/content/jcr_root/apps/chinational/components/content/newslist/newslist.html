@@ -1,10 +1,10 @@
 <sly data-sly-use.newsList="org.chi.aem.common.components.model.NewsList"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
-<div class="featuredArticleManagement">
-    <div class="selectionShowHide" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}"><p>show / Hide</p></div>
+<div class="featuredArticleManagement" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
+    <div class="selectionShowHide"><p>+ / -</p></div>
     <h2>Featured Article Management</h2>
-    <div class="chi_dual_box" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
+    <div class="chi_dual_box">
         <!-- Select Tags for featured article selection -->
 
         <p>Select Tag for Featured Articles selection</p>
@@ -20,18 +20,14 @@
         </form>
 
         <!-- Select box for featured article selection -->
-        <span>Current article filter tag: </span>
-        <span data-sly-test="${currentPage.properties.featuredPagesTag == null || currentPage.properties.featuredPagesTag == ''}">All Items</span>
-        <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}">All Items</span>
-        <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
-        <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
+        <p>
+            <span>Current article filter tag: </span>
+            <span data-sly-test="${currentPage.properties.featuredPagesTag == null || currentPage.properties.featuredPagesTag == ''}">All Items</span>
+            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}">All Items</span>
+            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
+            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
+        </p>
         <p>Select up to Three Titles for Featured Articles</p>
-
-        <div class="selection_labels"><p>
-                <span>Available Articles</span>
-                <span>Selected Features</span>
-            </p>
-        </div>
         <form id="listBoxForm" action="#" method="post">
             <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
                 <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">

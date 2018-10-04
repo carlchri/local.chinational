@@ -99,6 +99,11 @@
   position: absolute;
   top: -5px;
   right: 20px;
+  cursor: pointer;
+}
+
+.listBoxForm {
+  margin: 10px 0 0;
 }
 
 .chi_dual_box p {

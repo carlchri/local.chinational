@@ -898,7 +898,8 @@ $('document').ready(function(){
 
     // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox({
-        // preserveSelectionOnMove: 'moved'
+        selectedListLabel: 'Selected Features',
+        nonSelectedListLabel: 'Available Articles'
     });
     var pageUrl = String(window.location.pathname);
     // console.log("page url : "+pageUrl)
