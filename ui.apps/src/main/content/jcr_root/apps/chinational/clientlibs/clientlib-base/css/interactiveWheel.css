@@ -75,6 +75,7 @@
   	font-stretch: normal;					/*	German: Fixing defect MAM-142 */
   	line-height: normal;					/*	German: Fixing defect MAM-142 */
   	letter-spacing: normal;					/*	German: Fixing defect MAM-142 */
+  	max-width: 322px;						/*	German: Fixing defect MAM-142 */
 }
 
 .interactive-wheel .footer-cta a {

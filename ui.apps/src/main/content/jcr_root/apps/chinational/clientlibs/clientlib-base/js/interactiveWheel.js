@@ -11,7 +11,8 @@ $(document).ready(function(){
 	
 	if (lineStyle == "inside") { 
 		
-		$('.left ul').css('list-style-position','outside')
+		$('.left ul').css('list-style-position','outside');
+		$('.left ul').css('list-style-type','circle');    // German: Fixing MAM-145 with circle bullet point
 		
 	}
 	
