@@ -18,7 +18,7 @@
 				                </div>
 				                <div class="event-content">
 				                    <span class="small-heading">${properties.featuredArticleTitle}</span>
-				                    <p>${properties.featuredArticleDetail}</p>
+				                    <p>${properties.featuredArticleDetail @context = 'html'}</p>
 				                    <div class="link-wrapper" data-sly-test="${!properties.linkButtonNotRequired}"
 				                         data-sly-resource="${'button' @ resourceType='chinational/components/content/button'}">
 				                    </div>

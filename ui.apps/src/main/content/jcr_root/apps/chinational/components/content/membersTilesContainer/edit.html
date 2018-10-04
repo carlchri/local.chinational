@@ -4,7 +4,7 @@
 	<div id="wrapper" class="editMode">
 		<h3>Member Tiles Container Edit View</h3>
 		<div data-sly-list.item="${mediaCollection.editViewItems}">
-			<h3>Here goes ${item.name}:</h3>
+			<h3>${item.name}:</h3>
 			<div data-sly-resource="${item.id @ resourceType='chinational/components/content/membersTiles'}"></div>
 		</div>
 	</div>

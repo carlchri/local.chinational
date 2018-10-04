@@ -15,7 +15,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Location Settings Tab"
+                        jcr:title="General Settings Tab"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">

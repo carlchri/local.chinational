@@ -294,7 +294,8 @@
 /* Added by German for Member Tiles */ 
 
 .expertiseAreaSize {
-	min-height: 60px;
+	min-height: 33px;				  /* 	German: Fixing defect MAM-128  */
+	margin-bottom: 17px !important;   /*	German: Assuring this is as per in Zeplin (defect MAM-128)  */
 }
 
 .member-width {
@@ -312,7 +313,7 @@
 
 .tile-desc-width span {
   	display: inline-block;
-  	margin-bottom: 13px;
+  	margin-bottom: 13px !important;  /*  German: Assuring this is the right margin at bottom as per defect MAM-128 */
 }
 
 .physician-tiles-padding {
@@ -338,17 +339,22 @@
 }
 
 .radiusForImage {
-	border-radius: 11px;
+	/* border-radius: 11px;   	German: Removing as per defect MAM-122  */
+}
+
+.adjusted-image {
+	max-height: 100px;
 }
 
 .logoPlaceholder {
 	width: 170px;
 	height: 100px;
-	border-radius: 11px;
+	/* border-radius: 11px;     German: Removing as per defect MAM-122  */
 	clear: both;
 	bottom: 0;
     z-index: -1;  
-    margin-top: 14px;                                  
+    /* margin-top: 14px;  		German: Removed as per defect MAM-128   */
+    text-align: left;      	/* 	German: Changed to left align, it was centered   */        					
 }
 
 .pointerMouse {
