@@ -89,7 +89,7 @@ public class FooterContactUs extends WCMUsePojo {
 		ValueMap designMap = DesignUtils.getDesignMap(getCurrentDesign(), getCurrentStyle());
 		targetBlank = designMap.get(APPT_TARGET_TO , false);
 		linkUrl = designMap.get(APPT_LINK, "#");
-		apptText = designMap.get(APPT_LABEL , "Default");
+		apptText = designMap.get(APPT_LABEL , "");
 		LOGGER.debug("FooterContactUs label:" + apptText);
 		if (StringUtils.isNotEmpty(linkUrl) && !"#".equals(linkUrl)) {
 			linkUrl = LinkUtils.externalize(linkUrl);
