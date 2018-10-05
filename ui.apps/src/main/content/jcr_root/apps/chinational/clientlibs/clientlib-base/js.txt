@@ -31,4 +31,6 @@ js/highlight.js
 js/bootstrap-multiselect.js
 js/search.js
 js/search_predictive.js
+js/interactiveWheel.js
 js/twitter.js
+js/table.js

@@ -12,7 +12,7 @@
 
 						<sly data-sly-test="${properties.memberName}">
 
-							<div class="rightSideTile tile-img col-xs-5 col-md-4">
+							<div id="tilePhoto" class="rightSideTile tile-img col-xs-5 col-md-4">
 								<sly data-sly-test.link="${properties.memberImageSrc}"> 
 									<img src="${properties.memberImageSrc @ context='unsafe'}" alt="Profile Image"> 
 								</sly>
@@ -32,8 +32,12 @@
 									<div class="expertiseAreaSize">
 										<p>${properties.memberExpertise @context = 'html'}</p>
 									</div>
-									<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder stretchImage" style="background-image:url('${properties.memberLogo @ context='styleString'}');"></div>
-									
+									<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder">
+										<picture>
+									    	<source srcset="${properties.memberLogo}" sizes="100vw">
+									        <img src="${properties.memberLogo}" class="adjusted-image radiusForImage image-max-width-responsive" alt="Logo">
+										</picture>
+									</div>
 								</div>
 								
           

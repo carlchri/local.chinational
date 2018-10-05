@@ -5,9 +5,15 @@
 
 .video img {
 	width: 100%;
-	margin: 0 0 15px 0;
+	margin: 0 0 0 0; /* Change to remove margin from img under video - 0 0 15px 0*/
+}
+.video .light-txt, .image .light-txt {
+    margin-top: 10px !important; /* light-text css uses margin top with important, hence needed here too*/
 }
 
+.image picture img {
+	margin: 0 0 0 0; /* Change to remove margin from image component - 0 0 15px 0*/
+}
 
 .video-button-small {
 	width: 38px;
@@ -119,7 +125,6 @@
 }
 
 
-
 @media ( min-width : 992px) {
 	.right-rail {
 		margin-left: 40px;
@@ -151,6 +156,10 @@
 	.video-inner {
 		height: 140px;
 	}
+
+	.video .light-txt, .image .light-txt {
+        padding: 0 0 0 0;  /* override light-text padding, as we are setting margin*/
+    }
 }
 
 /*  Added by German to fix issue with accordion-wrapper as per Defect DE2569  */

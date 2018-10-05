@@ -14,27 +14,79 @@ jQuery(document).ready(function() {
             jQuery('.menu-label').text('MENU');
         }
     });
-    var lastItem;
-    $('.header ul li a').click(function(e) {
-        var currentItem = $(this);
-        jQuery('.header ul li a').removeClass('dd-opened');
-        jQuery(this).addClass('dd-opened');
-        e.stopPropagation();
-        if ($(this).next('.hidden-menu').css('display') == ('none')) {
-            $(lastItem).next('.hidden-menu').slideUp();
-            $(this).next('.hidden-menu').slideDown();
+    
+    //
+    // Start for Menu Events
+    //
+
+    $(document).ready(function () {
+
+      	var lastItem;
+
+      	// When you click on the menu item...
+
+        $('.header ul li a').click(function(e) {
+
+        	// Remove any other element open (close it)
+
             jQuery('.header ul li a').removeClass('dd-opened');
+
+            // Add to this element the open class
+
             jQuery(this).addClass('dd-opened');
-        } else {
-            $(this).next('.hidden-menu').slideUp();
+            // Stop checking the rest of the DOM
+            e.stopPropagation();
+
+            // If opening a menu item that has sub elements hidden then...
+            if ($(this).next('.hidden-menu').css('display') == ('none')) {
+                // let's close the last element if any
+                $(lastItem).next('.hidden-menu').slideUp();
+                // Show the elements underneath the current element
+                $(this).next('.hidden-menu').slideDown();
+                // Remove any other element open if any
+                jQuery('.header ul li a').removeClass('dd-opened');
+                // Add to this element the status of open
+                jQuery(this).addClass('dd-opened');
+            } else {
+                $(this).next('.hidden-menu').slideUp();
+                jQuery('.header ul li a').removeClass('dd-opened');
+            }
+            lastItem = $(this);
+        });
+
+        // Added by German to open the second level navigation items
+        $('.header .hidden-menu a:has(i)').click(function(){
+			var toggleClassName = $(this).attr('class');
+            if ($(this).is('#third-level-menu-open')) {
+                // This will close the second level children when the object includes all children
+                $(this).removeAttr('id');
+				$(this).children('i').removeClass('arrow-up').addClass('arrow-down');
+                $('.header .hidden-menu li.'+toggleClassName).addClass('hidden-sm hidden-xs');
+            } else {
+				// Remove every status of hidden for the children
+				$('.header .hidden-menu li.'+toggleClassName).removeClass('hidden-sm hidden-xs');
+                $(this).attr('id', 'third-level-menu-open');
+                $(this).children('i').removeClass('arrow-down').addClass('arrow-up');
+            }
+        });
+
+		$(document).click(function() {
+            jQuery('.hidden-menu', this).slideUp();
             jQuery('.header ul li a').removeClass('dd-opened');
-        }
-        lastItem = $(this);
+        });
     });
-    $(document).click(function() {
-        jQuery('.hidden-menu', this).slideUp();
-        jQuery('.header ul li a').removeClass('dd-opened');
-    });
+
+
+    //
+	// End of Menu Events
+	//
+    //
+
+
+
+
+
+
     $('#myDropdown').on('show.bs.dropdown', function() {
         // do something…
     });
@@ -50,7 +102,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: false,
         autoHeight: true,
-        margin: 15,
+        margin: 5,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 10,
@@ -73,7 +125,7 @@ jQuery(document).ready(function() {
         nav: true,
         // dots: true,
         autoHeight: true,
-        margin: 15,
+        margin: 5,					// German: margin-right for tiles, it was 15
         loop: false,
         autoWidth: true,
         // stagePadding: 100,
@@ -105,6 +157,7 @@ jQuery(document).ready(function() {
             }
         }
     });
+    
     $('#right-rail-container .media-carousel-mobile').owlCarousel({
         nav: true,
         // loop: false,
@@ -121,6 +174,7 @@ jQuery(document).ready(function() {
             }
         }
     });
+        
     $('#full-width-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
@@ -142,6 +196,7 @@ jQuery(document).ready(function() {
             } 
         }
     });
+    
     $('#right-rail-container .profile-carousel').owlCarousel({
         nav: true,
         // loop: false,
@@ -160,7 +215,8 @@ jQuery(document).ready(function() {
             }
          }
     });
-    checkClasses();
+
+   checkClasses();
     $('.owl-carousel').on('translated.owl.carousel', function(event) {
         checkClasses();
         removedActiveItem();
@@ -168,12 +224,12 @@ jQuery(document).ready(function() {
     $(window).resize(function() {
         checkClasses();
         removedActiveItem();
-    });
+    }); 
 
     function checkClasses() {
 
         var total = $('.media-carousel .owl-stage .owl-item.active').length;
-        //console.log("carousel total:  " + total);
+        //console.log("checkClasses carousel total:  " + total);
         var fOwlActive = $('#full-width-container .media-carousel .owl-stage .owl-item.active');
         $('#full-width-container .media-carousel.media-carousel .owl-stage .owl-item').removeClass('fullOpacity firstActiveItem lastActiveItem');
         $('#full-width-container .media-carousel .owl-stage .owl-item.active').each(function(index) {
@@ -181,6 +237,7 @@ jQuery(document).ready(function() {
             // add class to first item
             if (index === 0) {
                 // this is the first one
+                //console.log('this is the first one: ' + index);
                 $(this).addClass('firstActiveItem');
             }
             // if (index === 1) {
@@ -194,20 +251,29 @@ jQuery(document).ready(function() {
             // add class to last class
             if (index === 3) {
                 // this is the forth item.
+                //console.log('this is the fourth one: ' + index);
                 $(this).addClass('forthActiveItem');
             }
 
             if (total >= 5) {
                 // add class to last class
                 if (index === total - 1 && total > 1) {
-                    $(this).addClass('lastActiveItem');
+                    //console.log('add lastActiveItem to last one: ' + index);
+                    // if screen size is bigger than 1290, we can show 5 at a time
+                    if ($(window).width() <= 1290) {
+                        $(this).addClass('lastActiveItem');
+                    } else if ($(window).width() > 1290 && total > 5) {
+                        // if there is a 6th col, then keep it with opacity 0.3
+                        $(this).addClass('lastActiveItem');
+                    }
                 }
 
             }
 
             if ($(window).width() > 1024) {
                 //console.log("desktop");
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                //$(this).not('.lastActiveItem').addClass('fullOpacity');  
+            	$(this).addClass('fullOpacity');
             } else if ($(window).width() <= 1024 && $(window).width() >= 768) { /* Changed it to >= from >, as tablet mode starts at 768*/
                 // console.log("tablet");
                 if (fOwlActive.first().width() > 300 || fOwlActive.first().next().width() > 300) {
@@ -331,11 +397,11 @@ jQuery(document).ready(function() {
             //console.log("window width by quote - " + $('window').width());
             if ($(window).width() > 1024) {
                 //console.log("Desktop - " + $(window).width());
-                $(this).not('.lastActiveItem').addClass('fullOpacity');
+                $(this).not('.lastActiveItem').addClass('fullOpacity');  
                 if (rrOwlActive.first().width() > 300) {
                     if (total >= 3) {
                         //console.log("desktop window).width() > 1024, rrOwlActive.first().width() > 300,  total >= 3");
-                        $(this).not('.lastActiveItem').addClass('fullOpacity');}
+                        $(this).not('.lastActiveItem').addClass('fullOpacity');}  
                     
                 } else {
                     if (total < 3) {
@@ -414,6 +480,7 @@ jQuery(document).ready(function() {
         });
     }
 
+
     function removedActiveItem() {
         $('.firstActiveItem').each(function(index) {
             if (index === 1) {
@@ -423,9 +490,7 @@ jQuery(document).ready(function() {
         });
     }
 
-
-
-    /* Audio Player */
+    /* Audio Player 		Removed by German because the replacing code is included in audio-popup.js
     var audioFile;
     var audioTitle;
     var ply = document.getElementById('audio-player');
@@ -444,6 +509,8 @@ jQuery(document).ready(function() {
         ply.src = audioFile;
         $('#audio-modal-Label').text(audioTitle);
     });
+    
+    */
 
     /* Read more function */
     $('.more').each(function() {
@@ -545,4 +612,3 @@ function createSticky(sticky) {
         });
     }
 }
-

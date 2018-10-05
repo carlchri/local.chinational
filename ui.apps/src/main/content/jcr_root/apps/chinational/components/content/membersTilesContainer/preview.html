@@ -1,0 +1,29 @@
+<sly data-sly-use.mediaCollection="org.chi.aem.common.components.model.MediaCollection"
+     data-sly-use.template="chinational/components/commons/templates.html"/>
+
+<sly data-sly-test="${mediaCollection}">
+	<div class="component">
+		<div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
+			<div class="col-sm-12">
+			    <div id="wrapper" class="previewMode">
+					<div id="membersContainer" class="${properties.numberOfTiles || '4'}" data-sly-list.item="${mediaCollection.editViewItems}">
+						<div id="first">
+							<div data-sly-resource="${item.id @ resourceType='chinational/components/content/membersTiles'}"></div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="tiles-wrapper col-xs-12" style="margin-top: 20px; margin-bottom: 20px;">
+					<div class="tile">
+						<div class="tile-inner row">
+							<div class="link-wrapper pointerMouse">
+								<a id="membersLoadMoreButton" class="learn-more-btn border-orange members_list_show_more"><span>LOAD MORE</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <sly data-sly-include="../../commons/bottomOption.html"></sly>  
+    </div>         
+</sly>

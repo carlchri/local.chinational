@@ -15,6 +15,8 @@
 */-->
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
     <sly data-sly-call="${clientlib.js @ categories='chinational.dependencies'}"/>
+    <!-- Including direcrly for audio player, as AEM minify is not working with this JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.9/build/mediaelement-and-player.min.js"></script>
     <sly data-sly-call="${clientlib.js @ categories='chinational.base'}"/>
     <!--/* Load authoring related client libraries */-->
     <sly data-sly-test="${wcmmode.preview || wcmmode.edit}" data-sly-call="${clientLib.js @ categories='chinational.authoring'}"/>

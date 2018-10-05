@@ -1,7 +1,7 @@
 <sly data-sly-use.video="org.chi.aem.common.components.model.Video"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
-    <div class="video-container">
-        <div class="sub-Thumbs">
+    <div class="video-container mc-video">
+        <div class="sub-Thumbs" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
             <div class="video">
                 <a class="video_popup" id="video" video-url="${video.videoUrl}">
                     <img src="${video.imageUrl}">
@@ -14,7 +14,7 @@
                 </a>
             </div>
         </div>
-        <!-- Close the Video Contaifner -->
+        <!-- Close the Video Container -->
         <div class="media-text">
             <!-- Wrapped the titles and captions were applicable in video text wrapper / Not for large carousel item -->
             <span class="thumb-titles">${video.sectionHeading}</span>
