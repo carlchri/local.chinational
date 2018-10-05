@@ -29,7 +29,8 @@
 				<span data-sly-test="${!linkMember}" class="small-heading heading_site_color">
 					${properties.memberName}
 				</span>
-				<p>${properties.memberExpertise}</p>
+				<p>${properties.memberExpertise @context = 'html'}</p>
+				<div data-sly-test="${properties.memberLogo}" class="logoPlaceholder stretchImage" style="background-image:url('${properties.memberLogo @ context='styleString'}');"></div>
 			</div>
 		</sly>
           

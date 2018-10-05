@@ -1,26 +1,22 @@
 <sly data-sly-use.tile="org.chi.aem.common.components.model.McImageTile"
      data-sly-use.template="chinational/components/commons/templates.html"></sly>
-
-<div class="carousel-item item slide tablet desktop" style="width: 452px">
-    <div class="flex-box">
-        <div class="carousel-description carousel-image">
-            <div class="main-player">
-                <div class="v-container">
-                    <div class="link-wrapper">
-                        <a href="${tile.linkUrl}"
-                           target="${tile.targetBlank==true ?'_blank':'_self'}"
-                           data-sly-unwrap="${tile.linkUrl == '#'}">
-                            <img src="${properties.imageUrl}"/>
-                        </a>
-                    </div>
-                </div>
-                <div class="gutter-top media-text">
-                    <span class="main-play-title" data-sly-test="${properties.title}">${properties.title}</span>
-                    <span class="caption" data-sly-test="${properties.description}">${properties.description}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="carousel-item item slide desktop">
+	    <div class="flex-box">
+	        <div class="carousel-description carousel-image">
+	            <div class="main-player" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+	                <div class="v-container">
+	                    <div class="link-wrapper">
+	                        <a href="${tile.linkUrl}" target="${tile.targetBlank==true ?'_blank':'_self'}" data-sly-unwrap="${tile.linkUrl == '#'}">
+	                            <img class="cover" src="${properties.imageUrl}"/>
+	                            <span class="main-play-title custom-button" data-sly-test="${properties.title}">${properties.title}</span>
+	                        </a>
+	                    </div>
+	                </div>
+					<span class="a-brief-description sub-header-fix truncate" data-sly-test="${properties.description}">${properties.description}</span>
+	
+	            </div>
+	        </div>
+	    </div>
+	</div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!properties.imageUrl}"></sly>
 

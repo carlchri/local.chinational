@@ -4,4 +4,4 @@
     jcr:description="to create a profile carousel from list of pages"
     jcr:primaryType="cq:Component"
     jcr:title="Profile Carousel"
-    componentGroup="CHI General"/>
+    componentGroup=".fixed-chi"/>

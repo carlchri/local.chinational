@@ -3,5 +3,5 @@
     cq:icon="viewList"
     jcr:description="Media Carousel Image Tile Component - used as part of Media Carousel Carousel Component"
     jcr:primaryType="cq:Component"
-    jcr:title="Media Carousel Image with link Tile"
+    jcr:title="Media Carousel Image"
     componentGroup=".fixed-chi"/>

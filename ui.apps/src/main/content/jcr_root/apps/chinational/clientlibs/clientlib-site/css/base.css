@@ -390,7 +390,7 @@ hr {
     font-size: 48px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-    margin: -2px 0 5px 0px;
+    margin: -2px 0 11px 0px; /* fix the bottom padding to 11 px matc Zeplin */
 }
 
 .large-blue-txt.page-title {
@@ -917,6 +917,10 @@ p:last-child {
 
 .right-rail .separator.gutter-sides {
     padding: 0;
+}
+
+.right-rail-standalone-twitter {
+	margin: 20px 0;
 }
 
 .right-rail-text p {
@@ -1466,6 +1470,7 @@ img {
     font-size: 14px;
     margin: 0 0 15px 0; /* Updated margin to only have bottom padding, as image above adds its own margin bottom, for video*/
     /*     padding: 8px 0 20px 0;    Removed by German for content-details_RR.html */
+    margin-top: 8px !important;   /* Added by German for Image and video padding requirements in MAM-96 */
 }
 
 .calloutTiles .callOuts {
@@ -1521,6 +1526,18 @@ img {
     }
     .custome-dd-outer .dropdown-menu {
         width: 688px;
+    }
+
+    /* Updated as margin was nor working with z-index of components, like location map
+        so, converted to padding for tablet and mobile*/
+    .heading h1,
+    .heading h2,
+    .heading h3,
+    .heading h4,
+    .heading h5,
+    .heading h6 {
+        margin-bottom: 0;
+        padding-bottom: 8px;
     }
     
 }
@@ -1607,7 +1624,7 @@ img {
         padding: 0;
     }
     .light-txt {
-        padding: 8px 0 0 0;
+        padding: 8px 0 0 0; 
     }
     .video-button {
         width: 32px;
