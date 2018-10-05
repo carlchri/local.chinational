@@ -9,6 +9,11 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
   overflow-y: scroll;
 }
 
+/* Fix for donation page select dropdown*/
+.bbox-root select{
+   -webkit-appearance: menulist;
+}
+
 /* 4x3 Aspect Ratio */
 .contact-container-4x3 {
   padding-bottom: 160%;
