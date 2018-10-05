@@ -573,7 +573,7 @@
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .icon-play-orange
 	{
-	display: none;
+	/* display: none; 		German: Fixing the missing arrow for last item in carousel  */
 }
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  a {
