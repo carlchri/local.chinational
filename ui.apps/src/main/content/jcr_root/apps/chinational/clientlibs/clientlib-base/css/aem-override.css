@@ -12,6 +12,7 @@ _::-webkit-full-page-media, _:future, :root .contact-container {
 /* Fix for donation page select dropdown*/
 #bbox-root select{
    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
 }
 
 /* 4x3 Aspect Ratio */
