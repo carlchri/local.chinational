@@ -15,15 +15,17 @@
 				                        <img src="/etc/designs/chicommon/images/arrow.svg">
 				                    </div>
 				                    <div class="circle small-wheel">
-				                        <div class="circle-rotate transform1">
+				                    	<div class="circle-rotate transform1">
 				                            <img src="${properties.image_wheel}" class="circle-image">
+				                        </div>
+				                    	<div class="nose ${properties.noNoseImage? 'in' : ''}">
+				                            <img class="nose-img-desktop" src="${properties.image_nose}" alt="nose">
+				                            <img class="nose-img-mobile" src="${properties.image_small_nose}">
+				                        </div>
+				                        <div class="circle-rotate transform1" style="margin-top: -222px; margin-left: -1px;">
 											<sly data-sly-list.wheelItem="${wheelCollection.wheelCompartmentsDetails}">
 					                        	 <img src="${wheelItem.compartment_image}" class="location${wheelItemList.index}${properties.noNoseImage? '-withoutCenter' : ''} snot section${wheelItemList.index}" alt="${wheelItem.compartment_image_alt_text}">
 					                    	</sly>
-				                        </div>
-				                        <div class="nose ${properties.noNoseImage? 'in' : ''}">
-				                            <img class="nose-img-desktop" src="${properties.image_nose}" alt="nose">
-				                            <img class="nose-img-mobile" src="${properties.image_small_nose}">
 				                        </div>
 				                    </div>
 				                </div>

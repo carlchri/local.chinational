@@ -10,7 +10,7 @@
 }
 
 .interactive-wheel .in {
-  display: none;
+  	display: none;
 }
 
 .interactive-wheel .wheelContainer {
@@ -176,7 +176,6 @@
 
 .wheel .circle .circle-rotate .circle-image {
     width: 100%;
-    z-index: -10;			/*  German: Added to fix defect MAM-151 */
 }
 
 
@@ -189,19 +188,18 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    /* background: #FFB731;  	German: Removed to fix defect MAM-150 */
-    border: 2px solid #fff;
+    /* background: #FFB731;  						German: Removed to fix defect MAM-150 	*/
+    /* border: 2px solid #fff;						German: Removed to fix defect MAM-151 	*/
     border-radius: 50%;
 }
 
 .wheel .circle .nose img {
-    width: 70%;
+    width: 100%;							/*  	German: Changed to fix defect MAM-151, it was 70% 	*/
     height: auto;
     top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    z-index: 1;    		/*  German: Added to fix defect MAM-151 */
 }
 
 .nose-img-mobile {
@@ -217,35 +215,35 @@
 
 /* With Center image (nose) */
 
-.interactive-wheel .location0 {			/* 		German: Element 1 location with nose 	*/
+.interactive-wheel .location0 {				/* 		German: Element 1 location with nose 	*/
     position: absolute;
     top: 40%;
     left: 4%;
     cursor: pointer;
 }
 
-.interactive-wheel .location1 {			/* 		German: Element 2 location with nose 	*/
+.interactive-wheel .location1 {				/* 		German: Element 2 location with nose 	*/
     position: absolute;
     top: 9%;
     left: 28%;
     cursor: pointer;
 }
 
-.interactive-wheel .location2 {			/* 		German: Element 3 location with nose 	*/
+.interactive-wheel .location2 {				/* 		German: Element 3 location with nose 	*/
     position: absolute;
     top: 18%;
     left: 64%;
     cursor: pointer;
 }
 
-.interactive-wheel .location3 {			/* 		German: Element 4 location with nose 	*/
+.interactive-wheel .location3 {				/* 		German: Element 4 location with nose 	*/
     position: absolute;
     top: 58%;
     left: 64%;
     cursor: pointer;
 }
 
-.interactive-wheel .location4 {			/* 		German: Element 5 location with nose 	*/
+.interactive-wheel .location4 {				/* 		German: Element 5 location with nose 	*/
     position: absolute;
     top: 71%;
     left: 29%;
