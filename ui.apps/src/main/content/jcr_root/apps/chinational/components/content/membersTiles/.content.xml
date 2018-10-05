@@ -3,6 +3,6 @@
     cq:icon="viewList"
     jcr:description="To create tiles of Members/Physicians"
     jcr:primaryType="cq:Component"
-    jcr:title="Profile Tile [Individual Manual]"
+    jcr:title="Profile Tile"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>
