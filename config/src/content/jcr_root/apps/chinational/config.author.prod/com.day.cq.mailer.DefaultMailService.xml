@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="sling:OsgiConfig"
     debug.email="{Boolean}true"
-    from.address="chifedid@catholichealth.net"
+    from.address="campaigns@catholichealth.net"
     smtp.host="email-smtp.us-west-2.amazonaws.com"
     smtp.password="AlAK7LZL6cFWzdyy+kly8R+ASI3xO3S4Om08Gw6GIfZR"
     smtp.port="25"

@@ -24,7 +24,7 @@
 }
 
 .mediaCarousel .link-wrapper.mc-audio {
-	margin-left: -5px;
+	/* margin-left: -5px;		German: Removed to fix alignment issue with audio tiles in carousel */
 }
 
 .mediaCarousel .audio-container img {
@@ -310,6 +310,17 @@
 	text-align: -webkit-center;
 }
 
+/* German: Applies to Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+	
+	.link-wrapper.sub-Thumbs.mc-audio {
+		margin-bottom: 3px;
+	}    
+
+}
+
 .mediaCarousel .full-bleed-tiles {
 	margin-left: 4.2%;
 	margin-right: -4%;
@@ -562,7 +573,7 @@
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .icon-play-orange
 	{
-	display: none;
+	/* display: none; 		German: Fixing the missing arrow for last item in carousel  */
 }
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  a {
@@ -626,7 +637,7 @@
 }
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
-	opacity: .3 !important;
+	opacity: .3;   			/*   German: Removing !important to fix MAM-141 */
 }
 
 .mediaCarousel .media-carousel-mobile .owl-stage .owl-item.active.lastActiveItem
