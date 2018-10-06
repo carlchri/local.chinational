@@ -250,19 +250,21 @@
 			                                        jcr:primaryType="nt:unstructured"
 			                                        showhidetargetvalue="true"/>
 			                                    <items jcr:primaryType="nt:unstructured">
-		                                            <detailsBoxHeading
+			                                    	 <detailsBoxHeading
 		                                                jcr:primaryType="nt:unstructured"
 		                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 		                                                emptyText="Enter heading for Location Details Box"
 		                                                fieldLabel="Additional Details Heading"
-		                                                name="./detailsBoxHeading"/>
+		                                                name="./detailsBoxHeading"
+		                                                wrapperClass="chi-location-details-box-heading"/>
 		                                            <locationDescription
 		                                                jcr:primaryType="nt:unstructured"
 		                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
 		                                                useFixedInlineToolbar="{Boolean}true"
 		                                                emptyText="Enter description for location."
 		                                                fieldLabel="Additional Details"
-		                                                name="./locDescription">
+		                                                name="./locDescription"
+		                                                wrapperClass="chi-location-description">
 		                                                <rtePlugins jcr:primaryType="nt:unstructured">
 		                                                    <format
 		                                                            jcr:primaryType="nt:unstructured"
@@ -275,6 +277,45 @@
 		                                                            features="*"/>
 		                                                </rtePlugins>
 		                                            </locationDescription>
+		                                            <extrafieldcontainer
+		                                                    granite:class="hide list-option-detailsbox-showhide-target"
+		                                                    jcr:primaryType="nt:unstructured"
+		                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+		                                                <granite:data
+		                                                    jcr:primaryType="nt:unstructured"
+		                                                    showhidetargetvalue="enable"/>
+		                                                <items jcr:primaryType="nt:unstructured">
+		                                                    <detailsBoxHeading
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                        emptyText="Enter heading for Location Details Box"
+		                                                        fieldDescription="Enter heading for Location Details Box"
+		                                                        fieldLabel="Location Details Box Heading"
+		                                                        name="./detailsBoxHeading"
+		                                                        />
+		                                                    <locationDescription
+		                                                        jcr:primaryType="nt:unstructured"
+		                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+		                                                        useFixedInlineToolbar="{Boolean}true"
+		                                                        emptyText="Enter description for location."
+		                                                        fieldDescription="Enter description for location."
+		                                                        fieldLabel="Location Description:"
+		                                                        name="./locDescription"
+		                                                        wrapperClass="chi-location-description">
+		                                                        <rtePlugins jcr:primaryType="nt:unstructured">
+		                                                            <format
+		                                                                    jcr:primaryType="nt:unstructured"
+		                                                                    features="*"/>
+		                                                            <justify
+		                                                                    jcr:primaryType="nt:unstructured"
+		                                                                    features="*"/>
+		                                                            <misctools
+		                                                                    jcr:primaryType="nt:unstructured"
+		                                                                    features="*"/>
+		                                                        </rtePlugins>
+		                                                    </locationDescription>
+		                                                </items>
+		                                            </extrafieldcontainer>
 		                                         </items>
 				                             </showHideContainer>
                                         </items>
