@@ -7,7 +7,9 @@
 	        ${properties.sectionHeading} 
 	        <span class="by-username-copy-2">
 	        	<span class="text-style-1">  by </span>
-	        	${properties.user}
+	        	<a href="https://twitter.com/${properties.user}">
+					${properties.user}
+				</a> 
 	        </span>
 	        <span class="twitterAlignRight" data-sly-test="${properties.selectFollowIconType == 'traditional'}">
 		        <a 	class="twitter-follow-button"
