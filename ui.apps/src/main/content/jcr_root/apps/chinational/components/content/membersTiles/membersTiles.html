@@ -23,7 +23,7 @@
 						
 							<div id="memberLeftSide" class="leftSideTile">
 								<div id="memberPresentationText" class="tile-desc col-xs-7 col-md-8 tile-desc-width">
-									<sly data-sly-test.linkMember="${properties.selectLinkForMember == 'true'}">
+									<sly data-sly-test.linkMember="${properties.selectLinkForMember == 'true' || properties.selectLinkForMember == 'linkToPageReqd'}">
 										<span class="small-heading heading_site_color"> 
 											<a href="${properties.memberLinkTo}" target="${properties.targetBlank == 'true' ?'_blank':'_self'}">${properties.memberName}</a>
 										</span> 
