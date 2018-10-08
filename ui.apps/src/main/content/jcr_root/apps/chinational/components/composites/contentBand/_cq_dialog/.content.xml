@@ -43,8 +43,8 @@
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Yes, if image is required in the text."
-                                                        fieldLabel="Image in Text Selection"
+                                                        fieldDescription="Select &quot;Yes&quot; to insert an image into the text."
+                                                        fieldLabel="Insert Video/Image Into Text"
                                                         name="./imageInTextSelection">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <imageNotRequired
