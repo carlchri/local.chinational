@@ -37,7 +37,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Heading"
                                                         fieldDescription="This text will be used as heading for the audio section"
-                                                        fieldLabel="Audio Heading (usually used in media carousel)"
+                                                        fieldLabel="Audio Heading"
                                                         name="./sectionHeading"/>
                                                     <audioText
                                                         jcr:primaryType="nt:unstructured"
@@ -49,8 +49,8 @@
                                                     <audioUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Audio URL"
-                                                        fieldLabel="Audio URL"
+                                                        fieldDescription="AEM path or link to audio file.  Use this format for external links: https://www.example.com"
+                                                        fieldLabel="Audio AEM Path or URL"
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
