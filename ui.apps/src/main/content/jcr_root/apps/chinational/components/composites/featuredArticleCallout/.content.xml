@@ -4,6 +4,6 @@
     jcr:description="Featured Article and Callout  Composite Component"
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
-    jcr:title="Featured Article Callout"
+    jcr:title="Featured Article Plus  Callout Tiles"
     allowedParents="[*/parsys]"
     componentGroup="CHI General"/>
