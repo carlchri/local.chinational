@@ -15,7 +15,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="General Settings Tab"
+                        jcr:title="General Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -30,23 +30,16 @@
                                         	<title
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Title of the Interactive Wheel"
-                                                fieldLabel="Title for Interactive Wheel:"
-                                                name="./title"/>
-                                             <noTitle
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Selecting this checkbox will hide the title."
-                                                name="./noTitle"
-                                                text="Select to Hide Title"
-                                                uncheckedValue="false"
-                                                value="true"/>
+                                                emptyText="This field is mandatory"
+                                                fieldLabel="Heading"
+                                                name="./title"
+                                                required="{Boolean}true"/>
                                             <initial_text
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                 useFixedInlineToolbar="{Boolean}true"
-                                                fieldDescription="Initial text of the Interactive Wheel"
-                                                fieldLabel="Initial text for Interactive Wheel:"
+                                                fieldDescription="The body copy that will appear on the initial view of the component. Will be replaced as the user navigates around the wheel with compartment-specific text."
+                                                fieldLabel="Wheel Introductory Text"
                                                 name="./initial_text">
 	                                            <rtePlugins jcr:primaryType="nt:unstructured">
 	                                                <format
@@ -60,82 +53,40 @@
 	                                                        features="*"/>
 	                                            </rtePlugins>
 	                                        </initial_text>
-                                            <initial_text_message
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="This field is mandatory"
-                                                fieldDescription="Initial Messaje of the Interactive Wheel"
-                                                fieldLabel="Initial Message for Interactive Wheel:"
-                                                name="./initial_text_message"
-                                                required="{Boolean}true"/>
                                             <image_wheel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                emptyText="This field is mandatory"
-                                                fieldDescription="Select Wheel Image"
-                                                fieldLabel="Wheel Image:"
+                                                fieldDescription="Customize the background wheel graphic. Will use a standard wheel design by default."
+                                                fieldLabel="Custom Wheel Image"
                                                 name="./image_wheel"
-                                                rootPath="/content/dam"
-                                                required="{Boolean}true"/>
-                                            <noNoseImage
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Selecting this checkbox will hide the image at the center."
-                                                name="./noNoseImage"
-                                                text="Select to Hide Center Image (nose)"
-                                                uncheckedValue="false"
-                                                value="true"/>
+                                                rootPath="/content/dam"/>
                                             <image_nose
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Select Nose Image"
-                                                fieldLabel="Nose Image:"
+                                                fieldDescription="Customize the wheel by adding a graphic to appear at the center of the wheel. By default, no graphic will appear."
+                                                fieldLabel="Wheel Center Image"
                                                 name="./image_nose"
                                                 rootPath="/content/dam"/>
-                                            <image_small_nose
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Select Nose Image for Mobile"
-                                                fieldLabel="Nose Image for mobile devices:"
-                                                name="./image_small_nose"
-                                                rootPath="/content/dam"/>
-                                            <noCTAbutton
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Selecting this checkbox will hide the CTA link from being displayed."
-                                                name="./noCTAButton"
-                                                text="Select to Hide CTA link"
-                                                uncheckedValue="false"
-                                                value="true"/>
                                             <schedule_appointment
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Message for the CTA link of the Interactive Wheel"
-                                                fieldLabel="Message in CTA Link:"
+                                                fieldLabel="Call to Action Text"
                                                 name="./schedule_appointment"/>
                                             <destinationCTA
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Select Link for CTA botton"
-                                                fieldLabel="CTA Link to:"
+                                                fieldDescription="User may click this link to navigate away from the site. For external links, use format http://www.example.com"
+                                                fieldLabel="Call to Action AEM Path or URL"
                                                 name="./destinationCTA"
                                                 rootPath="/content"/>  
                                             <backgroundColor
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
                                                 colorsPath="/etc/config/chinational/components/colorpicker/interactiveWheelbackgroundcolorpicker"
-                                                fieldDescription="Click on the color box to choose a different color for the component background"
+                                                fieldDescription="Click on the color box to choose a different color for the component background."
                                                 fieldLabel="Background Color"
                                                 freestylePalette="{Boolean}true"
                                                 name="./backgroundColor"/>
-                                            <fontColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/interactiveWheelfontcolorpicker"
-                                                fieldDescription="Click on the color box to choose a different color for the component font"
-                                                fieldLabel="Font Color"
-                                                freestylePalette="{Boolean}true"
-                                                name="./fontColor"/>
                                         </items>
                                     </well>
                                 </items>
@@ -144,7 +95,7 @@
                     </mainSettingsTab>
                     <detailsSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Details Settings Tab"
+                        jcr:title="Wheel Compartment Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -172,31 +123,27 @@
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 			                                                emptyText="This field is mandatory"
-			                                                fieldDescription="Compartment Title in Interactive Wheel"
-			                                                fieldLabel="Compartment Title:"
+			                                                fieldLabel="Compartment Heading"
 			                                                name="./compartment_title"
 			                                                required="{Boolean}true"/>
 			                                        	<compartment_image
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-			                                                emptyText="This field is mandatory"
 			                                                fieldDescription="Compartment Image in Interactive Wheel"
-			                                                fieldLabel="Compartment Image path:"
+			                                                fieldLabel="Compartment Image AEM Path"
 			                                                name="./compartment_image"
-			                                                rootPath="/content/dam"
-			                                                required="{Boolean}true"/>
+			                                                rootPath="/content/dam"/>
 			                                            <compartment_image_alt_text
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-			                                                fieldDescription="Compartment Image ALT text in Interactive Wheel"
-			                                                fieldLabel="Compartment Image ALT text:"
+			                                                fieldDescription="The text that will appear when the user rolls over the image with a cursor."
+			                                                fieldLabel="Compartment Image Rollover Text"
 			                                                name="./compartment_image_alt_text"/>
 			                                            <compartment_text
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
 			                                                useFixedInlineToolbar="{Boolean}true"
-			                                                fieldDescription="Text for Compartment in Interactive Wheel"
-			                                                fieldLabel="Text for Compartment:"
+			                                                fieldLabel="Wheel Compartment Text"
 			                                                name="./compartment_text">
 				                                            <rtePlugins jcr:primaryType="nt:unstructured">
 				                                                <format

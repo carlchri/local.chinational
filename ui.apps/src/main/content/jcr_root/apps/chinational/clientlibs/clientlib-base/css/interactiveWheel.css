@@ -33,7 +33,7 @@
 }
 
 .interactive-wheel h1 {
-    /* color: #fff;							German: Removing font color from component 		*/
+    color: #fff;							/*  German: Putting default color back */
     font-size: 30px;
     font-weight: 200;
 }
@@ -48,7 +48,6 @@
 
 .interactive-wheel .left {
     float: left;
-    max-width: 272px;					/*   	German: Marked as per directions in Zeplin 	*/
     box-sizing: border-box;
     /* margin-top: -15px;				removed now	   	German: Fix for RichText default extra padding at top 	*/
 	/* padding-right: 69px;				removed now   	German: Padding as per directions in Zeplin 	*/
@@ -56,7 +55,8 @@
 
 .interactive-wheel .left p {
     font-size: 14px;
-    /* color: #fff;								German: Removing font color from component 		*/
+    width: 272px;					/*   	German: Marked as per directions in Zeplin 	*/
+    color: #fff;							/*  German: Putting default color back */
     line-height: 16px;
     margin-top: 0;
 }
@@ -79,11 +79,16 @@
 }
 
 .interactive-wheel .footer-cta a {
-    /* color: #fff;								German: Removing font color from component 		*/
+    color: #fff;							/*  German: Putting default color back */
     text-decoration: none;
     font-weight: normal;
     font-size: 14px;
     display: inline-block;
+    cursor: pointer;
+}
+
+.interactive-wheel ul {
+    color: #fff;							/*  German: Putting default color back */
 }
 
 .interactive-wheel .footer-cta .icon {
@@ -97,7 +102,7 @@
 
 .interactive-wheel h2 {
     font-weight: bold;
-    /* color: #fff;								German: Removing font color from component 		*/
+    color: #fff;							/*  German: Putting default color back */
     margin: 0;
     text-transform: uppercase;
     font-size: 14px;
@@ -202,18 +207,6 @@
     transform: translate(-50%, -50%);
 }
 
-/*  German: Remove this if only one nose image is require for desktop and mobile */
-
-.nose-img-mobile {
-    display: none;
-}
-
-.nose-img-desktop {
-    display: block;
-}
-
-/*   End of removals */
-
 /* SNOT */
 
 /* With Center image (nose) */
@@ -317,12 +310,18 @@
 
 @media (min-width: 600px) and (max-width: 720px) {
 	
-	.interactive-wheel .left {
-	    max-width: 222px;					/*   	German: Adjusted to fix MAM-100 	*/
+	.interactive-wheel .left p {
+	    width: 222px;					/*   	German: Adjusted to fix MAM-100 	*/
 	}
 }
 
+
 @media (max-width: 599px) {
+	
+	.interactive-wheel .left p {
+	    width: 460px;					/*   	German: Fixing defect MAM-147 	*/
+	 
+	}
 	
 	.interactive-wheel .wheelContainer.mobile-adjustment {
 	    min-height: 500px !important;
@@ -377,20 +376,8 @@
     }
 
     .wheel .circle .nose img {
-        /*transform: rotate(90deg) translate(-50%, 50%);    German: Activate this  if only one nose image is require for desktop and mobile */
+        transform: rotate(90deg) translate(-50%, 50%);
     }
-    
-    /*  German: Remove this if only one nose image is require for desktop and mobile */
-    
-    .nose-img-mobile {
-        display: block;
-    }
-    
-    .nose-img-desktop {
-        display: none;
-    }
-    
-    /*   End of removals */
     
     .transform0 {
 	    transform: rotate(0deg);
@@ -410,9 +397,40 @@
 }
 
 
+@media (max-width: 570px) {
+
+	.interactive-wheel .left p {
+	    width: 400px;					/*   	German: Fixing defect MAM-147 	*/
+	 
+	}
+}
+
+
+@media (max-width: 500px) {
+
+	.interactive-wheel .left p {
+	    width: 350px;					/*   	German: Fixing defect MAM-147 	*/
+	 
+	}
+}
+
+
+@media (max-width: 465px) {
+
+	.interactive-wheel .left p {
+	    width: 300px;					/*   	German: Fixing defect MAM-147 	*/
+	 
+	}
+}
+
 
 @media (max-width: 380px) {
 
+	.interactive-wheel .left p {
+	    width: 220px;					/*   	German: Fixing defect MAM-147 	*/
+	 
+	}
+	
    .interactive-wheel .sub-wheelContainer.mobile-adjustment {
     	padding-left: 40px;
     	padding-right: 40px;
