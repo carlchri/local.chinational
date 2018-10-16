@@ -56,12 +56,10 @@
                                             <image_wheel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                emptyText="This field is mandatory"
                                                 fieldDescription="Customize the background wheel graphic. Will use a standard wheel design by default."
                                                 fieldLabel="Custom Wheel Image"
                                                 name="./image_wheel"
-                                                rootPath="/content/dam"
-                                                required="{Boolean}true"/>
+                                                rootPath="/content/dam"/>
                                             <image_nose
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -89,14 +87,6 @@
                                                 fieldLabel="Background Color"
                                                 freestylePalette="{Boolean}true"
                                                 name="./backgroundColor"/>
-                                            <fontColor
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
-                                                colorsPath="/etc/config/chinational/components/colorpicker/interactiveWheelfontcolorpicker"
-                                                fieldDescription="Click on the color box to choose a different color for the component font"
-                                                fieldLabel="Font Color"
-                                                freestylePalette="{Boolean}true"
-                                                name="./fontColor"/>
                                         </items>
                                     </well>
                                 </items>
@@ -139,12 +129,10 @@
 			                                        	<compartment_image
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-			                                                emptyText="This field is mandatory"
 			                                                fieldDescription="Compartment Image in Interactive Wheel"
 			                                                fieldLabel="Compartment Image AEM Path"
 			                                                name="./compartment_image"
-			                                                rootPath="/content/dam"
-			                                                required="{Boolean}true"/>
+			                                                rootPath="/content/dam"/>
 			                                            <compartment_image_alt_text
 			                                                jcr:primaryType="nt:unstructured"
 			                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

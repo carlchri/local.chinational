@@ -83,10 +83,10 @@ $(document).ready(function(){
 	        addingHeights = (child.height() + header.height() + parseInt($('.sub-wheelContainer').css('padding-top')) + parseInt($('.sub-wheelContainer').css('padding-bottom')));
 		}
 		
-		if ( addingHeights > parent.height()) {
+		//if ( addingHeights > parent.height()) {
 	    
 			parent.css({ height: addingHeights });   // Updating container height with the total height of all elements in container
-		}
+		//}
 	}
 
   $(window).on("resize", reCalculateHeight);
