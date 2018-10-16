@@ -377,20 +377,8 @@
     }
 
     .wheel .circle .nose img {
-        /*transform: rotate(90deg) translate(-50%, 50%);    German: Activate this  if only one nose image is require for desktop and mobile */
+        transform: rotate(90deg) translate(-50%, 50%);
     }
-    
-    /*  German: Remove this if only one nose image is require for desktop and mobile */
-    
-    .nose-img-mobile {
-        display: block;
-    }
-    
-    .nose-img-desktop {
-        display: none;
-    }
-    
-    /*   End of removals */
     
     .transform0 {
 	    transform: rotate(0deg);
