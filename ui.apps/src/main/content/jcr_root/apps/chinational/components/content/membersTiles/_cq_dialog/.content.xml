@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Member Tile"
+    jcr:title="Profile Tile"
     sling:resourceType="cq/gui/components/authoring/dialog"
     extraClientlibs="[chinational.membersTiles.editor]">
     <content
@@ -16,7 +16,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Mandatory Settings"
+                        jcr:title="Profile Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -32,16 +32,15 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="This field is mandatory"
-                                                fieldDescription="Name for the member"
-                                                fieldLabel="Member Name:"
+                                                fieldLabel="Profile Name"
                                                 name="./memberName"
                                                 required="{Boolean}true"/>
                                             <memberExpertise
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                 useFixedInlineToolbar="{Boolean}true"
-                                                fieldDescription="Expertise for the member"
-                                                fieldLabel="Enter member expertise: "
+                                                fieldDescription="Brief list of any titles, specialties, or expertise. Use commas to separate items."
+                                                fieldLabel="Member expertise"
                                                 name="./memberExpertise">
 	                                            <rtePlugins jcr:primaryType="nt:unstructured">
 	                                                <format
@@ -55,74 +54,53 @@
 	                                                        features="*"/>
 	                                            </rtePlugins>
 	                                        </memberExpertise>
-                                        </items>
-                                    </well>
-                                </items>
-                            </column>
-                        </items>
-                    </mainSettingsTab>
-                    <otherSettingsTab
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Optional Settings"
-                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                        margin="{Boolean}false">
-                        <items jcr:primaryType="nt:unstructured">
-                            <column
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <well
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/well">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <memberImageSrc
+	                                        <memberImageSrc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Link to photo of Member"
-                                                fieldLabel="Member Photo URL:"
+                                                fieldDescription="AEM path to profile photo. Recommended dimensions: 157x205px."
+                                                fieldLabel="Profile Photo AEM"
                                                 name="./memberImageSrc"
                                                 rootPath="/content/dam"/>
                                             <selectLinkForMember
-                                                granite:class="chi-mt-member-link-option"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="orderBy"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Select if a link in Member is required"
-                                                fieldLabel="Option for Member's detail page:"
-                                                name="./selectLinkForMember">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <linkToPageReqd
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Member has a profile page"
-                                                        value="linkToPageReqd"/>
-                                                    <linkToPageNotReqd
-                                                        jcr:primaryType="nt:unstructured"
-                                                        selected="{Boolean}true"
-                                                        text="Member doesn't have a page"
-                                                        value="linkToPageNotReqd"/>
-                                                </items>
+                                            	granite:class="cq-dialog-checkbox-showhide"
+                                       			cq-dialog-checkbox-showhide-target=".checkbox-selectLinkForMember-showhide-target"
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                        name="./selectLinkForMember"
+		                                        text="Profile has existing AEM page."
+		                                        value="true">
+                                                <granite:data
+		                                            jcr:primaryType="nt:unstructured"
+		                                            cq-dialog-dropdown-showhide-target=".checkbox-selectLinkForMember-showhide-target"/>
                                             </selectLinkForMember>
-                                            <memberLinkTo
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Provide internal or external link for Member's Page"
-                                                fieldLabel="Member's Link Page URL:"
-                                                name="./memberLinkTo"
-                                                rootPath="/content"
-                                                wrapperClass="chi-mt-member-link-url"/>
-                                            <targetBlank
-                                                granite:class="chi-mt-link-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                name="./targetBlank"
-                                                text="Select to Open Link in New Window"
-                                                uncheckedValue="false"
-                                                value="true"/>
+                                            <showHideContainer
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="granite/ui/components/foundation/container"
+			                                    granite:class="hide checkbox-selectLinkForMember-showhide-target">
+			                                    <granite:data
+			                                        jcr:primaryType="nt:unstructured"
+			                                        showhidetargetvalue="true"/>
+			                                    <items jcr:primaryType="nt:unstructured">
+			                                    	 <memberLinkTo
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+		                                                fieldLabel="Profile Page AEM Path"
+		                                                name="./memberLinkTo"
+		                                                rootPath="/content"/>
+		                                            <targetBlank
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                                name="./targetBlank"
+		                                                text="Open in New Window"
+		                                                uncheckedValue="false"
+		                                                value="true"/>
+                                            	</items>
+		                                    </showHideContainer>
                                             <memberLogo
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Provide image source for member logo"
-                                                fieldLabel="Member's Logo:"
+                                                fieldDescription="Add physician group logo here, if applicable."
+                                                fieldLabel="Group Logo AEM path"
                                                 name="./memberLogo"
                                                 rootPath="/content/dam"/>
                                         </items>
@@ -130,7 +108,7 @@
                                 </items>
                             </column>
                         </items>
-                    </otherSettingsTab>
+                    </mainSettingsTab>
                     <greyBarTab
                      jcr:primaryType="nt:unstructured"
                      sling:resourceType="granite/ui/components/coral/foundation/include"

@@ -16,7 +16,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <mainSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Location Settings Tab"
+                        jcr:title="General Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -32,16 +32,15 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="This field is mandatory"
-                                                fieldDescription="Name for the location"
-                                                fieldLabel="Location Name:"
+                                                fieldLabel="Location Name"
                                                 name="./locationName"
                                                 required="{Boolean}true"/>
                                             <iconSelector
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="orderBy"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Choose an icon to display for the location"
-                                                fieldLabel="Select Location Icon"
+                                                fieldDescription="The location type will dictate the icon that appears inside of the location details."
+                                                fieldLabel="Choose Location Type"
                                                 name="./locationIcon">
                                                 <datasource
                                                     jcr:primaryType="nt:unstructured"
@@ -54,17 +53,17 @@
                                                 sling:orderBefore="orderBy"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="Select between an Image and Google Maps to be displayed"
-                                                fieldLabel="Options for Location"
+                                                fieldLabel="Location Image"
                                                 name="./selectLocationImageType">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <imageLocation
                                                         jcr:primaryType="nt:unstructured"
                                                         selected="{Boolean}true"
-                                                        text="Use Image for Location"
+                                                        text="Use Image from AEM for Location Image"
                                                         value="imageLocation"/>
                                                     <googleMap
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Use Google Maps for Location"
+                                                        text="Use Google Maps for Location Image"
                                                         value="googleMap"/>
                                                 </items>
                                                 <granite:data
@@ -83,18 +82,18 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="Address for the location"
-                                                            fieldLabel="Address [used for Google Map]:"
+                                                            fieldLabel="Address"
                                                             name="./address" />
                                                     <addressPlaceId
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            fieldDescription="Place Id to link to correct place, when marker link takes user to google maps site"
-                                                            fieldLabel="Address Place Id [used for link to Google Maps from marker pop-up]:"
+                                                            fieldDescription="Provide a Google Place ID to pull details about the location into the marker pop-up on the map."
+                                                            fieldLabel="Address Place ID"
                                                             name="./addressPlaceId" />
                                                     <addressHidePOI
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                            fieldDescription="Select this checkbox to hide nearby businesses in map"
+                                                            fieldDescription="Select this checkbox to hide nearby businesses in map."
                                                             text="Hide nearby businesses in map"
                                                             uncheckedValue="false"
                                                             value="true"
@@ -104,9 +103,9 @@
                                             <noDisplayButton
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Selecting this checkbox will hide the button for details."
+                                                fieldDescription="Check this box to disable the link button that will appear at the bottom of the main location details."
                                                 name="./noDisplayButton"
-                                                text="Select to Hide Location Details button"
+                                                text="Hide Location link button"
                                                 uncheckedValue="false"
                                                 value="true"/>
                                         </items>
@@ -117,7 +116,7 @@
                     </mainSettingsTab>
                     <detailsSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Location Details Tab"
+                        jcr:title="Location Details"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -141,31 +140,30 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/container"
                                                     name="./items">
                                                     <items jcr:primaryType="nt:unstructured">
+                                                         <locationText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            emptyText="This field is mandatory."
+                                                            fieldLabel="Detail text"
+                                                            name="./locationText"
+                                                            required="{Boolean}true"/>
                                                         <iconSelector
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:orderBefore="orderBy"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                            fieldDescription="Choose an icon to be displayed beside location detail "
-                                                            fieldLabel="Select Icon"
+                                                            fieldDescription="Select the icon for the type of detail to be included. The icon that will appear next to the detail text."
+                                                            fieldLabel="Detail Type"
                                                             name="./icon">
                                                             <datasource
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="/apps/chinational/components/datasource"
                                                                 path="/etc/config/chinational/components/iconSelector"/>
                                                         </iconSelector>
-                                                        <locationText
-                                                            jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                            emptyText="This field is mandatory."
-                                                            fieldDescription="Enter the details for the icon selected. Avoid if selecting Location or Call"
-                                                            fieldLabel="Text for the icon [not needed for Location if GoogleMaps selected]"
-                                                            name="./locationText"
-                                                            required="{Boolean}true"/>
                                                         <linkUrl
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Select link or for External Links, use format http(s)://www.example.com"
-                                                            fieldLabel="Link URL [not needed for Location or Call]"
+                                                            fieldDescription="Location details will be clickable. Use this format for external links: https://www.example.com"
+                                                            fieldLabel="AEM path or external URL"
                                                             name="./linkUrl"
                                                             rootPath="/content/dam"/>
                                                         <target
@@ -187,7 +185,7 @@
                     </detailsSettingsTab>
                     <detailsBoxTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Details Box Tab"
+                        jcr:title="Additional Details"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -199,68 +197,54 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/well">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <selectDetailsBox
-                                                    granite:class="cq-dialog-dropdown-showhide"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="orderBy"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Pick appropriate option to enable or disable details box"
-                                                fieldLabel="Options for Details Box"
-                                                name="./detailsBoxOption">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <enable
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Enable Location Details Box "
-                                                        value="enable"/>
-                                                    <disable
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Disable Location Details Box"
-                                                        selected="{Boolean}true"
-                                                        value="disable"/>
-                                                </items>
+                                        	<selectDetailsBox
+                                            	granite:class="cq-dialog-checkbox-showhide"
+                                       			cq-dialog-checkbox-showhide-target=".checkbox-selectDetailsBox-showhide-target"
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                        fieldDescription="Check this box to enable a space to enter additional details that will display beneath the main Location details."
+		                                        name="./selectDetailsBox"
+		                                        text="Enable additional details content"
+		                                        value="true">
                                                 <granite:data
-                                                        jcr:primaryType="nt:unstructured"
-                                                        cq-dialog-dropdown-showhide-target=".list-option-detailsbox-showhide-target"/>
+		                                            jcr:primaryType="nt:unstructured"
+		                                            cq-dialog-dropdown-showhide-target=".checkbox-selectDetailsBox-showhide-target"/>
                                             </selectDetailsBox>
-                                            <extrafieldcontainer
-                                                    granite:class="hide list-option-detailsbox-showhide-target"
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                <granite:data
-                                                    jcr:primaryType="nt:unstructured"
-                                                    showhidetargetvalue="enable"/>
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <detailsBoxHeading
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        emptyText="Enter heading for Location Details Box"
-                                                        fieldDescription="Enter heading for Location Details Box"
-                                                        fieldLabel="Location Details Box Heading"
-                                                        name="./detailsBoxHeading"
-                                                        />
-                                                    <locationDescription
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                        useFixedInlineToolbar="{Boolean}true"
-                                                        emptyText="Enter description for location."
-                                                        fieldDescription="Enter description for location."
-                                                        fieldLabel="Location Description:"
-                                                        name="./locDescription"
-                                                        wrapperClass="chi-location-description">
-                                                        <rtePlugins jcr:primaryType="nt:unstructured">
-                                                            <format
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    features="*"/>
-                                                            <justify
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    features="*"/>
-                                                            <misctools
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    features="*"/>
-                                                        </rtePlugins>
-                                                    </locationDescription>
-                                                </items>
-                                            </extrafieldcontainer>
+                                            <showHideContainer
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="granite/ui/components/foundation/container"
+			                                    granite:class="hide checkbox-selectDetailsBox-showhide-target">
+			                                    <granite:data
+			                                        jcr:primaryType="nt:unstructured"
+			                                        showhidetargetvalue="true"/>
+			                                    <items jcr:primaryType="nt:unstructured">
+			                                    	 <detailsBoxHeading
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                                emptyText="Enter heading for Location Details Box"
+		                                                fieldLabel="Additional Details Heading"
+		                                                name="./detailsBoxHeading"/>
+		                                            <locationDescription
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+		                                                useFixedInlineToolbar="{Boolean}true"
+		                                                emptyText="Enter description for location."
+		                                                fieldLabel="Additional Details"
+		                                                name="./locDescription">
+		                                                <rtePlugins jcr:primaryType="nt:unstructured">
+		                                                    <format
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            features="*"/>
+		                                                    <justify
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            features="*"/>
+		                                                    <misctools
+		                                                            jcr:primaryType="nt:unstructured"
+		                                                            features="*"/>
+		                                                </rtePlugins>
+		                                            </locationDescription>
+                                            	</items>
+		                                    </showHideContainer>
                                         </items>
                                     </well>
                                 </items>

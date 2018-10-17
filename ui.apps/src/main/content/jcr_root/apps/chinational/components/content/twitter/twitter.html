@@ -7,18 +7,15 @@
 	        ${properties.sectionHeading} 
 	        <span class="by-username-copy-2">
 	        	<span class="text-style-1">  by </span>
-	        	${properties.user}
+	        	<a href="https://twitter.com/${properties.user}">
+					@${properties.user}
+				</a> 
 	        </span>
-	        <span class="twitterAlignRight" data-sly-test="${properties.selectFollowIconType == 'traditional'}">
+	        <span class="twitterAlignRight">
 		        <a 	class="twitter-follow-button"
 		        	data-show-screen-name="false"
 		        	data-show-count="false"
 				  	href="https://twitter.com/${properties.user}">
-					Follow
-				</a> 
-			</span>
-			<span class="twitterAlignRight twitterPaddingAdjustment followTwitterIcon" data-sly-test="${properties.selectFollowIconType == 'modern'}">
-				<a 	href="http://twitter.com/intent/user?screen_name=${properties.user}">
 					Follow
 				</a> 
 			</span>

@@ -18,13 +18,15 @@
       <span class="list-header">${contactUs.heading}</span>
       <p>
         <span class="dblock">${contactUs.subheading}</span>
-        <span>
-          <a href="${contactUs.linkUrl}"
-             target="${contactUs.targetBlank==true ?'_blank':'_self'}">
-            ${contactUs.apptText}
-          </a>
-         </span>&nbsp;
-        <i class="arrow-right"></i>
+        <sly data-sly-test="${contactUs.linkTo}">
+          <span>
+            <a href="${contactUs.apptText}"
+               target="${contactUs.targetBlank==true ?'_blank':'_self'}">
+              ${contactUs.apptText}
+            </a>
+           </span>&nbsp;
+          <i class="arrow-right"></i>
+        </sly>
       </p>
       <div class="newsltter-social" data-sly-list="${contactUs.icons}">
         <a href="${item.linkUrl}" class="sprite ${item.iconType} small-icons"

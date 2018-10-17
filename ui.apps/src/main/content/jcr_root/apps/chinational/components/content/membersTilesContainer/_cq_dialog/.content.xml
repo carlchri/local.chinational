@@ -18,7 +18,7 @@
              <items jcr:primaryType="nt:unstructured">
                  <mainTab
                      jcr:primaryType="nt:unstructured"
-                     jcr:title="Main Settings Tab"
+                     jcr:title="Profile Tile Collection Settings"
                      sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                      margin="{Boolean}false">
                      <items jcr:primaryType="nt:unstructured">
@@ -33,7 +33,8 @@
                                      	 <numberOfTiles
 										     jcr:primaryType="nt:unstructured"
 										     sling:resourceType="granite/ui/components/foundation/form/numberfield"
-										     fieldLabel="Tiles retrieved per every LOAD MORE button click:"
+										     fieldDescription="When the number of profiles exceeds this number, a 'Read More' button will appear to reveal additional profiles."
+										     fieldLabel="Initial Profiles Visible"
 										     defaultValue="4"
 										     min="2"   
 										     step="2"
@@ -43,8 +44,7 @@
                                              sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                              composite="{Boolean}true"
                                              name="./multiCol"
-                                             fieldDescription="Click 'Add' to add a members tile component"
-                                             fieldLabel="Members Tile Component Collection">
+                                             fieldDescription="Click 'Add' to add a members tile component">
                                              <field
                                                  jcr:primaryType="nt:unstructured"
                                                  sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -53,8 +53,8 @@
                                                      <name
                                                          jcr:primaryType="nt:unstructured"
                                                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                         fieldDescription="A name to identify the component."
-                                                         fieldLabel="Enter a name for this tile (visible in edit mode only):"
+                                                         fieldDescription="Will be used to differentiate between tiles in AEM edit mode. Will not appear when page is published."
+                                                         fieldLabel="Profile Tile Edit Mode Identifier"
                                                          name="./name"
                                                          required="{Boolean}true"/>
                                                      <nodeName
