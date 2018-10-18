@@ -37,7 +37,7 @@
                                                             sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
                                                             colorsPath="/etc/config/chinational/components/colorpicker/bleedtilebackgroundcolorpicker"
                                                             fieldDescription="Click on the color box to choose a different color for the photo band background"
-                                                            fieldLabel="Background Color"
+                                                            fieldLabel="Tile Background Color"
                                                             freestylePalette="{Boolean}true"
                                                             name="./backgroundColor"/>
                                                     <imageSelection
@@ -97,7 +97,7 @@
                             </contentTab>
                             <richTextTab
                                     jcr:primaryType="nt:unstructured"
-                                    jcr:title="Tile Content Tab"
+                                    jcr:title="Tile Main Settings Tab"
                                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                     margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -114,7 +114,7 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             emptyText="This field is mandatory."
                                                             fieldDescription="Enter Text for the heading."
-                                                            fieldLabel="Heading Text"
+                                                            fieldLabel="Heading Text (appears above the tile body text)"
                                                             name="./headingText"
                                                             required="{Boolean}true"/>
                                                     <contentDetail
@@ -122,7 +122,7 @@
                                                             sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                             useFixedInlineToolbar="{Boolean}true"
                                                             fieldDescription="Enter the detailed text here"
-                                                            fieldLabel="Enter content details here"
+                                                            fieldLabel="Tile Body Text"
                                                             name="./contentDetail">
                                                         <rtePlugins jcr:primaryType="nt:unstructured">
                                                             <format
