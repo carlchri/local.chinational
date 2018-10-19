@@ -34,4 +34,3 @@ js/search_predictive.js
 js/interactiveWheel.js
 js/twitter.js
 js/table.js
-js/dual-box.js
