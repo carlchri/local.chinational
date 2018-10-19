@@ -24,6 +24,8 @@ import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 
 import javax.inject.Inject;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +42,7 @@ public final class DefaultValuesUtils {
     private static final String DEFAULT_NEWS_BLOG_IMG  = "/etc/designs/chicommon/images/blogNewsDefGraphic.jpg";
     private static final String EXTERNALIZER_DOMAIN  = "siteExternailizer";
     private static final String DEFAULT_EXTERNALIZER_DOMAIN = "national";
+    private static final String JCR_CONTENT = "jcr:content";
     private static final String DEFAULT_MESSAGE  = "could not find default value";
 
     public static String getDefaultValue(Page page, String pName) {
@@ -50,13 +53,28 @@ public final class DefaultValuesUtils {
         String defaultPath = "";
         if(page != null){
             Resource resource = page.adaptTo(Resource.class);
-            // LOGGER.info("Resourec Path : " + resource.getPath());
+            LOGGER.debug("Resource Path : " + resource.getPath());
             final InheritanceValueMap pageProperties = new HierarchyNodeInheritanceValueMap(resource);
             defaultPath = pageProperties.getInherited(pName, String.class);
-            // LOGGER.info("Default Path : " + defaultPath);
+            LOGGER.debug("Inherited Value : " + defaultPath + ", for attribute: " + pName);
             if (defaultPath == null) {
-                LOGGER.trace("could not find inherited property for ", resource);
-                defaultPath = defValue;
+                // if property is directly at the page level, InheritanceValueMap does not find it, so check once at main page level too
+                // this happens with SiteMap
+                LOGGER.debug("could not find inherited property for resource, lets try main resource page ", resource.getPath());
+                try {
+                    Node propNode = resource.adaptTo(Node.class);
+                    Node jcrNode = propNode.getNode(JCR_CONTENT);
+                    if (jcrNode.hasProperty(pName)) {
+                        LOGGER.debug("JCR node has value!");
+                        defaultPath = jcrNode.getProperty(pName).getString();
+                    }
+                } catch (RepositoryException rex) {
+                    LOGGER.error("error reading respoitory to get attribute: " + pName);
+                }
+                if (defaultPath == null) {
+                    LOGGER.info("could not find property for resource, using default value", resource.getPath());
+                    defaultPath = defValue;
+                }
             }
         } else {
             defaultPath = defValue;

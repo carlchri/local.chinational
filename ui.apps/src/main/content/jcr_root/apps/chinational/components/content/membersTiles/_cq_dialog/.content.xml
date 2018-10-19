@@ -62,40 +62,40 @@
                                                 name="./memberImageSrc"
                                                 rootPath="/content/dam"/>
                                             <selectLinkForMember
-                                                granite:class="chi-mt-member-link-option"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="orderBy"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="Select if profile has existing profile page already on AEM. Author will be prompted to supply an AEM path."
-                                                fieldLabel="Option for Member's detail page:"
-                                                name="./selectLinkForMember">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <linkToPageReqd
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Member has a profile page"
-                                                        value="linkToPageReqd"/>
-                                                    <linkToPageNotReqd
-                                                        jcr:primaryType="nt:unstructured"
-                                                        selected="{Boolean}true"
-                                                        text="Member doesn't have a page"
-                                                        value="linkToPageNotReqd"/>
-                                                </items>
+                                            	granite:class="cq-dialog-checkbox-showhide"
+                                       			cq-dialog-checkbox-showhide-target=".checkbox-selectLinkForMember-showhide-target"
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                        name="./selectLinkForMember"
+		                                        text="Profile has existing AEM page."
+		                                        value="true">
+                                                <granite:data
+		                                            jcr:primaryType="nt:unstructured"
+		                                            cq-dialog-dropdown-showhide-target=".checkbox-selectLinkForMember-showhide-target"/>
                                             </selectLinkForMember>
-                                            <memberLinkTo
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldLabel="Profile Page AEM Path"
-                                                name="./memberLinkTo"
-                                                rootPath="/content"
-                                                wrapperClass="chi-mt-member-link-url"/>
-                                            <targetBlank
-                                                granite:class="chi-mt-link-target"
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                name="./targetBlank"
-                                                text="Open in New Window"
-                                                uncheckedValue="false"
-                                                value="true"/>
+                                            <showHideContainer
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="granite/ui/components/foundation/container"
+			                                    granite:class="hide checkbox-selectLinkForMember-showhide-target">
+			                                    <granite:data
+			                                        jcr:primaryType="nt:unstructured"
+			                                        showhidetargetvalue="true"/>
+			                                    <items jcr:primaryType="nt:unstructured">
+			                                    	 <memberLinkTo
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+		                                                fieldLabel="Profile Page AEM Path"
+		                                                name="./memberLinkTo"
+		                                                rootPath="/content"/>
+		                                            <targetBlank
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                                name="./targetBlank"
+		                                                text="Open in New Window"
+		                                                uncheckedValue="false"
+		                                                value="true"/>
+                                            	</items>
+		                                    </showHideContainer>
                                             <memberLogo
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
