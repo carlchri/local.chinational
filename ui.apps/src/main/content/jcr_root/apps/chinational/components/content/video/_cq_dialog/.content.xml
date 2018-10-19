@@ -35,7 +35,7 @@
                                                     <sectionHeading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        emptyText="Enter Section Heading"
+                                                        emptyText="Enter Video Heading"
                                                         fieldDescription="This text will be used as heading for the video section"
                                                         fieldLabel="Video Heading:"
                                                         name="./sectionHeading"/>
@@ -57,8 +57,8 @@
                                                     <videoText
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="This text is shown below the video"
-                                                        fieldLabel="Video Text"
+                                                        fieldDescription="Displays under video in smaller, italicized caption font"
+                                                        fieldLabel="Video Caption"
                                                         name="./videoText"
                                                         required="{Boolean}false"/>
                                                 </items>
@@ -114,8 +114,8 @@
                                                     <videoImage
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="Select thumbnail image from DAM. If it is not selected, the component will get video image from Youtube."
-                                                            fieldLabel="Video Image (DAM)"
+                                                            fieldDescription="Choose the custom video thumbnail from the AEM Digital Asset Manager"
+                                                            fieldLabel="Video Thumbnail Image from DAM"
                                                             name="./videoImage"
                                                             rootPath="/content/dam">
                                                     </videoImage>

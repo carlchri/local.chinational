@@ -34,11 +34,11 @@
                                             <preDefinedIcons
                                                 jcr:primaryType="nt:unstructured"
                                                 selected="{Boolean}true"
-                                                text="Use pre-defined icon"
+                                                text="Choose from icon library"
                                                 value="icon-pre"/>
                                             <customIcons
                                                 jcr:primaryType="nt:unstructured"
-                                                text="Use Custom Icon"
+                                                text="Use custom icon"
                                                 value="icon-custom"/>
                                         </items>
                                         <granite:data
@@ -50,7 +50,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/heading"
                                         level="{Long}4"
-                                        text="pre-defined Icon Collection [Click + to add a new entry to the list]">
+                                        text="Choose Icon Row Collection From Icon Library (click button below to add new icon to the row)">
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
                                             showhidetargetvalue="icon-pre"/>
@@ -71,7 +71,7 @@
                                                     sling:orderBefore="orderBy"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                     fieldDescription="Choose Pre-defined Icon from dropdown"
-                                                    fieldLabel="Choose Pre-defined Icon:"
+                                                    fieldLabel="Choose Icon From Library:"
                                                     name="./iconType">
                                                     <datasource
                                                         jcr:primaryType="nt:unstructured"
@@ -81,8 +81,8 @@
                                                 <linkUrl
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                    fieldLabel="Icon Link URL"
+                                                    fieldDescription="AEM path.  Use this format for external links https://www.example.com"
+                                                    fieldLabel="Icon AEM Path/URL"
                                                     name="./linkUrl"
                                                     rootPath="/content"/>
                                                 <target
@@ -109,7 +109,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/heading"
                                         level="{Long}4"
-                                        text="Custom Icon Collection [Click + to add a new entry to the list]">
+                                        text="Custom Icon Row Collection (click button below to add new icon to the row)">
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
                                             showhidetargetvalue="icon-custom"/>
@@ -128,14 +128,15 @@
                                                 <iconImageSrc
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Custom Icon Image URL [it is strongly recommended to use assets in a 1:1 (square) ratio, ideally 50x50]"
+                                                    fieldLabel="Custom Icon Image URL or AEM DAM path. (see tooltip for sizing info)"
                                                     name="./iconImageSrc"
-                                                    rootPath="/content/dam"/>
+                                                    rootPath="/content/dam"
+                                                    fieldDescription="It is strongly recommended to use assests in a 1:1 (square ration, ideally 50x50)"/>
                                                 <linkUrl
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                    fieldLabel="Icon Link URL"
+                                                    fieldDescription="Icon AEM path.  Use this format for external links https://www.example.com"
+                                                    fieldLabel="Icon AEM Path/URL"
                                                     name="./linkUrl"
                                                     rootPath="/content"/>
                                                 <target
@@ -187,8 +188,8 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Required only if Row of Icons is used in Right Rail. Otherwise leave empty."
-                                                fieldDescription="Required only if Row of Icons is used in Right Rail.This text will be used as heading for row of icons."
-                                                fieldLabel="List Heading"
+                                                fieldDescription="This heading appears above the entire row of icons in the right rail."
+                                                fieldLabel="Right Rail List Heading"
                                                 name="./iconsRowHeading"/>
                                         </items>
                                     </well>

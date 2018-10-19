@@ -47,7 +47,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                         emptyText=""
-                                                        fieldDescription="This text is shown below the image, if available"
+                                                        fieldDescription="Displays under image in smaller, italicized caption font"
                                                         fieldLabel="Image Caption (optional)"
                                                         name="./imageCaption"
                                                         required="{Boolean}false"/>
@@ -56,18 +56,18 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select image options for Tablet and Mobile. If choosing autofill, "
+                                                        fieldDescription="Autofill resizes desktop image for mobile/tablet devices"
                                                         fieldLabel="Image Options for Tablet and Mobile:"
                                                         name="./selectImageRendition">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <autoFill
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="Autofill - Use desktop image renditions for Tablet and Mobile"
+                                                                text="Autofill - Resize desktop image for tablet and mobile"
                                                                 value="autoFill"/>
                                                             <chooseSeperate
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Choose seperate image for Tablet or Mobile or Both"
+                                                                text="Choose separate image for tablet and mobile"
                                                                 value="chooseSeperate"/>
                                                         </items>
                                                         <granite:data
@@ -139,14 +139,14 @@
                                                     <alt
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/foundation/form/textfield"
-                                                        fieldDescription="Provide a textual alternative of the content and function of the image."
+                                                        fieldDescription="The mandatory image alt tag is needed for sight-impaired users and better SEO"
                                                         fieldLabel="Alternative Text"
                                                         name="./alt"/>
                                                     <linkURL
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                                         fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
-                                                        fieldLabel="Link URL"
+                                                        fieldLabel="AEM path/Link URL"
                                                         name="./linkURL"
                                                         rootPath="/content"/>
                                                     <target
