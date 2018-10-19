@@ -122,7 +122,7 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                             fieldDescription="Select this optional checkbox to enable button under left panel."
                                                             name="./buttonUnderLeftPanel"
-                                                            text="Select to enable button under left panel (or under text, if no video/image is displayed)"
+                                                            text="Select to enable button under left panel"
                                                             uncheckedValue="false"
                                                             value="true"/>
                                                     <buttonUnderRightPanel
