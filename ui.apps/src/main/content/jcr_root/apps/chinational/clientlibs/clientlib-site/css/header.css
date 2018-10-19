@@ -609,6 +609,14 @@
 	
 }
 
+/* If mobile width is less than 430 px, main nav white background was extending beyond header, this fixes it */
+@media (max-width:430px) {
+	.main-nav {
+		padding: 0px;
+	}
+}
+
+
 /* Special fix for phones 360 px or lower width*/
 /*
 @media (max-width:360px) {
