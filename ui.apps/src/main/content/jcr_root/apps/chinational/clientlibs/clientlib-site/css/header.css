@@ -568,6 +568,11 @@
 		padding: 20px 0;
 		top: -375px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
 	}
+	/* Added to allow scrolling of navihation in mobile*/
+	.main-nav.open {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
 	.hide-on-mobile {
 		display: none;
 	}
