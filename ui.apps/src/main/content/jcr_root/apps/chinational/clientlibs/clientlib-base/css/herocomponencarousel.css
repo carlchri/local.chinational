@@ -58,7 +58,7 @@
 	}
 	
 	.intro .page-title-band h1 {
-		font-size: 30px;
+		font-size: 36px;
 	}
 	
 	/* End of additions by German  */
@@ -71,7 +71,7 @@
 and (max-width : 992px ){
 	
 	.intro .page-title-band h1 {
-		font-size: 26px;
+		font-size: 36px;
 		padding-right: 33px;
 		padding-left: 33px;
 	}
@@ -110,7 +110,7 @@ and (max-width : 992px ){
 	}
 	
 	.intro .page-title-band h1 {
-		font-size: 36px;
+		font-size: 30px;
 		padding-right: 33px;
 		padding-left: 33px;
 	}
