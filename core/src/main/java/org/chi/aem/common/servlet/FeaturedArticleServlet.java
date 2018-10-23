@@ -69,9 +69,9 @@ public class FeaturedArticleServlet extends SlingAllMethodsServlet {
             String parentPage = newsListMap.get("parentPage") + "/jcr:content";
 
 
-            if (newsListNode.hasProperty("parentPage")) {
+            //if (newsListNode.hasProperty("parentPage")) {
 //                pw.write("News Link Node has ParentPage Property :: " + parentPage  + "<br/>");
-            }
+            //}
 
             Resource newsListChildRes = resourceResolver.getResource(parentPage);
             ValueMap newsListChildMap = newsListChildRes.adaptTo(ValueMap.class);

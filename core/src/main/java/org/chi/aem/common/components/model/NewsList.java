@@ -192,7 +192,7 @@ public class NewsList implements ComponentExporter {
             start_index = ((activePage - 1) * hits_per_page);
         } else {
             activePage = 1; //for Pagination active class when page load for the first time
-        };
+        }
 
 		// LOGGER.info("newslist parent page : " + parentPage);
 		// LOGGER.info("newslist news_filter : " + news_filter);

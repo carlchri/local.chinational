@@ -61,9 +61,10 @@ public class SightlyDataSource extends WCMUsePojo {
             DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
             // Set this DataSource to request
             getRequest().setAttribute(DataSource.class.getName(), ds);
-        } else {
-            // If no data for the datasource can be found, default to the EmptyDataSource set on the request above
         }
+        //else {
+            // If no data for the datasource can be found, default to the EmptyDataSource set on the request above
+        //}
 	}
     private static class DataSourceListSort implements Comparator<Resource>, Serializable {
 

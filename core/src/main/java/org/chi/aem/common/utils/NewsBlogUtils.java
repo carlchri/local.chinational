@@ -301,7 +301,6 @@ public final class NewsBlogUtils {
 
     public static java.util.List<Page> populateListArticles(int start_index, int hits_per_page, java.util.List<Page> allArticles) {
         java.util.List<Page> listArticles = new ArrayList<>();
-        ;
         int end_index = start_index + hits_per_page;
         for (int i = start_index; i < end_index; i++) {
             if (allArticles.size() > i) {
