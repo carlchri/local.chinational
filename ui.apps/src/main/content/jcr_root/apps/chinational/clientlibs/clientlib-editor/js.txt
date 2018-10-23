@@ -1,3 +1,2 @@
 js/reloadOnLayerSwitch.js
-js/dual-box.js
-js/featuredArticleBox.js
+

@@ -22,10 +22,9 @@
         <!-- Select box for featured article selection -->
         <p>
             <span>Current article filter tag: </span>
-            <span data-sly-test="${currentPage.properties.featuredPagesTag == null || currentPage.properties.featuredPagesTag == ''}">All Items</span>
-            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}">All Items</span>
-            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/NewsArticle'}">News Article</span>
-            <span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:MediaCenter/PressRelease'}">Press Release</span>
+            <sly data-sly-list.tagsList="${newsList.tagsMap}">
+                    <span>${newsList.tagsMap[tagsList]}</span>
+            </sly>
         </p>
 
         <p>Select up to Three Titles for Featured Articles</p>
