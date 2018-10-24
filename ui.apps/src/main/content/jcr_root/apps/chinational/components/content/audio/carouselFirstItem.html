@@ -13,10 +13,10 @@
 							</button>
 		                </div>
 		                <a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
-		                	<span class="custom-button header-fix">${audio.sectionHeading}</span>
+		                	<span id="audioHeader" class="custom-button header-fix">${audio.sectionHeading}</span>
 		                </a>
+		               	<span id="audioExplanation" class="a-fix-for-padding a-brief-description sub-header-fix truncate" data-sly-test="${audio.audioText}">${audio.audioText}</span>
 					</div>
-	                <span class="a-fix-for-padding a-brief-description sub-header-fix truncate" data-sly-test="${audio.audioText}">${audio.audioText}</span>
 	            </div>
 	        </div>
 	    </div>
