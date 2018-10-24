@@ -37,6 +37,10 @@
 	padding-bottom: 30px;
 }
 
+.mediaCarousel .show-mobile .sub-Thumbs .video img {
+	margin-top: 17px;
+}
+
 .sub-Thumbs .video img {
 	margin: 0;
 }

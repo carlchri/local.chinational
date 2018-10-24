@@ -3,7 +3,7 @@
 	border-radius:0;
 	border:none;
 }
-.modal-footer, .modal-footer-audio {
+.modal-footer {
 	text-align:left;
 }
 
@@ -23,11 +23,7 @@
 	padding:0 30px 30px 30px;
 }
 
-.modal-footer-audio {
-	padding:0 30px 0 30px;
-}
-
-.modal-header, .modal-footer, .modal-footer-audio, .modal-header-audio {
+.modal-header, .modal-footer, .modal-header-audio {
 	border:none;
 }
 
