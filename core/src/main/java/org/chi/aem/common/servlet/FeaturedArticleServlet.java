@@ -26,6 +26,11 @@ import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * TODO - check the use of this class and delete it, if not in use
+ */
+
 @Service(value = Servlet.class)
 @Component(immediate = true, metatype = true)
 

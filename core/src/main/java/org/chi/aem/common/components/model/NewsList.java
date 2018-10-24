@@ -227,7 +227,7 @@ public class NewsList implements ComponentExporter {
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){
 //                LOGGER.info(":: HAS ITEM ::");
-                allNews.remove(item);
+                featuredArticlesSelectionList.remove(item);
             }
         }
 

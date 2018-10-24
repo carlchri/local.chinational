@@ -35,8 +35,8 @@
                     <option selected value="${selectedItems.path}">${selectedItems.title} </option>
                 </sly>
                 <sly data-sly-list.selectnewslist="${newsList.featuredArticlesSelectionList}">
-                    <option data-sly-test="${selectnewslist.properties.cq:tags[0] == currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:MediaCenter/AllItems'}"
-                            class="${selectnewslist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}"
+                    <option
+                            class="${selectnewslist.properties.cq:tags[0]}"
                             value="${selectnewslist.path}">${selectnewslist.title}</option>
                 </sly>
             </select>

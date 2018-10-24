@@ -18,7 +18,7 @@ $('document').ready(function(){
     //TagsFormBox
     $('#tagsFormBox select').on('change', function () {
         var tagValue = $(this).val().toString();
-        // console.log("This Value : "+tagValue);
+        console.log("This Value : "+tagValue);
 
         /*
         $.ajax({
