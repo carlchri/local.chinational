@@ -1,0 +1,34 @@
+<!-- Audio Popup-->
+
+<div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-labelledby="audio-modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    	<span class="audiopopup-close"></span>
+        <div class="modal-content">
+            <div class="modal-body chi-audio-player-d">
+            	<div class="carousel-description audioStyle" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+		            <div class="main-player">  
+		               	<div class="link-wrapper">
+							<div class="audioTile-popup" style="background-color: ${properties.backgroundImageColor || '#8db9ca' @ context='styleToken'};"> 
+								<i class="sprite small-icons icon-audio-light"></i>
+								<div class="player-align-center">
+									<audio id="audio-player" class="chi-audio-player" controls preload="none">
+								        <source src="" type="audio/ogg">
+								        <source class="srcmp" src="" type="audio/mpeg">
+								        Your browser does not support the audio element.
+								    </audio>
+							    </div>
+				            </div>
+			            </div>
+			            <span id="myAudioHeader" class="modalHeader"></span>
+		                <span id="myAudioText" class="modalText"></span>
+		            </div>
+		        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
