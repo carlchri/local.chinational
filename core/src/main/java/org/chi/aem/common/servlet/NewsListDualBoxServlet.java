@@ -80,7 +80,7 @@
 //                log.info("Get Current Property :"+ pageNode.getProperty("featuredList"));
                 pageNode.setProperty(featuredTag, featuredPagesArray);
 //                pageNode.setProperty("featuredTag", featuredTag);
-                pageNode.setProperty("featuredPagesTag", featuredPagesTag);
+                //pageNode.setProperty("featuredPagesTag", featuredPagesTag);
 
                 response.getWriter().println("Page Featured List : "+featuredPagesArray.toString());
 //                log.info("Featured page list servlet : "+featuredPagesArray[0]);

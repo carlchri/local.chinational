@@ -17,8 +17,30 @@ $('document').ready(function(){
 
     //TagsFormBox
     $('#tagsFormBox select').on('change', function () {
-        var tagValue = $(this).val().toString();
-        console.log("This Value : "+tagValue);
+        var tagUrlValue = $(this).val().toString();
+        console.log("Selected tag Value : "+tagUrlValue);
+
+        // update selected
+        var selectedTagName = $(this).find('option:selected').attr('name');
+        $('#featuredCurrentSelectedTag').text(selectedTagName);
+        console.log("featuredCurrentSelectedTag : "+ selectedTagName);
+        //if (tagUrlValue) { // require a URL
+        //    window.location = tagUrlValue; // redirect
+        //}
+
+        // duallistbox_output[]_helper1
+        // duallistbox_output[]_helper2
+
+        $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
+            var optionTag = $(this).attr('class');
+            $(this).show();
+            if (optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName)) {
+                console.log("Hide option with tag: " + optionTag);
+                $(this).hide();
+            }
+        });
+
+        return false;
 
         /*
         $.ajax({
@@ -41,11 +63,12 @@ $('document').ready(function(){
         var featuredTag, featuredSelectTag, featuredTagSuffix, featuredSelectTagPrefix;
 
         featuredSelectTagPrefix = $('#featuredTagPrefix').val();
-        featuredTagSuffix = $("#tagsFormBox select").val() || "AllItems";
+        featuredTagSuffix = $("#tagsFormBox select").find('option:selected').attr('name') || "AllItems";
         if (featuredTagSuffix == null) {
             featuredTag = "AllItems";
         }
-        featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
+        //featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
+        featuredSelectTag = featuredTagSuffix;
         featuredListPages = $('[name="duallistbox_output[]"]').val();
         // console.log("featured  selected Tag :: "+featuredSelectTag);
         // console.log("Featured Pages tag :: "+ featuredTag);
@@ -86,7 +109,7 @@ $('document').ready(function(){
                         // $(this).find('select').refresh();
                         // alert("Press OK to refresh page.");
                         location.reload(true);
-                        // console.log("Featured Pages :: " + featuredListPagesString);
+                        console.log("Featured Pages :: " + featuredListPagesString);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);

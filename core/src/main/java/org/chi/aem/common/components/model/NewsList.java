@@ -221,8 +221,8 @@ public class NewsList implements ComponentExporter {
         if (featuredNews.size() == 0) {
             featuredNews.add(allFilteredNews.get(0));
         }
-//        LOGGER.info("Featured News no of articles :: "+featuredNews.size());
-//        LOGGER.info("Filtered News no of articles :: "+allFilteredNews.size());
+        LOGGER.info("Featured News no of articles :: "+featuredNews.size());
+        LOGGER.info("Filtered News no of articles :: "+allFilteredNews.size());
 
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){
@@ -249,7 +249,7 @@ public class NewsList implements ComponentExporter {
 			 } 
 		 }	 
 
-	   	// LOGGER.info("newslist filtered news : " + allFilteredNews.size());
+		 LOGGER.info("newslist filtered news : " + allFilteredNews.size());
 
         listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 

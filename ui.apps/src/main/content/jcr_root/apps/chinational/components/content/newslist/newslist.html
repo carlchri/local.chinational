@@ -9,10 +9,10 @@
 
         <p>Select Tag for Featured Articles selection</p>
         <form id="tagsFormBox" action="#" method="post">
-            <select multiple="multiple" class="form-control-1" name="search_news_list">
-                <option value="AllItems" name="AllItems">All Items</option>
+            <select multiple="multiple" class="form-control-1" name="tags_featured_list">
+                <option value="${currentPage.path}.news.AllItems.html" name="AllItems">All Items</option>
                 <sly data-sly-list.tagsList="${newsList.tagsMap}">
-                    <option value="${tagsList}" name="${tagsList}">
+                    <option value="${currentPage.path}.news.${tagsList}.html" name="${tagsList}">
                         ${newsList.tagsMap[tagsList]}
                     </option>
                 </sly>
@@ -22,9 +22,7 @@
         <!-- Select box for featured article selection -->
         <p>
             <span>Current article filter tag: </span>
-            <sly data-sly-list.tagsList="${newsList.tagsMap}">
-                    <span>${newsList.tagsMap[tagsList]}</span>
-            </sly>
+            <span id="featuredCurrentSelectedTag"></span>
         </p>
 
         <p>Select up to Three Titles for Featured Articles</p>
@@ -34,7 +32,7 @@
                 <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
                     <option selected value="${selectedItems.path}">${selectedItems.title} </option>
                 </sly>
-                <sly data-sly-list.selectnewslist="${newsList.featuredArticlesSelectionList}">
+                <sly data-sly-list.selectnewslist="${newsList.allNews}">
                     <option
                             class="${selectnewslist.properties.cq:tags[0]}"
                             value="${selectnewslist.path}">${selectnewslist.title}</option>
