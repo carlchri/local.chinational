@@ -566,7 +566,8 @@
 	}
 	.main-nav {
 		padding: 20px 0;
-		top: -375px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
+		top: -430px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
+		/* CHanged from -375 to -430, as bottom of nav was showing up in Memorial, it must be due to large size of menu*/
 	}
 	/* Added to allow scrolling of navihation in mobile*/
 	.main-nav.open {
