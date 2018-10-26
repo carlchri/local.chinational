@@ -153,19 +153,22 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Subject of the email that will be sent to whoever is reviewing the form field submissions"
                                                 fieldLabel="Subject"
-                                                name="./emailSubject"/>
+                                                name="./emailSubject"
+                                                emptyText="Form Review"/>
                                             <emailBodyIntro
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                    fieldDescription="Introduction: an optional brief description sent to whoever is reviewing the form field submissions"
-                                                    fieldLabel="Introduction"
-                                                    name="./emailBodyIntro"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Introduction: an optional brief description sent to whoever is reviewing the form field submissions"
+                                                fieldLabel="Introduction"
+                                                name="./emailBodyIntro"
+                                                emptyText="Summary of content"/>
                                             <emailBodySignature
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                    fieldDescription="Special instructions or form reference"
-                                                    fieldLabel="Optional Special Instructions"
-                                                    name="./emailBodySignature"/>
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Special instructions or form reference"
+                                                fieldLabel="Optional Special Instructions"
+                                                name="./emailBodySignature"
+                                                emptyText="Instructions or any reference you would like to include"/>
                                             <to
                                                 granite:class="cmp-pbwf--editor-to-email"
                                                 jcr:primaryType="nt:unstructured"
@@ -173,7 +176,8 @@
                                                 fieldDescription="To: Email address of whoever will be reviewing the form field submissions"
                                                 fieldLabel="To"
                                                 name="./emailTo"
-                                                required="{Boolean}true">
+                                                required="{Boolean}true"
+                                                emptyText="you@email.com">
                                                 <granite:data
                                                     jcr:primaryType="nt:unstructured"
                                                     error-message="Please provide a valid e-mail address"/>
