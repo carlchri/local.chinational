@@ -136,7 +136,7 @@
                     </videoOptions>
                     <emailSettingsTab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Submission Email"
+                        jcr:title="Form Submission Email"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -151,26 +151,26 @@
                                             <subject
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Subject line for the emails sent for each submitted form"
+                                                fieldDescription="Subject of the email that will be sent to whoever is reviewing the form field submissions"
                                                 fieldLabel="Subject"
                                                 name="./emailSubject"/>
                                             <emailBodyIntro
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                    fieldDescription="Introduction before main email body"
+                                                    fieldDescription="Introduction: an optional brief description sent to whoever is reviewing the form field submissions"
                                                     fieldLabel="Introduction"
                                                     name="./emailBodyIntro"/>
                                             <emailBodySignature
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                    fieldDescription="Signature after main email body"
-                                                    fieldLabel="Signature"
+                                                    fieldDescription="Special instructions or form reference"
+                                                    fieldLabel="Optional Special Instructions"
                                                     name="./emailBodySignature"/>
                                             <to
                                                 granite:class="cmp-pbwf--editor-to-email"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Email address where the message will be sent"
+                                                fieldDescription="To: Email address of whoever will be reviewing the form field submissions"
                                                 fieldLabel="To"
                                                 name="./emailTo"
                                                 required="{Boolean}true">
