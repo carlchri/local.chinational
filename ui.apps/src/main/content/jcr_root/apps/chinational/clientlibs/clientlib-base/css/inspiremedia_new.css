@@ -201,7 +201,7 @@
 
 .mediaCarousel .main-player {
 	min-width: 440px;        
-	min-height: 380px; /* Changed by German. It was 388 px */
+	min-height: 380px; 				/* Changed by German. It was 388 px */
 	overflow: hidden;
 	border-top: 0px;
 	/* max-height: 388px;  */
@@ -594,7 +594,7 @@
  }
  
 .mediaCarousel #audio-modal .modal-content .audioStyle {
-	min-height: 200px;					/* German: minimum height for Audio modal window */
+	min-height: 200px;						/* German: minimum height for Audio modal window */
 }
 
 .mediaCarousel #audio-modal .modal-content .modal-body {
@@ -609,6 +609,7 @@
 
 .mediaCarousel #audio-modal .main-player {
     border: 16.4px solid #e7e7e7;
+	min-height: 280px; 						/* German: Reducing the space at bottom as per MAM-182 */
 }
 
 .mediaCarousel #audio-modal .sprite.icon-audio-light {
@@ -678,7 +679,7 @@
   	letter-spacing: normal;
   	color: #53565a;
   	padding-top: 11.4px;
-  	padding-bottom: 48px;
+  	padding-bottom: 8px;						/* German: Reducing the space at bottom as per MAM-182 */
   	padding-left: 42.7px !important;			/* German: Paddings according to Zeplin  */
 	padding-right: 44.4px !important;			/* German: Paddings according to Zeplin  */
 }
