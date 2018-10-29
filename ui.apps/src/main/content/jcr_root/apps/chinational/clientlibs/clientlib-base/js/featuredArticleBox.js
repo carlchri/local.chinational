@@ -28,9 +28,11 @@ $('document').ready(function(){
             $(this).prop('selected', false);
         });
         // select items for this tag
-        $('#tagsFormBox input[name="' + selectedTagName + '"]').val().split(",").each( function() {
+        var pageArray = $('#tagsFormBox input[name="' + selectedTagName + '"]').val().split(",");
+
+        $.each(pageArray, function(i) {
             // set specific options to selected
-            $('[name="duallistbox_output[]"]').find('option [value="' + $(this) + '"]').prop('selected', true);
+            $('select[name="duallistbox_output[]"]').find('option[value="' + pageArray[i] + '"]').prop('selected', true);
         });
 
         // refresh the dual box
