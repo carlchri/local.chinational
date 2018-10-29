@@ -15,7 +15,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 
-import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -24,7 +23,6 @@ import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
@@ -41,6 +39,7 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.day.cq.wcm.api.designer.Style;
+import com.day.cq.tagging.TagConstants;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class}, resourceType = DynamicTileNewsList.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -79,6 +78,9 @@ public class DynamicTileNewsList implements ComponentExporter {
 	@Default(values="news")
 	private String articleType; 
 
+    @Inject
+    private ValueMap pageProperties;
+
     @Self
     private SlingHttpServletRequest request;
 
@@ -106,13 +108,20 @@ public class DynamicTileNewsList implements ComponentExporter {
         featuredNews = new ArrayList<>();
         
         pageManager = resourceResolver.adaptTo(PageManager.class);
-        
-        allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
-        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
+        String currentPage = request.getRequestURI().replaceAll(".html", "");
+        String pageTag = null;
+        if(pageProperties.get(TagConstants.PN_TAGS) != null) {
+            String[] tags = (String[]) pageProperties.get(TagConstants.PN_TAGS);
+            for(String tag:tags) {
+                pageTag = tag;
+            }
+        }
+        allNews = populateListItems(allNews, currentPage, pageTag); //to get all the news using defined template, sorted by Publish date
+        featuredNews = populateListItems(featuredNews, currentPage, pageTag);  // extract featured articles, sorted by Publish date
         if(!featuredNews.isEmpty() && featuredNews.size() > FEATURED_LIMIT){
         	setMaxFeaturedNews(); //limit featured articles to 3.
         }
-        listNews = populateListItems(listNews); //list of news sorted by Publish date, excluding FeaturedNews
+        listNews = populateListItems(listNews, currentPage, pageTag); //list of news sorted by Publish date, excluding FeaturedNews
     }
 
     @Nonnull
@@ -129,7 +138,7 @@ public class DynamicTileNewsList implements ComponentExporter {
         return listNews;
     }
 
-    private java.util.List<Page> populateListItems(java.util.List<Page> list) {
+    private java.util.List<Page> populateListItems(java.util.List<Page> list, String currentPage, String pageTag) {
         Map<String, String> map = new HashMap<String, String>();
         Object pageValue = properties.get(PN_PARENT_PAGE);
         // LOGGER.info("populateListItems page property for parent page: " + pageValue);
@@ -151,6 +160,10 @@ public class DynamicTileNewsList implements ComponentExporter {
         } else {
         	map.put("property.value", "/apps/chinational/templates/blogsdetailspage");
         }
+        if(pageTag != null) {
+            map.put("tagid", pageTag);
+            map.put("tagid.property", "jcr:content/"+TagConstants.PN_TAGS);
+        }
         map.put("orderby", "@jcr:content/publishDate");
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
@@ -168,7 +181,8 @@ public class DynamicTileNewsList implements ComponentExporter {
             	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
         }
-
+        //Excluding Current Page in Search Results
+        map.put(Integer.toString(i++)+"_excludepaths", currentPage);
         PredicateGroup group = PredicateGroup.create(map);
         Session session = resourceResolver.adaptTo(Session.class);
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
