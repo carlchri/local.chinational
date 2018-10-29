@@ -117,6 +117,8 @@ public class BlogsList implements ComponentExporter {
      */
     private Map<String, java.util.List<Page>> featuredMap;
 
+    private Map<String, String> featuredMapList;
+
     // storing list of years of published articles
     private java.util.List<String> listYears;
     
@@ -190,7 +192,6 @@ public class BlogsList implements ComponentExporter {
         }
 
         String requestPathInfo = currentPage.getPath();
-//        LOGGER.info("Request path info Blogs List :: "+requestPathInfo);
 
         if(selectors.length >= 2 && selectors[0].equals("blogs")){
         	blogs_filter = selectors[1];
@@ -216,43 +217,46 @@ public class BlogsList implements ComponentExporter {
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         //featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
         featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
-        featuredBlogs = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
+        // populate featuredMapList for front end
+        populateFeaturedMapList();
+
+        featuredBlogs = featuredMap.get(blogs_filter);
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
 
         if (( featuredBlogs == null || featuredBlogs.size() == 0) && allFilteredBlogs.size() > 0 ) {
             // add default value
             // TODO - add default for each tag
+            featuredBlogs = new ArrayList<>();
             featuredBlogs.add(allFilteredBlogs.get(0));
         }
 
-        featuredArticlesSelected = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
+        featuredArticlesSelected = featuredMap.get(blogs_filter);
         featuredArticlesSelectionList = allBlogs;
 
         if (featuredBlogs.size() == 0) {
             featuredBlogs.add(allFilteredBlogs.get(0));
         }
 
-        for(Page item : featuredArticlesSelected) {
-            if (featuredArticlesSelectionList.contains(item)) {
-//                LOGGER.info(":: HAS ITEM ::");
-                allBlogs.remove(item);
+        if (featuredArticlesSelected != null) {
+            for (Page item : featuredArticlesSelected) {
+                if (featuredArticlesSelectionList.contains(item)) {
+                    allBlogs.remove(item);
+                }
+            }
+            for (Page item : featuredArticlesSelected) {
+                if (allFilteredBlogs.contains(item)) {
+                    allFilteredBlogs.remove(item);
+                }
             }
         }
 
-
-                if(tagsDescMap != null){
+        if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(blogs_filter)){
 	            	tagDesc = pair.getValue();
 	            }
 	        }
         }
-        
-    	for(Page item : featuredArticlesSelected) {
-			 if(allFilteredBlogs.contains(item)){
-				 allFilteredBlogs.remove(item);
-			 } 
-		 }	 
 
 	   	// LOGGER.info("blogslist filtered blogs : " + allFilteredBlogs.size());
 	   	
@@ -273,6 +277,23 @@ public class BlogsList implements ComponentExporter {
             pages.add(i);
         }
     }
+
+    private void populateFeaturedMapList() {
+        if (featuredMap != null && featuredMap.size() > 0) {
+            featuredMapList = new HashMap<>();
+            for(String mapKey: featuredMap.keySet()) {
+                List<Page> mappedPages = featuredMap.get(mapKey);
+                StringBuffer bufferString = new StringBuffer();
+                for(Page mapped: mappedPages) {
+                    bufferString.append(mapped.getPath()).append(",");
+                }
+                if (bufferString.length() > 0) {
+                    featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                }
+            }
+        }
+    }
+
 
     public Collection<Page> getAllBlogs() {
         return allBlogs;

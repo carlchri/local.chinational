@@ -103,12 +103,6 @@ public final class NewsBlogUtils {
             SimpleDateFormat formatter = new SimpleDateFormat("YYYY");
             String year = formatter.format(date.getTime()).toUpperCase();
 
-//    		String[] itemsTags = item.getProperties().get("cq:tags", String[].class);
-//    		if (itemsTags.length != 0) {
-//                for (String it : itemsTags) {
-//                    LOGGER.info("Items Tags :: " + it);
-//                }
-//            }
             // to get tags
             Tag[] tags = tagManager.getTagsForSubtree(item.adaptTo(Resource.class), false);
 //            LOGGER.info("tags: " + tags.length );
@@ -128,23 +122,16 @@ public final class NewsBlogUtils {
                     }
 
                     if (articleFilter.equals(DEFAULT_NEWS_FILTER)) {
-//							LOGGER.info("Article Filter :: "+articleFilter);
                         addYear(listYears, year);
-//		                	addFeaturedArticle(item, featured_limit);
-                        //getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
                     } else if (articleFilter.equals(tag.getName())) {
                         LOGGER.debug("Article Filter :: " + articleFilter);
                         LOGGER.debug("Tag Filter :: " + tag.getName());
                         addYear(listYears, year);
                         filteredArticles.add(item);
-//		                	addFeaturedArticle(item, featured_limit);
-
                     }
                 }
             } else if (articleFilter.equals(DEFAULT_NEWS_FILTER)) {
                 addYear(listYears, year);
-//            	addFeaturedArticle(item, featured_limit);
-                //getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
             }
         }
         // TODO - check where this needs to be executed

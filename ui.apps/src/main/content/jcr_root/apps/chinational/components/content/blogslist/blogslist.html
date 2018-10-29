@@ -16,16 +16,15 @@
 					</option>
 				</sly>
 			</select>
+			<sly data-sly-list.tagsFeatured="${blogsList.featuredMapList}">
+				<input type="hidden" name="${tagsFeatured}" value="${blogsList.featuredMapList[tagsFeatured]}"/>
+			</sly>
 		</form>
 
 		<!-- Select box for featured article selection -->
 		<p>
 			<span>Current article filter tag: </span>
-			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/AllItems'}">From Our CEO</span>
-			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/FromOurCEO'}">From Our CEO</span>
-			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/CommunityBenefit'}">Community Benefit</span>
-			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/WeightManagement'}">Weight Management</span>
-			<span data-sly-test="${currentPage.properties.featuredPagesTag == 'chi:Blogs/Cancer'}">Cancer</span>
+			<span id="featuredCurrentSelectedTag"></span>
 		</p>
 
 		<p>Select Three Titles for Featured Articles</p>
@@ -33,20 +32,21 @@
 		<form id="listBoxForm" action="#" method="post">
 			<select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
 				<sly data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
-					<option selected value="${selectedItems.path}">${selectedItems.title} </option>
+					<option selected
+							class="${selectedItems.properties.cq:tags[0]}"
+							value="${selectedItems.path}">${selectedItems.title} </option>
 				</sly>
-				<sly data-sly-list.selectlist="${blogsList.allBlogs}">
-					<option data-sly-test="${selectlist.properties.cq:tags[0] == currentPage.properties.featuredPagesTag || currentPage.properties.featuredPagesTag == 'chi:Blogs/AllItems'}" class=" ${selectlist.properties.cq:tags[0]} ${currentPage.properties.featuredPagesTag}" value="${selectlist.path}">${selectlist.title}</option>
+				<sly data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
+					<option
+							class="${selectlist.properties.cq:tags[0]}"
+							value="${selectlist.path}">${selectlist.title}</option>
 				</sly>
 			</select>
 			<br>
 			<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
-			<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTagPrefix">
+			<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTag">
 		</form>
 
-		<!--<ul data-sly-repeat.child="${currentPage.properties['/news-list']}">-->
-		<!--<li>${child.title}</li>-->
-		<!--</ul>-->
 	</div>
 </div>
 
@@ -54,16 +54,6 @@
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
 	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
-		<!--/*<div class="col-xs-12">
-             <div class="visual-box component-gutter full-bleed-tiles">
-                 <div class="full-bleed">
-                     <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-                          <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
-                          </sly>
-                     </sly>
-                 </div>
-             </div>
-         </div> */-->
 
          <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
              <div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>

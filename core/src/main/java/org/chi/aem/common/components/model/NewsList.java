@@ -233,17 +233,11 @@ public class NewsList implements ComponentExporter {
         }
 
         featuredArticlesSelected = featuredMap.get(news_filter);
-             //NewsBlogUtils.populateSelectedItems(parentPage, resourceResolver, currentPage.getPath());
-        for (Page fsa : featuredArticlesSelected) {
-            LOGGER.info("Featured page title for tag : " + news_filter + " is :: "+fsa.getTitle());
-        }
-
         featuredArticlesSelectionList = allNews;
 
         if (featuredArticlesSelected != null) {
             for (Page item : featuredArticlesSelected) {
                 if (featuredArticlesSelectionList.contains(item)) {
-//                LOGGER.info(":: HAS ITEM ::");
                     featuredArticlesSelectionList.remove(item);
                 }
             }
