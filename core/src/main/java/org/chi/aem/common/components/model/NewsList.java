@@ -224,6 +224,7 @@ public class NewsList implements ComponentExporter {
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
             // add default value
             // TODO - add default for each tag
+            featuredNews = new ArrayList<>();
             featuredNews.add(allFilteredNews.get(0));
         }
 
