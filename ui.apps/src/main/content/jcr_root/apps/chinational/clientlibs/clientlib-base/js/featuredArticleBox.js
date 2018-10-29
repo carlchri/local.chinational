@@ -18,15 +18,23 @@ $('document').ready(function(){
     //TagsFormBox
     $('#tagsFormBox select').on('change', function () {
         var tagUrlValue = $(this).val().toString();
-        console.log("Selected tag Value : "+tagUrlValue);
+        //console.log("Selected tag Value : "+tagUrlValue);
 
         // update selected
         var selectedTagName = $(this).find('option:selected').attr('name');
         $('#featuredCurrentSelectedTag').text(selectedTagName);
-        console.log("featuredCurrentSelectedTag : "+ selectedTagName);
-        //if (tagUrlValue) { // require a URL
-        //    window.location = tagUrlValue; // redirect
-        //}
+        // unselect all selected items
+        $('[name="duallistbox_output[]"]').find('option:selected').each(function() {
+            $(this).prop('selected', false);
+        });
+        // select items for this tag
+        $('#tagsFormBox input[name="' + selectedTagName + '"]').val().split(",").each( function() {
+            // set specific options to selected
+            $('[name="duallistbox_output[]"]').find('option [value="' + $(this) + '"]').prop('selected', true);
+        });
+
+        // refresh the dual box
+        $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
 
         // duallistbox_output[]_helper1
         // duallistbox_output[]_helper2
@@ -35,25 +43,12 @@ $('document').ready(function(){
             var optionTag = $(this).attr('class');
             $(this).show();
             if (optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName)) {
-                console.log("Hide option with tag: " + optionTag);
+                //console.log("Hide option with tag: " + optionTag);
                 $(this).hide();
             }
         });
 
         return false;
-
-        /*
-        $.ajax({
-            type: 'GET',
-            url:'/content/national/en.featurednewslisttagservlet.html',
-            data: {'featuredPagesTag': tagValue, 'requestPagePath': pageUrlsplit},
-            success: function(msg){
-                location.reload(true);
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }
-        })*/
     });
 
     // Submit function
@@ -70,16 +65,7 @@ $('document').ready(function(){
         //featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
         featuredSelectTag = featuredTagSuffix;
         featuredListPages = $('[name="duallistbox_output[]"]').val();
-        // console.log("featured  selected Tag :: "+featuredSelectTag);
-        // console.log("Featured Pages tag :: "+ featuredTag);
-        // var featuredList = featuredListPages.toString().replace("[", "{").replace("]","}");
-        // if (featuredListPages == null || featuredTag == "") {
-        //     featuredListPages = ['NoArticle'];
-        // }
-        // if (featuredSelectTag == null) {
-        //     featuredSelectTag = $('#tagsFormBox select option:first').val();
-        // }
-        // debugger;
+
         if (featuredListPages != null ) {
             featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
         } else {
@@ -87,18 +73,7 @@ $('document').ready(function(){
         }
             // console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
-                // console.log("featuredListPagesString length :: "+featuredListPagesString.length);
-
-                // console.log( featuredListPagesString );
-                // console.log(featuredListPagesString[0]);
-                // console.log(featuredListPagesString[1]);
-                // console.log(featuredListPagesString[2]);
-                // console.log(JSON.stringify(featuredListPagesString));
                 var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
-                // console.log("Fetured list pages json string :: "+ featuredListPagesJsonString);
-                // console.log("Featured selected tag :: "+featuredSelectTag);
-                // console.log("Featured Tag :: "+featuredTag);
-                // debugger;
                 $.ajax({
                     type: 'GET',
                     async: false,
@@ -106,8 +81,6 @@ $('document').ready(function(){
                     data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredTag, "featuredPagesTag": featuredSelectTag}, //passing values to servlet
 
                     success: function (msg) {
-                        // $(this).find('select').refresh();
-                        // alert("Press OK to refresh page.");
                         location.reload(true);
                         console.log("Featured Pages :: " + featuredListPagesString);
                     },

@@ -113,6 +113,8 @@ public class NewsList implements ComponentExporter {
      */
     private Map<String, java.util.List<Page>> featuredMap;
 
+    private Map<String, String> featuredMapList;
+
     // storing list of years of published articles
     private java.util.List<String> listYears;
 
@@ -217,6 +219,9 @@ public class NewsList implements ComponentExporter {
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         //featuredNews = (List<Page>) articleMap.get("featuredArticles");
         featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
+        // populate featuredMapList for front end
+        populateFeaturedMapList();
+
         featuredNews = featuredMap.get(news_filter);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
@@ -234,7 +239,6 @@ public class NewsList implements ComponentExporter {
         }
 
         featuredArticlesSelectionList = allNews;
-
 
         if (featuredArticlesSelected != null) {
             for (Page item : featuredArticlesSelected) {
@@ -278,6 +282,22 @@ public class NewsList implements ComponentExporter {
         }
    }
 
+   private void populateFeaturedMapList() {
+        if (featuredMap != null && featuredMap.size() > 0) {
+            featuredMapList = new HashMap<>();
+            for(String mapKey: featuredMap.keySet()) {
+                List<Page> mappedPages = featuredMap.get(mapKey);
+                StringBuffer bufferString = new StringBuffer();
+                for(Page mapped: mappedPages) {
+                    bufferString.append(mapped.getPath()).append(",");
+                }
+                if (bufferString.length() > 0) {
+                    featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                }
+            }
+        }
+   }
+
     public Collection<Page> getAllNews() {
         return allNews;
     }
@@ -296,6 +316,10 @@ public class NewsList implements ComponentExporter {
 
     public Collection<Page> getFeaturedNews() {
         return featuredNews;
+    }
+
+    public Map<String, String> getFeaturedMapList(){
+        return featuredMapList;
     }
 
     public Collection<Page> getListNews() {

@@ -17,6 +17,9 @@
                     </option>
                 </sly>
             </select>
+            <sly data-sly-list.tagsFeatured="${newsList.featuredMapList}">
+                <input type="hidden" name="${tagsFeatured}" value="${newsList.featuredMapList[tagsFeatured]}"/>
+            </sly>
         </form>
 
         <!-- Select box for featured article selection -->
@@ -30,7 +33,9 @@
         <form id="listBoxForm" action="#" method="post">
             <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
                 <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
-                    <option selected value="${selectedItems.path}">${selectedItems.title} </option>
+                    <option selected
+                            class="${selectedItems.properties.cq:tags[0]}"
+                            value="${selectedItems.path}">${selectedItems.title} </option>
                 </sly>
                 <sly data-sly-list.selectnewslist="${newsList.featuredArticlesSelectionList}">
                     <option
