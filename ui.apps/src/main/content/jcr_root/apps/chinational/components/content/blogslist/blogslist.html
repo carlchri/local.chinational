@@ -11,7 +11,10 @@
 			<select multiple="multiple" class="form-control-1" name="blog_tags">
 				<option value="AllItems" name="AllItems">All Items</option>
 				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
-					<option value="${tagsList}" name="${tagsList}">
+					<option
+							data-sly-attribute.selected="${blogsList.blogsFilter == tagsList? 'true' : ''}"
+							value="${currentPage.path}.news.${tagsList}.html"
+							name="${tagsList}">
 						${blogsList.tagsMap[tagsList]}
 					</option>
 				</sly>
@@ -24,19 +27,21 @@
 		<!-- Select box for featured article selection -->
 		<p>
 			<span>Current article filter tag: </span>
-			<span id="featuredCurrentSelectedTag"></span>
+			<span id="featuredCurrentSelectedTag">${blogsList.blogsFilter}</span>
 		</p>
 
 		<p>Select Three Titles for Featured Articles</p>
 		<br/>
 		<form id="listBoxForm" action="#" method="post">
 			<select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
-				<sly data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
+				<sly data-sly-test="${blogsList.featuredArticlesSelected}"
+					 data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
 					<option selected
 							class="${selectedItems.properties.cq:tags[0]}"
 							value="${selectedItems.path}">${selectedItems.title} </option>
 				</sly>
-				<sly data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
+				<sly data-sly-test="${blogsList.featuredArticlesSelectionList}"
+						data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
 					<option
 							class="${selectlist.properties.cq:tags[0]}"
 							value="${selectlist.path}">${selectlist.title}</option>

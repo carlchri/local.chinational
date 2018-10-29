@@ -206,10 +206,10 @@ public class BlogsList implements ComponentExporter {
         }
 
 
-		// LOGGER.info("blogslist parent page : " + parentPage);
-		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
+		LOGGER.info("blogslist parent page : " + parentPage);
+		LOGGER.info("blogslist blogs_filter : " + blogs_filter);
         allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate, requestPathInfo); //to get all the blogs using defined template, sorted by Publish date
-		// LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
+		LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
         articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
@@ -222,12 +222,14 @@ public class BlogsList implements ComponentExporter {
 
         featuredBlogs = featuredMap.get(blogs_filter);
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
+        LOGGER.info("blogslist allFilteredBlogs : " + allFilteredBlogs.size());
 
         if (( featuredBlogs == null || featuredBlogs.size() == 0) && allFilteredBlogs.size() > 0 ) {
             // add default value
             // TODO - add default for each tag
             featuredBlogs = new ArrayList<>();
             featuredBlogs.add(allFilteredBlogs.get(0));
+            LOGGER.info("blogslist featuredBlogs added default one : " + featuredBlogs.size());
         }
 
         featuredArticlesSelected = featuredMap.get(blogs_filter);
@@ -248,6 +250,8 @@ public class BlogsList implements ComponentExporter {
                     allFilteredBlogs.remove(item);
                 }
             }
+        } else {
+            LOGGER.info("blogslist featuredArticlesSelected is null ");
         }
 
         if(tagsDescMap != null){
@@ -258,12 +262,13 @@ public class BlogsList implements ComponentExporter {
 	        }
         }
 
-	   	// LOGGER.info("blogslist filtered blogs : " + allFilteredBlogs.size());
+	   	LOGGER.info("blogslist filtered blogs : " + allFilteredBlogs.size());
 	   	
 	    listBlogs = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredBlogs); //list of blogs, sorted by Publish date
         
 		// For AJAX Call - to get Total Results initially for LOAD MORE
         totalResults = allFilteredBlogs.size();
+        LOGGER.info("blogslist allFilteredBlogs size.. again: " + totalResults);
         
         // to get total no of pages and List of pages for data-sly-list for Pagination
     	int total = (allBlogs.size())/hits_per_page;
@@ -313,6 +318,10 @@ public class BlogsList implements ComponentExporter {
 
     public Collection<Page> getFeaturedBlogs() {
         return featuredBlogs;
+    }
+
+    public Map<String, String> getFeaturedMapList(){
+        return featuredMapList;
     }
 
     public Collection<Page> getListBlogs() {
