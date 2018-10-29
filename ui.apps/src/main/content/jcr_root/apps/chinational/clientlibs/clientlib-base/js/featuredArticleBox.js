@@ -28,12 +28,14 @@ $('document').ready(function(){
             $(this).prop('selected', false);
         });
         // select items for this tag
-        var pageArray = $('#tagsFormBox input[name="' + selectedTagName + '"]').val().split(",");
-
-        $.each(pageArray, function(i) {
-            // set specific options to selected
-            $('select[name="duallistbox_output[]"]').find('option[value="' + pageArray[i] + '"]').prop('selected', true);
-        });
+        var inputAttr = $('#tagsFormBox input[name="' + selectedTagName + '"]');
+        if (inputAttr && inputAttr.val()) {
+            var pageArray = inputAttr.val().split(",");
+            $.each(pageArray, function(i) {
+                // set specific options to selected
+                $('select[name="duallistbox_output[]"]').find('option[value="' + pageArray[i] + '"]').prop('selected', true);
+            });
+        }
 
         // refresh the dual box
         $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
@@ -44,7 +46,9 @@ $('document').ready(function(){
         $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
             var optionTag = $(this).attr('class');
             $(this).show();
-            if (optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName)) {
+            // hide is there is no tag associated or tag is present, but not the right one
+            if ((optionTag == null && selectedTagName != 'AllItems' )||
+                    ( optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName))) {
                 //console.log("Hide option with tag: " + optionTag);
                 $(this).hide();
             }

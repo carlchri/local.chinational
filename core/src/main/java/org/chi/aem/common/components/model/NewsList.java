@@ -230,6 +230,8 @@ public class NewsList implements ComponentExporter {
             // TODO - add default for each tag
             featuredNews = new ArrayList<>();
             featuredNews.add(allFilteredNews.get(0));
+            // remove first item from allFilteredNews, as featured item has been added from the allFilteredNews
+            allFilteredNews.remove(0);
         }
 
         featuredArticlesSelected = featuredMap.get(news_filter);

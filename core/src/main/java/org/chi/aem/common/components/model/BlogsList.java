@@ -230,19 +230,17 @@ public class BlogsList implements ComponentExporter {
             featuredBlogs = new ArrayList<>();
             featuredBlogs.add(allFilteredBlogs.get(0));
             LOGGER.info("blogslist featuredBlogs added default one : " + featuredBlogs.size());
+            // remove first item from allFilteredBlogs, as featured item has been added from the allFilteredBlogs
+            allFilteredBlogs.remove(0);
         }
 
         featuredArticlesSelected = featuredMap.get(blogs_filter);
         featuredArticlesSelectionList = allBlogs;
 
-        if (featuredBlogs.size() == 0) {
-            featuredBlogs.add(allFilteredBlogs.get(0));
-        }
-
         if (featuredArticlesSelected != null) {
             for (Page item : featuredArticlesSelected) {
                 if (featuredArticlesSelectionList.contains(item)) {
-                    allBlogs.remove(item);
+                    featuredArticlesSelectionList.remove(item);
                 }
             }
             for (Page item : featuredArticlesSelected) {
@@ -262,13 +260,13 @@ public class BlogsList implements ComponentExporter {
 	        }
         }
 
-	   	LOGGER.info("blogslist filtered blogs : " + allFilteredBlogs.size());
+	   	LOGGER.debug("blogslist featuredArticlesSelectionList blogs : " + featuredArticlesSelectionList.size());
 	   	
 	    listBlogs = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredBlogs); //list of blogs, sorted by Publish date
         
 		// For AJAX Call - to get Total Results initially for LOAD MORE
         totalResults = allFilteredBlogs.size();
-        LOGGER.info("blogslist allFilteredBlogs size.. again: " + totalResults);
+        LOGGER.debug("blogslist featuredArticlesSelectionList size.. again: " + featuredArticlesSelectionList.size());
         
         // to get total no of pages and List of pages for data-sly-list for Pagination
     	int total = (allBlogs.size())/hits_per_page;
@@ -308,7 +306,9 @@ public class BlogsList implements ComponentExporter {
         return featuredArticlesSelected;
     }
 
-    public  Collection<Page> geFeaturedArticlesSelectionList() { return featuredArticlesSelectionList; }
+    public  Collection<Page> getFeaturedArticlesSelectionList() {
+        return featuredArticlesSelectionList;
+    }
 
     @Nonnull
     @Override

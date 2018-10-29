@@ -8,8 +8,11 @@
 		<!-- Select Tags for featured article selection -->
 		<p>Select Tag for Featured Articles selection</p>
 		<form id="tagsFormBox" action="#" method="post">
-			<select multiple="multiple" class="form-control-1" name="blog_tags">
-				<option value="AllItems" name="AllItems">All Items</option>
+			<select class="form-control-1" name="blog_tags">
+				<option
+						data-sly-attribute.selected="${blogsList.blogsFilter == 'AllItems'? 'true' : ''}"
+						value="${currentPage.path}.news.AllItems.html"
+						name="AllItems">All Items</option>
 				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
 					<option
 							data-sly-attribute.selected="${blogsList.blogsFilter == tagsList? 'true' : ''}"
@@ -27,7 +30,7 @@
 		<!-- Select box for featured article selection -->
 		<p>
 			<span>Current article filter tag: </span>
-			<span id="featuredCurrentSelectedTag">${blogsList.blogsFilter}</span>
+			<span id="featuredCurrentSelectedTag"><b>${blogsList.blogsFilter}</b></span>
 		</p>
 
 		<p>Select Three Titles for Featured Articles</p>
