@@ -103,9 +103,15 @@ public class NewsList implements ComponentExporter {
     private java.util.List<Page> listNews;
 
     /* featuredNews - storing list of featured news articles [Max 3]
+     * for default tag
      * sorted by publish date
     */
     private java.util.List<Page> featuredNews;
+
+    /*
+    * Map of tag name to list of featured articles for the map
+     */
+    private Map<String, java.util.List<Page>> featuredMap;
 
     // storing list of years of published articles
     private java.util.List<String> listYears;
@@ -211,18 +217,21 @@ public class NewsList implements ComponentExporter {
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
-        featuredNews = (List<Page>) articleMap.get("featuredArticles");
+        //featuredNews = (List<Page>) articleMap.get("featuredArticles");
+        featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
+        featuredNews = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
+        if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
+            // add default value
+            // TODO - add default for each tag
+            featuredNews.add(allFilteredNews.get(0));
+        }
 
-        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
+        featuredArticlesSelected = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
+                //NewsBlogUtils.populateSelectedItems(parentPage, resourceResolver, currentPage.getPath());
 
         featuredArticlesSelectionList = allNews;
 
-        if (featuredNews.size() == 0) {
-            featuredNews.add(allFilteredNews.get(0));
-        }
-        LOGGER.info("Featured News no of articles :: "+featuredNews.size());
-        LOGGER.info("Filtered News no of articles :: "+allFilteredNews.size());
 
         for(Page item : featuredArticlesSelected) {
             if(featuredArticlesSelectionList.contains(item)){

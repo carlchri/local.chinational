@@ -112,6 +112,11 @@ public class BlogsList implements ComponentExporter {
      */
     private java.util.List<Page> featuredBlogs;
 
+    /*
+     * Map of tag name to list of featured articles for the map
+     */
+    private Map<String, java.util.List<Page>> featuredMap;
+
     // storing list of years of published articles
     private java.util.List<String> listYears;
     
@@ -199,10 +204,6 @@ public class BlogsList implements ComponentExporter {
         	activePage = 1; //for Pagination active class when page load for the first time
         }
 
-        featuredArticlesSelected = NewsBlogUtils.populateSeletedItems(parentPage, resourceResolver, currentPage.getPath());
-//        for (Page  fsa : featuredArticlesSelected) {
-//            LOGGER.info("Featured page title :: "+fsa.getTitle());
-//        }
 
 		// LOGGER.info("blogslist parent page : " + parentPage);
 		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
@@ -213,9 +214,18 @@ public class BlogsList implements ComponentExporter {
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
-        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
+        //featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
+        featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
+        featuredBlogs = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
 
+        if (( featuredBlogs == null || featuredBlogs.size() == 0) && allFilteredBlogs.size() > 0 ) {
+            // add default value
+            // TODO - add default for each tag
+            featuredBlogs.add(allFilteredBlogs.get(0));
+        }
+
+        featuredArticlesSelected = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
         featuredArticlesSelectionList = allBlogs;
 
         if (featuredBlogs.size() == 0) {
