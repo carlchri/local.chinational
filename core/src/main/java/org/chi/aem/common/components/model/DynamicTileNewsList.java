@@ -26,6 +26,7 @@ import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.chi.aem.common.utils.NewsBlogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -117,7 +118,7 @@ public class DynamicTileNewsList implements ComponentExporter {
             }
         }
         allNews = populateListItems(allNews, currentPage, pageTag); //to get all the news using defined template, sorted by Publish date
-        featuredNews = populateListItems(featuredNews, currentPage, pageTag);  // extract featured articles, sorted by Publish date
+        featuredNews = populateFeaturedItems(featuredNews, currentPage, pageTag);  // extract featured articles, sorted by Publish date
         if(!featuredNews.isEmpty() && featuredNews.size() > FEATURED_LIMIT){
         	setMaxFeaturedNews(); //limit featured articles to 3.
         }
@@ -138,8 +139,19 @@ public class DynamicTileNewsList implements ComponentExporter {
         return listNews;
     }
 
-    private java.util.List<Page> populateListItems(java.util.List<Page> list, String currentPage, String pageTag) {
-        Map<String, String> map = new HashMap<String, String>();
+    private java.util.List<Page> populateFeaturedItems(java.util.List<Page> list,
+                                                   String currentPage,
+                                                   String pageTag) {
+
+        String pageValue = getParentPage();
+        if (pageValue == null) {
+            // no data
+            return list;
+        }
+        return NewsBlogUtils.getFeaturedArticleList(resourceResolver, pageTag, pageValue);
+    }
+
+    private String getParentPage() {
         Object pageValue = properties.get(PN_PARENT_PAGE);
         // LOGGER.info("populateListItems page property for parent page: " + pageValue);
         if (pageValue == null) {
@@ -148,6 +160,15 @@ public class DynamicTileNewsList implements ComponentExporter {
             pageValue = currentStyle.get(PN_PARENT_PAGE);
             // LOGGER.info("populateListItems design dialog property for parent page: " + pageValue);
         }
+        if (pageValue != null){
+            return pageValue.toString();
+        }
+        return null;
+    }
+
+    private java.util.List<Page> populateListItems(java.util.List<Page> list, String currentPage, String pageTag) {
+        Map<String, String> map = new HashMap<String, String>();
+        String pageValue = getParentPage();
         if (pageValue == null) {
             // no data
             return list;

@@ -306,6 +306,31 @@ public final class NewsBlogUtils {
         return listArticles;
     }
 
+    public static java.util.List<Page> getFeaturedArticleList( ResourceResolver resourceResolver,
+                                                                         String articleFilter,
+                                                                         String requestPathInfo) {
+        java.util.List<Page> featuredList = new ArrayList<>();
+        try {
+            if (articleFilter == null) {
+                articleFilter = DEFAULT_NEWS_FILTER;
+            }
+            String featuredPagesPath = requestPathInfo + "/jcr:content/" + FEATURED_NODE;
+            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath + ", article filter: " + articleFilter);
+            Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
+            if (featuredPagesRes != null) {
+                Node featuredNode = featuredPagesRes.adaptTo(Node.class);
+                featuredList = getFeaturedListItems(articleFilter, featuredNode, resourceResolver);
+            }
+            // TODO - where to add default one, if no featured article is available
+
+        } catch (Exception e) {
+            LOGGER.error("Could not get featured pages :: " + e);
+            e.printStackTrace();
+        }
+        return featuredList;
+    }
+
+
     public static Map<String, java.util.List<Page>> getFeaturedArticles( Set<String> tagSet,
                                                                         ResourceResolver resourceResolver,
                                                                         String articleFilter,
@@ -341,37 +366,37 @@ public final class NewsBlogUtils {
         return featuredMap;
     }
 
+    private static java.util.List<Page> getFeaturedListItems(String tagName,
+                                                             Node featuredNode,
+                                                             ResourceResolver resourceResolver)
+            throws RepositoryException{
+        if (featuredNode != null && featuredNode.hasProperties()) {
+            Value[] featuredList = null;
+            if (featuredNode.hasProperty(tagName)) {
+                featuredList = featuredNode.getProperty(tagName).getValues();
+            }
+            if (featuredList != null) {
+                List<Page> featuredArticles = new ArrayList<>();
+                for (Value fl : featuredList) {
+                    String spnPath = fl.getString();
+                    Resource flRes = resourceResolver.getResource(spnPath);
+                    Page flPage = flRes.adaptTo(Page.class);
+                    featuredArticles.add(flPage);
+                }
+                return featuredArticles;
+            }
+        }
+        return null;
+    }
 
     private static void populateFeaturedItems(String tagForItem,
                                               Map<String, java.util.List<Page>> featuredMap,
                                               Node featuredNode,
                                               ResourceResolver resourceResolver) throws RepositoryException {
         LOGGER.info("list of tags  :: " + tagForItem);
-        if (featuredNode != null && featuredNode.hasProperties()) {
-            //PropertyIterator pi = featuredNode.getProperties();
-            //while (pi.hasNext()) {
-            //    LOGGER.info("featured node properties: " + pi.nextProperty().toString());
-            //}
-            Value[] featurdList = null;
-            if (featuredNode.hasProperty(tagForItem)) {
-                featurdList = featuredNode.getProperty(tagForItem).getValues();
-            }
-            //String noArticle = "Article found";
-            if (featurdList == null) {
-                LOGGER.info("Featured List - no Article for tagName: " + tagForItem);
-            } else {
-                if (featurdList.length <= 3 && featurdList.length > 0) {
-                    LOGGER.info("Node has featured list property for tag: " + tagForItem);
-                    List<Page> featuredArticles = new ArrayList<>();
-                    for (Value fl : featurdList) {
-                        String spnPath = fl.getString();
-                        Resource flRes = resourceResolver.getResource(spnPath);
-                        Page flPage = flRes.adaptTo(Page.class);
-                        featuredArticles.add(flPage);
-                    }
-                    featuredMap.put(tagForItem, featuredArticles);
-                }
-            }
+        List<Page> featuredList = getFeaturedListItems(tagForItem, featuredNode, resourceResolver);
+        if (featuredList != null) {
+            featuredMap.put(tagForItem, featuredList);
         }
     }
 
