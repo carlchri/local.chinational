@@ -218,8 +218,12 @@ public final class NewsBlogUtils {
         return m_article;
     }
 
-    /*
-    public static Map<String, Object> populateYearsTagsFeatured(String parentPage, java.util.List<Page> allArticles, ResourceResolver resourceResolver, String articleFilter, String filterYear, String requestPathInfo) {
+
+    public static Map<String, Object>
+                        populateArticlesForPagination(String parentPage,
+                                                      java.util.List<Page> allArticles,
+                                                      ResourceResolver resourceResolver,
+                                                      String articleFilter, String filterYear) {
 
         // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
         if (filteredArticles.size() != 0) {
@@ -241,22 +245,23 @@ public final class NewsBlogUtils {
                     for (Tag tag : tags) {
                         if (articleFilter.equals(DEFAULT_NEWS_FILTER)) {
 //		         				addFilteredArticles(item);
-                            getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
+                            getFeaturedArticles(parentPage, resourceResolver, articleFilter, parentPage);
                         } else if (articleFilter.equals(tag.getName())) {
                             LOGGER.debug("INSIDE TAG FILTER");
 //			         			addFilteredArticles(item);
-                            getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
+                            getFeaturedArticles(parentPage, resourceResolver, articleFilter, parentPage);
                         }
 
                     }
                 } else if (articleFilter.equals(DEFAULT_NEWS_FILTER)) {
 //	            	addFilteredArticles(item);
-                    getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
+
                 }
             }
 
         }
 
+        getFeaturedArticles(parentPage, resourceResolver, articleFilter, parentPage);
         // LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
 
         // populate map
@@ -266,7 +271,7 @@ public final class NewsBlogUtils {
 
         return m_article;
     }
- */
+
 
 
     public static void addYear(java.util.List<String> listYears, String year) {

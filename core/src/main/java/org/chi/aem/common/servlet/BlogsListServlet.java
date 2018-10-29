@@ -180,7 +180,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 
 	        LOGGER.info("Blogs request path info :: "+request.getPathInfo());
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate, request.getPathInfo()); //to get all the news using defined template, sorted by Publish date
-	        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear, parentPage);
+	        articleMap = NewsBlogUtils.populateArticlesForPagination(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear);
 	        // listYears = (List<String>) articleMap.get("listYears");
 	        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
 	        allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
