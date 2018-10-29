@@ -32,7 +32,7 @@
                 <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
                     <option selected value="${selectedItems.path}">${selectedItems.title} </option>
                 </sly>
-                <sly data-sly-list.selectnewslist="${newsList.allNews}">
+                <sly data-sly-list.selectnewslist="${newsList.featuredArticlesSelectionList}">
                     <option
                             class="${selectnewslist.properties.cq:tags[0]}"
                             value="${selectnewslist.path}">${selectnewslist.title}</option>

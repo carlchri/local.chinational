@@ -3,10 +3,7 @@ package org.chi.aem.common.utils;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.jcr.Value;
+import javax.jcr.*;
 
 import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.api.resource.Resource;
@@ -32,22 +29,13 @@ public final class NewsBlogUtils {
     private static final String DEFAULT_NEWS_FILTER_YEAR = "ChooseYear";
     public static final String FEATURED_NODE = "featuredArticles";
 
-    private static String tagName = "";
     //	private static String articleFilter = "noArticle";
-    private static final Map<String, Object> m_article = new HashMap<String, Object>();
-    private static final java.util.List<Page> featuredSelectedArticles = new ArrayList<>();
+    //private java.util.List<Page> featuredSelectedArticles = new ArrayList<>();
     //private static final java.util.List<Page> featuredArticles = new ArrayList<>();
     // store featured articles for each tag
-    private static final Map<String, java.util.List<Page>> featuredMap = new HashMap<String, java.util.List<Page>>();
 
-    private static final java.util.List<Page> filteredArticles = new ArrayList<>();
 
-    private static final java.util.List<String> listYears = new ArrayList<>();
 
-    private static final java.util.List<String> listTags = new ArrayList<>();
-
-    private static final Map<String, String> tagsMap = new HashMap<String, String>();
-    private static final Map<String, String> tagsDescMap = new HashMap<String, String>();
 
     public static java.util.List<Page> populateListItems(String parentPage, ResourceResolver resourceResolver, String articlesTemplate, String requestPathInfo) {
 
@@ -98,24 +86,13 @@ public final class NewsBlogUtils {
 
 //        LOGGER.info("newsblogUtils start filteredArticles Size : " + filteredArticles.size());
 //         LOGGER.info("Pagent Page :: "+parentPage);
-        if (filteredArticles.size() != 0) {
-            filteredArticles.clear();
-        }
-        if (featuredMap.size() != 0) {
-            featuredMap.clear();
-        }
-        if (listYears.size() != 0) {
-            listYears.clear();
-        }
-        if (listTags.size() != 0) {
-            listTags.clear();
-        }
-        if (tagsMap.size() != 0) {
-            tagsMap.clear();
-        }
-        if (tagsDescMap.size() != 0) {
-            tagsDescMap.clear();
-        }
+        Map<String, Object> m_article = new HashMap<String, Object>();
+        java.util.List<Page> filteredArticles = new ArrayList<>();
+        Map<String, java.util.List<Page>> featuredMap = new HashMap<String, java.util.List<Page>>();
+        java.util.List<String> listYears = new ArrayList<>();
+        java.util.List<String> listTags = new ArrayList<>();
+        Map<String, String> tagsMap = new HashMap<String, String>();
+        Map<String, String> tagsDescMap = new HashMap<String, String>();
 
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         for (Page item : allArticles) {
@@ -137,7 +114,7 @@ public final class NewsBlogUtils {
 //            LOGGER.info("tags: " + tags.length );
             if (tags.length != 0) {
                 for (Tag tag : tags) {
-                    tagName = tag.getTitle();
+                    String tagName = tag.getTitle();
 
 //	           		    LOGGER.info("tagTitle: " + tag.getTitle());
                     if (listTags.isEmpty()) {
@@ -171,7 +148,7 @@ public final class NewsBlogUtils {
             }
         }
         // TODO - check where this needs to be executed
-        getFeaturedArticles(parentPage, resourceResolver, articleFilter, requestPathInfo);
+        featuredMap = getFeaturedArticles(tagsMap.keySet(), resourceResolver, articleFilter, requestPathInfo);
 
         LOGGER.info("newsblogUtils after for loop - filteredArticles Size : " + filteredArticles.size());
 
@@ -226,9 +203,9 @@ public final class NewsBlogUtils {
                                                       String articleFilter, String filterYear) {
 
         // LOGGER.info("newsblogUtils servlet start filteredArticles Size : " + filteredArticles.size());
-        if (filteredArticles.size() != 0) {
-            filteredArticles.clear();
-        }
+        java.util.List<Page> filteredArticles = new ArrayList<>();
+        Map<String, Object> m_article = new HashMap<String, Object>();
+        /*
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         for (Page item : allArticles) {
             // to get Year of article
@@ -260,8 +237,10 @@ public final class NewsBlogUtils {
             }
 
         }
-
-        getFeaturedArticles(parentPage, resourceResolver, articleFilter, parentPage);
+        */
+        Set<String> filterSet = new HashSet<>();
+        filterSet.add(articleFilter);
+        Map<String, java.util.List<Page>> featuredMap = getFeaturedArticles(filterSet, resourceResolver, articleFilter, parentPage);
         // LOGGER.info("newsblogUtils servlet end filteredArticles Size : " + filteredArticles.size());
 
         // populate map
@@ -282,13 +261,13 @@ public final class NewsBlogUtils {
         }
     }
 
-    public static void addFilteredArticles(Page item) {
+    /*public static void addFilteredArticles(Page item) {
         if (filteredArticles.isEmpty()) {
             filteredArticles.add(item);
         } else if (!filteredArticles.contains(item)) {
             filteredArticles.add(item);
         }
-    }
+    }*/
 
     //public static void addFeaturedArticle(Page item, int limit) {
 //         boolean isFeatured = item.getProperties().get("isFeaturedArticle",false);
@@ -327,54 +306,72 @@ public final class NewsBlogUtils {
         return listArticles;
     }
 
-    public static void getFeaturedArticles(String parentPage, ResourceResolver resourceResolver, String articleFilter, String requestPathInfo) {
+    public static Map<String, java.util.List<Page>> getFeaturedArticles( Set<String> tagSet,
+                                                                        ResourceResolver resourceResolver,
+                                                                        String articleFilter,
+                                                                        String requestPathInfo) {
+        Map<String, java.util.List<Page>> featuredMap = new HashMap<String, java.util.List<Page>>();
         try {
-            featuredMap.clear();
 
-            String featuredPagesPath = requestPathInfo + "/jcr:content" + FEATURED_NODE;
-            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath);
+            String featuredPagesPath = requestPathInfo + "/jcr:content/" + FEATURED_NODE;
+            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath + ", article filter: " + articleFilter);
             Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
             if (featuredPagesRes != null) {
-                ValueMap featuredPagesMap = featuredPagesRes.adaptTo(ValueMap.class);
+                Node featuredNode = featuredPagesRes.adaptTo(Node.class);
+                boolean addedAllItems = false;
                 // get map for all tags
-                for(String tagName: listTags) {
-                    LOGGER.info("selected articleFilter  :: " + articleFilter);
-                    if (featuredPagesMap != null && featuredPagesMap.size() > 0) {
-                        String[] featurdList = featuredPagesMap.get(tagName, String[].class);
-                        //String noArticle = "Article found";
-                        if (featurdList == null) {
-                            LOGGER.info("Featured List no Article");
-                        } else {
-                            if (featurdList.length <= 3 && featurdList.length > 0) {
-                                LOGGER.debug("Node has featured list property");
-                                List<Page> featuredArticles = new ArrayList<>();
-                                for (String fl : featurdList) {
-                                    String spnPath = fl;
-                                    Resource flRes = resourceResolver.getResource(spnPath);
-                                    Page flPage = flRes.adaptTo(Page.class);
-                                    featuredArticles.add(flPage);
-                                }
-                                featuredMap.put(tagName, featuredArticles);
-                            }
-                        }
+                for(String tagForItem: tagSet) {
+                    populateFeaturedItems(tagForItem, featuredMap, featuredNode, resourceResolver);
+                    if (tagForItem.equals(DEFAULT_NEWS_FILTER)) {
+                        addedAllItems = true;
                     }
+                }
+                if (!addedAllItems) {
+                    // add for allItems as well
+                    populateFeaturedItems(DEFAULT_NEWS_FILTER, featuredMap, featuredNode, resourceResolver);
                 }
 
             }
-
-            //LOGGER.debug("Number of featured articles :: " + featuredArticles.size());
-            //LOGGER.debug("Number of filtered articles :: " + filteredArticles.size());
-
-            //if (featuredArticles.size() == 0) {
-            //    featuredArticles.add(filteredArticles.get(0));
-            //    LOGGER.info("No Article was found :: " + filteredArticles.get(0).getTitle());
-            //}
-
             // TODO - where to add default one, if no featured article is available
 
         } catch (Exception e) {
             LOGGER.error("Could not get featured pages :: " + e);
             e.printStackTrace();
+        }
+        return featuredMap;
+    }
+
+
+    private static void populateFeaturedItems(String tagForItem,
+                                              Map<String, java.util.List<Page>> featuredMap,
+                                              Node featuredNode,
+                                              ResourceResolver resourceResolver) throws RepositoryException {
+        LOGGER.info("list of tags  :: " + tagForItem);
+        if (featuredNode != null && featuredNode.hasProperties()) {
+            //PropertyIterator pi = featuredNode.getProperties();
+            //while (pi.hasNext()) {
+            //    LOGGER.info("featured node properties: " + pi.nextProperty().toString());
+            //}
+            Value[] featurdList = null;
+            if (featuredNode.hasProperty(tagForItem)) {
+                featurdList = featuredNode.getProperty(tagForItem).getValues();
+            }
+            //String noArticle = "Article found";
+            if (featurdList == null) {
+                LOGGER.info("Featured List - no Article for tagName: " + tagForItem);
+            } else {
+                if (featurdList.length <= 3 && featurdList.length > 0) {
+                    LOGGER.info("Node has featured list property for tag: " + tagForItem);
+                    List<Page> featuredArticles = new ArrayList<>();
+                    for (Value fl : featurdList) {
+                        String spnPath = fl.getString();
+                        Resource flRes = resourceResolver.getResource(spnPath);
+                        Page flPage = flRes.adaptTo(Page.class);
+                        featuredArticles.add(flPage);
+                    }
+                    featuredMap.put(tagForItem, featuredArticles);
+                }
+            }
         }
     }
 

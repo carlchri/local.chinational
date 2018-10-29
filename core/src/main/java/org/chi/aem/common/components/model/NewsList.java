@@ -204,9 +204,7 @@ public class NewsList implements ComponentExporter {
 		// LOGGER.info("newslist news_filter : " + news_filter);
 
 
-//        for (Page fsa : featuredArticlesSelected) {
-//            LOGGER.info("Featured page title :: "+fsa.getTitle());
-//        }
+
 
 //        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
 
@@ -219,32 +217,39 @@ public class NewsList implements ComponentExporter {
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
         //featuredNews = (List<Page>) articleMap.get("featuredArticles");
         featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
-        featuredNews = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
+        featuredNews = featuredMap.get(news_filter);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
+            LOGGER.info("empty featured news, add default with latest");
             // add default value
             // TODO - add default for each tag
             featuredNews = new ArrayList<>();
             featuredNews.add(allFilteredNews.get(0));
         }
 
-        featuredArticlesSelected = featuredMap.get(NewsBlogUtils.DEFAULT_NEWS_FILTER);
-                //NewsBlogUtils.populateSelectedItems(parentPage, resourceResolver, currentPage.getPath());
+        featuredArticlesSelected = featuredMap.get(news_filter);
+             //NewsBlogUtils.populateSelectedItems(parentPage, resourceResolver, currentPage.getPath());
+        for (Page fsa : featuredArticlesSelected) {
+            LOGGER.info("Featured page title for tag : " + news_filter + " is :: "+fsa.getTitle());
+        }
 
         featuredArticlesSelectionList = allNews;
 
 
-        for(Page item : featuredArticlesSelected) {
-            if(featuredArticlesSelectionList.contains(item)){
+        if (featuredArticlesSelected != null) {
+            for (Page item : featuredArticlesSelected) {
+                if (featuredArticlesSelectionList.contains(item)) {
 //                LOGGER.info(":: HAS ITEM ::");
-                featuredArticlesSelectionList.remove(item);
+                    featuredArticlesSelectionList.remove(item);
+                }
+            }
+            for(Page item : featuredArticlesSelected) {
+                if(allFilteredNews.contains(item)){
+                    allFilteredNews.remove(item);
+                }
             }
         }
 
-        // log featured news list
-//        for (Page fnam : featuredNews ) {
-//            LOGGER.info("Article Map :: " + fnam.getPath());
-//        }
         if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(news_filter)){
@@ -252,12 +257,6 @@ public class NewsList implements ComponentExporter {
 	            }
 	        }
         }
-        
-        for(Page item : featuredArticlesSelected) {
-			 if(allFilteredNews.contains(item)){
-				 allFilteredNews.remove(item);
-			 } 
-		 }	 
 
 		 LOGGER.info("newslist filtered news : " + allFilteredNews.size());
 
