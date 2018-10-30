@@ -1,11 +1,15 @@
 $('document').ready(function(){
 
+    // hide the box initially
+    $(".chi_dual_box").toggle();
+    var initialSelectedTagName = $('#tagsFormBox select').find('option:selected').attr('name');
+    console.log("initial selected tag: " + initialSelectedTagName);
+
     // Show hide feature article management
     $(".selectionShowHide").click(function () {
         $(".chi_dual_box").toggle();
     });
 
-    // console.log('Dual List box loaded! OK Great Simon!!!');
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox({
         selectedListLabel: 'Selected Features',
         nonSelectedListLabel: 'Available Articles'
@@ -37,22 +41,19 @@ $('document').ready(function(){
             });
         }
 
-        // refresh the dual box
-        $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
-
-        // duallistbox_output[]_helper1
-        // duallistbox_output[]_helper2
-
-        $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
+        // only update options that not selected
+        $('[name="duallistbox_output[]"]').children('option').each(function() {
             var optionTag = $(this).attr('class');
             $(this).show();
             // hide is there is no tag associated or tag is present, but not the right one
             if ((optionTag == null && selectedTagName != 'AllItems' )||
                     ( optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName))) {
-                //console.log("Hide option with tag: " + optionTag);
                 $(this).hide();
             }
         });
+
+        // refresh the dual box
+        $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
 
         return false;
     });

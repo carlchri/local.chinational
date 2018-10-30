@@ -38,7 +38,8 @@
         <br/>
         <form id="listBoxForm" action="#" method="post">
             <select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
-                <sly data-sly-test="${newsList.featuredArticlesSelected}" data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
+                <sly data-sly-test="${newsList.featuredArticlesSelected}"
+                     data-sly-list.selectedItems="${newsList.featuredArticlesSelected}">
                     <option selected
                             class="${selectedItems.properties.cq:tags[0]}"
                             value="${selectedItems.path}">${selectedItems.title} </option>
