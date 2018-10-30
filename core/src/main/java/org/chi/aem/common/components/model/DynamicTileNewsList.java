@@ -110,10 +110,13 @@ public class DynamicTileNewsList implements ComponentExporter {
         pageManager = resourceResolver.adaptTo(PageManager.class);
         String currentPage = request.getRequestURI().replaceAll(".html", "");
         String pageTag = null;
-        if(pageProperties.get(TagConstants.PN_TAGS) != null) {
-            String[] tags = (String[]) pageProperties.get(TagConstants.PN_TAGS);
-            for(String tag:tags) {
-                pageTag = tag;
+        String tagFilterRequired = currentStyle.get("tagFilterRequired") != null ? currentStyle.get("tagFilterRequired").toString() : null;
+        if(tagFilterRequired != null && tagFilterRequired.equalsIgnoreCase("true")) {
+            if(pageProperties.get(TagConstants.PN_TAGS) != null) {
+                String[] tags = (String[]) pageProperties.get(TagConstants.PN_TAGS);
+                for(String tag:tags) {
+                    pageTag = tag;
+                }
             }
         }
         allNews = populateListItems(allNews, currentPage, pageTag); //to get all the news using defined template, sorted by Publish date
