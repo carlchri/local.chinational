@@ -116,3 +116,10 @@
 }
 
 /* End of additions by German to fix quotes' margins */
+
+@media ( min-width :768px) {
+    .quote-image {
+        width: 100%;
+        margin: auto 20px;
+    }
+}
