@@ -150,6 +150,10 @@ public class DynamicTileNewsList implements ComponentExporter {
             // no data
             return list;
         }
+        // update page tag and get last tag in the path
+        if (pageTag != null && pageTag.lastIndexOf("/") > 0) {
+            pageTag = pageTag.substring(pageTag.lastIndexOf("/")+1);
+        }
         java.util.List<Page> featuredList = NewsBlogUtils.getFeaturedArticleList(resourceResolver, pageTag, pageValue);
         if (featuredList == null ) {
             featuredList = list;
