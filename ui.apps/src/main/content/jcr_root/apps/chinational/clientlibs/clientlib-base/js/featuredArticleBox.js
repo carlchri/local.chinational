@@ -41,8 +41,12 @@ $('document').ready(function(){
             });
         }
 
+        // refresh the dual box
+        $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
+
         // only update options that not selected
-        $('[name="duallistbox_output[]"]').children('option').each(function() {
+        /*
+        $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
             var optionTag = $(this).attr('class');
             $(this).show();
             // hide is there is no tag associated or tag is present, but not the right one
@@ -50,10 +54,7 @@ $('document').ready(function(){
                     ( optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName))) {
                 $(this).hide();
             }
-        });
-
-        // refresh the dual box
-        $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
+        });*/
 
         return false;
     });
@@ -76,7 +77,7 @@ $('document').ready(function(){
         if (featuredListPages != null ) {
             featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
         } else {
-            featuredListPagesString = ["No article"];
+            featuredListPagesString = [""];
         }
             // console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {

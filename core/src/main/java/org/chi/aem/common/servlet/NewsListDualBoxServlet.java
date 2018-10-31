@@ -64,7 +64,10 @@
                 Resource res = resourceResolver.getResource(requestPagePath);
 
                 log.debug("Feature pages list string : Servlet "+ featuredPagesList);
-                String [] featuredPagesArray = featuredPagesList.replace("[","").replace("]","").replace("\"", "").split(",");
+                String [] featuredPagesArray = null;
+                if (featuredPagesList != null) {
+                    featuredPagesArray = featuredPagesList.replace("[", "").replace("]", "").replace("\"", "").split(",");
+                }
                 Node pageNode = res.adaptTo(Node.class);
                 if (!pageNode.hasNode(NewsBlogUtils.FEATURED_NODE)) {
                     // create the node that stores the featured articles

@@ -25,6 +25,12 @@
 			<sly data-sly-list.tagsFeatured="${blogsList.featuredMapList}">
 				<input type="hidden" name="${tagsFeatured}" value="${blogsList.featuredMapList[tagsFeatured]}"/>
 			</sly>
+			<select data-sly-list.selectlist="${blogsList.allBlogs}"
+					style="display:none;" name="fullList">
+				<option
+						class="${selectlist.properties.cq:tags[0]}"
+						value="${selectlist.path}">${selectlist.title}</option>
+			</select>
 		</form>
 
 		<!-- Select box for featured article selection -->
@@ -43,8 +49,8 @@
 							class="${selectedItems.properties.cq:tags[0]}"
 							value="${selectedItems.path}">${selectedItems.title} </option>
 				</sly>
-				<sly data-sly-test="${blogsList.featuredArticlesSelectionList}"
-						data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
+				<sly data-sly-test="${blogsList.allFilteredBlogs}"
+						data-sly-list.selectlist="${blogsList.allFilteredBlogs}">
 					<option
 							class="${selectlist.properties.cq:tags[0]}"
 							value="${selectlist.path}">${selectlist.title}</option>

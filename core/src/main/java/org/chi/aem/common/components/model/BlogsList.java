@@ -302,6 +302,10 @@ public class BlogsList implements ComponentExporter {
         return allBlogs;
     }
 
+    public List<Page> getAllFilteredBlogs() {
+        return allFilteredBlogs;
+    }
+
     public Collection<Page> getFeaturedArticlesSelected() {
         return featuredArticlesSelected;
     }
