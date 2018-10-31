@@ -69,14 +69,6 @@
                                         maxlength="{Long}350"
                                         name="./excerpt"
                                         required="{Boolean}true"/>
-                                    <isFeaturedArticle
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will display this as a featured blog"
-                                        name="./isFeaturedArticle"
-                                        text="Select to display as featured blog"
-                                        uncheckedValue="false"
-                                        value="true"/>
                                     <displayQuoteComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

@@ -8,12 +8,7 @@ import org.chi.aem.common.utils.ResourceResolverFactoryService;
 import org.chi.aem.common.utils.NewsBlogUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.Map.Entry;
 
 import javax.annotation.Nonnull;
@@ -88,6 +83,12 @@ public class NewsList implements ComponentExporter {
     // storing list of all news articles sorted by publishDate
     private java.util.List<Page> allNews;
 
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelected;
+
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelectionList;
+
     /* allFilteredNews - storing list of all news articles 
      * filtered based on selection in the dropdown
      * sorted by publish date
@@ -102,9 +103,17 @@ public class NewsList implements ComponentExporter {
     private java.util.List<Page> listNews;
 
     /* featuredNews - storing list of featured news articles [Max 3]
+     * for default tag
      * sorted by publish date
     */
     private java.util.List<Page> featuredNews;
+
+    /*
+    * Map of tag name to list of featured articles for the map
+     */
+    private Map<String, java.util.List<Page>> featuredMap;
+
+    private Map<String, String> featuredMapList;
 
     // storing list of years of published articles
     private java.util.List<String> listYears;
@@ -140,11 +149,13 @@ public class NewsList implements ComponentExporter {
         newsFeaturedLimit = NEWS_FEATURED_LIMIT;
         totalNumberPages = 1;
         activePage = 1;
-        parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath());
+        parentPage = properties.get(PN_PARENT_PAGE, currentPage.getPath()); // properties.get(PN_PARENT_PAGE, "/content/national/en/media/news"); //currentPage.getPath()
         newsTemplate = NEWS_TEMPLATE;
         news_filter = DEFAULT_NEWS_FILTER;
         tagDesc = ""; 
         article_type = "";
+        featuredArticlesSelected = new ArrayList<>();
+        featuredArticlesSelectionList = new ArrayList<>();
         allNews = new ArrayList<>();
         listNews = new ArrayList<>();
         featuredNews = new ArrayList<>();
@@ -152,7 +163,7 @@ public class NewsList implements ComponentExporter {
         listYears = new ArrayList<>();
         listTags = new ArrayList<>();
         pages = new ArrayList<Integer> ();
-        
+//        LOGGER.info("Parent Page from newsList :: "+parentPage);
         Map<String, Object> param = new HashMap<String, Object>();             
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
 
@@ -168,6 +179,8 @@ public class NewsList implements ComponentExporter {
         }
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
+        String requestPathInfo = currentPage.getPath();
+
         if(selectors.length != 0) {
         	if(selectors[0].matches("[0-9]+")){
         		activePage = Integer.parseInt(selectors[0]);
@@ -188,18 +201,45 @@ public class NewsList implements ComponentExporter {
             activePage = 1; //for Pagination active class when page load for the first time
         }
 
-		// LOGGER.info("newslist parent page : " + parentPage);
-		// LOGGER.info("newslist news_filter : " + news_filter);
-        allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate); //to get all the news using defined template, sorted by Publish date
-		// LOGGER.info("newslist allNewsSize : " + allNews.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allNews, resourceResolver, news_filter, newsFeaturedLimit);
+
+        allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate, requestPathInfo); //to get all the news using defined template, sorted by Publish date
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
-        featuredNews = (List<Page>) articleMap.get("featuredArticles");
+        featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
+        // populate featuredMapList for front end
+        populateFeaturedMapList();
+
+        featuredNews = featuredMap.get(news_filter);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
-        
+        featuredArticlesSelected = featuredMap.get(news_filter);
+        featuredArticlesSelectionList = allFilteredNews;
+
+        if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
+            LOGGER.debug("empty featured news, add default with latest");
+            // add default value
+            // TODO? - add default for each tag
+            featuredNews = new ArrayList<>();
+            featuredNews.add(allFilteredNews.get(0));
+            // remove first item from allFilteredNews, as featured item has been added from the allFilteredNews
+            allFilteredNews.remove(0);
+        }
+
+        if (featuredArticlesSelected != null) {
+            for (Page item : featuredArticlesSelected) {
+                if (featuredArticlesSelectionList.contains(item)) {
+                    featuredArticlesSelectionList.remove(item);
+                }
+            }
+            for(Page item : featuredArticlesSelected) {
+                if(allFilteredNews.contains(item)){
+                    allFilteredNews.remove(item);
+                }
+            }
+        }
+
         if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(news_filter)){
@@ -207,15 +247,8 @@ public class NewsList implements ComponentExporter {
 	            }
 	        }
         }
-        
-        for(Page item : featuredNews) {
-			 if(allFilteredNews.contains(item)){
-				 allFilteredNews.remove(item);
-			 } 
-		 }	 
 
-	   	// LOGGER.info("newslist filtered news : " + allFilteredNews.size());
-
+		 LOGGER.debug("newslist filtered news : " + allFilteredNews.size());
         listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 
         // For AJAX Call - to get Total Results initially for LOAD MORE
@@ -234,9 +267,31 @@ public class NewsList implements ComponentExporter {
         }
    }
 
+   private void populateFeaturedMapList() {
+        if (featuredMap != null && featuredMap.size() > 0) {
+            featuredMapList = new HashMap<>();
+            for(String mapKey: featuredMap.keySet()) {
+                List<Page> mappedPages = featuredMap.get(mapKey);
+                StringBuffer bufferString = new StringBuffer();
+                for(Page mapped: mappedPages) {
+                    bufferString.append(mapped.getPath()).append(",");
+                }
+                if (bufferString.length() > 0) {
+                    featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                }
+            }
+        }
+   }
+
     public Collection<Page> getAllNews() {
         return allNews;
     }
+
+    public Collection<Page> getFeaturedArticlesSelected() {
+        return featuredArticlesSelected;
+    }
+
+    public Collection<Page> getFeaturedArticlesSelectionList() { return featuredArticlesSelectionList; }
 
     @Nonnull
     @Override
@@ -246,6 +301,10 @@ public class NewsList implements ComponentExporter {
 
     public Collection<Page> getFeaturedNews() {
         return featuredNews;
+    }
+
+    public Map<String, String> getFeaturedMapList(){
+        return featuredMapList;
     }
 
     public Collection<Page> getListNews() {

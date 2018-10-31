@@ -87,6 +87,12 @@ public class BlogsList implements ComponentExporter {
 
     // storing list of all blogs articles sorted by publishDate
     private java.util.List<Page> allBlogs;
+
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelected;
+
+    // Storing selected featured articles
+    private java.util.List<Page> featuredArticlesSelectionList;
     
     /* allFilteredBlogs - storing list of all blogs articles 
      * filtered based on selection in the dropdown
@@ -105,6 +111,13 @@ public class BlogsList implements ComponentExporter {
      * sorted by publish date
      */
     private java.util.List<Page> featuredBlogs;
+
+    /*
+     * Map of tag name to list of featured articles for the map
+     */
+    private Map<String, java.util.List<Page>> featuredMap;
+
+    private Map<String, String> featuredMapList;
 
     // storing list of years of published articles
     private java.util.List<String> listYears;
@@ -145,6 +158,8 @@ public class BlogsList implements ComponentExporter {
         blogs_filter = DEFAULT_BLOGS_FILTER;
         tagDesc = ""; 
         article_type = "";
+        featuredArticlesSelected = new ArrayList<>();
+        featuredArticlesSelectionList = new ArrayList<>();
     	allBlogs = new ArrayList<>();
     	allFilteredBlogs = new ArrayList<>();
     	listBlogs = new ArrayList<>();
@@ -157,7 +172,6 @@ public class BlogsList implements ComponentExporter {
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         
         try {
-            // ResourceResolverFactoryService = getSlingScriptHelper().getService(ResourceResolverFactoryService.class);
             resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
         }
@@ -176,6 +190,8 @@ public class BlogsList implements ComponentExporter {
         	}
         }
 
+        String requestPathInfo = currentPage.getPath();
+
         if(selectors.length >= 2 && selectors[0].equals("blogs")){
         	blogs_filter = selectors[1];
         } else {
@@ -187,19 +203,55 @@ public class BlogsList implements ComponentExporter {
         } else {
         	activePage = 1; //for Pagination active class when page load for the first time
         }
-    	
-		// LOGGER.info("blogslist parent page : " + parentPage);
-		// LOGGER.info("blogslist blogs_filter : " + blogs_filter);
-        allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate); //to get all the blogs using defined template, sorted by Publish date
-		// LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
-        articleMap = NewsBlogUtils.populateYearsTagsFeatured(allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit);
+
+
+		LOGGER.debug("blogslist parent page : " + parentPage);
+		LOGGER.debug("blogslist blogs_filter : " + blogs_filter);
+        allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate, requestPathInfo); //to get all the blogs using defined template, sorted by Publish date
+		LOGGER.debug("blogslist allBlogsSize : " + allBlogs.size());
+        articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
-        featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
+        //featuredBlogs = (List<Page>) articleMap.get("featuredArticles");
+        featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
+        // populate featuredMapList for front end
+        populateFeaturedMapList();
+
+        featuredBlogs = featuredMap.get(blogs_filter);
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
-        
+        LOGGER.debug("blogslist allFilteredBlogs : " + allFilteredBlogs.size());
+        featuredArticlesSelected = featuredMap.get(blogs_filter);
+        featuredArticlesSelectionList = allFilteredBlogs;
+
+        if (( featuredBlogs == null || featuredBlogs.size() == 0) && allFilteredBlogs.size() > 0 ) {
+            // add default value
+            // TODO - add default for each tag
+            featuredBlogs = new ArrayList<>();
+            featuredBlogs.add(allFilteredBlogs.get(0));
+            LOGGER.debug("blogslist featuredBlogs added default one : " + featuredBlogs.size());
+            // remove first item from allFilteredBlogs, as featured item has been added from the allFilteredBlogs
+            allFilteredBlogs.remove(0);
+        }
+
+
+
+        if (featuredArticlesSelected != null) {
+            for (Page item : featuredArticlesSelected) {
+                if (featuredArticlesSelectionList.contains(item)) {
+                    featuredArticlesSelectionList.remove(item);
+                }
+            }
+            for (Page item : featuredArticlesSelected) {
+                if (allFilteredBlogs.contains(item)) {
+                    allFilteredBlogs.remove(item);
+                }
+            }
+        } else {
+            LOGGER.debug("blogslist featuredArticlesSelected is null ");
+        }
+
         if(tagsDescMap != null){
 	        for (Entry<String,String> pair : tagsDescMap.entrySet()){
 	            if(pair.getKey().equals(blogs_filter)){
@@ -207,19 +259,14 @@ public class BlogsList implements ComponentExporter {
 	            }
 	        }
         }
-        
-    	for(Page item : featuredBlogs) {
-			 if(allFilteredBlogs.contains(item)){
-				 allFilteredBlogs.remove(item);
-			 } 
-		 }	 
 
-	   	// LOGGER.info("blogslist filtered blogs : " + allFilteredBlogs.size());
+	   	LOGGER.debug("blogslist featuredArticlesSelectionList blogs : " + featuredArticlesSelectionList.size());
 	   	
 	    listBlogs = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredBlogs); //list of blogs, sorted by Publish date
         
 		// For AJAX Call - to get Total Results initially for LOAD MORE
         totalResults = allFilteredBlogs.size();
+        LOGGER.debug("blogslist featuredArticlesSelectionList size.. again: " + featuredArticlesSelectionList.size());
         
         // to get total no of pages and List of pages for data-sly-list for Pagination
     	int total = (allBlogs.size())/hits_per_page;
@@ -234,8 +281,37 @@ public class BlogsList implements ComponentExporter {
         }
     }
 
+    private void populateFeaturedMapList() {
+        if (featuredMap != null && featuredMap.size() > 0) {
+            featuredMapList = new HashMap<>();
+            for(String mapKey: featuredMap.keySet()) {
+                List<Page> mappedPages = featuredMap.get(mapKey);
+                StringBuffer bufferString = new StringBuffer();
+                for(Page mapped: mappedPages) {
+                    bufferString.append(mapped.getPath()).append(",");
+                }
+                if (bufferString.length() > 0) {
+                    featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                }
+            }
+        }
+    }
+
+
     public Collection<Page> getAllBlogs() {
         return allBlogs;
+    }
+
+    public List<Page> getAllFilteredBlogs() {
+        return allFilteredBlogs;
+    }
+
+    public Collection<Page> getFeaturedArticlesSelected() {
+        return featuredArticlesSelected;
+    }
+
+    public  Collection<Page> getFeaturedArticlesSelectionList() {
+        return featuredArticlesSelectionList;
     }
 
     @Nonnull
@@ -246,6 +322,10 @@ public class BlogsList implements ComponentExporter {
 
     public Collection<Page> getFeaturedBlogs() {
         return featuredBlogs;
+    }
+
+    public Map<String, String> getFeaturedMapList(){
+        return featuredMapList;
     }
 
     public Collection<Page> getListBlogs() {
