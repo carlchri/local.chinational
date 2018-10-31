@@ -20,6 +20,7 @@ $('document').ready(function(){
     // console.log("The page Url : "+pageUrlsplit);
 
     //TagsFormBox
+    /*
     $('#tagsFormBox select').on('change', function () {
         var tagUrlValue = $(this).val().toString();
         //console.log("Selected tag Value : "+tagUrlValue);
@@ -45,33 +46,35 @@ $('document').ready(function(){
         $('select[name="duallistbox_output[]"]').bootstrapDualListbox('refresh', true);
 
         // only update options that not selected
-        /*
-        $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
-            var optionTag = $(this).attr('class');
-            $(this).show();
+
+       // $('[name="duallistbox_output[]_helper1"]').children('option').each(function() {
+       //     var optionTag = $(this).attr('class');
+       //     $(this).show();
             // hide is there is no tag associated or tag is present, but not the right one
-            if ((optionTag == null && selectedTagName != 'AllItems' )||
-                    ( optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName))) {
-                $(this).hide();
-            }
-        });*/
+       //     if ((optionTag == null && selectedTagName != 'AllItems' )||
+       //             ( optionTag != null && selectedTagName != 'AllItems' && !optionTag.endsWith(selectedTagName))) {
+       //         $(this).hide();
+       //     }
+        //});
 
         return false;
     });
+    */
 
     // Submit function
     $("#listBoxForm").submit(function() {
         var featuredListPages = [] || {} ;
         var featuredListPagesString = [] || {} ;
-        var featuredTag, featuredSelectTag, featuredTagSuffix, featuredSelectTagPrefix;
+        var featuredSelectTag;// featuredTag, featuredTagSuffix, featuredSelectTagPrefix;
 
-        featuredSelectTagPrefix = $('#featuredTagPrefix').val();
-        featuredTagSuffix = $("#tagsFormBox select").find('option:selected').attr('name') || "AllItems";
-        if (featuredTagSuffix == null) {
-            featuredTag = "AllItems";
+        //featuredSelectTagPrefix = $('#featuredTagPrefix').val();
+        featuredSelectTag = $('#featuredTagPrefix').val();
+        //$("#tagsFormBox select").find('option:selected').attr('name') || "AllItems";
+        if (featuredSelectTag == null) {
+            featuredSelectTag = "AllItems";
         }
         //featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
-        featuredSelectTag = featuredTagSuffix;
+        //featuredSelectTag = featuredTagSuffix;
         featuredListPages = $('[name="duallistbox_output[]"]').val();
 
         if (featuredListPages != null ) {
@@ -86,11 +89,11 @@ $('document').ready(function(){
                     type: 'GET',
                     async: false,
                     url: '/content/national/en.featurednewslistservlet.html',
-                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, 'featuredTag': featuredTag, "featuredPagesTag": featuredSelectTag}, //passing values to servlet
+                    data: {'featuredPagesList': featuredListPagesJsonString, 'requestPagePath': pageUrlsplit, "featuredPagesTag": featuredSelectTag}, //passing values to servlet
 
                     success: function (msg) {
                         location.reload(true);
-                        console.log("Featured Pages :: " + featuredListPagesString);
+                        //console.log("Featured Pages :: " + featuredListPagesString);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);

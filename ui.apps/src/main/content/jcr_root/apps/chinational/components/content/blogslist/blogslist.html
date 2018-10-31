@@ -6,6 +6,7 @@
 	<h2>Featured Article Management</h2>
 	<div class="chi_dual_box">
 		<!-- Select Tags for featured article selection -->
+		<!--/*
 		<p>Select Tag for Featured Articles selection</p>
 		<form id="tagsFormBox" action="#" method="post">
 			<select class="form-control-1" name="blog_tags">
@@ -32,7 +33,7 @@
 						value="${selectlist.path}">${selectlist.title}</option>
 			</select>
 		</form>
-
+		*/-->
 		<!-- Select box for featured article selection -->
 		<p>
 			<span>Current article filter tag: </span>
@@ -49,8 +50,8 @@
 							class="${selectedItems.properties.cq:tags[0]}"
 							value="${selectedItems.path}">${selectedItems.title} </option>
 				</sly>
-				<sly data-sly-test="${blogsList.allFilteredBlogs}"
-						data-sly-list.selectlist="${blogsList.allFilteredBlogs}">
+				<sly data-sly-test="${blogsList.featuredArticlesSelectionList}"
+						data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
 					<option
 							class="${selectlist.properties.cq:tags[0]}"
 							value="${selectlist.path}">${selectlist.title}</option>
@@ -58,7 +59,7 @@
 			</select>
 			<br>
 			<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
-			<input id="featuredTagPrefix" type="hidden" value="chi:Blogs/" name="featuredTag">
+			<input id="featuredTagPrefix" type="hidden" value="${blogsList.blogsFilter}" name="featuredTag">
 		</form>
 
 	</div>

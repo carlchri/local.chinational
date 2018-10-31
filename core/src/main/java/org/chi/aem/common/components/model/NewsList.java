@@ -224,6 +224,9 @@ public class NewsList implements ComponentExporter {
 
         featuredNews = featuredMap.get(news_filter);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
+        featuredArticlesSelected = featuredMap.get(news_filter);
+        featuredArticlesSelectionList = allFilteredNews;
+
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
             LOGGER.info("empty featured news, add default with latest");
             // add default value
@@ -233,9 +236,6 @@ public class NewsList implements ComponentExporter {
             // remove first item from allFilteredNews, as featured item has been added from the allFilteredNews
             allFilteredNews.remove(0);
         }
-
-        featuredArticlesSelected = featuredMap.get(news_filter);
-        featuredArticlesSelectionList = allNews;
 
         if (featuredArticlesSelected != null) {
             for (Page item : featuredArticlesSelected) {
@@ -259,7 +259,6 @@ public class NewsList implements ComponentExporter {
         }
 
 		 LOGGER.info("newslist filtered news : " + allFilteredNews.size());
-
         listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 
         // For AJAX Call - to get Total Results initially for LOAD MORE
