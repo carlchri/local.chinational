@@ -14,7 +14,7 @@
 					<div id="location-graphic-area" class="positionRel adjust-height ${locationCollection.locationDetails.size > 0 ? 'col-md-7':'col-md-12'}">
 					
 						<sly data-sly-test="${properties.selectLocationImageType == 'imageLocation'}">
-							<div id="image" class="max-height-element" data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
+							<div id="image" data-sly-resource="${'image' @ resourceType='chinational/components/content/image'}"></div>
 						</sly>
 						
 						<sly data-sly-test="${properties.selectLocationImageType == 'googleMap'}">

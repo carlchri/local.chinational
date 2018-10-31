@@ -20,6 +20,7 @@
 .location div.small-wrapper {
   	margin: 0 0 20px 0;
 }
+
 .location div.link-wrapper {
   	margin: 0 0 20px 0;
 }
@@ -36,12 +37,6 @@
 .location .adjust-blue-section {
 	margin-left: -15px;   
 	margin-right: -15px; 	
-}
-
-.location .map-box {
-  	background: gray;
-  	height: 400px;
-  	width: 100%;
 }
 
 .location .txt-address span {
@@ -73,7 +68,10 @@
 .location .location-card-body .map-box {
     overflow: hidden;
 	max-height: 395px;
+	background: gray;
+	max-width: 703px !important;			/*  German: Added as per Zeplin design to fix MAM-159 */
 }
+
 
 .location .location-card-body #image {
     overflow: hidden;
@@ -291,6 +289,7 @@
 
 .location #location-graphic-area {   
 	float: right;
+	max-width: 703px !important;			/*  German: Added as per Zeplin design to fix MAM-159 */
 }
 
 .location .txt-location-name span {   
@@ -499,7 +498,7 @@
 		float: none;
 		width: 300px;
 	}
-	
+
 	#right-rail-container .location .dividingColumns {
 		float: none;
 		width: 260px;
