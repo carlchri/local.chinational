@@ -631,6 +631,16 @@
     left: 48px;
 }
 
+.mediaCarousel #audio-modal .mejs__container .mejs__currenttime {
+    max-width: 50px;
+	margin-right: 5px;
+}
+
+.mediaCarousel #audio-modal .mejs__container .mejs__duration {
+    max-width: 50px;
+	padding-left: 5px;
+}
+
 .mediaCarousel #audio-modal .audiopopup-close {
     width: 30px;
     height: 30px;
@@ -697,6 +707,10 @@
  	.mediaCarousel #audio-modal .mejs__container {
  		max-width: 630.1px;
  	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container .mejs__currenttime {
+	    max-width: 40px;
+	}
 }
 
 @media ( min-width : 720px) and (max-width: 783px) {

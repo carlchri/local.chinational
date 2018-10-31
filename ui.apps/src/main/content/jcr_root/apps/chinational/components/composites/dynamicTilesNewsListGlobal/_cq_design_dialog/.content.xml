@@ -145,6 +145,15 @@
                                                         text="Select to enable List on right"
                                                         uncheckedValue="false"
                                                         value="true"/>
+                                                    <tagFilterRequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                        fieldDescription="Select this checkbox to enable Tag Filter"
+                                                        name="./tagFilterRequired"
+                                                        text="Select to enable Tag Filter"
+                                                        uncheckedValue="false"
+                                                        defaultChecked="{Boolean}true"
+                                                        value="true"/>
                                                     <listHeading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
