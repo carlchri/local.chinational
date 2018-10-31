@@ -10,5 +10,13 @@
         <span data-sly-test="${link.linkUrl == '#'}" class="small-heading padding-top-10 txt-left heading_site_color">
             	${properties.categoryTitleText || 'Callout Component'}
         </span>
+<<<<<<< HEAD
 		<p>${properties.contentDetail}</p>
+=======
+    </a>
+    <span data-sly-test="${link.linkUrl == '#'}" class="small-heading padding-top-10 txt-left heading_site_color">
+        	${properties.categoryTitleText || 'Callout Component'}
+    </span>
+	<p>${properties.contentDetail @context = 'html'}</p>
+>>>>>>> enhancement
 </div>

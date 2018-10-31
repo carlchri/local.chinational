@@ -43,8 +43,8 @@
                                                         granite:class="cq-dialog-dropdown-showhide"
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Yes, if image is required in the text."
-                                                        fieldLabel="Image in Text Selection"
+                                                        fieldDescription="Select &quot;Yes&quot; to insert an image into the text."
+                                                        fieldLabel="Insert Video/Image Into Text"
                                                         name="./imageInTextSelection">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <imageNotRequired
@@ -113,6 +113,25 @@
                                                         text="Select to enable image [By Default, Video]"
                                                         uncheckedValue="false"
                                                         value="true"/>
+<<<<<<< HEAD
+=======
+                                                    <buttonUnderLeftPanel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under left panel."
+                                                            name="./buttonUnderLeftPanel"
+                                                            text="Select to enable button under left panel"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+                                                    <buttonUnderRightPanel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            fieldDescription="Select this optional checkbox to enable button under right panel."
+                                                            name="./buttonUnderRightPanel"
+                                                            text="Select to enable button under right panel"
+                                                            uncheckedValue="false"
+                                                            value="true"/>
+>>>>>>> enhancement
                                                 </items>
                                             </well>
                                         </items>

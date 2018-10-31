@@ -37,7 +37,7 @@
                                                             sling:resourceType="/apps/chinational/granite/widgets/colorpicker"
                                                             colorsPath="/etc/config/chinational/components/colorpicker/bleedtilebackgroundcolorpicker"
                                                             fieldDescription="Click on the color box to choose a different color for the photo band background"
-                                                            fieldLabel="Background Color"
+                                                            fieldLabel="Tile Background Color"
                                                             freestylePalette="{Boolean}true"
                                                             name="./backgroundColor"/>
                                                     <imageSelection
@@ -89,6 +89,7 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 showhidetargetvalue="imageRequired"/>
                                                     </imagePosition>
+<<<<<<< HEAD
                                                     <headingText
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -103,6 +104,55 @@
                                                         fieldDescription="Enter the detailed text here"
                                                         fieldLabel="Enter content details here"
                                                         name="./contentDetail"/>
+=======
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </contentTab>
+                            <richTextTab
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Tile Main Settings Tab"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <headingText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            emptyText="This field is mandatory."
+                                                            fieldDescription="Enter Text for the heading."
+                                                            fieldLabel="Heading Text (appears above the tile body text)"
+                                                            name="./headingText"
+                                                            required="{Boolean}true"/>
+                                                    <contentDetail
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                            useFixedInlineToolbar="{Boolean}true"
+                                                            fieldDescription="Enter the detailed text here"
+                                                            fieldLabel="Tile Body Text"
+                                                            name="./contentDetail">
+                                                        <rtePlugins jcr:primaryType="nt:unstructured">
+                                                            <format
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <justify
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                            <misctools
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    features="*"/>
+                                                        </rtePlugins>
+                                                    </contentDetail>
+>>>>>>> enhancement
                                                 </items>
                                             </well>
                                         </items>

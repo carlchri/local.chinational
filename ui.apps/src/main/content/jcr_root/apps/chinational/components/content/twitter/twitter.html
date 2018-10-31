@@ -1,0 +1,33 @@
+<sly data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<sly data-sly-test.userAccount="${properties.user}">
+
+	<div class="twitterWidth">
+		<div class="twitter-heading-label" data-sly-test="${properties.sectionHeading}">
+	        ${properties.sectionHeading} 
+	        <span class="by-username-copy-2">
+	        	<span class="text-style-1">  by </span>
+	        	<a href="https://twitter.com/${properties.user}">
+					@${properties.user}
+				</a> 
+	        </span>
+	        <span class="twitterAlignRight">
+		        <a 	class="twitter-follow-button"
+		        	data-show-screen-name="false"
+		        	data-show-count="false"
+				  	href="https://twitter.com/${properties.user}">
+					Follow
+				</a> 
+			</span>
+		</div>
+	    
+		<a 	href="https://twitter.com/https://twitter.com/${properties.user}"
+			class="twitter-timeline" 
+			data-width="700" 
+			data-chrome="noheader transparent"
+			data-tweet-limit="${properties.limit}">
+			Tweets by ${properties.user}</a> 
+	</div>
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!userAccount}"></sly>

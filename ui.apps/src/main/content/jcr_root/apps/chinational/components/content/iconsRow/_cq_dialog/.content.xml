@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Icons Row"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mainSettingsTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Main Settings Tab"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <iconOptions
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:orderBefore="orderBy"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Select an icon option"
+                                        fieldLabel="Select an Icon Option:"
+                                        name="./iconOption">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <preDefinedIcons
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="Choose from icon library"
+                                                value="icon-pre"/>
+                                            <customIcons
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Use custom icon"
+                                                value="icon-custom"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".list-option-icon-showhide-target"/>
+                                    </iconOptions>
+                                    <listCollectionPreLabel
+                                        granite:class="list-option-icon-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}4"
+                                        text="Choose Icon Row Collection From Icon Library (click button below to add new icon to the row)">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="icon-pre"/>
+                                    </listCollectionPreLabel>
+                                    <listCollectionPre
+                                        granite:class="list-option-icon-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        name="./multiCol">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./preIcons">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <iconSelector
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:orderBefore="orderBy"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldDescription="Choose Pre-defined Icon from dropdown"
+                                                    fieldLabel="Choose Icon From Library:"
+                                                    name="./iconType">
+                                                    <datasource
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="/apps/chinational/components/datasource"
+                                                        path="/etc/config/chinational/components/iconSelector"/>
+                                                </iconSelector>
+                                                <linkUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="AEM path.  Use this format for external links https://www.example.com"
+                                                    fieldLabel="Icon AEM Path/URL"
+                                                    name="./linkUrl"
+                                                    rootPath="/content"/>
+                                                <target
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldDescription="Selecting this checkbox will open link in new window."
+                                                    name="./targetBlank"
+                                                    text="Select to Open Link in New Window"
+                                                    uncheckedValue="false"
+                                                    value="true"/>
+                                                <divider
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                    level="{Long}1"
+                                                    text="_____________________________"/>
+                                            </items>
+                                        </field>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="icon-pre"/>
+                                    </listCollectionPre>
+                                    <listCollectionCustomLabel
+                                        granite:class="list-option-icon-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}4"
+                                        text="Custom Icon Row Collection (click button below to add new icon to the row)">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="icon-custom"/>
+                                    </listCollectionCustomLabel>
+                                    <listCollectionCustom
+                                        granite:class="list-option-icon-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        name="./multiCol">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./customIcons">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <iconImageSrc
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Custom Icon Image URL or AEM DAM path. (see tooltip for sizing info)"
+                                                    name="./iconImageSrc"
+                                                    rootPath="/content/dam"
+                                                    fieldDescription="It is strongly recommended to use assests in a 1:1 (square ration, ideally 50x50)"/>
+                                                <linkUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Icon AEM path.  Use this format for external links https://www.example.com"
+                                                    fieldLabel="Icon AEM Path/URL"
+                                                    name="./linkUrl"
+                                                    rootPath="/content"/>
+                                                <target
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldDescription="Selecting this checkbox will open link in new window."
+                                                    name="./targetBlank"
+                                                    text="Select to Open Link in New Window"
+                                                    uncheckedValue="false"
+                                                    value="true"/>
+                                                <divider
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                    level="{Long}1"
+                                                    text="_____________________________"/>
+                                            </items>
+                                        </field>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="icon-custom"/>
+                                    </listCollectionCustom>
+                                </items>
+                            </column>
+                        </items>
+                    </mainSettingsTab>
+                    <rightRailTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Right Rail Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <rightRailIcons
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Select this checkbox only if Row of Icons is added in right rail"
+                                                name="./rightRailIcons"
+                                                text="Select if Row of Icons is in right rail"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <iconsRowHeading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Required only if Row of Icons is used in Right Rail. Otherwise leave empty."
+                                                fieldDescription="This heading appears above the entire row of icons in the right rail."
+                                                fieldLabel="Right Rail List Heading"
+                                                name="./iconsRowHeading"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </rightRailTab>
+                    <greyBarTab
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

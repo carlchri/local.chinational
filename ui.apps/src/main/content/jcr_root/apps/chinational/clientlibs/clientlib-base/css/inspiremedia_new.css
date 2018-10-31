@@ -1,6 +1,20 @@
+<<<<<<< HEAD
 /*Popup Styles*/
+=======
+/*   Used in first item only */
+.mediaCarousel .v-container {
+	overflow: hidden;
+	position: relative;
+}
+>>>>>>> enhancement
 
+.mediaCarousel .v-container img {
+	height: 236px;
+	width: 420px;			/* German:  New height and width according to latest Zeplin directions  */
+	margin: 0 auto;
+}
 
+<<<<<<< HEAD
 /* Modal Content */
 
 
@@ -10,13 +24,22 @@
     overflow: hidden;
     position: relative;
     margin: 0;
+=======
+.mediaCarousel .carousel-image .cover {
+	object-fit: scale-down;
+}
+	
+.mediaCarousel .audio-container {
+	overflow: hidden;
+	position: relative;
+>>>>>>> enhancement
 }
 
-.mediaCarousel .full-bleed-tiles {
-    margin-left: 4.2%;
-    margin-right: -4%;
+.mediaCarousel .firstTile .audio-container .link-wrapper {
+	margin: 16px 16px 0 16px;
 }
 
+<<<<<<< HEAD
 .mediaCarousel .video-container img {
     /*max-width: 166px;*/
     max-width: 100%;
@@ -33,278 +56,527 @@
     max-width: 100%;
     /*max-width: 100%;*/
     /*max-width: 166px;*/
+=======
+.mediaCarousel .link-wrapper.mc-audio {
+	/* margin-left: -5px;		German: Removed to fix alignment issue with audio tiles in carousel */
+}
+
+.mediaCarousel .audio-container img {
+	margin: 0 auto;
+	max-width: 100%;
+	height: 290px;
+}
+
+.mediaCarousel .audio-container .audioTile {
+  	width: 196px;
+  	height: 110px;
+}
+
+.mediaCarousel .audio-container .audioTile-first-item {
+  	width: 420px;
+  	height: 236px;		/* German:  New height according to latest Zeplin directions  */
+}
+
+.media-carousel-mobile .audio-container .audioTile {
+  	width: 213px;
+  	height: 120px;		/* German:  New height according to latest Zeplin directions  */
+}
+
+.mediaCarousel .custom-button {
+	padding-top: 20px;
+	width: 323.1px;
+	max-height: 24px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-align: left;
+	color: #426da9;
+	cursor: pointer;
+	margin-left: 0px;
+}
+
+.mediaCarousel .mc-video-mobile .custom-button {
+	padding-top: 0px;
+}
+
+.mediaCarousel .mc-image-mobile .custom-button {
+	padding-top: 0px;
+}
+
+.mediaCarousel .custom-button.header-fix {
+	width: 100%;
+	display: inline-block;
+	font-size: 20px;
+	color: #426da9;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-bottom: -5px;
+	cursor: pointer;
+	max-width: 440px;
+}
+
+.media-carousel-mobile .header-fix, .sub-header-fix {
+	padding-left: 25px;
+}
+
+.mediaCarousel .a-brief-description {
+	height: 20px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: left;
+	color: #53565a;
+	margin-left: 0px;
+	max-width: 400px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.mediaCarousel .a-brief-description.sub-header-fix {
+	width: 100%;
 }
 
 .mediaCarousel .thumb-titles {
-    margin: 6px 0px 0px 0px;
-    color: #426da9;
-    font-weight: 600;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 100%;
-    display: inline-block;
+	margin: 6px 0px 0px 5px;
+	color: #426da9;
+	font-weight: 600;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+	max-width: 190px;
+	display: inline-block;
 }
 
-.mediaCarousel .audio-thumb-titles {
-    margin: 6px 0px 0px 0px;
-    color: #426da9;
-    font-weight: 600;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 100%;
-    display: inline-block;
-    margin: 3px 0 0 0;
+.mediaCarousel .thumb-description {
+	font-style: italic;
+	margin: 6px 0px 0px 0px;
 }
 
-.mediaCarousel .thumb-descrsiption {
-    font-style: italic;
+.mediaCarousel .sprite.icon-large-play-orange {
+	left: 44.5% !important;
+	top: 35% !important;
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	zoom: 60%;
+>>>>>>> enhancement
 }
 
-.mediaCarousel .opa-hide {
-    opacity: 0.2;
+.mediaCarousel .audio-container .sprite.icon-audio-light {
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	left: 55%;
+	top: 45%;
+	margin: -28px 0 0 -28px;
 }
 
-.mediaCarousel .main-play-title {
-    display: inline-block;
-    font-size: 20px;
-    color: #426da9;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 100%;
-    margin-bottom: -5px;
+.mediaCarousel .firstTile .audio-container .sprite.icon-audio-light {
+	top: 50%;
 }
 
-.mediaCarousel .media-fifty {
-    margin-bottom: 19px;
-    /* updated to handle space under h4 - sbrown */
-    margin-top: 25px;
-    /* update to handle space above h4 */
+.media-carousel-mobile .audio-container .sprite.icon-audio-light {
+	top: 40%;
+	left: 56%;
+	position: absolute;
 }
 
-.mediaCarousel .cs-player {
-    width: 34%;
-    float: left;
+.media-carousel-mobile .audio-container {
+	position: relative;
+}
+
+.mediaCarousel .audio-container i {
+	opacity: 1;
 }
 
 .mediaCarousel .main-player {
-    width: 100%;
-    min-height: 388px;
-    background-color: #e7e7e7;
-    border: 15px solid #e7e7e7;
-    overflow: hidden;
+	min-width: 440px;
+	min-height: 380px; /* Changed by German. It was 388 px */
+	overflow: hidden;
+	border-top: 0px;
+	max-height: 388px;
+	text-align: left;
 }
 
-.mediaCarousel .media-carousel .sub-Thumbs {
-    height: 186px;
-    width: 229px;
-    background-color: #e7e7e7;
-    display: inline-block;
-    border-color: #e7e7e7;
-    border-width: 16px;
-    border-style: solid;
-    position: relative;
-    overflow: hidden;
-}
-
-.mediaCarousel .sub-Thumbs button {
-    background-color: #e7e7e7;
-}
-
-.mediaCarousel .media-carousel .media-text {
-    position: absolute;
-    bottom: 5%;
-    left: 16px;
-    right: 0;
-    margin-right: auto;
-    margin-left: auto;
+.mediaCarousel .main-player span {
+	padding-left: 17px;
 }
 
 .mediaCarousel .media-carousel-mobile .media-text {
-    position: absolute;
-    bottom: 15%;
-    left: 0;
-    right: 0;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
+	position: absolute;
+	bottom: 15%;
+	left: 0;
+	right: 0;
+	margin-right: auto;
+	margin-left: 75px;
+}
+
+.mediaCarousel .mc-video-mobile .media-text {
+	bottom: 23%;
+}
+
+.mediaCarousel .mc-image-mobile .media-text {
+	bottom: 23%;
+}
+
+.mediaCarousel .media-carousel-mobile .media-text span {
+	width: 220px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mediaCarousel .media-carousel-mobile .video {
+	top: -15px;
+	text-align: -webkit-center;
+	margin-left: -30px;
+}
+
+.mediaCarousel .media-carousel-mobile .audio {
+	top: -15px;
+	text-align: -webkit-center;
+	margin-left: -20px;
+	margin-top: -20px;
+}
+
+.mediaCarousel .media-carousel-mobile .image {
+	top: -15px;
+	text-align: -webkit-center;
+	margin-left: -20px;
+	margin-top: -20px;
+}
+
+/*   Used in other tiles but first item */
+.mediaCarousel .media-carousel .media-text {
+	position: absolute;
+	bottom: 20%;
+	left: 16px;
+	right: 0;
+	margin-right: auto;
+	margin-left: 0px;
+}
+
+.mediaCarousel .video-container {
+	overflow: hidden;
+	position: relative;
+	margin-bottom: -5px;
+}
+
+.mediaCarousel .video-container img {
+	margin: 0 auto;
+	width: 196px;
+	height: 110px;
+}
+
+.mediaCarousel .video-container .sprite.icon-play-orange {
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	left: 57%;
+	top: 65%;
+	margin: -28px 0 0 -28px;
+}
+
+.media-carousel-mobile .video-container .sprite.icon-play-orange {
+	left: 55%;
+	top: 60%;
+}
+
+.mediaCarousel .mc-image img {
+	max-height: 110px;
+	max-width: 190px;
+	width: auto;
+	height: auto;
+}
+
+.mediaCarousel .mc-audio img {
+	max-height: 110px;
+	max-width: 190px;
+}
+
+.mediaCarousel .mc-video img {
+	max-height: 110px;
+	max-width: 190px;
+}
+
+.mediaCarousel .mc-image-mobile img {
+	width: auto;
+	max-width: 213px;
+	height: auto;
+	max-height: 120px;
+}
+
+.mediaCarousel .mc-audio-mobile img {
+	width: 213px;
+	height: 120px;
+}
+
+.mediaCarousel .mc-video-mobile img {
+	width: 213px;
+	height: 120px;
+}
+
+.mediaCarousel .firstTile button {
+	background-color: transparent;
+}
+
+.mediaCarousel .sub-Thumbs button {
+	background-color: transparent;
+}
+
+.mediaCarousel .media-carousel .sub-Thumbs {
+	height: 186px;
+	width: 229px;
+	margin-bottom: 8px;
+	display: inline-block;
+	border-width: 16px;
+	border-style: solid;
+	position: relative;
+	overflow: hidden;
+	text-align: -webkit-center;
+}
+
+/* German: Applies to Chrome 29+ */
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+	
+	.link-wrapper.sub-Thumbs.mc-audio {
+		margin-bottom: 3px;
+	}    
+
+}
+
+.mediaCarousel .full-bleed-tiles {
+	margin-left: 4.2%;
+	margin-right: -4%;
+}
+
+/* Use this option on desktop to align media carousel, when there are no arrows */
+@media ( min-width : 1200px) {
+	/* On full width, if media items are less than 8, arrows are hidden and we should align carousel left*/
+	.full-width-container .mediaCarousel .fw-no-arrows {
+		margin-left: 0%;
+	}
+
+	/* With right rail, if media items are less than 4, arrows are hidden and we should align carousel left*/
+	/*.right-rail-container .mediaCarousel .rr-no-arrows {
+        margin-left: 0%;
+    }*/
+}
+
+@media ( min-width : 768px) {
+	/* With right rail and in tablet mode, if media items are less than 4, arrows are hidden and we should align carousel left*/
+	.right-rail-container .mediaCarousel .rr-no-arrows {
+		margin-left: 0%;
+	}
+}
+
+/* Override for mobile, for Audio and Image tiles in media carousel*/
+@media ( max-width : 767px) {
+	.mediaCarousel .mc-image img {
+		max-height: 136px; /* For mobile view, it should be 136 px height*/
+	}
+	.mediaCarousel .mc-audio img {
+		max-height: 136px; /* For mobile view, it should be 136 px height*/
+	}
+}
+
+.mediaCarousel .opa-hide {
+	opacity: 0.2;
+}
+
+.mediaCarousel .main-play-title {
+	display: inline-block;
+	font-size: 20px;
+	color: #426da9;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+	margin-bottom: -5px;
+	cursor: pointer;
+	max-width: 440px;
+}
+
+.mediaCarousel .media-fifty {
+	margin-bottom: 19px;
+	/* updated to handle space under h4 - sbrown */
+	margin-top: 25px;
+	/* update to handle space above h4 */
+}
+
+.mediaCarousel .cs-player {
+	width: 34%;
+	float: left;
 }
 
 .mediaCarousel .show-mobile .sub-Thumbs {
-    height: 260px;
-    width: 100%;
-    background-color: #e7e7e7;
-    display: inline-block;
-    border-color: #e7e7e7;
-    padding: 8% 15% 40%;
-    border-style: solid;
-    /*max-width: 480px;*/
-    text-align: center;
+	height: 274px;
+	width: 375px;
+	background-color: #e7e7e7;
+	display: inline-block;
+	border-color: #e7e7e7;
+	padding: 8% 15% 40%;
+	border-style: solid;
+	/*max-width: 480px;*/
+	text-align: center;
 }
 
 .mediaCarousel .inactive-Thumbs {
-    min-height: 170px;
-    opacity: 0.3;
-    background-color: #e7e7e7;
-    border: 10px solid #e7e7e7;
-    margin-top: 1px;
+	min-height: 170px;
+	opacity: 0.3; 
+	background-color: #e7e7e7;
+	border: 10px solid #e7e7e7;
+	margin-top: 1px;
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-prev {
-    left: -60px;
-    top: 43%;
+	left: -60px;
+	top: 43%;
 }
 
 .mediaCarousel .owl-theme .owl-nav .owl-next {
-    right: 45px;
-    top: 43%;
+	right: 45px;
+	top: 43%;
 }
 
 .mediaCarousel .owl-theme.media-carousel-mobile .owl-nav .owl-prev {
-    left: 0;
-    top: 33%;
+	left: 0;
+	top: 33%;
 }
 
 .mediaCarousel .owl-theme.media-carousel-mobile .owl-nav .owl-next {
-    right: 0;
-    top: 33%;
+	right: 0;
+	top: 33%;
 }
 
 .mediaCarousel .cur-next {
-    width: 40px;
-    height: 40px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: #0097a9;
-    display: inline-block;
-    position: absolute;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    font-size: 0px;
-    cursor: pointer;
-    right: 80px;
+	width: 40px;
+	height: 40px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #0097a9;
+	display: inline-block;
+	position: absolute;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	font-size: 0px;
+	cursor: pointer;
+	right: 80px;
 }
 
 .mediaCarousel .cur-next:after {
-    position: absolute;
-    width: 13px;
-    height: 13px;
-    content: '';
-    border-top: solid #fff 3px;
-    border-right: solid #fff 3px;
-    top: 13px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    left: 12px;
+	position: absolute;
+	width: 13px;
+	height: 13px;
+	content: '';
+	border-top: solid #fff 3px;
+	border-right: solid #fff 3px;
+	top: 13px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	left: 12px;
 }
 
 .mediaCarousel .cur-prev {
-    width: 40px;
-    height: 40px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: #0097a9;
-    display: inline-block;
-    position: absolute;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    font-size: 0px;
-    cursor: pointer;
-    left: 0;
+	width: 40px;
+	height: 40px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #0097a9;
+	display: inline-block;
+	position: absolute;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	font-size: 0px;
+	cursor: pointer;
+	left: 0;
 }
 
 .mediaCarousel .cur-prev:after {
-    position: absolute;
-    width: 13px;
-    height: 13px;
-    content: '';
-    border-top: solid #fff 3px;
-    border-right: solid #fff 3px;
-    top: 13px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    left: 12px;
-    transform: rotate(-140deg);
-    -webkit-transform: rotate(-140deg);
-    -moz-transform: rotate(-140deg);
+	position: absolute;
+	width: 13px;
+	height: 13px;
+	content: '';
+	border-top: solid #fff 3px;
+	border-right: solid #fff 3px;
+	top: 13px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	left: 12px;
+	transform: rotate(-140deg);
+	-webkit-transform: rotate(-140deg);
+	-moz-transform: rotate(-140deg);
 }
 
 .mediaCarousel .away {
-    display: none;
+	display: none;
 }
 
 .mediaCarousel .mt-10 {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .mediaCarousel .ml-10 {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .mediaCarousel .pr-0 {
-    padding-right: 0px;
+	padding-right: 0px;
 }
 
 .mediaCarousel .pl-0 {
-    padding-left: 0px;
-}
-
-.mediaCarousel .v-container {
-    height: 218px;
-    position: relative;
-    width: 100%;
-    /*display: flex;*/
-}
-
-.mediaCarousel .v-container img {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.mediaCarousel .v-container .video {
-    /*margin-top: 20px;*/
+	padding-left: 0px;
 }
 
 .mediaCarousel .modal {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .mediaCarousel #audio-modal .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 5px 8px 15px 10px;
-    border: 1px solid #888;
-    width: 350px;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 5px 8px 15px 10px;
+	border: 1px solid #888;
+	width: 750px; /* Changed by German. It was 350 px */
 }
 
 .mediaCarousel .modal-content .close {
-    margin-top: 22px;
+	margin-top: 22px;
 }
 
+<<<<<<< HEAD
 .mediaCarousel .link-wrapper {
     display: none;
 }
@@ -315,23 +587,38 @@
 
 .mediaCarousel .fullOpacity .link-wrapper {
     display: inline-block;
+=======
+/* Naresh - changed media craousel HTML and we need to use icon-play-orange class and no link-wrapper*/
+.mediaCarousel .icon-play-orange {
+	display: none;
+}
+
+.mediaCarousel .media-carousel-mobile .icon-play-orange {
+	display: inline-block;
+}
+
+.mediaCarousel .fullOpacity .icon-play-orange {
+	display: inline-block;
+>>>>>>> enhancement
 }
 
 .mediaCarousel .audio-player-button i {
-    display: none;
+	display: none;
 }
 
 .mediaCarousel .media-carousel-mobile .audio-player-button i {
-    display: inline-block;
+	display: inline-block;
 }
 
 .mediaCarousel .active .audio-player-button i {
-    display: inline-block;
+	display: inline-block;
 }
 
-.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .audio-player-button i {
-    display: none;
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .audio-player-button i
+	{
+	display: none;
 }
+<<<<<<< HEAD
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .link-wrapper {
     display: none;
 }
@@ -350,47 +637,85 @@
 
 .mediaCarousel .owl-stage .owl-item.active.forthActiveItem.lastActiveItem  .link-wrapper i {
     display: none;
+=======
+
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  .icon-play-orange
+	{
+	/* display: none; 		German: Fixing the missing arrow for last item in carousel  */
+}
+
+.mediaCarousel .owl-stage .owl-item.active.lastActiveItem  a {
+	pointer-events: none;
+	cursor: default;
+}
+
+/* Naresh: could be used for media carousel
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}*/
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .icon-play-orange
+	{
+	display: inline-block;
+}
+	/* Set to show for 5th carousel item in desktop when there are only 5 or less slides */
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem  .audio-player-button i
+	{
+	display: inline-block;
+}
+	/* Set to show for 5th carousel item in desktop when there are only 5 or less slides */
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem.lastActiveItem  .audio-player-button i
+	{
+	display: none;
+}
+
+.mediaCarousel .owl-stage .owl-item.active.forthActiveItem.lastActiveItem  .icon-play-orange i
+	{
+	display: none;
+>>>>>>> enhancement
 }
 
 .mediaCarousel .media-carousel .owl-item {
-    transition: all 0.25s ease 0s;
-    opacity: .3;
+	transition: all 0.25s ease 0s;
+	opacity: .3;	
 }
 
 .mediaCarousel .owl-stage .owl-item {
-    opacity: .3;
+	opacity: .3;	
 }
+
 .mediaCarousel .media-carousel-mobile .owl-stage .owl-item {
-    opacity: 1;
+	opacity: 1;
 }
+
 .mediaCarousel .owl-stage .owl-item.lastActiveItem {
-    opacity: .3;
+	opacity: .3;	
 }
 
 .mediaCarousel .owl-stage .owl-item.firstActiveItem:nth-child(2) {
-    opacity: .3;
+	opacity: .3;
 }
 
 .fullOpacity {
-  opacity: 1 !important;
+	opacity: 1 !important;
 }
 
 .lowOpacity {
-  opacity: .3 !important;
+	opacity: .3 !important;
 }
 
 .mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
-    opacity: .3 !important;
+	opacity: .3;   			/*   German: Removing !important to fix MAM-141 */
 }
 
-.mediaCarousel .media-carousel-mobile .owl-stage .owl-item.active.lastActiveItem {
-    opacity: 1 !important;
+.mediaCarousel .media-carousel-mobile .owl-stage .owl-item.active.lastActiveItem
+	{
+	opacity: 1 !important;
 }
 
-
-@media (max-width: 1024px) {
-
-    /*.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
+@media ( max-width : 1024px) {
+	/*.mediaCarousel .owl-stage .owl-item.active.lastActiveItem {
         opacity: .3;
     }
     .mediaCarousel .owl-stage .owl-item.active {
@@ -408,100 +733,94 @@
 }
 
 .mediaCarousel .owl-theme .owl-dots {
-    display: none;
+	display: none;
 }
 
 /*.mediaCarousel .owl-carousel .owl-nav.disabled {
     display: inline-block !important;
 }*/
 
-.mediaCarousel .owl-item .twoItemColumn .flex-box .carousel-description>div:first-child {
-    margin-right: 10px;
-}
-
-.mediaCarousel .owl-item .twoItemColumn .flex-box .carousel-description>div:last-child {
-    margin-top: 11px;
-}
 
 .mediaCarousel .owl-item .carousel-description {
-    padding-left: 0;
-    padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .mediaCarousel .owl-item.active:last-child {
-    /*opacity: .3;*/
+	/*opacity: .3;*/
+	
 }
 
 .mediaCarousel .opacity_low {
-    opacity: .3;
+	opacity: .3;
 }
 
 .mediaCarousel .owl-carousel {
-    min-height: 305px;
-    padding: 0;
+	min-height: 305px;
+	padding: 0;
 }
 
-@media (max-width: 768px) {
-    .mediaCarousel .video-container img {
-        /*max-width: 100%;*/
-        object-fit: cover;
-    }
-    .mediaCarousel .audio-container {
-        max-width: 100%;
-    }
-    .mediaCarousel .audio-container img {
-        max-width: 100%;
-    }
+@media ( max-width : 768px) {
+	.mediaCarousel .video-container img {
+		/*max-width: 100%;*/
+		object-fit: cover;
+	}
+	.mediaCarousel .audio-container {
+		max-width: 100%;
+	}
+	.mediaCarousel .audio-container img {
+		max-width: 100%;
+	}
 }
 
-@media (max-width: 480px) {
-    /*.mediaCarousel .media-text {
+@media ( max-width : 480px) { /*.mediaCarousel .media-text {
     bottom: 0;
   }*/
+ 
 }
 
-@media (max-width: 767px) {
-    .mediaCarousel .active {
-        margin-left: 0px;
-    }
-    .mediaCarousel .main-player {
-        border: 60px solid #e7e7e7;
-        border: 10px solid #e7e7e7;
-        border-top: 30px solid #e7e7e7;
-    }
-    .mediaCarousel .cur-prev {
-        margin-left: 10px;
-    }
-    .mediaCarousel .cur-next {
-        margin-right: -5px;
-        right: 0px;
-    }
-    .mediaCarousel .owl-item {
-        margin-right: 0 !important;
-        max-width: 360px;
-    }
-    .mediaCarousel .carousel-description {
-        padding-right: 0;
-        padding-left: 0;
-    }
+@media ( max-width : 767px) {
+	.mediaCarousel .active {
+		margin-left: 0px;
+	}
+	.mediaCarousel .main-player {
+		/* border: 60px solid #e7e7e7;
+		border: 10px solid #e7e7e7; */
+		border-top: 30px solid #e7e7e7;
+	}
+	.mediaCarousel .cur-prev {
+		margin-left: 10px;
+	}
+	.mediaCarousel .cur-next {
+		margin-right: -5px;
+		right: 0px;
+	}
+	.mediaCarousel .owl-item {
+		margin-right: 0px;
+		max-width: 360px;
+	}
+	.mediaCarousel .carousel-description {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
-@media (max-width: 787px) {
-    .mediaCarousel .modal-dialog {
-        width: 100px;
-        right: 30%;
-    }
+@media ( max-width : 787px) {
+	.mediaCarousel .modal-dialog {
+		width: 100px;
+		right: 30%;
+	}
 }
 
-@media (min-width: 481px) and (max-width: 787px) {
-    .mediaCarousel .modal-dialog {
-        width: 100px;
-        right: 017%;
-    }
+@media ( min-width : 481px) and (max-width: 787px) {
+	.mediaCarousel .modal-dialog {
+		width: 100px;
+		right: 17%;
+	}
 }
 
-@media (max-width: 481px) {
-    /*.mediaCarousel .sub-Thumbs {
+@media ( max-width : 481px) {
+	/*.mediaCarousel .sub-Thumbs {
     width: 101%;
     height: auto;
     margin: 0 auto;
@@ -511,60 +830,276 @@
     border-width: 16px;
     border-style: solid;
   }*/
-    .mediaCarousel .owl-carousel {
-        min-height: 150px;
-    }
-    .mediaCarousel .cus-curosal .container {
-        display: none;
-    }
-    .mediaCarousel .carousel-item {
-        padding-left: 0px;
-    }
-    .mediaCarousel .flex-box {
-        padding-left: 0px;
-    }
-    .mediaCarousel .carousel-image {
-        padding-left: 0px;
-    }
-    .mediaCarousel .carousel-item.hide-mobile {
-        display: none !important;
-    }
-    .mediaCarousel .hide-mobile {
-        display: none;
-        visibility: hidden;
-    }
+	.mediaCarousel .owl-carousel {
+		min-height: 150px;
+	}
+	.mediaCarousel .cus-curosal .container {
+		display: none;
+	}
+	.mediaCarousel .carousel-item {
+		padding-left: 0px;
+	}
+	.mediaCarousel .flex-box {
+		padding-left: 0px;
+	}
+	.mediaCarousel .carousel-image {
+		padding-left: 0px;
+	}
+	.mediaCarousel .carousel-item.hide-mobile {
+		display: none !important;
+	}
+	.mediaCarousel .hide-mobile {
+		display: none;
+		visibility: hidden;
+	}
 }
 
-@media (max-width: 1024) {
-    .mediaCarousel .owl-item.active {
-        opacity: 3;
-    }
-    .mediaCarousel .media-carousel .owl-item.active:first-child {
-        opacity: 1;
-    }
+@media ( max-width : 1024) {
+	.mediaCarousel .owl-item.active {
+		opacity: 3;
+	}
+	.mediaCarousel .media-carousel .owl-item.active:first-child {
+		opacity: 1;
+	}
 }
 
-@media (max-width: 992px) {
-    .mediaCarousel .owl-item {
-        width: 200px;
-    }
+@media ( max-width : 992px) {
+	.mediaCarousel .owl-item {
+		width: 200px;
+	}
 }
 
-@media (min-width: 481px) {
-    .mediaCarousel .hide-desktop {
-        display: none !important;
-    }
-    .mediaCarousel .main-player {
-        border: 16px solid #e7e7e7;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 0;
-        /*border-top: 0px solid #e7e7e7;*/
-    }
+@media ( min-width : 481px) {
+	.mediaCarousel .hide-desktop {
+		display: none !important;
+	}
+	.mediaCarousel .main-player {
+		/* border: 16px solid #e7e7e7; */
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+		/*border-top: 0px solid #e7e7e7;*/
+	}
 }
 
-@media (min-width: 482px) and (max-width: 785px) {
-    .mediaCarousel .owl-item .tablet {
-        width: 350px !important;
-    }
+@media ( min-width : 482px) and (max-width: 785px) {
+	.mediaCarousel .owl-item .tablet {
+		width: 350px !important;
+	}
+	.mediaCarousel .custom-button {
+		margin-left: 0px;
+	}
+}
+
+@media ( max-width : 550px) {
+	
+	.mediaCarousel .custom-button {
+		padding-top: 14px;
+	}
+}
+
+@media ( max-width : 860px) {
+	.mediaCarousel #audio-modal .modal-content {
+		width: 325px;
+	}
+}
+
+@media ( min-width : 861px) and (max-width: 1024px) {
+	.mediaCarousel #audio-modal .modal-content {
+		width: 650px;
+	}
+}
+
+
+/*  Added by German  */
+
+
+
+
+@media ( min-width : 496px) and (max-width: 768px) {	/*  Fixing MAM-78 */
+	
+	.mediaCarousel .main-player {
+		border-top: 0px;
+		min-width: 340px;
+	}
+	
+	.mediaCarousel .main-player .audio-container {
+	  	max-width: 340px;			
+	  	overflow: -webkit-paged-x;	
+	}
+	
+	.mediaCarousel .v-container img {
+		max-width: 320px;
+		width: 100%;
+		height: 100%;
+		max-height: 236px;
+	}
+	
+	.mediaCarousel .v-container {
+		text-align: left;
+	}
+	
+	.mediaCarousel .main-player .video .custom-button {
+		padding-left: 0px;
+	}
+	
+	.mediaCarousel .carousel-image .custom-button {
+		margin-left: 0px;
+	} 
+	
+	.mediaCarousel .carousel-image .audio-container .custom-button {
+		margin-left: 18px;
+	}
+	
+	.mediaCarousel .main-player .video .sub-header-fix {
+		padding-left: 0px;
+	}
+	
+	.mediaCarousel .main-player span {
+		padding-left: 0px;
+	}
+	
+	.mediaCarousel .carousel-description .video-container {
+		margin-right: 5px;
+	}
+	
+	.mediaCarousel .main-player .audio-container .audioTile-first-item {
+		max-width: 310px;	
+	}
+	
+	.mediaCarousel .custom-button.header-fix {
+		max-width: 290px;
+	}
+	
+	.mediaCarousel .a-brief-description.sub-header-fix {
+		max-width: 290px;
+	}
+	
+	.mediaCarousel .main-player .a-fix-for-padding {
+		padding-left: 18px !important;
+	}
+	
+	.mediaCarousel .main-player .truncate {
+	  	max-width: 240px;
+  		white-space: nowrap;
+  		overflow: hidden;
+  		text-overflow: ellipsis;
+	}
+	
+	.mediaCarousel .mc-image img {
+		max-height: 110px !important;
+		max-width: 190px;
+		width: auto;
+		height: auto;
+	}
+}
+
+
+@media ( max-width : 380px) {
+	
+	.mediaCarousel .media-carousel-mobile .video {
+		margin-left: -70px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .media-text {
+		margin-left: 65px;
+	}
+	
+	.mediaCarousel .mc-video-mobile img {
+		width: 185px;
+	}
+	
+	.media-carousel-mobile .audio-container .audioTile {
+	  	width: 185px;
+	}
+	
+	.mediaCarousel .link-wrapper.mc-audio {
+		margin-left: -35px;
+	}
+	
+	.media-carousel-mobile .header-fix, .sub-header-fix {
+		padding-left: 45px;
+	}
+	
+	.mediaCarousel .mc-image-mobile img {
+		max-width: 185px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .image {
+		margin-left: -70px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .media-text span {
+		width: 180px;
+	}
+	
+	.mediaCarousel .a-brief-description.sub-header-fix {
+		width: 220px;
+		margin-left: -60px;
+	}
+}
+
+
+@media ( max-width : 340px) {
+	.mediaCarousel #audio-modal .modal-content {
+		width: 285px !important;
+	}
+	.mediaCarousel .video-container .mobile-align {
+		max-height: 152px;
+		max-width: 152px;
+	}
+	.mediaCarousel .audio-container .mobile-align {
+		max-height: 152px;
+		max-width: 152px;
+	}
+	.mediaCarousel .image-container .mobile-align {
+		max-height: 152px;
+		max-width: 152px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .video {
+		margin-left: -5px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .media-text {
+		margin-left: 55px;
+	}
+	
+	.mediaCarousel .mc-video-mobile img {
+		width: 150px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .media-text span {
+		width: 140px; 
+	}
+	
+	.media-carousel-mobile .video-container .sprite.icon-play-orange {
+		left: 58%; 
+	}
+	
+	.media-carousel-mobile .audio-container .audioTile {
+		width: 150px;
+	}
+	
+	.mediaCarousel .link-wrapper.mc-audio {
+		margin-left: -65px;
+	}
+	
+	.media-carousel-mobile .header-fix, .sub-header-fix {
+		padding-left: 75px;
+	}
+	
+	.mediaCarousel .a-brief-description.sub-header-fix {
+		width: 170px;
+		margin-left: -125px;
+	}
+	
+	.mediaCarousel .mc-image-mobile img {
+		max-width: 150px;
+	}
+	
+	.mediaCarousel .media-carousel-mobile .image {
+		margin-left: -5px;
+	}
+
 }

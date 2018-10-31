@@ -18,9 +18,9 @@
                         sling:resourceType="granite/ui/components/coral/foundation/tabs"
                         maximized="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
-                            <Tab
+                            <tab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Audio Settings&#xa;"
+                                jcr:title="Settings"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -37,6 +37,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="Enter Heading"
                                                         fieldDescription="This text will be used as heading for the audio section"
+<<<<<<< HEAD
                                                         fieldLabel="Audio Heading:"
                                                         name="./sectionHeading"/>
                                                     <audioImage
@@ -46,11 +47,22 @@
                                                             fieldLabel="Audio Image"
                                                             name="./audioImage"
                                                             rootPath="/content/dam"/>
+=======
+                                                        fieldLabel="Audio Heading"
+                                                        name="./sectionHeading"/>
+                                                    <audioText
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        emptyText="Enter Caption"
+                                                        fieldDescription="This text will be used as caption for the audio section"
+                                                        fieldLabel="Audio Caption"
+                                                        name="./audioText"/>
+>>>>>>> enhancement
                                                     <audioUrl
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Audio URL"
-                                                        fieldLabel="Audio URL"
+                                                        fieldDescription="AEM path or link to audio file.  Use this format for external links: https://www.example.com"
+                                                        fieldLabel="Audio AEM Path or URL"
                                                         name="./audioUrl"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
@@ -59,7 +71,7 @@
                                         </items>
                                     </column>
                                 </items>
-                            </Tab>
+                            </tab>
                             <greyBarTab
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/include"

@@ -84,18 +84,18 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select Yes, if Modal Window is required. &#xa; If Selected, then you don't need to select link on this tab. Select link on Modal Tab,."
+                                                        fieldDescription="A modal popup window is used for disclaimers and other content the user needs to see before directing to the chosen link.  It can be configured in the &quot;Modal Tab&quot; setting."
                                                         fieldLabel="Modal Window"
                                                         name="./selectModal">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <modalNotRequired
                                                                 jcr:primaryType="nt:unstructured"
                                                                 selected="{Boolean}true"
-                                                                text="No, Modal Window Not Required"
+                                                                text="No, modal popup window not required"
                                                                 value="modalNotRequired"/>
                                                             <modalRequired
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Yes, Modal Window Required"
+                                                                text="Yes, modal popup window is required"
                                                                 value="modalRequired"/>
                                                         </items>
                                                         <granite:data

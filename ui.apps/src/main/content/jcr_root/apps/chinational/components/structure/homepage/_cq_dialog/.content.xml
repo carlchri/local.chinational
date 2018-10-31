@@ -79,12 +79,28 @@
                                             name="./defaultNewsTileImgSrc"
                                             rootPath="/content/dam"/>
                                     <blogsTileImageSrc
+<<<<<<< HEAD
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldDescription="Default Blogs Tile/Featured Image Src"
                                             fieldLabel="Default Blogs Tile/Featured Image Src"
                                             name="./defaultBlogsTileImgSrc"
                                             rootPath="/content/dam"/>
+=======
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Blogs Tile/Featured Image Src"
+                                        fieldLabel="Default Blogs Tile/Featured Image Src"
+                                        name="./defaultBlogsTileImgSrc"
+                                        rootPath="/content/dam"/>
+                                    <defaultMembersPhotoSrc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Default Members Tile Photo Src"
+                                        fieldLabel="Default Members Tile Photo Src"
+                                        name="./defaultMembersPhotoSrc"
+                                        rootPath="/content/dam"/>
+>>>>>>> enhancement
                                     <siteExternailizer
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

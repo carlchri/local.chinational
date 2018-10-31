@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <template data-sly-template.item="${@ list, item}">
+=======
+<template data-sly-template.item="${@ list, item, itemList}"
+		  data-sly-use.imageInfo="${'org.chi.aem.common.components.model.NewsBlogImageModel' @ path = item.path, articleType='blogs'}">
+
+>>>>>>> enhancement
     <div class="row image-content flex">
          <div class="image-col col-sm-5 col-xs-12" data-sly-test.noImagePresent ="${item.properties.featuredImageSrc || item.properties.imageSrc}">
          	<img src="${item.properties.featuredImageSrc || item.properties.imageSrc @ context='unsafe'}" alt="Alt Image">

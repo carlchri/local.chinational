@@ -4,9 +4,37 @@
 
 .video img {
 	width: 100%;
-	margin: 0 0 15px 0;
+	margin: 0 0 0 0; /* Change to remove margin from img under video - 0 0 15px 0*/
+}
+.video .light-txt, .image .light-txt {
+    margin-top: 10px !important; /* light-text css uses margin top with important, hence needed here too*/
 }
 
+<<<<<<< HEAD
+=======
+.image picture img {
+	margin: 0 0 0 0; /* Change to remove margin from image component - 0 0 15px 0*/
+}
+
+.video-button-small {
+	width: 38px;
+	height: auto; /* changed to auto, as this was adding extra space after video image*/
+}
+
+.video-button:hover, .video-button-small:hover {
+	background-color: #fff;
+	color: #f2a900;
+	opacity: 1;
+	/*opacity: .55;
+	filter: alpha(opacity=55);  TODO - do we still need as jquery is changing hover opacity now*/
+}
+
+/* Redudant ? .video img:hover*/
+.video_popup img:hover {
+	opacity: 1; /* Added by Naresh - no need to create opacity for image, even with hover*/
+}
+
+>>>>>>> enhancement
 .embeded-video {
 	padding-bottom: 30px;
 }
@@ -126,6 +154,7 @@
 	height: 38px;
 }
 
+<<<<<<< HEAD
 .video-button:hover, .video-button-small:hover {
 	background-color: #fff;
 	color: #f2a900;
@@ -155,6 +184,8 @@
 	margin: 10px 0 0 16px;
 }*/
 
+=======
+>>>>>>> enhancement
 @media ( min-width : 992px) {
 	.right-rail {
 		margin-left: 40px;
@@ -186,6 +217,10 @@
 	.video-inner {
 		height: 140px;
 	}
+
+	.video .light-txt, .image .light-txt {
+        padding: 0 0 0 0;  /* override light-text padding, as we are setting margin*/
+    }
 }
 
 /*  Added by German to fix issue with accordion-wrapper as per Defect DE2569  */

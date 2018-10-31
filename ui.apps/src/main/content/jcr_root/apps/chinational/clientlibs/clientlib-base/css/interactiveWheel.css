@@ -1,0 +1,426 @@
+/*****************************************/
+/*          General Styles               */
+/*****************************************/
+
+.interactive-wheel .wrapper {
+    width: 100vw;
+    height: 100vh;
+    /*overflow: hidden;*/
+    overflow: auto;
+}
+
+.interactive-wheel .in {
+  	display: none;
+}
+
+.interactive-wheel .wheelContainer {
+    max-width:700px;					/*   	German: Container sizes as per directions in Zeplin 	*/
+    min-width:600px;					/*   	German: Container sizes as per directions from PK 		*/
+    min-height: 410px;  				/*   	German: Container sizes as per directions in Zeplin 	*/
+    /* margin: auto; 							German: Removing centered component 			*/
+    position: relative;
+    box-sizing:border-box;
+    /* background: #476EA1;						German: Removing background color from component 		*/
+    font-family: "myriad-pro", sans-serif;
+    font-weight: 300;
+}
+
+.interactive-wheel .sub-wheelContainer {
+    padding-top: 50px;				/*   	German: Individual padding  	*/
+    padding-left: 75px;				/*   	German: Individual padding for container as per directed by PK 	*/
+    padding-right: 25px;			/*   	German: Individual padding  	*/
+    padding-bottom: 75px;			/*   	German: Individual padding for container as per directed by PK 	*/
+}
+
+.interactive-wheel h1 {
+    /* color: #fff;							German: Removing font color from component 		*/
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.interactive-wheel .color-text {
+    display: none;
+}
+
+/*****************************************/
+/*          Left Half                    */
+/*****************************************/
+
+.interactive-wheel .left {
+    float: left;
+    max-width: 272px;					/*   	German: Marked as per directions in Zeplin 	*/
+    box-sizing: border-box;
+    /* margin-top: -15px;				removed now	   	German: Fix for RichText default extra padding at top 	*/
+	/* padding-right: 69px;				removed now   	German: Padding as per directions in Zeplin 	*/
+}
+
+.interactive-wheel .left p {
+    font-size: 14px;
+    /* color: #fff;								German: Removing font color from component 		*/
+    line-height: 16px;
+    margin-top: 0;
+}
+
+.interactive-wheel .footer-cta {
+    padding-top: 25px;   				/* 		German: Requirement for the space between Text and CTA	 */ 
+}
+
+.interactive-wheel .header-padding {
+    padding-bottom: 17px;   			/* 		German: Fixing defect MAM-143, it was 25px as per MAM-43	 */ 
+	line-height: 35px;					/*   	German: Fix to avoid extra padding for header 	*/
+	font-family: "myriad-pro", sans-serif;	/*	German: Fixing defect MAM-142 */
+  	font-size: 30px;						/*	German: Fixing defect MAM-142 */
+  	font-weight: normal;					/*	German: Fixing defect MAM-142 */
+  	font-style: normal;						/*	German: Fixing defect MAM-142 */
+  	font-stretch: normal;					/*	German: Fixing defect MAM-142 */
+  	line-height: normal;					/*	German: Fixing defect MAM-142 */
+  	letter-spacing: normal;					/*	German: Fixing defect MAM-142 */
+  	max-width: 322px;						/*	German: Fixing defect MAM-142 */
+}
+
+.interactive-wheel .footer-cta a {
+    /* color: #fff;								German: Removing font color from component 		*/
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.interactive-wheel .footer-cta .icon {
+    background-size: cover;
+    height: 22px;
+    width: 22px;
+    display: inline-block;
+    margin-right: 6px;
+    transform: translateY(6px);
+}
+
+.interactive-wheel h2 {
+    font-weight: bold;
+    /* color: #fff;								German: Removing font color from component 		*/
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.interactive-wheel .wheel .circle .circle-rotate .snot {
+    width: 45px;						/* 		German: Standard size for snot images	 */
+	height: 45px;						/* 		German: Standard size for snot images	 */
+}
+
+.interactive-wheel .wheel .circle .circle-rotate .zoomed {
+    /* zoom: 130%									German: Removing zoom size for snot images	 */
+    transform: scale(1.3,1.3) !important;	/* 		German: Added to replace zoom and fix defect MAM-151   */
+}
+
+/*****************************************/
+/*          Right Half                    */
+/*****************************************/
+
+.interactive-wheel .right {
+    float: right;
+    width: 50%;
+    position: relative;
+    
+}
+
+
+/* WHEEL */
+
+.interactive-wheel .wheel {
+    position: relative;
+    width: 236px;
+    height: 225px;
+}
+
+
+/* ARROW */
+
+.interactive-wheel .wheel .arrow {
+    position: absolute;
+    width: 6.5%;
+    left: 6px;
+    top: 15%;
+	transform: rotate(22deg);
+	height: 35.4px;
+}
+
+.interactive-wheel .wheel .arrow img {
+    width: 100%;
+}
+
+
+/* CIRCLE CONTAINER */
+
+.interactive-wheel .wheel .circle {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.interactive-wheel .wheel .small-wheel {
+	width: 222px;							/* 		German: Size of wheel goes here 	*/
+    height: 222px;							/* 		German: Size of wheel goes here 	*/
+}
+
+
+/* CIRCLE ELEMENTS THAT WILL ROTATE */
+
+.wheel .circle .circle-rotate {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    transition: transform 1s ease;
+}
+
+.wheel .circle .circle-rotate .circle-image {
+    width: 100%;
+}
+
+
+/* NOSE AND NOSE BG */
+
+.wheel .circle .nose {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    /* background: #FFB731;  						German: Removed to fix defect MAM-150 	*/
+    /* border: 2px solid #fff;						German: Removed to fix defect MAM-151 	*/
+    border-radius: 50%;
+}
+
+.wheel .circle .nose img {
+    width: 100%;							/*  	German: Changed to fix defect MAM-151, it was 70% 	*/
+    height: auto;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+/*  German: Remove this if only one nose image is require for desktop and mobile */
+
+.nose-img-mobile {
+    display: none;
+}
+
+.nose-img-desktop {
+    display: block;
+}
+
+/*   End of removals */
+
+/* SNOT */
+
+/* With Center image (nose) */
+
+.interactive-wheel .location0 {				/* 		German: Element 1 location with nose 	*/
+    position: absolute;
+    top: 40%;
+    left: 4%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location1 {				/* 		German: Element 2 location with nose 	*/
+    position: absolute;
+    top: 9%;
+    left: 28%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location2 {				/* 		German: Element 3 location with nose 	*/
+    position: absolute;
+    top: 18%;
+    left: 64%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location3 {				/* 		German: Element 4 location with nose 	*/
+    position: absolute;
+    top: 58%;
+    left: 64%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location4 {				/* 		German: Element 5 location with nose 	*/
+    position: absolute;
+    top: 71%;
+    left: 29%;
+    cursor: pointer;
+}
+
+/* Without Center image (nose) */
+
+.interactive-wheel .location0-withoutCenter {		/* 		German: Element 1 location without nose 	*/
+    position: absolute;
+    top: 38%;
+    left: 7%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location1-withoutCenter { 		/* 		German: Element 2 location without nose 	*/
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location2-withoutCenter {		/* 		German: Element 3 location without nose 	*/
+    position: absolute;
+    top: 20%;
+    left: 62%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location3-withoutCenter {		/* 		German: Element 4 location without nose 	*/
+    position: absolute;
+    top: 55%;
+    left: 62%;
+    cursor: pointer;
+}
+
+.interactive-wheel .location4-withoutCenter {		/* 		German: Element 5 location without nose 	*/
+    position: absolute;
+    top: 69%;
+    left: 29%;
+    cursor: pointer;
+}
+
+/*****************************************/
+/*          Animation                    */
+/*****************************************/
+
+							/* 		German: Changing all 20deg up to adjust to new arrow position 		*/
+
+.transform0 {
+    transform: rotate(20deg);
+}
+.transform1 {
+    transform: rotate(92deg);
+}
+.transform2 {
+    transform: rotate(164deg);
+}
+.transform3 {
+    transform: rotate(236deg);
+}
+.transform4 {
+    transform: rotate(308deg);
+}
+
+
+/* Added by German */
+
+@media (min-width: 600px) and (max-width: 720px) {
+	
+	.interactive-wheel .left {
+	    max-width: 222px;					/*   	German: Adjusted to fix MAM-100 	*/
+	}
+}
+
+@media (max-width: 599px) {
+	
+	.interactive-wheel .wheelContainer.mobile-adjustment {
+	    min-height: 500px !important;
+	    min-width: 100px;
+	    margin-left: -25px;
+	    margin-right: -25px;
+	}
+	
+	.interactive-wheel .sub-wheelContainer.mobile-adjustment {
+    	padding-top: 0px;
+    	padding-left: 50px;
+    	padding-right: 50px;
+	}
+
+	.interactive-wheel .header-padding.mobile-adjustment {
+	    position: absolute;
+	    padding-top: 340px;
+	}
+
+    .interactive-wheel .left.mobile-adjustment {
+        width: 100%;
+        clear: both;
+        float: none;
+        padding-top: 122px;  /* must change to 152 when the header is 2 lines instead of one. */
+        max-width: 275px;
+    }
+    
+    .interactive-wheel .shortPadding {
+		padding-top: 22px !important;					/*   	German: Adjusted to fix MAM-100 	*/
+	}
+    
+    .interactive-wheel .right.mobile-adjustment {
+        width: 100%;
+        clear: both;
+        float: none;
+        padding-top: 70px;
+    }
+    
+    .wheel {
+        margin: auto;
+    }
+    
+    .wheel .arrow.mobile-adjustment {
+        transform: rotate(-90deg) translate(50%, -35%) !important;
+        top: 88% !important;
+        left: 55% !important;
+    }
+
+    .wheel .circle {
+        transform: rotate(-90deg) translate(50%, -50%) !important;
+        left: 50%;
+    }
+
+    .wheel .circle .nose img {
+        /*transform: rotate(90deg) translate(-50%, 50%);    German: Activate this  if only one nose image is require for desktop and mobile */
+    }
+    
+    /*  German: Remove this if only one nose image is require for desktop and mobile */
+    
+    .nose-img-mobile {
+        display: block;
+    }
+    
+    .nose-img-desktop {
+        display: none;
+    }
+    
+    /*   End of removals */
+    
+    .transform0 {
+	    transform: rotate(0deg);
+	}
+	.transform1 {
+	    transform: rotate(72deg);
+	}
+	.transform2 {
+	    transform: rotate(144deg);
+	}
+	.transform3 {
+	    transform: rotate(216deg);
+	}
+	.transform4 {
+	    transform: rotate(288deg);
+	}
+}
+
+
+
+@media (max-width: 380px) {
+
+   .interactive-wheel .sub-wheelContainer.mobile-adjustment {
+    	padding-left: 40px;
+    	padding-right: 40px;
+	}
+	
+	.interactive-wheel .header-padding.mobile-adjustment {
+	    max-width: 278px;
+		padding-top: 320px;
+	}
+	             
+}

@@ -56,7 +56,8 @@
 
 .cmp-text ol li {
 	counter-increment: li;
-	display: flex;
+	text-indent: -1.28571429em;   /* Added by German to show indent in bullet list (MAM-120) */
+	/* display: flex;          Removed by German to fix an issue with bullet lists (MAM-120) */
 }
 
 /* Added by German for Defect DE2691 */

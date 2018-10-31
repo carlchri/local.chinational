@@ -4,6 +4,10 @@
     jcr:description="Featured blogs and blogs list"
     jcr:mixinTypes="[]"
     jcr:primaryType="cq:Component"
+<<<<<<< HEAD
     jcr:title="Blogs List"
+=======
+    jcr:title="Blog List [Dynamic]"
+>>>>>>> enhancement
     allowedParents="[*/parsys]"
     componentGroup=".fixed-chi"/>

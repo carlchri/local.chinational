@@ -1,4 +1,5 @@
 <sly data-sly-use.audio="org.chi.aem.common.components.model.Audio"
+<<<<<<< HEAD
         data-sly-use.template="chinational/components/commons/templates.html"></sly>
 <div class="carousel-item hide-mobile slide item desktop" style="width: 452px">
     <div class="flex-box">
@@ -37,6 +38,30 @@
         </div>
     </div>
 </div>
+=======
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+	<div class="carousel-item hide-mobile slide item desktop">
+	    <div class="flex-box">
+	        <div class="carousel-description carousel-image firstTile" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+	            <div class="main-player">  
+	                <div class="audio-container">
+	               		<div class="link-wrapper">
+		                	<button type="button" class="audio-player-button" data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
+								<div class="audioTile-first-item" style="background-color: ${properties.backgroundImageColor || '#8db9ca' @ context='styleToken'};"> 
+									<i class="sprite small-icons icon-audio-light"></i>
+								</div>
+							</button>
+		                </div>
+		                <a data-file="${audio.audioUrl}" data-toggle="modal" data-target="#audio-modal">
+		                	<span class="custom-button header-fix">${audio.sectionHeading}</span>
+		                </a>
+					</div>
+	                <span class="a-fix-for-padding a-brief-description sub-header-fix truncate" data-sly-test="${audio.audioText}">${audio.audioText}</span>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+>>>>>>> enhancement
 <sly data-sly-call="${template.placeholder @ isEmpty=!audio.audioUrl}"></sly>
 
 

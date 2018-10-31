@@ -1,28 +1,188 @@
 @charset "utf-8";
 .location {
+<<<<<<< HEAD
   background: #f8f7f7;
   padding: 15px;
   z-index: 0;
+=======
+  	/* padding: 15px;        Removed by German to fix MAM-26 */
+  	z-index: 0;
+  	margin-bottom: 60px;	/* Default padding at bottom for location component */
+>>>>>>> enhancement
 }
+
+#myLocationComponent {
+	background: #f8f7f7;
+	min-height: 395px;	
+}
+
+.anti-bottom-buffer60 {
+	margin-bottom: -60px !important;
+}
+
 .location .in {
-  display: none;
+  	display: none;
 }
+
 .location div.small-wrapper {
-  margin: 0 0 20px 0;
+  	margin: 0 0 20px 0;
 }
 .location div.link-wrapper {
-  margin: 0 0 20px 0;
+  	margin: 0 0 20px 0;
 }
-.location .row {
-  margin-bottom: 0;
+
+.location .adjust-width {
+	margin-right: -15px;
+	margin-left: -15px;   	
 }
+<<<<<<< HEAD
 .location #map {
   background: gray;
   height: 400px;
   width: 100%;
+=======
+
+.location .positionRel {
+	position: relative;
+}
+
+.location .adjust-blue-section {
+	margin-left: -15px;   
+	margin-right: -15px; 	
+}
+
+.location .map-box {
+  	background: gray;
+  	height: 400px;
+  	width: 100%;
+>>>>>>> enhancement
 }
 .location .txt-address span {
+<<<<<<< HEAD
   margin: 0 0 0 40px;
+=======
+  	margin: 0 0 0 5px;            /* changed by German for MAM-22, it was 0 0 0 40px; */ 
+}
+
+ /* added by German for MAM-26 */ 
+ 
+.location .txt-location-name span {
+  	margin-bottom: 30px;
+	font-size: 20px;
+	color: #426da9; 
+	max-width: 200px;        
+}
+
+.location .location-text-area {
+    padding-top: 30px;
+	padding-left: 70px;     
+}
+
+.location .location-card-body {
+	background-color: #f8f7f7;
+}
+
+.location .location-icon {
+	float: right;
+}
+
+.location .location-card-body .map-box {
+    overflow: hidden;
+	max-height: 395px;
+}
+
+.location .location-card-body #image {
+    overflow: hidden;
+	max-height: 395px;
+}
+
+.location-info-window {
+    cursor: default;
+    margin-top: 3px;
+}
+
+.location-info-window .title {
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.location-info-window .full-width {
+    width: 180px;
+}
+
+.location-info-window .address {
+    margin-top: 2px;
+    color: #555;
+}
+
+.location-info-window .view-link, .location-info-window a:visited {
+    color: #427fed;
+}
+
+.location-info-window a:link {
+    text-decoration: none;
+    color: #427fed;
+}
+
+.location-info-window div, .location-info-window a {
+    color: #333;
+    font-family: Roboto,Arial;
+    font-size: 13px;
+    background-color: white;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.sprite-v2.icon-hospital {
+	background-position: -142px -161px;
+	width: 53px;
+	height: 65px;
+}
+
+.sprite-v2.icon-clinic {
+	background-position: -50px -144px;
+	width: 36px;
+	height: 78px;
+}
+
+.sprite-v2.icon-hospice {
+	background-position: -322px -158px;
+	width: 66px;
+	height: 68px;
+}
+
+.sprite-v2.icon-imaging {
+	background-position: -710px -163px;
+	width: 88px;
+	height: 65px;
+}
+
+.sprite-v2.icon-pharmacy {
+	background-position: -418px -165px;
+	width: 65px;
+	height: 59px;
+}
+
+.sprite-v2.icon-surgery {
+	background-position: -508px -155px;
+	width: 80px;
+	height: 70px;
+}
+
+.sprite-v2.icon-therapy {
+	background-position: -620px -145px;
+	width: 55px;
+	height: 90px;
+}
+
+.sprite-v2.icon-urgent-care {
+	background-position: -215px -165px;
+	width: 86px;
+	height: 63px;
+>>>>>>> enhancement
 }
 .location a.learn-more-btn span,
 .location a.learn-more-btn a {
@@ -48,3 +208,361 @@
 /*.in .location {
   display: none;		It was creating an issue with the accordion feature, removed by German
 } */
+<<<<<<< HEAD
+=======
+
+/* Added by Davinder for EAS4 work */
+
+.loc-details-box {
+  background: #426da9;
+  padding:26px 53px 34px 65px;
+  /*margin-top: -5px; not needed as per Ze*/
+}
+
+.loc-details-box-heading{
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	color: #ffffff;
+	padding-bottom:23px;
+}
+
+.loc-details-box-desc{
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	color: #ffffff;	
+}
+
+/* end of additions by Davinder */
+
+@media (max-width:991px) {
+	
+	/* Added by Davinder for EAS4 work */
+	
+	.loc-details-box {
+	  padding:25px 33px 37px 36px;
+	}
+	
+	.loc-details-box-heading{
+		padding-bottom:21px;
+	}
+	
+	/* end of additions by Davinder */
+	
+}
+
+@media (max-width:767px) {
+	
+	/* Added by Davinder for EAS4 work */
+	
+	.loc-details-box {
+	  padding:25px 28px 31px 32px;
+	}
+
+	.read-more-box {
+		max-height: 99px;
+	    overflow: hidden;
+	}	
+	
+	.read-more-button {
+	    width: 100%;
+		font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+		font-size: 16px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.25;
+		letter-spacing: normal;
+		color: #ffffff;	
+	    background: #426da9;
+	}
+	
+	.read-more-button-wrapper{
+		padding-top:25px;
+	}
+	
+	.read-more-button-wrapper i{	
+		border-color: #ffffff;
+	    left: 3px;
+	    width: 8px;
+	    height: 8px;
+	    border-width: 2px;
+	    margin: 0;
+	}
+		
+	/* end of additions by Davinder */
+	
+}
+
+
+.location #location-graphic-area {   
+	float: right;
+}
+
+.location .txt-location-name span {   
+    max-width: 300px;
+}
+
+.location .txt-address .icons-set {    
+	padding-bottom: 15px;
+}
+
+.location .locationLink {
+	margin: 0 0 0 7px;
+}
+
+.location .txt-address .small-txt{
+	max-width: 300px;
+}
+
+.location .setTop {
+	vertical-align: top;
+}
+
+#right-rail-container .location .txt-address .small-txt{
+	max-width: 140px;
+}
+
+#right-rail-container .location .location-text-area {
+	min-width: 100%;
+}
+	
+#right-rail-container .location #location-graphic-area {
+	min-width: 100%;
+}
+
+#right-rail-container .location .location-icon {   
+	padding-right: 41px;
+	padding-top: 4px;
+}
+
+#right-rail-container .location .dividingColumns {
+	float: none; /* Making it */
+	width: 34%;
+}
+
+#right-rail-container .location .link-wrapper {
+	clear: both;
+}
+
+
+@media (min-width: 551px) and (max-width: 1007px) {
+	
+	.location .location-card-body .adjust-width {
+		margin-left: -15px;   	
+	}
+}
+	
+@media (min-width: 1028px) and (max-width: 1124px) {
+	
+	#full-width-container .txt-address .small-txt {
+		max-width: 200px;
+	}
+}
+
+
+@media (min-width: 996px) and (max-width: 1026px) {
+	
+	#right-rail-container .txt-location-name span { 
+    	max-width: 150px;
+  	}
+  	
+  	#full-width-container .txt-location-name span { 
+    	max-width: 200px;
+  	}
+  	
+  	#right-rail-container .txt-address .small-txt {
+		max-width: 120px !important;
+	}
+	
+	#full-width-container .txt-address .small-txt {
+		max-width: 200px;
+	}
+	
+}
+
+@media (max-width: 1024px) {
+	
+	#myLocationComponent .row .bottom-buffer {
+		padding-bottom: 0px;	
+	}
+}
+
+@media (max-width: 992px) {
+  
+  	#full-width-container .location .location-text-area {
+		min-width: 100%;
+		padding-top: 30px;
+	}  
+			
+	 .location .adjust-height {
+		margin-top: -20px; 	
+	}
+
+	.location .adjust-height .map-box {
+    		margin-top: 20px; /* removing -20px margin for map for CHIMCM-1207 */
+    }
+	
+	.location #location-graphic-area {
+		min-width: 100%;
+		float: none;
+	}
+	
+	#full-width-container .location .dividingColumns {
+		float: none; /* changed from left to none, it was hiding icons under blue box and moving blue box heading to middle */
+		width: 34%;
+	}
+	
+	#full-width-container .location .link-wrapper {
+		clear: both;
+	}
+	
+	#full-width-container .location .location-icon {   
+		padding-right: 41px;
+		padding-top: 4px;
+	}
+	
+	#right-rail-container .location .location-icon {   
+		padding-top: 4px;
+	}
+	
+	#full-width-container .location .txt-address .small-txt{
+		max-width: 200px;
+	}
+	
+	#right-rail-container .location .txt-address .small-txt{
+		max-width: 150px;
+	}
+	
+	.location div.small-wrapper {   
+	  	margin: 0 0 15px 0;
+	}
+	
+	#right-rail-container .location .txt-location-name span { 
+    	max-width: 200px;
+  	}
+	
+}
+
+
+@media (max-width: 860px) {
+	
+    
+  	.location div.link-wrapper {   
+	  	margin: 0 60px 20px 0;
+	}   
+	
+	#right-rail-container .location .txt-address .small-txt{
+		max-width: 150px;
+	}
+	
+	#full-width-container .location .txt-address .small-txt{
+		max-width: 150px;
+	}
+	   
+}
+
+@media (max-width: 550px) {
+   	
+	.location {   
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+	
+	.location #location-graphic-area {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	
+	.location #location-blue-area {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	
+	.location .adjust-width {
+		margin-right: 0px;
+		margin-left: 0px;   	
+	}
+	
+	.location div.link-wrapper {    
+		margin-right: 15px;
+		margin-left: 0px;
+	}
+	
+	.location .location-text-area {  
+		padding-left: 30px;
+	}
+	
+	.location .location-icon {  
+		padding-right: 5px;
+	}     
+	
+	.location .location-icon {   
+		padding-right: 0px !important;
+	}
+	
+	#full-width-container .location .dividingColumns {
+		float: none;
+		width: 300px;
+	}
+	
+	#right-rail-container .location .dividingColumns {
+		float: none;
+		width: 260px;
+	}
+	
+	.location .txt-location-name span { 
+    	max-width: 200px;
+  	}
+  	
+  	#right-rail-container .location .location-icon {   
+		
+		padding-top: 4px;
+	}
+	
+	#full-width-container .location .location-icon {   
+		
+		padding-top: 4px;
+	}
+	
+	#right-rail-container .location .txt-address .small-txt{
+		max-width: 150px;
+	}
+	
+	#full-width-container .location .txt-address .small-txt{
+		max-width: 150px;
+	}
+}
+
+
+@media (max-width: 340px) {
+
+	#right-rail-container .location .txt-location-name span { 
+    	max-width: 150px;
+  	}
+  	
+  	#full-width-container .location .txt-location-name span {  
+    	max-width: 150px;
+  	}
+  	
+  	#right-rail-container .location .txt-address .small-txt{
+		max-width: 100px;
+	}
+  	
+  	#full-width-container .location .txt-address .small-txt{
+		max-width: 100px;
+	}
+  	.location .dividingColumns {
+		width: 200px;
+	}
+}
+>>>>>>> enhancement

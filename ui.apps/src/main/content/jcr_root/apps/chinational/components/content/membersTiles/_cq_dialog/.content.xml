@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Profile Tile"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[chinational.membersTiles.editor]">
+    <content
+        granite:class="cmp-list--editor chi-members-tiles-editDialog"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mainSettingsTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Profile Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}false">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <memberName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="This field is mandatory"
+                                                fieldLabel="Profile Name"
+                                                name="./memberName"
+                                                required="{Boolean}true"/>
+                                            <memberExpertise
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                useFixedInlineToolbar="{Boolean}true"
+                                                fieldDescription="Brief list of any titles, specialties, or expertise. Use commas to separate items."
+                                                fieldLabel="Member expertise"
+                                                name="./memberExpertise">
+	                                            <rtePlugins jcr:primaryType="nt:unstructured">
+	                                                <format
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                                <justify
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                                <misctools
+	                                                        jcr:primaryType="nt:unstructured"
+	                                                        features="*"/>
+	                                            </rtePlugins>
+	                                        </memberExpertise>
+	                                        <memberImageSrc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="AEM path to profile photo. Recommended dimensions: 157x205px."
+                                                fieldLabel="Profile Photo AEM"
+                                                name="./memberImageSrc"
+                                                rootPath="/content/dam"/>
+                                            <selectLinkForMember
+                                            	granite:class="cq-dialog-checkbox-showhide"
+                                       			cq-dialog-checkbox-showhide-target=".checkbox-selectLinkForMember-showhide-target"
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                        name="./selectLinkForMember"
+		                                        text="Profile has existing AEM page."
+		                                        value="true">
+                                                <granite:data
+		                                            jcr:primaryType="nt:unstructured"
+		                                            cq-dialog-dropdown-showhide-target=".checkbox-selectLinkForMember-showhide-target"/>
+                                            </selectLinkForMember>
+                                            <showHideContainer
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="granite/ui/components/foundation/container"
+			                                    granite:class="hide checkbox-selectLinkForMember-showhide-target">
+			                                    <granite:data
+			                                        jcr:primaryType="nt:unstructured"
+			                                        showhidetargetvalue="true"/>
+			                                    <items jcr:primaryType="nt:unstructured">
+			                                    	 <memberLinkTo
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+		                                                fieldLabel="Profile Page AEM Path"
+		                                                name="./memberLinkTo"
+		                                                rootPath="/content"/>
+		                                            <targetBlank
+		                                                jcr:primaryType="nt:unstructured"
+		                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+		                                                name="./targetBlank"
+		                                                text="Open in New Window"
+		                                                uncheckedValue="false"
+		                                                value="true"/>
+                                            	</items>
+		                                    </showHideContainer>
+                                            <memberLogo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add physician group logo here, if applicable."
+                                                fieldLabel="Group Logo AEM path"
+                                                name="./memberLogo"
+                                                rootPath="/content/dam"/>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </mainSettingsTab>
+                    <greyBarTab
+                     jcr:primaryType="nt:unstructured"
+                     sling:resourceType="granite/ui/components/coral/foundation/include"
+                     path="/apps/chinational/components/commons/cq_dialog/granite/greyBarTab"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

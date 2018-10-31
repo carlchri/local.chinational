@@ -1,0 +1,94 @@
+
+.twitterWidth {
+	max-width: 700px;
+	margin-left: -13px;
+	margin-right: -13px;
+}
+
+.twitterAlignRight {
+	float: right;
+	margin-bottom: 1%;
+}
+
+.twitterPaddingAdjustment {
+	padding-top: 2.7%;
+}
+
+.gutter-sides-twitter {
+	padding-left: 26px;
+	padding-right: 26px;
+}
+
+.gutter-sides-twitter.top-padding {
+	padding-top: 20px;
+}
+
+.twitter-separator {
+	max-width: 700px;
+	margin-bottom: -1px;
+}
+
+.twitter-heading-label {
+	padding-left: 10px;
+	width: 107px;
+	height: 36px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 36px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #50565b;
+	display:inline;
+}
+
+#right-rail-container .right-rail .twitter-heading-label {
+	width: 60px;
+	height: 24px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	color: #50565b;
+	display:inline;
+}
+
+@media (max-width: 550px) {
+
+    .twitter .twitter-heading-label {
+		width: 60px;
+		height: 24px;
+		font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+		font-size: 20px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.2;
+		letter-spacing: normal;
+		color: #50565b;
+		display:inline;
+	}            
+}
+
+.by-username-copy-2 {
+	width: 86px;
+	height: 20px;
+	font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	color: #426da9;
+	display:inline;
+}
+
+.by-username-copy-2 .text-style-1 {
+	color: #50565b;
+	display:inline;
+}

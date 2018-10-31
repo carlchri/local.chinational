@@ -1,0 +1,18 @@
+<sly data-sly-use.tile="org.chi.aem.common.components.model.McImageTile"
+     data-sly-use.template="chinational/components/commons/templates.html"></sly>
+
+<div class="video-container mc-image">
+    <div class="sub-Thumbs" style="background-color: ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'}; border: 15px solid ${properties.backgroundColor || '#e7e7e7' @ context='styleToken'};">
+        <div >
+            <a href="${tile.linkUrl}"
+               target="${tile.targetBlank==true ?'_blank':'_self'}"
+               data-sly-unwrap="${tile.linkUrl == '#'}">
+                <img src="${properties.imageUrl}"/>
+            </a>
+        </div>
+    </div>
+    <div class="media-text" data-sly-test="${properties.title}">
+        <span class="thumb-titles" >${properties.title}</span>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.imageUrl}"></sly>

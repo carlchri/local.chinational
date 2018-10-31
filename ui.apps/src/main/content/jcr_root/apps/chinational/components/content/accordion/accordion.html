@@ -13,7 +13,7 @@
 							<div class="card-header" id="heading${listCollection.hash}${itemList.count}">
 								<div data-toggle="collapse" data-target="#collapse${listCollection.hash}${itemList.count}" aria-expanded="false"
 									 aria-controls="collapse${listCollection.hash}${itemList.count}" class="${author || item.expand ? '' : 'collapsed'}">
-									<h4 class="accordion-header">${item.accordionTitle}</h4>
+									<h4 class="accordion-header">${item.accordionTitle @context = 'html'}</h4>
 									<i class="accordion-arrow arrow-down"></i>
 									<div class="clearfix"></div>
 								</div>
