@@ -180,7 +180,6 @@ public class NewsList implements ComponentExporter {
 
         String[] selectors = request.getRequestPathInfo().getSelectors();
         String requestPathInfo = currentPage.getPath();
-//        LOGGER.info("Request path info to string :: "+requestPathInfo);
 
         if(selectors.length != 0) {
         	if(selectors[0].matches("[0-9]+")){
@@ -202,22 +201,13 @@ public class NewsList implements ComponentExporter {
             activePage = 1; //for Pagination active class when page load for the first time
         }
 
-		// LOGGER.info("newslist parent page : " + parentPage);
-		// LOGGER.info("newslist news_filter : " + news_filter);
-
-
-
-
-//        String featuredTag = currentPage.getProperties().get("featuredTag", String.class);
 
         allNews = NewsBlogUtils.populateListItems(parentPage, resourceResolver, newsTemplate, requestPathInfo); //to get all the news using defined template, sorted by Publish date
-		// LOGGER.info("newslist allNewsSize : " + allNews.size());
         articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allNews, resourceResolver, news_filter, newsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
         tagsMap = (Map<String, String>) articleMap.get("tagsMap");
         tagsDescMap = (Map<String, String>) articleMap.get("tagsDescMap");
-        //featuredNews = (List<Page>) articleMap.get("featuredArticles");
         featuredMap = (Map<String, List<Page>>)articleMap.get("featuredMap");
         // populate featuredMapList for front end
         populateFeaturedMapList();
@@ -228,9 +218,9 @@ public class NewsList implements ComponentExporter {
         featuredArticlesSelectionList = allFilteredNews;
 
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
-            LOGGER.info("empty featured news, add default with latest");
+            LOGGER.debug("empty featured news, add default with latest");
             // add default value
-            // TODO - add default for each tag
+            // TODO? - add default for each tag
             featuredNews = new ArrayList<>();
             featuredNews.add(allFilteredNews.get(0));
             // remove first item from allFilteredNews, as featured item has been added from the allFilteredNews
@@ -258,7 +248,7 @@ public class NewsList implements ComponentExporter {
 	        }
         }
 
-		 LOGGER.info("newslist filtered news : " + allFilteredNews.size());
+		 LOGGER.debug("newslist filtered news : " + allFilteredNews.size());
         listNews = NewsBlogUtils.populateListArticles(start_index, hits_per_page, allFilteredNews); //list of news, sorted by Publish date
 
         // For AJAX Call - to get Total Results initially for LOAD MORE

@@ -172,7 +172,6 @@ public class BlogsList implements ComponentExporter {
         param.put(ResourceResolverFactory.SUBSERVICE, "tagManagement");
         
         try {
-            // ResourceResolverFactoryService = getSlingScriptHelper().getService(ResourceResolverFactoryService.class);
             resourceResolverFactory = resourceResolverFactoryService.getResourceResolverFactory();
         	resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
         }
@@ -206,10 +205,10 @@ public class BlogsList implements ComponentExporter {
         }
 
 
-		LOGGER.info("blogslist parent page : " + parentPage);
-		LOGGER.info("blogslist blogs_filter : " + blogs_filter);
+		LOGGER.debug("blogslist parent page : " + parentPage);
+		LOGGER.debug("blogslist blogs_filter : " + blogs_filter);
         allBlogs = NewsBlogUtils.populateListItems(parentPage, resourceResolver, blogsTemplate, requestPathInfo); //to get all the blogs using defined template, sorted by Publish date
-		LOGGER.info("blogslist allBlogsSize : " + allBlogs.size());
+		LOGGER.debug("blogslist allBlogsSize : " + allBlogs.size());
         articleMap = NewsBlogUtils.populateYearsTagsFeatured(parentPage, allBlogs, resourceResolver, blogs_filter, blogsFeaturedLimit, requestPathInfo);
         listYears = (List<String>) articleMap.get("listYears");
         listTags = (List<String>) articleMap.get("listTags");
@@ -222,7 +221,7 @@ public class BlogsList implements ComponentExporter {
 
         featuredBlogs = featuredMap.get(blogs_filter);
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
-        LOGGER.info("blogslist allFilteredBlogs : " + allFilteredBlogs.size());
+        LOGGER.debug("blogslist allFilteredBlogs : " + allFilteredBlogs.size());
         featuredArticlesSelected = featuredMap.get(blogs_filter);
         featuredArticlesSelectionList = allFilteredBlogs;
 
@@ -231,7 +230,7 @@ public class BlogsList implements ComponentExporter {
             // TODO - add default for each tag
             featuredBlogs = new ArrayList<>();
             featuredBlogs.add(allFilteredBlogs.get(0));
-            LOGGER.info("blogslist featuredBlogs added default one : " + featuredBlogs.size());
+            LOGGER.debug("blogslist featuredBlogs added default one : " + featuredBlogs.size());
             // remove first item from allFilteredBlogs, as featured item has been added from the allFilteredBlogs
             allFilteredBlogs.remove(0);
         }
@@ -250,7 +249,7 @@ public class BlogsList implements ComponentExporter {
                 }
             }
         } else {
-            LOGGER.info("blogslist featuredArticlesSelected is null ");
+            LOGGER.debug("blogslist featuredArticlesSelected is null ");
         }
 
         if(tagsDescMap != null){

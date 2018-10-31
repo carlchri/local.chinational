@@ -202,10 +202,10 @@ public class DynamicTileNewsList implements ComponentExporter {
         map.put("p.offset", "0");
         // TODO - why are we using limit = -1, shouldn't we get max 10 or so?
         map.put("p.limit", "-1");
-        if(list == featuredNews){
+        /*if(list == featuredNews){
         	map.put("boolproperty", "jcr:content/isFeaturedArticle");
         	map.put("boolproperty.value", "true");
-        }
+        }*/
         int i = 1;
         if(list == listNews){
             map.put("p.limit", String.valueOf(maxListItems));

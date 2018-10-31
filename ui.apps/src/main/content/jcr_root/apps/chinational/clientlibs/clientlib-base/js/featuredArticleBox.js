@@ -3,7 +3,7 @@ $('document').ready(function(){
     // hide the box initially
     $(".chi_dual_box").toggle();
     var initialSelectedTagName = $('#tagsFormBox select').find('option:selected').attr('name');
-    console.log("initial selected tag: " + initialSelectedTagName);
+    //console.log("initial selected tag: " + initialSelectedTagName);
 
     // Show hide feature article management
     $(".selectionShowHide").click(function () {
