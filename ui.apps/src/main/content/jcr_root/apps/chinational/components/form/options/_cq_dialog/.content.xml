@@ -31,7 +31,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="Set the type of the options field."
-                                                fieldLabel="Options Type"
+                                                fieldLabel="Type of Dropdown Field (Single Select or Multi-Select)"
                                                 name="./optionsType">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <dropdown
@@ -48,7 +48,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The name of the field, which is submitted with the form data."
-                                                fieldLabel="Dropdown Field Name [submitted with Form Data and used as placeholder text]"
+                                                fieldLabel="Dropdown Field Name [submitted with form; will display to user]"
                                                 name="./optionsName"
                                                 required="{Boolean}true"/>
                                             <required
@@ -74,7 +74,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                                 composite="{Boolean}true"
                                                 fieldDescription="Define the different options"
-                                                fieldLabel="Options"
+                                                fieldLabel="Dropdown Options"
                                                 name="./multiCol"
                                                 renderReadOnly="{Boolean}true"
                                                 required="{Boolean}true">
@@ -92,15 +92,15 @@
                                                                 <value
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldDescription="The value of the field, which is submitted with the form data."
+                                                                    fieldDescription="Options Value, for example 'Opted-in to receiving newsletter'"
                                                                     fieldLabel="Options Value [will be submitted with form data]"
                                                                     name="./optionValue"
                                                                     required="{Boolean}true"/>
                                                                 <text
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                    fieldDescription="The name of the field, which will be displayed in the dropdown."
-                                                                    fieldLabel="Placeholder Text [will be displayed to the user]"
+                                                                    fieldDescription="Option label visible to user, for example 'Yes, I would like to receive a monthly newsletter.'"
+                                                                    fieldLabel="Option Label [will be displayed to the user]"
                                                                     name="./optionText"
                                                                     required="{Boolean}true"/>
                                                             </items>

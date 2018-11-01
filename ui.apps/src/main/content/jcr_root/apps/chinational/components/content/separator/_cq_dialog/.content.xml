@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Right rail Separator"
+    jcr:title="Separator Settings"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         granite:class="cmp-list--editor"
@@ -20,7 +20,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <settings
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Separator Settings"
+                                jcr:title="Separator Main Settings Tab"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -36,13 +36,13 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select color for the separator"
-                                                        fieldLabel="Separator Color"
+                                                        fieldDescription="A separator can serve as a break between two different components, and should be used after every component in the right rail. Select &quot;Page Component Separator&quot; for separating page components outside of right rail."
+                                                        fieldLabel="Separator Location"
                                                         name="./separatorColor">
                                                         <items jcr:primaryType="nt:unstructured">
                                                             <grey
                                                                 jcr:primaryType="nt:unstructured"
-                                                                text="Grey Separator"
+                                                                text="Page Component Separator"
                                                                 value="darkgrey"/>
                                                             <red
                                                                 jcr:primaryType="nt:unstructured"
