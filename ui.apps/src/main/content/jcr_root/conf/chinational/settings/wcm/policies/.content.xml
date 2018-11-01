@@ -44,6 +44,119 @@
                     </policy_1528235602177>
                 </responsivegrid>
             </foundation>
+            <content
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="nt:unstructured">
+                <richText jcr:primaryType="nt:unstructured">
+                    <policy_1539700966637
+                            jcr:lastModified="{Date}2018-10-16T14:43:09.355Z"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="chinational rich text"
+                            sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                        <rtePlugins jcr:primaryType="nt:unstructured">
+                            <paraformat
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-">
+                                <formats
+                                        jcr:primaryType="nt:unstructured"
+                                        override="true">
+                                    <item0
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Paragraph"
+                                            tag="p"/>
+                                    <item1
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 1"
+                                            tag="h1"/>
+                                    <item2
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 2"
+                                            tag="h2"/>
+                                    <item3
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 3"
+                                            tag="h3"/>
+                                    <item4
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 4"
+                                            tag="h4"/>
+                                    <item5
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 5"
+                                            tag="h5"/>
+                                    <item6
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Heading 6"
+                                            tag="h6"/>
+                                    <item7
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Quote"
+                                            tag="blockquote"/>
+                                    <item8
+                                            jcr:primaryType="nt:unstructured"
+                                            description="Preformatted"
+                                            tag="pre"/>
+                                </formats>
+                            </paraformat>
+                            <misctools
+                                    jcr:primaryType="nt:unstructured"
+                                    features="sourceedit">
+                                <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                    <chars
+                                            jcr:primaryType="nt:unstructured"
+                                            override="true">
+                                        <item0
+                                                jcr:primaryType="nt:unstructured"
+                                                entity="&amp;copy;"
+                                                name="copyright"/>
+                                        <item1
+                                                jcr:primaryType="nt:unstructured"
+                                                entity="&amp;euro;"
+                                                name="euro"/>
+                                        <item2
+                                                jcr:primaryType="nt:unstructured"
+                                                entity="&amp;reg;"
+                                                name="registered"/>
+                                        <item3
+                                                jcr:primaryType="nt:unstructured"
+                                                entity="&amp;trade;"
+                                                name="trademark"/>
+                                    </chars>
+                                </specialCharsConfig>
+                            </misctools>
+                            <edit
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                            <findreplace
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                            <spellcheck
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                            <table
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                            <lists
+                                    jcr:primaryType="nt:unstructured"
+                                    features="*"/>
+                            <justify
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                            <format
+                                    jcr:primaryType="nt:unstructured"
+                                    features="bold,italic"/>
+                            <links
+                                    jcr:primaryType="nt:unstructured"
+                                    features="modifylink,unlink"/>
+                            <subsuperscript
+                                    jcr:primaryType="nt:unstructured"
+                                    features="-"/>
+                        </rtePlugins>
+                    </policy_1539700966637>
+                </richText>
+            </content>
         </components>
     </chinational>
 </jcr:root>

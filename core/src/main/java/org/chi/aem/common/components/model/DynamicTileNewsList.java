@@ -15,7 +15,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 
-import org.apache.felix.scr.annotations.Reference;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -24,10 +23,10 @@ import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.chi.aem.common.utils.NewsBlogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +40,9 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.day.cq.wcm.api.designer.Style;
+import com.day.cq.tagging.TagConstants;
+
+import static org.chi.aem.common.utils.NewsBlogUtils.getFeaturedArticleList;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {ComponentExporter.class}, resourceType = DynamicTileNewsList.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -79,6 +81,9 @@ public class DynamicTileNewsList implements ComponentExporter {
 	@Default(values="news")
 	private String articleType; 
 
+    @Inject
+    private ValueMap pageProperties;
+
     @Self
     private SlingHttpServletRequest request;
 
@@ -106,13 +111,24 @@ public class DynamicTileNewsList implements ComponentExporter {
         featuredNews = new ArrayList<>();
         
         pageManager = resourceResolver.adaptTo(PageManager.class);
-        
-        allNews = populateListItems(allNews); //to get all the news using defined template, sorted by Publish date
-        featuredNews = populateListItems(featuredNews);  // extract featured articles, sorted by Publish date
-        if(!featuredNews.isEmpty() && featuredNews.size() > FEATURED_LIMIT){
+        String currentPage = request.getRequestURI().replaceAll(".html", "");
+        String pageTag = null;
+        String tagFilterRequired = currentStyle.get("tagFilterRequired") != null ? currentStyle.get("tagFilterRequired").toString() : null;
+        if(tagFilterRequired != null && tagFilterRequired.equalsIgnoreCase("true")) {
+            if(pageProperties.get(TagConstants.PN_TAGS) != null) {
+                String[] tags = (String[]) pageProperties.get(TagConstants.PN_TAGS);
+                for(String tag:tags) {
+                    pageTag = tag;
+                }
+            }
+        }
+        LOGGER.info("Get news for tag: " + pageTag);
+        allNews = populateListItems(allNews, currentPage, pageTag); //to get all the news using defined template, sorted by Publish date
+        featuredNews = populateFeaturedItems(featuredNews, pageTag);  // extract featured articles, sorted by Publish date
+        if(featuredNews != null && !featuredNews.isEmpty() && featuredNews.size() > FEATURED_LIMIT){
         	setMaxFeaturedNews(); //limit featured articles to 3.
         }
-        listNews = populateListItems(listNews); //list of news sorted by Publish date, excluding FeaturedNews
+        listNews = populateListItems(listNews, currentPage, pageTag); //list of news sorted by Publish date, excluding FeaturedNews
     }
 
     @Nonnull
@@ -129,8 +145,27 @@ public class DynamicTileNewsList implements ComponentExporter {
         return listNews;
     }
 
-    private java.util.List<Page> populateListItems(java.util.List<Page> list) {
-        Map<String, String> map = new HashMap<String, String>();
+    private java.util.List<Page> populateFeaturedItems(java.util.List<Page> list,
+                                                   String pageTag) {
+
+        String pageValue = getParentPage();
+        if (pageValue == null) {
+            // no data
+            return list;
+        }
+        // update page tag and get last tag in the path
+        if (pageTag != null && pageTag.lastIndexOf("/") > 0) {
+            pageTag = pageTag.substring(pageTag.lastIndexOf("/")+1);
+        }
+        java.util.List<Page> featuredList = NewsBlogUtils.getFeaturedArticleList(resourceResolver, pageTag, pageValue);
+        if (featuredList == null ) {
+            featuredList = list;
+        }
+        updateFeaturedList(featuredList);
+        return featuredList;
+    }
+
+    private String getParentPage() {
         Object pageValue = properties.get(PN_PARENT_PAGE);
         // LOGGER.info("populateListItems page property for parent page: " + pageValue);
         if (pageValue == null) {
@@ -139,6 +174,15 @@ public class DynamicTileNewsList implements ComponentExporter {
             pageValue = currentStyle.get(PN_PARENT_PAGE);
             // LOGGER.info("populateListItems design dialog property for parent page: " + pageValue);
         }
+        if (pageValue != null){
+            return pageValue.toString();
+        }
+        return null;
+    }
+
+    private java.util.List<Page> populateListItems(java.util.List<Page> list, String currentPage, String pageTag) {
+        Map<String, String> map = new HashMap<String, String>();
+        String pageValue = getParentPage();
         if (pageValue == null) {
             // no data
             return list;
@@ -151,16 +195,20 @@ public class DynamicTileNewsList implements ComponentExporter {
         } else {
         	map.put("property.value", "/apps/chinational/templates/blogsdetailspage");
         }
+        if(pageTag != null) {
+            map.put("tagid", pageTag);
+            map.put("tagid.property", "jcr:content/"+TagConstants.PN_TAGS);
+        }
         map.put("orderby", "@jcr:content/publishDate");
         map.put("orderby.sort", "desc");
         map.put("p.guessTotal", "true");
         map.put("p.offset", "0");
         // TODO - why are we using limit = -1, shouldn't we get max 10 or so?
         map.put("p.limit", "-1");
-        if(list == featuredNews){
+        /*if(list == featuredNews){
         	map.put("boolproperty", "jcr:content/isFeaturedArticle");
         	map.put("boolproperty.value", "true");
-        }
+        }*/
         int i = 1;
         if(list == listNews){
             map.put("p.limit", String.valueOf(maxListItems));
@@ -168,7 +216,8 @@ public class DynamicTileNewsList implements ComponentExporter {
             	map.put(Integer.toString(i++)+"_excludepaths", item.getPath());
         	}
         }
-
+        //Excluding Current Page in Search Results
+        map.put(Integer.toString(i++)+"_excludepaths", currentPage);
         PredicateGroup group = PredicateGroup.create(map);
         Session session = resourceResolver.adaptTo(Session.class);
         QueryBuilder builder = resourceResolver.adaptTo(QueryBuilder.class);
@@ -194,19 +243,29 @@ public class DynamicTileNewsList implements ComponentExporter {
          }
          
          // If no or less than 3 featured articles present, add latest article(s) as featured article(s).
-         if(list == featuredNews && list.size() < 3){
-        	 int pagesToAdd = 3 - list.size();
-        	 for(int i = 0; i < pagesToAdd; i++){
-        		 if(allNews.size() > i){
-        			 if (featuredNews.contains(allNews.get(i))) {
-        				 pagesToAdd++;;
-        			 } else {
-        				 list.add(allNews.get(i));
-        			 }
-        		 }
-        	 }
+         if(list == featuredNews ){
+             updateFeaturedList(list);
          }
          return list;
+     }
+
+    /**
+     * Update feature list to display upto 3 items
+     * @param list
+     */
+     private void updateFeaturedList(java.util.List<Page> list) {
+         if (list != null && list.size() < 3) {
+             int pagesToAdd = 3 - list.size();
+             for (int i = 0; i < pagesToAdd; i++) {
+                 if (allNews.size() > i) {
+                     if (featuredNews.contains(allNews.get(i))) {
+                         pagesToAdd++;
+                     } else {
+                         list.add(allNews.get(i));
+                     }
+                 }
+             }
+         }
      }
 
     private void setMaxFeaturedNews() {

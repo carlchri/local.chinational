@@ -566,8 +566,14 @@
 	}
 	.main-nav {
 		padding: 20px 0;
-		top: -375px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
+		top: -430px;   /* Modified by German to fix weird defect in header, it was top: -315px; */
+		/* CHanged from -375 to -430, as bottom of nav was showing up in Memorial, it must be due to large size of menu*/
 	}
+	/* Added to allow scrolling of navihation in mobile*/
+	.main-nav.open {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
 	.hide-on-mobile {
 		display: none;
 	}
@@ -609,6 +615,14 @@
 	/* End of Additions  */
 	
 }
+
+/* If mobile width is less than 430 px, main nav white background was extending beyond header, this fixes it */
+@media (max-width:430px) {
+	.main-nav {
+		padding: 0px;
+	}
+}
+
 
 /* Special fix for phones 360 px or lower width*/
 /*

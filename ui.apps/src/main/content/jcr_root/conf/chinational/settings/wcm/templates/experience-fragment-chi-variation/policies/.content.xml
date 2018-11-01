@@ -15,6 +15,17 @@
         <root
             cq:policy="chinational/components/foundation/responsivegrid/policy_1528235602177"
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/core/components/policies/mapping"/>
+            sling:resourceType="wcm/core/components/policies/mapping">
+            <chinational jcr:primaryType="nt:unstructured">
+                <components jcr:primaryType="nt:unstructured">
+                    <content jcr:primaryType="nt:unstructured">
+                        <richText
+                                cq:policy="chinational/components/content/richText/policy_1539700966637"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
+                    </content>
+                </components>
+            </chinational>
+        </root>
     </jcr:content>
 </jcr:root>

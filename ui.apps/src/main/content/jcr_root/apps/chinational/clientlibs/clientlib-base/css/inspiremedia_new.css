@@ -1,4 +1,13 @@
 /*   Used in first item only */
+
+.mediaCarousel #onlyMobile {
+	display: none;
+}
+
+.mediaCarousel #onlyDesktop {
+	display: block;
+}
+	
 .mediaCarousel .v-container {
 	overflow: hidden;
 	position: relative;
@@ -21,6 +30,7 @@
 
 .mediaCarousel .firstTile .audio-container .link-wrapper {
 	margin: 16px 16px 0 16px;
+	min-height: 240px;
 }
 
 .mediaCarousel .link-wrapper.mc-audio {
@@ -45,7 +55,9 @@
 
 .media-carousel-mobile .audio-container .audioTile {
   	width: 213px;
-  	height: 120px;		/* German:  New height according to latest Zeplin directions  */
+  	height: 152px;		/* German:  New height according to latest Zeplin directions (120px) */
+  	margin-top: 30px;
+	margin-left: 70px;
 }
 
 .mediaCarousel .custom-button {
@@ -67,10 +79,12 @@
 
 .mediaCarousel .mc-video-mobile .custom-button {
 	padding-top: 0px;
+	margin-bottom: -5px;
 }
 
 .mediaCarousel .mc-image-mobile .custom-button {
 	padding-top: 0px;
+	margin-bottom: -5px;
 }
 
 .mediaCarousel .custom-button.header-fix {
@@ -78,15 +92,34 @@
 	display: inline-block;
 	font-size: 20px;
 	color: #426da9;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 	margin-bottom: -5px;
 	cursor: pointer;
-	max-width: 440px;
+	max-width: 350px;
+	
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
+	
+	/* These are technically the same, but use both */
+  	overflow-wrap: break-word;
+  	word-wrap: break-word;
+
+  	-ms-word-break: break-all;
+  	
+  	/* This is the dangerous one in WebKit, as it breaks things wherever */
+  	/* word-break: break-all; */
+  
+  	/* Instead use this non-standard one: */
+  	word-break: break-word;
+
+  	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+  	-ms-hyphens: auto;
+  	-moz-hyphens: auto;
+  	-webkit-hyphens: auto;
+  	hyphens: auto;
 }
 
 .media-carousel-mobile .header-fix, .sub-header-fix {
-	padding-left: 25px;
+	padding-left: 65px;
 }
 
 .mediaCarousel .a-brief-description {
@@ -101,7 +134,7 @@
 	text-align: left;
 	color: #53565a;
 	margin-left: 0px;
-	max-width: 400px;
+	max-width: 445px;			/*  German: Changed for Memorial Development Rollover, it was 400px */
 	white-space: nowrap;
   	overflow: hidden;
   	text-overflow: ellipsis;
@@ -109,6 +142,8 @@
 
 .mediaCarousel .a-brief-description.sub-header-fix {
 	width: 100%;
+	display: block;					/*  German: Added for Memorial Development Rollover */
+	
 }
 
 .mediaCarousel .thumb-titles {
@@ -147,12 +182,12 @@
 }
 
 .mediaCarousel .firstTile .audio-container .sprite.icon-audio-light {
-	top: 50%;
+	top: 48%;
 }
 
 .media-carousel-mobile .audio-container .sprite.icon-audio-light {
-	top: 40%;
-	left: 56%;
+	top: 45%;
+	left: 55%;
 	position: absolute;
 }
 
@@ -165,16 +200,17 @@
 }
 
 .mediaCarousel .main-player {
-	min-width: 440px;
-	min-height: 380px; /* Changed by German. It was 388 px */
+	min-width: 440px;        
+	min-height: 380px; 				/* Changed by German. It was 388 px */
 	overflow: hidden;
 	border-top: 0px;
-	max-height: 388px;
+	/* max-height: 388px;  */
 	text-align: left;
 }
 
 .mediaCarousel .main-player span {
 	padding-left: 17px;
+	padding-right: 17px;			/*  German: Added for Memorial Development Rollover */
 }
 
 .mediaCarousel .media-carousel-mobile .media-text {
@@ -188,10 +224,12 @@
 
 .mediaCarousel .mc-video-mobile .media-text {
 	bottom: 23%;
+	top: 72%;
 }
 
 .mediaCarousel .mc-image-mobile .media-text {
 	bottom: 23%;
+	top: 72%;
 }
 
 .mediaCarousel .media-carousel-mobile .media-text span {
@@ -201,9 +239,12 @@
 }
 
 .mediaCarousel .media-carousel-mobile .video {
-	top: -15px;
+	top: 0px;
 	text-align: -webkit-center;
-	margin-left: -30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	
 }
 
 .mediaCarousel .media-carousel-mobile .audio {
@@ -214,10 +255,9 @@
 }
 
 .mediaCarousel .media-carousel-mobile .image {
-	top: -15px;
 	text-align: -webkit-center;
 	margin-left: -20px;
-	margin-top: -20px;
+	margin-top: 15px;
 }
 
 /*   Used in other tiles but first item */
@@ -277,7 +317,9 @@
 	width: auto;
 	max-width: 213px;
 	height: auto;
-	max-height: 120px;
+	max-height: 152px;
+	display: block;
+	margin: 0 auto;
 }
 
 .mediaCarousel .mc-audio-mobile img {
@@ -287,7 +329,7 @@
 
 .mediaCarousel .mc-video-mobile img {
 	width: 213px;
-	height: 120px;
+	height: 152px;
 }
 
 .mediaCarousel .firstTile button {
@@ -385,14 +427,13 @@
 }
 
 .mediaCarousel .show-mobile .sub-Thumbs {
-	height: 274px;
-	width: 375px;
+	min-height: 274px;
+	min-width: 375px;
 	background-color: #e7e7e7;
 	display: inline-block;
 	border-color: #e7e7e7;
-	padding: 8% 15% 40%;
+	padding: 0% 0% 0%;
 	border-style: solid;
-	/*max-width: 480px;*/
 	text-align: center;
 }
 
@@ -529,13 +570,267 @@
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
+
 .mediaCarousel #audio-modal .modal-content {
 	background-color: #fefefe;
 	margin: auto;
-	padding: 5px 8px 15px 10px;
-	border: 1px solid #888;
-	width: 750px; /* Changed by German. It was 350 px */
+	/* padding: 5px 8px 15px 10px; 		German: Removed for the modal window as specified in Zeplin (MAM-152)  
+	border: 1px solid #888;				German: Removed for the modal window as specified in Zeplin (MAM-152) */
+	max-width: 750px; 					/* Changed by German. It was 350 px */
+	min-height: 200px;					/* German: minimum height for Audio modal window */
 }
+
+
+ /*  Adding classes for MAM-152 (Memorial Development Rollover) 	=================================  */
+ 	
+ 
+.mediaCarousel #audio-modal .modal-dialog .player-align-center {
+ 	text-align: center;
+ 	max-width: 750px;
+ }
+ 
+.mediaCarousel #audio-modal .modal-dialog {
+ 	max-width: 750px;
+ }
+ 
+.mediaCarousel #audio-modal .modal-content .audioStyle {
+	min-height: 200px;						/* German: minimum height for Audio modal window */
+}
+
+.mediaCarousel #audio-modal .modal-content .modal-body {
+	padding: 0;
+}
+
+.mediaCarousel #audio-modal .audioTile-popup {
+  	width: 716px;
+	/* height: 404.5px; */
+	min-height: 404.5px;	
+}
+
+.mediaCarousel #audio-modal .main-player {
+    border: 16.4px solid #e7e7e7;
+	min-height: 280px; 						/* German: Reducing the space at bottom as per MAM-182 */
+}
+
+.mediaCarousel #audio-modal .sprite.icon-audio-light {
+	transform: scale(3,3);
+	width: 30px;
+	height: 30px;
+	left: 48%;
+	top: 180px;
+	position: absolute;
+}
+
+.mediaCarousel #audio-modal .chi-audio-player  {
+    top: 356.1px;
+}
+
+.mediaCarousel #audio-modal .mejs__container  {
+    position: absolute;
+    max-width: 640px;
+    left: 48px;
+}
+
+.mediaCarousel #audio-modal .mejs__container .mejs__currenttime {
+    max-width: 50px;
+	margin-right: 5px;
+}
+
+.mediaCarousel #audio-modal .mejs__container .mejs__duration {
+    max-width: 50px;
+	padding-left: 5px;
+}
+
+.mediaCarousel #audio-modal .audiopopup-close {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.59);
+}
+
+.mediaCarousel #audio-modal .audiopopup-close:after {
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    content: 'X';
+    font-family: 'Verdana';
+    border-radius: 50%;
+    background: #333;
+    line-height: 2.2;
+    font-size: 13px;
+}
+
+.mediaCarousel #audio-modal .audiopopup-close:hover {
+    opacity: 0.5;
+}
+
+.mediaCarousel .modalHeader {
+	width: 100%;
+	display: inline-block;
+	font-size: 20px;
+	color: #426da9;
+	margin-bottom: -5px;
+	margin-top: 27.4px;
+	padding-left: 42.7px !important;			/* German: Paddings according to Zeplin  */
+	padding-right: 44.4px !important;			/* German: Paddings according to Zeplin  */
+}
+
+.mediaCarousel .modalText {
+	max-width: 700px;
+  	font-size: 14px;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-stretch: normal;
+  	line-height: 1.43;
+  	letter-spacing: normal;
+  	color: #53565a;
+  	padding-top: 11.4px;
+  	padding-bottom: 8px;						/* German: Reducing the space at bottom as per MAM-182 */
+  	padding-left: 42.7px !important;			/* German: Paddings according to Zeplin  */
+	padding-right: 44.4px !important;			/* German: Paddings according to Zeplin  */
+}
+
+
+
+@media ( max-width : 890px) {
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		min-width: 718.2px;
+ 		position: fixed;
+		left: 24.7px;
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container {
+ 		max-width: 630.1px;
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container .mejs__currenttime {
+	    max-width: 40px;
+	}
+}
+
+@media ( min-width : 720px) and (max-width: 783px) {
+	
+	.mediaCarousel #audio-modal .mejs__container  {
+	    /* max-width: 352px;  */
+	}
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		width: 650px;
+ 	}
+ 	
+}
+
+@media ( min-width : 513px) and (max-width: 719px) {
+	
+	.mediaCarousel #audio-modal .mejs__container  {
+	    max-width: 282px;
+	}
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		max-width: 550px !important;
+ 		min-width: 400px;
+ 	}
+}
+
+@media ( min-width : 496px) and (max-width: 512px) {
+	
+	.mediaCarousel .audio-container .audioTile-first-item {
+	  	width: 320px !important;
+	}
+	
+	.mediaCarousel #audio-modal .mejs__container  {
+	    max-width: 282px;
+	}
+
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		max-width: 550px;
+ 		min-width: 400px;
+ 	}
+}
+
+@media ( max-width : 495px) {
+
+	.mediaCarousel .modalHeader {
+		padding-left: 17.8px !important;			/* German: Paddings according to Zeplin  */
+		padding-right: 15.3px !important;			/* German: Paddings according to Zeplin  */
+	}
+	
+	.mediaCarousel .modalText {
+	  	padding-left: 17.8px !important;			/* German: Paddings according to Zeplin  */
+		padding-right: 15.3px !important;			/* German: Paddings according to Zeplin  */
+	}
+
+	.mediaCarousel .link-wrapper.mc-audio {
+		min-height: 274px;
+	}
+	
+ 	.mediaCarousel .main-player {
+		min-width: 325.4px !important;  
+	}
+	
+ 	.mediaCarousel #audio-modal .modal-dialog {
+		min-width: 325.4px;
+		position: fixed;
+		left: 25.2px;
+	}
+	
+ 	.mediaCarousel #audio-modal .mejs__container {
+ 		max-width: 250px;
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .audioTile-popup {
+		min-height: 175.3px;
+	}
+	
+	.mediaCarousel #audio-modal .sprite.icon-audio-light {
+		transform: scale(1,1);
+		top: 77px;
+		left: 48%;
+	}
+	
+	.mediaCarousel #audio-modal .chi-audio-player {
+		top: 138px;
+	}
+	
+	.mediaCarousel #audio-modal .mejs__container .mejs__time {
+ 		display: none;
+ 	}
+ 	
+ 	.chi-audio-player .mejs__controls, .chi-audio-player .mejs__time-rail, .chi-audio-player .mejs__time, .chi-audio-player .mejs__button {
+ 		height: 33.5px;
+ 	}
+ 	
+ 	.chi-audio-player .mejs__playpause-button > button {
+ 		margin-top: 8px;
+ 	}
+	
+	.mejs__time-rail {
+		padding-top: 6px;
+	}
+	
+	.mejs-download-control a {
+		margin-top: -4px;
+	}
+	
+	.mejs__time-handle-content {
+		width: 5px;
+		padding-left: 2px !important;
+		padding-right: 2px !important;
+	}
+	
+	.mediaCarousel .a-brief-description {
+		max-width: 280px;
+	}
+}
+
+
+/*	End of additions for MAM-152	 ===================================================================  */
+
 
 .mediaCarousel .modal-content .close {
 	margin-top: 22px;
@@ -704,9 +999,11 @@
 	}
 }
 
-@media ( max-width : 480px) { /*.mediaCarousel .media-text {
-    bottom: 0;
-  }*/
+@media ( max-width : 480px) { 
+
+	/*.mediaCarousel .media-text {
+	    bottom: 0;
+	  }*/
  
 }
 
@@ -776,13 +1073,19 @@
 	.mediaCarousel .carousel-image {
 		padding-left: 0px;
 	}
-	.mediaCarousel .carousel-item.hide-mobile {
-		display: none !important;
-	}
-	.mediaCarousel .hide-mobile {
+	
+	.mediaCarousel #onlyDesktop {
 		display: none;
-		visibility: hidden;
 	}
+	
+	.mediaCarousel #onlyMobile {
+		display: block;
+	}
+	
+	.mediaCarousel #audio-modal .modal-content {
+		width: 345px;
+	}
+	
 }
 
 @media ( max-width : 1024) {
@@ -800,18 +1103,7 @@
 	}
 }
 
-@media ( min-width : 481px) {
-	.mediaCarousel .hide-desktop {
-		display: none !important;
-	}
-	.mediaCarousel .main-player {
-		/* border: 16px solid #e7e7e7; */
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 0;
-		/*border-top: 0px solid #e7e7e7;*/
-	}
-}
+
 
 @media ( min-width : 482px) and (max-width: 785px) {
 	.mediaCarousel .owl-item .tablet {
@@ -829,18 +1121,17 @@
 	}
 }
 
-@media ( max-width : 860px) {
-	.mediaCarousel #audio-modal .modal-content {
-		width: 325px;
-	}
-}
 
-@media ( min-width : 861px) and (max-width: 1024px) {
+/* 
+
+@media ( min-width : 861px) and (max-width: 1024px) {		German: Removed for Media Carousel rollover
 	.mediaCarousel #audio-modal .modal-content {
 		width: 650px;
 	}
 }
 
+
+*/
 
 /*  Added by German  */
 
@@ -945,7 +1236,7 @@
 	}
 	
 	.mediaCarousel .link-wrapper.mc-audio {
-		margin-left: -35px;
+		/* margin-left: -35px;   */
 	}
 	
 	.media-carousel-mobile .header-fix, .sub-header-fix {
@@ -962,11 +1253,16 @@
 	
 	.mediaCarousel .media-carousel-mobile .media-text span {
 		width: 180px;
+		margin-bottom: -5px;
 	}
 	
 	.mediaCarousel .a-brief-description.sub-header-fix {
 		width: 220px;
-		margin-left: -60px;
+		margin-left: 0px;
+	}
+	
+	.mediaCarousel .custom-button.header-fix {
+		max-width: 290px;
 	}
 }
 
@@ -1013,7 +1309,7 @@
 	}
 	
 	.mediaCarousel .link-wrapper.mc-audio {
-		margin-left: -65px;
+		/* margin-left: -65px; */
 	}
 	
 	.media-carousel-mobile .header-fix, .sub-header-fix {
@@ -1022,7 +1318,7 @@
 	
 	.mediaCarousel .a-brief-description.sub-header-fix {
 		width: 170px;
-		margin-left: -125px;
+		margin-left: 0px;
 	}
 	
 	.mediaCarousel .mc-image-mobile img {
@@ -1030,7 +1326,13 @@
 	}
 	
 	.mediaCarousel .media-carousel-mobile .image {
-		margin-left: -5px;
+		margin-top: 10px;
+		max-width: 213px;
+		max-height: 152px;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
 	}
 
 }

@@ -38,9 +38,5 @@
             jcr:primaryType="nt:unstructured"
             text="Original Blue"
             value="#426da9"/>
-        <white
-            jcr:primaryType="nt:unstructured"
-            text="White"
-            value="#ffffff"/>
     </colors>
 </jcr:root>

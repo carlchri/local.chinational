@@ -36,7 +36,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="Select a Size for the Heading"
+                                                        fieldDescription="See style guilde for guidance on what heading size to use.  For SEO, avoid using more than one instance of H1 per page."
                                                         fieldLabel="Heading Size"
                                                         name="./headingSize">
                                                         <items jcr:primaryType="nt:unstructured">
@@ -62,7 +62,7 @@
                                                     <headingText
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Enter Text for the heading. This field is mandatory."
+                                                        fieldDescription="After selecting the heading size, enter the text for the heading here."
                                                         fieldLabel="Heading Text"
                                                         name="./text"
                                                         required="{Boolean}true"/>

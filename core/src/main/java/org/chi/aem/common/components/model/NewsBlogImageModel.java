@@ -52,7 +52,7 @@ public class NewsBlogImageModel extends WCMUsePojo {
 		if(page != null){
 			LOGGER.debug("Page: " + page.getPath());
 		}
-		
+//		log.info("The page"+ page.getPath());
 		return page;
 	}
     

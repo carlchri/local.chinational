@@ -8,7 +8,7 @@
 			    <div class="interactive-wheel" data-sly-test="${wheelCollection.wheelCompartmentsDetails.size > 1}">
 			    	<div class="wheelContainer mobile-adjustment" style="background-color: ${properties.backgroundColor @ context='styleToken'};">
 				    	<div class="sub-wheelContainer mobile-adjustment">
-				            <h1 class="header-padding mobile-adjustment ${properties.noTitle? 'in' : ''}" style="color: ${properties.fontColor @ context='styleToken'};">${properties.title}</h1>
+				            <h1 class="header-padding mobile-adjustment">${properties.title}</h1>
 				            <div class="right mobile-adjustment">
 				                <div class="wheel">
 				                    <div class="arrow mobile-adjustment">
@@ -16,41 +16,35 @@
 				                    </div>
 				                    <div class="circle small-wheel">
 				                    	<div class="circle-rotate transform1">
-				                            <img src="${properties.image_wheel}" class="circle-image">
+				                            <img src="${properties.image_wheel || '/etc/designs/chicommon/images/wheel.svg'}" class="circle-image">
 				                        </div>
-				                    	<div class="nose ${properties.noNoseImage? 'in' : ''}">
+				                    	<div class="nose ${properties.image_nose? '' : 'in'}">
 				                            <img class="nose-img-desktop" src="${properties.image_nose}" alt="nose">
-				                            <!--  	Remove below line if only one nose is required for desktop and mobile,
-				                            		Also, remove class from remaining line above -->
-				                            <img class="nose-img-mobile" src="${properties.image_small_nose}">
 				                        </div>
 				                        <div class="circle-rotate transform1" style="margin-top: -222px; margin-left: -1px;">
 											<sly data-sly-list.wheelItem="${wheelCollection.wheelCompartmentsDetails}">
-					                        	 <img src="${wheelItem.compartment_image}" class="location${wheelItemList.index}${properties.noNoseImage? '-withoutCenter' : ''} snot section${wheelItemList.index}" alt="${wheelItem.compartment_image_alt_text}">
+					                        	 <img src="${wheelItem.compartment_image}" class="location${wheelItemList.index}${properties.image_nose? '' : '-withoutCenter'} snot section${wheelItemList.index}" alt="${wheelItem.compartment_image_alt_text}">
 					                    	</sly>
 				                        </div>
 				                    </div>
 				                </div>
 				            </div>
-				            <div class="left mobile-adjustment ${properties.noTitle? 'shortPadding' : ''}" style="height: auto;">
-				                <div class="initial-text" style="color: ${properties.fontColor @ context='styleToken'};">
+				            <div class="left mobile-adjustment" style="height: auto;">
+				                <div class="initial-text">
 				                    <p>
 										${properties.initial_text  @context = 'html'}                    
 									</p>
-				                    <p>
-				                        <strong>${properties.initial_text_message}</strong>
-				                    </p>
 				                </div>
 								<sly data-sly-list.wheelItem="${wheelCollection.wheelCompartmentsDetails}">                        		                 
-					                 <div class="color-text text${wheelItemList.index}" style="display: none; color: ${properties.fontColor @ context='styleToken'};">
-					                    <h2 style="color: ${properties.fontColor @ context='styleToken'};">${wheelItem.compartment_title}</h2>
+					                 <div class="color-text text${wheelItemList.index}" style="display: none;">
+					                    <h2>${wheelItem.compartment_title}</h2>
 					                    <p>
 											${wheelItem.compartment_text  @context = 'html'}                    
 										</p>
 					                </div>                 
 					            </sly>
-				                <div class="footer-cta ${properties.noCTAButton? 'in' : ''}">
-				                    <img src="/etc/designs/chicommon/images/schedule-checkup.svg" class="icon"> <a href="${properties.destinationCTA}" style="color: ${properties.fontColor @ context='styleToken'};">${properties.schedule_appointment} »</a>
+				                <div class="footer-cta">
+				                    <img src="/etc/designs/chicommon/images/schedule-checkup.svg" class="icon"> <a href="${properties.destinationCTA}" target="${properties.targetBlank==true ?'_blank':'_self'}">${properties.schedule_appointment} »</a>
 				                </div>
 				            </div>
 				        </div>

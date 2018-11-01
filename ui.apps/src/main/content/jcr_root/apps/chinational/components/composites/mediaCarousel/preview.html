@@ -4,7 +4,7 @@
         <div class="row ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}">
             <div class="col-sm-12">
                 <h4 class="media-fifty" data-sly-test="${mediaCollection.sectionHeading}">${mediaCollection.sectionHeading}</h4>
-                <div class="cus-curosal pstn-reltv hide-mobile full-bleed-tiles ${mediaCollection.editViewItems.size < 8 ?'fw-no-arrows':''} ${mediaCollection.editViewItems.size < 4 ?'rr-no-arrows':''}">
+                <div id="onlyDesktop" class="cus-curosal pstn-reltv full-bleed-tiles ${mediaCollection.editViewItems.size < 8 ?'fw-no-arrows':''} ${mediaCollection.editViewItems.size < 4 ?'rr-no-arrows':''}">
                     <div class="owl-carousel owl-theme media-carousel">
                         <div class="slide-container">
                             <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}"
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="owl-carousel owl-theme show-mobile hide-desktop media-carousel-mobile">
+                <div id="onlyMobile" class="owl-carousel owl-theme media-carousel-mobile">
                     <div class="slide-contaner">
                         <sly data-sly-test="${mediaCollection.firstItem.type == 'video'}"
                              data-sly-resource="${mediaCollection.firstItem.id @ resourceType='chinational/components/content/video', selectors='mobileCarousel'}"></sly>
@@ -54,26 +54,4 @@
         <sly data-sly-include="../../commons/bottomOption.html"></sly>
     </div>
 </sly>
-<!-- Audio Popup-->
-<div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-labelledby="audio-modalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header-audio">
-                <!--  h5 class="modal-title" id="audio-modal-Label">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button-->
-            </div>
-            <div class="modal-body chi-audio-player-d">
-                <audio id="audio-player" class="chi-audio-player" controls preload="none">
-                    <source src="" type="audio/ogg">
-                    <source class="srcmp" src="" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-            <div class="modal-footer-audio">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+<sly data-sly-include="audio_popup.html"/>

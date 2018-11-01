@@ -272,3 +272,38 @@ button {
 /* For Desktop, callout should have left padding 0px */
 
 /*  End of additions by German for Defect DE2590 */
+
+/* Added for EAS-38 */
+@media (min-width : 992px) {
+	.right-rail-container .featuredArticleCallout .event-content {
+		margin: -6px 0 0 30px; 
+		max-width: 30pc;
+	}
+	
+	.right-rail-container .featuredArticleCallout .more-events {
+		flex: inherit;
+	}
+	
+	.right-rail-container .featuredArticleCallout .flex-row {
+		flex-flow: wrap;
+	}
+	
+	.right-rail-container .featuredArticleCallout .upcoming-events .flex {
+		display: flex;
+		padding-bottom:30px;
+	}
+	
+	/* Added by German to fix Defect DE2590 */
+	.right-rail-container .featuredArticleCallout .padding-fix {
+		padding-bottom: 0px;
+	}
+	/*  End of additions by German for Defect DE2590 */
+	
+	.right-rail-container .featuredArticleCallout .featured-callout-view-events-button {
+		margin-left: 105px; /* Added by Davinder to add spacing for button in FeaturedArticleCallout Component*/
+	}
+	
+	.right-rail-container .featuredArticleCallout .more-events {
+		max-width: 100%;
+	}
+}

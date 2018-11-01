@@ -1,20 +1,74 @@
 <sly data-sly-use.blogsList="org.chi.aem.common.components.model.BlogsList"
      data-sly-use.template="chinational/components/commons/templates.html"/>
 
+<div class="featuredArticleManagement" data-sly-test="${wcmmode.edit || wcmmode.design || wcmmode.preview}">
+	<div class="selectionShowHide"><p>+ / -</p></div>
+	<h2>Featured Article Management</h2>
+	<div class="chi_dual_box">
+		<!-- Select Tags for featured article selection -->
+		<!--/*
+		<p>Select Tag for Featured Articles selection</p>
+		<form id="tagsFormBox" action="#" method="post">
+			<select class="form-control-1" name="blog_tags">
+				<option
+						data-sly-attribute.selected="${blogsList.blogsFilter == 'AllItems'? 'true' : ''}"
+						value="${currentPage.path}.news.AllItems.html"
+						name="AllItems">All Items</option>
+				<sly data-sly-list.tagsList="${blogsList.tagsMap}">
+					<option
+							data-sly-attribute.selected="${blogsList.blogsFilter == tagsList? 'true' : ''}"
+							value="${currentPage.path}.news.${tagsList}.html"
+							name="${tagsList}">
+						${blogsList.tagsMap[tagsList]}
+					</option>
+				</sly>
+			</select>
+			<sly data-sly-list.tagsFeatured="${blogsList.featuredMapList}">
+				<input type="hidden" name="${tagsFeatured}" value="${blogsList.featuredMapList[tagsFeatured]}"/>
+			</sly>
+			<select data-sly-list.selectlist="${blogsList.allBlogs}"
+					style="display:none;" name="fullList">
+				<option
+						class="${selectlist.properties.cq:tags[0]}"
+						value="${selectlist.path}">${selectlist.title}</option>
+			</select>
+		</form>
+		*/-->
+		<!-- Select box for featured article selection -->
+		<p>
+			<span>Current article filter tag: </span>
+			<span id="featuredCurrentSelectedTag"><b>${blogsList.blogsFilter}</b></span>
+		</p>
+
+		<p>Select Three Titles for Featured Articles</p>
+		<br/>
+		<form id="listBoxForm" action="#" method="post">
+			<select multiple="multiple" size="10" name="duallistbox_output[]" title="duallistbox_output[]">
+				<sly data-sly-test="${blogsList.featuredArticlesSelected}"
+					 data-sly-list.selectedItems="${blogsList.featuredArticlesSelected}">
+					<option selected
+							class="${selectedItems.properties.cq:tags[0]}"
+							value="${selectedItems.path}">${selectedItems.title} </option>
+				</sly>
+				<sly data-sly-test="${blogsList.featuredArticlesSelectionList}"
+						data-sly-list.selectlist="${blogsList.featuredArticlesSelectionList}">
+					<option
+							class="${selectlist.properties.cq:tags[0]}"
+							value="${selectlist.path}">${selectlist.title}</option>
+				</sly>
+			</select>
+			<br>
+			<button type="submit" class="btn btn-default btn-block">Submit Pages</button>
+			<input id="featuredTagPrefix" type="hidden" value="${blogsList.blogsFilter}" name="featuredTag">
+		</form>
+
+	</div>
+</div>
+
 <span class="blog_page_tag_desc"></span>
 <sly data-sly-use.featuredTemplate="featured.html"></sly>
 <div class="component">
 	<div class="row blogs-list-form ${properties.bottomOption == 'nomargin'?'':'bottom-buffer'}" id="${blogsList.hash @ context='unsafe'}">
-		<!--/*<div class="col-xs-12">
-             <div class="visual-box component-gutter full-bleed-tiles">
-                 <div class="full-bleed">
-                     <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
-                          <sly data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs, itemList=featuredBlogsList}">
-                          </sly>
-                     </sly>
-                 </div>
-             </div>
-         </div> */-->
 
          <sly data-sly-list.featuredBlogs="${blogsList.featuredBlogs}">
              <div class="col-xs-12 featured-news-blog ${featuredBlogsList.last?'padding-bottom-60':'padding-bottom-60'}" data-sly-call="${featuredTemplate.item @ list = blogsList, item = featuredBlogs}"></div>
