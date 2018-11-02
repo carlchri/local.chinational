@@ -584,7 +584,8 @@
 	} */
 
 	.campaignlandingpage .campaign-header-button {
-		padding:0 17px 18px 30px; /* padding-right --> 2px + 15px for col- = 17px */
+		padding:0 17px 6px 30px; /* padding-right --> 2px + 15px for col- = 17px */
+									/*  German: Changed padding-bottom to 6px instead of 18px */
 	}
 	
 /*	cannot set min-height in mobile view, as we need to hide button when user scrolls up

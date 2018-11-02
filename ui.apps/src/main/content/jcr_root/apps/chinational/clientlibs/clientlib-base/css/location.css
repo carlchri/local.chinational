@@ -9,6 +9,13 @@
 	min-height: 395px;	
 }
 
+#right-rail-container #myLocationComponent {
+	background: #f8f7f7;
+	min-height: 395px;
+	max-width: 877px;		/*  German: Fixing right rail in MAM-159 */
+	width: 100%;
+}
+
 .anti-bottom-buffer60 {
 	margin-bottom: -60px !important;
 }
@@ -20,6 +27,7 @@
 .location div.small-wrapper {
   	margin: 0 0 20px 0;
 }
+
 .location div.link-wrapper {
   	margin: 0 0 20px 0;
 }
@@ -38,12 +46,6 @@
 	margin-right: -15px; 	
 }
 
-.location .map-box {
-  	background: gray;
-  	height: 400px;
-  	width: 100%;
-}
-
 .location .txt-address span {
   	margin: 0 0 0 5px;            /* changed by German for MAM-22, it was 0 0 0 40px; */ 
 }
@@ -59,7 +61,8 @@
 
 .location .location-text-area {
     padding-top: 30px;
-	padding-left: 70px;     
+	padding-left: 70px;   
+	max-width: 44.5%;  
 }
 
 .location .location-card-body {
@@ -68,12 +71,23 @@
 
 .location .location-icon {
 	float: right;
+	margin-right: -5.5%;
 }
+
+.location .map-box {
+  	background: gray;
+  	height: 395px;
+  	width: 100%;			
+}
+
 
 .location .location-card-body .map-box {
     overflow: hidden;
 	max-height: 395px;
+	max-width: 703px;  /*  German: Added as per Zeplin design to fix MAM-159 */
+	float: right;
 }
+
 
 .location .location-card-body #image {
     overflow: hidden;
@@ -294,7 +308,7 @@
 }
 
 .location .txt-location-name span {   
-    max-width: 300px;
+    max-width: 70%;
 }
 
 .location .txt-address .icons-set {    
@@ -318,7 +332,14 @@
 }
 
 #right-rail-container .location .location-text-area {
-	min-width: 100%;
+	min-width: 95%;
+}
+
+#right-rail-container .location .location-card-body .map-box {
+    overflow: hidden;
+	max-height: 490px;
+	max-width: 872px;  /*  German: Added as per Zeplin design to fix MAM-159 */
+	float: right;
 }
 	
 #right-rail-container .location #location-graphic-area {
@@ -394,7 +415,9 @@
 	}
 
 	.location .adjust-height .map-box {
-    		margin-top: 20px; /* removing -20px margin for map for CHIMCM-1207 */
+    	/* margin-top: 20px; 		removing -20px margin for map for CHIMCM-1207, 		German: Removing this line   */
+    	margin-bottom: 34px;		/*  German: Adding bottom padding for Location Component as per Zeplin */
+    	max-width: 100%;
     }
 	
 	.location #location-graphic-area {
@@ -411,9 +434,9 @@
 		clear: both;
 	}
 	
-	#full-width-container .location .location-icon {   
-		padding-right: 41px;
-		padding-top: 4px;
+	#full-width-container .location .location-icon {
+		margin-right: 91px;
+    	padding-top: 4px;
 	}
 	
 	#right-rail-container .location .location-icon {   
@@ -499,7 +522,7 @@
 		float: none;
 		width: 300px;
 	}
-	
+
 	#right-rail-container .location .dividingColumns {
 		float: none;
 		width: 260px;
@@ -510,12 +533,11 @@
   	}
   	
   	#right-rail-container .location .location-icon {   
-		
 		padding-top: 4px;
 	}
 	
 	#full-width-container .location .location-icon {   
-		
+		margin-right: 5px;
 		padding-top: 4px;
 	}
 	

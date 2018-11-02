@@ -71,25 +71,26 @@
     font-size: 0;
 }
 
-/* Added to extend grey line  to corners, else it was terminating and showing white space*/
+/* Added to extend grey line  to corners, else it was terminating and showing white space */
+
 @media (max-width: 1200px) {
     .full-width-container .width-for-gray-line {
-        margin-left: calc(-11.7vw / 2);
-        margin-right: calc(-11.7vw / 2);
+        margin-left: calc(-11.7vw/2);
+        margin-right: calc(-11.7vw/2);
        }
 }
 
 @media (max-width: 767px) {
     .full-width-container .width-for-gray-line {
-        margin-left: calc(-14.7vw / 2);
-        margin-right: calc(-14.7vw / 2);
+        margin-left: calc(-14.7vw/2);
+        margin-right: calc(-14.7vw/2);
        }
 }
 
 @media (max-width: 320px) {
     .full-width-container .width-for-gray-line {
-        margin-left: calc(-18.7vw / 2);
-        margin-right: calc(-18.7vw / 2);
+        margin-left: calc(-18.7vw/2);
+        margin-right: calc(-18.7vw/2);
        }
 }
 
@@ -390,7 +391,9 @@ hr {
     font-size: 48px;
     color: #24509a;
     font-family: myriad-pro, 'MyriadPro-It', arial, Helvetica;
-    margin: -2px 0 11px 0px; /* fix the bottom padding to 11 px matc Zeplin */
+    margin: 5px 0 15px 0px; 		/* fix the bottom padding to 11 px matc Zeplin 		
+     								*  German: Changing margin-top to 5px instead of -2px
+     											and margin-bottom to 15px instead of 11px  */
 }
 
 .large-blue-txt.page-title {

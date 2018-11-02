@@ -34,4 +34,5 @@ js/search_predictive.js
 js/interactiveWheel.js
 js/twitter.js
 js/table.js
+js/location.js
 js/featuredArticleBox.js
