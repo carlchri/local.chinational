@@ -9,6 +9,13 @@
 	min-height: 395px;	
 }
 
+#right-rail-container #myLocationComponent {
+	background: #f8f7f7;
+	min-height: 395px;
+	max-width: 877px;		/*  German: Fixing right rail in MAM-159 */
+	width: 100%;
+}
+
 .anti-bottom-buffer60 {
 	margin-bottom: -60px !important;
 }
@@ -408,9 +415,9 @@
 	}
 
 	.location .adjust-height .map-box {
-    		/* margin-top: 20px; 		removing -20px margin for map for CHIMCM-1207, 		German: Removing this line   */
-    		margin-bottom: 34px;		/*  German: Adding bottom padding for Location Component as per Zeplin */
-    		max-width: 100%;
+    	/* margin-top: 20px; 		removing -20px margin for map for CHIMCM-1207, 		German: Removing this line   */
+    	margin-bottom: 34px;		/*  German: Adding bottom padding for Location Component as per Zeplin */
+    	max-width: 100%;
     }
 	
 	.location #location-graphic-area {
