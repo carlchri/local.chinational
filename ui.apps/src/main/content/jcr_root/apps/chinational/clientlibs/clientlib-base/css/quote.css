@@ -120,6 +120,6 @@
 @media ( min-width :768px) {
     .quote-image {
         width: 100%;
-        margin: auto 20px;
+        margin: 10px auto auto 20px;
     }
 }
