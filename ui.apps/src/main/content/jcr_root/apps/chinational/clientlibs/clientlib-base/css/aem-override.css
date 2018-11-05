@@ -84,7 +84,7 @@ and (orientation : portrait) {
 
 .image-responsive-2 {
 	width: auto;
-	height: 100%;
+	height: 395px;
 }
 
 .image-responsive-3 {
@@ -94,7 +94,7 @@ and (orientation : portrait) {
 
 .image-responsive-4 {
 	width: auto;
-	height: auto;
+	height: 395px;
 }
 
 .image-max-width-responsive {
