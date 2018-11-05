@@ -9,6 +9,10 @@
 	min-height: 395px;	
 }
 
+#myLocationComponent .row:before {
+    display: block; 
+}
+
 #right-rail-container #myLocationComponent {
 	background: #f8f7f7;
 	min-height: 395px;
@@ -305,6 +309,7 @@
 
 .location #location-graphic-area {   
 	float: right;
+	max-width: 733px;
 }
 
 .location .txt-location-name span {   
