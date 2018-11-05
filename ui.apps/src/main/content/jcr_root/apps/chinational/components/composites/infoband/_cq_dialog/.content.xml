@@ -43,7 +43,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to enable grey background"
                                                         name="./greybgRequired"
-                                                        text="Select to enable grey background"
+                                                        text="Select to Enable Grey Background of Info Band"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <headingNotRequired
@@ -59,7 +59,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to disable link button"
                                                         name="./linkButtonNotRequired"
-                                                        text="Select to disable Link button"
+                                                        text="Select to Disable Link button Under Body Text"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <buttonRowNotRequired
@@ -67,7 +67,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to disable Row of Buttons"
                                                         name="./buttonRowNotRequired"
-                                                        text="Select to disable row of Buttons"
+                                                        text="Select To Disable Stack of Buttons to the Right of the Body Text"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <noOfButtons
@@ -75,7 +75,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                                                         defaultValue="1"
                                                         fieldDescription="Select How many buttons required"
-                                                        fieldLabel="No. of Buttons Required"
+                                                        fieldLabel="Number of Stack of Buttons Displayed on Right"
                                                         max="{Long}10"
                                                         min="{Long}1"
                                                         name="./noOfButtons"

@@ -15,7 +15,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <imageMainTab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Image Main Tab&#xa;"
+                                jcr:title="Image Main Settings"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -30,8 +30,8 @@
                                                     <imgWebSrc
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Image Src for the web"
-                                                        fieldLabel="Desktop Image Src"
+                                                        fieldDescription="AEM path. Use this format for external links https://www.example.com"
+                                                        fieldLabel="Image AEM path/URL"
                                                         name="./fileReference"
                                                         required="{Boolean}true"
                                                         rootPath="/content/dam"/>
@@ -140,12 +140,12 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/foundation/form/textfield"
                                                         fieldDescription="The mandatory image alt tag is needed for sight-impaired users and better SEO"
-                                                        fieldLabel="Alternative Text"
+                                                        fieldLabel="Alternative Text (alt tag)*"
                                                         name="./alt"/>
                                                     <linkURL
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
-                                                        fieldDescription="Link to pages on this site. &#xa;For External Links, use format http(s)://www.example.com"
+                                                        fieldDescription="Image AEM path. Use this format for external links https://www.example.com"
                                                         fieldLabel="AEM path/Link URL"
                                                         name="./linkURL"
                                                         rootPath="/content"/>

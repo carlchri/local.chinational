@@ -57,7 +57,7 @@
                                                     <videoText
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="Displays under video in smaller, italicized caption font"
+                                                        fieldDescription="This text will be used as the caption for the video and will display in a smaller font in italics underneath the video"
                                                         fieldLabel="Video Caption"
                                                         name="./videoText"
                                                         required="{Boolean}false"/>
