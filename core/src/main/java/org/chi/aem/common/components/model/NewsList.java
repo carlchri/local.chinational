@@ -272,12 +272,16 @@ public class NewsList implements ComponentExporter {
             featuredMapList = new HashMap<>();
             for(String mapKey: featuredMap.keySet()) {
                 List<Page> mappedPages = featuredMap.get(mapKey);
-                StringBuffer bufferString = new StringBuffer();
-                for(Page mapped: mappedPages) {
-                    bufferString.append(mapped.getPath()).append(",");
-                }
-                if (bufferString.length() > 0) {
-                    featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                if (mappedPages != null && mappedPages.size() > 0) {
+                    StringBuffer bufferString = new StringBuffer();
+                    for(Page mapped: mappedPages) {
+                        if (mapped != null && mapped.getPath() != null) {
+                            bufferString.append(mapped.getPath()).append(",");
+                        }
+                    }
+                    if (bufferString.length() > 0) {
+                        featuredMapList.put( mapKey , bufferString.substring(0, bufferString.length()-1));
+                    }
                 }
             }
         }

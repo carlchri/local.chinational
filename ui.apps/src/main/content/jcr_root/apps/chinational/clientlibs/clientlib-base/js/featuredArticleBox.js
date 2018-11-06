@@ -12,7 +12,8 @@ $('document').ready(function(){
 
     var listBox = $('select[name="duallistbox_output[]"]').bootstrapDualListbox({
         selectedListLabel: 'Selected Features',
-        nonSelectedListLabel: 'Available Articles'
+        nonSelectedListLabel: 'Available Articles',
+        sortByInputOrder: true
     });
     var pageUrl = String(window.location.pathname);
     // console.log("page url : "+pageUrl)
@@ -76,15 +77,18 @@ $('document').ready(function(){
         //featuredSelectTag = featuredSelectTagPrefix + featuredTagSuffix;
         //featuredSelectTag = featuredTagSuffix;
         featuredListPages = $('[name="duallistbox_output[]"]').val();
+        console.log("select op featuredListPages: " + featuredListPages);
 
         if (featuredListPages != null ) {
             featuredListPagesString = featuredListPages.toString().replace("[", "").replace("]", "").split(',');
+            console.log("array to string featuredListPagesString: " + featuredListPagesString);
         } else {
             featuredListPagesString = [""];
         }
             // console.log("featuredListPages length :: "+featuredListPages.length);
             if (featuredListPagesString.length >= 0 && featuredListPagesString.length  <= 3) {
                 var featuredListPagesJsonString = JSON.stringify(featuredListPagesString);
+                console.log("string to JSON - featuredListPagesJsonString: " + featuredListPagesJsonString);
                 $.ajax({
                     type: 'GET',
                     async: false,
