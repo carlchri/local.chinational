@@ -35,8 +35,8 @@
                                                     <parentPage
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldDescription="Choose page under which news details page are saved"
-                                                        fieldLabel="Parent page"
+                                                        fieldDescription="To create a news list, include a link to the page you are on. Then the news list will get automatically populated with content from any child pages you add."
+                                                        fieldLabel="News List Parent Page (AEM path to current page)"
                                                         name="./parentPage"
                                                         rootPath="/content"/>
                                                     <removeFilter
