@@ -33,39 +33,75 @@ $(document).ready(function(){
 		}
 
         // Adjustments for space between header and text depending on the element/initial text shown
-        
-		if (($(".header-padding").height() > 40) && ($(window).width() < 600)) {
+                
+        if (($(".header-padding").height() > 120) && ($(window).width() < 600)) {
 
             if ($('.initial-text').css('display') == 'none') {
-				var new_val = "152px";    // When the header uses 2 lines height and any element is active
+				var new_val = "222px";    // When the header uses 4 lines height and any element is active
 	       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
             }
             else {
-				var new_val = "135px";    // When the header uses 2 lines height and initial text is active
+				var new_val = "205px";    // When the header uses 4 lines height and initial text is active
 	       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
             }
 	    }
 		
 		else {
 			
-			if (($(".header-padding").height() < 40) && ($(window).width() < 600)) {
-				var old_val = "122px";    // When the header uses 1 line height
-			    $(".interactive-wheel .left.mobile-adjustment").css("padding-top", old_val);
-			}
+	        if (($(".header-padding").height() > 80) && ($(".header-padding").height() < 120) && ($(window).width() < 600)) {
+	
+	            if ($('.initial-text').css('display') == 'none') {
+					var new_val = "182px";    // When the header uses 3 lines height and any element is active
+		       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+	            }
+	            else {
+					var new_val = "175px";    // When the header uses 3 lines height and initial text is active
+		       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+	            }
+		    }
 			
 			else {
-				 if($('.initial-text').css('display') == 'none') {
-					 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '17px');
-				 }
-				 else {
-					 
-						 $(".interactive-wheel .left.mobile-adjustment").css("margin-top", '-15px');
-						 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '0px');
-					 
-				 }
+				
+				if (($(".header-padding").height() > 40) && ($(".header-padding").height() < 80) && ($(window).width() < 600)) {
+		
+		            if ($('.initial-text').css('display') == 'none') {
+						var new_val = "152px";    // When the header uses 2 lines height and any element is active
+			       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+		            }
+		            else {
+						var new_val = "135px";    // When the header uses 2 lines height and initial text is active
+			       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+		            }
+			    }
+				
+				else {
+					
+					if (($(".header-padding").height() < 40) && ($(window).width() < 600)) {
+						
+						if ($('.initial-text').css('display') == 'none') {
+							var new_val = "112px";    // When the header uses 1 line height and any element is active
+				       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+			            }
+			            else {
+							var new_val = "95px";    // When the header uses 1 line height and initial text is active
+				       		$(".interactive-wheel .left.mobile-adjustment").css("padding-top", new_val);
+			            }
+					}
+					
+					else {
+						 if($('.initial-text').css('display') == 'none') {
+							 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '17px');
+						 }
+						 else {
+							 
+								 $(".interactive-wheel .left.mobile-adjustment").css("margin-top", '-15px');
+								 $(".interactive-wheel .left.mobile-adjustment").css("padding-top", '0px');
+							 
+						 }
+					}
+				}
 			}
 		}
-			
 		
 		// Recalculate the size of the other elements...
 		
