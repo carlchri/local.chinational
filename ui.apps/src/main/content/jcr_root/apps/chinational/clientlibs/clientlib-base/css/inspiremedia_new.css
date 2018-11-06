@@ -560,7 +560,7 @@
 	display: none;
 	position: fixed;
 	z-index: 99999;
-	padding-top: 100px;
+	/* padding-top: 100px; 		German: Removed to fix issue MAM-181 	*/
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -702,6 +702,8 @@
  		min-width: 718.2px;
  		position: fixed;
 		left: 24.7px;
+		position: absolute;			/*  German: Adding this line to fix MAM-181  */
+		overflow: scroll;			/*  German: Adding this line to fix MAM-181  */
  	}
  	
  	.mediaCarousel #audio-modal .mejs__container {
@@ -735,6 +737,33 @@
  		max-width: 550px !important;
  		min-width: 400px;
  	}
+}
+
+/* Landscape */
+
+@media (max-width: 740px) and (orientation:landscape) {
+	
+   .mediaCarousel .audio-container .audioTile-first-item {
+	  	width: 320px !important;
+	}
+	
+	.mediaCarousel #audio-modal .mejs__container  {
+	    max-width: 432px;
+	}
+
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		max-width: 550px;
+ 		min-width: 400px;
+ 	}
+ 	
+}
+
+@media (max-width: 669px) and (orientation:landscape) {
+		
+	.mediaCarousel #audio-modal .mejs__container  {
+	    max-width: 282px;
+	}
+
 }
 
 @media ( min-width : 496px) and (max-width: 512px) {
