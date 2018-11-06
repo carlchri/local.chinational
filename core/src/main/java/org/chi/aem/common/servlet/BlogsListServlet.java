@@ -140,7 +140,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
             Resource resource = request.getResource();
             if(resource != null) {
             	media_page_path = resource.getPath();
-            	LOGGER.info("media_page_path parent_path : " + resource.getPath());
+            	LOGGER.debug("media_page_path parent_path : " + resource.getPath());
             }
 
 /*            if (resource != null) {
@@ -178,7 +178,7 @@ public class BlogsListServlet extends SlingAllMethodsServlet {
 	        	blogsFilterYear = DEFAULT_BLOGS_FILTER_YEAR;
 	        }
 
-	        LOGGER.info("Blogs request path info :: "+request.getPathInfo());
+	        LOGGER.debug("Blogs request path info :: "+request.getPathInfo());
 	        allBlogs = NewsBlogUtils.populateListItems(media_page_path, resolver, blogsTemplate, request.getPathInfo()); //to get all the news using defined template, sorted by Publish date
 	        articleMap = NewsBlogUtils.populateArticlesForPagination(parentPage, allBlogs, resolver, blogsFilter, blogsFilterYear);
 	        // listYears = (List<String>) articleMap.get("listYears");

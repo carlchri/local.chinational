@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.jcr.*;
 
+import com.adobe.acs.commons.mcp.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -216,10 +218,10 @@ public final class NewsBlogUtils {
                 articleFilter = DEFAULT_NEWS_FILTER;
             }
             String featuredPagesPath = requestPathInfo + "/jcr:content/" + FEATURED_NODE;
-            LOGGER.info("featuredPagesPath  :: " + featuredPagesPath + ", article filter: " + articleFilter);
+            LOGGER.debug("featuredPagesPath  :: " + featuredPagesPath + ", article filter: " + articleFilter);
             Resource featuredPagesRes = resourceResolver.getResource(featuredPagesPath);
             if (featuredPagesRes != null) {
-                LOGGER.info("featuredPagesPath resourceavailable, get featured items");
+                LOGGER.debug("featuredPagesPath resourceavailable, get featured items");
                 Node featuredNode = featuredPagesRes.adaptTo(Node.class);
                 featuredList = getFeaturedListItems(articleFilter, featuredNode, resourceResolver);
             }
@@ -275,17 +277,19 @@ public final class NewsBlogUtils {
         if (featuredNode != null && featuredNode.hasProperties()) {
             Value[] featuredList = null;
             if (featuredNode.hasProperty(tagName)) {
-                LOGGER.info("getFeaturedListItems has values for tag: " + tagName);
+                LOGGER.debug("getFeaturedListItems has values for tag: " + tagName);
                 featuredList = featuredNode.getProperty(tagName).getValues();
             }
             if (featuredList != null) {
                 List<Page> featuredArticles = new ArrayList<>();
                 for (Value fl : featuredList) {
                     String spnPath = fl.getString();
-                    LOGGER.info("Featured article path: " + spnPath);
-                    Resource flRes = resourceResolver.getResource(spnPath);
-                    Page flPage = flRes.adaptTo(Page.class);
-                    featuredArticles.add(flPage);
+                    if (StringUtils.isNotEmpty(spnPath)) {
+                        LOGGER.debug("Featured article path: " + spnPath);
+                        Resource flRes = resourceResolver.getResource(spnPath);
+                        Page flPage = flRes.adaptTo(Page.class);
+                        featuredArticles.add(flPage);
+                    }
                 }
                 return featuredArticles;
             }

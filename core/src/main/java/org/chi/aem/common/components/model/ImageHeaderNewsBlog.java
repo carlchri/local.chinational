@@ -102,7 +102,7 @@ public class ImageHeaderNewsBlog extends ImageImplV2 implements Image {
                                     && imageNode.getProperty("imageMap").getString() != null)
                             || (imageNode.hasProperty("imageRotate")
                                     && imageNode.getProperty("imageRotate").getString() != null) ) {
-                        LOGGER.info("save src image, only if editing has happened: " + srcImagePath);
+                        LOGGER.debug("save src image, only if editing has happened: " + srcImagePath);
                         imageNode.setProperty("src", srcImagePath);
                         session.save();
                         session.refresh(true);

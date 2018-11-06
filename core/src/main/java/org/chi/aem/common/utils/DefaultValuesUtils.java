@@ -72,7 +72,7 @@ public final class DefaultValuesUtils {
                     LOGGER.error("error reading respoitory to get attribute: " + pName);
                 }
                 if (defaultPath == null) {
-                    LOGGER.info("could not find property for resource, using default value", resource.getPath());
+                    LOGGER.debug("could not find property for resource, using default value", resource.getPath());
                     defaultPath = defValue;
                 }
             }
@@ -118,7 +118,7 @@ public final class DefaultValuesUtils {
         if (StringUtils.isNotEmpty(defaultMembersPhotoSrc) && !"#".equals(defaultMembersPhotoSrc)) {
             defaultMembersPhotoSrc = LinkUtils.externalize(defaultMembersPhotoSrc);
         }
-        LOGGER.info("Default Members Photo Image Src : " + defaultMembersPhotoSrc);
+        LOGGER.debug("Default Members Photo Image Src : " + defaultMembersPhotoSrc);
         return defaultMembersPhotoSrc;
     }
 

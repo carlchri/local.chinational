@@ -153,7 +153,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
         int resultsSize = SearchImpl.PROP_RESULTS_SIZE_DEFAULT;
         String searchRootPagePath = null;
         if (searchResource != null) {
-            LOGGER.info("getResults searchResource != null");
+            LOGGER.debug("getResults searchResource != null");
             ValueMap valueMap = searchResource.getValueMap();
             ValueMap contentPolicyMap = getContentPolicyProperties(searchResource, request.getResource());
             searchTermMinimumLength = valueMap.get(Search.PN_SEARCH_TERM_MINIMUM_LENGTH, contentPolicyMap.get(Search
@@ -165,7 +165,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
         }
         // languageManager is not available through reference
         else {
-            LOGGER.info("getResults searchResource is null");
+            LOGGER.debug("getResults searchResource is null");
             //String languageRoot = languageManager.getLanguageRoot(currentPage.getContentResource()).getPath();
             searchRootPagePath = getSearchRootPagePath("en", currentPage);// always en
         }
@@ -208,7 +208,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
         predicatesMap.put("orderby","@jcr:score");
         predicatesMap.put("orderby.sort","desc");
 
-        LOGGER.info("predicatesMap: " + predicatesMap.entrySet().toString());
+        LOGGER.debug("predicatesMap: " + predicatesMap.entrySet().toString());
         PredicateGroup predicates = PredicateConverter.createPredicates(predicatesMap);
         ResourceResolver resourceResolver = request.getResource().getResourceResolver();
         // @ reference annotation was not compiling, hence getting queryBuilder thsi was
@@ -223,14 +223,14 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
             LOGGER.debug("resultsOffset: " + resultsOffset);
         }
         SearchResult searchResult = query.getResult();
-        LOGGER.info("searchResult.getQueryStatement: " + searchResult.getQueryStatement());
+        LOGGER.debug("searchResult.getQueryStatement: " + searchResult.getQueryStatement());
 
         List<Hit> hits = searchResult.getHits();
         if (hits != null) {
             for (Hit hit : hits) {
                 // limit to resultsSize
                 if (results.size() >= resultsSize) {
-                    LOGGER.info("results.size() " + results.size() + " >= " + resultsSize + " (resultsSize)");
+                    LOGGER.debug("results.size() " + results.size() + " >= " + resultsSize + " (resultsSize)");
                     break;
                 }
                 try {
@@ -244,7 +244,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
                 }
             }
         } else {
-            LOGGER.warn ("No search results for term: " + fulltext);
+            LOGGER.info("No search results for term: " + fulltext);
         }
         return results;
     }
@@ -264,7 +264,7 @@ public class SearchResultServlet extends SlingSafeMethodsServlet {
                     searchRootPagePath = "/content/national/en";
                 }
         }
-        LOGGER.info("searchRootPagePath: " + searchRootPagePath);
+        LOGGER.debug("searchRootPagePath: " + searchRootPagePath);
         return searchRootPagePath;
     }
 

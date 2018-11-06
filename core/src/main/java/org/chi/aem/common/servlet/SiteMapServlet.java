@@ -181,10 +181,10 @@ public final class SiteMapServlet extends SlingSafeMethodsServlet {
         Page page = pageManager.getContainingPage(request.getResource());
 
         // addition for CHI
-        LOGGER.info("got the page: " + page.getPath());
+        LOGGER.debug("got the page: " + page.getPath());
         // we can get externalizer domain from site property
         this.externalizerDomain = DefaultValuesUtils.getSiteExternalizer(page);
-        LOGGER.info("new externalizerDomain is: " + this.externalizerDomain);
+        LOGGER.debug("new externalizerDomain is: " + this.externalizerDomain);
         // addition for CHI ends
 
         XMLOutputFactory outputFactory = XMLOutputFactory.newFactory();

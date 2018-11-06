@@ -129,7 +129,7 @@ public class NewsListServlet extends SlingAllMethodsServlet {
             Resource resource = request.getResource();
             if(resource != null) {
                 media_page_path = resource.getPath();
-                LOGGER.info("media_page_path parent_path : " + resource.getPath());
+                LOGGER.debug("media_page_path parent_path : " + resource.getPath());
             }
 /*    		if (resource != null) {
     			Iterator<Resource> childResources = resource.listChildren();

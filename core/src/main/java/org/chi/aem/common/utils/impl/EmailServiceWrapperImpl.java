@@ -27,7 +27,7 @@ public class EmailServiceWrapperImpl implements EmailServiceWrapper {
 
     @Override
     public EmailService getEmailServiceWrapper() throws Exception {
-    	LOGGER.info("emailService in wrapper : " + emailService);
+    	LOGGER.debug("emailService in wrapper : " + emailService);
     	return emailService;
     }
 

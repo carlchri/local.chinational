@@ -139,7 +139,7 @@ public class PhotoBandFormServlet extends SlingAllMethodsServlet {
     
     	List<String> failureList = emailService.sendEmail(templatePath, emailParams, recipients);
     	if (failureList.isEmpty()) {
-    		LOGGER.info("Email sent successfully to the recipients");
+    		LOGGER.debug("Email sent successfully to the recipients");
     	} else {
     		LOGGER.info("Email sent failed");
     	}

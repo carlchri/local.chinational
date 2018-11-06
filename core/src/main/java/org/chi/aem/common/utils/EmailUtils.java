@@ -59,7 +59,7 @@ public class EmailUtils extends WCMUsePojo {
 
     @Override
     public void activate() throws Exception {
-		LOGGER.info("Inside emailutils activate method");
+		LOGGER.debug("Inside emailutils activate method");
     	// Specify the template file to use (this is an absolute path in the JCR)
     	String templatePath = TEMPLATE_PATH;
     	//Set the dynamic vaiables of your email template
@@ -87,15 +87,15 @@ public class EmailUtils extends WCMUsePojo {
         }
 */
     	emailService = getSlingScriptHelper().getService(EmailService.class);
-    	LOGGER.info("emailService : " + emailService);
+    	LOGGER.debug("emailService : " + emailService);
     	List<String> failureList = emailService.sendEmail(templatePath, emailParams, recipients);
-    	LOGGER.info("failureList" + failureList);
+    	LOGGER.debug("failureList" + failureList);
     	if (failureList.isEmpty()) {
-    		LOGGER.info("Email sent successfully to the recipients");
+    		LOGGER.debug("Email sent successfully to the recipients");
     	} else {
-    		LOGGER.info("Email sent failed");
+    		LOGGER.debug("Email sent failed");
     	}
-    	LOGGER.info("failureList" + failureList);
+    	LOGGER.debug("failureList" + failureList);
 
     }
 

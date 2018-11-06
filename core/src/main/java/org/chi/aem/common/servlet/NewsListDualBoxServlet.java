@@ -54,10 +54,10 @@
 
                 ResourceResolver resourceResolver = request.getResource().getResourceResolver();
                 String requestPagePath = request.getParameter("requestPagePath")  + "/jcr:content";
-                log.info("Request Path from servlet :: "+requestPagePath);
+                log.debug("Request Path from servlet :: "+requestPagePath);
                 String featuredPagesList  = request.getParameter("featuredPagesList");
                 String featuredPagesTag = request.getParameter("featuredPagesTag");
-                log.info("featuredPagesTag :: "+featuredPagesTag);
+                log.debug("featuredPagesTag :: "+featuredPagesTag);
                 if (featuredPagesTag == null) {
                     featuredPagesTag = "AllItems";
                 }
@@ -71,13 +71,13 @@
                 Node pageNode = res.adaptTo(Node.class);
                 if (!pageNode.hasNode(NewsBlogUtils.FEATURED_NODE)) {
                     // create the node that stores the featured articles
-                    log.info("Create featuredArticles node, as it does not exist");
+                    log.debug("Create featuredArticles node, as it does not exist");
                     pageNode.addNode(NewsBlogUtils.FEATURED_NODE);
                     session.save();
                     session.refresh(true);
                 }
                 if (pageNode.hasNode(NewsBlogUtils.FEATURED_NODE)) {
-                    log.info("Store items for tag: " + featuredPagesTag + ", values: " + featuredPagesArray);
+                    log.debug("Store items for tag: " + featuredPagesTag + ", values: " + featuredPagesArray);
                     Node featuredNode = pageNode.getNode(NewsBlogUtils.FEATURED_NODE);
                     featuredNode.setProperty(featuredPagesTag, featuredPagesArray);
                     response.getWriter().println("Page Featured List : " + featuredPagesArray.toString());
