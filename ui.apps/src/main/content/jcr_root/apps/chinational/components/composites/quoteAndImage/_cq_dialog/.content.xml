@@ -20,7 +20,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <qaiMainTab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="Values Tab"
+                                jcr:title="Quote Main Settings Tab"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -35,21 +35,21 @@
                                                     <heading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Quote Heading text for the component"
-                                                        fieldLabel="Quote Heading"
+                                                        fieldDescription="The optional start of the quote - it will be bolded and sit above the rest of the quote"
+                                                        fieldLabel="Quote Intro Heading"
                                                         name="./heading"/>
                                                     <subheading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                         fieldDescription="Quote Sub-Heading for the component, displays below quote heading or standalone"
-                                                        fieldLabel="Quote Sub Heading"
+                                                        fieldLabel="Quote Continuation"
                                                         name="./subheading"
                                                         required="{Boolean}true"/>
                                                     <caption
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="Displays below quote sub-heading. Dash is added before the name"
-                                                        fieldLabel="Name"
+                                                        fieldDescription="The first and last name of the person being quoted"
+                                                        fieldLabel="First and Last Name of Person Being Quoted"
                                                         name="./caption"
                                                         text=""/>
                                                 </items>
@@ -77,7 +77,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to disable image"
                                                         name="./imageNotRequired"
-                                                        text="Select to disable image"
+                                                        text="Select to disable quote image"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <buttonNotRequired
@@ -85,7 +85,7 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                         fieldDescription="Select this checkbox to disable buttons below quote"
                                                         name="./buttonNotRequired"
-                                                        text="Select to disable buttons brlow quote"
+                                                        text="Select to disable buttons below quote"
                                                         uncheckedValue="false"
                                                         value="true"/>
                                                     <noOfButtons

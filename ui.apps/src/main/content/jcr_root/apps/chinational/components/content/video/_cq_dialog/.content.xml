@@ -115,7 +115,7 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                             fieldDescription="Choose the custom video thumbnail from the AEM Digital Asset Manager"
-                                                            fieldLabel="Video Thumbnail Image from DAM"
+                                                            fieldLabel="Custom Video Thumbnail from DAM"
                                                             name="./videoImage"
                                                             rootPath="/content/dam">
                                                     </videoImage>

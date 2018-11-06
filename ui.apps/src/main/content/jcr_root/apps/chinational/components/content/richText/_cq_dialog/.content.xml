@@ -18,7 +18,7 @@
                         sling:hideResource="{Boolean}true"/>
                     <options
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Read More Option"
+                        jcr:title="Rich Text Main Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -33,9 +33,9 @@
                                             <readMore
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Selecting this checkbox will shorten text and display read more button to expand the text to full size."
+                                                fieldDescription="This will limit the amount of text visible initially, and will enable a &quot;Read More&quot; button that will load the full text when clicked by the user. There is a limit of of 630 characters for the visible text before the &quot;Read More&quot; button is activated"
                                                 name="./readMore"
-                                                text="Select to enable Read More Button"
+                                                text="Select to Enable &quot;Read More&quot; Button"
                                                 uncheckedValue="false"
                                                 value="true"/>
                                         </items>

@@ -51,17 +51,18 @@
                                             <name
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                emptyText="The name of the field which is submitted with the form data"
+                                                emptyText="Example: Occupation"
                                                 fieldDescription="The name of the field which is submitted with the form data"
-                                                fieldLabel="Text Field Name [will be submitted with Form Data]"
+                                                fieldLabel="Text Field Name [submitted with form, not displayed to user]"
                                                 name="./textfieldName"
                                                 required="{Boolean}true"/>
                                             <value
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Default value of the field which will be used as placeholder"
-                                                fieldLabel="Placeholder Text [will be displayed to End User]"
-                                                name="./textfieldvalue"/>
+                                                fieldLabel="Text Field Instruction [will display to user]"
+                                                name="./textfieldvalue"
+                                                emptyText="Example: Please write your occupation here"/>
                                             <required
                                                 cq:showOnCreate="{Boolean}true"
                                                 jcr:primaryType="nt:unstructured"

@@ -51,7 +51,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Enter heading for the Carousel"
-                                                fieldDescription="This text will be used as heading for Carousel"
+                                                fieldDescription="This text will be used as heading for carousel"
                                                 fieldLabel="Enter Carousel Heading:"
                                                 name="./carouselHeading"
                                                 wrapperClass="chi-pcm-carousel-heading"/>

@@ -89,7 +89,7 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:orderBefore="orderBy"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                        fieldDescription="A modal popup window is used for disclaimers and other content the user needs to see before directing to the chosen link.  It can be configured in the &quot;Modal Tab&quot; setting."
+                                                        fieldDescription="An optional modal window can be used for disclaimers and alerts the user needs to see before directing to the chosen link.  It can be configured in the &quot;Modal Tab&quot; setting."
                                                         fieldLabel="Modal Window"
                                                         name="./selectModal">
                                                         <items jcr:primaryType="nt:unstructured">
