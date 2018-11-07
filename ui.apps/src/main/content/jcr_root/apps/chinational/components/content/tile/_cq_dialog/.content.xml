@@ -21,7 +21,7 @@
                         <items jcr:primaryType="nt:unstructured">
                             <contentTab
                                 jcr:primaryType="nt:unstructured"
-                                jcr:title="List Content Tab"
+                                jcr:title="List Tile Tab"
                                 sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                                 margin="{Boolean}true">
                                 <items jcr:primaryType="nt:unstructured">
@@ -45,15 +45,15 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                                                         emptyText="Date Format: YYYY-MM-DD"
-                                                        fieldDescription="Enter date."
-                                                        fieldLabel="Enter date"
+                                                        fieldDescription="The publication date you want displayed on the tile, the dateline."
+                                                        fieldLabel="Enter Published Date (will display on tile)"
                                                         name="./enterDate"
                                                         type="date"/>
                                                     <contentDetail
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                        fieldDescription="Enter the detailed text here"
-                                                        fieldLabel="Enter content details here"
+                                                        fieldDescription="The text displayed below the heading."
+                                                        fieldLabel="Enter Content Tile's Body Text Here"
                                                         name="./contentDetail"/>
                                                 </items>
                                             </well>
@@ -79,8 +79,8 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         emptyText="This field is mandatory"
-                                                        fieldDescription="This text is shown in link"
-                                                        fieldLabel="Link Text [Displayed at bottom of Tile]"
+                                                        fieldDescription="The link text displayed at bottom of Tile. &gt; Link Text"
+                                                        fieldLabel="Link Text"
                                                         name="./linkText"
                                                         required="{Boolean}true"/>
                                                     <linkUrl

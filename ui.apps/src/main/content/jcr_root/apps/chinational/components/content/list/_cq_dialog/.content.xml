@@ -14,7 +14,7 @@
                 <items jcr:primaryType="nt:unstructured">
                     <Tab
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="List Settings"
+                        jcr:title="Manual News/Blogs List Settings"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                         margin="{Boolean}false">
                         <items jcr:primaryType="nt:unstructured">
@@ -26,14 +26,14 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Enter heading for the list"
-                                        fieldDescription="This text will be used as heading for all links"
+                                        fieldDescription="This will display over the entire list of links, in large, bold text."
                                         fieldLabel="List Heading"
                                         name="./linkHeading"/>
                                     <listCollection
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                         composite="{Boolean}true"
-                                        fieldDescription="Click &quot;Add List&quot; button to add new entry to the list"
+                                        fieldDescription="To add another link to the list, click the &quot;Add Link&quot; button below."
                                         fieldLabel="List Collection"
                                         name="./multiCol">
                                         <field
@@ -45,15 +45,15 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     emptyText="This field is mandatory"
-                                                    fieldDescription="This text is shown in link"
+                                                    fieldDescription="The link text will display as one entry in the manual list and will link to another page (AEM path/URL entered in field below)."
                                                     fieldLabel="Enter Link Text"
                                                     name="./linkText"
                                                     required="{Boolean}true"/>
                                                 <linkUrl
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Link AEM path. Use this format for external links https://www.example.com."
-                                                    fieldLabel="Link URL"
+                                                    fieldDescription="AEM path or external link. Use this format for external links https://www.example.com."
+                                                    fieldLabel="Link AEM path/URL"
                                                     name="./linkUrl"
                                                     rootPath="/content"/>
                                                 <target
