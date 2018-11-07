@@ -215,7 +215,8 @@ public class NewsList implements ComponentExporter {
         featuredNews = featuredMap.get(news_filter);
         allFilteredNews= (List<Page>) articleMap.get("filteredArticles");
         featuredArticlesSelected = featuredMap.get(news_filter);
-        featuredArticlesSelectionList = allFilteredNews;
+        // get a copy, as allFileterd news may update
+        featuredArticlesSelectionList.addAll(allFilteredNews);
 
         if (( featuredNews == null || featuredNews.size() == 0) && allFilteredNews.size() > 0 ) {
             LOGGER.debug("empty featured news, add default with latest");

@@ -223,7 +223,8 @@ public class BlogsList implements ComponentExporter {
         allFilteredBlogs= (List<Page>) articleMap.get("filteredArticles");
         LOGGER.debug("blogslist allFilteredBlogs : " + allFilteredBlogs.size());
         featuredArticlesSelected = featuredMap.get(blogs_filter);
-        featuredArticlesSelectionList = allFilteredBlogs;
+        // get a copy, as allFileterd news may update
+        featuredArticlesSelectionList.addAll(allFilteredBlogs);
 
         if (( featuredBlogs == null || featuredBlogs.size() == 0) && allFilteredBlogs.size() > 0 ) {
             // add default value
