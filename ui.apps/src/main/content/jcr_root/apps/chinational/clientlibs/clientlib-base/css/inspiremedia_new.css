@@ -775,11 +775,33 @@
 }
 
 @media (max-width: 669px) and (orientation:landscape) {
-		
-	.mediaCarousel #audio-modal .mejs__container  {
-	    max-width: 282px;
-	}
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		min-width: 628.2px !important;
+ 		position: fixed;
+		left: 0px !important;					
+		position: absolute;			/*  German: Adding this line to fix MAM-181  */
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container {
+ 		max-width: 518px !important;
+ 	}
 }
+
+@media (max-width: 569px) and (orientation:landscape) {
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		min-width: 518.2px !important;
+ 		position: fixed;
+		left: 0px !important;					
+		position: absolute;			/*  German: Adding this line to fix MAM-181  */
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container {
+ 		max-width: 422px !important;
+ 	}
+}
+
 
 @media ( min-width : 496px) and (max-width: 512px) {
 	
