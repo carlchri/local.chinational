@@ -700,7 +700,6 @@
 	
 	.mediaCarousel #audio-modal .modal-dialog {
  		min-width: 718.2px;
- 		position: fixed;
 		left: 24.7px;
 		position: absolute;			/*  German: Adding this line to fix MAM-181  */
  	}
@@ -715,10 +714,6 @@
 }
 
 @media ( min-width : 720px) and (max-width: 783px) {
-	
-	.mediaCarousel #audio-modal .mejs__container  {
-	    /* max-width: 352px;  */
-	}
 	
 	.mediaCarousel #audio-modal .modal-dialog {
  		width: 650px;
@@ -744,7 +739,6 @@
 	
 	.mediaCarousel #audio-modal .modal-dialog {
  		min-width: 708.2px !important;
- 		position: fixed;
 		left: 0px !important;					
 		position: absolute;			/*  German: Adding this line to fix MAM-181  */
  	}
@@ -778,7 +772,6 @@
 	
 	.mediaCarousel #audio-modal .modal-dialog {
  		min-width: 628.2px !important;
- 		position: fixed;
 		left: 0px !important;					
 		position: absolute;			/*  German: Adding this line to fix MAM-181  */
  	}
@@ -792,7 +785,6 @@
 	
 	.mediaCarousel #audio-modal .modal-dialog {
  		min-width: 518.2px !important;
- 		position: fixed;
 		left: 0px !important;					
 		position: absolute;			/*  German: Adding this line to fix MAM-181  */
  	}
@@ -801,7 +793,6 @@
  		max-width: 422px !important;
  	}
 }
-
 
 @media ( min-width : 496px) and (max-width: 512px) {
 	
@@ -1065,13 +1056,6 @@
 	}
 }
 
-@media ( max-width : 480px) { 
-
-	/*.mediaCarousel .media-text {
-	    bottom: 0;
-	  }*/
- 
-}
 
 @media ( max-width : 767px) {
 	.mediaCarousel .active {
@@ -1400,5 +1384,29 @@
 		margin-right: auto;
 		display: block;
 	}
+}
 
+@media (max-width: 321px) {
+	
+	.mediaCarousel #audio-modal .modal-dialog {
+ 		min-width: 285.4px !important;
+		left: -8px !important;					
+		position: absolute;
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .mejs__container {
+ 		max-width: 210px !important;
+ 	}
+ 	
+ 	.mediaCarousel .main-player {
+ 		min-width: 315.4px !important;
+ 	}
+ 	
+ 	.mediaCarousel #audio-modal .modal-content {
+ 		width: 300px !important;
+ 	}
+ 	
+	.mediaCarousel .modal {
+		overflow-x: hidden !important;
+	}
 }
