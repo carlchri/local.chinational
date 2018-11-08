@@ -114,7 +114,8 @@ public class DynamicTileNewsList implements ComponentExporter {
         String currentPage = request.getRequestURI().replaceAll(".html", "");
         String pageTag = null;
         String tagFilterRequired = currentStyle.get("tagFilterRequired") != null ? currentStyle.get("tagFilterRequired").toString() : null;
-        if(tagFilterRequired != null && tagFilterRequired.equalsIgnoreCase("true")) {
+        String pageTagFilterRequired = properties.get("tagFilterRequired") != null ? properties.get("tagFilterRequired").toString() : null;
+        if((tagFilterRequired != null && tagFilterRequired.equalsIgnoreCase("true")) || (pageTagFilterRequired != null && pageTagFilterRequired.equalsIgnoreCase("true"))) {
             if(pageProperties.get(TagConstants.PN_TAGS) != null) {
                 String[] tags = (String[]) pageProperties.get(TagConstants.PN_TAGS);
                 for(String tag:tags) {
@@ -122,7 +123,6 @@ public class DynamicTileNewsList implements ComponentExporter {
                 }
             }
         }
-        LOGGER.debug("Get news for tag: " + pageTag);
         allNews = populateListItems(allNews, currentPage, pageTag); //to get all the news using defined template, sorted by Publish date
         featuredNews = populateFeaturedItems(featuredNews, pageTag);  // extract featured articles, sorted by Publish date
         if(featuredNews != null && !featuredNews.isEmpty() && featuredNews.size() > FEATURED_LIMIT){
