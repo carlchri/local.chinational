@@ -16,12 +16,14 @@ import javax.jcr.Node;
 public final class ImageUtils {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(ImageUtils.class);
-    public final static String HEADER_IMAGE_NODE = "nb-header-image";
-    public final static String TILE_IMAGE_NODE = "nb-tile-image";
-    public final static String TILE_FROM_HEADER_IMAGE_NODE = "nb-tile-from-header-image";
+    public final static String DESKTOP_IMAGE_NODE = "desktop";
+    public final static String IPAD_IMAGE_NODE = "ipad";
+    public final static String MOBILE_IMAGE_NODE = "mobile";
 
-    public final static String TILE_IMAGE_SRC = "tileImageSrc";
-    public final static String HEADER_IMAGE_SRC = "imageSrc";
+    public final static String DESKTOP_IMAGE_SRC = "desktopImageSrc";
+    public final static String IPAD_IMAGE_SRC = "ipadImageSrc";
+    public final static String MOBILE_IMAGE_SRC = "mobileImageSrc";
+    
     public final static String COMPONENT_IMAGE_SRC = "fileReference";
     public final static String COMPONENT_IMAGE_UPDATED_SRC = "src";
 
@@ -33,10 +35,12 @@ public final class ImageUtils {
     public final static String TILE_IMAGE_SEPARATE = "separateTileImage";
 
     public static String getHeaderImage(Page page){
-        return getImage(page, HEADER_IMAGE_SRC, HEADER_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
+    	LOGGER.info("in Get Header Image");
+        return getImage(page, DESKTOP_IMAGE_SRC, DESKTOP_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
     }
 
     private static String getImage(Page page, String origImageProp, String imageNode, String updatedImageProp){
+    	LOGGER.info("in Get get Image");
         if (page != null) {
             // check if original is not empty, as without it, there is no updated image
             ValueMap pageProps = page.getProperties();
@@ -67,6 +71,7 @@ public final class ImageUtils {
     public static String getTileImage(Page page, String articleType){
         String tileImage = null;
         if (page != null) {
+        	LOGGER.info("in Get Tile Image");
             // check tileImageOption
             // useHeaderImage, editHeaderImage or separateTileImage
             ValueMap pageProps = page.getProperties();
@@ -78,10 +83,10 @@ public final class ImageUtils {
                         tileImage = getHeaderImage(page);
                     } else if (tileImageOption.equals(TILE_IMAGE_EDIT_HEADER)) {
                         // if editHeaderImage, get edited version
-                        tileImage = getImage(page, HEADER_IMAGE_SRC, TILE_FROM_HEADER_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
+                        tileImage = getImage(page, IPAD_IMAGE_SRC, MOBILE_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
                     } else if (tileImageOption.equals(TILE_IMAGE_SEPARATE)) {
                         // if separate image, get orig or updated image
-                        tileImage = getImage(page, TILE_IMAGE_SRC, TILE_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
+                        tileImage = getImage(page, DESKTOP_IMAGE_SRC, IPAD_IMAGE_NODE, COMPONENT_IMAGE_UPDATED_SRC);
                     }
                 }
             }
