@@ -3,9 +3,39 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-use.image="org.chi.aem.common.components.model.Image"
 	 data-sly-use.template="chinational/components/commons/templates.html"></sly>
+<!-- 
+<script>
+window.getCookie = function(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return match[2];
+}
+if(getCookie('name') == undefined || getCookie('name') == null) {
+	openCity(event, 'Desktop');
+}
 
-
-
+function openCity(evt, cityName) {
+	if(cityName == 'Mobile') {
+    	document.cookie="name=" + cityName;
+    } else if (cityName == 'iPad') {
+    	document.cookie="name=" + cityName;
+    } else {
+        document.cookie="name=" + cityName;
+    }
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+ --> 
+ 
 <a data-sly-unwrap="${!image.linkURL}" href="${image.linkURL}" target="${image.targetBlank==true ?'_blank':'_self'}">
 	<picture data-sly-test="${((image.imgTabSrc == image.fileReference) && (image.imgMobSrc == image.fileReference))}">
     	<source srcset="${image.fileReference}" sizes="100vw" />
@@ -35,3 +65,28 @@
 </a>
 <p class="light-txt" data-sly-test="${properties.imageCaption}">${properties.imageCaption}</p>
 <sly data-sly-call="${template.placeholder @ isEmpty=!image.fileReference}"></sly>
+
+
+<!--  Added for Image Enhancement -->
+<div class="row" style="border: 1px solid black;" data-sly-test="${(wcmmode.edit || wcmmode.design)}">
+<h4>Image Variant Editor</h4>
+  <div id="desktop">
+    <sly data-sly-test="${image.fileReference}">
+        <h4>Edit Image for Desktop (displayed during edit mode only)</h4>
+        <div data-sly-resource="${ @path='nb-header-image', resourceType='chinational/components/content/imageHeaderNewsBlog'}"></div>
+    </sly>
+  </div>
+  <div id="ipad">
+    <sly data-sly-test="${image.fileReference}">
+        <h4>Edit Image for iPad (displayed during edit mode only)</h4>
+        <div data-sly-resource="${ @path='nb-tile-from-header-image', resourceType='chinational/components/content/imageTileFromHeaderNewsBlog'}"></div>
+    </sly>
+  </div>
+  <div id="mobile">
+    <sly data-sly-test="${image.fileReference}">
+        <h4>Edit Image for Mobile (displayed during edit mode only)</h4>
+        <div data-sly-resource="${ @path='nb-tile-image', resourceType='chinational/components/content/imageTileNewsBlog'}"></div>
+    </sly>
+  </div>
+</div>
+
