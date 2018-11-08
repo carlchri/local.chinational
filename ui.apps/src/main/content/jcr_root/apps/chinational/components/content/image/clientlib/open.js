@@ -4,6 +4,7 @@
         text: 'Edit Desktop Image',
         handler: function (editable, param, target) {
             console.log('you clicked desktop');
+            $("#desktop").show();
         },
         condition: function (editable) {
             //show this action only for below component type
@@ -17,6 +18,7 @@
         text: 'Edit Ipad Image',
         handler: function (editable, param, target) {
             console.log('you clicked ipad');
+            $("#ipad").show();
         },
         condition: function (editable) {
             //show this action only for below component type
@@ -30,6 +32,7 @@
         text: 'Edit Mobile Image',
         handler: function (editable, param, target) {
             console.log('you clicked mobile');
+            $("#mobile").show();
         },
         condition: function (editable) {
             //show this action only for below component type
