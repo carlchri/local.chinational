@@ -3,8 +3,9 @@
         icon: 'coral-Icon--windows8',
         text: 'Edit Desktop Image',
         handler: function (editable, param, target) {
-            console.log('you clicked desktop');
-            $("#desktop").show();
+            var currentEle = $(editable.dom);
+            $(currentEle).find("#desktop").show();
+			$(currentEle).find("#ipad, #mobile").hide();
         },
         condition: function (editable) {
             //show this action only for below component type
@@ -17,8 +18,9 @@
         icon: 'coral-Icon--apple',
         text: 'Edit Ipad Image',
         handler: function (editable, param, target) {
-            console.log('you clicked ipad');
-            $("#ipad").show();
+            var currentEle = $(editable.dom);
+            $(currentEle).find("#ipad").show();
+			$(currentEle).find("#desktop, #mobile").hide();
         },
         condition: function (editable) {
             //show this action only for below component type
@@ -31,8 +33,9 @@
         icon: 'coral-Icon--mobileServices',
         text: 'Edit Mobile Image',
         handler: function (editable, param, target) {
-            console.log('you clicked mobile');
-            $("#mobile").show();
+            var currentEle = $(editable.dom);
+            $(currentEle).find("#mobile").show();
+			$(currentEle).find("#ipad, #desktop").hide();
         },
         condition: function (editable) {
             //show this action only for below component type
@@ -48,5 +51,6 @@
             author.EditorFrame.editableToolbar.registerAction('EAEM_OPEN_DIALOG3', mobile);
         }
     });
+    
 })($(document), Granite.author);
 

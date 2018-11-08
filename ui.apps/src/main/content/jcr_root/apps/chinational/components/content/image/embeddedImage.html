@@ -36,8 +36,7 @@
 
 
 <!--  Added for Image Enhancement -->
-<div class="row" style="border: 1px solid black;" data-sly-test="${(wcmmode.edit || wcmmode.design) && image.fileReference}">
-<h4>Image Variant Editor</h4>
+<div data-sly-test="${(wcmmode.edit || wcmmode.design) && image.fileReference}">
   <div id="desktop" style="display:none">
     <sly data-sly-test="${image.fileReference}">
         <h4>Edit Image for Desktop (displayed during edit mode only)</h4>
