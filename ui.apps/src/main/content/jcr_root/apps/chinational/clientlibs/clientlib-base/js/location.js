@@ -41,10 +41,14 @@ function reCalculateGoogleMapHeight() {
 		var divWidth = $(".map-box").width();
 		var new_value = (9*divWidth)/16;
 		$(".map-box").height(new_value);
+		$("#myLocationComponent #image").height(new_value);
+		$('#myLocationComponent #image img').height(new_value);
 		
 	} else {
 		
 		$(".map-box").height(395);
+		$("#myLocationComponent #image").height(395);
+		$('#myLocationComponent #image img').height(395);
 	}
 }
 
