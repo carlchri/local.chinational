@@ -26,7 +26,7 @@
                         sling:hideResource="{Boolean}true"/>
                     <blogsdetail
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Blogs Detail Properties"
+                        jcr:title="Blog Properties"
                         sling:orderBefore="advanced"
                         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                         <items jcr:primaryType="nt:unstructured">
