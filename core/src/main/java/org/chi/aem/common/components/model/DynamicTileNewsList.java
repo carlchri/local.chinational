@@ -157,7 +157,8 @@ public class DynamicTileNewsList implements ComponentExporter {
         if (pageTag != null && pageTag.lastIndexOf("/") > 0) {
             pageTag = pageTag.substring(pageTag.lastIndexOf("/")+1);
         }
-        java.util.List<Page> featuredList = NewsBlogUtils.getFeaturedArticleList(resourceResolver, pageTag, pageValue);
+        String currentPage = request.getRequestURI().replaceAll(".html", "");
+        java.util.List<Page> featuredList = NewsBlogUtils.getFeaturedArticleList(resourceResolver, pageTag, pageValue, currentPage);
         if (featuredList == null ) {
             LOGGER.debug("populateFeaturedItems: featured list is empty, send back input list");
             featuredList = list;
@@ -261,7 +262,7 @@ public class DynamicTileNewsList implements ComponentExporter {
                  int pagesToAdd = 3 - list.size();
                  for (int i = 0; i < pagesToAdd; i++) {
                      if (allNews.size() > i) {
-                         if (featuredNews.contains(allNews.get(i))) {
+                         if (list.contains(allNews.get(i))) {
                              pagesToAdd++;
                          } else {
                              list.add(allNews.get(i));

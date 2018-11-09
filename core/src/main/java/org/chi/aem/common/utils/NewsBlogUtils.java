@@ -211,7 +211,8 @@ public final class NewsBlogUtils {
 
     public static java.util.List<Page> getFeaturedArticleList( ResourceResolver resourceResolver,
                                                                          String articleFilter,
-                                                                         String requestPathInfo) {
+                                                                         String requestPathInfo,
+                                                                         String currentPage) {
         java.util.List<Page> featuredList = new ArrayList<>();
         try {
             if (articleFilter == null) {
@@ -223,7 +224,7 @@ public final class NewsBlogUtils {
             if (featuredPagesRes != null) {
                 LOGGER.debug("featuredPagesPath resourceavailable, get featured items");
                 Node featuredNode = featuredPagesRes.adaptTo(Node.class);
-                featuredList = getFeaturedListItems(articleFilter, featuredNode, resourceResolver);
+                featuredList = getFeaturedListItems(articleFilter, featuredNode, resourceResolver, currentPage);
             }
             // TODO - where to add default one, if no featured article is available
 
@@ -272,7 +273,8 @@ public final class NewsBlogUtils {
 
     private static java.util.List<Page> getFeaturedListItems(String tagName,
                                                              Node featuredNode,
-                                                             ResourceResolver resourceResolver)
+                                                             ResourceResolver resourceResolver,
+                                                             String currentPage)
             throws RepositoryException{
         if (featuredNode != null && featuredNode.hasProperties()) {
             Value[] featuredList = null;
@@ -284,7 +286,7 @@ public final class NewsBlogUtils {
                 List<Page> featuredArticles = new ArrayList<>();
                 for (Value fl : featuredList) {
                     String spnPath = fl.getString();
-                    if (StringUtils.isNotEmpty(spnPath)) {
+                    if (StringUtils.isNotEmpty(spnPath) && !currentPage.equalsIgnoreCase(spnPath)) {
                         LOGGER.debug("Featured article path: " + spnPath);
                         Resource flRes = resourceResolver.getResource(spnPath);
                         Page flPage = flRes.adaptTo(Page.class);
@@ -302,7 +304,7 @@ public final class NewsBlogUtils {
                                               Node featuredNode,
                                               ResourceResolver resourceResolver) throws RepositoryException {
         LOGGER.debug("list of tags  :: " + tagForItem);
-        List<Page> featuredList = getFeaturedListItems(tagForItem, featuredNode, resourceResolver);
+        List<Page> featuredList = getFeaturedListItems(tagForItem, featuredNode, resourceResolver, "");
         if (featuredList != null) {
             featuredMap.put(tagForItem, featuredList);
         }
