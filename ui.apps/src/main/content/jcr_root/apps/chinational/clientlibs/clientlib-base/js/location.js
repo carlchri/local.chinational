@@ -33,6 +33,25 @@ function adjustHeightWidth() {
 	});
 }
 
+function reCalculateGoogleMapHeight() {
+	
+	if ($(window).width() < 600) {
+		
+		// Getting the height value on the 16:9 ratio for all components with google maps	
+		var divWidth = $(".map-box").width();
+		var new_value = (9*divWidth)/16;
+		$(".map-box").height(new_value);
+		
+	} else {
+		
+		$(".map-box").height(395);
+	}
+}
+
 $(window).on("load", function() {
 	adjustHeightWidth();
+});
+
+$(window).on("resize", function() {
+	reCalculateGoogleMapHeight();
 });
