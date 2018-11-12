@@ -38,7 +38,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Enter Blog Heading"
-                                        fieldDescription="Enter Heading for the Blog"
+                                        fieldDescription="This is the blog heading at the top of the blog"
                                         fieldLabel="Blog Heading"
                                         name="./newsHeading"
                                         renderReadOnly="{Boolean}true"
@@ -47,7 +47,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         emptyText="Enter Blog Sub-Heading"
-                                        fieldDescription="Enter Blog Sub-Heading (optional)"
+                                        fieldDescription="This is the blog subheading that will go under the blog heading"
                                         fieldLabel="Blog Sub-Heading"
                                         name="./newsSubHeading"
                                         renderReadOnly="{Boolean}true"/>
@@ -55,7 +55,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
                                         emptyText="Date Format: YYYY-MM-DD"
-                                        fieldDescription="Enter blog date."
+                                        fieldDescription="This is the publish date, the dateline, that will go under the heading or sub-heading"
                                         fieldLabel="Publish Date"
                                         name="./publishDate"
                                         required="{Boolean}true"
@@ -64,15 +64,15 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                         emptyText="Max 350 characters allowed."
-                                        fieldDescription="Enter the excerpt text here. Max 350 characters allowed."
-                                        fieldLabel="Excerpt (max 350 characters)"
+                                        fieldDescription="This is the summary excerpt or intro that displays on the blog's parent page and will not display on the blog details page itself. It cannot exceed 350 characters"
+                                        fieldLabel="Excerpt"
                                         maxlength="{Long}350"
                                         name="./excerpt"
                                         required="{Boolean}true"/>
                                     <isFeaturedArticle
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will display this as a featured blog"
+                                        fieldDescription="You may only select up to three featured blogs at a time"
                                         name="./isFeaturedArticle"
                                         text="Select to display as featured blog"
                                         uncheckedValue="false"
@@ -80,7 +80,7 @@
                                     <displayQuoteComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will enable Quote component in the page"
+                                        fieldDescription="This will add a quote component to the page, which you can use to pull out a quote in the blog to add visual interest"
                                         name="./displayQuoteComponent"
                                         text="Select to enable Quote Component"
                                         uncheckedValue="false"
@@ -88,9 +88,9 @@
                                     <displayDynamicComponent
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        fieldDescription="Selecting this checkbox will disable Global Dynamic List component from the bottom of the page"
+                                        fieldDescription="This will disable the dynamic blogs list component that automatically displays other suggested blog posts under the same parent page"
                                         name="./hideDynamicComponent"
-                                        text="Select to disable Dynamic Global List Component"
+                                        text="Select to disable Dynamic Blogs List Component"
                                         uncheckedValue="false"
                                         value="true"/>
                                 </items>
