@@ -1,25 +1,12 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- ~ Copyright 2017 Adobe Systems Incorporated
- ~
- ~ Licensed under the Apache License, Version 2.0 (the "License");
- ~ you may not use this file except in compliance with the License.
- ~ You may obtain a copy of the License at
- ~
- ~     http://www.apache.org/licenses/LICENSE-2.0
- ~
- ~ Unless required by applicable law or agreed to in writing, software
- ~ distributed under the License is distributed on an "AS IS" BASIS,
- ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- ~ See the License for the specific language governing permissions and
- ~ limitations under the License.
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 package org.chi.aem.common.components.model;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.internal.servlets.AdaptiveImageServlet;
 import com.adobe.cq.wcm.core.components.models.Image;
+
 import com.day.cq.wcm.api.Page;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -29,8 +16,10 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+
 import org.chi.aem.common.components.internal.models.ImageImplV2;
 import org.chi.aem.common.utils.ImageUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,7 +41,6 @@ public class ImageEnhancement extends ImageImplV2 implements Image {
     private static final String RES_TYPE = "sling:resourceType";
     private String RES_TYPE_VALUE = RESOURCE_TYPE;
 
-
     @ScriptVariable
     private Page currentPage;
 
@@ -68,62 +56,19 @@ public class ImageEnhancement extends ImageImplV2 implements Image {
 
     @PostConstruct
     protected void initModel() {
+    	LOGGER.info("resource.getPath() in Init Model==>"+resource.getPath());
         initImageSetup();
         super.initModel();
-        saveSrcImage(getSrc());
+        saveSrcImage(resource.getPath());
     }
-
-    /**
-     * Used by children classes to update attribute name's
-     * @param imageSrcName
-     * @param imageNodeName
-     */
-    public void updateImageAttrs(String imageSrcName, String imageNodeName, String resType) {
-        this.IMAGE_SRC = imageSrcName;
-        this.IMAGE_NODE = imageNodeName;
-        this.RES_TYPE_VALUE = resType;
-    }
-
-    private void saveSrcImage(String srcImagePath) {
-        if (srcImagePath != null) {
-            try {
-                Session session = resourceResolver.adaptTo(Session.class);
-                Node imageNode = resource.adaptTo(Node.class);
-                if (imageNode != null && imageNode.hasProperties()){
-                    if (imageNode.hasProperty("src")
-                            && imageNode.getProperty("src").getString().equals("srcImagePath")) {
-                        // same image exist in src, no need to make any updates
-                        return;
-                    }
-                    if (
-                            (imageNode.hasProperty("imageCrop")
-                                    && imageNode.getProperty("imageCrop").getString() != null)
-                            || (imageNode.hasProperty("imageMap")
-                                    && imageNode.getProperty("imageMap").getString() != null)
-                            || (imageNode.hasProperty("imageRotate")
-                                    && imageNode.getProperty("imageRotate").getString() != null) ) {
-                        LOGGER.info("save src image, only if editing has happened: " + srcImagePath);
-                        imageNode.setProperty("src", srcImagePath);
-                        session.save();
-                        session.refresh(true);
-                    }
-                }
-                // we store image into src
-
-            } catch (Exception e) {
-                LOGGER.error("Could not update src image reference: " + e);
-                e.printStackTrace();
-            }
-        }
-    }
-
+    
     /**
      * Setup image dialog for image editing
      */
-    protected void initImageSetup(){
+    protected void initImageSetup() {
         boolean imageUpdated = false;
         String imageSrc = null;
-        // get fileReference from page properties
+        // get fileReference from Node properties
         if (currentPage != null) {
             ValueMap pageProperties = currentPage.getProperties();
             imageSrc = pageProperties.get(IMAGE_SRC, "");
@@ -171,7 +116,6 @@ public class ImageEnhancement extends ImageImplV2 implements Image {
         }
     }
 
-
     /**
      * Create image node, if it does note exist
      */
@@ -210,6 +154,50 @@ public class ImageEnhancement extends ImageImplV2 implements Image {
         } catch (Exception e) {
             LOGGER.error("Could not save image reference: " + e);
             e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Used by children classes to update attribute name's
+     * @param imageSrcName
+     * @param imageNodeName
+     */
+    public void updateImageAttrs(String imageSrcName, String imageNodeName, String resType) {
+        this.IMAGE_SRC = imageSrcName;
+        this.IMAGE_NODE = imageNodeName;
+        this.RES_TYPE_VALUE = resType;
+    }
+
+    private void saveSrcImage(String srcImagePath) {
+        if (srcImagePath != null) {
+            try {
+                Session session = resourceResolver.adaptTo(Session.class);
+                Node imageNode = resource.adaptTo(Node.class);
+                LOGGER.info("saveSRCIMAGE===>"+resource.getPath());
+                if (imageNode != null && imageNode.hasProperties()){
+                    if (imageNode.hasProperty("src")
+                            && imageNode.getProperty("src").getString().equals("srcImagePath")) {
+                        // same image exist in src, no need to make any updates
+                        return;
+                    }
+                    if ((imageNode.hasProperty("imageCrop")
+                                    && imageNode.getProperty("imageCrop").getString() != null)
+                            || (imageNode.hasProperty("imageMap")
+                                    && imageNode.getProperty("imageMap").getString() != null)
+                            || (imageNode.hasProperty("imageRotate")
+                                    && imageNode.getProperty("imageRotate").getString() != null) ) {
+                        LOGGER.info("==>save src image, only if editing has happened: " + srcImagePath);
+                        imageNode.setProperty("src", srcImagePath);
+                        session.save();
+                        session.refresh(true);
+                    }
+                }
+                // we store image into src
+
+            } catch (Exception e) {
+                LOGGER.error("Could not update src image reference: " + e);
+                e.printStackTrace();
+            }
         }
     }
 
